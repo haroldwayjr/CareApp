@@ -1,31 +1,40 @@
-import type { SvgIconProps } from '@mui/material/SvgIcon'
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
+import SvgIcon, { type SvgIconProps } from '@mui/material/SvgIcon'
 import type { ComponentType } from 'react'
+import homeSvg from './streamline/home.svg?raw'
+import settingsSvg from './streamline/settings.svg?raw'
+import searchSvg from './streamline/search.svg?raw'
 
 /**
- * Icon names used by the app. Keep this list product-facing (not MUI-specific)
- * so the implementation can switch to Streamline later.
+ * Icon names used by the app. Keep this list product-facing
+ * so call sites stay independent of the icon vendor.
  */
 export type AppIconName = 'home' | 'settings' | 'search'
 
 type IconComponent = ComponentType<SvgIconProps>
 
 /**
- * Current backend: Material Icons (`@mui/icons-material`).
- *
- * Streamline is NOT integrated yet. Missing:
- * - no Streamline npm package in package.json / node_modules
- * - no Streamline SVG/font assets under public/ or src/assets/
- *
- * To swap later: replace `materialIconMap` with Streamline components/assets
- * while keeping `AppIconName` and this export stable.
+ * Streamline Material Pro — Outlined Line assets under `./streamline/`.
+ * Raw SVGs are wrapped in MUI `SvgIcon` so existing `SvgIconProps` keep working.
  */
-const materialIconMap: Record<AppIconName, IconComponent> = {
-  home: HomeOutlinedIcon,
-  settings: SettingsOutlinedIcon,
-  search: SearchOutlinedIcon,
+function streamlineIcon(rawSvg: string): IconComponent {
+  const viewBoxMatch = rawSvg.match(/viewBox="([^"]+)"/)
+  const viewBox = viewBoxMatch?.[1] ?? '0 0 24 24'
+  const pathMatch = rawSvg.match(/<path[^>]*\sd="([^"]+)"/i)
+  const pathD = pathMatch?.[1] ?? ''
+
+  return function StreamlineIcon(props: SvgIconProps) {
+    return (
+      <SvgIcon viewBox={viewBox} {...props}>
+        <path d={pathD} fill="currentColor" />
+      </SvgIcon>
+    )
+  }
+}
+
+const streamlineIconMap: Record<AppIconName, IconComponent> = {
+  home: streamlineIcon(homeSvg),
+  settings: streamlineIcon(settingsSvg),
+  search: streamlineIcon(searchSvg),
 }
 
 export type AppIconProps = SvgIconProps & {
@@ -33,6 +42,6 @@ export type AppIconProps = SvgIconProps & {
 }
 
 export function AppIcon({ name, ...props }: AppIconProps) {
-  const Icon = materialIconMap[name]
+  const Icon = streamlineIconMap[name]
   return <Icon {...props} />
 }

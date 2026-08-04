@@ -3,12 +3,25 @@ import type { ComponentType } from 'react'
 import homeSvg from './streamline/home.svg?raw'
 import settingsSvg from './streamline/settings.svg?raw'
 import searchSvg from './streamline/search.svg?raw'
+import themeSvg from './streamline/theme.svg?raw'
+import notificationsSvg from './streamline/notifications.svg?raw'
+import accountSvg from './streamline/account.svg?raw'
+import filterSvg from './streamline/filter.svg?raw'
+import copySvg from './streamline/copy.svg?raw'
 
 /**
  * Icon names used by the app. Keep this list product-facing
  * so call sites stay independent of the icon vendor.
  */
-export type AppIconName = 'home' | 'settings' | 'search'
+export type AppIconName =
+  | 'home'
+  | 'settings'
+  | 'search'
+  | 'theme'
+  | 'notifications'
+  | 'account'
+  | 'filter'
+  | 'copy'
 
 type IconComponent = ComponentType<SvgIconProps>
 
@@ -35,6 +48,11 @@ const streamlineIconMap: Record<AppIconName, IconComponent> = {
   home: streamlineIcon(homeSvg),
   settings: streamlineIcon(settingsSvg),
   search: streamlineIcon(searchSvg),
+  theme: streamlineIcon(themeSvg),
+  notifications: streamlineIcon(notificationsSvg),
+  account: streamlineIcon(accountSvg),
+  filter: streamlineIcon(filterSvg),
+  copy: streamlineIcon(copySvg),
 }
 
 export type AppIconProps = SvgIconProps & {

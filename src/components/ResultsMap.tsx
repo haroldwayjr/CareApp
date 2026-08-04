@@ -62,10 +62,40 @@ function createPinIcon(label: string | number, selected: boolean) {
   })
 }
 
+/** Leaflet measures the container once on init; remeasure when layout settles or resizes. */
+function InvalidateSize() {
+  const map = useMap()
+
+  useEffect(() => {
+    const container = map.getContainer()
+    const invalidate = () => {
+      map.invalidateSize({ animate: false })
+    }
+
+    invalidate()
+    const frame = window.requestAnimationFrame(invalidate)
+    const timeouts = [0, 100, 300].map((ms) => window.setTimeout(invalidate, ms))
+
+    const observer = new ResizeObserver(invalidate)
+    observer.observe(container)
+    window.addEventListener('resize', invalidate)
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+      timeouts.forEach((id) => window.clearTimeout(id))
+      observer.disconnect()
+      window.removeEventListener('resize', invalidate)
+    }
+  }, [map])
+
+  return null
+}
+
 function FitResults({ results }: { results: ProviderResult[] }) {
   const map = useMap()
 
   useEffect(() => {
+    map.invalidateSize({ animate: false })
     if (results.length === 0) {
       map.setView([MAP_DEFAULT_CENTER.lat, MAP_DEFAULT_CENTER.lng], 12)
       return
@@ -108,20 +138,28 @@ export function ResultsMap({
   onSelect,
   stickyTop = 72,
 }: ResultsMapProps) {
+  // Explicit height so Leaflet fills the Paper (%, minHeight alone leaves a blank band).
+  const mapHeight = {
+    xs: 280,
+    sm: 360,
+    lg: `calc(100vh - ${stickyTop}px - 24px)`,
+  } as const
+
   return (
     <Paper
       variant="outlined"
       sx={{
-        height: { xs: 280, sm: 360, lg: '100%' },
+        height: mapHeight,
         minHeight: { xs: 280, sm: 360, lg: 540 },
         position: { xs: 'relative', lg: 'sticky' },
         top: stickyTop,
         overflow: 'hidden',
         bgcolor: '#dfe8ef',
         '& .leaflet-container': {
+          position: 'absolute',
+          inset: 0,
           width: '100%',
           height: '100%',
-          minHeight: { xs: 280, sm: 360, lg: 540 },
           fontFamily: 'inherit',
           zIndex: 0,
         },
@@ -138,12 +176,13 @@ export function ResultsMap({
         center={[MAP_DEFAULT_CENTER.lat, MAP_DEFAULT_CENTER.lng]}
         zoom={12}
         scrollWheelZoom
-        style={{ width: '100%', height: '100%', minHeight: 280 }}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <InvalidateSize />
         <FitResults results={results} />
         <FocusSelected results={results} selectedId={selectedId} />
 

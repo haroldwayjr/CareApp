@@ -22,6 +22,8 @@ type ResultsMapProps = {
   onSelect: (id: string) => void
   /** Sticky offset from viewport top (app shell + results toolbar). */
   stickyTop?: number
+  /** 0-based offset so pin labels match paginated list numbering. */
+  indexOffset?: number
 }
 
 function createPinIcon(label: string | number, selected: boolean) {
@@ -137,22 +139,21 @@ export function ResultsMap({
   selectedId,
   onSelect,
   stickyTop = 72,
+  indexOffset = 0,
 }: ResultsMapProps) {
-  // Explicit height so Leaflet fills the Paper (%, minHeight alone leaves a blank band).
-  const mapHeight = {
-    xs: 280,
-    sm: 360,
-    lg: `calc(100vh - ${stickyTop}px - 24px)`,
-  } as const
+  // Fill the viewport under sticky chrome so the map runs to the bottom edge.
+  const desktopHeight = `calc(100dvh - ${stickyTop}px)`
 
   return (
     <Paper
       variant="outlined"
       sx={{
-        height: mapHeight,
-        minHeight: { xs: 280, sm: 360, lg: 540 },
+        height: { xs: 280, sm: 360, lg: desktopHeight },
+        minHeight: { xs: 280, sm: 360, lg: desktopHeight },
         position: { xs: 'relative', lg: 'sticky' },
-        top: stickyTop,
+        top: { lg: stickyTop },
+        alignSelf: 'start',
+        width: '100%',
         overflow: 'hidden',
         bgcolor: '#dfe8ef',
         '& .leaflet-container': {
@@ -188,11 +189,12 @@ export function ResultsMap({
 
         {results.map((result, index) => {
           const selected = result.id === selectedId
+          const label = indexOffset + index + 1
           return (
             <Marker
               key={result.id}
               position={[result.lat, result.lng]}
-              icon={createPinIcon(index + 1, selected)}
+              icon={createPinIcon(label, selected)}
               eventHandlers={{
                 click: () => onSelect(result.id),
               }}
@@ -200,7 +202,7 @@ export function ResultsMap({
               <Popup>
                 <Stack spacing={0.5} sx={{ minWidth: 160 }}>
                   <Typography sx={{ fontSize: 14, fontWeight: 700, letterSpacing: 0 }}>
-                    {index + 1}. {result.name}, {result.credentials}
+                    {label}. {result.name}, {result.credentials}
                   </Typography>
                   <Typography sx={{ fontSize: 13, color: 'text.secondary', letterSpacing: 0 }}>
                     {result.specialty}

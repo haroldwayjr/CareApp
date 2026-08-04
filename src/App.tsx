@@ -44,6 +44,8 @@ type View = 'home' | 'results'
 /** Simulated fetch delay after Search so the skeleton can be perceived. */
 const SEARCH_LOADING_MS = 750
 
+const PAGE_SIZE_OPTIONS = [5, 10, 25, 50] as const
+
 export default function App() {
   const [view, setView] = useState<View>('home')
   const [formValues, setFormValues] = useState<SearchFormValues>(
@@ -64,6 +66,7 @@ export default function App() {
   const [toast, setToast] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState('Best match')
   const [page, setPage] = useState(1)
+  const [pageSize, setPageSize] = useState<(typeof PAGE_SIZE_OPTIONS)[number]>(10)
   const loadingTimeoutRef = useRef<number | null>(null)
 
   useEffect(() => {
@@ -82,9 +85,18 @@ export default function App() {
     )
     return sortProviders(filtered, sortBy)
   }, [appliedFilters, appliedSearchTerm, sortBy])
+  const pageCount = Math.max(1, Math.ceil(visibleResults.length / pageSize))
+  const pagedResults = useMemo(() => {
+    const start = (page - 1) * pageSize
+    return visibleResults.slice(start, start + pageSize)
+  }, [visibleResults, page, pageSize])
   const activeCount = countActiveFilters(appliedFilters)
   const chips = buildFilterChips(appliedFilters)
   const isFiltered = activeCount > 0
+
+  useEffect(() => {
+    setPage((current) => Math.min(current, pageCount))
+  }, [pageCount])
 
   function goHome() {
     if (loadingTimeoutRef.current != null) {
@@ -393,11 +405,11 @@ export default function App() {
                   <CareResultCardSkeleton count={4} />
                 ) : (
                   <>
-                    {visibleResults.map((result, index) => (
+                    {pagedResults.map((result, index) => (
                       <CareResultCard
                         key={result.id}
                         result={result}
-                        index={index + 1}
+                        index={(page - 1) * pageSize + index + 1}
                         highlighted={selectedId === result.id}
                         inList={listedIds.includes(result.id)}
                         onSelect={openProviderOverview}
@@ -444,12 +456,13 @@ export default function App() {
                 )}
               </Stack>
 
-              <Box sx={{ minWidth: 0 }}>
+              <Box sx={{ minWidth: 0, alignSelf: { lg: 'stretch' } }}>
                 <ResultsMap
-                  results={resultsLoading ? [] : visibleResults}
+                  results={resultsLoading ? [] : pagedResults}
                   selectedId={resultsLoading ? null : selectedId}
                   onSelect={setSelectedId}
                   stickyTop={APP_SHELL_HEIGHT + RESULTS_TOOLBAR_OFFSET}
+                  indexOffset={(page - 1) * pageSize}
                 />
               </Box>
             </Box>
@@ -464,16 +477,55 @@ export default function App() {
               }}
             >
               <Pagination
-                count={Math.max(1, Math.ceil(visibleResults.length / 10) || 7)}
+                count={pageCount}
                 page={page}
                 onChange={(_, value) => setPage(value)}
                 color="primary"
                 showFirstButton
                 showLastButton
+                disabled={resultsLoading || visibleResults.length === 0}
               />
-              <Typography variant="body2" color="text.secondary">
-                Providers per page: 10
-              </Typography>
+              <Stack
+                direction="row"
+                spacing={1}
+                sx={{ alignItems: 'center', justifyContent: { xs: 'flex-end', sm: 'flex-start' } }}
+              >
+                <Typography
+                  component="label"
+                  htmlFor="providers-per-page"
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ whiteSpace: 'nowrap' }}
+                >
+                  Providers per page:
+                </Typography>
+                <Select
+                  id="providers-per-page"
+                  size="small"
+                  value={pageSize}
+                  onChange={(event) => {
+                    setPageSize(
+                      Number(event.target.value) as (typeof PAGE_SIZE_OPTIONS)[number],
+                    )
+                    setPage(1)
+                  }}
+                  inputProps={{ 'aria-label': 'Providers per page' }}
+                  sx={{
+                    minWidth: 72,
+                    fontSize: 14,
+                    letterSpacing: 0,
+                    '& .MuiSelect-select': {
+                      py: 0.75,
+                    },
+                  }}
+                >
+                  {PAGE_SIZE_OPTIONS.map((size) => (
+                    <MenuItem key={size} value={size}>
+                      {size}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </Stack>
             </Stack>
           </ResultsPageChrome>
         </Box>

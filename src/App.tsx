@@ -229,7 +229,15 @@ export default function App() {
             resultCount={visibleResults.length}
             loading={resultsLoading}
             actions={
-              <Stack direction="row" spacing={2} sx={{ alignItems: 'center', flexShrink: 0 }}>
+              <Stack
+                direction="row"
+                spacing={{ xs: 1, sm: 2 }}
+                sx={{
+                  alignItems: 'center',
+                  flexShrink: 0,
+                  justifyContent: { xs: 'space-between', sm: 'flex-end' },
+                }}
+              >
                 <Stack
                   direction="row"
                   spacing={0.75}
@@ -371,17 +379,16 @@ export default function App() {
             <Box
               sx={{
                 display: 'grid',
-                gridTemplateColumns: 'minmax(520px, 856fr) minmax(320px, 520fr)',
+                gridTemplateColumns: {
+                  xs: '1fr',
+                  lg: 'minmax(0, 856fr) minmax(280px, 520fr)',
+                },
                 gap: 2,
                 alignItems: 'start',
                 flex: 1,
               }}
             >
-              <Stack
-                spacing={2}
-                onClick={() => setSelectedId(null)}
-                sx={{ minHeight: 120 }}
-              >
+              <Stack spacing={2} onClick={() => setSelectedId(null)} sx={{ minHeight: 120, minWidth: 0 }}>
                 {resultsLoading ? (
                   <CareResultCardSkeleton count={4} />
                 ) : (
@@ -404,7 +411,7 @@ export default function App() {
                     {visibleResults.length === 0 ? (
                       <Box
                         sx={{
-                          p: 4,
+                          p: { xs: 2.5, sm: 4 },
                           textAlign: 'center',
                           border: 1,
                           borderColor: 'divider',
@@ -422,7 +429,7 @@ export default function App() {
                           Reset or adjust filters to update the list and map.
                         </Typography>
                         <Stack
-                          direction="row"
+                          direction={{ xs: 'column', sm: 'row' }}
                           spacing={1.5}
                           sx={{ justifyContent: 'center' }}
                         >
@@ -437,19 +444,21 @@ export default function App() {
                 )}
               </Stack>
 
-              <ResultsMap
-                results={resultsLoading ? [] : visibleResults}
-                selectedId={resultsLoading ? null : selectedId}
-                onSelect={setSelectedId}
-                stickyTop={APP_SHELL_HEIGHT + RESULTS_TOOLBAR_OFFSET}
-              />
+              <Box sx={{ minWidth: 0 }}>
+                <ResultsMap
+                  results={resultsLoading ? [] : visibleResults}
+                  selectedId={resultsLoading ? null : selectedId}
+                  onSelect={setSelectedId}
+                  stickyTop={APP_SHELL_HEIGHT + RESULTS_TOOLBAR_OFFSET}
+                />
+              </Box>
             </Box>
 
             <Stack
-              direction="row"
+              direction={{ xs: 'column', sm: 'row' }}
               spacing={2}
               sx={{
-                alignItems: 'center',
+                alignItems: { xs: 'stretch', sm: 'center' },
                 justifyContent: 'space-between',
                 pt: 1,
               }}

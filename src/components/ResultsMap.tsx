@@ -112,16 +112,16 @@ export function ResultsMap({
     <Paper
       variant="outlined"
       sx={{
-        height: '100%',
-        minHeight: 540,
-        position: 'sticky',
+        height: { xs: 280, sm: 360, lg: '100%' },
+        minHeight: { xs: 280, sm: 360, lg: 540 },
+        position: { xs: 'relative', lg: 'sticky' },
         top: stickyTop,
         overflow: 'hidden',
         bgcolor: '#dfe8ef',
         '& .leaflet-container': {
           width: '100%',
           height: '100%',
-          minHeight: 540,
+          minHeight: { xs: 280, sm: 360, lg: 540 },
           fontFamily: 'inherit',
           zIndex: 0,
         },
@@ -138,7 +138,7 @@ export function ResultsMap({
         center={[MAP_DEFAULT_CENTER.lat, MAP_DEFAULT_CENTER.lng]}
         zoom={12}
         scrollWheelZoom
-        style={{ width: '100%', height: '100%', minHeight: 540 }}
+        style={{ width: '100%', height: '100%', minHeight: 280 }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'

@@ -28,6 +28,13 @@ const outlinedHitAreaSx = {
   '& .MuiOutlinedInput-notchedOutline': { pointerEvents: 'none' },
 } as const
 
+const fieldFlexSx = {
+  flex: { xs: '1 1 auto', md: 1 },
+  width: { xs: '100%', md: 'auto' },
+  minWidth: 0,
+  ...outlinedHitAreaSx,
+} as const
+
 type OpenSelect = 'address' | 'insurance' | 'filterBy' | null
 
 /** Open after the current pointer event finishes so the menu isn't immediately closed. */
@@ -81,11 +88,19 @@ export function SearchFormBar({ values, onChange, onSearch }: SearchFormBarProps
 
   return (
     <Stack
-      direction="row"
+      direction={{ xs: 'column', md: 'row' }}
       spacing={1.5}
-      sx={{ alignItems: 'center', width: '100%' }}
+      useFlexGap
+      sx={{
+        alignItems: { xs: 'stretch', md: 'center' },
+        width: '100%',
+        flexWrap: { md: 'nowrap' },
+      }}
     >
-      <FormControl size="small" sx={{ flex: 1, minWidth: 0, ...outlinedHitAreaSx }}>
+      <FormControl
+        size="small"
+        sx={fieldFlexSx}
+      >
         <InputLabel
           shrink
           id="address-label"
@@ -117,7 +132,7 @@ export function SearchFormBar({ values, onChange, onSearch }: SearchFormBarProps
         </Select>
       </FormControl>
 
-      <FormControl size="small" sx={{ flex: 1, minWidth: 0, ...outlinedHitAreaSx }}>
+      <FormControl size="small" sx={fieldFlexSx}>
         <InputLabel
           shrink
           id="insurance-label"
@@ -149,7 +164,7 @@ export function SearchFormBar({ values, onChange, onSearch }: SearchFormBarProps
         </Select>
       </FormControl>
 
-      <FormControl size="small" sx={{ flex: 1, minWidth: 0, ...outlinedHitAreaSx }}>
+      <FormControl size="small" sx={fieldFlexSx}>
         <InputLabel
           shrink
           id="filter-by-label"
@@ -185,7 +200,15 @@ export function SearchFormBar({ values, onChange, onSearch }: SearchFormBarProps
       </FormControl>
 
       <ClickAwayListener onClickAway={() => setSuggestionsOpen(false)}>
-        <Box ref={searchWrapRef} sx={{ flex: 1, minWidth: 0, position: 'relative' }}>
+        <Box
+          ref={searchWrapRef}
+          sx={{
+            flex: { xs: '1 1 auto', md: 1 },
+            width: { xs: '100%', md: 'auto' },
+            minWidth: 0,
+            position: 'relative',
+          }}
+        >
           <TextField
             id="search-term"
             size="small"
@@ -300,6 +323,7 @@ export function SearchFormBar({ values, onChange, onSearch }: SearchFormBarProps
           minHeight: SEARCH_CONTROL_HEIGHT,
           px: 2,
           flexShrink: 0,
+          width: { xs: '100%', md: 'auto' },
         }}
       >
         Search

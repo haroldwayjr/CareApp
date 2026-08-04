@@ -71,9 +71,9 @@ export function ResultsPageChrome({
         bgcolor: 'background.paper',
       }}
     >
-      <Box sx={{ px: 3, pt: 1.5, pb: 0 }}>{header}</Box>
+      <Box sx={{ px: { xs: 2, md: 3 }, pt: 1.5, pb: 0 }}>{header}</Box>
 
-      <Box sx={{ px: 3, pt: 3 }}>{search}</Box>
+      <Box sx={{ px: { xs: 2, md: 3 }, pt: { xs: 2, md: 3 } }}>{search}</Box>
 
       {/* Marks end of scroll-away chrome (title + search). */}
       <Box ref={sentinelRef} aria-hidden sx={{ height: 1, width: '100%' }} />
@@ -86,7 +86,7 @@ export function ResultsPageChrome({
           top: APP_SHELL_HEIGHT,
           zIndex: 10,
           bgcolor: 'background.paper',
-          px: 3,
+          px: { xs: 2, md: 3 },
           py: 1.5,
           borderBottom: 1,
           borderColor: 'divider',
@@ -95,9 +95,12 @@ export function ResultsPageChrome({
         }}
       >
         <Stack
-          direction="row"
+          direction={{ xs: 'column', sm: 'row' }}
           spacing={1.5}
-          sx={{ alignItems: 'center', justifyContent: 'space-between' }}
+          sx={{
+            alignItems: { xs: 'stretch', sm: 'center' },
+            justifyContent: 'space-between',
+          }}
         >
           <Box sx={{ minWidth: 0, flex: 1 }}>
             <Typography
@@ -162,7 +165,7 @@ export function ResultsPageChrome({
 
       <Box
         sx={{
-          px: 3,
+          px: { xs: 2, md: 3 },
           pt: 2,
           pb: 2,
           flex: 1,
@@ -205,7 +208,7 @@ export function ResultsBackHeader({
         component="h1"
         color="text.primary"
         sx={{
-          fontSize: 28,
+          fontSize: { xs: 24, sm: 28 },
           fontWeight: 400,
           letterSpacing: 0,
           lineHeight: 1.25,

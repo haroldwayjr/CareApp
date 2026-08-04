@@ -37,6 +37,11 @@ const CHIP_NEUTRAL = {
   color: '#424242',
 } as const
 
+type ChipTone = {
+  bgcolor: string
+  color: string
+}
+
 const chipSx = {
   borderRadius: 1,
   fontWeight: 500,
@@ -215,7 +220,7 @@ function PremiumCareIcon() {
 
 const NETWORK_CHIP: Record<
   NetworkStatus,
-  { label: string; tone: typeof CHIP_SUCCESS; icon: NetworkIconVariant }
+  { label: string; tone: ChipTone; icon: NetworkIconVariant }
 > = {
   in_network_tier_1: {
     label: 'In network: Tier 1',
@@ -243,7 +248,7 @@ const BADGE_CHIP: Record<
   ProviderBadge,
   {
     label: string
-    tone: typeof CHIP_SUCCESS
+    tone: ChipTone
     glyph?: string
     customIcon?: 'blue_distinction' | 'lgbtq_affirming' | 'telehealth' | 'premium_care'
   }
@@ -350,9 +355,12 @@ export function CareResultCard({
 
         <Box sx={{ flex: 1, minWidth: 0 }}>
           <Stack
-            direction="row"
+            direction={{ xs: 'column', sm: 'row' }}
             spacing={2}
-            sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}
+            sx={{
+              justifyContent: 'space-between',
+              alignItems: { xs: 'stretch', sm: 'flex-start' },
+            }}
           >
             <Box sx={{ minWidth: 0 }}>
               <Stack
@@ -363,7 +371,7 @@ export function CareResultCard({
                 <Typography
                   component="h3"
                   sx={{
-                    fontSize: 16,
+                    fontSize: { xs: 15, sm: 16 },
                     fontWeight: 600,
                     lineHeight: 1.3,
                     letterSpacing: 0,
@@ -405,6 +413,7 @@ export function CareResultCard({
               }}
               sx={{
                 flexShrink: 0,
+                alignSelf: { xs: 'stretch', sm: 'flex-start' },
                 ...(inList
                   ? {
                       boxShadow: 'none',

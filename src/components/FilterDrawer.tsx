@@ -161,8 +161,10 @@ function MultiFilterSelect({
           }}
           MenuProps={{
             disableScrollLock: true,
-            PaperProps: { sx: menuPaperSx },
-            MenuListProps: { dense: true, sx: { py: 0.5 } },
+            slotProps: {
+              paper: { sx: menuPaperSx },
+              list: { dense: true, sx: { py: 0.5 } },
+            },
           }}
         >
           {options.map((option) => (
@@ -174,10 +176,14 @@ function MultiFilterSelect({
               />
               <ListItemText
                 primary={option}
-                primaryTypographyProps={{
-                  fontSize: 14,
-                  fontWeight: 400,
-                  letterSpacing: 0,
+                slotProps={{
+                  primary: {
+                    sx: {
+                      fontSize: 14,
+                      fontWeight: 400,
+                      letterSpacing: 0,
+                    },
+                  },
                 }}
               />
             </MenuItem>
@@ -226,18 +232,24 @@ function SingleFilterSelect({
           }}
           MenuProps={{
             disableScrollLock: true,
-            PaperProps: { sx: menuPaperSx },
-            MenuListProps: { dense: true, sx: { py: 0.5 } },
+            slotProps: {
+              paper: { sx: menuPaperSx },
+              list: { dense: true, sx: { py: 0.5 } },
+            },
           }}
         >
           {options.map((option) => (
             <MenuItem key={option} value={option} sx={menuItemSx}>
               <ListItemText
                 primary={option}
-                primaryTypographyProps={{
-                  fontSize: 14,
-                  fontWeight: 400,
-                  letterSpacing: 0,
+                slotProps={{
+                  primary: {
+                    sx: {
+                      fontSize: 14,
+                      fontWeight: 400,
+                      letterSpacing: 0,
+                    },
+                  },
                 }}
               />
             </MenuItem>
@@ -281,11 +293,11 @@ export function FilterDrawer({
         paper: {
           sx: {
             borderRadius: 2,
-            width: '100%',
-            maxWidth: 480,
-            m: 2,
+            width: { xs: '100%', sm: '100%' },
+            maxWidth: { xs: '100%', sm: 480 },
+            m: { xs: 1.5, sm: 2 },
             height: 'auto',
-            maxHeight: 'calc(100vh - 64px)',
+            maxHeight: 'calc(100vh - 32px)',
             boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
             overflow: 'visible',
             display: 'flex',
@@ -298,7 +310,7 @@ export function FilterDrawer({
       <Stack
         direction="row"
         sx={{
-          px: 3,
+          px: { xs: 2, sm: 3 },
           pt: 2.5,
           pb: 1.5,
           alignItems: 'center',
@@ -343,7 +355,7 @@ export function FilterDrawer({
         </IconButton>
       </Stack>
 
-      <Stack spacing={2.5} sx={{ px: 3, pb: 3, pt: 0.5 }}>
+      <Stack spacing={2.5} sx={{ px: { xs: 2, sm: 3 }, pb: 3, pt: 0.5 }}>
         <MultiFilterSelect
           label="Gender"
           options={GENDER_OPTIONS}
@@ -408,7 +420,7 @@ export function FilterDrawer({
         direction="row"
         spacing={2}
         sx={{
-          px: 3,
+          px: { xs: 2, sm: 3 },
           py: 2,
           alignItems: 'center',
           justifyContent: 'space-between',

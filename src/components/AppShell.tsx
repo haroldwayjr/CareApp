@@ -32,18 +32,18 @@ export function AppShell({ onBrandClick, onNavClick }: AppShellProps) {
         sx={{
           minHeight: 62,
           height: 62,
-          px: 3,
-          gap: 2,
+          px: { xs: 2, md: 3 },
+          gap: { xs: 1, md: 2 },
           '&.MuiToolbar-root': {
             minHeight: 62,
           },
         }}
       >
-        <Stack direction="row" spacing={3} sx={{ alignItems: 'center' }}>
+        <Stack direction="row" spacing={{ xs: 1.5, md: 3 }} sx={{ alignItems: 'center', minWidth: 0 }}>
           <Stack
             direction="row"
             spacing={1}
-            sx={{ alignItems: 'center', cursor: 'pointer' }}
+            sx={{ alignItems: 'center', cursor: 'pointer', flexShrink: 0 }}
             onClick={onBrandClick}
           >
             <Box
@@ -66,7 +66,14 @@ export function AppShell({ onBrandClick, onNavClick }: AppShellProps) {
             </Typography>
           </Stack>
 
-          <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
+          <Stack
+            direction="row"
+            spacing={0.5}
+            sx={{
+              alignItems: 'center',
+              display: { xs: 'none', md: 'flex' },
+            }}
+          >
             {NAV_ITEMS.map((item) => (
               <Button
                 key={item}
@@ -92,12 +99,12 @@ export function AppShell({ onBrandClick, onNavClick }: AppShellProps) {
         <Box sx={{ flex: 1 }} />
 
         {/* Order matches reference: theme, settings, notifications, account */}
-        <Stack direction="row" spacing={0.5} sx={{ color: '#3A3B3F' }}>
+        <Stack direction="row" spacing={0.5} sx={{ color: '#3A3B3F', flexShrink: 0 }}>
           <IconButton
             aria-label="Toggle light and dark mode"
             color="inherit"
             size="small"
-            sx={{ color: 'inherit' }}
+            sx={{ color: 'inherit', display: { xs: 'none', sm: 'inline-flex' } }}
           >
             <AppIcon name="theme" sx={{ fontSize: 24 }} />
           </IconButton>
@@ -105,7 +112,7 @@ export function AppShell({ onBrandClick, onNavClick }: AppShellProps) {
             aria-label="Settings"
             color="inherit"
             size="small"
-            sx={{ color: 'inherit' }}
+            sx={{ color: 'inherit', display: { xs: 'none', sm: 'inline-flex' } }}
           >
             <AppIcon name="settings" sx={{ fontSize: 24 }} />
           </IconButton>

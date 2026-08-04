@@ -29,6 +29,10 @@ const CHIP_NEUTRAL = {
   color: '#424242',
 } as const
 
+type ChipTone = {
+  bgcolor: string
+  color: string
+}
 const chipSx = {
   borderRadius: 1,
   fontWeight: 500,
@@ -60,7 +64,7 @@ const BADGE_META: Partial<
     ProviderBadge,
     {
       label: string
-      tone: typeof CHIP_SUCCESS
+      tone: ChipTone
       customIcon?: 'blue_distinction' | 'lgbtq_affirming' | 'telehealth' | 'premium_care'
     }
   >
@@ -335,8 +339,8 @@ function InfoRow({
     <Box
       sx={{
         display: 'grid',
-        gridTemplateColumns: '148px 1fr',
-        gap: 1.5,
+        gridTemplateColumns: { xs: '1fr', sm: '148px 1fr' },
+        gap: { xs: 0.75, sm: 1.5 },
         alignItems: 'start',
         py: 1.5,
         borderBottom: divider ? '1px solid' : 'none',
@@ -588,14 +592,14 @@ export function ProviderOverviewDrawer({
       open={open}
       onClose={onClose}
       transitionDuration={{ enter: 320, exit: 240 }}
-      SlideProps={{
-        onExited: () => {
-          document.body.style.removeProperty('overflow')
-          document.body.style.removeProperty('padding-right')
-          onExited?.()
-        },
-      }}
       slotProps={{
+        transition: {
+          onExited: () => {
+            document.body.style.removeProperty('overflow')
+            document.body.style.removeProperty('padding-right')
+            onExited?.()
+          },
+        },
         backdrop: {
           sx: {
             bgcolor: 'rgba(33, 33, 33, 0.42)',
@@ -604,7 +608,7 @@ export function ProviderOverviewDrawer({
         },
         paper: {
           sx: {
-            width: DRAWER_WIDTH,
+            width: { xs: '100%', sm: DRAWER_WIDTH },
             maxWidth: '100%',
             display: 'flex',
             flexDirection: 'column',
@@ -621,7 +625,7 @@ export function ProviderOverviewDrawer({
             <Stack
               direction="row"
               sx={{
-                px: 3,
+                px: { xs: 2, sm: 3 },
                 py: 1,
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -673,7 +677,7 @@ export function ProviderOverviewDrawer({
 
             <Divider sx={{ borderColor: 'rgba(0, 0, 0, 0.08)' }} />
 
-            <Box sx={{ px: 3, pt: 2, pb: 1 }}>
+            <Box sx={{ px: { xs: 2, sm: 3 }, pt: 2, pb: 1 }}>
               <Stack
                 direction="row"
                 spacing={0.5}
@@ -705,7 +709,7 @@ export function ProviderOverviewDrawer({
             sx={{
               flex: 1,
               overflow: 'auto',
-              px: 3,
+              px: { xs: 2, sm: 3 },
               pb: 3,
               overscrollBehavior: 'contain',
             }}

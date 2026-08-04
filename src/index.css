@@ -14,7 +14,7 @@ body,
 }
 
 body {
-  min-width: 1024px;
+  min-width: 0;
 }
 
 #root {

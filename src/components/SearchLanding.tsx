@@ -34,7 +34,7 @@ export function SearchLanding({
     >
       <Box
         sx={{
-          px: 3,
+          px: { xs: 2, md: 3 },
           pt: 1.5,
           pb: 0,
         }}
@@ -57,7 +57,7 @@ export function SearchLanding({
           component="h1"
           color="text.primary"
           sx={{
-            fontSize: 28,
+            fontSize: { xs: 24, sm: 28 },
             fontWeight: 400,
             letterSpacing: 0,
             lineHeight: 1.25,
@@ -71,8 +71,8 @@ export function SearchLanding({
       <Box
         sx={{
           flex: 1,
-          px: 3,
-          pt: 3,
+          px: { xs: 2, md: 3 },
+          pt: { xs: 2, md: 3 },
           pb: 2,
           display: 'flex',
           flexDirection: 'column',
@@ -91,8 +91,8 @@ export function SearchLanding({
             alignItems: 'center',
             justifyContent: 'center',
             gap: 1,
-            py: 6,
-            transform: 'translateY(-40px)',
+            py: { xs: 3, md: 6 },
+            transform: { xs: 'none', md: 'translateY(-40px)' },
             // Decorative empty state; keep visual lift without stealing form clicks.
             pointerEvents: 'none',
           }}
@@ -101,11 +101,15 @@ export function SearchLanding({
             component="img"
             src={emptyStateArt}
             alt=""
-            sx={{ width: 260, height: 191, objectFit: 'contain' }}
+            sx={{
+              width: { xs: 200, sm: 260 },
+              height: { xs: 147, sm: 191 },
+              objectFit: 'contain',
+            }}
           />
           <Typography
             variant="body2"
-            sx={{ color: 'text.secondary', letterSpacing: 0 }}
+            sx={{ color: 'text.secondary', letterSpacing: 0, textAlign: 'center', px: 2 }}
           >
             Search for a term to view providers
           </Typography>

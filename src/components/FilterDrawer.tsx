@@ -6,6 +6,7 @@ import Chip from '@mui/material/Chip'
 import Dialog from '@mui/material/Dialog'
 import Divider from '@mui/material/Divider'
 import FormControl from '@mui/material/FormControl'
+import FormControlLabel from '@mui/material/FormControlLabel'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import ListItemText from '@mui/material/ListItemText'
@@ -33,7 +34,6 @@ export type OpenFilterMenu =
   | 'tier'
   | 'distance'
   | 'language'
-  | 'availability'
   | null
 
 type FilterDrawerProps = {
@@ -79,19 +79,6 @@ const menuItemSx = {
   fontWeight: 400,
   py: 0.75,
   gap: 0.5,
-} as const
-
-const sectionHeaderSx = {
-  lineHeight: '32px',
-  fontSize: 13,
-  fontWeight: 700,
-  color: 'text.primary',
-  bgcolor: 'background.paper',
-  px: 2,
-  py: 0.5,
-  position: 'sticky',
-  top: 0,
-  zIndex: 1,
 } as const
 
 function FieldLabel({ children }: { children: string }) {
@@ -483,93 +470,109 @@ function LanguageFilterSelect({
 }
 
 /**
- * Availability as grouped days + hours (matches care filter pattern).
- * Selections update draft immediately; dialog Apply commits filters.
+ * Availability inline in the dialog: days + hours side-by-side so the menu
+ * never overflows the viewport (Select menus were getting clipped).
  */
-function AvailabilityFilterSelect({
+function AvailabilityFilterGroup({
   values,
-  open,
-  onOpen,
-  onClose,
   onChange,
 }: {
   values: string[]
-  open: boolean
-  onOpen: () => void
-  onClose: () => void
   onChange: (next: string[]) => void
 }) {
-  function handleChange(event: SelectChangeEvent<string[]>) {
-    const next = event.target.value
-    onChange(typeof next === 'string' ? next.split(',') : next)
+  function toggle(option: string) {
+    onChange(
+      values.includes(option)
+        ? values.filter((item) => item !== option)
+        : [...values, option],
+    )
   }
 
-  function renderOption(option: string) {
+  function OptionRow({ option }: { option: string }) {
     return (
-      <MenuItem key={option} value={option} sx={menuItemSx}>
-        <Checkbox
-          size="small"
-          checked={values.includes(option)}
-          sx={{ p: 0.75 }}
-        />
-        <ListItemText
-          primary={option}
-          slotProps={{
-            primary: {
-              sx: {
-                fontSize: 14,
-                fontWeight: 400,
-                letterSpacing: 0,
-              },
-            },
-          }}
-        />
-      </MenuItem>
+      <FormControlLabel
+        key={option}
+        control={
+          <Checkbox
+            size="small"
+            checked={values.includes(option)}
+            onChange={() => toggle(option)}
+            sx={{ p: 0.75 }}
+          />
+        }
+        label={option}
+        sx={{
+          m: 0,
+          alignItems: 'flex-start',
+          '& .MuiFormControlLabel-label': {
+            fontSize: 14,
+            fontWeight: 400,
+            letterSpacing: 0,
+            pt: 0.75,
+            lineHeight: 1.35,
+          },
+        }}
+      />
     )
   }
 
   return (
     <Box>
       <FieldLabel>Availability</FieldLabel>
-      <FormControl fullWidth size="small">
-        <Select
-          multiple
-          displayEmpty
-          open={open}
-          onOpen={onOpen}
-          onClose={onClose}
-          value={values}
-          onChange={handleChange}
-          input={<OutlinedInput />}
-          sx={selectSx}
-          renderValue={(selected) => (
-            <SelectedChips selected={selected} onChange={onChange} />
-          )}
-          MenuProps={{
-            disableScrollLock: true,
-            slotProps: {
-              paper: {
-                sx: {
-                  ...menuPaperSx,
-                  maxWidth: 360,
-                },
-              },
-              list: {
-                dense: true,
-                sx: { py: 0.5, maxHeight: 420, overflow: 'auto' },
-                subheader: <li />,
-              },
-            },
-          }}
-        >
-          <ListSubheader sx={sectionHeaderSx}>by Days:</ListSubheader>
-          {AVAILABILITY_DAY_OPTIONS.map(renderOption)}
-          <ListSubheader sx={{ ...sectionHeaderSx, mt: 0.5 }}>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+          gap: { xs: 2, sm: 2.5 },
+          p: 1.5,
+          border: 1,
+          borderColor: 'divider',
+          borderRadius: 1,
+          bgcolor: 'background.paper',
+        }}
+      >
+        <Box>
+          <Typography
+            component="p"
+            sx={{
+              m: 0,
+              mb: 1,
+              fontSize: 13,
+              fontWeight: 700,
+              color: 'text.primary',
+              letterSpacing: 0,
+            }}
+          >
+            by Days:
+          </Typography>
+          <Stack spacing={0.25}>
+            {AVAILABILITY_DAY_OPTIONS.map((option) => (
+              <OptionRow key={option} option={option} />
+            ))}
+          </Stack>
+        </Box>
+
+        <Box>
+          <Typography
+            component="p"
+            sx={{
+              m: 0,
+              mb: 1,
+              fontSize: 13,
+              fontWeight: 700,
+              color: 'text.primary',
+              letterSpacing: 0,
+            }}
+          >
             by Hours:
-          </ListSubheader>
-          {AVAILABILITY_HOUR_OPTIONS.map(renderOption)}
-        </Select>
-      </FormControl>
+          </Typography>
+          <Stack spacing={0.25}>
+            {AVAILABILITY_HOUR_OPTIONS.map((option) => (
+              <OptionRow key={option} option={option} />
+            ))}
+          </Stack>
+        </Box>
+      </Box>
     </Box>
   )
 }
@@ -613,7 +616,7 @@ export function FilterDrawer({
             height: 'auto',
             maxHeight: 'calc(100vh - 32px)',
             boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
-            overflow: 'visible',
+            overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
             position: 'relative',
@@ -629,6 +632,7 @@ export function FilterDrawer({
           pb: 1.5,
           alignItems: 'center',
           justifyContent: 'space-between',
+          flexShrink: 0,
         }}
       >
         <Typography
@@ -671,7 +675,14 @@ export function FilterDrawer({
 
       <Stack
         spacing={2.5}
-        sx={{ px: { xs: 2, sm: 3 }, pb: 3, pt: 0.5, overflow: 'auto' }}
+        sx={{
+          px: { xs: 2, sm: 3 },
+          pb: 3,
+          pt: 0.5,
+          overflow: 'auto',
+          minHeight: 0,
+          flex: 1,
+        }}
       >
         <MultiFilterSelect
           label="Gender"
@@ -716,18 +727,15 @@ export function FilterDrawer({
           onChange={(languages) => onDraftChange({ ...draft, languages })}
         />
 
-        <AvailabilityFilterSelect
+        <AvailabilityFilterGroup
           values={draft.availability}
-          open={openMenu === 'availability'}
-          onOpen={() => onOpenMenuChange('availability')}
-          onClose={() => onOpenMenuChange(null)}
           onChange={(availability) =>
             onDraftChange({ ...draft, availability })
           }
         />
       </Stack>
 
-      <Divider sx={{ borderColor: 'rgba(0, 0, 0, 0.08)' }} />
+      <Divider sx={{ borderColor: 'rgba(0, 0, 0, 0.08)', flexShrink: 0 }} />
 
       <Stack
         direction="row"
@@ -737,6 +745,7 @@ export function FilterDrawer({
           py: 2,
           alignItems: 'center',
           justifyContent: 'space-between',
+          flexShrink: 0,
         }}
       >
         <Button

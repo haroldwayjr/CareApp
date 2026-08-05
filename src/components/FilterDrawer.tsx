@@ -60,27 +60,40 @@ type FilterDrawerProps = {
 }
 
 const LANGUAGE_PREVIEW_COUNT = 8
-const CHIP_FIELD_MAX_HEIGHT = 96
+/** RemovableFilterTag height — one chip row reserved in every filter field. */
+const FILTER_CHIP_ROW_HEIGHT = 28
+/**
+ * Fixed field height with one chip row + vertical padding + borders.
+ * Empty and selected states must share this height to avoid layout shift.
+ */
+const FILTER_FIELD_HEIGHT = 48
+/** Header row reserves Clear button space in both states. */
+const FILTER_HEADER_MIN_HEIGHT = 32
 
 /** Same border as MUI outlined inputs (.MuiOutlinedInput-notchedOutline) in light mode. */
 const outlinedFieldBorder = (theme: Theme) =>
   alpha(theme.palette.common.black, 0.23)
 
-/** Match SearchFormBar outlined controls (height, radius, chevron). */
+/** Match SearchFormBar outlined controls — fixed height for layout-stable filters. */
 const selectSx = {
   fontSize: 14,
   fontWeight: 400,
   letterSpacing: 0,
   bgcolor: 'background.paper',
   borderRadius: 1,
-  minHeight: SEARCH_CONTROL_HEIGHT,
+  height: FILTER_FIELD_HEIGHT,
+  minHeight: FILTER_FIELD_HEIGHT,
+  boxSizing: 'border-box' as const,
   '& .MuiSelect-select': {
-    py: 1,
+    py: 0,
     px: 1.5,
     display: 'flex',
     alignItems: 'center',
-    minHeight: SEARCH_CONTROL_HEIGHT - 2,
+    height: FILTER_FIELD_HEIGHT - 2,
+    minHeight: FILTER_FIELD_HEIGHT - 2,
+    maxHeight: FILTER_FIELD_HEIGHT - 2,
     boxSizing: 'border-box',
+    overflow: 'hidden',
   },
   '& .MuiOutlinedInput-notchedOutline': {
     borderColor: outlinedFieldBorder,
@@ -119,8 +132,7 @@ const menuItemSx = {
 const placeholderSx = {
   fontSize: 14,
   fontWeight: 400,
-  // ~7:1 on white — meets WCAG AA 4.5:1 for placeholder text
-  color: 'rgba(0, 0, 0, 0.6)',
+  color: 'text.secondary',
 }
 
 function FieldLabel({
@@ -164,27 +176,35 @@ function FieldHeader({
     <Stack
       direction="row"
       spacing={1}
-      sx={{ mb: 1, alignItems: 'center', justifyContent: 'space-between' }}
+      sx={{
+        mb: 1,
+        minHeight: FILTER_HEADER_MIN_HEIGHT,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}
     >
       <FieldLabel id={labelId}>{label}</FieldLabel>
-      {canClear ? (
-        <Button
-          size="small"
-          onClick={onClear}
-          aria-label={clearLabel}
-          sx={{
-            minWidth: 0,
-            px: 0.75,
-            py: 0.25,
-            fontSize: 12,
-            fontWeight: 500,
-            letterSpacing: 0,
-            textTransform: 'none',
-          }}
-        >
-          Clear
-        </Button>
-      ) : null}
+      {/* Always mounted — visibility toggled — so Clear never shifts layout. */}
+      <Button
+        size="small"
+        onClick={onClear}
+        disabled={!canClear}
+        aria-label={clearLabel}
+        tabIndex={canClear ? 0 : -1}
+        sx={{
+          minWidth: 48,
+          px: 0.75,
+          py: 0.25,
+          fontSize: 12,
+          fontWeight: 500,
+          letterSpacing: 0,
+          textTransform: 'none',
+          visibility: canClear ? 'visible' : 'hidden',
+          pointerEvents: canClear ? 'auto' : 'none',
+        }}
+      >
+        Clear
+      </Button>
     </Stack>
   )
 }
@@ -208,10 +228,13 @@ function SelectedChips({
       sx={{
         display: 'flex',
         flexWrap: 'wrap',
+        alignItems: 'center',
         gap: REMOVABLE_FILTER_TAG_GAP,
-        maxHeight: CHIP_FIELD_MAX_HEIGHT,
-        overflowY: 'auto',
-        py: 0.25,
+        // Stay within the fixed one-row field height; overflow scrolls.
+        height: FILTER_CHIP_ROW_HEIGHT,
+        maxHeight: FILTER_CHIP_ROW_HEIGHT,
+        overflowX: 'auto',
+        overflowY: 'hidden',
         width: '100%',
       }}
     >
@@ -712,15 +735,19 @@ const availabilityAutocompleteSx = {
     letterSpacing: 0,
     bgcolor: 'background.paper',
     borderRadius: 1,
-    minHeight: SEARCH_CONTROL_HEIGHT,
-    py: 0.75,
-    px: 0.5,
+    height: FILTER_FIELD_HEIGHT,
+    minHeight: FILTER_FIELD_HEIGHT,
+    maxHeight: FILTER_FIELD_HEIGHT,
+    boxSizing: 'border-box',
+    py: 0,
+    // Match Select `.MuiSelect-select` horizontal inset (px: 1.5).
+    pl: 1.5,
     pr: 4.5,
     alignItems: 'center',
-    flexWrap: 'wrap',
+    flexWrap: 'nowrap',
     gap: REMOVABLE_FILTER_TAG_GAP,
-    maxHeight: CHIP_FIELD_MAX_HEIGHT + 16,
-    overflowY: 'auto',
+    overflowX: 'auto',
+    overflowY: 'hidden',
     '& .MuiOutlinedInput-notchedOutline': {
       borderColor: outlinedFieldBorder,
     },
@@ -734,8 +761,21 @@ const availabilityAutocompleteSx = {
   },
   '& .MuiAutocomplete-input': {
     minWidth: '4ch !important',
-    p: '0 !important',
+    py: '0 !important',
+    // Extra inset so "Any" aligns with Select placeholders (~8px more).
+    pl: 1,
+    pr: 0,
     fontSize: 14,
+    color: 'text.primary',
+    alignSelf: 'center',
+  },
+  '& .MuiInputBase-input::placeholder': {
+    color: 'text.secondary',
+    opacity: 1,
+  },
+  '& .MuiAutocomplete-groupLabel': {
+    fontWeight: 700,
+    color: 'text.primary',
   },
   '& .MuiAutocomplete-endAdornment': {
     right: 8,
@@ -746,6 +786,11 @@ const availabilityAutocompleteSx = {
     '& .MuiSvgIcon-root': {
       fontSize: 28,
     },
+  },
+  // Keep tags in a single reserved row so the field never grows.
+  '& .MuiChip-root': {
+    height: FILTER_CHIP_ROW_HEIGHT,
+    maxHeight: FILTER_CHIP_ROW_HEIGHT,
   },
 }
 
@@ -804,21 +849,44 @@ function AvailabilityFilterSelect({
         slotProps={{
           paper: { sx: menuPaperSx },
           listbox: {
-            sx: { py: 0.5, maxHeight: 280 },
+            sx: {
+              py: 0.5,
+              maxHeight: 420,
+              overflowY: 'auto',
+              // Bold Days/Times section headers.
+              '& .MuiAutocomplete-groupLabel, & .MuiListSubheader-root': {
+                fontWeight: 700,
+                color: 'text.primary',
+              },
+            },
             'aria-labelledby': labelId,
+          },
+          // Portal (default) so the menu can overflow the modal; flip/resize in viewport.
+          popper: {
+            disablePortal: false,
+            placement: 'bottom-start',
+            modifiers: [
+              { name: 'flip', enabled: true },
+              {
+                name: 'preventOverflow',
+                enabled: true,
+                options: { altAxis: true, padding: 8 },
+              },
+            ],
           },
         }}
         renderGroup={(params) => (
           <li key={params.key}>
             <ListSubheader
               component="div"
+              className="MuiAutocomplete-groupLabel"
               sx={{
                 position: 'sticky',
-                top: -8,
+                top: 0,
                 lineHeight: '36px',
                 fontSize: 12,
-                fontWeight: 500,
-                color: 'text.secondary',
+                fontWeight: 700,
+                color: 'text.primary',
                 letterSpacing: '0.02em',
                 bgcolor: 'background.paper',
               }}
@@ -893,6 +961,12 @@ function AvailabilityFilterSelect({
                 ...params.slotProps.htmlInput,
                 readOnly: true,
                 'aria-labelledby': labelId,
+              },
+            }}
+            sx={{
+              '& .MuiInputBase-input::placeholder': {
+                color: 'text.secondary',
+                opacity: 1,
               },
             }}
           />

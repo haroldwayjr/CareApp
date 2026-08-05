@@ -483,14 +483,6 @@ export function CareResultCard({
                 },
               }}
             />
-            {result.tier === 'Tier 2' ? (
-              <Chip
-                size="small"
-                icon={<NetworkStatusIcon variant="outline" />}
-                label={`Tier 2 | $${result.copay} copay`}
-                sx={{ ...chipSx, ...CHIP_SUCCESS }}
-              />
-            ) : null}
             {result.badges.map((badge) => {
               const meta = BADGE_CHIP[badge]
               const icon =

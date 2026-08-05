@@ -150,7 +150,7 @@ function FieldLabel({
       id={id}
       component="label"
       sx={{
-        fontSize: 14,
+        fontSize: 16,
         fontWeight: 600,
         color: 'text.primary',
         lineHeight: 1.4,
@@ -180,7 +180,7 @@ function FieldHeader({
       direction="row"
       spacing={1}
       sx={{
-        mb: 1,
+        mb: 0.5,
         minHeight: FILTER_HEADER_MIN_HEIGHT,
         alignItems: 'center',
         justifyContent: 'space-between',

@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
+import ListItemText from '@mui/material/ListItemText'
 import MenuItem from '@mui/material/MenuItem'
 import Pagination from '@mui/material/Pagination'
+import Radio from '@mui/material/Radio'
 import Select from '@mui/material/Select'
 import Snackbar from '@mui/material/Snackbar'
 import Stack from '@mui/material/Stack'
@@ -47,6 +49,25 @@ type View = 'home' | 'results'
 const SEARCH_LOADING_MS = 750
 
 const PAGE_SIZE_OPTIONS = [5, 10, 25, 50] as const
+
+const SORT_OPTIONS = ['Best match', 'Distance', 'Quality'] as const
+
+const sortMenuPaperSx = {
+  borderRadius: 1,
+  mt: 0.5,
+  boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+  border: 1,
+  borderColor: 'divider',
+}
+
+const sortMenuItemSx = {
+  fontSize: 14,
+  fontWeight: 400,
+  minHeight: 44,
+  py: 0.75,
+  gap: 0.5,
+  alignItems: 'center' as const,
+}
 
 export default function App() {
   const [view, setView] = useState<View>('home')
@@ -291,6 +312,19 @@ export default function App() {
                     value={sortBy}
                     onChange={(event) => setSortBy(event.target.value)}
                     inputProps={{ 'aria-label': 'Sort by' }}
+                    renderValue={(selected) => (
+                      <Typography
+                        component="span"
+                        sx={{
+                          fontSize: 14,
+                          fontWeight: 400,
+                          letterSpacing: 0,
+                          color: 'text.primary',
+                        }}
+                      >
+                        {selected}
+                      </Typography>
+                    )}
                     sx={{
                       fontSize: 14,
                       fontWeight: 400,
@@ -309,10 +343,51 @@ export default function App() {
                         right: 0,
                       },
                     }}
+                    MenuProps={{
+                      disableScrollLock: true,
+                      slotProps: {
+                        paper: { sx: sortMenuPaperSx },
+                        list: {
+                          dense: true,
+                          role: 'listbox',
+                          'aria-label': 'Sort by',
+                          sx: { py: 0.5 },
+                        },
+                      },
+                    }}
                   >
-                    <MenuItem value="Best match">Best match</MenuItem>
-                    <MenuItem value="Distance">Distance</MenuItem>
-                    <MenuItem value="Quality">Quality</MenuItem>
+                    {SORT_OPTIONS.map((option) => (
+                      <MenuItem
+                        key={option}
+                        value={option}
+                        role="option"
+                        aria-selected={sortBy === option}
+                        sx={sortMenuItemSx}
+                      >
+                        <Radio
+                          size="small"
+                          checked={sortBy === option}
+                          tabIndex={-1}
+                          disableRipple
+                          sx={{ p: 1, mr: 0.5 }}
+                          slotProps={{
+                            input: { 'aria-hidden': true },
+                          }}
+                        />
+                        <ListItemText
+                          primary={option}
+                          slotProps={{
+                            primary: {
+                              sx: {
+                                fontSize: 14,
+                                fontWeight: 400,
+                                letterSpacing: 0,
+                              },
+                            },
+                          }}
+                        />
+                      </MenuItem>
+                    ))}
                   </Select>
                 </Stack>
                 <Button

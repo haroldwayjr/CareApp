@@ -1,24 +1,30 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type KeyboardEvent, type MouseEvent } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
-import Chip from '@mui/material/Chip'
 import Dialog from '@mui/material/Dialog'
 import Divider from '@mui/material/Divider'
 import FormControl from '@mui/material/FormControl'
-import FormControlLabel from '@mui/material/FormControlLabel'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import ListItemText from '@mui/material/ListItemText'
 import ListSubheader from '@mui/material/ListSubheader'
 import MenuItem from '@mui/material/MenuItem'
 import OutlinedInput from '@mui/material/OutlinedInput'
+import Radio from '@mui/material/Radio'
 import Select, { type SelectChangeEvent } from '@mui/material/Select'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
+import ToggleButton from '@mui/material/ToggleButton'
 import Typography from '@mui/material/Typography'
+import { alpha, type Theme } from '@mui/material/styles'
 import { AppIcon } from '../icons/AppIcon'
-import { filterChipSx, FilterChipDeleteIcon } from './filterChipSx.tsx'
+import { SEARCH_CONTROL_HEIGHT } from './SearchFormBar'
+import {
+  RemovableFilterTag,
+  REMOVABLE_FILTER_TAG_GAP,
+  stopSelectChipEvent,
+} from './RemovableFilterTag'
 import {
   AVAILABILITY_DAY_OPTIONS,
   AVAILABILITY_HOUR_OPTIONS,
@@ -26,8 +32,12 @@ import {
   GENDER_OPTIONS,
   LANGUAGE_OPTIONS,
   TIER_OPTIONS,
+  countActiveFilters,
   type ProviderFilters,
 } from '../data/mockCareResults'
+
+// TODO(P3): Confirm before persisting applied filters in the URL query string
+// for shareable / restorable filter state.
 
 export type OpenFilterMenu =
   | 'gender'
@@ -39,6 +49,8 @@ export type OpenFilterMenu =
 type FilterDrawerProps = {
   open: boolean
   draft: ProviderFilters
+  /** Live provider count for the current draft + search (before Apply). */
+  draftResultCount: number
   openMenu: OpenFilterMenu
   onClose: () => void
   onDraftChange: (next: ProviderFilters) => void
@@ -48,23 +60,44 @@ type FilterDrawerProps = {
 }
 
 const LANGUAGE_PREVIEW_COUNT = 8
+const CHIP_FIELD_MAX_HEIGHT = 96
 
+/** Same border as MUI outlined inputs (.MuiOutlinedInput-notchedOutline) in light mode. */
+const outlinedFieldBorder = (theme: Theme) =>
+  alpha(theme.palette.common.black, 0.23)
+
+/** Match SearchFormBar outlined controls (height, radius, chevron). */
 const selectSx = {
   fontSize: 14,
   fontWeight: 400,
+  letterSpacing: 0,
   bgcolor: 'background.paper',
+  borderRadius: 1,
+  minHeight: SEARCH_CONTROL_HEIGHT,
   '& .MuiSelect-select': {
-    py: 1.25,
+    py: 1,
+    px: 1.5,
     display: 'flex',
     alignItems: 'center',
-    minHeight: 24,
+    minHeight: SEARCH_CONTROL_HEIGHT - 2,
+    boxSizing: 'border-box',
+  },
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderColor: outlinedFieldBorder,
+  },
+  '&:hover .MuiOutlinedInput-notchedOutline': {
+    borderColor: (theme: Theme) => alpha(theme.palette.common.black, 0.87),
+  },
+  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderWidth: 2,
+    borderColor: 'primary.main',
   },
   '& .MuiSelect-icon': {
     fontSize: 28,
     right: 8,
     color: 'icon.secondary',
   },
-} as const
+}
 
 const menuPaperSx = {
   borderRadius: 1,
@@ -72,30 +105,87 @@ const menuPaperSx = {
   boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
   border: 1,
   borderColor: 'divider',
-} as const
+}
 
 const menuItemSx = {
   fontSize: 14,
   fontWeight: 400,
+  minHeight: 44,
   py: 0.75,
   gap: 0.5,
-} as const
+  alignItems: 'center',
+}
 
-function FieldLabel({ children }: { children: string }) {
+const placeholderSx = {
+  fontSize: 14,
+  fontWeight: 400,
+  // ~7:1 on white — meets WCAG AA 4.5:1 for placeholder text
+  color: 'rgba(0, 0, 0, 0.6)',
+}
+
+function FieldLabel({
+  id,
+  children,
+}: {
+  id?: string
+  children: string
+}) {
   return (
     <Typography
+      id={id}
       component="label"
       sx={{
-        mb: 1,
-        display: 'block',
         fontSize: 14,
         fontWeight: 600,
         color: 'text.primary',
         lineHeight: 1.4,
+        letterSpacing: 0,
       }}
     >
       {children}
     </Typography>
+  )
+}
+
+function FieldHeader({
+  label,
+  labelId,
+  canClear,
+  onClear,
+  clearLabel,
+}: {
+  label: string
+  labelId: string
+  canClear: boolean
+  onClear: () => void
+  clearLabel: string
+}) {
+  return (
+    <Stack
+      direction="row"
+      spacing={1}
+      sx={{ mb: 1, alignItems: 'center', justifyContent: 'space-between' }}
+    >
+      <FieldLabel id={labelId}>{label}</FieldLabel>
+      {canClear ? (
+        <Button
+          size="small"
+          onClick={onClear}
+          aria-label={clearLabel}
+          sx={{
+            minWidth: 0,
+            px: 0.75,
+            py: 0.25,
+            fontSize: 12,
+            fontWeight: 500,
+            letterSpacing: 0,
+            textTransform: 'none',
+          }}
+        >
+          Clear
+        </Button>
+      ) : null}
+    </Stack>
   )
 }
 
@@ -108,28 +198,32 @@ function SelectedChips({
 }) {
   if (selected.length === 0) {
     return (
-      <Typography
-        component="span"
-        sx={{ fontSize: 14, fontWeight: 400, color: 'text.secondary' }}
-      >
+      <Typography component="span" sx={placeholderSx}>
         Any
       </Typography>
     )
   }
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: REMOVABLE_FILTER_TAG_GAP,
+        maxHeight: CHIP_FIELD_MAX_HEIGHT,
+        overflowY: 'auto',
+        py: 0.25,
+        width: '100%',
+      }}
+    >
       {selected.map((value) => (
-        <Chip
+        <RemovableFilterTag
           key={value}
-          size="small"
           label={value}
-          deleteIcon={<FilterChipDeleteIcon />}
           onDelete={() => onChange(selected.filter((item) => item !== value))}
-          onMouseDown={(event) => {
+          onMouseDown={stopSelectChipEvent}
+          onClick={(event: MouseEvent) => {
             event.stopPropagation()
-            event.preventDefault()
           }}
-          sx={filterChipSx}
         />
       ))}
     </Box>
@@ -153,6 +247,9 @@ function MultiFilterSelect({
   onClose: () => void
   onChange: (next: string[]) => void
 }) {
+  const labelId = `${label.toLowerCase().replace(/\s+/g, '-')}-label`
+  const listboxId = `${labelId}-listbox`
+
   function handleChange(event: SelectChangeEvent<string[]>) {
     const next = event.target.value
     onChange(typeof next === 'string' ? next.split(',') : next)
@@ -160,7 +257,13 @@ function MultiFilterSelect({
 
   return (
     <Box>
-      <FieldLabel>{label}</FieldLabel>
+      <FieldHeader
+        label={label}
+        labelId={labelId}
+        canClear={values.length > 0}
+        clearLabel={`Clear ${label}`}
+        onClear={() => onChange([])}
+      />
       <FormControl fullWidth size="small">
         <Select
           multiple
@@ -170,7 +273,9 @@ function MultiFilterSelect({
           onClose={onClose}
           value={values}
           onChange={handleChange}
-          input={<OutlinedInput />}
+          input={<OutlinedInput notched={false} />}
+          labelId={labelId}
+          aria-labelledby={labelId}
           sx={selectSx}
           renderValue={(selected) => (
             <SelectedChips selected={selected} onChange={onChange} />
@@ -179,16 +284,34 @@ function MultiFilterSelect({
             disableScrollLock: true,
             slotProps: {
               paper: { sx: menuPaperSx },
-              list: { dense: true, sx: { py: 0.5, maxHeight: 280 } },
+              list: {
+                id: listboxId,
+                dense: true,
+                role: 'listbox',
+                'aria-multiselectable': true,
+                'aria-labelledby': labelId,
+                sx: { py: 0.5, maxHeight: 280 },
+              },
             },
           }}
         >
           {options.map((option) => (
-            <MenuItem key={option} value={option} sx={menuItemSx}>
+            <MenuItem
+              key={option}
+              value={option}
+              role="option"
+              aria-selected={values.includes(option)}
+              sx={menuItemSx}
+            >
               <Checkbox
                 size="small"
                 checked={values.includes(option)}
-                sx={{ p: 0.75 }}
+                tabIndex={-1}
+                disableRipple
+                sx={{ p: 1, mr: 0.5 }}
+                slotProps={{
+                  input: { 'aria-hidden': true },
+                }}
               />
               <ListItemText
                 primary={option}
@@ -227,9 +350,18 @@ function SingleFilterSelect({
   onClose: () => void
   onChange: (next: string) => void
 }) {
+  const labelId = `${label.toLowerCase().replace(/\s+/g, '-')}-label`
+  const isPlaceholder = value === 'Best Nearby' || value === 'Any'
+
   return (
     <Box>
-      <FieldLabel>{label}</FieldLabel>
+      <FieldHeader
+        label={label}
+        labelId={labelId}
+        canClear={value !== 'Best Nearby'}
+        clearLabel={`Clear ${label}`}
+        onClear={() => onChange('Best Nearby')}
+      />
       <FormControl fullWidth size="small">
         <Select
           displayEmpty
@@ -238,24 +370,57 @@ function SingleFilterSelect({
           onClose={onClose}
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          input={<OutlinedInput />}
+          input={<OutlinedInput notched={false} />}
+          labelId={labelId}
+          aria-labelledby={labelId}
           sx={{
             ...selectSx,
-            color:
-              value === 'Best Nearby' || value === 'Any'
-                ? 'text.secondary'
-                : 'text.primary',
+            color: isPlaceholder ? 'rgba(0, 0, 0, 0.6)' : 'text.primary',
           }}
+          renderValue={(selected) => (
+            <Typography
+              component="span"
+              sx={{
+                fontSize: 14,
+                fontWeight: 400,
+                letterSpacing: 0,
+                color: isPlaceholder ? 'rgba(0, 0, 0, 0.6)' : 'text.primary',
+              }}
+            >
+              {selected}
+            </Typography>
+          )}
           MenuProps={{
             disableScrollLock: true,
             slotProps: {
               paper: { sx: menuPaperSx },
-              list: { dense: true, sx: { py: 0.5 } },
+              list: {
+                dense: true,
+                role: 'listbox',
+                'aria-labelledby': labelId,
+                sx: { py: 0.5 },
+              },
             },
           }}
         >
           {options.map((option) => (
-            <MenuItem key={option} value={option} sx={menuItemSx}>
+            <MenuItem
+              key={option}
+              value={option}
+              role="option"
+              aria-selected={value === option}
+              sx={menuItemSx}
+            >
+              <Radio
+                size="small"
+                checked={value === option}
+                tabIndex={-1}
+                disableRipple
+                sx={{ p: 1, mr: 0.5 }}
+                slotProps={{
+                  input: { 'aria-hidden': true },
+                }}
+              />
               <ListItemText
                 primary={option}
                 slotProps={{
@@ -292,6 +457,7 @@ function LanguageFilterSelect({
 }) {
   const [query, setQuery] = useState('')
   const [expanded, setExpanded] = useState(false)
+  const labelId = 'language-label'
 
   const normalizedQuery = query.trim().toLowerCase()
   const filtered = useMemo(() => {
@@ -321,7 +487,13 @@ function LanguageFilterSelect({
 
   return (
     <Box>
-      <FieldLabel>Language</FieldLabel>
+      <FieldHeader
+        label="Language"
+        labelId={labelId}
+        canClear={values.length > 0}
+        clearLabel="Clear Language"
+        onClear={() => onChange([])}
+      />
       <FormControl fullWidth size="small">
         <Select
           multiple
@@ -331,7 +503,9 @@ function LanguageFilterSelect({
           onClose={handleClose}
           value={values}
           onChange={handleChange}
-          input={<OutlinedInput />}
+          input={<OutlinedInput notched={false} />}
+          labelId={labelId}
+          aria-labelledby={labelId}
           sx={selectSx}
           renderValue={(selected) => (
             <SelectedChips selected={selected} onChange={onChange} />
@@ -350,6 +524,9 @@ function LanguageFilterSelect({
               },
               list: {
                 dense: true,
+                role: 'listbox',
+                'aria-multiselectable': true,
+                'aria-labelledby': labelId,
                 sx: {
                   py: 0,
                   maxHeight: 300,
@@ -402,6 +579,7 @@ function LanguageFilterSelect({
                 '& .MuiOutlinedInput-root': {
                   fontSize: 14,
                   bgcolor: 'background.paper',
+                  minHeight: SEARCH_CONTROL_HEIGHT,
                 },
               }}
             />
@@ -413,11 +591,22 @@ function LanguageFilterSelect({
             </MenuItem>
           ) : (
             visibleOptions.map((option) => (
-              <MenuItem key={option} value={option} sx={menuItemSx}>
+              <MenuItem
+                key={option}
+                value={option}
+                role="option"
+                aria-selected={values.includes(option)}
+                sx={menuItemSx}
+              >
                 <Checkbox
                   size="small"
                   checked={values.includes(option)}
-                  sx={{ p: 0.75 }}
+                  tabIndex={-1}
+                  disableRipple
+                  sx={{ p: 1, mr: 0.5 }}
+                  slotProps={{
+                    input: { 'aria-hidden': true },
+                  }}
                 />
                 <ListItemText
                   primary={option}
@@ -469,18 +658,107 @@ function LanguageFilterSelect({
   )
 }
 
+const DAY_SHORT_LABEL: Record<string, string> = {
+  Monday: 'Mon',
+  Tuesday: 'Tue',
+  Wednesday: 'Wed',
+  Thursday: 'Thu',
+  Friday: 'Fri',
+}
+
+const HOUR_TOGGLE_META: {
+  value: string
+  title: string
+  range: string
+}[] = [
+  {
+    value: 'Morning - 5AM to 12PM',
+    title: 'Morning',
+    range: '5AM–12PM',
+  },
+  {
+    value: 'Afternoon - 12PM to 5PM',
+    title: 'Afternoon',
+    range: '12PM–5PM',
+  },
+  {
+    value: 'Evening - 5PM to 9PM',
+    title: 'Evening',
+    range: '5PM–9PM',
+  },
+]
+
+/** Soft-selected standalone toggles — full 4-sided border, no ToggleButtonGroup clipping. */
+const availabilityToggleSx = {
+  flex: 1,
+  minWidth: 0,
+  minHeight: 44,
+  py: 1.25,
+  px: 0.5,
+  textTransform: 'none' as const,
+  fontSize: 14,
+  fontWeight: 500,
+  letterSpacing: 0,
+  lineHeight: 1.2,
+  borderRadius: 1.5,
+  border: '1px solid',
+  borderColor: outlinedFieldBorder,
+  color: 'text.primary',
+  bgcolor: 'background.paper',
+  boxSizing: 'border-box' as const,
+  '&.Mui-selected': {
+    color: 'text.primary',
+    borderColor: 'primary.main',
+    border: '1px solid',
+    fontWeight: 500,
+    // Inset ring + 1px border ≈ 2px outline without layout shift.
+    boxShadow: (theme: Theme) =>
+      `inset 0 0 0 1px ${theme.palette.primary.main}`,
+    bgcolor: (theme: Theme) => alpha(theme.palette.primary.main, 0.04),
+    '&:hover': {
+      bgcolor: (theme: Theme) => alpha(theme.palette.primary.main, 0.07),
+      borderColor: 'primary.main',
+    },
+  },
+  '&:hover': {
+    bgcolor: 'action.hover',
+  },
+  '&:focus-visible': {
+    outline: (theme: Theme) => `2px solid ${theme.palette.primary.main}`,
+    outlineOffset: 2,
+  },
+}
+
+const availabilitySubLabelSx = {
+  m: 0,
+  mb: 0.5,
+  fontSize: 12,
+  fontWeight: 500,
+  color: 'text.secondary',
+  letterSpacing: '0.02em',
+}
+
 /**
- * Availability inline in the dialog: days + hours side-by-side so the menu
- * never overflows the viewport (Select menus were getting clipped).
+ * Compact availability: Mon–Fri day toggles + time toggles (standalone ToggleButtons).
+ * Clear is always reserved in the header (visibility toggled) to avoid layout shift.
  */
-function AvailabilityFilterGroup({
+function AvailabilityFilterSelect({
   values,
   onChange,
 }: {
   values: string[]
   onChange: (next: string[]) => void
 }) {
-  function toggle(option: string) {
+  const labelId = 'availability-label'
+  const hasSelection = values.length > 0
+  const selectedDays = values.filter((value) =>
+    (AVAILABILITY_DAY_OPTIONS as readonly string[]).includes(value),
+  )
+  const selectedHours = values.filter((value) =>
+    (AVAILABILITY_HOUR_OPTIONS as readonly string[]).includes(value),
+  )
+
+  function toggleValue(option: string) {
     onChange(
       values.includes(option)
         ? values.filter((item) => item !== option)
@@ -488,91 +766,142 @@ function AvailabilityFilterGroup({
     )
   }
 
-  function OptionRow({ option }: { option: string }) {
-    return (
-      <FormControlLabel
-        key={option}
-        control={
-          <Checkbox
-            size="small"
-            checked={values.includes(option)}
-            onChange={() => toggle(option)}
-            sx={{ p: 0.75 }}
-          />
-        }
-        label={option}
-        sx={{
-          m: 0,
-          alignItems: 'flex-start',
-          '& .MuiFormControlLabel-label': {
-            fontSize: 14,
-            fontWeight: 400,
-            letterSpacing: 0,
-            pt: 0.75,
-            lineHeight: 1.35,
-          },
-        }}
-      />
-    )
-  }
-
   return (
     <Box>
-      <FieldLabel>Availability</FieldLabel>
-      <Box
+      <Stack
+        direction="row"
+        spacing={1}
         sx={{
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-          gap: { xs: 2, sm: 2.5 },
-          p: 1.5,
-          border: 1,
-          borderColor: 'divider',
-          borderRadius: 1,
-          bgcolor: 'background.paper',
+          mb: 0.5,
+          alignItems: 'center',
+          justifyContent: 'space-between',
         }}
       >
+        <Typography
+          id={labelId}
+          component="label"
+          sx={{
+            m: 0,
+            fontSize: 14,
+            fontWeight: 600,
+            color: 'text.primary',
+            lineHeight: 1.4,
+            letterSpacing: 0,
+          }}
+        >
+          Availability
+        </Typography>
+        <Button
+          size="small"
+          onClick={() => onChange([])}
+          disabled={!hasSelection}
+          aria-label="Clear Availability"
+          tabIndex={hasSelection ? 0 : -1}
+          sx={{
+            minWidth: 48,
+            px: 0.75,
+            py: 0.25,
+            fontSize: 12,
+            fontWeight: 500,
+            letterSpacing: 0,
+            textTransform: 'none',
+            visibility: hasSelection ? 'visible' : 'hidden',
+            pointerEvents: hasSelection ? 'auto' : 'none',
+          }}
+        >
+          Clear
+        </Button>
+      </Stack>
+
+      <Stack spacing={1.5}>
         <Box>
           <Typography
             component="p"
-            sx={{
-              m: 0,
-              mb: 1,
-              fontSize: 13,
-              fontWeight: 700,
-              color: 'text.primary',
-              letterSpacing: 0,
-            }}
+            id="availability-days-heading"
+            sx={availabilitySubLabelSx}
           >
-            by Days:
+            Days
           </Typography>
-          <Stack spacing={0.25}>
-            {AVAILABILITY_DAY_OPTIONS.map((option) => (
-              <OptionRow key={option} option={option} />
-            ))}
-          </Stack>
+
+          <Box
+            role="group"
+            aria-labelledby="availability-days-heading"
+            sx={{ display: 'flex', gap: 1 }}
+          >
+            {AVAILABILITY_DAY_OPTIONS.map((day) => {
+              const selected = selectedDays.includes(day)
+              return (
+                <ToggleButton
+                  key={day}
+                  value={day}
+                  selected={selected}
+                  onChange={() => toggleValue(day)}
+                  aria-label={day}
+                  aria-pressed={selected}
+                  disableRipple
+                  sx={availabilityToggleSx}
+                >
+                  {DAY_SHORT_LABEL[day] ?? day}
+                </ToggleButton>
+              )
+            })}
+          </Box>
         </Box>
 
         <Box>
           <Typography
             component="p"
-            sx={{
-              m: 0,
-              mb: 1,
-              fontSize: 13,
-              fontWeight: 700,
-              color: 'text.primary',
-              letterSpacing: 0,
-            }}
+            id="availability-times-heading"
+            sx={availabilitySubLabelSx}
           >
-            by Hours:
+            Times
           </Typography>
-          <Stack spacing={0.25}>
-            {AVAILABILITY_HOUR_OPTIONS.map((option) => (
-              <OptionRow key={option} option={option} />
-            ))}
-          </Stack>
+          <Box
+            role="group"
+            aria-labelledby="availability-times-heading"
+            sx={{ display: 'flex', gap: 1 }}
+          >
+            {HOUR_TOGGLE_META.map((hour) => {
+              const selected = selectedHours.includes(hour.value)
+              return (
+                <ToggleButton
+                  key={hour.value}
+                  value={hour.value}
+                  selected={selected}
+                  onChange={() => toggleValue(hour.value)}
+                  aria-label={`${hour.title} ${hour.range}`}
+                  aria-pressed={selected}
+                  title={`${hour.title} (${hour.range})`}
+                  disableRipple
+                  sx={{
+                    ...availabilityToggleSx,
+                    flexDirection: 'column',
+                    gap: 0.25,
+                  }}
+                >
+                  <Box
+                    component="span"
+                    sx={{ fontSize: 14, fontWeight: 500, lineHeight: 1.2 }}
+                  >
+                    {hour.title}
+                  </Box>
+                  <Box
+                    component="span"
+                    sx={{
+                      fontSize: 12,
+                      fontWeight: 400,
+                      opacity: 0.75,
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {hour.range}
+                  </Box>
+                </ToggleButton>
+              )
+            })}
+          </Box>
         </Box>
-      </Box>
+      </Stack>
     </Box>
   )
 }
@@ -581,6 +910,7 @@ function AvailabilityFilterGroup({
 export function FilterDrawer({
   open,
   draft,
+  draftResultCount,
   openMenu,
   onClose,
   onDraftChange,
@@ -588,6 +918,25 @@ export function FilterDrawer({
   onApply,
   onClear,
 }: FilterDrawerProps) {
+  const draftActive = countActiveFilters(draft) > 0
+
+  function handleDialogKeyDown(event: KeyboardEvent) {
+    if (event.key !== 'Enter' || event.defaultPrevented) return
+    const target = event.target as HTMLElement | null
+    if (!target) return
+    // Don't apply while typing in search / focused on a button.
+    if (
+      target.tagName === 'INPUT' ||
+      target.tagName === 'TEXTAREA' ||
+      target.tagName === 'BUTTON' ||
+      target.getAttribute('role') === 'button'
+    ) {
+      return
+    }
+    event.preventDefault()
+    onApply()
+  }
+
   return (
     <Dialog
       open={open}
@@ -595,6 +944,8 @@ export function FilterDrawer({
       fullWidth
       maxWidth={false}
       transitionDuration={{ enter: 220, exit: 160 }}
+      onKeyDown={handleDialogKeyDown}
+      aria-labelledby="filters-dialog-title"
       sx={{
         '& .MuiDialog-container': {
           alignItems: 'center',
@@ -611,7 +962,7 @@ export function FilterDrawer({
           sx: {
             borderRadius: 2,
             width: { xs: '100%', sm: '100%' },
-            maxWidth: { xs: '100%', sm: 480 },
+            maxWidth: { xs: '100%', sm: 560 },
             m: { xs: 1.5, sm: 2 },
             height: 'auto',
             maxHeight: 'calc(100vh - 32px)',
@@ -628,14 +979,15 @@ export function FilterDrawer({
         direction="row"
         sx={{
           px: { xs: 2, sm: 3 },
-          pt: 2.5,
-          pb: 1.5,
+          pt: 1.5,
+          pb: 0.5,
           alignItems: 'center',
           justifyContent: 'space-between',
           flexShrink: 0,
         }}
       >
         <Typography
+          id="filters-dialog-title"
           component="h2"
           sx={{
             fontSize: 20,
@@ -651,8 +1003,8 @@ export function FilterDrawer({
           onClick={onClose}
           edge="end"
           sx={{
-            width: 40,
-            height: 40,
+            width: 44,
+            height: 44,
             color: 'icon.secondary',
             '&:hover': { bgcolor: 'action.hover', color: 'text.primary' },
           }}
@@ -677,13 +1029,43 @@ export function FilterDrawer({
         spacing={2.5}
         sx={{
           px: { xs: 2, sm: 3 },
-          pb: 3,
-          pt: 0.5,
+          pb: 2,
+          pt: 2,
           overflow: 'auto',
           minHeight: 0,
           flex: 1,
         }}
       >
+        <SingleFilterSelect
+          label="Distance"
+          options={DISTANCE_OPTIONS}
+          value={draft.distance}
+          open={openMenu === 'distance'}
+          onOpen={() => onOpenMenuChange('distance')}
+          onClose={() => onOpenMenuChange(null)}
+          onChange={(distance) =>
+            onDraftChange({
+              ...draft,
+              distance: distance as ProviderFilters['distance'],
+            })
+          }
+        />
+
+        <AvailabilityFilterSelect
+          values={draft.availability}
+          onChange={(availability) =>
+            onDraftChange({ ...draft, availability })
+          }
+        />
+
+        <LanguageFilterSelect
+          values={draft.languages}
+          open={openMenu === 'language'}
+          onOpen={() => onOpenMenuChange('language')}
+          onClose={() => onOpenMenuChange(null)}
+          onChange={(languages) => onDraftChange({ ...draft, languages })}
+        />
+
         <MultiFilterSelect
           label="Gender"
           options={GENDER_OPTIONS}
@@ -703,36 +1085,6 @@ export function FilterDrawer({
           onClose={() => onOpenMenuChange(null)}
           onChange={(tiers) => onDraftChange({ ...draft, tiers })}
         />
-
-        <SingleFilterSelect
-          label="Distance"
-          options={DISTANCE_OPTIONS}
-          value={draft.distance}
-          open={openMenu === 'distance'}
-          onOpen={() => onOpenMenuChange('distance')}
-          onClose={() => onOpenMenuChange(null)}
-          onChange={(distance) =>
-            onDraftChange({
-              ...draft,
-              distance: distance as ProviderFilters['distance'],
-            })
-          }
-        />
-
-        <LanguageFilterSelect
-          values={draft.languages}
-          open={openMenu === 'language'}
-          onOpen={() => onOpenMenuChange('language')}
-          onClose={() => onOpenMenuChange(null)}
-          onChange={(languages) => onDraftChange({ ...draft, languages })}
-        />
-
-        <AvailabilityFilterGroup
-          values={draft.availability}
-          onChange={(availability) =>
-            onDraftChange({ ...draft, availability })
-          }
-        />
       </Stack>
 
       <Divider sx={{ borderColor: 'rgba(0, 0, 0, 0.08)', flexShrink: 0 }} />
@@ -746,17 +1098,27 @@ export function FilterDrawer({
           alignItems: 'center',
           justifyContent: 'space-between',
           flexShrink: 0,
+          bgcolor: 'background.paper',
         }}
       >
         <Button
           color="primary"
           onClick={onClear}
+          disabled={!draftActive}
           sx={{ fontWeight: 500, px: 0, minWidth: 0 }}
         >
           Reset filters
         </Button>
-        <Button variant="contained" onClick={onApply} sx={{ minWidth: 96 }}>
-          Apply
+        <Button
+          variant="contained"
+          onClick={onApply}
+          sx={{ minWidth: 128, px: 2 }}
+        >
+          {draftResultCount === 0
+            ? 'No providers match'
+            : draftResultCount === 1
+              ? 'Show 1 provider'
+              : `Show ${draftResultCount} providers`}
         </Button>
       </Stack>
     </Dialog>

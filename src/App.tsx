@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import Chip from '@mui/material/Chip'
 import MenuItem from '@mui/material/MenuItem'
 import Pagination from '@mui/material/Pagination'
 import Select from '@mui/material/Select'
@@ -13,7 +12,10 @@ import { AppShell } from './components/AppShell'
 import { CareResultCard } from './components/CareResultCard'
 import { CareResultCardSkeleton } from './components/CareResultCardSkeleton'
 import { FilterDrawer, type OpenFilterMenu } from './components/FilterDrawer'
-import { filterChipSx, FilterChipDeleteIcon } from './components/filterChipSx.tsx'
+import {
+  RemovableFilterTag,
+  REMOVABLE_FILTER_TAG_GAP,
+} from './components/RemovableFilterTag'
 import { ProviderOverviewDrawer } from './components/ProviderOverviewDrawer'
 import { ResultsMap } from './components/ResultsMap'
 import {
@@ -85,6 +87,11 @@ export default function App() {
     )
     return sortProviders(filtered, sortBy)
   }, [appliedFilters, appliedSearchTerm, sortBy])
+  const draftPreviewCount = useMemo(
+    () =>
+      filterProviders(mockProviders, draftFilters, appliedSearchTerm).length,
+    [draftFilters, appliedSearchTerm],
+  )
   const pageCount = Math.max(1, Math.ceil(visibleResults.length / pageSize))
   const pagedResults = useMemo(() => {
     const start = (page - 1) * pageSize
@@ -97,6 +104,17 @@ export default function App() {
   useEffect(() => {
     setPage((current) => Math.min(current, pageCount))
   }, [pageCount])
+
+  function removeAppliedChip(chipId: string) {
+    setAppliedFilters((current) => {
+      const next = removeFilterChip(current, chipId)
+      if (drawerOpen) {
+        setDraftFilters(next)
+      }
+      return next
+    })
+    setPage(1)
+  }
 
   function goHome() {
     if (loadingTimeoutRef.current != null) {
@@ -358,23 +376,18 @@ export default function App() {
               isFiltered ? (
                 <Stack
                   direction="row"
-                  spacing={1}
                   useFlexGap
-                  sx={{ flexWrap: 'wrap', alignItems: 'center' }}
+                  sx={{
+                    flexWrap: 'wrap',
+                    alignItems: 'center',
+                    gap: REMOVABLE_FILTER_TAG_GAP,
+                  }}
                 >
                   {chips.map((chip) => (
-                    <Chip
+                    <RemovableFilterTag
                       key={chip.id}
                       label={chip.label}
-                      size="small"
-                      deleteIcon={<FilterChipDeleteIcon />}
-                      onDelete={() => {
-                        setAppliedFilters((current) =>
-                          removeFilterChip(current, chip.id),
-                        )
-                        setPage(1)
-                      }}
-                      sx={filterChipSx}
+                      onDelete={() => removeAppliedChip(chip.id)}
                     />
                   ))}
                   <Button
@@ -431,7 +444,12 @@ export default function App() {
                           borderRadius: 1,
                         }}
                       >
-                        <Typography variant="subtitle1" gutterBottom>
+                        <Typography
+                          variant="h6"
+                          component="h3"
+                          gutterBottom
+                          sx={{ fontWeight: 600, color: 'text.primary' }}
+                        >
                           No providers match these filters
                         </Typography>
                         <Typography
@@ -535,6 +553,7 @@ export default function App() {
       <FilterDrawer
         open={drawerOpen}
         draft={draftFilters}
+        draftResultCount={draftPreviewCount}
         openMenu={openMenu}
         onClose={closeFilters}
         onDraftChange={setDraftFilters}

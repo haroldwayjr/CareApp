@@ -44,6 +44,12 @@ const theme = createTheme({
       main: '#c62828',
       light: '#ffebee',
     },
+    warning: {
+      main: '#ed6c02',
+      light: '#fff4e5',
+      dark: '#e65100',
+      contrastText: '#ffffff',
+    },
     background: {
       default: '#ffffff',
       paper: '#ffffff',

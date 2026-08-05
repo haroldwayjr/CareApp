@@ -162,6 +162,9 @@ export const AVAILABILITY_HOUR_OPTIONS = [
   'Evening - 5PM to 9PM',
 ] as const
 
+/** Alias: weekdays are the only selectable days. */
+export const AVAILABILITY_WEEKDAY_OPTIONS = AVAILABILITY_DAY_OPTIONS
+
 export const AVAILABILITY_OPTIONS = [
   ...AVAILABILITY_DAY_OPTIONS,
   ...AVAILABILITY_HOUR_OPTIONS,
@@ -1132,6 +1135,19 @@ export function countActiveFilters(filters: ProviderFilters): number {
     filters.languages.length +
     filters.availability.length +
     (filters.distance !== 'Best Nearby' ? 1 : 0)
+  )
+}
+
+/** Structural equality for draft vs applied filter comparison. */
+export function filtersEqual(a: ProviderFilters, b: ProviderFilters): boolean {
+  const sameList = (left: string[], right: string[]) =>
+    left.length === right.length && left.every((item, index) => item === right[index])
+  return (
+    a.distance === b.distance &&
+    sameList(a.genders, b.genders) &&
+    sameList(a.tiers, b.tiers) &&
+    sameList(a.languages, b.languages) &&
+    sameList(a.availability, b.availability)
   )
 }
 

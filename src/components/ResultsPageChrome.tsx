@@ -73,7 +73,7 @@ export function ResultsPageChrome({
     >
       <Box sx={{ px: { xs: 2, md: 3 }, pt: 1.5, pb: 0 }}>{header}</Box>
 
-      <Box sx={{ px: { xs: 2, md: 3 }, pt: { xs: 2, md: 3 } }}>{search}</Box>
+      <Box sx={{ px: { xs: 2, md: 3 }, pt: 4 }}>{search}</Box>
 
       {/* Marks end of scroll-away chrome (title + search). */}
       <Box ref={sentinelRef} aria-hidden sx={{ height: 1, width: '100%' }} />
@@ -212,7 +212,8 @@ export function ResultsBackHeader({
           fontWeight: 400,
           letterSpacing: 0,
           lineHeight: 1.25,
-          mt: 1.5,
+          // Match gap above Back (parent pt: 1.5) — slightly tighter than before.
+          mt: 1,
         }}
       >
         {title}

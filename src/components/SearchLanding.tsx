@@ -61,7 +61,8 @@ export function SearchLanding({
             fontWeight: 400,
             letterSpacing: 0,
             lineHeight: 1.25,
-            mt: 1.5,
+            // Match gap above Back (container pt: 1.5) — slightly tighter than before.
+            mt: 1,
           }}
         >
           Search Provider
@@ -72,7 +73,8 @@ export function SearchLanding({
         sx={{
           flex: 1,
           px: { xs: 2, md: 3 },
-          pt: { xs: 2, md: 3 },
+          // Comfortable heading → form gap (~32px).
+          pt: 4,
           pb: 2,
           display: 'flex',
           flexDirection: 'column',

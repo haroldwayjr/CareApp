@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
+import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import L from 'leaflet'
 import {
   MapContainer,
@@ -13,6 +15,7 @@ import {
 import 'leaflet/dist/leaflet.css'
 import {
   MAP_DEFAULT_CENTER,
+  googleMapsPlaceUrl,
   type ProviderResult,
 } from '../data/mockCareResults'
 
@@ -27,7 +30,9 @@ type ResultsMapProps = {
 }
 
 function createPinIcon(label: string | number, selected: boolean) {
-  const size = selected ? 34 : 28
+  // ~1.4× prior sizes (28 / 34) — tip stays at iconAnchor bottom-center.
+  const size = selected ? 48 : 40
+  const fontSize = selected ? 15 : 14
   return L.divIcon({
     className: '',
     iconSize: [size, size],
@@ -55,7 +60,7 @@ function createPinIcon(label: string | number, selected: boolean) {
           <span style="
             transform:rotate(45deg);
             color:#fff;
-            font:700 11px/1 Figtree, system-ui, sans-serif;
+            font:700 ${fontSize}px/1 Figtree, system-ui, sans-serif;
             letter-spacing:0;
           ">${label}</span>
         </div>
@@ -210,6 +215,35 @@ export function ResultsMap({
                   <Typography sx={{ fontSize: 13, letterSpacing: 0 }}>
                     {result.address}
                   </Typography>
+                  <Button
+                    component="a"
+                    href={googleMapsPlaceUrl(
+                      result.lat,
+                      result.lng,
+                      result.address,
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    size="small"
+                    variant="text"
+                    startIcon={<OpenInNewIcon sx={{ fontSize: 16 }} />}
+                    aria-label={`Open ${result.name} in Google Maps`}
+                    onClick={(event) => {
+                      event.stopPropagation()
+                    }}
+                    sx={{
+                      mt: 0.25,
+                      alignSelf: 'flex-start',
+                      px: 0.5,
+                      minHeight: 32,
+                      textTransform: 'none',
+                      fontWeight: 600,
+                      fontSize: 13,
+                      letterSpacing: 0,
+                    }}
+                  >
+                    Open in Google Maps
+                  </Button>
                 </Stack>
               </Popup>
             </Marker>

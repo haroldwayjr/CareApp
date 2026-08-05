@@ -170,6 +170,54 @@ export const AVAILABILITY_OPTIONS = [
   ...AVAILABILITY_HOUR_OPTIONS,
 ] as const
 
+const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/
+
+/** True when the availability value is an ISO calendar date (YYYY-MM-DD). */
+export function isAvailabilityDateValue(value: string): boolean {
+  return ISO_DATE_RE.test(value)
+}
+
+/** True when the availability value is a time-of-day option. */
+export function isAvailabilityHourValue(value: string): boolean {
+  return (AVAILABILITY_HOUR_OPTIONS as readonly string[]).includes(value)
+}
+
+const WEEKDAY_NAMES = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+] as const
+
+/** Map an ISO date to a weekday name used by provider schedules. */
+export function weekdayFromIsoDate(isoDate: string): string {
+  const [year, month, day] = isoDate.split('-').map(Number)
+  const date = new Date(year, month - 1, day)
+  return WEEKDAY_NAMES[date.getDay()]
+}
+
+/** Chip / tag label for an ISO availability date (e.g. "Mon, Aug 10"). */
+export function formatAvailabilityDateLabel(isoDate: string): string {
+  const [year, month, day] = isoDate.split('-').map(Number)
+  const date = new Date(year, month - 1, day)
+  return date.toLocaleDateString(undefined, {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+  })
+}
+
+/** Format a Date as local YYYY-MM-DD for filter storage. */
+export function toAvailabilityIsoDate(date: Date): string {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
 export type ProviderFilters = {
   genders: string[]
   tiers: string[]
@@ -986,11 +1034,12 @@ export function getProviderOverview(provider: ProviderResult): ProviderOverview 
   }
 }
 
-export function googleMapsPlaceUrl(lat: number, lng: number, label?: string) {
-  if (label) {
-    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(label)}`
-  }
-  return `https://www.google.com/maps?q=${lat},${lng}`
+export function googleMapsPlaceUrl(lat: number, lng: number, address?: string) {
+  const hasCoords = Number.isFinite(lat) && Number.isFinite(lng)
+  const query = hasCoords
+    ? `${lat},${lng}`
+    : (address?.trim() || `${lat},${lng}`)
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
 }
 
 export function googleMapsAreaUrl(lat: number, lng: number, zoom = 12) {
@@ -1102,15 +1151,21 @@ export function filterProviders(
       return false
     }
     if (filters.availability.length > 0) {
-      const selectedDays = filters.availability.filter((label) =>
-        (AVAILABILITY_DAY_OPTIONS as readonly string[]).includes(label),
-      )
       const selectedHours = filters.availability.filter((label) =>
-        (AVAILABILITY_HOUR_OPTIONS as readonly string[]).includes(label),
+        isAvailabilityHourValue(label),
       )
+      const selectedWeekdays = filters.availability.flatMap((label) => {
+        if (isAvailabilityDateValue(label)) {
+          return [weekdayFromIsoDate(label)]
+        }
+        if ((AVAILABILITY_DAY_OPTIONS as readonly string[]).includes(label)) {
+          return [label]
+        }
+        return []
+      })
       if (
-        selectedDays.length > 0 &&
-        !selectedDays.some((day) => result.availableDays.includes(day))
+        selectedWeekdays.length > 0 &&
+        !selectedWeekdays.some((day) => result.availableDays.includes(day))
       ) {
         return false
       }
@@ -1178,7 +1233,9 @@ export function buildFilterChips(filters: ProviderFilters): FilterChip[] {
   for (const availability of filters.availability) {
     chips.push({
       id: `avail:${availability}`,
-      label: AVAILABILITY_CHIP_LABELS[availability] ?? availability,
+      label: isAvailabilityDateValue(availability)
+        ? formatAvailabilityDateLabel(availability)
+        : (AVAILABILITY_CHIP_LABELS[availability] ?? availability),
     })
   }
   if (filters.distance !== 'Best Nearby') {

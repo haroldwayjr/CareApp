@@ -1,4 +1,16 @@
-import { useMemo, useState, type KeyboardEvent, type MouseEvent } from 'react'
+import {
+  cloneElement,
+  forwardRef,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type KeyboardEvent,
+  type MouseEvent,
+  type ReactElement,
+  type Ref,
+} from 'react'
+import { Transition } from 'react-transition-group'
 import Autocomplete from '@mui/material/Autocomplete'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -18,6 +30,8 @@ import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { alpha, type Theme } from '@mui/material/styles'
+import type { TransitionProps } from '@mui/material/transitions'
+import useForkRef from '@mui/utils/useForkRef'
 import { AppIcon } from '../icons/AppIcon'
 import { SEARCH_CONTROL_HEIGHT } from './SearchFormBar'
 import {
@@ -37,6 +51,126 @@ import {
 
 // TODO(P3): Confirm before persisting applied filters in the URL query string
 // for shareable / restorable filter state.
+
+/** Gentler than MUI default enter/exit — Airbnb-style rise + fade. */
+const RISE_DURATION_MS = 320
+
+const riseBaseStyle: CSSProperties = {
+  transition: `opacity ${RISE_DURATION_MS}ms ease-out, transform ${RISE_DURATION_MS}ms cubic-bezier(0.16, 1, 0.3, 1)`,
+  opacity: 0,
+  transform: 'translateY(48px)',
+  willChange: 'opacity, transform',
+}
+
+const riseStateStyles: Record<string, CSSProperties> = {
+  entering: { opacity: 1, transform: 'translateY(0)' },
+  entered: { opacity: 1, transform: 'translateY(0)' },
+  exiting: { opacity: 0, transform: 'translateY(48px)' },
+  exited: { opacity: 0, transform: 'translateY(48px)' },
+}
+
+type RiseChildProps = {
+  style?: CSSProperties
+  ref?: Ref<HTMLElement>
+}
+
+/**
+ * Subtle rise (~48px) + fade — modal stays near center; does not slide from the
+ * bottom of the viewport.
+ */
+const RiseTransition = forwardRef(function RiseTransition(
+  props: TransitionProps & { children: ReactElement<RiseChildProps> },
+  ref: Ref<unknown>,
+) {
+  const {
+    in: inProp,
+    children,
+    onEnter,
+    onEntered,
+    onExit,
+    onExited,
+    onEntering,
+    onExiting,
+    addEndListener,
+    style,
+    timeout = RISE_DURATION_MS,
+    appear = true,
+    mountOnEnter,
+    unmountOnExit,
+  } = props
+
+  const nodeRef = useRef<HTMLElement>(null)
+  const handleRef = useForkRef(
+    nodeRef,
+    (children as ReactElement<RiseChildProps>).props.ref,
+    ref,
+  )
+
+  const resolvedTimeout =
+    typeof timeout === 'number'
+      ? timeout
+      : {
+          appear: timeout.appear ?? timeout.enter ?? RISE_DURATION_MS,
+          enter: timeout.enter ?? RISE_DURATION_MS,
+          exit: timeout.exit ?? RISE_DURATION_MS,
+        }
+
+  return (
+    <Transition
+      appear={appear}
+      in={inProp}
+      nodeRef={nodeRef}
+      timeout={resolvedTimeout}
+      mountOnEnter={mountOnEnter}
+      unmountOnExit={unmountOnExit}
+      addEndListener={
+        addEndListener
+          ? (done) => {
+              if (nodeRef.current) {
+                addEndListener(nodeRef.current, done)
+              } else {
+                done()
+              }
+            }
+          : undefined
+      }
+      onEnter={(isAppearing) => {
+        if (nodeRef.current) {
+          // Force layout so the enter animation starts from the initial styles.
+          void nodeRef.current.offsetHeight
+          onEnter?.(nodeRef.current, isAppearing)
+        }
+      }}
+      onEntering={(isAppearing) => {
+        if (nodeRef.current) onEntering?.(nodeRef.current, isAppearing)
+      }}
+      onEntered={(isAppearing) => {
+        if (nodeRef.current) onEntered?.(nodeRef.current, isAppearing)
+      }}
+      onExit={() => {
+        if (nodeRef.current) onExit?.(nodeRef.current)
+      }}
+      onExiting={() => {
+        if (nodeRef.current) onExiting?.(nodeRef.current)
+      }}
+      onExited={() => {
+        if (nodeRef.current) onExited?.(nodeRef.current)
+      }}
+    >
+      {(state) =>
+        cloneElement(children, {
+          ref: handleRef,
+          style: {
+            ...riseBaseStyle,
+            ...style,
+            ...riseStateStyles[state],
+            ...children.props.style,
+          },
+        })
+      }
+    </Transition>
+  )
+})
 
 export type OpenFilterMenu =
   | 'gender'
@@ -714,7 +848,7 @@ const availabilityAutocompleteSx = {
     borderRadius: 1,
     minHeight: SEARCH_CONTROL_HEIGHT,
     py: 0.75,
-    px: 0.5,
+    pl: 1.5,
     pr: 4.5,
     alignItems: 'center',
     flexWrap: 'wrap',
@@ -736,6 +870,12 @@ const availabilityAutocompleteSx = {
     minWidth: '4ch !important',
     p: '0 !important',
     fontSize: 14,
+    color: 'text.primary',
+    // Match Distance / other dropdown placeholder tone (avoid browser default fade).
+    '&::placeholder': {
+      color: 'text.primary',
+      opacity: 0.6,
+    },
   },
   '& .MuiAutocomplete-endAdornment': {
     right: 8,
@@ -804,7 +944,8 @@ function AvailabilityFilterSelect({
         slotProps={{
           paper: { sx: menuPaperSx },
           listbox: {
-            sx: { py: 0.5, maxHeight: 280 },
+            // Tall enough for Days (5) + Times (3) + group headers without clipping.
+            sx: { py: 0.5, maxHeight: 440 },
             'aria-labelledby': labelId,
           },
         }}
@@ -814,12 +955,15 @@ function AvailabilityFilterSelect({
               component="div"
               sx={{
                 position: 'sticky',
-                top: -8,
-                lineHeight: '36px',
-                fontSize: 12,
-                fontWeight: 500,
-                color: 'text.secondary',
-                letterSpacing: '0.02em',
+                top: 0,
+                lineHeight: 1.4,
+                py: 1,
+                px: 1.5,
+                // Match FieldLabel / dropdown field header affordance.
+                fontSize: 14,
+                fontWeight: 600,
+                color: 'text.primary',
+                letterSpacing: 0,
                 bgcolor: 'background.paper',
               }}
             >
@@ -940,12 +1084,18 @@ export function FilterDrawer({
       onClose={onClose}
       fullWidth
       maxWidth={false}
-      transitionDuration={{ enter: 220, exit: 160 }}
+      keepMounted
+      slots={{ transition: RiseTransition }}
+      transitionDuration={{
+        enter: RISE_DURATION_MS,
+        exit: RISE_DURATION_MS,
+      }}
       onKeyDown={handleDialogKeyDown}
       aria-labelledby="filters-dialog-title"
       sx={{
         '& .MuiDialog-container': {
-          alignItems: 'center',
+          // Stay near center so the subtle rise reads correctly (not a full bottom slide).
+          alignItems: { xs: 'flex-end', sm: 'center' },
           justifyContent: 'center',
         },
       }}
@@ -957,12 +1107,19 @@ export function FilterDrawer({
         },
         paper: {
           sx: {
-            borderRadius: 2,
+            // Mobile: bottom sheet (rounded top only). Desktop: centered card.
+            borderTopLeftRadius: 2,
+            borderTopRightRadius: 2,
+            borderBottomLeftRadius: { xs: 0, sm: 2 },
+            borderBottomRightRadius: { xs: 0, sm: 2 },
             width: { xs: '100%', sm: '100%' },
             maxWidth: { xs: '100%', sm: 560 },
-            m: { xs: 1.5, sm: 2 },
+            m: { xs: 0, sm: 2 },
             height: 'auto',
-            maxHeight: 'calc(100vh - 32px)',
+            maxHeight: {
+              xs: 'min(90vh, 100%)',
+              sm: 'calc(100vh - 32px)',
+            },
             boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
             overflow: 'hidden',
             display: 'flex',

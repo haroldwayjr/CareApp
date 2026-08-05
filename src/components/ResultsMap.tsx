@@ -248,8 +248,8 @@ export function ResultsMap({
                       px: 0.5,
                       minHeight: 32,
                       textTransform: 'none',
-                      fontWeight: 600,
-                      fontSize: 13,
+                      fontWeight: 400,
+                      fontSize: 12,
                       letterSpacing: 0,
                       color: (theme) => theme.palette.primary.main,
                       '&:hover': {

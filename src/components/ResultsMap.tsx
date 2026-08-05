@@ -176,10 +176,14 @@ export function ResultsMap({
           fontSize: 16,
           color: 'rgba(0,0,0,0.75)',
         },
-        '& .leaflet-popup-content a.MuiButton-root': {
-          color: 'primary.main',
+        // Beat Leaflet's default `.leaflet-container a { color: #0078A8 }` teal.
+        '& .leaflet-container a.MuiButton-root': {
+          color: (theme) => theme.palette.primary.main,
           '&:hover': {
-            color: 'primary.dark',
+            color: (theme) => theme.palette.primary.dark,
+          },
+          '& .MuiButton-startIcon, & .MuiSvgIcon-root': {
+            color: 'inherit',
           },
         },
       }}
@@ -232,6 +236,7 @@ export function ResultsMap({
                     rel="noopener noreferrer"
                     size="small"
                     variant="text"
+                    color="primary"
                     startIcon={<OpenInNewIcon sx={{ fontSize: 16 }} />}
                     aria-label={`Open ${result.name} in Google Maps`}
                     onClick={(event) => {
@@ -246,10 +251,13 @@ export function ResultsMap({
                       fontWeight: 600,
                       fontSize: 13,
                       letterSpacing: 0,
-                      color: 'primary.main',
+                      color: (theme) => theme.palette.primary.main,
                       '&:hover': {
-                        color: 'primary.dark',
+                        color: (theme) => theme.palette.primary.dark,
                         bgcolor: 'transparent',
+                      },
+                      '& .MuiButton-startIcon, & .MuiSvgIcon-root': {
+                        color: 'inherit',
                       },
                     }}
                   >

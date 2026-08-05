@@ -25,6 +25,7 @@ import {
   REMOVABLE_FILTER_TAG_GAP,
   stopSelectChipEvent,
 } from './RemovableFilterTag'
+import { RiseTransition, RISE_DURATION_MS } from './RiseTransition'
 import {
   AVAILABILITY_DAY_OPTIONS,
   DISTANCE_OPTIONS,
@@ -774,7 +775,8 @@ const availabilityAutocompleteSx = {
     opacity: 1,
   },
   '& .MuiAutocomplete-groupLabel': {
-    fontWeight: 700,
+    fontSize: '0.875rem',
+    fontWeight: 600,
     color: 'text.primary',
   },
   '& .MuiAutocomplete-endAdornment': {
@@ -851,13 +853,16 @@ function AvailabilityFilterSelect({
           listbox: {
             sx: {
               py: 0.5,
-              maxHeight: 420,
+              maxHeight: 480,
               overflowY: 'auto',
-              // Bold Days/Times section headers.
               '& .MuiAutocomplete-groupLabel, & .MuiListSubheader-root': {
-                fontWeight: 700,
+                fontSize: '0.875rem',
+                fontWeight: 600,
                 color: 'text.primary',
               },
+              // Subtle separation between Days and Times blocks.
+              '& .MuiAutocomplete-groupUl': { mb: 1 },
+              '& > li + li': { mt: 0.5 },
             },
             'aria-labelledby': labelId,
           },
@@ -876,24 +881,30 @@ function AvailabilityFilterSelect({
           },
         }}
         renderGroup={(params) => (
-          <li key={params.key}>
+          <li key={params.key} className="MuiAutocomplete-group">
             <ListSubheader
               component="div"
               className="MuiAutocomplete-groupLabel"
               sx={{
                 position: 'sticky',
                 top: 0,
-                lineHeight: '36px',
-                fontSize: 12,
-                fontWeight: 700,
+                lineHeight: 1.4,
+                py: 1,
+                fontSize: '0.875rem',
+                fontWeight: 600,
                 color: 'text.primary',
-                letterSpacing: '0.02em',
+                letterSpacing: 0,
                 bgcolor: 'background.paper',
               }}
             >
               {params.group}
             </ListSubheader>
-            <ul style={{ padding: 0, margin: 0 }}>{params.children}</ul>
+            <ul
+              className="MuiAutocomplete-groupUl"
+              style={{ padding: 0, margin: 0 }}
+            >
+              {params.children}
+            </ul>
           </li>
         )}
         renderOption={(props, option, { selected }) => {
@@ -1014,7 +1025,12 @@ export function FilterDrawer({
       onClose={onClose}
       fullWidth
       maxWidth={false}
-      transitionDuration={{ enter: 220, exit: 160 }}
+      keepMounted
+      slots={{ transition: RiseTransition }}
+      transitionDuration={{
+        enter: RISE_DURATION_MS,
+        exit: RISE_DURATION_MS,
+      }}
       onKeyDown={handleDialogKeyDown}
       aria-labelledby="filters-dialog-title"
       sx={{

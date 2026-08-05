@@ -1151,6 +1151,17 @@ export function filtersEqual(a: ProviderFilters, b: ProviderFilters): boolean {
   )
 }
 
+const AVAILABILITY_CHIP_LABELS: Record<string, string> = {
+  Monday: 'Mon',
+  Tuesday: 'Tue',
+  Wednesday: 'Wed',
+  Thursday: 'Thu',
+  Friday: 'Fri',
+  'Morning - 5AM to 12PM': 'Morning',
+  'Afternoon - 12PM to 5PM': 'Afternoon',
+  'Evening - 5PM to 9PM': 'Evening',
+}
+
 export type FilterChip = { id: string; label: string }
 
 export function buildFilterChips(filters: ProviderFilters): FilterChip[] {
@@ -1165,7 +1176,10 @@ export function buildFilterChips(filters: ProviderFilters): FilterChip[] {
     chips.push({ id: `lang:${language}`, label: language })
   }
   for (const availability of filters.availability) {
-    chips.push({ id: `avail:${availability}`, label: availability })
+    chips.push({
+      id: `avail:${availability}`,
+      label: AVAILABILITY_CHIP_LABELS[availability] ?? availability,
+    })
   }
   if (filters.distance !== 'Best Nearby') {
     chips.push({ id: 'distance', label: filters.distance })

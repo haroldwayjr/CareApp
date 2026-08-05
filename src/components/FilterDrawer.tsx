@@ -1,4 +1,5 @@
 import { useMemo, useState, type KeyboardEvent, type MouseEvent } from 'react'
+import Autocomplete from '@mui/material/Autocomplete'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
@@ -15,7 +16,6 @@ import Radio from '@mui/material/Radio'
 import Select, { type SelectChangeEvent } from '@mui/material/Select'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
-import ToggleButton from '@mui/material/ToggleButton'
 import Typography from '@mui/material/Typography'
 import { alpha, type Theme } from '@mui/material/styles'
 import { AppIcon } from '../icons/AppIcon'
@@ -27,7 +27,6 @@ import {
 } from './RemovableFilterTag'
 import {
   AVAILABILITY_DAY_OPTIONS,
-  AVAILABILITY_HOUR_OPTIONS,
   DISTANCE_OPTIONS,
   GENDER_OPTIONS,
   LANGUAGE_OPTIONS,
@@ -44,6 +43,7 @@ export type OpenFilterMenu =
   | 'tier'
   | 'distance'
   | 'language'
+  | 'availability'
   | null
 
 type FilterDrawerProps = {
@@ -666,242 +666,239 @@ const DAY_SHORT_LABEL: Record<string, string> = {
   Friday: 'Fri',
 }
 
-const HOUR_TOGGLE_META: {
+type AvailabilityOption = {
   value: string
-  title: string
-  range: string
-}[] = [
+  label: string
+  group: 'Days' | 'Times'
+  /** Shown in the list for Times (e.g. "5AM–12PM"). */
+  secondary?: string
+}
+
+const AVAILABILITY_AUTOCOMPLETE_OPTIONS: AvailabilityOption[] = [
+  ...AVAILABILITY_DAY_OPTIONS.map((day) => ({
+    value: day,
+    label: DAY_SHORT_LABEL[day] ?? day,
+    group: 'Days' as const,
+  })),
   {
     value: 'Morning - 5AM to 12PM',
-    title: 'Morning',
-    range: '5AM–12PM',
+    label: 'Morning',
+    group: 'Times',
+    secondary: '5AM–12PM',
   },
   {
     value: 'Afternoon - 12PM to 5PM',
-    title: 'Afternoon',
-    range: '12PM–5PM',
+    label: 'Afternoon',
+    group: 'Times',
+    secondary: '12PM–5PM',
   },
   {
     value: 'Evening - 5PM to 9PM',
-    title: 'Evening',
-    range: '5PM–9PM',
+    label: 'Evening',
+    group: 'Times',
+    secondary: '5PM–9PM',
   },
 ]
 
-/** Soft-selected standalone toggles — full 4-sided border, no ToggleButtonGroup clipping. */
-const availabilityToggleSx = {
-  flex: 1,
-  minWidth: 0,
-  minHeight: 44,
-  py: 1.25,
-  px: 0.5,
-  textTransform: 'none' as const,
-  fontSize: 14,
-  fontWeight: 500,
-  letterSpacing: 0,
-  lineHeight: 1.2,
-  borderRadius: 1.5,
-  border: '1px solid',
-  borderColor: outlinedFieldBorder,
-  color: 'text.primary',
-  bgcolor: 'background.paper',
-  boxSizing: 'border-box' as const,
-  '&.Mui-selected': {
-    color: 'text.primary',
-    borderColor: 'primary.main',
-    border: '1px solid',
-    fontWeight: 500,
-    // Inset ring + 1px border ≈ 2px outline without layout shift.
-    boxShadow: (theme: Theme) =>
-      `inset 0 0 0 1px ${theme.palette.primary.main}`,
-    bgcolor: (theme: Theme) => alpha(theme.palette.primary.main, 0.04),
-    '&:hover': {
-      bgcolor: (theme: Theme) => alpha(theme.palette.primary.main, 0.07),
+const availabilityOptionByValue = new Map(
+  AVAILABILITY_AUTOCOMPLETE_OPTIONS.map((option) => [option.value, option]),
+)
+
+/** Autocomplete field chrome matching Select / other filter dropdowns. */
+const availabilityAutocompleteSx = {
+  '& .MuiOutlinedInput-root': {
+    fontSize: 14,
+    fontWeight: 400,
+    letterSpacing: 0,
+    bgcolor: 'background.paper',
+    borderRadius: 1,
+    minHeight: SEARCH_CONTROL_HEIGHT,
+    py: 0.75,
+    px: 0.5,
+    pr: 4.5,
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: REMOVABLE_FILTER_TAG_GAP,
+    maxHeight: CHIP_FIELD_MAX_HEIGHT + 16,
+    overflowY: 'auto',
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: outlinedFieldBorder,
+    },
+    '&:hover .MuiOutlinedInput-notchedOutline': {
+      borderColor: (theme: Theme) => alpha(theme.palette.common.black, 0.87),
+    },
+    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderWidth: 2,
       borderColor: 'primary.main',
     },
   },
-  '&:hover': {
-    bgcolor: 'action.hover',
+  '& .MuiAutocomplete-input': {
+    minWidth: '4ch !important',
+    p: '0 !important',
+    fontSize: 14,
   },
-  '&:focus-visible': {
-    outline: (theme: Theme) => `2px solid ${theme.palette.primary.main}`,
-    outlineOffset: 2,
+  '& .MuiAutocomplete-endAdornment': {
+    right: 8,
   },
-}
-
-const availabilitySubLabelSx = {
-  m: 0,
-  mb: 0.5,
-  fontSize: 12,
-  fontWeight: 500,
-  color: 'text.secondary',
-  letterSpacing: '0.02em',
+  '& .MuiAutocomplete-popupIndicator': {
+    color: 'icon.secondary',
+    p: 0.5,
+    '& .MuiSvgIcon-root': {
+      fontSize: 28,
+    },
+  },
 }
 
 /**
- * Compact availability: Mon–Fri day toggles + time toggles (standalone ToggleButtons).
- * Clear is always reserved in the header (visibility toggled) to avoid layout shift.
+ * Availability as a single multi-select Autocomplete with Days/Times groups,
+ * checkboxes, and removable tags — matches Language/Gender/Tier field chrome.
  */
 function AvailabilityFilterSelect({
   values,
+  open,
+  onOpen,
+  onClose,
   onChange,
 }: {
   values: string[]
+  open: boolean
+  onOpen: () => void
+  onClose: () => void
   onChange: (next: string[]) => void
 }) {
   const labelId = 'availability-label'
-  const hasSelection = values.length > 0
-  const selectedDays = values.filter((value) =>
-    (AVAILABILITY_DAY_OPTIONS as readonly string[]).includes(value),
-  )
-  const selectedHours = values.filter((value) =>
-    (AVAILABILITY_HOUR_OPTIONS as readonly string[]).includes(value),
-  )
-
-  function toggleValue(option: string) {
-    onChange(
-      values.includes(option)
-        ? values.filter((item) => item !== option)
-        : [...values, option],
-    )
-  }
+  const selectedOptions = values
+    .map((value) => availabilityOptionByValue.get(value))
+    .filter((option): option is AvailabilityOption => option != null)
 
   return (
     <Box>
-      <Stack
-        direction="row"
-        spacing={1}
-        sx={{
-          mb: 0.5,
-          alignItems: 'center',
-          justifyContent: 'space-between',
+      <FieldHeader
+        label="Availability"
+        labelId={labelId}
+        canClear={values.length > 0}
+        clearLabel="Clear Availability"
+        onClear={() => onChange([])}
+      />
+      <Autocomplete
+        multiple
+        disableCloseOnSelect
+        disableClearable
+        forcePopupIcon
+        open={open}
+        onOpen={onOpen}
+        onClose={onClose}
+        options={AVAILABILITY_AUTOCOMPLETE_OPTIONS}
+        groupBy={(option) => option.group}
+        value={selectedOptions}
+        onChange={(_event, next) =>
+          onChange(next.map((option) => option.value))
+        }
+        getOptionLabel={(option) =>
+          option.secondary
+            ? `${option.label} · ${option.secondary}`
+            : option.label
+        }
+        isOptionEqualToValue={(a, b) => a.value === b.value}
+        noOptionsText="No options"
+        slotProps={{
+          paper: { sx: menuPaperSx },
+          listbox: {
+            sx: { py: 0.5, maxHeight: 280 },
+            'aria-labelledby': labelId,
+          },
         }}
-      >
-        <Typography
-          id={labelId}
-          component="label"
-          sx={{
-            m: 0,
-            fontSize: 14,
-            fontWeight: 600,
-            color: 'text.primary',
-            lineHeight: 1.4,
-            letterSpacing: 0,
-          }}
-        >
-          Availability
-        </Typography>
-        <Button
-          size="small"
-          onClick={() => onChange([])}
-          disabled={!hasSelection}
-          aria-label="Clear Availability"
-          tabIndex={hasSelection ? 0 : -1}
-          sx={{
-            minWidth: 48,
-            px: 0.75,
-            py: 0.25,
-            fontSize: 12,
-            fontWeight: 500,
-            letterSpacing: 0,
-            textTransform: 'none',
-            visibility: hasSelection ? 'visible' : 'hidden',
-            pointerEvents: hasSelection ? 'auto' : 'none',
-          }}
-        >
-          Clear
-        </Button>
-      </Stack>
-
-      <Stack spacing={1.5}>
-        <Box>
-          <Typography
-            component="p"
-            id="availability-days-heading"
-            sx={availabilitySubLabelSx}
-          >
-            Days
-          </Typography>
-
-          <Box
-            role="group"
-            aria-labelledby="availability-days-heading"
-            sx={{ display: 'flex', gap: 1 }}
-          >
-            {AVAILABILITY_DAY_OPTIONS.map((day) => {
-              const selected = selectedDays.includes(day)
-              return (
-                <ToggleButton
-                  key={day}
-                  value={day}
-                  selected={selected}
-                  onChange={() => toggleValue(day)}
-                  aria-label={day}
-                  aria-pressed={selected}
-                  disableRipple
-                  sx={availabilityToggleSx}
-                >
-                  {DAY_SHORT_LABEL[day] ?? day}
-                </ToggleButton>
-              )
-            })}
-          </Box>
-        </Box>
-
-        <Box>
-          <Typography
-            component="p"
-            id="availability-times-heading"
-            sx={availabilitySubLabelSx}
-          >
-            Times
-          </Typography>
-          <Box
-            role="group"
-            aria-labelledby="availability-times-heading"
-            sx={{ display: 'flex', gap: 1 }}
-          >
-            {HOUR_TOGGLE_META.map((hour) => {
-              const selected = selectedHours.includes(hour.value)
-              return (
-                <ToggleButton
-                  key={hour.value}
-                  value={hour.value}
-                  selected={selected}
-                  onChange={() => toggleValue(hour.value)}
-                  aria-label={`${hour.title} ${hour.range}`}
-                  aria-pressed={selected}
-                  title={`${hour.title} (${hour.range})`}
-                  disableRipple
-                  sx={{
-                    ...availabilityToggleSx,
-                    flexDirection: 'column',
-                    gap: 0.25,
-                  }}
-                >
-                  <Box
-                    component="span"
-                    sx={{ fontSize: 14, fontWeight: 500, lineHeight: 1.2 }}
-                  >
-                    {hour.title}
-                  </Box>
-                  <Box
-                    component="span"
-                    sx={{
-                      fontSize: 12,
+        renderGroup={(params) => (
+          <li key={params.key}>
+            <ListSubheader
+              component="div"
+              sx={{
+                position: 'sticky',
+                top: -8,
+                lineHeight: '36px',
+                fontSize: 12,
+                fontWeight: 500,
+                color: 'text.secondary',
+                letterSpacing: '0.02em',
+                bgcolor: 'background.paper',
+              }}
+            >
+              {params.group}
+            </ListSubheader>
+            <ul style={{ padding: 0, margin: 0 }}>{params.children}</ul>
+          </li>
+        )}
+        renderOption={(props, option, { selected }) => {
+          const { key, ...optionProps } = props
+          const primary = option.secondary
+            ? `${option.label} · ${option.secondary}`
+            : option.label
+          return (
+            <Box
+              component="li"
+              key={key}
+              {...optionProps}
+              sx={{
+                ...menuItemSx,
+                listStyle: 'none',
+              }}
+            >
+              <Checkbox
+                size="small"
+                checked={selected}
+                tabIndex={-1}
+                disableRipple
+                sx={{ p: 1, mr: 0.5 }}
+                slotProps={{
+                  input: { 'aria-hidden': true },
+                }}
+              />
+              <ListItemText
+                primary={primary}
+                slotProps={{
+                  primary: {
+                    sx: {
+                      fontSize: 14,
                       fontWeight: 400,
-                      opacity: 0.75,
-                      lineHeight: 1.2,
-                    }}
-                  >
-                    {hour.range}
-                  </Box>
-                </ToggleButton>
-              )
-            })}
-          </Box>
-        </Box>
-      </Stack>
+                      letterSpacing: 0,
+                    },
+                  },
+                }}
+              />
+            </Box>
+          )
+        }}
+        renderValue={(tagValue, getItemProps) =>
+          tagValue.map((option, index) => {
+            const { key, onDelete } = getItemProps({ index })
+            return (
+              <RemovableFilterTag
+                key={key}
+                label={option.label}
+                onDelete={() => onDelete({} as MouseEvent)}
+                onMouseDown={stopSelectChipEvent}
+                onClick={(event) => event.stopPropagation()}
+              />
+            )
+          })
+        }
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            placeholder={values.length === 0 ? 'Any' : undefined}
+            size="small"
+            slotProps={{
+              ...params.slotProps,
+              htmlInput: {
+                ...params.slotProps.htmlInput,
+                readOnly: true,
+                'aria-labelledby': labelId,
+              },
+            }}
+          />
+        )}
+        sx={availabilityAutocompleteSx}
+      />
     </Box>
   )
 }
@@ -1053,6 +1050,9 @@ export function FilterDrawer({
 
         <AvailabilityFilterSelect
           values={draft.availability}
+          open={openMenu === 'availability'}
+          onOpen={() => onOpenMenuChange('availability')}
+          onClose={() => onOpenMenuChange(null)}
           onChange={(availability) =>
             onDraftChange({ ...draft, availability })
           }

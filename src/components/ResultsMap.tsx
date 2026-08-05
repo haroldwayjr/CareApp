@@ -176,6 +176,12 @@ export function ResultsMap({
           fontSize: 16,
           color: 'rgba(0,0,0,0.75)',
         },
+        '& .leaflet-popup-content a.MuiButton-root': {
+          color: 'primary.main',
+          '&:hover': {
+            color: 'primary.dark',
+          },
+        },
       }}
     >
       <MapContainer
@@ -240,6 +246,11 @@ export function ResultsMap({
                       fontWeight: 600,
                       fontSize: 13,
                       letterSpacing: 0,
+                      color: 'primary.main',
+                      '&:hover': {
+                        color: 'primary.dark',
+                        bgcolor: 'transparent',
+                      },
                     }}
                   >
                     Open in Google Maps

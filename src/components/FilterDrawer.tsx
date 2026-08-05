@@ -1,5 +1,4 @@
 import { useMemo, useState, type KeyboardEvent, type MouseEvent } from 'react'
-import Autocomplete from '@mui/material/Autocomplete'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
@@ -16,6 +15,7 @@ import Radio from '@mui/material/Radio'
 import Select, { type SelectChangeEvent } from '@mui/material/Select'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
+import ToggleButton from '@mui/material/ToggleButton'
 import Typography from '@mui/material/Typography'
 import { alpha, type Theme } from '@mui/material/styles'
 import { AppIcon } from '../icons/AppIcon'
@@ -28,11 +28,14 @@ import {
 import { RiseTransition, RISE_DURATION_MS } from './RiseTransition'
 import {
   AVAILABILITY_DAY_OPTIONS,
+  AVAILABILITY_HOUR_OPTIONS,
   DISTANCE_OPTIONS,
   GENDER_OPTIONS,
   LANGUAGE_OPTIONS,
   TIER_OPTIONS,
   countActiveFilters,
+  isAvailabilityDateValue,
+  isAvailabilityHourValue,
   type ProviderFilters,
 } from '../data/mockCareResults'
 
@@ -44,7 +47,6 @@ export type OpenFilterMenu =
   | 'tier'
   | 'distance'
   | 'language'
-  | 'availability'
   | null
 
 type FilterDrawerProps = {
@@ -690,133 +692,146 @@ const DAY_SHORT_LABEL: Record<string, string> = {
   Friday: 'Fri',
 }
 
-type AvailabilityOption = {
-  value: string
-  label: string
-  group: 'Days' | 'Times'
-  /** Shown in the list for Times (e.g. "5AM–12PM"). */
-  secondary?: string
-}
-
-const AVAILABILITY_AUTOCOMPLETE_OPTIONS: AvailabilityOption[] = [
-  ...AVAILABILITY_DAY_OPTIONS.map((day) => ({
-    value: day,
-    label: DAY_SHORT_LABEL[day] ?? day,
-    group: 'Days' as const,
-  })),
+const HOUR_TOGGLE_META: {
+  value: (typeof AVAILABILITY_HOUR_OPTIONS)[number]
+  title: string
+  range: string
+}[] = [
   {
     value: 'Morning - 5AM to 12PM',
-    label: 'Morning',
-    group: 'Times',
-    secondary: '5AM–12PM',
+    title: 'Morning',
+    range: '5AM–12PM',
   },
   {
     value: 'Afternoon - 12PM to 5PM',
-    label: 'Afternoon',
-    group: 'Times',
-    secondary: '12PM–5PM',
+    title: 'Afternoon',
+    range: '12PM–5PM',
   },
   {
     value: 'Evening - 5PM to 9PM',
-    label: 'Evening',
-    group: 'Times',
-    secondary: '5PM–9PM',
+    title: 'Evening',
+    range: '5PM–9PM',
   },
 ]
 
-const availabilityOptionByValue = new Map(
-  AVAILABILITY_AUTOCOMPLETE_OPTIONS.map((option) => [option.value, option]),
-)
-
-/** Autocomplete field chrome matching Select / other filter dropdowns. */
-const availabilityAutocompleteSx = {
-  '& .MuiOutlinedInput-root': {
-    fontSize: 14,
-    fontWeight: 400,
-    letterSpacing: 0,
-    bgcolor: 'background.paper',
-    borderRadius: 1,
-    height: FILTER_FIELD_HEIGHT,
-    minHeight: FILTER_FIELD_HEIGHT,
-    maxHeight: FILTER_FIELD_HEIGHT,
-    boxSizing: 'border-box',
-    py: 0,
-    // Match Select `.MuiSelect-select` horizontal inset (px: 1.5).
-    pl: 1.5,
-    pr: 4.5,
-    alignItems: 'center',
-    flexWrap: 'nowrap',
-    gap: REMOVABLE_FILTER_TAG_GAP,
-    overflowX: 'auto',
-    overflowY: 'hidden',
-    '& .MuiOutlinedInput-notchedOutline': {
-      borderColor: outlinedFieldBorder,
-    },
-    '&:hover .MuiOutlinedInput-notchedOutline': {
-      borderColor: (theme: Theme) => alpha(theme.palette.common.black, 0.87),
-    },
-    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderWidth: 2,
+/** Soft-selected standalone day toggles — full borders, no ToggleButtonGroup clipping. */
+const availabilityDayToggleSx = {
+  flex: 1,
+  minWidth: 0,
+  minHeight: 44,
+  py: 1.25,
+  px: 0.5,
+  textTransform: 'none' as const,
+  fontSize: 14,
+  fontWeight: 500,
+  letterSpacing: 0,
+  lineHeight: 1.2,
+  borderRadius: 1.5,
+  border: '1px solid',
+  borderColor: outlinedFieldBorder,
+  color: 'text.primary',
+  bgcolor: 'background.paper',
+  boxSizing: 'border-box' as const,
+  '&.Mui-selected': {
+    color: 'text.primary',
+    borderColor: 'primary.main',
+    border: '1px solid',
+    fontWeight: 500,
+    boxShadow: (theme: Theme) =>
+      `inset 0 0 0 1px ${theme.palette.primary.main}`,
+    bgcolor: (theme: Theme) => alpha(theme.palette.primary.main, 0.04),
+    '&:hover': {
+      bgcolor: (theme: Theme) => alpha(theme.palette.primary.main, 0.07),
       borderColor: 'primary.main',
     },
   },
-  '& .MuiAutocomplete-input': {
-    minWidth: '4ch !important',
-    py: '0 !important',
-    // Extra inset so "Any" aligns with Select placeholders (~8px more).
-    pl: 1,
-    pr: 0,
-    fontSize: 14,
-    color: 'text.primary',
-    alignSelf: 'center',
+  '&:hover': {
+    bgcolor: 'action.hover',
   },
-  '& .MuiInputBase-input::placeholder': {
-    color: 'text.secondary',
-    opacity: 1,
-  },
-  '& .MuiAutocomplete-groupLabel': {
-    fontSize: '0.875rem',
-    fontWeight: 600,
-    color: 'text.primary',
-  },
-  '& .MuiAutocomplete-endAdornment': {
-    right: 8,
-  },
-  '& .MuiAutocomplete-popupIndicator': {
-    color: 'icon.secondary',
-    p: 0.5,
-    '& .MuiSvgIcon-root': {
-      fontSize: 28,
-    },
-  },
-  // Keep tags in a single reserved row so the field never grows.
-  '& .MuiChip-root': {
-    height: FILTER_CHIP_ROW_HEIGHT,
-    maxHeight: FILTER_CHIP_ROW_HEIGHT,
+  '&:focus-visible': {
+    outline: (theme: Theme) => `2px solid ${theme.palette.primary.main}`,
+    outlineOffset: 2,
   },
 }
 
+/** Soft-selected standalone time toggles — full borders, no ToggleButtonGroup clipping. */
+const availabilityTimeToggleSx = {
+  flex: 1,
+  minWidth: 0,
+  minHeight: 44,
+  py: 1.25,
+  px: 0.5,
+  textTransform: 'none' as const,
+  fontSize: 14,
+  fontWeight: 500,
+  letterSpacing: 0,
+  lineHeight: 1.2,
+  borderRadius: 1.5,
+  border: '1px solid',
+  borderColor: outlinedFieldBorder,
+  color: 'text.primary',
+  bgcolor: 'background.paper',
+  boxSizing: 'border-box' as const,
+  flexDirection: 'column' as const,
+  gap: 0.25,
+  '&.Mui-selected': {
+    color: 'text.primary',
+    borderColor: 'primary.main',
+    border: '1px solid',
+    fontWeight: 500,
+    boxShadow: (theme: Theme) =>
+      `inset 0 0 0 1px ${theme.palette.primary.main}`,
+    bgcolor: (theme: Theme) => alpha(theme.palette.primary.main, 0.05),
+    '&:hover': {
+      bgcolor: (theme: Theme) => alpha(theme.palette.primary.main, 0.08),
+      borderColor: 'primary.main',
+    },
+  },
+  '&:hover': {
+    bgcolor: 'action.hover',
+  },
+  '&:focus-visible': {
+    outline: (theme: Theme) => `2px solid ${theme.palette.primary.main}`,
+    outlineOffset: 2,
+  },
+}
+
+const availabilitySubLabelSx = {
+  m: 0,
+  mt: 2,
+  mb: 0.75,
+  fontSize: 12,
+  fontWeight: 500,
+  color: 'text.primary',
+  letterSpacing: '0.02em',
+}
+
 /**
- * Availability as a single multi-select Autocomplete with Days/Times groups,
- * checkboxes, and removable tags — matches Language/Gender/Tier field chrome.
+ * Availability: Mon–Fri day toggles + multi-select time-of-day toggles.
+ * Values are weekday names and/or hour option strings.
  */
 function AvailabilityFilterSelect({
   values,
-  open,
-  onOpen,
-  onClose,
   onChange,
 }: {
   values: string[]
-  open: boolean
-  onOpen: () => void
-  onClose: () => void
   onChange: (next: string[]) => void
 }) {
   const labelId = 'availability-label'
-  const selectedOptions = values
-    .map((value) => availabilityOptionByValue.get(value))
-    .filter((option): option is AvailabilityOption => option != null)
+  const selectedDays = values.filter((value) =>
+    (AVAILABILITY_DAY_OPTIONS as readonly string[]).includes(value),
+  )
+  const selectedHours = values.filter(isAvailabilityHourValue)
+
+  function toggleValue(option: string) {
+    // Drop any leftover ISO calendar dates from the previous picker.
+    const cleaned = values.filter((value) => !isAvailabilityDateValue(value))
+    onChange(
+      cleaned.includes(option)
+        ? cleaned.filter((item) => item !== option)
+        : [...cleaned, option],
+    )
+  }
 
   return (
     <Box>
@@ -827,163 +842,84 @@ function AvailabilityFilterSelect({
         clearLabel="Clear Availability"
         onClear={() => onChange([])}
       />
-      <Autocomplete
-        multiple
-        disableCloseOnSelect
-        disableClearable
-        forcePopupIcon
-        open={open}
-        onOpen={onOpen}
-        onClose={onClose}
-        options={AVAILABILITY_AUTOCOMPLETE_OPTIONS}
-        groupBy={(option) => option.group}
-        value={selectedOptions}
-        onChange={(_event, next) =>
-          onChange(next.map((option) => option.value))
-        }
-        getOptionLabel={(option) =>
-          option.secondary
-            ? `${option.label} · ${option.secondary}`
-            : option.label
-        }
-        isOptionEqualToValue={(a, b) => a.value === b.value}
-        noOptionsText="No options"
-        slotProps={{
-          paper: { sx: menuPaperSx },
-          listbox: {
-            sx: {
-              py: 0.5,
-              maxHeight: 480,
-              overflowY: 'auto',
-              '& .MuiAutocomplete-groupLabel, & .MuiListSubheader-root': {
-                fontSize: '0.875rem',
-                fontWeight: 600,
-                color: 'text.primary',
-              },
-              // Subtle separation between Days and Times blocks.
-              '& .MuiAutocomplete-groupUl': { mb: 1 },
-              '& > li + li': { mt: 0.5 },
-            },
-            'aria-labelledby': labelId,
-          },
-          // Portal (default) so the menu can overflow the modal; flip/resize in viewport.
-          popper: {
-            disablePortal: false,
-            placement: 'bottom-start',
-            modifiers: [
-              { name: 'flip', enabled: true },
-              {
-                name: 'preventOverflow',
-                enabled: true,
-                options: { altAxis: true, padding: 8 },
-              },
-            ],
-          },
-        }}
-        renderGroup={(params) => (
-          <li key={params.key} className="MuiAutocomplete-group">
-            <ListSubheader
-              component="div"
-              className="MuiAutocomplete-groupLabel"
-              sx={{
-                position: 'sticky',
-                top: 0,
-                lineHeight: 1.4,
-                py: 1,
-                fontSize: '0.875rem',
-                fontWeight: 600,
-                color: 'text.primary',
-                letterSpacing: 0,
-                bgcolor: 'background.paper',
-              }}
-            >
-              {params.group}
-            </ListSubheader>
-            <ul
-              className="MuiAutocomplete-groupUl"
-              style={{ padding: 0, margin: 0 }}
-            >
-              {params.children}
-            </ul>
-          </li>
-        )}
-        renderOption={(props, option, { selected }) => {
-          const { key, ...optionProps } = props
-          const primary = option.secondary
-            ? `${option.label} · ${option.secondary}`
-            : option.label
+
+      <Typography
+        component="p"
+        id="availability-days-heading"
+        sx={{ ...availabilitySubLabelSx, mt: 0 }}
+      >
+        Days
+      </Typography>
+      <Box
+        role="group"
+        aria-labelledby="availability-days-heading"
+        sx={{ display: 'flex', gap: 1 }}
+      >
+        {AVAILABILITY_DAY_OPTIONS.map((day) => {
+          const selected = selectedDays.includes(day)
           return (
-            <Box
-              component="li"
-              key={key}
-              {...optionProps}
-              sx={{
-                ...menuItemSx,
-                listStyle: 'none',
-              }}
+            <ToggleButton
+              key={day}
+              value={day}
+              selected={selected}
+              onChange={() => toggleValue(day)}
+              aria-label={day}
+              aria-pressed={selected}
+              disableRipple
+              sx={availabilityDayToggleSx}
             >
-              <Checkbox
-                size="small"
-                checked={selected}
-                tabIndex={-1}
-                disableRipple
-                sx={{ p: 1, mr: 0.5 }}
-                slotProps={{
-                  input: { 'aria-hidden': true },
-                }}
-              />
-              <ListItemText
-                primary={primary}
-                slotProps={{
-                  primary: {
-                    sx: {
-                      fontSize: 14,
-                      fontWeight: 400,
-                      letterSpacing: 0,
-                    },
-                  },
-                }}
-              />
-            </Box>
+              {DAY_SHORT_LABEL[day] ?? day}
+            </ToggleButton>
           )
-        }}
-        renderValue={(tagValue, getItemProps) =>
-          tagValue.map((option, index) => {
-            const { key, onDelete } = getItemProps({ index })
-            return (
-              <RemovableFilterTag
-                key={key}
-                label={option.label}
-                onDelete={() => onDelete({} as MouseEvent)}
-                onMouseDown={stopSelectChipEvent}
-                onClick={(event) => event.stopPropagation()}
-              />
-            )
-          })
-        }
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            placeholder={values.length === 0 ? 'Any' : undefined}
-            size="small"
-            slotProps={{
-              ...params.slotProps,
-              htmlInput: {
-                ...params.slotProps.htmlInput,
-                readOnly: true,
-                'aria-labelledby': labelId,
-              },
-            }}
-            sx={{
-              '& .MuiInputBase-input::placeholder': {
-                color: 'text.secondary',
-                opacity: 1,
-              },
-            }}
-          />
-        )}
-        sx={availabilityAutocompleteSx}
-      />
+        })}
+      </Box>
+
+      <Typography
+        component="p"
+        sx={availabilitySubLabelSx}
+      >
+        Times
+      </Typography>
+      <Box
+        role="group"
+        aria-label="Time of day"
+        sx={{ display: 'flex', gap: 1 }}
+      >
+        {HOUR_TOGGLE_META.map((hour) => {
+          const selected = selectedHours.includes(hour.value)
+          return (
+            <ToggleButton
+              key={hour.value}
+              value={hour.value}
+              selected={selected}
+              onChange={() => toggleValue(hour.value)}
+              aria-label={`${hour.title} ${hour.range}`}
+              aria-pressed={selected}
+              title={`${hour.title} (${hour.range})`}
+              disableRipple
+              sx={availabilityTimeToggleSx}
+            >
+              <Box
+                component="span"
+                sx={{ fontSize: 14, fontWeight: 500, lineHeight: 1.2 }}
+              >
+                {hour.title}
+              </Box>
+              <Box
+                component="span"
+                sx={{
+                  fontSize: 12,
+                  fontWeight: 400,
+                  opacity: 0.75,
+                  lineHeight: 1.2,
+                }}
+              >
+                {hour.range}
+              </Box>
+            </ToggleButton>
+          )
+        })}
+      </Box>
     </Box>
   )
 }
@@ -1140,9 +1076,6 @@ export function FilterDrawer({
 
         <AvailabilityFilterSelect
           values={draft.availability}
-          open={openMenu === 'availability'}
-          onOpen={() => onOpenMenuChange('availability')}
-          onClose={() => onOpenMenuChange(null)}
           onChange={(availability) =>
             onDraftChange({ ...draft, availability })
           }

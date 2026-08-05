@@ -16,6 +16,7 @@ import {
   type ProviderResult,
 } from '../data/mockCareResults'
 import { AppIcon } from '../icons/AppIcon'
+import { formatProviderCopyText } from '../utils/formatProviderCopyText'
 
 const DRAWER_WIDTH = 440
 
@@ -564,8 +565,9 @@ export function ProviderOverviewDrawer({
 
   async function handleCopy() {
     if (!provider) return
+    const copyText = formatProviderCopyText(provider)
     try {
-      await navigator.clipboard.writeText(displayName)
+      await navigator.clipboard.writeText(copyText)
     } catch {
       // Clipboard may be unavailable in some environments.
     }

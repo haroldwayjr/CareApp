@@ -261,11 +261,11 @@ export default function App() {
                       fontSize: 14,
                       fontWeight: 400,
                       letterSpacing: 0,
-                      color: 'text.primary',
+                      color: 'text.secondary',
                       whiteSpace: 'nowrap',
                     }}
                   >
-                    Sort By:
+                    {'Sort:'}
                   </Typography>
                   <Select
                     variant="standard"
@@ -277,13 +277,14 @@ export default function App() {
                       fontSize: 14,
                       fontWeight: 400,
                       letterSpacing: 0,
-                      color: 'text.secondary',
+                      color: 'text.primary',
                       '& .MuiSelect-select': {
                         py: 0.5,
                         pr: '24px !important',
                         pl: 0,
                         display: 'flex',
                         alignItems: 'center',
+                        color: 'text.primary',
                       },
                       '& .MuiSelect-icon': {
                         color: 'text.primary',
@@ -548,7 +549,7 @@ export default function App() {
         onClose={closeProviderOverview}
         onExited={() => setOverviewId(null)}
         onCopyName={(label) =>
-          setToast(`Copied name for ${label} to clipboard.`)
+          setToast(`Copied details for ${label} to clipboard.`)
         }
       />
 

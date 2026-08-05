@@ -33,6 +33,10 @@ export type ProviderResult = {
   badges: ProviderBadge[]
   language: string
   acceptingNewPatients: boolean
+  /** Weekdays the provider has open appointments (prototype). */
+  availableDays: string[]
+  /** Daypart windows the provider offers (prototype). */
+  availableHours: string[]
   copay: number
   initials: string
   /** Optional portrait; when omitted, a gray initials avatar is shown. */
@@ -49,15 +53,118 @@ export const DISTANCE_OPTIONS = [
   'Within 50 miles',
   'Within 100 miles',
 ] as const
+
+/** Common languages A–Z for the language filter (searchable long list). */
 export const LANGUAGE_OPTIONS = [
+  'Afrikaans',
+  'Albanian',
+  'Amharic',
+  'Arabic',
+  'Armenian',
+  'Assamese',
+  'Azerbaijani',
+  'Basque',
+  'Belarusian',
+  'Bengali',
+  'Bosnian',
+  'Bulgarian',
+  'Burmese',
+  'Catalan',
+  'Cebuano',
+  'Chinese (Cantonese)',
+  'Chinese (Mandarin)',
+  'Croatian',
+  'Czech',
+  'Danish',
+  'Dutch',
   'English',
+  'Estonian',
+  'Filipino',
+  'Finnish',
+  'French',
+  'Georgian',
+  'German',
+  'Greek',
+  'Gujarati',
+  'Haitian Creole',
+  'Hausa',
+  'Hebrew',
+  'Hindi',
+  'Hmong',
+  'Hungarian',
+  'Icelandic',
+  'Igbo',
+  'Indonesian',
+  'Italian',
+  'Japanese',
+  'Javanese',
+  'Kannada',
+  'Kazakh',
+  'Khmer',
+  'Korean',
+  'Kurdish',
+  'Kyrgyz',
+  'Lao',
+  'Latvian',
+  'Lithuanian',
+  'Macedonian',
+  'Malay',
+  'Malayalam',
+  'Maltese',
+  'Marathi',
+  'Mongolian',
+  'Nepali',
+  'Norwegian',
+  'Oromo',
+  'Pashto',
+  'Persian (Farsi)',
+  'Polish',
+  'Portuguese',
+  'Punjabi',
+  'Romanian',
+  'Russian',
+  'Serbian',
+  'Sindhi',
+  'Sinhala',
+  'Slovak',
+  'Slovenian',
+  'Somali',
   'Spanish',
-  'Mandarin',
+  'Swahili',
+  'Swedish',
+  'Tagalog',
+  'Tamil',
+  'Telugu',
+  'Thai',
+  'Turkish',
+  'Ukrainian',
+  'Urdu',
+  'Uzbek',
   'Vietnamese',
+  'Welsh',
+  'Xhosa',
+  'Yiddish',
+  'Yoruba',
+  'Zulu',
 ] as const
+
+export const AVAILABILITY_DAY_OPTIONS = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+] as const
+
+export const AVAILABILITY_HOUR_OPTIONS = [
+  'Morning - 5AM to 12PM',
+  'Afternoon - 12PM to 5PM',
+  'Evening - 5PM to 9PM',
+] as const
+
 export const AVAILABILITY_OPTIONS = [
-  'Accepting new patients',
-  'Not accepting new patients',
+  ...AVAILABILITY_DAY_OPTIONS,
+  ...AVAILABILITY_HOUR_OPTIONS,
 ] as const
 
 export type ProviderFilters = {
@@ -237,7 +344,10 @@ export function getSearchSuggestions(
     .slice(0, 8)
 }
 
-export const mockProviders: ProviderResult[] = [
+const mockProvidersBase: Omit<
+  ProviderResult,
+  'availableDays' | 'availableHours'
+>[] = [
   {
     id: '1',
     name: 'Dr. James Chen',
@@ -313,7 +423,7 @@ export const mockProviders: ProviderResult[] = [
     tier: 'Tier 1',
     networkStatus: 'in_network_tier_1',
     badges: ['blue_distinction_center'],
-    language: 'Mandarin',
+    language: 'Chinese (Mandarin)',
     acceptingNewPatients: true,
     copay: 35,
     initials: 'ML',
@@ -602,6 +712,29 @@ export const mockProviders: ProviderResult[] = [
     lng: -95.7522,
   },
 ]
+
+/** Attach prototype day/hour schedules used by the Availability filter. */
+export const mockProviders: ProviderResult[] = mockProvidersBase.map(
+  (provider, index) => {
+    const availableDays = AVAILABILITY_DAY_OPTIONS.filter(
+      (_, dayIndex) => (index + dayIndex) % 3 !== 0,
+    )
+    const availableHours = AVAILABILITY_HOUR_OPTIONS.filter(
+      (_, hourIndex) => (index + hourIndex) % 2 === 0,
+    )
+    return {
+      ...provider,
+      availableDays:
+        availableDays.length > 0
+          ? [...availableDays]
+          : ['Monday', 'Wednesday', 'Friday'],
+      availableHours:
+        availableHours.length > 0
+          ? [...availableHours]
+          : ['Morning - 5AM to 12PM'],
+    }
+  },
+)
 
 /** Center of the prototype search area (Sibley, IA). */
 export const MAP_DEFAULT_CENTER = { lat: 43.3991, lng: -95.7517 } as const
@@ -966,13 +1099,24 @@ export function filterProviders(
       return false
     }
     if (filters.availability.length > 0) {
-      const labels = filters.availability
-      const matchesAccepting =
-        labels.includes('Accepting new patients') && result.acceptingNewPatients
-      const matchesNot =
-        labels.includes('Not accepting new patients') &&
-        !result.acceptingNewPatients
-      if (!matchesAccepting && !matchesNot) return false
+      const selectedDays = filters.availability.filter((label) =>
+        (AVAILABILITY_DAY_OPTIONS as readonly string[]).includes(label),
+      )
+      const selectedHours = filters.availability.filter((label) =>
+        (AVAILABILITY_HOUR_OPTIONS as readonly string[]).includes(label),
+      )
+      if (
+        selectedDays.length > 0 &&
+        !selectedDays.some((day) => result.availableDays.includes(day))
+      ) {
+        return false
+      }
+      if (
+        selectedHours.length > 0 &&
+        !selectedHours.some((hour) => result.availableHours.includes(hour))
+      ) {
+        return false
+      }
     }
     if (maxDistance != null && result.distanceMiles > maxDistance) {
       return false

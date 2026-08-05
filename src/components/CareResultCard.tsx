@@ -16,6 +16,7 @@ import type {
   ProviderBadge,
   ProviderResult,
 } from '../data/mockCareResults'
+import { formatProviderCopyText } from '../utils/formatProviderCopyText'
 
 const CHIP_SUCCESS = {
   bgcolor: '#E8F5E9',
@@ -303,13 +304,7 @@ export function CareResultCard({
   onCopyName,
 }: CareResultCardProps) {
   const displayName = `${result.name}, ${result.credentials}`
-  const copyText = [
-    displayName,
-    result.specialty,
-    result.group,
-    `${result.address} · ${result.distanceMiles.toFixed(1)} mi`,
-    result.phone,
-  ].join('\n')
+  const copyText = formatProviderCopyText(result)
 
   const network = NETWORK_CHIP[result.networkStatus]
 

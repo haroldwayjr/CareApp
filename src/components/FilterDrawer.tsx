@@ -3,7 +3,6 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import Dialog from '@mui/material/Dialog'
-import Divider from '@mui/material/Divider'
 import FormControl from '@mui/material/FormControl'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
@@ -264,6 +263,8 @@ function MultiFilterSelect({
   onOpen,
   onClose,
   onChange,
+  /** When true, menu flips above the field if there isn’t room below (Tier Level). */
+  smartMenuPlacement = false,
 }: {
   label: string
   options: readonly string[]
@@ -272,6 +273,7 @@ function MultiFilterSelect({
   onOpen: () => void
   onClose: () => void
   onChange: (next: string[]) => void
+  smartMenuPlacement?: boolean
 }) {
   const labelId = `${label.toLowerCase().replace(/\s+/g, '-')}-label`
   const listboxId = `${labelId}-listbox`
@@ -308,15 +310,38 @@ function MultiFilterSelect({
           )}
           MenuProps={{
             disableScrollLock: true,
+            ...(smartMenuPlacement
+              ? {
+                  // Last field sits above the sticky footer — open upward so Apply stays visible.
+                  // Popover can still flip if there isn’t room above the field.
+                  anchorOrigin: {
+                    vertical: 'top' as const,
+                    horizontal: 'left' as const,
+                  },
+                  transformOrigin: {
+                    vertical: 'bottom' as const,
+                    horizontal: 'left' as const,
+                  },
+                  marginThreshold: 8,
+                  PaperProps: { sx: { maxHeight: 320 } },
+                }
+              : {}),
             slotProps: {
-              paper: { sx: menuPaperSx },
+              paper: {
+                sx: smartMenuPlacement
+                  ? { ...menuPaperSx, maxHeight: 320 }
+                  : menuPaperSx,
+              },
               list: {
                 id: listboxId,
                 dense: true,
                 role: 'listbox',
                 'aria-multiselectable': true,
                 'aria-labelledby': labelId,
-                sx: { py: 0.5, maxHeight: 280 },
+                sx: {
+                  py: 0.5,
+                  maxHeight: smartMenuPlacement ? 320 : 280,
+                },
               },
             },
           }}
@@ -1054,9 +1079,11 @@ export function FilterDrawer({
           px: { xs: 2, sm: 3 },
           pb: 2,
           pt: 2,
-          overflow: 'auto',
+          overflowY: 'auto',
           minHeight: 0,
           flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
         <SingleFilterSelect
@@ -1107,21 +1134,26 @@ export function FilterDrawer({
           onOpen={() => onOpenMenuChange('tier')}
           onClose={() => onOpenMenuChange(null)}
           onChange={(tiers) => onDraftChange({ ...draft, tiers })}
+          smartMenuPlacement
         />
       </Stack>
-
-      <Divider sx={{ borderColor: 'rgba(0, 0, 0, 0.08)', flexShrink: 0 }} />
 
       <Stack
         direction="row"
         spacing={2}
         sx={{
+          position: 'sticky',
+          bottom: 0,
+          zIndex: (theme) => theme.zIndex.tooltip,
           px: { xs: 2, sm: 3 },
           py: 2,
           alignItems: 'center',
           justifyContent: 'space-between',
           flexShrink: 0,
           bgcolor: 'background.paper',
+          borderTop: 1,
+          borderColor: 'divider',
+          boxShadow: 3,
         }}
       >
         <Button

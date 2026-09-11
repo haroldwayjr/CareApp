@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import emptyStateArt from '../assets/figma/search-empty.png'
+import { BackLink } from './BackLink'
 import {
   SearchFormBar,
   type SearchFormValues,
@@ -39,19 +39,7 @@ export function SearchLanding({
           pb: 0,
         }}
       >
-        <Button
-          color="primary"
-          size="small"
-          onClick={onBack}
-          startIcon={
-            <Typography component="span" sx={{ fontSize: 18, lineHeight: 1 }}>
-              ←
-            </Typography>
-          }
-          sx={{ px: 0.5, minWidth: 0, mb: 0 }}
-        >
-          Back to Profile
-        </Button>
+        <BackLink onClick={onBack}>Back to Profile</BackLink>
         <Typography
           variant="h5"
           component="h1"

@@ -7,15 +7,21 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import { AppIcon } from '../icons/AppIcon'
 import logomark from '../assets/figma/logomark.svg'
+import { ProfileMenu } from './ProfileMenu'
 
 const NAV_ITEMS = ['Dashboard', 'My Work', 'Schedule', 'Search'] as const
 
 type AppShellProps = {
   onBrandClick?: () => void
   onNavClick?: (item: (typeof NAV_ITEMS)[number]) => void
+  onPrototypeAction?: (message: string) => void
 }
 
-export function AppShell({ onBrandClick, onNavClick }: AppShellProps) {
+export function AppShell({
+  onBrandClick,
+  onNavClick,
+  onPrototypeAction,
+}: AppShellProps) {
   return (
     <AppBar
       position="sticky"
@@ -30,12 +36,12 @@ export function AppShell({ onBrandClick, onNavClick }: AppShellProps) {
     >
       <Toolbar
         sx={{
-          minHeight: 62,
-          height: 62,
+          minHeight: 56,
+          height: 56,
           px: { xs: 2, md: 3 },
           gap: { xs: 1, md: 2 },
           '&.MuiToolbar-root': {
-            minHeight: 62,
+            minHeight: 56,
           },
         }}
       >
@@ -99,12 +105,16 @@ export function AppShell({ onBrandClick, onNavClick }: AppShellProps) {
         <Box sx={{ flex: 1 }} />
 
         {/* Order matches reference: theme, settings, notifications, account */}
-        <Stack direction="row" spacing={0.5} sx={{ color: '#3A3B3F', flexShrink: 0 }}>
+        <Stack
+          direction="row"
+          spacing={0.5}
+          sx={{ alignItems: 'center', color: 'icon.tertiary', flexShrink: 0 }}
+        >
           <IconButton
             aria-label="Toggle light and dark mode"
             color="inherit"
             size="small"
-            sx={{ color: 'inherit', display: { xs: 'none', sm: 'inline-flex' } }}
+            sx={{ color: 'icon.tertiary' }}
           >
             <AppIcon name="theme" sx={{ fontSize: 24 }} />
           </IconButton>
@@ -112,7 +122,10 @@ export function AppShell({ onBrandClick, onNavClick }: AppShellProps) {
             aria-label="Settings"
             color="inherit"
             size="small"
-            sx={{ color: 'inherit', display: { xs: 'none', sm: 'inline-flex' } }}
+            sx={{
+              color: 'icon.tertiary',
+              display: { xs: 'none', sm: 'inline-flex' },
+            }}
           >
             <AppIcon name="settings" sx={{ fontSize: 24 }} />
           </IconButton>
@@ -120,18 +133,11 @@ export function AppShell({ onBrandClick, onNavClick }: AppShellProps) {
             aria-label="Notifications"
             color="inherit"
             size="small"
-            sx={{ color: 'inherit' }}
+            sx={{ color: 'icon.tertiary' }}
           >
             <AppIcon name="notifications" sx={{ fontSize: 24 }} />
           </IconButton>
-          <IconButton
-            aria-label="Account"
-            color="inherit"
-            size="small"
-            sx={{ color: 'inherit' }}
-          >
-            <AppIcon name="account" sx={{ fontSize: 24 }} />
-          </IconButton>
+          <ProfileMenu onAction={onPrototypeAction} />
         </Stack>
       </Toolbar>
     </AppBar>

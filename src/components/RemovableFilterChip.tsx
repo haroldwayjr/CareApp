@@ -6,20 +6,21 @@ import type {
 import Chip from '@mui/material/Chip'
 import type { SxProps, Theme } from '@mui/material/styles'
 
-/** Shared gap between removable filter tags (popup + results row). */
-export const REMOVABLE_FILTER_TAG_GAP = 0.75
+/** Shared gap between removable filter chips (popup + results row). */
+export const REMOVABLE_FILTER_CHIP_GAP = 0.75
 
-/** Neutral filled chip styles — single source for popup + results-row tags. */
-export const removableFilterTagSx: SxProps<Theme> = {
+/** Neutral filled chip styles — single source for popup + results-row chips. */
+export const removableFilterChipSx: SxProps<Theme> = {
   height: 28,
   maxWidth: '100%',
-  fontSize: 13,
+  fontSize: 14,
   fontWeight: 400,
   borderRadius: 100,
-  bgcolor: 'action.hover',
+  bgcolor: '#F3F4F6',
   color: 'text.primary',
   letterSpacing: 0,
-  border: 'none',
+  border: '1px solid',
+  borderColor: 'divider',
   pl: 0.5,
   '& .MuiChip-label': {
     px: 1,
@@ -31,17 +32,17 @@ export const removableFilterTagSx: SxProps<Theme> = {
   '& .MuiChip-deleteIcon': {
     width: 24,
     height: 24,
-    ml: 0.25,
-    mr: 0.5,
+    ml: 0.5,
+    mr: 0.25,
     p: '4px',
     boxSizing: 'border-box',
-    color: 'text.secondary',
+    color: 'icon.tertiary',
     '&:hover': { color: 'text.primary' },
   },
 }
 
-/** Simple thin X matching the filter tag close affordance. */
-function FilterTagDeleteIcon({
+/** Simple thin X matching the filter chip close affordance. */
+function FilterChipDeleteIcon({
   'aria-label': ariaLabel,
   ...props
 }: HTMLAttributes<SVGSVGElement>) {
@@ -66,7 +67,7 @@ function FilterTagDeleteIcon({
   )
 }
 
-type RemovableFilterTagProps = {
+type RemovableFilterChipProps = {
   label: string
   onDelete: () => void
   /** Optional tooltip; defaults to label. */
@@ -77,27 +78,27 @@ type RemovableFilterTagProps = {
 }
 
 /**
- * Canonical removable filter tag — used for in-field selection chips in the
+ * Canonical removable filter chip — used for in-field selection chips in the
  * filters popup and applied-filter chips on the results row.
  */
-export function RemovableFilterTag({
+export function RemovableFilterChip({
   label,
   onDelete,
   title,
   onMouseDown,
   onClick,
-}: RemovableFilterTagProps) {
+}: RemovableFilterChipProps) {
   return (
     <Chip
       size="small"
       variant="filled"
       label={label}
       title={title ?? label}
-      deleteIcon={<FilterTagDeleteIcon aria-label={`Remove ${label}`} />}
+      deleteIcon={<FilterChipDeleteIcon aria-label={`Remove ${label}`} />}
       onDelete={onDelete}
       onMouseDown={onMouseDown}
       onClick={onClick}
-      sx={removableFilterTagSx}
+      sx={removableFilterChipSx}
     />
   )
 }

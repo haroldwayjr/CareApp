@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Skeleton from '@mui/material/Skeleton'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import { BackLink } from './BackLink'
 
 /** Matches AppShell sticky toolbar height. */
-export const APP_SHELL_HEIGHT = 62
+export const APP_SHELL_HEIGHT = 56
 
 /** Approx. sticky results toolbar height for map offset under app shell. */
 export const RESULTS_TOOLBAR_OFFSET = 64
@@ -190,19 +190,7 @@ export function ResultsBackHeader({
 }: ResultsBackHeaderProps) {
   return (
     <>
-      <Button
-        color="primary"
-        size="small"
-        onClick={onBack}
-        startIcon={
-          <Typography component="span" sx={{ fontSize: 18, lineHeight: 1 }}>
-            ←
-          </Typography>
-        }
-        sx={{ px: 0.5, mb: 0 }}
-      >
-        Back to Profile
-      </Button>
+      <BackLink onClick={onBack}>Back to Profile</BackLink>
       <Typography
         variant="h5"
         component="h1"
@@ -212,7 +200,6 @@ export function ResultsBackHeader({
           fontWeight: 400,
           letterSpacing: 0,
           lineHeight: 1.25,
-          // Match gap above Back (parent pt: 1.5) — slightly tighter than before.
           mt: 1,
         }}
       >

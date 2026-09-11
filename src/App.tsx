@@ -1,10 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import ListItemText from '@mui/material/ListItemText'
 import MenuItem from '@mui/material/MenuItem'
 import Pagination from '@mui/material/Pagination'
-import Radio from '@mui/material/Radio'
 import Select from '@mui/material/Select'
 import Snackbar from '@mui/material/Snackbar'
 import Stack from '@mui/material/Stack'
@@ -15,9 +13,9 @@ import { CareResultCard } from './components/CareResultCard'
 import { CareResultCardSkeleton } from './components/CareResultCardSkeleton'
 import { FilterDrawer, type OpenFilterMenu } from './components/FilterDrawer'
 import {
-  RemovableFilterTag,
-  REMOVABLE_FILTER_TAG_GAP,
-} from './components/RemovableFilterTag'
+  RemovableFilterChip,
+  REMOVABLE_FILTER_CHIP_GAP,
+} from './components/RemovableFilterChip'
 import { ProviderOverviewDrawer } from './components/ProviderOverviewDrawer'
 import { ResultsMap } from './components/ResultsMap'
 import {
@@ -32,6 +30,11 @@ import {
   SearchFormBar,
   type SearchFormValues,
 } from './components/SearchFormBar'
+import {
+  SomaMenuRadio,
+  somaMenuItemSx,
+  somaMenuPaperSlotProps,
+} from './components/SomaField'
 import {
   buildFilterChips,
   countActiveFilters,
@@ -51,23 +54,6 @@ const SEARCH_LOADING_MS = 750
 const PAGE_SIZE_OPTIONS = [5, 10, 25, 50] as const
 
 const SORT_OPTIONS = ['Best match', 'Distance', 'Quality'] as const
-
-const sortMenuPaperSx = {
-  borderRadius: 1,
-  mt: 0.5,
-  boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
-  border: 1,
-  borderColor: 'divider',
-}
-
-const sortMenuItemSx = {
-  fontSize: 14,
-  fontWeight: 400,
-  minHeight: 44,
-  py: 0.75,
-  gap: 0.5,
-  alignItems: 'center' as const,
-}
 
 export default function App() {
   const [view, setView] = useState<View>('home')
@@ -242,6 +228,7 @@ export default function App() {
     >
       <AppShell
         onBrandClick={goHome}
+        onPrototypeAction={setToast}
         onNavClick={(item) => {
           if (item === 'Search') goHome()
           else setToast(`Prototype only — ${item} is not connected.`)
@@ -346,93 +333,89 @@ export default function App() {
                     MenuProps={{
                       disableScrollLock: true,
                       slotProps: {
-                        paper: { sx: sortMenuPaperSx },
+                        paper: somaMenuPaperSlotProps,
                         list: {
                           dense: true,
                           role: 'listbox',
                           'aria-label': 'Sort by',
-                          sx: { py: 0.5 },
+                          sx: { py: 0 },
                         },
                       },
                     }}
                   >
-                    {SORT_OPTIONS.map((option) => (
-                      <MenuItem
-                        key={option}
-                        value={option}
-                        role="option"
-                        aria-selected={sortBy === option}
-                        sx={sortMenuItemSx}
-                      >
-                        <Radio
-                          size="small"
-                          checked={sortBy === option}
-                          tabIndex={-1}
-                          disableRipple
-                          sx={{ p: 1, mr: 0.5 }}
-                          slotProps={{
-                            input: { 'aria-hidden': true },
-                          }}
-                        />
-                        <ListItemText
-                          primary={option}
-                          slotProps={{
-                            primary: {
-                              sx: {
-                                fontSize: 14,
-                                fontWeight: 400,
-                                letterSpacing: 0,
-                              },
-                            },
-                          }}
-                        />
-                      </MenuItem>
-                    ))}
+                    {SORT_OPTIONS.map((option) => {
+                      const selected = sortBy === option
+                      return (
+                        <MenuItem
+                          key={option}
+                          value={option}
+                          role="option"
+                          aria-selected={selected}
+                          selected={selected}
+                          disableGutters
+                          sx={somaMenuItemSx}
+                        >
+                          <SomaMenuRadio selected={selected} />
+                          <Typography
+                            component="span"
+                            sx={{
+                              flex: 1,
+                              fontSize: 14,
+                              fontWeight: 500,
+                              lineHeight: '20px',
+                              letterSpacing: 0,
+                              color: 'text.primary',
+                            }}
+                          >
+                            {option}
+                          </Typography>
+                        </MenuItem>
+                      )
+                    })}
                   </Select>
                 </Stack>
-                <Button
-                  variant="outlined"
-                  startIcon={
-                    <AppIcon
-                      name="filter"
-                      sx={{ fontSize: 18, color: 'text.primary' }}
-                    />
-                  }
-                  onClick={() => openFilters()}
-                  aria-label={
-                    activeCount > 0
-                      ? `Filters, ${activeCount} applied`
-                      : 'Filters'
-                  }
-                  sx={{
-                    borderRadius: 1,
-                    borderColor: 'rgba(0, 0, 0, 0.23)',
-                    color: 'text.primary',
-                    fontWeight: 400,
-                    fontSize: 14,
-                    letterSpacing: 0,
-                    px: 1.5,
-                    py: 0.75,
-                    textTransform: 'none',
-                    '&:hover': {
-                      borderColor: 'rgba(0, 0, 0, 0.87)',
-                      bgcolor: 'action.hover',
-                    },
-                  }}
-                >
-                  Filters
+                <Box sx={{ position: 'relative', display: 'inline-flex' }}>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    startIcon={
+                      <AppIcon
+                        name="filter"
+                        sx={{ fontSize: 20, color: 'inherit' }}
+                      />
+                    }
+                    onClick={() => openFilters()}
+                    aria-label={
+                      activeCount > 0
+                        ? `Filters, ${activeCount} applied`
+                        : 'Filters'
+                    }
+                    sx={{
+                      fontWeight: 400,
+                      fontSize: 14,
+                      letterSpacing: 0,
+                      px: 1.5,
+                      py: 0.75,
+                      textTransform: 'none',
+                      minHeight: 40,
+                    }}
+                  >
+                    Filters
+                  </Button>
                   {activeCount > 0 ? (
                     <Box
                       component="span"
                       aria-hidden
                       sx={{
-                        ml: 1,
+                        position: 'absolute',
+                        top: -4,
+                        right: -4,
                         minWidth: 20,
                         height: 20,
                         px: 0.5,
-                        borderRadius: '50%',
+                        borderRadius: 10,
                         bgcolor: 'primary.main',
-                        color: 'primary.contrastText',
+                        color: '#fff',
                         fontSize: 12,
                         fontWeight: 600,
                         lineHeight: 1,
@@ -444,7 +427,7 @@ export default function App() {
                       {activeCount}
                     </Box>
                   ) : null}
-                </Button>
+                </Box>
               </Stack>
             }
             chips={
@@ -455,11 +438,11 @@ export default function App() {
                   sx={{
                     flexWrap: 'wrap',
                     alignItems: 'center',
-                    gap: REMOVABLE_FILTER_TAG_GAP,
+                    gap: REMOVABLE_FILTER_CHIP_GAP,
                   }}
                 >
                   {chips.map((chip) => (
-                    <RemovableFilterTag
+                    <RemovableFilterChip
                       key={chip.id}
                       label={chip.label}
                       onDelete={() => removeAppliedChip(chip.id)}
@@ -512,11 +495,8 @@ export default function App() {
                     {visibleResults.length === 0 ? (
                       <Box
                         sx={{
-                          p: { xs: 2.5, sm: 4 },
+                          py: { xs: 2.5, sm: 4 },
                           textAlign: 'center',
-                          border: 1,
-                          borderColor: 'divider',
-                          borderRadius: 1,
                         }}
                       >
                         <Typography
@@ -527,20 +507,26 @@ export default function App() {
                         >
                           No providers match these filters
                         </Typography>
-                        <Typography
-                          variant="body2"
-                          color="text.secondary"
-                          sx={{ mb: 2 }}
-                        >
-                          Reset or adjust filters to update the list and map.
+                        <Typography variant="body2" color="text.secondary">
+                          Clear or adjust filters to update the list and map.
                         </Typography>
                         <Stack
                           direction={{ xs: 'column', sm: 'row' }}
                           spacing={1.5}
-                          sx={{ justifyContent: 'center' }}
+                          sx={{ justifyContent: 'center', mt: 2 }}
                         >
-                          <Button onClick={resetAllFilters}>Reset filters</Button>
-                          <Button variant="contained" onClick={() => openFilters()}>
+                          <Button
+                            variant="outlined"
+                            color="primary"
+                            onClick={resetAllFilters}
+                          >
+                            Clear filters
+                          </Button>
+                          <Button
+                            variant="text"
+                            color="primary"
+                            onClick={() => openFilters()}
+                          >
                             Adjust filters
                           </Button>
                         </Stack>

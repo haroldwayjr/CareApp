@@ -13,41 +13,43 @@ declare module '@mui/material/styles' {
     icon: {
       primary: string
       secondary: string
+      tertiary: string
     }
   }
   interface PaletteOptions {
     icon?: {
       primary?: string
       secondary?: string
+      tertiary?: string
     }
   }
 }
 
-/** Primary maps to Figma `primary/ih-dark` (#0009a6). */
+/** Soma light-mode tokens — primary = blue/800 (#002380). */
 const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#0009a6',
-      dark: '#00077a',
-      light: '#333bba',
+      main: '#002380',
+      dark: '#001A5C',
+      light: '#2B78F5',
       contrastText: '#ffffff',
     },
     secondary: {
       main: '#5c6bc0',
     },
     success: {
-      main: '#2e7d32',
-      light: '#e8f5e9',
+      main: '#16B04A',
+      light: '#E8F8EC',
     },
     error: {
-      main: '#c62828',
-      light: '#ffebee',
+      main: '#F24646',
+      light: '#FEECEC',
     },
     warning: {
-      main: '#ed6c02',
-      light: '#fff4e5',
-      dark: '#e65100',
+      main: '#C9A000',
+      light: '#FDF9E1',
+      dark: '#8A7300',
       contrastText: '#ffffff',
     },
     background: {
@@ -58,12 +60,13 @@ const theme = createTheme({
       primary: 'rgba(0,0,0,0.87)',
       secondary: 'rgba(0,0,0,0.6)',
     },
-    /** Figma icon tokens — secondary ≈ icon/default/secondary. */
+    /** Soma icon ink tokens — primary / secondary / tertiary de-emphasis. */
     icon: {
-      primary: 'rgba(0,0,0,0.87)',
-      secondary: '#949494',
+      primary: '#0F1828',
+      secondary: '#667085',
+      tertiary: '#98A2B3',
     },
-    divider: '#e0e5ed',
+    divider: '#E5E7EB',
   },
   typography: {
     fontFamily: figtree,
@@ -72,7 +75,7 @@ const theme = createTheme({
     allVariants: {
       letterSpacing: 0,
     },
-    body1: { fontSize: '0.875rem', letterSpacing: 0 },
+    body1: { fontSize: 14, lineHeight: '20px', letterSpacing: 0 },
     body2: { fontSize: '0.875rem', letterSpacing: 0 },
     caption: { fontSize: '0.75rem', letterSpacing: 0 },
     h5: { fontWeight: 400, fontSize: '1.75rem', letterSpacing: 0 },
@@ -121,6 +124,47 @@ const theme = createTheme({
           borderRadius: 100,
           fontSize: 14,
           letterSpacing: 0,
+          variants: [
+            {
+              props: { variant: 'contained', color: 'primary' },
+              style: {
+                backgroundColor: '#002380',
+                color: '#ffffff',
+                '&:hover': {
+                  backgroundColor: '#001A5C',
+                },
+              },
+            },
+            {
+              props: { variant: 'outlined', color: 'primary' },
+              style: {
+                color: '#002380',
+                borderColor: '#002380',
+                '&:hover': {
+                  borderColor: '#001A5C',
+                  backgroundColor: 'rgba(16, 29, 56, 0.05)',
+                },
+                '& .MuiButton-startIcon, & .MuiButton-endIcon': {
+                  color: '#002380',
+                },
+              },
+            },
+            {
+              props: { variant: 'text', color: 'primary' },
+              style: {
+                color: '#002380',
+                '&:hover': {
+                  backgroundColor: 'rgba(16, 29, 56, 0.05)',
+                },
+                '&:active': {
+                  backgroundColor: 'rgba(16, 29, 56, 0.08)',
+                },
+                '& .MuiButton-startIcon, & .MuiButton-endIcon': {
+                  color: '#002380',
+                },
+              },
+            },
+          ],
         },
       },
     },
@@ -178,7 +222,6 @@ const theme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: 4,
           fontSize: 14,
           letterSpacing: 0,
         },

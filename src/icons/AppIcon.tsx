@@ -26,7 +26,7 @@ export type AppIconName =
 type IconComponent = ComponentType<SvgIconProps>
 
 /**
- * Streamline Material Pro — Outlined Line assets under `./streamline/`.
+ * Streamline assets under `./streamline/`.
  * Raw SVGs are wrapped in MUI `SvgIcon` so existing `SvgIconProps` keep working.
  */
 function streamlineIcon(rawSvg: string): IconComponent {
@@ -44,11 +44,38 @@ function streamlineIcon(rawSvg: string): IconComponent {
   }
 }
 
+/** Multi-path Regular 3.0 stroke icons (e.g. Light Mode Dark Light). */
+function streamlineStrokeIcon(rawSvg: string): IconComponent {
+  const viewBoxMatch = rawSvg.match(/viewBox="([^"]+)"/)
+  const viewBox = viewBoxMatch?.[1] ?? '0 0 24 24'
+  const paths = [...rawSvg.matchAll(/<path[^>]*\sd="([^"]+)"/gi)].map(
+    (match) => match[1],
+  )
+
+  return function StreamlineStrokeIcon(props: SvgIconProps) {
+    return (
+      <SvgIcon viewBox={viewBox} fill="none" {...props}>
+        {paths.map((d) => (
+          <path
+            key={d}
+            d={d}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        ))}
+      </SvgIcon>
+    )
+  }
+}
+
 const streamlineIconMap: Record<AppIconName, IconComponent> = {
   home: streamlineIcon(homeSvg),
   settings: streamlineIcon(settingsSvg),
   search: streamlineIcon(searchSvg),
-  theme: streamlineIcon(themeSvg),
+  theme: streamlineStrokeIcon(themeSvg),
   notifications: streamlineIcon(notificationsSvg),
   account: streamlineIcon(accountSvg),
   filter: streamlineIcon(filterSvg),

@@ -1,7 +1,7 @@
-import type { MouseEvent, ReactNode } from 'react'
+import type { MouseEvent } from 'react'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
+import Checkbox from '@mui/material/Checkbox'
 import Chip from '@mui/material/Chip'
 import IconButton from '@mui/material/IconButton'
 import Link from '@mui/material/Link'
@@ -9,45 +9,44 @@ import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { AppIcon } from '../icons/AppIcon'
-import blueDistinctionIcon from '../assets/chips/blue-distinction.png'
-import lgbtqAffirmingIcon from '../assets/chips/lgbtq-affirming.png'
-import type {
-  NetworkStatus,
-  ProviderBadge,
-  ProviderResult,
-} from '../data/mockCareResults'
+import verificationBadge from '../assets/chips/verification-badge.svg'
+import type { NetworkStatus, ProviderResult } from '../data/mockCareResults'
 import { formatProviderCopyText } from '../utils/formatProviderCopyText'
 
 const CHIP_SUCCESS = {
-  bgcolor: '#E8F5E9',
-  color: '#1B5E20',
+  bgcolor: '#EFFDF0',
+  color: '#045623',
+  border: '1px solid #B7EFBC',
 } as const
 
 const CHIP_ERROR = {
-  bgcolor: '#FFEBEE',
-  color: '#B71C1C',
+  bgcolor: '#FEECEC',
+  color: '#D13238',
 } as const
 
 const CHIP_WARNING = {
-  bgcolor: '#FFF3E0',
-  color: '#E65100',
+  bgcolor: '#FDF9E1',
+  color: '#524200',
+  border: '1px solid #F4E392',
 } as const
 
-const CHIP_NEUTRAL = {
-  bgcolor: '#F5F5F5',
-  color: '#424242',
+const CHIP_BRAND = {
+  bgcolor: '#F2F5FF',
+  color: '#002380',
+  border: '1px solid #C3DAFF',
 } as const
 
 type ChipTone = {
   bgcolor: string
   color: string
+  border?: string
 }
 
 const chipSx = {
-  borderRadius: 1,
+  borderRadius: '6px',
   fontWeight: 500,
-  fontSize: 13,
-  height: 28,
+  fontSize: 12,
+  height: 24,
   letterSpacing: 0,
   pl: 0.75,
   '& .MuiChip-icon': {
@@ -101,187 +100,40 @@ function NetworkStatusIcon({ variant }: { variant: NetworkIconVariant }) {
   )
 }
 
-function GlyphIcon({ children }: { children: ReactNode }) {
-  return (
-    <Box
-      component="span"
-      aria-hidden
-      sx={{
-        width: 16,
-        height: 16,
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: 12,
-        lineHeight: 1,
-        flexShrink: 0,
-        color: 'inherit',
-      }}
-    >
-      {children}
-    </Box>
-  )
-}
-
-/** Exact chip logos from design assets, tinted via CSS mask. */
-function ChipAssetIcon({
-  src,
-  size = 16,
-  color = 'currentColor',
+function TierCopayChipLabel({
+  prefix,
+  copay,
 }: {
-  src: string
-  size?: number
-  color?: string
+  prefix: string
+  copay: number
 }) {
   return (
     <Box
       component="span"
-      aria-hidden
-      sx={{
-        width: size,
-        height: size,
-        flexShrink: 0,
-        display: 'inline-block',
-        bgcolor: color,
-        opacity: 1,
-        maskImage: `url(${src})`,
-        maskSize: 'contain',
-        maskRepeat: 'no-repeat',
-        maskPosition: 'center',
-        WebkitMaskImage: `url(${src})`,
-        WebkitMaskSize: 'contain',
-        WebkitMaskRepeat: 'no-repeat',
-        WebkitMaskPosition: 'center',
-      }}
-    />
-  )
-}
-
-/** Video camera mark matching the Offers telehealth chip asset. */
-function TelehealthIcon() {
-  return (
-    <Box
-      component="span"
-      aria-hidden
-      sx={{
-        width: 16,
-        height: 16,
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexShrink: 0,
-        color: 'inherit',
-      }}
+      sx={{ display: 'inline-flex', alignItems: 'baseline', gap: '0.25em' }}
     >
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <rect x="1.25" y="4.25" width="8.5" height="7.5" rx="1.25" fill="currentColor" />
-        <path
-          d="M10.5 6.1v3.8L14.25 12V4L10.5 6.1Z"
-          fill="currentColor"
-        />
-      </svg>
+      <Box component="span" sx={{ fontWeight: 500 }}>
+        {prefix}
+      </Box>
+      <Box component="span" sx={{ fontWeight: 700 }}>
+        ${copay} Copay
+      </Box>
     </Box>
   )
 }
 
-/** Outlined heart for Premium care physician chips. */
-function PremiumCareIcon() {
-  return (
-    <Box
-      component="span"
-      aria-hidden
-      sx={{
-        width: 18,
-        height: 18,
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexShrink: 0,
-        color: 'inherit',
-        lineHeight: 0,
-      }}
-    >
-      <svg
-        width="18"
-        height="18"
-        viewBox="0 0 16 16"
-        fill="none"
-        style={{ display: 'block' }}
-      >
-        <path
-          d="M8 13.6S3.5 10.7 3.5 7.35c0-1.45 1.15-2.6 2.6-2.6.8 0 1.5.37 1.9.95.4-.58 1.1-.95 1.9-.95 1.45 0 2.6 1.15 2.6 2.6 0 3.35-4.5 6.25-4.5 6.25Z"
-          stroke="currentColor"
-          strokeWidth="1.35"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </Box>
-  )
-}
-
-const NETWORK_CHIP: Record<
-  NetworkStatus,
-  { label: string; tone: ChipTone; icon: NetworkIconVariant }
-> = {
-  in_network_tier_1: {
-    label: 'In network: Tier 1',
-    tone: CHIP_SUCCESS,
-    icon: 'solid',
-  },
-  in_network_tier_2: {
-    label: 'In network: Tier 2',
-    tone: CHIP_SUCCESS,
-    icon: 'outline',
-  },
-  out_of_network: {
-    label: 'Out of network',
-    tone: CHIP_ERROR,
-    icon: 'error',
-  },
-  in_network_some_locations: {
-    label: 'In network at some locations',
-    tone: CHIP_WARNING,
-    icon: 'warning',
-  },
-}
-
-const BADGE_CHIP: Record<
-  ProviderBadge,
-  {
-    label: string
-    tone: ChipTone
-    glyph?: string
-    customIcon?: 'blue_distinction' | 'lgbtq_affirming' | 'telehealth' | 'premium_care'
+function getNetworkChip(
+  status: NetworkStatus,
+): { label: string; tone: ChipTone; icon: NetworkIconVariant } | null {
+  switch (status) {
+    case 'in_network_tier_1':
+    case 'in_network_tier_2':
+      return { label: 'In network', tone: CHIP_SUCCESS, icon: 'solid' }
+    case 'out_of_network':
+      return { label: 'Out of network', tone: CHIP_ERROR, icon: 'error' }
+    default:
+      return null
   }
-> = {
-  premium_care_physician: {
-    label: 'Premium care physician',
-    tone: CHIP_NEUTRAL,
-    customIcon: 'premium_care',
-  },
-  blue_distinction_center: {
-    label: 'Blue Distinction Center',
-    tone: CHIP_NEUTRAL,
-    customIcon: 'blue_distinction',
-  },
-  offers_telehealth: {
-    label: 'Offers telehealth',
-    tone: CHIP_SUCCESS,
-    customIcon: 'telehealth',
-  },
-  lgbtq_affirming: {
-    label: 'LGBTQ+ affirming',
-    tone: CHIP_SUCCESS,
-    customIcon: 'lgbtq_affirming',
-  },
-  free_standing_imaging: {
-    label: 'Free Standing Image Center',
-    tone: CHIP_SUCCESS,
-  },
-  hospital_affiliated: {
-    label: 'Hospital-affiliated',
-    tone: CHIP_SUCCESS,
-  },
 }
 
 type CareResultCardProps = {
@@ -296,7 +148,6 @@ type CareResultCardProps = {
 
 export function CareResultCard({
   result,
-  index,
   highlighted = false,
   inList = false,
   onToggleList,
@@ -305,8 +156,19 @@ export function CareResultCard({
 }: CareResultCardProps) {
   const displayName = `${result.name}, ${result.credentials}`
   const copyText = formatProviderCopyText(result)
-
-  const network = NETWORK_CHIP[result.networkStatus]
+  const isPreferred = result.tier === 'Preferred'
+  // Preferred cards show "In network"; Standard cards only show the yellow tier/copay badge
+  // unless network is out-of-network (those still need a status chip).
+  const rawNetworkChip = getNetworkChip(result.networkStatus)
+  const networkChip =
+    !isPreferred &&
+    rawNetworkChip &&
+    (result.networkStatus === 'in_network_tier_1' ||
+      result.networkStatus === 'in_network_tier_2')
+      ? null
+      : rawNetworkChip
+  const tierChipTone = isPreferred ? CHIP_BRAND : CHIP_WARNING
+  const tierPrefix = isPreferred ? 'Preferred Provider:' : 'Standard Provider:'
 
   async function handleCopyName(event: MouseEvent) {
     event.stopPropagation()
@@ -332,32 +194,49 @@ export function CareResultCard({
         cursor: 'pointer',
       }}
     >
-      <Stack direction="row" spacing={2} sx={{ alignItems: 'flex-start' }}>
-        <Avatar
-          src={result.photoUrl}
-          alt=""
-          sx={{
-            width: 56,
-            height: 56,
-            bgcolor: '#BDBDBD',
-            color: '#fff',
-            fontSize: 18,
-            fontWeight: 600,
-          }}
-        >
-          {result.initials}
-        </Avatar>
+      <Stack direction="row" spacing={1.125} sx={{ alignItems: 'flex-start' }}>
+        <Box sx={{ position: 'relative', flexShrink: 0 }}>
+          <Avatar
+            src={result.photoUrl}
+            alt=""
+            sx={{
+              width: 48,
+              height: 48,
+              bgcolor: '#BDBDBD',
+              color: '#fff',
+              fontSize: 16,
+              fontWeight: 600,
+            }}
+          >
+            {result.initials}
+          </Avatar>
+          {isPreferred ? (
+            <Box
+              component="img"
+              src={verificationBadge}
+              alt=""
+              aria-hidden
+              sx={{
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
+                width: 16,
+                height: 16,
+              }}
+            />
+          ) : null}
+        </Box>
 
         <Box sx={{ flex: 1, minWidth: 0 }}>
           <Stack
-            direction={{ xs: 'column', sm: 'row' }}
-            spacing={2}
+            direction="row"
+            spacing={1}
             sx={{
               justifyContent: 'space-between',
-              alignItems: { xs: 'stretch', sm: 'flex-start' },
+              alignItems: 'flex-start',
             }}
           >
-            <Box sx={{ minWidth: 0 }}>
+            <Box sx={{ minWidth: 0, flex: 1 }}>
               <Stack
                 direction="row"
                 spacing={0.5}
@@ -373,7 +252,7 @@ export function CareResultCard({
                     color: 'text.primary',
                   }}
                 >
-                  {index}. {displayName}
+                  {displayName}
                 </Typography>
                 <IconButton
                   size="small"
@@ -397,131 +276,105 @@ export function CareResultCard({
                 {result.specialty}
               </Typography>
             </Box>
-            <Button
-              variant={inList ? 'contained' : 'outlined'}
-              size="medium"
-              color="primary"
-              aria-pressed={inList}
-              onClick={(event) => {
-                event.stopPropagation()
-                onToggleList(result.id)
-              }}
-              sx={{
-                flexShrink: 0,
-                alignSelf: { xs: 'stretch', sm: 'flex-start' },
-                ...(inList
-                  ? {
-                      boxShadow: 'none',
-                      '&:hover': {
-                        boxShadow: 'none',
-                      },
-                    }
-                  : null),
-              }}
-            >
-              {inList ? 'Remove from list' : 'Add to list'}
-            </Button>
+            <Checkbox
+              checked={inList}
+              onClick={(event) => event.stopPropagation()}
+              onChange={() => onToggleList(result.id)}
+              aria-label={
+                inList
+                  ? `Remove ${displayName} from list`
+                  : `Add ${displayName} to list`
+              }
+              sx={{ p: 0.5, mt: -0.5, flexShrink: 0 }}
+            />
           </Stack>
+        </Box>
+      </Stack>
 
+      <Box sx={{ pl: '57px', mt: 1.5 }}>
+        <Stack
+          direction="row"
+          spacing={1}
+          useFlexGap
+          sx={{
+            flexWrap: 'wrap',
+            alignItems: 'baseline',
+            justifyContent: 'space-between',
+            rowGap: 0.25,
+          }}
+        >
           <Typography
+            component="span"
             sx={{
-              mt: 1.5,
               fontSize: 14,
-              fontWeight: 400,
+              fontWeight: 600,
               letterSpacing: 0,
               color: 'text.primary',
             }}
           >
             {result.group}
+            <Typography
+              component="span"
+              sx={{
+                fontWeight: 400,
+                color: 'text.secondary',
+              }}
+            >
+              {' '}
+              {result.address}
+            </Typography>
           </Typography>
           <Typography
+            component="span"
             sx={{
               fontSize: 14,
-              fontWeight: 400,
+              fontWeight: 600,
               letterSpacing: 0,
               color: 'text.primary',
+              flexShrink: 0,
             }}
           >
-            {result.address} · {result.distanceMiles.toFixed(1)} mi
+            {Math.round(result.distanceMiles)} mi
           </Typography>
-          <Link
-            href={`tel:${result.phone}`}
-            underline="always"
-            onClick={(event) => event.stopPropagation()}
-            sx={{
-              display: 'inline-block',
-              mt: 0.5,
-              fontSize: 14,
-              letterSpacing: 0,
-            }}
-          >
-            {result.phone}
-          </Link>
+        </Stack>
 
-          <Stack
-            direction="row"
-            spacing={1}
-            useFlexGap
-            sx={{ flexWrap: 'wrap', mt: 1.5 }}
-          >
+        <Link
+          href={`tel:${result.phone}`}
+          underline="always"
+          onClick={(event) => event.stopPropagation()}
+          sx={{
+            display: 'inline-block',
+            mt: 0.5,
+            fontSize: 14,
+            letterSpacing: 0,
+          }}
+        >
+          {result.phone}
+        </Link>
+
+        <Stack
+          direction="row"
+          spacing={1}
+          useFlexGap
+          sx={{ flexWrap: 'wrap', mt: 1.5 }}
+        >
+          {networkChip ? (
             <Chip
               size="small"
-              icon={<NetworkStatusIcon variant={network.icon} />}
-              label={network.label}
-              sx={{ ...chipSx, ...network.tone }}
+              icon={<NetworkStatusIcon variant={networkChip.icon} />}
+              label={networkChip.label}
+              sx={{ ...chipSx, ...networkChip.tone }}
             />
-            <Chip
-              size="small"
-              label={`$${result.copay} copay`}
-              sx={{
-                ...chipSx,
-                ...CHIP_SUCCESS,
-                pl: 0,
-                '& .MuiChip-label': {
-                  pl: 1.25,
-                  pr: 1.25,
-                },
-              }}
-            />
-            {result.badges.map((badge) => {
-              const meta = BADGE_CHIP[badge]
-              const icon =
-                meta.customIcon === 'blue_distinction' ? (
-                  <ChipAssetIcon
-                    src={blueDistinctionIcon}
-                    size={14}
-                    color={meta.tone.color}
-                  />
-                ) : meta.customIcon === 'lgbtq_affirming' ? (
-                  <ChipAssetIcon
-                    src={lgbtqAffirmingIcon}
-                    size={13}
-                    color={meta.tone.color}
-                  />
-                ) : meta.customIcon === 'telehealth' ? (
-                  <TelehealthIcon />
-                ) : meta.customIcon === 'premium_care' ? (
-                  <PremiumCareIcon />
-                ) : meta.glyph ? (
-                  <GlyphIcon>{meta.glyph}</GlyphIcon>
-                ) : undefined
-              return (
-                <Chip
-                  key={badge}
-                  size="small"
-                  icon={icon}
-                  label={meta.label}
-                  sx={{
-                    ...chipSx,
-                    ...meta.tone,
-                    ...(icon ? null : { pl: 1.25 }),
-                  }}
-                />
-              )
-            })}
-          </Stack>
-        </Box>
-      </Stack>
+          ) : null}
+          <Chip
+            size="small"
+            label={
+              <TierCopayChipLabel prefix={tierPrefix} copay={result.copay} />
+            }
+            sx={{ ...chipSx, ...tierChipTone }}
+          />
+        </Stack>
+      </Box>
     </Paper>
   )
 }

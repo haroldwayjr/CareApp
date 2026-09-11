@@ -6,7 +6,6 @@ export type NetworkStatus =
   | 'in_network_tier_1'
   | 'in_network_tier_2'
   | 'out_of_network'
-  | 'in_network_some_locations'
 
 export type ProviderBadge =
   | 'premium_care_physician'
@@ -26,7 +25,7 @@ export type ProviderResult = {
   distanceMiles: number
   phone: string
   gender: 'Female' | 'Male' | 'Non-binary'
-  tier: 'Tier 1' | 'Tier 2'
+  tier: 'Preferred' | 'Standard'
   /** Network chip variant from the care design system. */
   networkStatus: NetworkStatus
   /** Extra designation / misc / imaging chips. */
@@ -45,7 +44,7 @@ export type ProviderResult = {
   lng: number
 }
 export const GENDER_OPTIONS = ['Female', 'Male', 'Non-binary'] as const
-export const TIER_OPTIONS = ['Tier 1', 'Tier 2'] as const
+export const TIER_OPTIONS = ['Preferred', 'Standard'] as const
 export const DISTANCE_OPTIONS = [
   'Best Nearby',
   'Within 10 miles',
@@ -199,7 +198,7 @@ export function weekdayFromIsoDate(isoDate: string): string {
   return WEEKDAY_NAMES[date.getDay()]
 }
 
-/** Chip / tag label for an ISO availability date (e.g. "Mon, Aug 10"). */
+/** Chip label for an ISO availability date (e.g. "Mon, Aug 10"). */
 export function formatAvailabilityDateLabel(isoDate: string): string {
   const [year, month, day] = isoDate.split('-').map(Number)
   const date = new Date(year, month - 1, day)
@@ -405,11 +404,11 @@ const mockProvidersBase: Omit<
     credentials: 'DO',
     specialty: 'Internal Medicine',
     group: 'Cascade Medical Group',
-    address: '4120 Maple Ave, Suite 210, Sibley, IA',
+    address: '4120 Maple Ave, Suite 210, Sibley, IA 51249',
     distanceMiles: 12.4,
     phone: '(712) 555-0142',
     gender: 'Male',
-    tier: 'Tier 1',
+    tier: 'Preferred',
     networkStatus: 'in_network_tier_1',
     badges: ['premium_care_physician', 'offers_telehealth'],
     language: 'English',
@@ -426,11 +425,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Internal Medicine',
     group: 'Prairie Health Partners',
-    address: '90 River Rd, Sibley, IA',
+    address: '90 River Rd, Sibley, IA 51249',
     distanceMiles: 18.2,
     phone: '(712) 555-0198',
     gender: 'Female',
-    tier: 'Tier 1',
+    tier: 'Preferred',
     networkStatus: 'in_network_tier_1',
     badges: ['lgbtq_affirming'],
     language: 'English',
@@ -447,11 +446,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Family Medicine',
     group: 'Sibley Family Clinic',
-    address: '15 Oak Blvd, Sibley, IA',
+    address: '15 Oak Blvd, Sibley, IA 51249',
     distanceMiles: 8.6,
     phone: '(712) 555-0111',
     gender: 'Male',
-    tier: 'Tier 2',
+    tier: 'Standard',
     networkStatus: 'in_network_tier_2',
     badges: ['offers_telehealth'],
     language: 'Spanish',
@@ -467,11 +466,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Internal Medicine',
     group: 'Northside Physicians',
-    address: '220 Harbor Ln, Sibley, IA',
+    address: '220 Harbor Ln, Sibley, IA 51238',
     distanceMiles: 24.1,
     phone: '(712) 555-0177',
     gender: 'Female',
-    tier: 'Tier 1',
+    tier: 'Preferred',
     networkStatus: 'in_network_tier_1',
     badges: ['blue_distinction_center'],
     language: 'Chinese (Mandarin)',
@@ -488,12 +487,12 @@ const mockProvidersBase: Omit<
     credentials: 'DO',
     specialty: 'Internal Medicine',
     group: 'Cascade Medical Group',
-    address: '7 Cedar Ct, Sibley, IA',
+    address: '7 Cedar Ct, Sibley, IA 51249',
     distanceMiles: 31.5,
     phone: '(712) 555-0133',
     gender: 'Male',
-    tier: 'Tier 2',
-    networkStatus: 'in_network_some_locations',
+    tier: 'Standard',
+    networkStatus: 'in_network_tier_2',
     badges: [],
     language: 'English',
     acceptingNewPatients: true,
@@ -508,11 +507,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Internal Medicine',
     group: 'Lakeside Care',
-    address: '501 Lakeview Dr, Sibley, IA',
+    address: '501 Lakeview Dr, Sibley, IA 51249',
     distanceMiles: 42.0,
     phone: '(712) 555-0160',
     gender: 'Female',
-    tier: 'Tier 1',
+    tier: 'Preferred',
     networkStatus: 'in_network_tier_1',
     badges: ['offers_telehealth'],
     language: 'Vietnamese',
@@ -528,11 +527,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Family Medicine',
     group: 'Sibley Family Clinic',
-    address: '18 Prairie St, Sibley, IA',
+    address: '18 Prairie St, Sibley, IA 51249',
     distanceMiles: 6.2,
     phone: '(712) 555-0184',
     gender: 'Female',
-    tier: 'Tier 1',
+    tier: 'Preferred',
     networkStatus: 'in_network_tier_1',
     badges: ['lgbtq_affirming', 'offers_telehealth'],
     language: 'Spanish',
@@ -548,11 +547,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Cardiology',
     group: 'Midwest Cardiology Associates',
-    address: '900 Heartland Pkwy, Sibley, IA',
+    address: '900 Heartland Pkwy, Suite 100, Sibley, IA 51249',
     distanceMiles: 14.8,
     phone: '(712) 555-0201',
     gender: 'Male',
-    tier: 'Tier 1',
+    tier: 'Preferred',
     networkStatus: 'in_network_tier_1',
     badges: ['premium_care_physician', 'blue_distinction_center'],
     language: 'English',
@@ -568,11 +567,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Cardiology',
     group: 'Midwest Cardiology Associates',
-    address: '902 Heartland Pkwy, Sibley, IA',
+    address: '902 Heartland Pkwy, Suite 200, Sibley, IA 51249',
     distanceMiles: 15.1,
     phone: '(712) 555-0202',
     gender: 'Female',
-    tier: 'Tier 2',
+    tier: 'Standard',
     networkStatus: 'out_of_network',
     badges: [],
     language: 'English',
@@ -588,11 +587,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Dermatology',
     group: 'Sibley Dermatology Clinic',
-    address: '44 Birch Rd, Sibley, IA',
+    address: '44 Birch Rd, Sibley, IA 51246',
     distanceMiles: 9.4,
     phone: '(712) 555-0210',
     gender: 'Female',
-    tier: 'Tier 1',
+    tier: 'Preferred',
     networkStatus: 'in_network_tier_1',
     badges: ['offers_telehealth'],
     language: 'English',
@@ -608,11 +607,11 @@ const mockProvidersBase: Omit<
     credentials: 'DO',
     specialty: 'Orthopedic Surgery',
     group: 'Prairie Orthopedics',
-    address: '310 Sports Medicine Way, Sibley, IA',
+    address: '310 Sports Medicine Way, Sibley, IA 51249',
     distanceMiles: 11.7,
     phone: '(712) 555-0222',
     gender: 'Male',
-    tier: 'Tier 2',
+    tier: 'Standard',
     networkStatus: 'in_network_tier_2',
     badges: ['hospital_affiliated'],
     language: 'English',
@@ -628,11 +627,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Pediatrics',
     group: 'Lakeside Care',
-    address: '120 Childrens Ln, Sibley, IA',
+    address: '120 Childrens Ln, Sibley, IA 51249',
     distanceMiles: 7.9,
     phone: '(712) 555-0233',
     gender: 'Female',
-    tier: 'Tier 1',
+    tier: 'Preferred',
     networkStatus: 'in_network_tier_1',
     badges: ['lgbtq_affirming', 'premium_care_physician'],
     language: 'English',
@@ -648,11 +647,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Psychiatry',
     group: 'Northside Physicians',
-    address: '55 Wellness Blvd, Sibley, IA',
+    address: '55 Wellness Blvd, Sibley, IA 51249',
     distanceMiles: 16.3,
     phone: '(712) 555-0244',
     gender: 'Male',
-    tier: 'Tier 2',
+    tier: 'Standard',
     networkStatus: 'in_network_tier_2',
     badges: ['offers_telehealth', 'lgbtq_affirming'],
     language: 'English',
@@ -668,11 +667,11 @@ const mockProvidersBase: Omit<
     credentials: 'PT, DPT',
     specialty: 'Physical Therapy',
     group: 'Prairie Health Partners',
-    address: '77 Rehab Court, Sibley, IA',
+    address: '77 Rehab Court, Sibley, IA 51238',
     distanceMiles: 10.2,
     phone: '(712) 555-0255',
     gender: 'Female',
-    tier: 'Tier 1',
+    tier: 'Preferred',
     networkStatus: 'in_network_tier_1',
     badges: [],
     language: 'English',
@@ -688,11 +687,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Radiology',
     group: 'Cascade Medical Group',
-    address: '200 Imaging Center Dr, Sibley, IA',
+    address: '200 Imaging Center Dr, Sibley, IA 51249',
     distanceMiles: 13.6,
     phone: '(712) 555-0266',
     gender: 'Male',
-    tier: 'Tier 1',
+    tier: 'Preferred',
     networkStatus: 'in_network_tier_1',
     badges: ['free_standing_imaging'],
     language: 'English',
@@ -708,12 +707,12 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Reproductive Endocrinology',
     group: 'Prairie Health Partners',
-    address: '88 Fertility Way, Sibley, IA',
+    address: '88 Fertility Way, Sibley, IA 51249',
     distanceMiles: 19.5,
     phone: '(712) 555-0277',
     gender: 'Female',
-    tier: 'Tier 2',
-    networkStatus: 'in_network_some_locations',
+    tier: 'Standard',
+    networkStatus: 'in_network_tier_2',
     badges: ['offers_telehealth'],
     language: 'English',
     acceptingNewPatients: true,
@@ -728,11 +727,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Urology',
     group: 'Northside Physicians',
-    address: '401 Kidney Ct, Sibley, IA',
+    address: '401 Kidney Ct, Sibley, IA 51249',
     distanceMiles: 22.0,
     phone: '(712) 555-0288',
     gender: 'Male',
-    tier: 'Tier 2',
+    tier: 'Standard',
     networkStatus: 'out_of_network',
     badges: ['hospital_affiliated'],
     language: 'English',
@@ -748,11 +747,11 @@ const mockProvidersBase: Omit<
     credentials: 'MD',
     specialty: 'Urgent Care',
     group: 'Lakeside Care',
-    address: '1 Immediate Care Plaza, Sibley, IA',
+    address: '1 Immediate Care Plaza, Sibley, IA 51249',
     distanceMiles: 5.4,
     phone: '(712) 555-0299',
     gender: 'Non-binary',
-    tier: 'Tier 1',
+    tier: 'Preferred',
     networkStatus: 'in_network_tier_1',
     badges: ['offers_telehealth', 'lgbtq_affirming'],
     language: 'Spanish',
@@ -800,6 +799,7 @@ export type OverviewLocation = {
   address: string
   statuses: OverviewLocationStatus[]
   distanceMiles: number
+  tierLevel: ProviderResult['tier']
   copay: number
   networkLabel: string
   networkTone: 'success' | 'warning' | 'error'
@@ -918,11 +918,8 @@ const HOSPITALS = [
 function networkOverviewLabel(status: NetworkStatus): string {
   switch (status) {
     case 'in_network_tier_1':
-      return 'In network: Tier 1'
     case 'in_network_tier_2':
-      return 'In network: Tier 2'
-    case 'in_network_some_locations':
-      return 'In network at some locations'
+      return 'In Network'
     case 'out_of_network':
       return 'Out of network'
   }
@@ -931,14 +928,29 @@ function networkOverviewLabel(status: NetworkStatus): string {
 function networkOverviewTone(
   status: NetworkStatus,
 ): 'success' | 'warning' | 'error' {
-  switch (status) {
-    case 'out_of_network':
-      return 'error'
-    case 'in_network_some_locations':
-      return 'warning'
-    default:
-      return 'success'
+  return status === 'out_of_network' ? 'error' : 'success'
+}
+
+/** Inserts a suite into a street address while preserving city, state, and ZIP. */
+function buildLocationAddress(baseAddress: string, suiteNumber: number): string {
+  const suiteLabel = `Suite ${suiteNumber}`
+  const withExistingSuite =
+    /^(.+?),\s*Suite\s+[\w-]+,\s*([^,]+),\s*([A-Z]{2})\s+(\d{5})$/
+  const withZip = /^(.+?),\s*([^,]+),\s*([A-Z]{2})\s+(\d{5})$/
+
+  const existingSuiteMatch = baseAddress.match(withExistingSuite)
+  if (existingSuiteMatch) {
+    const [, street, city, state, zip] = existingSuiteMatch
+    return `${street}, ${suiteLabel}, ${city}, ${state} ${zip}`
   }
+
+  const zipMatch = baseAddress.match(withZip)
+  if (zipMatch) {
+    const [, street, city, state, zip] = zipMatch
+    return `${street}, ${suiteLabel}, ${city}, ${state} ${zip}`
+  }
+
+  return baseAddress
 }
 
 /** Builds overview panel content from a provider result. */
@@ -964,9 +976,7 @@ export function getProviderOverview(provider: ProviderResult): ProviderOverview 
     ],
     locations: [
       {
-        address: provider.address.includes(',')
-          ? `${provider.address.split(',')[0]}, Suite ${100 + seed}, ${provider.address.split(',').slice(1).join(',').trim()}`
-          : provider.address,
+        address: buildLocationAddress(provider.address, 100 + seed),
         statuses: [
           {
             label: 'Accepting New Patients',
@@ -1000,6 +1010,7 @@ export function getProviderOverview(provider: ProviderResult): ProviderOverview 
           },
         ],
         distanceMiles: provider.distanceMiles,
+        tierLevel: provider.tier,
         copay: provider.copay,
         networkLabel: networkOverviewLabel(provider.networkStatus),
         networkTone: networkOverviewTone(provider.networkStatus),
@@ -1018,17 +1029,11 @@ export function getProviderOverview(provider: ProviderResult): ProviderOverview 
       },
       {
         name: 'gHIP Plan',
-        networkLabel:
-          provider.tier === 'Tier 1'
-            ? 'In network: Tier 1'
-            : 'In network: Tier 2',
+        networkLabel: networkOverviewLabel(provider.networkStatus),
       },
       {
         name: 'gHIP Plan COBRA',
-        networkLabel:
-          provider.networkStatus === 'out_of_network'
-            ? 'Out of network'
-            : 'In network: Tier 1',
+        networkLabel: networkOverviewLabel(provider.networkStatus),
       },
     ],
   }
@@ -1053,8 +1058,7 @@ function distanceLimit(label: ProviderFilters['distance']): number | null {
 }
 
 function tierRank(tier: ProviderResult['tier']): number {
-  // Tier 1 is preferred in-network coverage.
-  return tier === 'Tier 1' ? 0 : 1
+  return tier === 'Preferred' ? 0 : 1
 }
 
 function networkRank(status: NetworkStatus): number {
@@ -1063,10 +1067,8 @@ function networkRank(status: NetworkStatus): number {
       return 0
     case 'in_network_tier_2':
       return 1
-    case 'in_network_some_locations':
-      return 2
     case 'out_of_network':
-      return 3
+      return 2
   }
 }
 

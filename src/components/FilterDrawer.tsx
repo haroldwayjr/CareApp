@@ -1,16 +1,13 @@
 import { useMemo, useState, type KeyboardEvent, type MouseEvent } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import Checkbox from '@mui/material/Checkbox'
 import Dialog from '@mui/material/Dialog'
 import FormControl from '@mui/material/FormControl'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
-import ListItemText from '@mui/material/ListItemText'
 import ListSubheader from '@mui/material/ListSubheader'
 import MenuItem from '@mui/material/MenuItem'
 import OutlinedInput from '@mui/material/OutlinedInput'
-import Radio from '@mui/material/Radio'
 import Select, { type SelectChangeEvent } from '@mui/material/Select'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
@@ -20,11 +17,17 @@ import { alpha, type Theme } from '@mui/material/styles'
 import { AppIcon } from '../icons/AppIcon'
 import { SEARCH_CONTROL_HEIGHT } from './SearchFormBar'
 import {
-  RemovableFilterTag,
-  REMOVABLE_FILTER_TAG_GAP,
+  RemovableFilterChip,
+  REMOVABLE_FILTER_CHIP_GAP,
   stopSelectChipEvent,
-} from './RemovableFilterTag'
+} from './RemovableFilterChip'
 import { RiseTransition, RISE_DURATION_MS } from './RiseTransition'
+import {
+  SomaMenuCheckbox,
+  SomaMenuRadio,
+  somaMenuItemSx,
+  somaMenuPaperSx,
+} from './SomaField'
 import {
   AVAILABILITY_DAY_OPTIONS,
   AVAILABILITY_HOUR_OPTIONS,
@@ -62,7 +65,7 @@ type FilterDrawerProps = {
 }
 
 const LANGUAGE_PREVIEW_COUNT = 8
-/** RemovableFilterTag height — one chip row reserved in every filter field. */
+/** RemovableFilterChip height — one chip row reserved in every filter field. */
 const FILTER_CHIP_ROW_HEIGHT = 28
 /**
  * Fixed field height with one chip row + vertical padding + borders.
@@ -115,21 +118,10 @@ const selectSx = {
 }
 
 const menuPaperSx = {
-  borderRadius: 1,
-  mt: 0.5,
-  boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
-  border: 1,
-  borderColor: 'divider',
+  ...somaMenuPaperSx,
 }
 
-const menuItemSx = {
-  fontSize: 14,
-  fontWeight: 400,
-  minHeight: 44,
-  py: 0.75,
-  gap: 0.5,
-  alignItems: 'center',
-}
+const menuItemSx = somaMenuItemSx
 
 const placeholderSx = {
   fontSize: 14,
@@ -214,14 +206,16 @@ function FieldHeader({
 function SelectedChips({
   selected,
   onChange,
+  emptyPlaceholder = 'Any',
 }: {
   selected: string[]
   onChange: (next: string[]) => void
+  emptyPlaceholder?: string
 }) {
   if (selected.length === 0) {
     return (
       <Typography component="span" sx={placeholderSx}>
-        Any
+        {emptyPlaceholder}
       </Typography>
     )
   }
@@ -231,7 +225,7 @@ function SelectedChips({
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
-        gap: REMOVABLE_FILTER_TAG_GAP,
+        gap: REMOVABLE_FILTER_CHIP_GAP,
         // Stay within the fixed one-row field height; overflow scrolls.
         height: FILTER_CHIP_ROW_HEIGHT,
         maxHeight: FILTER_CHIP_ROW_HEIGHT,
@@ -241,7 +235,7 @@ function SelectedChips({
       }}
     >
       {selected.map((value) => (
-        <RemovableFilterTag
+        <RemovableFilterChip
           key={value}
           label={value}
           onDelete={() => onChange(selected.filter((item) => item !== value))}
@@ -265,6 +259,7 @@ function MultiFilterSelect({
   onChange,
   /** When true, menu flips above the field if there isn’t room below (Tier Level). */
   smartMenuPlacement = false,
+  emptyPlaceholder,
 }: {
   label: string
   options: readonly string[]
@@ -274,6 +269,7 @@ function MultiFilterSelect({
   onClose: () => void
   onChange: (next: string[]) => void
   smartMenuPlacement?: boolean
+  emptyPlaceholder?: string
 }) {
   const labelId = `${label.toLowerCase().replace(/\s+/g, '-')}-label`
   const listboxId = `${labelId}-listbox`
@@ -306,7 +302,11 @@ function MultiFilterSelect({
           aria-labelledby={labelId}
           sx={selectSx}
           renderValue={(selected) => (
-            <SelectedChips selected={selected} onChange={onChange} />
+            <SelectedChips
+              selected={selected}
+              onChange={onChange}
+              emptyPlaceholder={emptyPlaceholder}
+            />
           )}
           MenuProps={{
             disableScrollLock: true,
@@ -339,45 +339,40 @@ function MultiFilterSelect({
                 'aria-multiselectable': true,
                 'aria-labelledby': labelId,
                 sx: {
-                  py: 0.5,
+                  py: 0,
                   maxHeight: smartMenuPlacement ? 320 : 280,
                 },
               },
             },
           }}
         >
-          {options.map((option) => (
-            <MenuItem
-              key={option}
-              value={option}
-              role="option"
-              aria-selected={values.includes(option)}
-              sx={menuItemSx}
-            >
-              <Checkbox
-                size="small"
-                checked={values.includes(option)}
-                tabIndex={-1}
-                disableRipple
-                sx={{ p: 1, mr: 0.5 }}
-                slotProps={{
-                  input: { 'aria-hidden': true },
-                }}
-              />
-              <ListItemText
-                primary={option}
-                slotProps={{
-                  primary: {
-                    sx: {
-                      fontSize: 14,
-                      fontWeight: 400,
-                      letterSpacing: 0,
-                    },
-                  },
-                }}
-              />
-            </MenuItem>
-          ))}
+          {options.map((option) => {
+            const checked = values.includes(option)
+            return (
+              <MenuItem
+                key={option}
+                value={option}
+                role="option"
+                aria-selected={checked}
+                selected={checked}
+                sx={menuItemSx}
+              >
+                <SomaMenuCheckbox checked={checked} />
+                <Typography
+                  component="span"
+                  sx={{
+                    flex: 1,
+                    fontSize: 14,
+                    lineHeight: '20px',
+                    letterSpacing: 0,
+                    color: 'text.primary',
+                  }}
+                >
+                  {option}
+                </Typography>
+              </MenuItem>
+            )
+          })}
         </Select>
       </FormControl>
     </Box>
@@ -449,43 +444,38 @@ function SingleFilterSelect({
                 dense: true,
                 role: 'listbox',
                 'aria-labelledby': labelId,
-                sx: { py: 0.5 },
+                sx: { py: 0 },
               },
             },
           }}
         >
-          {options.map((option) => (
-            <MenuItem
-              key={option}
-              value={option}
-              role="option"
-              aria-selected={value === option}
-              sx={menuItemSx}
-            >
-              <Radio
-                size="small"
-                checked={value === option}
-                tabIndex={-1}
-                disableRipple
-                sx={{ p: 1, mr: 0.5 }}
-                slotProps={{
-                  input: { 'aria-hidden': true },
-                }}
-              />
-              <ListItemText
-                primary={option}
-                slotProps={{
-                  primary: {
-                    sx: {
-                      fontSize: 14,
-                      fontWeight: 400,
-                      letterSpacing: 0,
-                    },
-                  },
-                }}
-              />
-            </MenuItem>
-          ))}
+          {options.map((option) => {
+            const selected = value === option
+            return (
+              <MenuItem
+                key={option}
+                value={option}
+                role="option"
+                aria-selected={selected}
+                selected={selected}
+                sx={menuItemSx}
+              >
+                <SomaMenuRadio selected={selected} />
+                <Typography
+                  component="span"
+                  sx={{
+                    flex: 1,
+                    fontSize: 14,
+                    lineHeight: '20px',
+                    letterSpacing: 0,
+                    color: 'text.primary',
+                  }}
+                >
+                  {option}
+                </Typography>
+              </MenuItem>
+            )
+          })}
         </Select>
       </FormControl>
     </Box>
@@ -641,38 +631,33 @@ function LanguageFilterSelect({
               No languages match “{query.trim()}”
             </MenuItem>
           ) : (
-            visibleOptions.map((option) => (
-              <MenuItem
-                key={option}
-                value={option}
-                role="option"
-                aria-selected={values.includes(option)}
-                sx={menuItemSx}
-              >
-                <Checkbox
-                  size="small"
-                  checked={values.includes(option)}
-                  tabIndex={-1}
-                  disableRipple
-                  sx={{ p: 1, mr: 0.5 }}
-                  slotProps={{
-                    input: { 'aria-hidden': true },
-                  }}
-                />
-                <ListItemText
-                  primary={option}
-                  slotProps={{
-                    primary: {
-                      sx: {
-                        fontSize: 14,
-                        fontWeight: 400,
-                        letterSpacing: 0,
-                      },
-                    },
-                  }}
-                />
-              </MenuItem>
-            ))
+            visibleOptions.map((option) => {
+              const checked = values.includes(option)
+              return (
+                <MenuItem
+                  key={option}
+                  value={option}
+                  role="option"
+                  aria-selected={checked}
+                  selected={checked}
+                  sx={menuItemSx}
+                >
+                  <SomaMenuCheckbox checked={checked} />
+                  <Typography
+                    component="span"
+                    sx={{
+                      flex: 1,
+                      fontSize: 14,
+                      lineHeight: '20px',
+                      letterSpacing: 0,
+                      color: 'text.primary',
+                    }}
+                  >
+                    {option}
+                  </Typography>
+                </MenuItem>
+              )
+            })
           )}
 
           {!normalizedQuery && hiddenCount > 0 ? (
@@ -949,7 +934,7 @@ function AvailabilityFilterSelect({
   )
 }
 
-/** Centered filters modal using MUI Select, Checkbox, and Chip. */
+/** Centered filters modal using MUI Select and Soma menu items. */
 export function FilterDrawer({
   open,
   draft,
@@ -1051,24 +1036,31 @@ export function FilterDrawer({
           onClick={onClose}
           edge="end"
           sx={{
-            width: 44,
-            height: 44,
-            color: 'icon.secondary',
-            '&:hover': { bgcolor: 'action.hover', color: 'text.primary' },
+            width: 32,
+            height: 32,
+            color: 'icon.tertiary',
+            '&:hover': { bgcolor: 'action.hover', color: 'icon.tertiary' },
           }}
         >
           <Box
             component="span"
             aria-hidden
             sx={{
-              fontSize: 26,
-              lineHeight: 1,
-              fontWeight: 300,
-              display: 'block',
-              mt: '-2px',
+              width: 20,
+              height: 20,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
-            ×
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path
+                d="M5 5 15 15M15 5 5 15"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
           </Box>
         </IconButton>
       </Stack>
@@ -1135,6 +1127,7 @@ export function FilterDrawer({
           onClose={() => onOpenMenuChange(null)}
           onChange={(tiers) => onDraftChange({ ...draft, tiers })}
           smartMenuPlacement
+          emptyPlaceholder="Select Tier"
         />
       </Stack>
 

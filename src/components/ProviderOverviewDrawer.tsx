@@ -8,11 +8,8 @@ import IconButton from '@mui/material/IconButton'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import blueDistinctionIcon from '../assets/chips/blue-distinction.png'
-import lgbtqAffirmingIcon from '../assets/chips/lgbtq-affirming.png'
 import {
   getProviderOverview,
-  type ProviderBadge,
   type ProviderResult,
 } from '../data/mockCareResults'
 import { AppIcon } from '../icons/AppIcon'
@@ -20,20 +17,11 @@ import { formatProviderCopyText } from '../utils/formatProviderCopyText'
 
 const DRAWER_WIDTH = 440
 
-const CHIP_SUCCESS = {
-  bgcolor: '#E8F5E9',
-  color: '#1B5E20',
-} as const
-
 const CHIP_NEUTRAL = {
   bgcolor: '#F5F5F5',
   color: '#424242',
 } as const
 
-type ChipTone = {
-  bgcolor: string
-  color: string
-}
 const chipSx = {
   borderRadius: 1,
   fontWeight: 500,
@@ -59,135 +47,6 @@ const chipSx = {
     alignItems: 'center',
   },
 } as const
-
-const BADGE_META: Partial<
-  Record<
-    ProviderBadge,
-    {
-      label: string
-      tone: ChipTone
-      customIcon?: 'blue_distinction' | 'lgbtq_affirming' | 'telehealth' | 'premium_care'
-    }
-  >
-> = {
-  premium_care_physician: {
-    label: 'Premium care physician',
-    tone: CHIP_NEUTRAL,
-    customIcon: 'premium_care',
-  },
-  blue_distinction_center: {
-    label: 'Blue Distinction Center',
-    tone: CHIP_NEUTRAL,
-    customIcon: 'blue_distinction',
-  },
-  offers_telehealth: {
-    label: 'Offers telehealth',
-    tone: CHIP_SUCCESS,
-    customIcon: 'telehealth',
-  },
-  lgbtq_affirming: {
-    label: 'LGBTQ+ affirming',
-    tone: CHIP_SUCCESS,
-    customIcon: 'lgbtq_affirming',
-  },
-  free_standing_imaging: {
-    label: 'Free Standing Image Center',
-    tone: CHIP_SUCCESS,
-  },
-  hospital_affiliated: {
-    label: 'Hospital-affiliated',
-    tone: CHIP_SUCCESS,
-  },
-}
-
-function ChipAssetIcon({
-  src,
-  size = 16,
-  color = 'currentColor',
-}: {
-  src: string
-  size?: number
-  color?: string
-}) {
-  return (
-    <Box
-      component="span"
-      aria-hidden
-      sx={{
-        width: size,
-        height: size,
-        flexShrink: 0,
-        display: 'inline-block',
-        bgcolor: color,
-        maskImage: `url(${src})`,
-        maskSize: 'contain',
-        maskRepeat: 'no-repeat',
-        maskPosition: 'center',
-        WebkitMaskImage: `url(${src})`,
-        WebkitMaskSize: 'contain',
-        WebkitMaskRepeat: 'no-repeat',
-        WebkitMaskPosition: 'center',
-      }}
-    />
-  )
-}
-
-function TelehealthIcon() {
-  return (
-    <Box
-      component="span"
-      aria-hidden
-      sx={{
-        width: 16,
-        height: 16,
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexShrink: 0,
-        color: 'inherit',
-      }}
-    >
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <rect x="1.25" y="4.25" width="8.5" height="7.5" rx="1.25" fill="currentColor" />
-        <path d="M10.5 6.1v3.8L14.25 12V4L10.5 6.1Z" fill="currentColor" />
-      </svg>
-    </Box>
-  )
-}
-
-function PremiumCareIcon() {
-  return (
-    <Box
-      component="span"
-      aria-hidden
-      sx={{
-        width: 18,
-        height: 18,
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexShrink: 0,
-        color: 'inherit',
-        lineHeight: 0,
-      }}
-    >
-      <svg
-        width="18"
-        height="18"
-        viewBox="0 0 16 16"
-        fill="none"
-        style={{ display: 'block' }}
-      >
-        <path
-          d="M8 13.6S3.5 10.7 3.5 7.35c0-1.45 1.15-2.6 2.6-2.6.8 0 1.5.37 1.9.95.4-.58 1.1-.95 1.9-.95 1.45 0 2.6 1.15 2.6 2.6 0 3.35-4.5 6.25-4.5 6.25Z"
-          stroke="currentColor"
-          strokeWidth="1.35"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </Box>
-  )
-}
 
 function OutlinedHeartIcon({ size = 14 }: { size?: number }) {
   return (
@@ -574,20 +433,6 @@ export function ProviderOverviewDrawer({
     onCopyName?.(displayName)
   }
 
-  function badgeIcon(badge: ProviderBadge, color: string) {
-    const meta = BADGE_META[badge]
-    if (!meta?.customIcon) return undefined
-    if (meta.customIcon === 'telehealth') return <TelehealthIcon />
-    if (meta.customIcon === 'premium_care') return <PremiumCareIcon />
-    if (meta.customIcon === 'blue_distinction') {
-      return <ChipAssetIcon src={blueDistinctionIcon} size={14} color={color} />
-    }
-    if (meta.customIcon === 'lgbtq_affirming') {
-      return <ChipAssetIcon src={lgbtqAffirmingIcon} size={13} color={color} />
-    }
-    return undefined
-  }
-
   return (
     <Drawer
       anchor="right"
@@ -651,13 +496,13 @@ export function ProviderOverviewDrawer({
                 onClick={onClose}
                 edge="end"
                 sx={{
-                  width: 44,
-                  height: 44,
-                  color: 'icon.secondary',
-                  transition: 'background-color 160ms ease, color 160ms ease',
+                  width: 32,
+                  height: 32,
+                  color: 'icon.tertiary',
+                  transition: 'background-color 160ms ease',
                   '&:hover': {
                     bgcolor: 'action.hover',
-                    color: 'icon.primary',
+                    color: 'icon.tertiary',
                   },
                 }}
               >
@@ -665,14 +510,21 @@ export function ProviderOverviewDrawer({
                   component="span"
                   aria-hidden
                   sx={{
-                    fontSize: 28,
-                    lineHeight: 1,
-                    fontWeight: 300,
-                    display: 'block',
-                    mt: '-2px',
+                    width: 20,
+                    height: 20,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
-                  ×
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M5 5 15 15M15 5 5 15"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
                 </Box>
               </IconButton>
             </Stack>
@@ -739,49 +591,6 @@ export function ProviderOverviewDrawer({
                     collapsedCount={1}
                   />
                 </InfoRow>
-                {provider.badges.length > 0 ? (
-                  <InfoRow label="Misc">
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        gap: 0.75,
-                      }}
-                    >
-                      {provider.badges.map((badge) => {
-                        const meta = BADGE_META[badge]
-                        if (!meta) return null
-                        const icon = badgeIcon(badge, meta.tone.color)
-                        return (
-                          <Chip
-                            key={badge}
-                            size="small"
-                            label={meta.label}
-                            icon={
-                              icon ? (
-                                <Box component="span" sx={{ display: 'inline-flex' }}>
-                                  {icon}
-                                </Box>
-                              ) : undefined
-                            }
-                            sx={{
-                              ...chipSx,
-                              ...meta.tone,
-                              ...(meta.customIcon === 'lgbtq_affirming' ||
-                              meta.customIcon === 'blue_distinction'
-                                ? {
-                                    height: 26,
-                                    fontSize: 12.5,
-                                    '& .MuiChip-icon': { mr: 0.35 },
-                                  }
-                                : null),
-                            }}
-                          />
-                        )
-                      })}
-                    </Box>
-                  </InfoRow>
-                ) : null}
                 <InfoRow label="Gender">
                   <Typography sx={{ fontSize: 14, lineHeight: 1.45 }}>
                     {provider.gender}
@@ -847,6 +656,18 @@ export function ProviderOverviewDrawer({
                           }}
                         >
                           {location.distanceMiles.toFixed(1)} miles away
+                        </Typography>
+                      </LocationDetailRow>
+                      <LocationDetailRow label="Tier Level">
+                        <Typography
+                          sx={{
+                            fontSize: 14,
+                            fontWeight: 400,
+                            lineHeight: 1.4,
+                            color: 'text.primary',
+                          }}
+                        >
+                          {location.tierLevel}
                         </Typography>
                       </LocationDetailRow>
                       <LocationDetailRow label="Copay">
@@ -941,12 +762,11 @@ export function ProviderOverviewDrawer({
                     </Typography>
                   </Box>
                   {overview.insurancePlans.map((plan, index) => {
-                    const planTone: 'success' | 'warning' | 'error' =
-                      /out of network/i.test(plan.networkLabel)
-                        ? 'error'
-                        : /some locations/i.test(plan.networkLabel)
-                          ? 'warning'
-                          : 'success'
+                    const planTone: 'success' | 'error' = /out of network/i.test(
+                      plan.networkLabel,
+                    )
+                      ? 'error'
+                      : 'success'
                     const isLast = index === overview.insurancePlans.length - 1
                     return (
                       <LocationDetailRow
@@ -961,11 +781,7 @@ export function ProviderOverviewDrawer({
                             fontWeight: 400,
                             lineHeight: 1.4,
                             color:
-                              planTone === 'warning'
-                                ? '#E65100'
-                                : planTone === 'error'
-                                  ? 'error.main'
-                                  : 'text.primary',
+                              planTone === 'error' ? 'error.main' : 'text.primary',
                             whiteSpace: 'nowrap',
                           }}
                         >

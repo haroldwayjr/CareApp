@@ -72,8 +72,9 @@ type NetworkIconVariant = 'solid' | 'outline' | 'error' | 'warning'
 
 function NetworkStatusIcon({ variant }: { variant: NetworkIconVariant }) {
   const filled = variant === 'solid' || variant === 'error'
+  const isError = variant === 'error'
   const color =
-    variant === 'error' ? '#B71C1C' : variant === 'warning' ? '#E65100' : '#1B5E20'
+    isError ? '#B71C1C' : variant === 'warning' ? '#E65100' : '#1B5E20'
 
   return (
     <Box
@@ -95,7 +96,18 @@ function NetworkStatusIcon({ variant }: { variant: NetworkIconVariant }) {
         flexShrink: 0,
       }}
     >
-      {variant === 'error' ? '×' : '✓'}
+      {isError ? (
+        <svg width="9" height="9" viewBox="0 0 12 12" fill="none">
+          <path
+            d="M2.75 2.75 9.25 9.25M9.25 2.75 2.75 9.25"
+            stroke="currentColor"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+          />
+        </svg>
+      ) : (
+        '✓'
+      )}
     </Box>
   )
 }

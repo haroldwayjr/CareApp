@@ -8,7 +8,7 @@ type BackLinkProps = {
   onClick?: ButtonHTMLAttributes<HTMLButtonElement>['onClick']
 }
 
-/** Soma Back Link — return nav; Rest = text.secondary (not text.link). */
+/** Soma Back Link — primary blue return nav. */
 export function BackLink({ children, onClick }: BackLinkProps) {
   return (
     <ButtonBase
@@ -20,9 +20,9 @@ export function BackLink({ children, onClick }: BackLinkProps) {
         gap: 0.5,
         p: 0.5,
         borderRadius: 1,
-        color: 'text.secondary',
+        color: 'primary.main',
         '&:hover': {
-          color: 'text.primary',
+          color: 'primary.dark',
           bgcolor: 'transparent',
         },
         '&.Mui-focusVisible': {

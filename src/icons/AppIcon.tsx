@@ -78,7 +78,7 @@ const streamlineIconMap: Record<AppIconName, IconComponent> = {
   theme: streamlineStrokeIcon(themeSvg),
   notifications: streamlineIcon(notificationsSvg),
   account: streamlineIcon(accountSvg),
-  filter: streamlineIcon(filterSvg),
+  filter: streamlineStrokeIcon(filterSvg),
   copy: streamlineIcon(copySvg),
 }
 

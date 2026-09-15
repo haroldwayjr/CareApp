@@ -16,24 +16,27 @@ import { formatProviderCopyText } from '../utils/formatProviderCopyText'
 const CHIP_SUCCESS = {
   bgcolor: '#EFFDF0',
   color: '#045623',
-  border: '1px solid #B7EFBC',
+  border: 'none',
 } as const
 
 const CHIP_ERROR = {
   bgcolor: '#FEECEC',
   color: '#D13238',
+  border: 'none',
 } as const
 
-const CHIP_WARNING = {
-  bgcolor: '#FDF9E1',
-  color: '#524200',
-  border: '1px solid #F4E392',
+/** Soft Standard — Care App MUI `warning` (image 4 / text.warning). */
+const CHIP_STANDARD = {
+  bgcolor: '#fff4e5',
+  color: '#9a3412',
+  border: 'none',
 } as const
 
-const CHIP_BRAND = {
-  bgcolor: '#F2F5FF',
-  color: '#002380',
-  border: '1px solid #C3DAFF',
+/** Soft Preferred — Care App MUI `secondary.soft` (#f3e5f5 / purple/50). */
+const CHIP_PREFERRED = {
+  bgcolor: 'secondary.soft',
+  color: 'secondary.dark',
+  border: 'none',
 } as const
 
 type ChipTone = {
@@ -187,7 +190,7 @@ export function CareResultCard({
       result.networkStatus === 'in_network_tier_2')
       ? null
       : rawNetworkChip
-  const tierChipTone = isPreferred ? CHIP_BRAND : CHIP_WARNING
+  const tierChipTone = isPreferred ? CHIP_PREFERRED : CHIP_STANDARD
   const tierPrefix = isPreferred ? 'Preferred Provider:' : 'Standard Provider:'
 
   async function handleCopyName(event: MouseEvent) {
@@ -316,6 +319,13 @@ export function CareResultCard({
             useFlexGap
             sx={{ flexWrap: 'wrap', mt: 1 }}
           >
+            <Chip
+              size="small"
+              label={
+                <TierCopayChipLabel prefix={tierPrefix} copay={result.copay} />
+              }
+              sx={{ ...chipSx, ...tierChipTone }}
+            />
             {networkChip ? (
               <Chip
                 size="small"
@@ -324,13 +334,6 @@ export function CareResultCard({
                 sx={{ ...chipSx, ...networkChip.tone }}
               />
             ) : null}
-            <Chip
-              size="small"
-              label={
-                <TierCopayChipLabel prefix={tierPrefix} copay={result.copay} />
-              }
-              sx={{ ...chipSx, ...tierChipTone }}
-            />
           </Stack>
 
           <Stack

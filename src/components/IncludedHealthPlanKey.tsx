@@ -5,15 +5,15 @@ import Typography from '@mui/material/Typography'
 import verificationBadge from '../assets/chips/verification-badge.svg'
 
 const BADGE_PREFERRED = {
-  bgcolor: '#F2F5FF',
-  color: '#002380',
-  border: '1px solid #C3DAFF',
+  bgcolor: 'secondary.soft',
+  color: 'secondary.dark',
+  border: 'none',
 } as const
 
 const BADGE_STANDARD = {
-  bgcolor: '#FDF9E1',
-  color: '#524200',
-  border: '1px solid #F4E392',
+  bgcolor: '#fff4e5',
+  color: '#9a3412',
+  border: 'none',
 } as const
 
 const badgeSx = {

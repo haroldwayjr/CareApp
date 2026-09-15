@@ -21,6 +21,7 @@ import { ProviderOverviewDrawer } from './components/ProviderOverviewDrawer'
 import { ResultsMap } from './components/ResultsMap'
 import {
   APP_SHELL_HEIGHT,
+  RESULTS_CONTENT_TOP_GAP,
   RESULTS_TOOLBAR_OFFSET,
   ResultsBackHeader,
   ResultsPageChrome,
@@ -111,7 +112,8 @@ export default function App() {
   const activeCount = countActiveFilters(appliedFilters)
   const chips = buildFilterChips(appliedFilters)
   const isFiltered = activeCount > 0
-  const mapStickyTop = APP_SHELL_HEIGHT + resultsToolbarHeight
+  const mapStickyTop =
+    APP_SHELL_HEIGHT + resultsToolbarHeight + RESULTS_CONTENT_TOP_GAP
 
   useEffect(() => {
     setPage((current) => Math.min(current, pageCount))

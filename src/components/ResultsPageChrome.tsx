@@ -11,6 +11,9 @@ export const APP_SHELL_HEIGHT = 56
 /** Approx. sticky results toolbar height for map offset under app shell. */
 export const RESULTS_TOOLBAR_OFFSET = 64
 
+/** Space between sticky filters toolbar and results content (cards / plan key). */
+export const RESULTS_CONTENT_TOP_GAP = 12
+
 type ResultsPageChromeProps = {
   header: ReactNode
   search: ReactNode
@@ -188,8 +191,8 @@ export function ResultsPageChrome({
       <Box
         sx={{
           px: { xs: 2, md: 3 },
-          // Flush under sticky toolbar — no top gap above plan key / first card.
-          pt: 0,
+          // Slight seam under sticky filters toolbar before cards / plan key.
+          pt: `${RESULTS_CONTENT_TOP_GAP}px`,
           pb: 2,
           flex: 1,
           display: 'flex',

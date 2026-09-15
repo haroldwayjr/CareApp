@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-  <!-- Streamline Ultimate Regular — Filter Sort Lines Descending (4 lines) -->
-  <path d="m0.75 4.293 22.5 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-  <path d="m3.146 9.431 17.708 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-  <path d="m5.543 14.569 12.914 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-  <path d="m8.72 19.707 6.56 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+  <!-- 3-line descending filter (funnel) -->
+  <path d="M3 7h18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+  <path d="M6 12h12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+  <path d="M9 17h6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
 </svg>

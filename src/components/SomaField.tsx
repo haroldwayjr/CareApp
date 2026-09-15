@@ -13,6 +13,8 @@ export const SEARCH_CONTROL_HEIGHT = 40
 /** Soma `border/hairline` — Menu / Popup stroke. */
 const SOMA_BORDER_HAIRLINE = '#D0D5DD'
 
+export { SOMA_BORDER_HAIRLINE }
+
 /** Soma `surface/subtle` hover on Menu Item / RadioItem / CheckboxItem. */
 export const SOMA_MENU_HOVER_BG = '#EAECF0'
 

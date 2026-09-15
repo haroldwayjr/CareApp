@@ -12,6 +12,7 @@ import { AppShell } from './components/AppShell'
 import { CareResultCard } from './components/CareResultCard'
 import { CareResultCardSkeleton } from './components/CareResultCardSkeleton'
 import { FilterDrawer, type OpenFilterMenu } from './components/FilterDrawer'
+import { IncludedHealthPlanKey } from './components/IncludedHealthPlanKey'
 import {
   RemovableFilterChip,
   REMOVABLE_FILTER_CHIP_GAP,
@@ -48,8 +49,8 @@ import {
 
 type View = 'home' | 'results'
 
-/** Simulated fetch delay after Search so the skeleton can be perceived. */
-const SEARCH_LOADING_MS = 750
+/** Simulated fetch delay after Search so the key + soft skeleton can settle. */
+const SEARCH_LOADING_MS = 1100
 
 const PAGE_SIZE_OPTIONS = [5, 10, 25, 50] as const
 
@@ -76,6 +77,9 @@ export default function App() {
   const [sortBy, setSortBy] = useState('Best match')
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState<(typeof PAGE_SIZE_OPTIONS)[number]>(10)
+  const [resultsToolbarHeight, setResultsToolbarHeight] = useState(
+    RESULTS_TOOLBAR_OFFSET,
+  )
   const loadingTimeoutRef = useRef<number | null>(null)
 
   useEffect(() => {
@@ -107,6 +111,7 @@ export default function App() {
   const activeCount = countActiveFilters(appliedFilters)
   const chips = buildFilterChips(appliedFilters)
   const isFiltered = activeCount > 0
+  const mapStickyTop = APP_SHELL_HEIGHT + resultsToolbarHeight
 
   useEffect(() => {
     setPage((current) => Math.min(current, pageCount))
@@ -266,6 +271,7 @@ export default function App() {
             searchTerm={appliedSearchTerm}
             resultCount={visibleResults.length}
             loading={resultsLoading}
+            onToolbarHeightChange={setResultsToolbarHeight}
             actions={
               <Stack
                 direction="row"
@@ -381,7 +387,7 @@ export default function App() {
                     startIcon={
                       <AppIcon
                         name="filter"
-                        sx={{ fontSize: 20, color: 'inherit' }}
+                        sx={{ fontSize: 18, color: 'inherit' }}
                       />
                     }
                     onClick={() => openFilters()}
@@ -472,11 +478,25 @@ export default function App() {
                 flex: 1,
               }}
             >
-              <Stack spacing={2} onClick={() => setSelectedId(null)} sx={{ minHeight: 120, minWidth: 0 }}>
+              <Stack
+                spacing={2}
+                useFlexGap
+                onClick={() => setSelectedId(null)}
+                sx={{ minHeight: 120, minWidth: 0 }}
+              >
+                <Box
+                  sx={{ display: { xs: 'block', lg: 'none' } }}
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  <IncludedHealthPlanKey variant="banner" />
+                </Box>
+
                 {resultsLoading ? (
-                  <CareResultCardSkeleton count={4} />
+                  <Box className="results-soft-enter" sx={{ opacity: 0.72 }}>
+                    <CareResultCardSkeleton count={3} />
+                  </Box>
                 ) : (
-                  <>
+                  <Stack spacing={2} className="results-soft-enter">
                     {pagedResults.map((result, index) => (
                       <CareResultCard
                         key={result.id}
@@ -532,19 +552,47 @@ export default function App() {
                         </Stack>
                       </Box>
                     ) : null}
-                  </>
+                  </Stack>
                 )}
               </Stack>
 
-              <Box sx={{ minWidth: 0, alignSelf: { lg: 'stretch' } }}>
-                <ResultsMap
-                  results={resultsLoading ? [] : pagedResults}
-                  selectedId={resultsLoading ? null : selectedId}
-                  onSelect={setSelectedId}
-                  stickyTop={APP_SHELL_HEIGHT + RESULTS_TOOLBAR_OFFSET}
-                  indexOffset={(page - 1) * pageSize}
-                />
-              </Box>
+              <Stack
+                spacing={2}
+                useFlexGap
+                sx={{
+                  minWidth: 0,
+                  position: { lg: 'sticky' },
+                  top: { lg: mapStickyTop },
+                  height: { lg: `calc(100dvh - ${mapStickyTop}px)` },
+                  maxHeight: { lg: `calc(100dvh - ${mapStickyTop}px)` },
+                  alignSelf: { lg: 'start' },
+                }}
+              >
+                <Box
+                  sx={{ display: { xs: 'none', lg: 'block' }, flexShrink: 0 }}
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  <IncludedHealthPlanKey variant="sidebar" />
+                </Box>
+                <Box
+                  sx={{
+                    flex: 1,
+                    minHeight: { xs: 280, sm: 360, lg: 0 },
+                    minWidth: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
+                  <ResultsMap
+                    results={resultsLoading ? [] : pagedResults}
+                    selectedId={resultsLoading ? null : selectedId}
+                    onSelect={setSelectedId}
+                    stickyTop={mapStickyTop}
+                    indexOffset={(page - 1) * pageSize}
+                    fillParent
+                  />
+                </Box>
+              </Stack>
             </Box>
 
             <Stack

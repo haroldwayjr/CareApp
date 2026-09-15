@@ -51,29 +51,49 @@ body {
 }
 
 .skeleton-shimmer {
-  background-color: #e8e8e8 !important;
+  background-color: #f1f1f1 !important;
   background-image: linear-gradient(
     105deg,
-    #e8e8e8 0%,
-    #e8e8e8 25%,
-    #f0f0f0 42%,
-    #f6f6f6 50%,
-    #f0f0f0 58%,
-    #e8e8e8 75%,
-    #e8e8e8 100%
+    #f1f1f1 0%,
+    #f1f1f1 32%,
+    #f6f6f6 44%,
+    #fafafa 50%,
+    #f6f6f6 56%,
+    #f1f1f1 68%,
+    #f1f1f1 100%
   ) !important;
-  background-size: 220% 100% !important;
+  background-size: 240% 100% !important;
   background-repeat: no-repeat !important;
-  animation: skeleton-shimmer 1.9s ease-in-out infinite !important;
+  animation: skeleton-shimmer 2.6s ease-in-out infinite !important;
 }
 
 .skeleton-shimmer::after {
   display: none !important;
 }
 
+.results-soft-enter {
+  animation: enter-fade-up 720ms cubic-bezier(0.33, 0, 0.2, 1) both;
+}
+
+@keyframes plan-key-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Restore after dismiss — opacity only, no travel. */
+.plan-key-fade-in {
+  animation: plan-key-fade-in 280ms cubic-bezier(0.33, 0, 0.2, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .enter-fade-up,
-  .enter-fade-up-delay {
+  .enter-fade-up-delay,
+  .results-soft-enter,
+  .plan-key-fade-in {
     animation: none;
   }
 

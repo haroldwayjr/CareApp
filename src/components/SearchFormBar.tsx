@@ -17,6 +17,7 @@ import {
 } from '../data/mockCareResults'
 import {
   SEARCH_CONTROL_HEIGHT,
+  SOMA_BORDER_HAIRLINE,
   SomaFieldShell,
   SomaSelectField,
 } from './SomaField'
@@ -160,7 +161,8 @@ export function SearchFormBar({ values, onChange, onSearch }: SearchFormBarProps
                   borderRadius: '8px',
                   cursor: 'text',
                   '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: 'divider',
+                    borderColor: SOMA_BORDER_HAIRLINE,
+                    borderWidth: 1,
                   },
                   '&:hover .MuiOutlinedInput-notchedOutline': {
                     borderColor: 'text.secondary',

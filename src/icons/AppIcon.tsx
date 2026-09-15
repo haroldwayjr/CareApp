@@ -8,6 +8,7 @@ import notificationsSvg from './streamline/notifications.svg?raw'
 import accountSvg from './streamline/account.svg?raw'
 import filterSvg from './streamline/filter.svg?raw'
 import copySvg from './streamline/copy.svg?raw'
+import infoSvg from './streamline/info.svg?raw'
 
 /**
  * Icon names used by the app. Keep this list product-facing
@@ -22,6 +23,7 @@ export type AppIconName =
   | 'account'
   | 'filter'
   | 'copy'
+  | 'info'
 
 type IconComponent = ComponentType<SvgIconProps>
 
@@ -44,13 +46,22 @@ function streamlineIcon(rawSvg: string): IconComponent {
   }
 }
 
-/** Multi-path Regular 3.0 stroke icons (e.g. Light Mode Dark Light). */
+/** Multi-path Regular 3.0 stroke icons (optional filled circles for i-dots). */
 function streamlineStrokeIcon(rawSvg: string): IconComponent {
   const viewBoxMatch = rawSvg.match(/viewBox="([^"]+)"/)
   const viewBox = viewBoxMatch?.[1] ?? '0 0 24 24'
   const paths = [...rawSvg.matchAll(/<path[^>]*\sd="([^"]+)"/gi)].map(
     (match) => match[1],
   )
+  const circles = [
+    ...rawSvg.matchAll(
+      /<circle[^>]*\scx="([^"]+)"[^>]*\scy="([^"]+)"[^>]*\sr="([^"]+)"[^>]*>/gi,
+    ),
+  ].map((match) => ({
+    cx: match[1],
+    cy: match[2],
+    r: match[3],
+  }))
 
   return function StreamlineStrokeIcon(props: SvgIconProps) {
     return (
@@ -64,6 +75,15 @@ function streamlineStrokeIcon(rawSvg: string): IconComponent {
             strokeWidth={1.5}
             strokeLinecap="round"
             strokeLinejoin="round"
+          />
+        ))}
+        {circles.map((circle) => (
+          <circle
+            key={`${circle.cx}-${circle.cy}-${circle.r}`}
+            cx={circle.cx}
+            cy={circle.cy}
+            r={circle.r}
+            fill="currentColor"
           />
         ))}
       </SvgIcon>
@@ -80,6 +100,7 @@ const streamlineIconMap: Record<AppIconName, IconComponent> = {
   account: streamlineIcon(accountSvg),
   filter: streamlineStrokeIcon(filterSvg),
   copy: streamlineIcon(copySvg),
+  info: streamlineStrokeIcon(infoSvg),
 }
 
 export type AppIconProps = SvgIconProps & {

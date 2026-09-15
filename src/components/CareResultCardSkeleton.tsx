@@ -24,7 +24,7 @@ function CareResultCardSkeletonItem() {
     <Paper
       variant="outlined"
       aria-hidden
-      sx={{ p: 2, borderColor: 'divider', bgcolor: 'background.paper' }}
+      sx={{ p: 2, borderRadius: '8px', borderColor: 'divider', bgcolor: 'background.paper' }}
     >
       <Stack direction="row" spacing={2} sx={{ alignItems: 'flex-start' }}>
         <ShimmerSkeleton variant="circular" width={56} height={56} />
@@ -52,35 +52,28 @@ function CareResultCardSkeletonItem() {
             />
           </Stack>
 
-          <ShimmerSkeleton variant="text" width="42%" height={18} sx={{ mt: 1.5 }} />
-          <ShimmerSkeleton variant="text" width="78%" height={18} />
-          <ShimmerSkeleton variant="text" width="28%" height={18} sx={{ mt: 0.5 }} />
-
           <Stack
             direction="row"
             spacing={1}
             useFlexGap
-            sx={{ flexWrap: 'wrap', mt: 1.5 }}
+            sx={{ flexWrap: 'wrap', mt: 1 }}
           >
             <ShimmerSkeleton
               variant="rounded"
               width={128}
-              height={28}
-              sx={{ borderRadius: 1 }}
-            />
-            <ShimmerSkeleton
-              variant="rounded"
-              width={140}
-              height={28}
+              height={24}
               sx={{ borderRadius: 1 }}
             />
             <ShimmerSkeleton
               variant="rounded"
               width={168}
-              height={28}
+              height={24}
               sx={{ borderRadius: 1 }}
             />
           </Stack>
+
+          <ShimmerSkeleton variant="text" width="78%" height={18} sx={{ mt: 1.5 }} />
+          <ShimmerSkeleton variant="text" width="28%" height={18} sx={{ mt: 0.5 }} />
         </Box>
       </Stack>
     </Paper>
@@ -88,7 +81,7 @@ function CareResultCardSkeletonItem() {
 }
 
 export function CareResultCardSkeleton({
-  count = 4,
+  count = 3,
 }: CareResultCardSkeletonProps) {
   return (
     <Stack spacing={2} aria-busy="true" aria-label="Loading search results">

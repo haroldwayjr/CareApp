@@ -106,7 +106,15 @@ function NetworkStatusIcon({ variant }: { variant: NetworkIconVariant }) {
           />
         </svg>
       ) : (
-        '✓'
+        <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
+          <path
+            d="M2.4 6.2 4.9 8.7 9.6 3.4"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       )}
     </Box>
   )
@@ -201,6 +209,7 @@ export function CareResultCard({
       }}
       sx={{
         p: 2,
+        borderRadius: '8px',
         borderColor: highlighted ? 'primary.main' : 'divider',
         bgcolor: highlighted ? 'action.hover' : 'background.paper',
         cursor: 'pointer',
@@ -300,93 +309,92 @@ export function CareResultCard({
               sx={{ p: 0.5, mt: -0.5, flexShrink: 0 }}
             />
           </Stack>
-        </Box>
-      </Stack>
 
-      <Box sx={{ pl: '57px', mt: 1.5 }}>
-        <Stack
-          direction="row"
-          spacing={1}
-          useFlexGap
-          sx={{
-            flexWrap: 'wrap',
-            alignItems: 'baseline',
-            justifyContent: 'space-between',
-            rowGap: 0.25,
-          }}
-        >
-          <Typography
-            component="span"
+          <Stack
+            direction="row"
+            spacing={1}
+            useFlexGap
+            sx={{ flexWrap: 'wrap', mt: 1 }}
+          >
+            {networkChip ? (
+              <Chip
+                size="small"
+                icon={<NetworkStatusIcon variant={networkChip.icon} />}
+                label={networkChip.label}
+                sx={{ ...chipSx, ...networkChip.tone }}
+              />
+            ) : null}
+            <Chip
+              size="small"
+              label={
+                <TierCopayChipLabel prefix={tierPrefix} copay={result.copay} />
+              }
+              sx={{ ...chipSx, ...tierChipTone }}
+            />
+          </Stack>
+
+          <Stack
+            direction="row"
+            spacing={1}
+            useFlexGap
             sx={{
-              fontSize: 14,
-              fontWeight: 600,
-              letterSpacing: 0,
-              color: 'text.primary',
+              flexWrap: 'wrap',
+              alignItems: 'baseline',
+              justifyContent: 'space-between',
+              rowGap: 0.25,
+              mt: 1.5,
             }}
           >
-            {result.group}
             <Typography
               component="span"
               sx={{
-                fontWeight: 400,
-                color: 'text.secondary',
+                fontSize: 14,
+                fontWeight: 600,
+                letterSpacing: 0,
+                color: 'text.primary',
               }}
             >
-              {' '}
-              {result.address}
+              {result.group}
+              <Typography
+                component="span"
+                sx={{
+                  fontWeight: 400,
+                  color: 'text.secondary',
+                }}
+              >
+                {' '}
+                {result.address}
+              </Typography>
             </Typography>
-          </Typography>
-          <Typography
-            component="span"
+            <Typography
+              component="span"
+              sx={{
+                fontSize: 14,
+                fontWeight: 600,
+                letterSpacing: 0,
+                color: 'text.primary',
+                flexShrink: 0,
+              }}
+            >
+              {Math.round(result.distanceMiles)} mi
+            </Typography>
+          </Stack>
+
+          <Link
+            href={`tel:${result.phone}`}
+            underline="always"
+            onClick={(event) => event.stopPropagation()}
             sx={{
+              display: 'inline-block',
+              mt: 0.5,
               fontSize: 14,
-              fontWeight: 600,
               letterSpacing: 0,
-              color: 'text.primary',
-              flexShrink: 0,
             }}
           >
-            {Math.round(result.distanceMiles)} mi
-          </Typography>
-        </Stack>
-
-        <Link
-          href={`tel:${result.phone}`}
-          underline="always"
-          onClick={(event) => event.stopPropagation()}
-          sx={{
-            display: 'inline-block',
-            mt: 0.5,
-            fontSize: 14,
-            letterSpacing: 0,
-          }}
-        >
-          {result.phone}
-        </Link>
-
-        <Stack
-          direction="row"
-          spacing={1}
-          useFlexGap
-          sx={{ flexWrap: 'wrap', mt: 1.5 }}
-        >
-          {networkChip ? (
-            <Chip
-              size="small"
-              icon={<NetworkStatusIcon variant={networkChip.icon} />}
-              label={networkChip.label}
-              sx={{ ...chipSx, ...networkChip.tone }}
-            />
-          ) : null}
-          <Chip
-            size="small"
-            label={
-              <TierCopayChipLabel prefix={tierPrefix} copay={result.copay} />
-            }
-            sx={{ ...chipSx, ...tierChipTone }}
-          />
-        </Stack>
-      </Box>
+            {result.phone}
+          </Link>
+        </Box>
+      </Stack>
     </Paper>
   )
 }

@@ -51,7 +51,6 @@ export function IncludedHealthPlanKey({
       sx={{
         p: 2,
         borderRadius: '8px',
-        // Match provider card outline (no elevation).
         borderColor: 'divider',
         bgcolor: 'background.paper',
         boxShadow: 'none',
@@ -61,7 +60,7 @@ export function IncludedHealthPlanKey({
         component="h3"
         sx={{
           m: 0,
-          mb: 1.5,
+          mb: 0.5,
           fontSize: 14,
           fontWeight: 600,
           lineHeight: 1.4,
@@ -70,6 +69,19 @@ export function IncludedHealthPlanKey({
         }}
       >
         Included Health Plan Key
+      </Typography>
+      <Typography
+        sx={{
+          m: 0,
+          mb: 1.5,
+          fontSize: 12,
+          fontWeight: 400,
+          lineHeight: 1.4,
+          letterSpacing: 0,
+          color: 'text.secondary',
+        }}
+      >
+        Both tiers shown below are in-network.
       </Typography>
 
       <Stack
@@ -109,7 +121,7 @@ export function IncludedHealthPlanKey({
               color: 'text.primary',
             }}
           >
-            Highest quality providers with lower copays.
+            Highest quality standards, lower copay
           </Typography>
         </Stack>
 
@@ -135,7 +147,7 @@ export function IncludedHealthPlanKey({
               color: 'text.primary',
             }}
           >
-            In-network, but copays are higher than Preferred.
+            Covered, usually a higher copay
           </Typography>
         </Stack>
       </Stack>

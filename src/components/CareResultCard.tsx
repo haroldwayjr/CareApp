@@ -151,7 +151,7 @@ function getNetworkChip(
   switch (status) {
     case 'in_network_tier_1':
     case 'in_network_tier_2':
-      return { label: 'In network', tone: CHIP_SUCCESS, icon: 'solid' }
+      return { label: 'In-network', tone: CHIP_SUCCESS, icon: 'solid' }
     case 'out_of_network':
       return { label: 'Out of network', tone: CHIP_ERROR, icon: 'error' }
     default:
@@ -213,8 +213,9 @@ export function CareResultCard({
       sx={{
         p: 2,
         borderRadius: '8px',
-        borderColor: highlighted ? 'primary.main' : 'divider',
-        bgcolor: highlighted ? 'action.hover' : 'background.paper',
+        borderColor: inList || highlighted ? 'primary.main' : 'divider',
+        // Checkbox selection: blue outline only. Map/overview highlight keeps soft fill.
+        bgcolor: highlighted && !inList ? 'action.hover' : 'background.paper',
         cursor: 'pointer',
       }}
     >
@@ -321,6 +322,19 @@ export function CareResultCard({
           >
             <Chip
               size="small"
+              {...(isPreferred
+                ? {
+                    icon: (
+                      <Box
+                        component="img"
+                        src={verificationBadge}
+                        alt=""
+                        aria-hidden
+                        sx={{ width: 14, height: 14 }}
+                      />
+                    ),
+                  }
+                : {})}
               label={
                 <TierCopayChipLabel prefix={tierPrefix} copay={result.copay} />
               }
@@ -336,52 +350,29 @@ export function CareResultCard({
             ) : null}
           </Stack>
 
-          <Stack
-            direction="row"
-            spacing={1}
-            useFlexGap
+          <Typography
+            component="p"
             sx={{
-              flexWrap: 'wrap',
-              alignItems: 'baseline',
-              justifyContent: 'space-between',
-              rowGap: 0.25,
+              m: 0,
               mt: 1.5,
+              fontSize: 14,
+              letterSpacing: 0,
+              lineHeight: 1.4,
+              color: 'text.primary',
             }}
           >
-            <Typography
-              component="span"
-              sx={{
-                fontSize: 14,
-                fontWeight: 600,
-                letterSpacing: 0,
-                color: 'text.primary',
-              }}
-            >
+            <Box component="span" sx={{ fontWeight: 600 }}>
               {result.group}
-              <Typography
-                component="span"
-                sx={{
-                  fontWeight: 400,
-                  color: 'text.secondary',
-                }}
-              >
-                {' '}
-                {result.address}
-              </Typography>
-            </Typography>
-            <Typography
-              component="span"
-              sx={{
-                fontSize: 14,
-                fontWeight: 600,
-                letterSpacing: 0,
-                color: 'text.primary',
-                flexShrink: 0,
-              }}
-            >
-              {Math.round(result.distanceMiles)} mi
-            </Typography>
-          </Stack>
+            </Box>
+            <Box component="span" sx={{ fontWeight: 400, color: 'text.secondary' }}>
+              {' '}
+              {result.address}
+            </Box>
+            <Box component="span" sx={{ fontWeight: 400, color: 'text.secondary' }}>
+              {' '}
+              • {Math.round(result.distanceMiles)} mi
+            </Box>
+          </Typography>
 
           <Link
             href={`tel:${result.phone}`}

@@ -1246,6 +1246,15 @@ export function buildFilterChips(filters: ProviderFilters): FilterChip[] {
   return chips
 }
 
+/** Toolbar summary: "Any", a single chip label, or "N filters". */
+export function buildFilterSummary(filters: ProviderFilters): string {
+  const count = countActiveFilters(filters)
+  if (count === 0) return 'Any'
+  const chips = buildFilterChips(filters)
+  // Count lives on the filter-icon badge; trigger shows the first applied label.
+  return chips[0]?.label ?? 'Any'
+}
+
 export function removeFilterChip(
   filters: ProviderFilters,
   chipId: string,

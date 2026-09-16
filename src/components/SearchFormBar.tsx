@@ -252,7 +252,7 @@ export function SearchFormBar({ values, onChange, onSearch }: SearchFormBarProps
       </ClickAwayListener>
 
       <Button
-        variant="contained"
+        variant="outlined"
         color="primary"
         disabled={!canSearch}
         onClick={onSearch}

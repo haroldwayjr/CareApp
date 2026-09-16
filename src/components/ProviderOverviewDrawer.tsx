@@ -606,6 +606,16 @@ export function ProviderOverviewDrawer({
                     {overview.trainedAt}
                   </Typography>
                 </InfoRow>
+                <InfoRow label="Tier Level">
+                  <Typography sx={{ fontSize: 14, lineHeight: 1.45 }}>
+                    {provider.tier}
+                  </Typography>
+                </InfoRow>
+                <InfoRow label="Copay">
+                  <Typography sx={{ fontSize: 14, lineHeight: 1.45 }}>
+                    ${provider.copay}
+                  </Typography>
+                </InfoRow>
                 <InfoRow label="Hospital Affiliations">
                   <Typography sx={{ fontSize: 14, lineHeight: 1.45 }}>
                     {overview.hospitalAffiliations.join(', ')}
@@ -656,30 +666,6 @@ export function ProviderOverviewDrawer({
                           }}
                         >
                           {location.distanceMiles.toFixed(1)} miles away
-                        </Typography>
-                      </LocationDetailRow>
-                      <LocationDetailRow label="Tier Level">
-                        <Typography
-                          sx={{
-                            fontSize: 14,
-                            fontWeight: 400,
-                            lineHeight: 1.4,
-                            color: 'text.primary',
-                          }}
-                        >
-                          {location.tierLevel}
-                        </Typography>
-                      </LocationDetailRow>
-                      <LocationDetailRow label="Copay">
-                        <Typography
-                          sx={{
-                            fontSize: 14,
-                            fontWeight: 400,
-                            lineHeight: 1.4,
-                            color: 'text.primary',
-                          }}
-                        >
-                          ${location.copay}
                         </Typography>
                       </LocationDetailRow>
                       <LocationDetailRow label="Network Status">

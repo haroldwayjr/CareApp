@@ -1,0 +1,159 @@
+/* Presentation stage — Surface-style device frame */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  height: 100%;
+}
+
+body.present-stage {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: clamp(16px, 3vw, 40px);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 50% 42%, #1a1f2a 0%, #050608 55%, #000 100%);
+  font-family: Figtree, system-ui, sans-serif;
+  color: #e8ecf4;
+}
+
+.present-chrome {
+  position: fixed;
+  top: 16px;
+  left: 20px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.55;
+  transition: opacity 160ms ease;
+}
+
+.present-chrome:hover {
+  opacity: 1;
+}
+
+.present-chrome a {
+  color: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.present-chrome a:hover {
+  border-bottom-color: currentColor;
+}
+
+.device {
+  --bezel: clamp(10px, 1.35vw, 18px);
+  --radius-outer: clamp(18px, 2.2vw, 28px);
+  --radius-screen: clamp(10px, 1.2vw, 16px);
+  position: relative;
+  width: min(96vw, calc(92vh * 3 / 2));
+  aspect-ratio: 3 / 2;
+  max-height: 92vh;
+  filter: drop-shadow(0 28px 60px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+}
+
+.device-shell {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-outer);
+  background: linear-gradient(160deg, #2a2e36 0%, #0c0e12 42%, #050607 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.device-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 28%,
+    transparent 72%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  pointer-events: none;
+}
+
+.device-camera {
+  position: absolute;
+  top: calc(var(--bezel) * 0.42);
+  left: 50%;
+  z-index: 2;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #3a4150 0%, #12151c 55%, #000 100%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+  transform: translateX(-50%);
+}
+
+.device-camera::after {
+  content: "";
+  position: absolute;
+  inset: 2.5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #5b6a88, #1a2230 70%);
+  opacity: 0.85;
+}
+
+.device-screen {
+  position: absolute;
+  inset: var(--bezel);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-screen);
+  width: calc(100% - var(--bezel) * 2);
+  height: calc(100% - var(--bezel) * 2);
+  background: #f4f6f9;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.device-glow {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -18%;
+  height: 28%;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(80, 120, 220, 0.18), transparent 70%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+@media (max-aspect-ratio: 3/2) {
+  .device {
+    width: min(96vw, calc(92vh * 3 / 2));
+  }
+}
+
+@media (max-width: 720px) {
+  .present-chrome {
+    top: 10px;
+    left: 12px;
+  }
+
+  .device {
+    --bezel: 8px;
+    --radius-outer: 16px;
+    --radius-screen: 10px;
+    width: 96vw;
+    max-height: none;
+    aspect-ratio: 3 / 2;
+  }
+}

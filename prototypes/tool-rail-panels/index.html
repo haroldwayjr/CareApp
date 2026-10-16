@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en" class="is-page-boot">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Care App chat and member context prototype" />
+    <title>Care App — Chat with Riley Smith</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=pill-buttons" />
+  </head>
+  <body>
+    <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
+      <div class="header-left">
+        <button
+          class="icon-button nav-menu-button"
+          id="nav-menu-button"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="nav-drawer"
+        >
+          <!-- icon/navigation/menu — sm outline -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/></svg>
+        </button>
+        <a class="wordmark" href="#" aria-label="Care App home">
+          <img src="logomark.svg" width="18" height="20" alt="" />
+          <span>Care App</span>
+        </a>
+        <nav class="global-nav" aria-label="Primary">
+          <a href="#">Dashboard</a>
+          <a class="is-active" href="#" aria-current="page">My Work</a>
+          <a href="#">Schedule</a>
+          <a href="#">Search</a>
+        </nav>
+      </div>
+      <div class="header-actions">
+        <button class="icon-button" type="button" aria-label="Theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button class="icon-button notification-button" type="button" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 1 1 12 0c0 7 3 7 3 7H3s3 0 3-7"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+        </button>
+        <button class="icon-button" type="button" aria-label="Settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a8 8 0 0 0-1.7-1L14.5 3h-5L9 6a8 8 0 0 0-1.7 1L5 6 3 9.4 5 11a7 7 0 0 0 0 2l-2 1.6L5 18l2.4-1a8 8 0 0 0 1.7 1l.4 3h5l.4-3a8 8 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6a7 7 0 0 0 .1-1Z"/></svg>
+        </button>
+        <button class="user-avatar user-avatar--photo" type="button" aria-label="Account menu for Lila George">
+          <img class="user-avatar-img" src="assets/lila-george.jpg" width="32" height="32" alt="" />
+        </button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="page-heading page-rise" style="--rise: 1" aria-labelledby="page-title">
+        <div class="page-heading-copy">
+          <div class="page-heading-lines">
+            <div class="breadcrumb"><span>My Work</span><span aria-hidden="true">/</span><strong>Chats</strong></div>
+            <h1 id="page-title">Chat with Riley Smith</h1>
+          </div>
+          <div class="member-meta-row">
+            <span class="meta-text">DOB: 5/12/1986 (40 y/o)</span>
+            <span class="meta-text">Member ID: RS-1986-0512</span>
+            <div class="heading-badges" aria-label="Member badges">
+              <span class="badge-tip-wrap">
+                <button class="soft-badge soft-neutral is-tippable" type="button" aria-describedby="tip-plan">
+                  <span class="soft-badge-label">CalPERS PPO Basic Plan</span>
+                </button>
+                <div class="badge-tip" id="tip-plan" role="tooltip" hidden>
+                  <strong>Plan Name:</strong> Aetna Choice<br /><strong>Network Name:</strong> Aetna Choice
+                </div>
+              </span>
+              <span class="badge-tip-wrap">
+                <button class="soft-badge soft-neutral is-tippable" type="button" aria-describedby="tip-primary">
+                  <span class="soft-badge-label">Primary</span>
+                </button>
+                <div class="badge-tip" id="tip-primary" role="tooltip" hidden>
+                  <strong>Caregiver for:</strong> — None<br /><strong>Receiving care from:</strong> — None
+                </div>
+              </span>
+              <span class="soft-badge soft-accent"><span class="soft-badge-label">VIP</span></span>
+            </div>
+          </div>
+        </div>
+        <button class="button button-secondary create-task" type="button">Create Task</button>
+      </section>
+
+      <div class="workspace">
+        <section class="card chat-card page-rise" style="--rise: 2" aria-label="Chat with Riley Smith">
+          <header class="chat-header">
+            <div class="member-identity">
+              <span class="avatar avatar--photo avatar--md avatar--presence">
+                <img class="avatar-img" src="assets/riley-smith.jpg" width="32" height="32" alt="" />
+                <span class="presence-dot" aria-hidden="true"></span>
+              </span>
+              <div class="member-identity-text">
+                <strong>Riley Smith</strong>
+                <span class="assigned-line">Assigned to Lila George</span>
+              </div>
+            </div>
+            <div class="reply-timers" aria-label="Reply timers">
+              <div class="reply-timer is-active" data-reply-side="member">
+                <span class="reply-timer-label">Member Replied</span>
+                <span class="reply-timer-value" data-reply-timer="member">00:03</span>
+              </div>
+              <span class="reply-timers-divider" aria-hidden="true"></span>
+              <div class="reply-timer" data-reply-side="you">
+                <span class="reply-timer-label">You Replied</span>
+                <span class="reply-timer-value" data-reply-timer="you">00:03</span>
+              </div>
+            </div>
+          </header>
+          <div class="conversation" id="conversation">
+            <p class="msg-date">Yesterday · 2:59 PM</p>
+
+            <article class="msg-group msg-group--member">
+              <header class="msg-sender-head">
+                <img class="avatar-img avatar-img--msg" src="assets/riley-smith.jpg" width="20" height="20" alt="" />
+                <strong class="msg-sender-name">Riley Smith</strong>
+              </header>
+              <div class="msg-content">
+                <div class="msg-stack">
+                  <p class="msg-bubble msg-bubble--member">I need to speak with a human.</p>
+                  <p class="msg-bubble msg-bubble--member">How quickly can you connect me?</p>
+                  <p class="msg-bubble msg-bubble--member">I’ll need to drop my friend off at the airport in 15 minutes so please hurry!</p>
+                </div>
+                <footer class="msg-meta"><time datetime="2026-10-14T09:14">9:14 AM</time></footer>
+              </div>
+            </article>
+
+            <article class="msg-group msg-group--agent" id="msg-dot-first">
+              <header class="msg-sender-head">
+                <img class="logo-dot" src="assets/logo-dot.svg" width="20" height="20" alt="" />
+                <span class="msg-sender-name">Dot</span>
+              </header>
+              <div class="msg-content">
+                <p class="msg-plain">I can do that quickly, don’t worry. Would you like me to connect you to a member of the Care Team right&nbsp;now?</p>
+                <footer class="msg-meta">
+                  <time datetime="2026-10-14T09:14">9:14 AM</time>
+                  <span class="msg-meta-status">Read by Member</span>
+                </footer>
+              </div>
+            </article>
+
+            <article class="msg-group msg-group--member">
+              <header class="msg-sender-head">
+                <img class="avatar-img avatar-img--msg" src="assets/riley-smith.jpg" width="20" height="20" alt="" />
+                <strong class="msg-sender-name">Riley Smith</strong>
+              </header>
+              <div class="msg-content">
+                <div class="msg-stack">
+                  <p class="msg-bubble msg-bubble--member">yes</p>
+                </div>
+                <footer class="msg-meta"><time datetime="2026-10-14T09:14">9:14 AM</time></footer>
+              </div>
+            </article>
+
+            <article class="msg-group msg-group--agent">
+              <header class="msg-sender-head">
+                <img class="logo-dot" src="assets/logo-dot.svg" width="20" height="20" alt="" />
+                <span class="msg-sender-name">Dot</span>
+              </header>
+              <div class="msg-content">
+                <p class="msg-plain">Connecting you with Lila George on the Care Team. She typically replies within a few minutes.</p>
+                <footer class="msg-meta">
+                  <time datetime="2026-10-14T09:14">9:14 AM</time>
+                  <span class="msg-meta-status">Read by Member</span>
+                </footer>
+              </div>
+            </article>
+
+            <p class="msg-date">Today · 9:14 AM</p>
+            <p class="msg-system">Lila George joined the conversation</p>
+
+            <article class="msg-group msg-group--team">
+              <header class="msg-sender-head msg-sender-head--team">
+                <div class="msg-team-meta">
+                  <strong class="msg-sender-name">Lila George</strong>
+                  <span class="msg-team-sep" aria-hidden="true">•</span>
+                  <span class="msg-team-role">Care Team member</span>
+                </div>
+                <img class="avatar-img avatar-img--msg" src="assets/lila-george.jpg" width="20" height="20" alt="" />
+              </header>
+              <div class="msg-content msg-content--end">
+                <div class="msg-stack msg-stack--end">
+                  <p class="msg-bubble msg-bubble--team">Hi Riley — this is Lila from the Care Team. I see you’d like to talk with us. How can I help?</p>
+                </div>
+                <footer class="msg-meta msg-meta--end">
+                  <time datetime="2026-10-15T09:14">9:14 AM</time>
+                  <span class="msg-meta-status">Read by Member</span>
+                </footer>
+              </div>
+            </article>
+
+            <article class="msg-group msg-group--member">
+              <header class="msg-sender-head">
+                <img class="avatar-img avatar-img--msg" src="assets/riley-smith.jpg" width="20" height="20" alt="" />
+                <strong class="msg-sender-name">Riley Smith</strong>
+              </header>
+              <div class="msg-content">
+                <div class="msg-stack">
+                  <p class="msg-bubble msg-bubble--member">I have a question about a specialist referral on my CalPERS PPO plan.</p>
+                </div>
+                <footer class="msg-meta"><time datetime="2026-10-15T09:14">9:14 AM</time></footer>
+              </div>
+            </article>
+          </div>
+          <footer class="composer">
+            <div class="composer-field" id="composer-field">
+              <label class="composer-input-wrap">
+                <span class="visually-hidden">Message</span>
+                <textarea class="composer-input" id="composer-input" rows="1" placeholder="Write a message..."></textarea>
+              </label>
+              <div class="composer-toolbar">
+                <button class="composer-icon-btn composer-icon-btn--attach" id="composer-attach" type="button" aria-label="Attach an image">
+                  <!-- Streamline Regular Add xs — rounded caps -->
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+                    <path d="M1 12h22M12 1v22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25"/>
+                  </svg>
+                </button>
+                <input class="visually-hidden" id="composer-attach-input" type="file" accept="image/*" tabindex="-1" />
+                <div class="composer-toolbar-end">
+                  <button class="composer-icon-btn composer-icon-btn--rewrite" id="composer-cleanup" type="button" aria-label="Clean up">
+                    <!-- icon/actions/edit.sparkle — Regular 1.5, translate-only -->
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true" overflow="visible">
+                      <path d="M22.19 1.81a3.639 3.639 0 0 0-5.17.035l-14.5 14.5L.75 23.25l6.905-1.771 14.5-14.5a3.637 3.637 0 0 0 .035-5.169Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                      <path d="m16.606 2.26 5.134 5.134" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                      <path d="m2.521 16.344 5.139 5.13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                      <g transform="translate(2.75 13.75)">
+                        <path d="M22.8125 5.948c-2.8135.944-3.741 1.996-4.427 4.615-.686-2.619-1.613-3.67-4.427-4.615 2.814-.944 3.741-1.996 4.427-4.615.686 2.619 1.613 3.67 4.427 4.615Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                      </g>
+                    </svg>
+                    <span class="tooltip tooltip--above">Clean up</span>
+                  </button>
+                  <button class="composer-send" id="composer-send" type="button" disabled aria-label="Send message">
+                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                      <path d="M1.4 3.743a1.5 1.5 0 0 1 1.973-2.077l19.014 9.659a.75.75 0 0 1 0 1.337L3.373 22.334A1.5 1.5 0 0 1 1.4 20.257l5.058-8.264Z" fill="currentColor"/>
+                      <path d="M6.453 11.993h16.344" class="composer-send-seam" stroke-linecap="round" stroke-width="1.75"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="composer-footer-row">
+              <button class="button button-secondary composer-chat-note" type="button">Start Chat Note</button>
+            </div>
+          </footer>
+        </section>
+
+        <button
+          type="button"
+          class="panel-resizer"
+          id="panel-resizer"
+          aria-label="Resize panels"
+          aria-orientation="vertical"
+          aria-controls="context-panel"
+        ></button>
+
+        <!-- Tablet/phone: tap dimmed chat to dismiss context sheet -->
+        <button type="button" class="workspace-sheet-scrim" id="workspace-sheet-scrim" aria-label="Close panel"></button>
+
+        <aside class="card context-panel page-rise" style="--rise: 3" id="context-panel" aria-label="Member Information panel">
+          <div class="panel-stage" id="panel-stage"></div>
+        </aside>
+
+        <nav class="card tool-rail page-rise" style="--rise: 4" aria-label="Member tools">
+          <button class="rail-button is-disabled" type="button" aria-disabled="true" aria-label="Chat Assist"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg><span class="tooltip">Chat Assist</span></button>
+          <button class="rail-button is-active" type="button" data-panel="member" aria-label="Member Information" aria-pressed="true" aria-controls="context-panel"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="tooltip">Member Information</span></button>
+          <button class="rail-button" type="button" data-panel="insurance" aria-label="Insurance" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M12 8v8M8 12h8"/></svg><span class="tooltip">Insurance</span></button>
+          <button class="rail-button" type="button" data-panel="eligibility" aria-label="Eligibility" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><path d="M9 5H6a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3"/><rect x="9" y="2" width="6" height="5" rx="1"/><path d="m9 15 2 2 4-5"/></svg><span class="tooltip">Eligibility</span></button>
+          <button class="rail-button is-disabled" type="button" aria-disabled="true" aria-label="Notes"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><span class="tooltip">Notes</span></button>
+          <button class="rail-button is-disabled" type="button" aria-disabled="true" aria-label="Communication"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span class="tooltip">Communication</span></button>
+          <button class="rail-button is-disabled" type="button" aria-disabled="true" aria-label="Member Activity"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="tooltip">Member Activity</span></button>
+          <button class="rail-button is-disabled" type="button" aria-disabled="true" aria-label="Provider Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="tooltip">Provider Search</span></button>
+        </nav>
+      </div>
+    </main>
+
+    <div class="nav-drawer-layer" id="nav-drawer-layer" aria-hidden="true">
+      <button class="nav-drawer-scrim" type="button" aria-label="Close menu"></button>
+      <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+        <header class="nav-drawer-header">
+          <strong>Care App</strong>
+          <button class="icon-button" type="button" id="nav-drawer-close" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+        </header>
+        <div class="nav-drawer-links">
+          <a href="#">Dashboard</a>
+          <a class="is-active" href="#" aria-current="page">My Work</a>
+          <a href="#">Schedule</a>
+          <a href="#">Search</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="modal-layer" id="modal-layer" aria-hidden="true" data-dismissible="true">
+      <div class="modal-scrim"></div>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <header class="modal-header">
+          <h4 id="modal-title">Dialog</h4>
+          <button class="icon-button" type="button" data-close-modal aria-label="Close dialog">
+            <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+        </header>
+        <div class="modal-body" id="modal-body"></div>
+        <footer class="modal-footer" id="modal-footer"></footer>
+      </section>
+    </div>
+    <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <script src="chat-engine.js?v=mca-right"></script>
+    <script src="app.js?v=ct-manage-no-heading"></script>
+  </body>
+</html>

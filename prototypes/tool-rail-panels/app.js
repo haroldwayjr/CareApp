@@ -110,7 +110,7 @@
   function menuPopoverAnchor(el) {
     return (
       el?.closest(
-        ".select-wrap, .inline-dob-control, .ins-dropdown-wrap, .view-menu-wrap, .more-menu-wrap, .ct-row-menu-wrap, .ct-search-wrap"
+        ".select-wrap, .inline-dob-control, .ins-dropdown-wrap, .view-menu-wrap, .more-menu-wrap, .ct-row-menu-wrap, .ct-search-wrap, .elig-filter-wrap"
       ) || el?.parentElement
     );
   }
@@ -423,6 +423,8 @@
     phoneLine: "—",
     infoOpen: true,
     benefitQuery: "",
+    /** @type {"all"|"ih"|"other"} */
+    benefitFilter: "all",
     /** @type {"overview"|"benefit"} */
     view: "overview",
     selectedBenefitId: null,
@@ -461,7 +463,17 @@
     /* Same mark as mode-switcher / Select Item — 18px via CSS, stroke 2, brand */
     check: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L19 7"/></svg>`,
     plus: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    search: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>`,
+    /* Streamline Ultimate Regular — Search (icon/misc/search) */
+    search: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1.472 13.357a9.063 9.063 0 1 0 16.682-7.09 9.063 9.063 0 1 0-16.682 7.09Z"/><path d="m16.221 16.22 7.029 7.03"/></svg>`,
+    /* Member more-menu — Streamline Ultimate Regular (same set as mode switcher) */
+    phone: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15.04 22.39.012.007a5.533 5.533 0 0 0 6.884-.755l.774-.774a1.846 1.846 0 0 0 0-2.609L19.449 15a1.846 1.846 0 0 0-2.609 0h0a1.843 1.843 0 0 1-2.608 0L9.014 9.781a1.846 1.846 0 0 1 0-2.609h0a1.843 1.843 0 0 0 0-2.608L5.754 1.3a1.846 1.846 0 0 0-2.609 0l-.774.774a5.535 5.535 0 0 0-.756 6.884l.008.012A49.935 49.935 0 0 0 15.04 22.39Z"/></svg>`,
+    /* Streamline Ultimate Regular — Calendar Add 1 */
+    calendarAdd: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.25 23.25a6 6 0 1 0 0-12 6 6 0 0 0 0 12"/><path d="M17.25 14.25v6"/><path d="M14.25 17.25h6"/><path d="M.75 6.75h21.5"/><path d="M6.75 3.75v-3"/><path d="M16.25 3.75v-3"/><path d="M22.25 10V3.75a1.5 1.5 0 0 0-1.5-1.5H2.25a1.5 1.5 0 0 0-1.5 1.5v16a1.5 1.5 0 0 0 1.5 1.5H9.5"/></svg>`,
+    folderAdd: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.25 18.75H2.447"/><path d="M20.25 8.25v-3a1.5 1.5 0 0 0-1.5-1.5H8.25v-1.5a1.5 1.5 0 0 0-1.5-1.5h-4.5a1.5 1.5 0 0 0-1.5 1.5v14.8a1.7 1.7 0 0 0 3.336.438l2.351-8.154A1.5 1.5 0 0 1 7.879 8.25H21.75a1.5 1.5 0 0 1 1.45 1.886"/><path d="M11.25 17.25a6 6 0 1 0 12 0 6 6 0 1 0-12 0Z"/><path d="M17.25 14.25v6"/><path d="M14.25 17.25h6"/></svg>`,
+    taskListAdd: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.25 10.511h5.25"/><path d="M5.25 14.261h3"/><path d="M5.25 18.011h3"/><path d="M9.75 23.25h-7.5a1.5 1.5 0 0 1-1.5-1.5V6A1.5 1.5 0 0 1 2.25 4.5H6a3.75 3.75 0 0 1 7.5 0h3.75A1.5 1.5 0 0 1 18.75 6v2.25"/><path d="M9.75 4.136a.375.375 0 1 0 0 .75.375.375 0 0 0 0-.75"/><path d="M17.25 23.25a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/><path d="M17.25 14.25v6"/><path d="M14.25 17.25h6"/></svg>`,
+    chatText: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.25 18-3 2.25v-4.5h-3a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h16.5a1.5 1.5 0 0 1 1.5 1.5v4.5"/><path d="M5.25 5.25h10.5"/><path d="M5.25 9.75h3"/><path d="M23.25 18.75h-3v4.5l-4.5-4.5h-4.5v-9h12v9z"/><path d="M20.25 12.75h-6"/><path d="M20.25 15.75h-6"/></svg>`,
+    /* Streamline Ultimate Regular — Messages Bubble Square Text */
+    sms: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.75 18.75h-10.5l-6 4.5v-4.5h-3a1.5 1.5 0 0 1-1.5-1.5v-15a1.5 1.5 0 0 1 1.5-1.5h19.5a1.5 1.5 0 0 1 1.5 1.5v15a1.5 1.5 0 0 1-1.5 1.5Z"/><path d="M5.25 7.5h13.5"/><path d="M5.25 12h10.5"/></svg>`,
     /* Streamline Ultimate Regular — Information Circle (icon/status/info) */
     info: `<svg viewBox="0 0 24 24" aria-hidden="true" class="ins-info-glyph"><circle cx="12" cy="12" r="10.5"/><path d="M12 10.5v6"/><circle class="ins-info-glyph-dot" cx="12" cy="7.5" r="1.125"/></svg>`,
     /* Streamline Ultimate Regular — Filter Sort Lines Descending */
@@ -645,6 +657,17 @@
       description:
         "Routes members to bundled surgical and specialty care options through the Carrum Health network.",
       detail: defaultBenefitDetail("Carrum Health", "Specialty Network"),
+    },
+    {
+      id: "adoption-assistance",
+      name: "Adoption Assistance",
+      icon: "clinic",
+      recommended: false,
+      jobAid: "Job Aid: Share [Adoption Assistance]",
+      jobAidLink: "Adoption Assistance",
+      description:
+        "Helps members understand employer adoption benefits and next steps for reimbursement or support.",
+      detail: defaultBenefitDetail("Adoption Assistance", "Employer Benefit"),
     },
   ];
 
@@ -1646,13 +1669,27 @@
           <div class="more-menu-wrap">
             <button class="icon-button icon-button--more" type="button" aria-label="More member options" aria-expanded="false" aria-haspopup="menu">${icon.more}</button>
             <div class="more-menu" role="menu" hidden>
-              <button type="button" role="menuitem" data-more-action="Care call">Care call</button>
-              <button type="button" role="menuitem" data-more-action="Schedule appointment">Schedule appointment</button>
-              <button type="button" role="menuitem" data-more-action="Search Provider">Search Provider</button>
-              <button type="button" role="menuitem" data-more-action="Create a case">Create a case</button>
-              <button type="button" role="menuitem" data-more-action="Start CCM Intake">Start CCM Intake</button>
-              <button type="button" role="menuitem" data-more-action="Ask KST">Ask KST</button>
-              <button type="button" role="menuitem" data-more-action="Send Upcoming Call SMS">Send Upcoming Call SMS</button>
+              <button type="button" role="menuitem" data-more-action="Care call">
+                <span class="more-menu-icon" aria-hidden="true">${icon.phone}</span>Care call
+              </button>
+              <button type="button" role="menuitem" data-more-action="Schedule appointment">
+                <span class="more-menu-icon" aria-hidden="true">${icon.calendarAdd}</span>Schedule appointment
+              </button>
+              <button type="button" role="menuitem" data-more-action="Search Provider">
+                <span class="more-menu-icon" aria-hidden="true">${icon.search}</span>Search Provider
+              </button>
+              <button type="button" role="menuitem" data-more-action="Create a case">
+                <span class="more-menu-icon" aria-hidden="true">${icon.folderAdd}</span>Create a case
+              </button>
+              <button type="button" role="menuitem" data-more-action="Start CCM Intake">
+                <span class="more-menu-icon" aria-hidden="true">${icon.taskListAdd}</span>Start CCM Intake
+              </button>
+              <button type="button" role="menuitem" data-more-action="Ask KST">
+                <span class="more-menu-icon" aria-hidden="true">${icon.chatText}</span>Ask KST
+              </button>
+              <button type="button" role="menuitem" data-more-action="Send Upcoming Call SMS">
+                <span class="more-menu-icon" aria-hidden="true">${icon.sms}</span>Send Upcoming Call SMS
+              </button>
             </div>
           </div>
           <button class="icon-button panel-close" type="button" aria-label="Close Member Information">${icon.close}</button>
@@ -2229,10 +2266,25 @@
     syncStickyFooterTip(label, text, tip, isComparePair ? full : "");
   }
 
+  /** Clinic glyphs = employer/other; nodes = Included Health. */
+  function benefitSource(benefit) {
+    return benefit.icon === "clinic" ? "other" : "ih";
+  }
+
+  function benefitFilterHeading(filter = eligibilityState.benefitFilter) {
+    if (filter === "ih") return "Included Health Benefits";
+    if (filter === "other") return "Other Benefits";
+    return "All Benefits";
+  }
+
   function filteredBenefits() {
     const q = eligibilityState.benefitQuery.trim().toLowerCase();
-    if (!q) return memberBenefits;
-    return memberBenefits.filter((b) => b.name.toLowerCase().includes(q));
+    const filter = eligibilityState.benefitFilter;
+    return memberBenefits.filter((b) => {
+      if (filter !== "all" && benefitSource(b) !== filter) return false;
+      if (q && !b.name.toLowerCase().includes(q)) return false;
+      return true;
+    });
   }
 
   function benefitById(id) {
@@ -2320,29 +2372,6 @@
     else eligibilityState.selectedBenefitIds.delete(id);
   }
 
-  function visibleBenefitIds() {
-    return filteredBenefits().map((b) => b.id);
-  }
-
-  function syncSelectAllCheckbox() {
-    const master = stage.querySelector("#elig-benefit-select-all");
-    if (!master) return;
-    const ids = visibleBenefitIds();
-    const selected = ids.filter((id) => isBenefitSelected(id)).length;
-    master.checked = ids.length > 0 && selected === ids.length;
-    master.indeterminate = selected > 0 && selected < ids.length;
-    master.disabled = ids.length === 0;
-  }
-
-  function setAllVisibleBenefitsSelected(on) {
-    visibleBenefitIds().forEach((id) => setBenefitSelected(id, on));
-    stage.querySelectorAll(".elig-benefit-check[data-benefit-select]").forEach((input) => {
-      input.checked = isBenefitSelected(input.dataset.benefitSelect);
-    });
-    refreshBenefitsSelectionBar();
-    syncSelectAllCheckbox();
-  }
-
   function eligibilitySelectedBarHtml() {
     const count = selectedBenefitCount();
     return `<div class="elig-selected-bar" ${count ? "" : "hidden"}>
@@ -2374,7 +2403,6 @@
         input.checked = false;
       });
       refreshBenefitsSelectionBar();
-      syncSelectAllCheckbox();
     });
   }
 
@@ -2539,14 +2567,42 @@
               <input id="elig-benefit-search" type="search" placeholder="Search for benefit" value="${escapeAttr(eligibilityState.benefitQuery)}" />
               <kbd class="elig-search-kbd">⌘K</kbd>
             </label>
-            <button class="elig-filter-btn" type="button" id="elig-benefit-filter" aria-label="Filter benefits">${icon.filter}</button>
+            <div class="elig-filter-wrap">
+              <button
+                class="elig-filter-btn${eligibilityState.benefitFilter !== "all" ? " is-active" : ""}"
+                type="button"
+                id="elig-benefit-filter"
+                aria-label="Filter benefits"
+                aria-expanded="false"
+                aria-haspopup="menu"
+              >${icon.filter}</button>
+              <div class="elig-filter-menu" role="menu" hidden>
+                ${[
+                  ["all", "All"],
+                  ["ih", "Included Health"],
+                  ["other", "Other"],
+                ]
+                  .map(
+                    ([value, label]) => `
+                <button
+                  type="button"
+                  role="menuitemradio"
+                  data-benefit-filter="${value}"
+                  aria-checked="${eligibilityState.benefitFilter === value}"
+                  class="${eligibilityState.benefitFilter === value ? "is-selected" : ""}"
+                >
+                  <span>${label}</span>
+                  ${eligibilityState.benefitFilter === value ? icon.check : ""}
+                </button>`
+                  )
+                  .join("")}
+              </div>
+            </div>
           </div>
           ${eligibilitySelectedBarHtml()}
           <div class="elig-benefits-head">
+            <h4 class="elig-benefits-all" id="elig-benefits-filter-label">${benefitFilterHeading()}</h4>
             <div class="elig-benefits-cols">
-              <label class="elig-benefit-check-wrap">
-                <input type="checkbox" class="elig-benefit-check" id="elig-benefit-select-all" aria-label="Select all benefits" />
-              </label>
               <span class="elig-benefits-cols-name">Benefit Name</span>
               <span>Last Activity</span>
             </div>
@@ -2823,6 +2879,7 @@
       hideMenuPopover(moreMenu);
       moreButton.setAttribute("aria-expanded", "false");
     }
+    if (except !== "elig-filter") closeBenefitFilterMenu();
     if (except !== "ins-dropdown" && insuranceState.openDropdown) {
       insuranceState.openDropdown = null;
       applyCompareDropdownOpenState();
@@ -2859,6 +2916,7 @@
         moreButton?.setAttribute("aria-expanded", "false");
       }
     }
+    if (!t.closest(".elig-filter-wrap")) closeBenefitFilterMenu();
     if (
       !t.closest(".ins-dropdown-wrap") &&
       !t.closest(".ins-dropdown-menu") &&
@@ -2989,26 +3047,72 @@
     refreshStickyFooterTip();
   }
 
+  function refreshBenefitListDom() {
+    const list = stage.querySelector(".elig-benefits-list");
+    if (list) {
+      list.innerHTML = eligibilityBenefitsHtml();
+      bindBenefitRowActions();
+    }
+    const heading = stage.querySelector("#elig-benefits-filter-label");
+    if (heading) heading.textContent = benefitFilterHeading();
+    const filterBtn = stage.querySelector("#elig-benefit-filter");
+    filterBtn?.classList.toggle("is-active", eligibilityState.benefitFilter !== "all");
+    refreshBenefitsSelectionBar();
+  }
+
+  function syncBenefitFilterMenu() {
+    const menu = stage.querySelector(".elig-filter-menu");
+    if (!menu) return;
+    menu.querySelectorAll("[data-benefit-filter]").forEach((btn) => {
+      const on = btn.dataset.benefitFilter === eligibilityState.benefitFilter;
+      btn.setAttribute("aria-checked", String(on));
+      btn.classList.toggle("is-selected", on);
+      const existing = btn.querySelector(":scope > svg");
+      if (on && !existing) btn.insertAdjacentHTML("beforeend", icon.check);
+      if (!on && existing) existing.remove();
+    });
+  }
+
+  function closeBenefitFilterMenu() {
+    const menu = stage.querySelector(".elig-filter-menu");
+    const btn = stage.querySelector("#elig-benefit-filter");
+    if (menu && !menu.hidden) hideMenuPopover(menu);
+    btn?.setAttribute("aria-expanded", "false");
+  }
+
   function bindBenefitListActions() {
     const benefitSearch = stage.querySelector("#elig-benefit-search");
     benefitSearch?.addEventListener("input", () => {
       eligibilityState.benefitQuery = benefitSearch.value;
-      const list = stage.querySelector(".elig-benefits-list");
-      if (list) {
-        list.innerHTML = eligibilityBenefitsHtml();
-        bindBenefitRowActions();
-        syncSelectAllCheckbox();
+      refreshBenefitListDom();
+    });
+
+    const filterBtn = stage.querySelector("#elig-benefit-filter");
+    const filterMenu = stage.querySelector(".elig-filter-menu");
+    filterBtn?.addEventListener("click", () => {
+      if (!filterMenu) return;
+      const opening = filterMenu.hidden || filterMenu.classList.contains("is-leaving");
+      closeOverlayMenus("elig-filter");
+      if (opening) {
+        syncBenefitFilterMenu();
+        showMenuPopover(filterMenu);
+        filterBtn.setAttribute("aria-expanded", "true");
+      } else {
+        hideMenuPopover(filterMenu);
+        filterBtn.setAttribute("aria-expanded", "false");
       }
     });
-    stage.querySelector("#elig-benefit-filter")?.addEventListener("click", () => {
-      showToast("Benefit filters coming soon");
+    filterMenu?.querySelectorAll("[data-benefit-filter]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        eligibilityState.benefitFilter = btn.dataset.benefitFilter || "all";
+        syncBenefitFilterMenu();
+        refreshBenefitListDom();
+        closeBenefitFilterMenu();
+      });
     });
-    stage.querySelector("#elig-benefit-select-all")?.addEventListener("change", (event) => {
-      setAllVisibleBenefitsSelected(event.currentTarget.checked);
-    });
+
     bindBenefitRowActions();
     bindMarkReferredButton();
-    syncSelectAllCheckbox();
   }
 
   let benefitTipHideTimer = 0;
@@ -3074,7 +3178,6 @@
         if (!id) return;
         setBenefitSelected(id, input.checked);
         refreshBenefitsSelectionBar();
-        syncSelectAllCheckbox();
       });
     });
     const scheduleHide = () => {
@@ -3653,6 +3756,7 @@
       const hasMenu =
         stage.querySelector(".view-menu:not([hidden])") ||
         stage.querySelector(".more-menu:not([hidden])") ||
+        stage.querySelector(".elig-filter-menu:not([hidden])") ||
         stage.querySelector(".inline-select.is-open") ||
         stage.querySelector(".inline-dob-wrap.is-open") ||
         insuranceState.openDropdown ||

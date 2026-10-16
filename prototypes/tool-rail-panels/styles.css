@@ -16,6 +16,7 @@
   --text-primary: #101828;
   --text-secondary: #344054;
   --text-tertiary: #475467;
+  --icon-secondary: #344054; /* icon/secondary — Select Item / menu leading icons */
   --icon-tertiary: #667085;
   --success: #16794a;
   --success-soft: #e6f7eb; /* surface/success/soft → green/100 */
@@ -183,7 +184,14 @@ svg { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: 
   align-items: center;
   gap: 10px;
 }
-.mode-switcher-option-main svg { width: 18px; height: 18px; flex: 0 0 auto; stroke-width: 1.75; }
+/* Soma Select Item leading icon — 16px, icon/secondary */
+.mode-switcher-option-main > svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  color: var(--icon-secondary);
+  stroke-width: 1.5;
+}
 .mode-switcher-check {
   display: none;
   flex: 0 0 auto;
@@ -231,6 +239,7 @@ html[data-color-mode="dark"] {
   --text-primary: #f3f5f8;
   --text-secondary: #b7c0d0;
   --text-tertiary: #8b95a8;
+  --icon-secondary: #b7c0d0; /* icon/secondary on dark */
   --icon-tertiary: #8b95a8;
   --success: #3dd68c;
   --success-soft: #143528; /* surface/success/soft → green/900 */
@@ -967,7 +976,8 @@ html[data-color-mode="dark"] .badge-tip {
 .select-menu,
 .dob-calendar,
 .ct-row-menu,
-.ct-search-dropdown {
+.ct-search-dropdown,
+.elig-filter-menu {
   transform-origin: top left;
   will-change: opacity, transform;
 }
@@ -977,12 +987,14 @@ html[data-color-mode="dark"] .badge-tip {
 .select-menu.is-measuring,
 .dob-calendar.is-measuring,
 .ct-row-menu.is-measuring,
-.ct-search-dropdown.is-measuring {
+.ct-search-dropdown.is-measuring,
+.elig-filter-menu.is-measuring {
   animation: none !important;
   visibility: hidden;
 }
 .more-menu,
-.ct-row-menu { transform-origin: top right; }
+.ct-row-menu,
+.elig-filter-menu { transform-origin: top right; }
 .dob-calendar { transform-origin: top right; }
 .view-menu.opens-up,
 .more-menu.opens-up,
@@ -990,13 +1002,15 @@ html[data-color-mode="dark"] .badge-tip {
 .select-menu.opens-up,
 .dob-calendar.opens-up:not(.is-fixed-popover),
 .ct-row-menu.opens-up,
-.ct-search-dropdown.opens-up {
+.ct-search-dropdown.opens-up,
+.elig-filter-menu.opens-up {
   top: auto;
   bottom: calc(100% + 4px);
   transform-origin: bottom left;
 }
 .more-menu.opens-up,
-.ct-row-menu.opens-up { transform-origin: bottom right; }
+.ct-row-menu.opens-up,
+.elig-filter-menu.opens-up { transform-origin: bottom right; }
 .dob-calendar.opens-up { transform-origin: bottom right; }
 .dob-calendar.is-fixed-popover.opens-up,
 .ins-dropdown-menu.is-fixed-popover.opens-up {
@@ -1017,7 +1031,8 @@ html[data-color-mode="dark"] .badge-tip {
 .select-menu:not([hidden]):not(.is-leaving),
 .dob-calendar:not([hidden]):not(.is-leaving),
 .ct-row-menu:not([hidden]):not(.is-leaving),
-.ct-search-dropdown {
+.ct-search-dropdown,
+.elig-filter-menu:not([hidden]):not(.is-leaving) {
   animation: menu-popover-in 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .view-menu.opens-up:not([hidden]):not(.is-leaving),
@@ -1026,7 +1041,8 @@ html[data-color-mode="dark"] .badge-tip {
 .select-menu.opens-up:not([hidden]):not(.is-leaving),
 .dob-calendar.opens-up:not([hidden]):not(.is-leaving),
 .ct-row-menu.opens-up:not([hidden]):not(.is-leaving),
-.ct-search-dropdown.opens-up {
+.ct-search-dropdown.opens-up,
+.elig-filter-menu.opens-up:not([hidden]):not(.is-leaving) {
   animation-name: menu-popover-in-up;
 }
 .view-menu.is-leaving,
@@ -1034,7 +1050,8 @@ html[data-color-mode="dark"] .badge-tip {
 .ins-dropdown-menu.is-leaving,
 .select-menu.is-leaving,
 .dob-calendar.is-leaving,
-.ct-row-menu.is-leaving {
+.ct-row-menu.is-leaving,
+.elig-filter-menu.is-leaving {
   animation: menu-popover-out 120ms cubic-bezier(0.4, 0, 1, 1) both;
   pointer-events: none;
 }
@@ -1043,7 +1060,8 @@ html[data-color-mode="dark"] .badge-tip {
 .ins-dropdown-menu.opens-up.is-leaving,
 .select-menu.opens-up.is-leaving,
 .dob-calendar.opens-up.is-leaving,
-.ct-row-menu.opens-up.is-leaving {
+.ct-row-menu.opens-up.is-leaving,
+.elig-filter-menu.opens-up.is-leaving {
   animation-name: menu-popover-out-up;
 }
 
@@ -1056,17 +1074,18 @@ html[data-color-mode="dark"] .badge-tip {
 }
 .view-menu[hidden] { display: none; }
 .view-menu button {
-  display: flex; align-items: center; gap: 10px; width: 100%;
+  display: flex; align-items: center; gap: 8px; width: 100%;
   padding: 10px 12px; border: 0; border-radius: var(--radius-sm);
   background: transparent; color: var(--text-primary);
   font-size: 14px; font-weight: 500; line-height: 20px; text-align: left; cursor: pointer;
 }
 .view-menu button:hover { background: var(--surface-muted); }
 .view-menu-icon {
-  display: grid; width: 16px; height: 16px; flex: 0 0 auto; place-items: center;
+  /* 14px — sits under body1 cap-height; 16 was optically heavy */
+  display: grid; width: 14px; height: 14px; flex: 0 0 auto; place-items: center;
   color: var(--text-primary);
 }
-.view-menu-icon svg { width: 16px; height: 16px; stroke-width: 1.5; }
+.view-menu-icon svg { width: 14px; height: 14px; stroke-width: 1.6; }
 .more-menu-wrap { position: relative; }
 .more-menu {
   position: absolute; top: calc(100% + 6px); right: 0; z-index: 20;
@@ -1077,12 +1096,19 @@ html[data-color-mode="dark"] .badge-tip {
 }
 .more-menu[hidden] { display: none; }
 .more-menu button {
-  display: block; width: 100%; margin: 0; padding: 10px 12px;
+  /* Soma Select Item row — 16px leading icon, icon/secondary */
+  display: flex; align-items: center; gap: 10px; width: 100%; margin: 0;
+  min-height: 40px; padding: 0 10px;
   border: 0; border-radius: var(--radius-sm); background: transparent;
   color: var(--text-primary); font-size: 14px; font-weight: 500; line-height: 20px;
   text-align: left; cursor: pointer; white-space: nowrap;
 }
 .more-menu button:hover { background: var(--surface-muted); }
+.more-menu-icon {
+  display: grid; width: 16px; height: 16px; flex: 0 0 auto; place-items: center;
+  color: var(--icon-secondary);
+}
+.more-menu-icon svg { width: 16px; height: 16px; stroke-width: 1.5; }
 /* Soma Tabs.List — left-aligned, hug label width (not equal columns when panel expands) */
 .tabs {
   display: flex; flex-wrap: nowrap; align-items: stretch; justify-content: flex-start;
@@ -1777,7 +1803,8 @@ html.is-panel-fields-wide [data-content="eligibility"] .elig-summary .list-item:
   background: var(--surface-subtle); color: var(--text-secondary);
   font-family: inherit; font-size: 11px; font-weight: 600; line-height: 16px;
 }
-/* Button text / brand / small / iconOnly — no chrome box (image 2) */
+/* Button text / brand / small / iconOnly — ghost (no fill) */
+.elig-filter-wrap { position: relative; flex: 0 0 auto; }
 .elig-filter-btn {
   display: grid; flex: 0 0 auto; place-items: center;
   width: 36px; height: 36px; min-width: 36px; min-height: 36px;
@@ -1785,27 +1812,52 @@ html.is-panel-fields-wide [data-content="eligibility"] .elig-summary .list-item:
   border: 0; border-radius: var(--radius-full);
   background: transparent; color: var(--brand);
   cursor: pointer;
-  transition: background 140ms ease, color 140ms ease;
+  transition: color 140ms ease, opacity 140ms ease;
 }
 .elig-filter-btn svg {
   width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5;
   stroke-linecap: round; stroke-linejoin: round;
 }
-.elig-filter-btn:hover { background: var(--brand-soft); color: var(--brand); }
+.elig-filter-btn:hover,
+.elig-filter-btn[aria-expanded="true"],
+.elig-filter-btn.is-active {
+  background: transparent;
+  color: var(--brand-hover, var(--brand));
+}
 .elig-filter-btn:focus-visible {
   outline: 2px solid var(--brand); outline-offset: 2px;
+}
+/* Soma Menu / Popup + Select / Item selection (trailing check) */
+.elig-filter-menu {
+  position: absolute; top: calc(100% + 6px); right: 0; z-index: 30;
+  min-width: 180px; padding: 6px;
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: 0 10px 28px rgba(16, 29, 56, .16);
+}
+.elig-filter-menu[hidden] { display: none; }
+.elig-filter-menu button {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  width: 100%; min-height: 40px; margin: 0; padding: 0 10px;
+  border: 0; border-radius: var(--radius-sm); background: transparent;
+  color: var(--text-primary); font-size: 14px; font-weight: 500; line-height: 20px;
+  text-align: left; cursor: pointer; white-space: nowrap;
+}
+.elig-filter-menu button:hover { background: var(--surface-muted); }
+.elig-filter-menu button > svg {
+  width: 18px; height: 18px; flex: 0 0 auto; color: var(--brand); stroke-width: 2;
 }
 .elig-benefits-head {
   display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0;
 }
-/* Soma h5 — Figtree SemiBold 14 / 20 */
+/* Dynamic filter mirror — subtitle2 SemiBold 14 / 20 */
 .elig-benefits-all {
   margin: 0; padding: 0;
   font-size: 14px; font-weight: 600; line-height: 20px; color: var(--text-primary);
   text-align: left;
 }
 .elig-benefits-cols {
-  /* Match .elig-benefit-row tracks so select-all lines up with row checks */
+  /* Match .elig-benefit-row tracks */
   display: grid; grid-template-columns: 18px 28px minmax(0, 1fr) 148px; column-gap: 12px;
   align-items: center;
   margin: 0; padding: 0 0 8px;
@@ -1815,9 +1867,9 @@ html.is-panel-fields-wide [data-content="eligibility"] .elig-summary .list-item:
   color: var(--text-secondary); text-transform: none; letter-spacing: 0;
   text-align: left;
 }
-/* Start under the icon column (next to select-all), not under benefit text */
+/* Flush left with section title / search */
 .elig-benefits-cols-name {
-  grid-column: 2 / 4;
+  grid-column: 1 / 4;
   text-align: left;
 }
 .elig-benefits-cols > span:last-child { text-align: right; }

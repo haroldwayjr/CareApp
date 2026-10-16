@@ -119,14 +119,23 @@
     if (!el) return;
     el.classList.remove("opens-up", "is-fixed-popover");
     menuPopoverAnchor(el)?.classList.remove("opens-up");
-    if (el.classList.contains("dob-calendar")) {
+    if (el.classList.contains("dob-calendar") || el.classList.contains("ins-dropdown-menu")) {
       el.style.position = "";
       el.style.top = "";
       el.style.right = "";
       el.style.bottom = "";
       el.style.left = "";
       el.style.width = "";
+      el.style.minWidth = "";
+      el.style.maxWidth = "";
       el.style.zIndex = "";
+    }
+    /* Return compare menus portaled to <body> back to their wrap */
+    if (el.classList.contains("ins-dropdown-menu") && el._insDropdownHome?.isConnected) {
+      const home = el._insDropdownHome;
+      home.appendChild(el);
+      if (home._portedMenu === el) home._portedMenu = null;
+      el._insDropdownHome = null;
     }
   }
 
@@ -184,11 +193,68 @@
     el.style.zIndex = "60";
   }
 
+  /**
+   * Compare-plan dropdowns: portal to <body> + fixed so `.card { overflow: hidden }`
+   * and the tool rail can’t clip them. Prefer below + trigger-left; shift left if needed.
+   */
+  function positionInsDropdownMenu(el) {
+    const wrap =
+      el._insDropdownHome ||
+      el.closest(".ins-dropdown-wrap") ||
+      stage.querySelector(`.ins-dropdown-wrap.is-open`);
+    const trigger = wrap?.querySelector(".ins-dropdown-trigger");
+    if (!wrap || !trigger) return;
+
+    if (el.parentElement !== document.body) {
+      el._insDropdownHome = wrap;
+      wrap._portedMenu = el;
+      document.body.appendChild(el);
+    }
+
+    const triggerRect = trigger.getBoundingClientRect();
+    const gap = 4;
+    const rail = document.querySelector(".tool-rail");
+    const rightLimit = Math.min(
+      window.innerWidth - 8,
+      rail ? rail.getBoundingClientRect().left - 8 : window.innerWidth - 8
+    );
+
+    el.classList.add("is-fixed-popover");
+    el.classList.remove("opens-up");
+    wrap.classList.remove("opens-up");
+    el.hidden = false;
+    el.style.position = "fixed";
+    el.style.bottom = "auto";
+    el.style.right = "auto";
+    el.style.minWidth = `${Math.round(triggerRect.width)}px`;
+    el.style.width = "max-content";
+    el.style.maxWidth = "280px";
+    el.style.zIndex = "1200";
+    el.style.top = `${Math.round(triggerRect.bottom + gap)}px`;
+    el.style.left = `${Math.round(triggerRect.left)}px`;
+
+    const menuRect = el.getBoundingClientRect();
+    const menuWidth = Math.min(280, Math.max(menuRect.width, triggerRect.width, 1));
+    let left = triggerRect.left;
+    if (left + menuWidth > rightLimit) {
+      left = Math.max(8, rightLimit - menuWidth);
+    }
+    /* Always open downward on compare — controls sit near the top of the panel */
+    const top = triggerRect.bottom + gap;
+
+    el.style.top = `${Math.round(top)}px`;
+    el.style.left = `${Math.round(left)}px`;
+  }
+
   /** Prefer open downward; flip up when clipped below or colliding with sticky chrome. */
   function positionMenuPopover(el) {
     if (!el || el.hidden) return;
     if (el.classList.contains("dob-calendar")) {
       positionDobCalendar(el);
+      return;
+    }
+    if (el.classList.contains("ins-dropdown-menu")) {
+      positionInsDropdownMenu(el);
       return;
     }
     const anchor = menuPopoverAnchor(el);
@@ -227,6 +293,8 @@
     positionMenuPopover(el);
     requestAnimationFrame(() => {
       el.classList.remove("is-measuring");
+      /* Fixed menus need a second pass once visibility is restored */
+      if (el.classList.contains("ins-dropdown-menu")) positionInsDropdownMenu(el);
     });
   }
 
@@ -358,12 +426,7 @@
     /** @type {"overview"|"benefit"} */
     view: "overview",
     selectedBenefitId: null,
-    selectedBenefitIds: new Set([
-      "adhoc-outbound",
-      "annual-checkup",
-      "benefits-navigation",
-      "black-care-equity",
-    ]),
+    selectedBenefitIds: new Set(),
   };
 
   const eligibilityInfo = [
@@ -395,7 +458,8 @@
     arrowTopRight: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 20.25 15.91-15.91"/><path d="M4.91 4.34h15v15"/></svg>`,
     edit: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.19 1.81a3.639 3.639 0 0 0-5.17.035l-14.5 14.5L.75 23.25l6.905-1.771 14.5-14.5a3.637 3.637 0 0 0 .035-5.169Z"/><path d="m16.606 2.26 5.134 5.134"/><path d="m2.521 16.344 5.139 5.13"/></svg>`,
     back: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>`,
-    check: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>`,
+    /* Same mark as mode-switcher / Select Item — 18px via CSS, stroke 2, brand */
+    check: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L19 7"/></svg>`,
     plus: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
     search: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>`,
     /* Streamline Ultimate Regular — Information Circle (icon/status/info) */
@@ -845,6 +909,31 @@
     "December",
   ];
 
+  const DOB_YEAR_MIN = 1920;
+
+  function dobYearMax() {
+    return new Date().getFullYear();
+  }
+
+  function dobDecadeStart(year) {
+    return Math.floor(year / 10) * 10;
+  }
+
+  const DOB_MONTHS_SHORT = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
   function setDobViewMonth(wrap, year, month) {
     wrap.dataset.viewYear = String(year);
     wrap.dataset.viewMonth = String(month);
@@ -863,6 +952,7 @@
     if (!cal) return;
     const selected = dateInput?.value || "";
     const today = todayIsoDate();
+    const level = wrap.dataset.dobLevel || "day";
     let year = Number(wrap.dataset.viewYear);
     let month = Number(wrap.dataset.viewMonth);
     if (!year || !month) {
@@ -871,27 +961,93 @@
       month = view.month;
       setDobViewMonth(wrap, year, month);
     }
-    const title = cal.querySelector(".dob-calendar-title");
-    if (title) title.textContent = `${DOB_MONTHS[month - 1]} ${year}`;
-    const startDow = new Date(year, month - 1, 1).getDay();
-    const gridStart = new Date(year, month - 1, 1 - startDow);
-    const cells = [];
-    for (let i = 0; i < 42; i += 1) {
-      const cell = new Date(gridStart.getFullYear(), gridStart.getMonth(), gridStart.getDate() + i);
-      const y = cell.getFullYear();
-      const m = cell.getMonth() + 1;
-      const d = cell.getDate();
-      const cellIso = `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
-      const classes = ["dob-calendar-day"];
-      if (m !== month) classes.push("is-outside");
-      if (cellIso === today) classes.push("is-today");
-      if (selected && cellIso === selected) classes.push("is-selected");
-      cells.push(
-        `<button type="button" class="${classes.join(" ")}" data-iso="${cellIso}">${d}</button>`
-      );
-    }
+    year = Math.min(dobYearMax(), Math.max(DOB_YEAR_MIN, year));
+
+    cal.classList.remove("dob-level-day", "dob-level-month", "dob-level-year");
+    cal.classList.add(`dob-level-${level}`);
+
+    const weekdays = cal.querySelector(".dob-calendar-weekdays");
+    if (weekdays) weekdays.hidden = level !== "day";
+
+    const titleLabel = cal.querySelector(".dob-calendar-title-label");
+    const titleBtn = cal.querySelector("[data-dob-title]");
+    const prevBtn = cal.querySelector("[data-dob-prev]");
+    const nextBtn = cal.querySelector("[data-dob-next]");
     const grid = cal.querySelector(".dob-calendar-grid");
-    if (grid) grid.innerHTML = cells.join("");
+    if (!grid) return;
+
+    grid.className = "dob-calendar-grid";
+    let cells = [];
+
+    if (level === "day") {
+      grid.classList.add("dob-calendar-grid--days");
+      if (titleLabel) titleLabel.textContent = `${DOB_MONTHS[month - 1]} ${year}`;
+      if (titleBtn) titleBtn.setAttribute("aria-label", "Choose month and year");
+      if (prevBtn) prevBtn.setAttribute("aria-label", "Previous month");
+      if (nextBtn) nextBtn.setAttribute("aria-label", "Next month");
+
+      const startDow = new Date(year, month - 1, 1).getDay();
+      const gridStart = new Date(year, month - 1, 1 - startDow);
+      for (let i = 0; i < 42; i += 1) {
+        const cell = new Date(gridStart.getFullYear(), gridStart.getMonth(), gridStart.getDate() + i);
+        const y = cell.getFullYear();
+        const m = cell.getMonth() + 1;
+        const d = cell.getDate();
+        const cellIso = `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+        const classes = ["dob-calendar-day"];
+        if (m !== month) classes.push("is-outside");
+        if (cellIso === today) classes.push("is-today");
+        if (selected && cellIso === selected) classes.push("is-selected");
+        cells.push(
+          `<button type="button" class="${classes.join(" ")}" data-iso="${cellIso}">${d}</button>`
+        );
+      }
+    } else if (level === "month") {
+      grid.classList.add("dob-calendar-grid--months");
+      if (titleLabel) titleLabel.textContent = String(year);
+      if (titleBtn) titleBtn.setAttribute("aria-label", "Choose year");
+      if (prevBtn) prevBtn.setAttribute("aria-label", "Previous year");
+      if (nextBtn) nextBtn.setAttribute("aria-label", "Next year");
+
+      const selectedMonth = selected ? Number(selected.split("-")[1]) : 0;
+      const selectedYear = selected ? Number(selected.split("-")[0]) : 0;
+      for (let m = 1; m <= 12; m += 1) {
+        const classes = ["dob-calendar-pick"];
+        if (m === month) classes.push("is-current");
+        if (selectedYear === year && selectedMonth === m) classes.push("is-selected");
+        cells.push(
+          `<button type="button" class="${classes.join(" ")}" data-dob-month="${m}">${DOB_MONTHS_SHORT[m - 1]}</button>`
+        );
+      }
+    } else {
+      grid.classList.add("dob-calendar-grid--years");
+      let decadeStart = Number(wrap.dataset.viewDecadeStart);
+      if (!decadeStart) {
+        decadeStart = dobDecadeStart(year);
+        wrap.dataset.viewDecadeStart = String(decadeStart);
+      }
+      const decadeEnd = decadeStart + 11;
+      if (titleLabel) titleLabel.textContent = `${decadeStart} – ${decadeEnd}`;
+      if (titleBtn) titleBtn.setAttribute("aria-label", "Year range");
+      if (prevBtn) prevBtn.setAttribute("aria-label", "Previous years");
+      if (nextBtn) nextBtn.setAttribute("aria-label", "Next years");
+
+      const selectedYear = selected ? Number(selected.split("-")[0]) : 0;
+      const maxY = dobYearMax();
+      for (let y = decadeStart; y <= decadeEnd; y += 1) {
+        const outOfRange = y < DOB_YEAR_MIN || y > maxY;
+        const classes = ["dob-calendar-pick"];
+        if (y === year) classes.push("is-current");
+        if (selectedYear === y) classes.push("is-selected");
+        if (outOfRange) classes.push("is-disabled");
+        const disabled = outOfRange ? ' disabled aria-disabled="true"' : "";
+        cells.push(
+          `<button type="button" class="${classes.join(" ")}" data-dob-year="${y}"${disabled}>${y}</button>`
+        );
+      }
+    }
+
+    grid.innerHTML = cells.join("");
   }
 
   function syncInlineDobWrap(wrap, updateHidden = true) {
@@ -954,7 +1110,10 @@
           <div class="dob-calendar" id="${id}-cal" role="dialog" aria-label="Choose date" hidden>
             <div class="dob-calendar-header">
               <button type="button" class="dob-calendar-nav" data-dob-prev aria-label="Previous month">${icon.chevronLeft}</button>
-              <div class="dob-calendar-title"></div>
+              <button type="button" class="dob-calendar-title" data-dob-title aria-label="Choose month and year">
+                <span class="dob-calendar-title-label"></span>
+                <span class="dob-calendar-title-chevron" aria-hidden="true">${icon.down}</span>
+              </button>
               <button type="button" class="dob-calendar-nav dob-calendar-nav--next" data-dob-next aria-label="Next month">${icon.chevronLeft}</button>
             </div>
             <div class="dob-calendar-weekdays" aria-hidden="true">${weekdays}</div>
@@ -989,9 +1148,14 @@
         wrap.classList.remove("is-open");
         return;
       }
+      /* Keep is-open until [hidden] so stacking/fade aren’t covered by sibling rows */
       hideMenuPopover(cal);
-      wrap.classList.remove("is-open");
       trigger?.setAttribute("aria-expanded", "false");
+      const release = () => {
+        if (cal.hidden) wrap.classList.remove("is-open");
+      };
+      cal.addEventListener("animationend", release, { once: true });
+      window.setTimeout(release, 180);
     });
   }
 
@@ -1011,12 +1175,18 @@
           return;
         }
         hideMenuPopover(cal);
-        wrap.classList.remove("is-open");
         trigger.setAttribute("aria-expanded", "false");
+        const release = () => {
+          if (cal.hidden) wrap.classList.remove("is-open");
+        };
+        cal.addEventListener("animationend", release, { once: true });
+        window.setTimeout(release, 180);
       };
 
       const openCalendar = () => {
         const view = dobViewFromIso(dateInput.value);
+        wrap.dataset.dobLevel = "day";
+        delete wrap.dataset.viewDecadeStart;
         setDobViewMonth(wrap, view.year, view.month);
         renderDobCalendar(wrap);
         showMenuPopover(cal);
@@ -1040,28 +1210,94 @@
 
       cal.addEventListener("click", (event) => {
         event.stopPropagation();
-        if (event.target.closest("[data-dob-prev]")) {
-          let month = Number(wrap.dataset.viewMonth) - 1;
-          let year = Number(wrap.dataset.viewYear);
-          if (month < 1) {
-            month = 12;
-            year -= 1;
+        const level = wrap.dataset.dobLevel || "day";
+        if (event.target.closest("[data-dob-title]")) {
+          if (level === "day") {
+            wrap.dataset.dobLevel = "month";
+          } else if (level === "month") {
+            wrap.dataset.dobLevel = "year";
+            wrap.dataset.viewDecadeStart = String(
+              dobDecadeStart(Number(wrap.dataset.viewYear))
+            );
+          } else {
+            return;
           }
-          setDobViewMonth(wrap, year, month);
+          renderDobCalendar(wrap);
+          positionMenuPopover(cal);
+          return;
+        }
+        if (event.target.closest("[data-dob-prev]")) {
+          if (level === "year") {
+            const minDecade = dobDecadeStart(DOB_YEAR_MIN);
+            let start = Number(wrap.dataset.viewDecadeStart || minDecade) - 10;
+            if (start < minDecade) start = minDecade;
+            wrap.dataset.viewDecadeStart = String(start);
+          } else if (level === "month") {
+            let y = Number(wrap.dataset.viewYear) - 1;
+            if (y < DOB_YEAR_MIN) y = DOB_YEAR_MIN;
+            setDobViewMonth(wrap, y, Number(wrap.dataset.viewMonth));
+          } else {
+            let month = Number(wrap.dataset.viewMonth) - 1;
+            let year = Number(wrap.dataset.viewYear);
+            if (month < 1) {
+              month = 12;
+              year -= 1;
+            }
+            if (year < DOB_YEAR_MIN) {
+              year = DOB_YEAR_MIN;
+              month = 1;
+            }
+            setDobViewMonth(wrap, year, month);
+          }
           renderDobCalendar(wrap);
           positionMenuPopover(cal);
           return;
         }
         if (event.target.closest("[data-dob-next]")) {
-          let month = Number(wrap.dataset.viewMonth) + 1;
-          let year = Number(wrap.dataset.viewYear);
-          if (month > 12) {
-            month = 1;
-            year += 1;
+          if (level === "year") {
+            const maxDecade = dobDecadeStart(dobYearMax());
+            let start = Number(wrap.dataset.viewDecadeStart || maxDecade) + 10;
+            if (start > maxDecade) start = maxDecade;
+            wrap.dataset.viewDecadeStart = String(start);
+          } else if (level === "month") {
+            let y = Number(wrap.dataset.viewYear) + 1;
+            if (y > dobYearMax()) y = dobYearMax();
+            setDobViewMonth(wrap, y, Number(wrap.dataset.viewMonth));
+          } else {
+            let month = Number(wrap.dataset.viewMonth) + 1;
+            let year = Number(wrap.dataset.viewYear);
+            if (month > 12) {
+              month = 1;
+              year += 1;
+            }
+            if (year > dobYearMax()) {
+              year = dobYearMax();
+              month = 12;
+            }
+            setDobViewMonth(wrap, year, month);
           }
-          setDobViewMonth(wrap, year, month);
           renderDobCalendar(wrap);
           positionMenuPopover(cal);
+          return;
+        }
+        const monthBtn = event.target.closest("[data-dob-month]");
+        if (monthBtn?.dataset.dobMonth) {
+          setDobViewMonth(wrap, Number(wrap.dataset.viewYear), Number(monthBtn.dataset.dobMonth));
+          wrap.dataset.dobLevel = "day";
+          renderDobCalendar(wrap);
+          positionMenuPopover(cal);
+          return;
+        }
+        const yearBtn = event.target.closest("[data-dob-year]:not([disabled])");
+        if (yearBtn?.dataset.dobYear) {
+          const y = Number(yearBtn.dataset.dobYear);
+          if (y >= DOB_YEAR_MIN && y <= dobYearMax()) {
+            setDobViewMonth(wrap, y, Number(wrap.dataset.viewMonth));
+            wrap.dataset.dobLevel = "month";
+            delete wrap.dataset.viewDecadeStart;
+            renderDobCalendar(wrap);
+            positionMenuPopover(cal);
+          }
           return;
         }
         if (event.target.closest("[data-dob-clear]")) {
@@ -1670,12 +1906,16 @@
     </article>`;
   }
 
+  function insDropdownMenuForWrap(wrap) {
+    return wrap?.querySelector(".ins-dropdown-menu") || wrap?._portedMenu || null;
+  }
+
   /** Toggle compare dropdown open state in the live DOM — never remounts .panel-content. */
   function applyCompareDropdownOpenState() {
     const open = insuranceState.openDropdown;
     stage.querySelectorAll(".ins-dropdown-wrap").forEach((wrap) => {
       const trigger = wrap.querySelector("[data-ins-dropdown]");
-      const menu = wrap.querySelector(".ins-dropdown-menu");
+      const menu = insDropdownMenuForWrap(wrap);
       if (!trigger || !menu) return;
       const kind = trigger.dataset.insDropdown;
       const isOpen = open === kind;
@@ -1713,13 +1953,15 @@
       }
     }
 
-    wrap.querySelectorAll("[data-ins-dropdown-option]").forEach((option) => {
-      const selected = option.dataset.value === value;
-      option.classList.toggle("is-selected", selected);
-      const existing = [...option.children].find((el) => el.tagName === "svg");
-      if (selected && !existing) option.insertAdjacentHTML("beforeend", icon.check);
-      else if (!selected && existing) existing.remove();
-    });
+    (insDropdownMenuForWrap(wrap) || wrap)
+      .querySelectorAll("[data-ins-dropdown-option]")
+      .forEach((option) => {
+        const selected = option.dataset.value === value;
+        option.classList.toggle("is-selected", selected);
+        const existing = [...option.children].find((el) => el.tagName === "svg");
+        if (selected && !existing) option.insertAdjacentHTML("beforeend", icon.check);
+        else if (!selected && existing) existing.remove();
+      });
 
     if (kind === "plan-a" || kind === "plan-b") {
       const col = wrap.closest(".ins-cmp-col");
@@ -1743,12 +1985,21 @@
         applyCompareDropdownOpenState();
       });
     });
-    stage.querySelectorAll("[data-ins-dropdown-option]").forEach((option) => {
-      option.addEventListener("click", (event) => {
-        event.stopPropagation();
-        applyCompareDropdownSelection(option.dataset.insDropdownOption, option.dataset.value);
+    const bindDropdownOptions = (root) => {
+      root.querySelectorAll("[data-ins-dropdown-option]").forEach((option) => {
+        if (option.dataset.boundInsOption) return;
+        option.dataset.boundInsOption = "1";
+        option.addEventListener("click", (event) => {
+          event.stopPropagation();
+          applyCompareDropdownSelection(option.dataset.insDropdownOption, option.dataset.value);
+        });
       });
+    };
+    stage.querySelectorAll(".ins-dropdown-wrap").forEach((wrap) => {
+      bindDropdownOptions(wrap);
     });
+    /* Options may already be portaled from a prior open in this session */
+    document.querySelectorAll("body > .ins-dropdown-menu").forEach((menu) => bindDropdownOptions(menu));
   }
 
   function insuranceTemplate() {
@@ -2608,7 +2859,11 @@
         moreButton?.setAttribute("aria-expanded", "false");
       }
     }
-    if (!t.closest(".ins-dropdown-wrap") && insuranceState.openDropdown) {
+    if (
+      !t.closest(".ins-dropdown-wrap") &&
+      !t.closest(".ins-dropdown-menu") &&
+      insuranceState.openDropdown
+    ) {
       insuranceState.openDropdown = null;
       applyCompareDropdownOpenState();
     }
@@ -3458,7 +3713,7 @@
     });
   }
 
-  /** @type {{ role: 'user' | 'assistant', content: string }[]} */
+  /** @type {{ role: 'user' | 'assistant', content: string, speaker?: 'lila' | 'riley' | 'dot' }[]} */
   const chatHistory = [];
   let chatBusy = false;
   /** @type {AbortController | null} */
@@ -3466,15 +3721,21 @@
 
   const seedChatHistoryFromDom = () => {
     if (!conversationEl || chatHistory.length) return;
-    // MCA tool: advocate (Lila) = user · member (Riley) = assistant for the sim engine
-    // Skip Dot/agent — those are not Riley and confuse the member persona.
+    // MCA tool: Lila = user · Riley / Dot = assistant (speaker tagged for routing)
     conversationEl.querySelectorAll(".msg-group").forEach((group) => {
       if (group.classList.contains("msg-group--team")) {
         const bubbles = [...group.querySelectorAll(".msg-bubble")].map((el) => el.textContent.trim());
-        if (bubbles.length) chatHistory.push({ role: "user", content: bubbles.join("\n") });
+        if (bubbles.length) {
+          chatHistory.push({ role: "user", content: bubbles.join("\n"), speaker: "lila" });
+        }
       } else if (group.classList.contains("msg-group--member")) {
         const texts = [...group.querySelectorAll(".msg-bubble")].map((el) => el.textContent.trim());
-        if (texts.length) chatHistory.push({ role: "assistant", content: texts.join("\n") });
+        if (texts.length) {
+          chatHistory.push({ role: "assistant", content: texts.join("\n"), speaker: "riley" });
+        }
+      } else if (group.classList.contains("msg-group--agent")) {
+        const plain = group.querySelector(".msg-plain")?.textContent?.trim();
+        if (plain) chatHistory.push({ role: "assistant", content: plain, speaker: "dot" });
       }
     });
   };
@@ -3549,17 +3810,16 @@
     syncComposerSend();
   };
 
-  /** Team + Dot meta: caption time + SemiBold “Read by Member” once seen */
+  /** Dot only: caption time + SemiBold “Read by Member” once seen (MCA keeps time only) */
   const markOutboundMessagesRead = () => {
-    conversationEl
-      ?.querySelectorAll(".msg-group--team .msg-meta, .msg-group--agent .msg-meta")
-      .forEach((meta) => {
-        if (meta.querySelector(".msg-meta-status")) return;
-        const status = document.createElement("span");
-        status.className = "msg-meta-status";
-        status.textContent = "Read by Member";
-        meta.append(status);
-      });
+    conversationEl?.querySelectorAll(".msg-group--team .msg-meta-status").forEach((el) => el.remove());
+    conversationEl?.querySelectorAll(".msg-group--agent .msg-meta").forEach((meta) => {
+      if (meta.querySelector(".msg-meta-status")) return;
+      const status = document.createElement("span");
+      status.className = "msg-meta-status";
+      status.textContent = "Read by Member";
+      meta.append(status);
+    });
   };
 
   /** MCA (Lila) outbound — right-aligned brand bubble */
@@ -3590,12 +3850,29 @@
     return article;
   };
 
-  /** Simulated member reply — left gray bubble */
-  const appendTypingIndicator = () => {
+  /** Pending reply — Riley (member) or Dot (agent) */
+  const appendTypingIndicator = (speaker = "member") => {
+    const isDot = speaker === "dot";
     const article = document.createElement("article");
-    article.className = "msg-group msg-group--member is-pending";
-    article.setAttribute("aria-label", "Riley Smith is typing");
-    article.innerHTML = `
+    article.className = `msg-group ${isDot ? "msg-group--agent" : "msg-group--member"} is-pending`;
+    article.dataset.replySpeaker = isDot ? "dot" : "member";
+    article.setAttribute("aria-label", isDot ? "Dot is typing" : "Riley Smith is typing");
+    article.innerHTML = isDot
+      ? `
+      <header class="msg-sender-head">
+        <img class="logo-dot" src="assets/logo-dot.svg" width="20" height="20" alt="" />
+        <span class="msg-sender-name">Dot</span>
+      </header>
+      <div class="msg-content">
+        <div class="msg-stack">
+          <div class="msg-typing" aria-hidden="true">
+            <span class="msg-typing-dot"></span>
+            <span class="msg-typing-dot"></span>
+            <span class="msg-typing-dot"></span>
+          </div>
+        </div>
+      </div>`
+      : `
       <header class="msg-sender-head">
         <img class="avatar-img avatar-img--msg" src="assets/riley-smith.jpg" width="20" height="20" alt="" />
         <strong class="msg-sender-name">Riley Smith</strong>
@@ -3615,18 +3892,23 @@
   };
 
   const promoteTypingToStream = (typingArticle) => {
+    const isDot = typingArticle.dataset.replySpeaker === "dot";
     const stack = typingArticle.querySelector(".msg-stack");
-    stack.innerHTML = `<p class="msg-bubble msg-bubble--member is-streaming" aria-live="polite"></p>`;
+    stack.innerHTML = isDot
+      ? `<p class="msg-plain is-streaming" aria-live="polite"></p>`
+      : `<p class="msg-bubble msg-bubble--member is-streaming" aria-live="polite"></p>`;
     const content = typingArticle.querySelector(".msg-content");
     if (!content.querySelector(".msg-meta")) {
       const footer = document.createElement("footer");
       footer.className = "msg-meta";
-      footer.innerHTML = `<time></time>`;
+      footer.innerHTML = isDot
+        ? `<time></time><span class="msg-meta-status">Read by Member</span>`
+        : `<time></time>`;
       content.append(footer);
     }
     typingArticle.classList.remove("is-pending");
     typingArticle.removeAttribute("aria-label");
-    return stack.querySelector(".msg-bubble");
+    return stack.querySelector(".msg-plain, .msg-bubble");
   };
 
   const finishStreamedMessage = (bubble, typingArticle) => {
@@ -3719,32 +4001,42 @@
     composerInput.value = "";
     syncComposerSend();
     appendAdvocateMessage(text);
-    chatHistory.push({ role: "user", content: text });
+    chatHistory.push({ role: "user", content: text, speaker: "lila" });
     bumpReplyTimers("you");
     setComposerBusy(true);
 
-    const typingArticle = appendTypingIndicator();
+    let typingArticle = null;
     let bubble = null;
     let assembled = "";
+    let replySpeaker = "member";
 
     try {
       for await (const event of CareChatEngine.generate({
         messages: chatHistory.slice(-16),
         signal: chatAbort.signal,
       })) {
-        if (event.type === "status" && event.phase === "typing" && !bubble) {
+        if (event.type === "speaker") {
+          replySpeaker = event.speaker === "dot" ? "dot" : "member";
+          typingArticle = appendTypingIndicator(replySpeaker);
+        }
+        if (event.type === "status" && event.phase === "typing" && typingArticle && !bubble) {
           bubble = promoteTypingToStream(typingArticle);
         }
         if (event.type === "token") {
+          if (!typingArticle) {
+            typingArticle = appendTypingIndicator(replySpeaker);
+          }
           if (!bubble) bubble = promoteTypingToStream(typingArticle);
           assembled += event.text;
           bubble.textContent = assembled;
           scrollConversationToEnd(false);
         }
         if (event.type === "done") {
+          const speaker = event.speaker === "dot" || replySpeaker === "dot" ? "dot" : "riley";
           assembled = assembled
-            .replace(/^(Riley\s*\(member\)|Riley|As Riley)\s*[:\-–]\s*/i, "")
+            .replace(/^(Riley\s*\(member\)|Riley|As Riley|Dot(?:\s*\(assistant\))?)\s*[:\-–]\s*/i, "")
             .trim();
+          if (!typingArticle) typingArticle = appendTypingIndicator(speaker === "dot" ? "dot" : "member");
           if (!bubble) {
             bubble = promoteTypingToStream(typingArticle);
             bubble.textContent = assembled || "…";
@@ -3752,16 +4044,20 @@
             bubble.textContent = assembled || bubble.textContent;
           }
           finishStreamedMessage(bubble, typingArticle);
-          chatHistory.push({ role: "assistant", content: assembled });
+          chatHistory.push({
+            role: "assistant",
+            content: assembled,
+            speaker,
+          });
           bumpReplyTimers("member");
         }
       }
     } catch (err) {
       if (err?.name === "AbortError") {
-        typingArticle.remove();
+        typingArticle?.remove();
       } else {
         console.error(err);
-        typingArticle.remove();
+        typingArticle?.remove();
         showToast("Couldn’t get a reply — try again");
       }
     } finally {

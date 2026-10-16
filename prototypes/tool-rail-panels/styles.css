@@ -189,8 +189,17 @@ svg { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: 
   flex: 0 0 auto;
   color: var(--brand);
 }
-.mode-switcher-check svg { width: 18px; height: 18px; stroke-width: 2; }
 .mode-switcher-option[aria-checked="true"] .mode-switcher-check { display: block; }
+/* Shared selection check — mode switcher, Select / Item, compare dropdowns */
+.mode-switcher-check svg,
+.select-menu button > svg,
+.ins-dropdown-menu button > svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  color: var(--brand);
+  stroke-width: 2;
+}
 .mode-switcher-sep {
   height: 1px;
   margin: 6px 4px;
@@ -680,7 +689,7 @@ html[data-color-mode="dark"] .badge-tip {
 .msg-group.is-pending { opacity: 1; }
 .composer.is-busy .composer-input { caret-color: var(--brand); }
 .composer.is-busy .composer-send { cursor: wait; }
-/* Soma caption · text/secondary — “9:14 AM Read by Member” (team + Dot) */
+/* Soma caption · text/secondary — time on all; “Read by Member” on Dot only */
 .msg-meta {
   display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px;
   margin-top: 4px;
@@ -989,9 +998,18 @@ html[data-color-mode="dark"] .badge-tip {
 .more-menu.opens-up,
 .ct-row-menu.opens-up { transform-origin: bottom right; }
 .dob-calendar.opens-up { transform-origin: bottom right; }
-.dob-calendar.is-fixed-popover.opens-up {
-  /* top/right set in JS — don’t apply absolute bottom anchoring */
+.dob-calendar.is-fixed-popover.opens-up,
+.ins-dropdown-menu.is-fixed-popover.opens-up {
+  /* top/left set in JS — don’t apply absolute bottom anchoring */
+  top: auto; /* overridden by inline top */
   bottom: auto;
+}
+.ins-dropdown-menu.is-fixed-popover {
+  /* Defeat absolute top/left from the base rule when JS positions */
+  top: 0;
+  left: 0;
+  bottom: auto;
+  right: auto;
 }
 .view-menu:not([hidden]):not(.is-leaving),
 .more-menu:not([hidden]):not(.is-leaving),
@@ -1272,7 +1290,16 @@ html.is-panel-fields-wide [data-content="eligibility"] .accordion-fields .list-i
   display: flex; align-items: center; justify-content: flex-end; width: 100%;
 }
 .list-item.inline-field .inline-dob-wrap { position: relative; z-index: 0; }
-.list-item.inline-field .inline-dob-wrap.is-open { z-index: 40; }
+/* Elevate through leave anim — is-open drops immediately while calendar stays visible */
+.list-item.inline-field:has(.inline-dob-wrap.is-open),
+.list-item.inline-field:has(.dob-calendar:not([hidden])) {
+  position: relative;
+  z-index: 40;
+}
+.list-item.inline-field .inline-dob-wrap.is-open,
+.list-item.inline-field .inline-dob-wrap:has(.dob-calendar:not([hidden])) {
+  z-index: 40;
+}
 .inline-dob-control {
   position: relative; flex: 1 1 auto; min-width: 0; width: 100%; max-width: none;
 }
@@ -1304,9 +1331,22 @@ button.inline-field-control.inline-dob-trigger {
   display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
 }
 .dob-calendar-title {
-  flex: 1; text-align: center; color: var(--text-primary);
+  display: inline-flex; flex: 1; align-items: center; justify-content: center; gap: 4px;
+  min-width: 0; padding: 4px 8px; border: 0; border-radius: var(--radius-md);
+  background: transparent; color: var(--text-primary);
   font-size: 14px; font-weight: 600; line-height: 20px; /* subtitle2 */
+  cursor: pointer;
 }
+.dob-calendar-title:hover { background: var(--surface-subtle); }
+.dob-calendar-title-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dob-calendar-title-chevron {
+  display: inline-flex; flex: 0 0 auto; width: 12px; height: 12px;
+  color: var(--icon-tertiary);
+}
+.dob-calendar-title-chevron svg { width: 12px; height: 12px; stroke-width: 2; }
+.dob-calendar:not(.dob-level-day) .dob-calendar-title-chevron { display: none; }
+.dob-calendar.dob-level-year .dob-calendar-title { cursor: default; }
+.dob-calendar.dob-level-year .dob-calendar-title:hover { background: transparent; }
 .dob-calendar-nav {
   display: grid; width: 28px; height: 28px; flex: 0 0 auto; place-items: center;
   padding: 0; border: 0; border-radius: var(--radius-sm);
@@ -1318,6 +1358,11 @@ button.inline-field-control.inline-dob-trigger {
 .dob-calendar-weekdays,
 .dob-calendar-grid {
   display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px;
+}
+/* display:grid above beats UA [hidden] — force hide on month/year levels */
+.dob-calendar-weekdays[hidden],
+.dob-calendar:not(.dob-level-day) .dob-calendar-weekdays {
+  display: none !important;
 }
 .dob-calendar-weekdays {
   margin-bottom: 4px;
@@ -1346,6 +1391,29 @@ button.inline-field-control.inline-dob-trigger {
 .dob-calendar-day.is-selected:hover {
   background: var(--brand); color: var(--text-on-brand); border-color: transparent;
 }
+.dob-calendar-grid--months,
+.dob-calendar-grid--years {
+  grid-template-columns: repeat(3, 1fr); gap: 4px;
+}
+.dob-calendar-pick {
+  display: grid; min-height: 36px; margin: 0 auto; place-items: center;
+  width: 100%; padding: 6px 4px; border: 1px solid transparent; border-radius: var(--radius-md);
+  background: transparent; color: var(--text-primary);
+  font-size: 14px; font-weight: 400; line-height: 20px;
+  cursor: pointer;
+}
+.dob-calendar-pick:hover:not(.is-disabled):not(:disabled) { background: var(--surface-subtle); }
+.dob-calendar-pick.is-current:not(.is-selected) {
+  color: var(--brand); font-weight: 600;
+}
+.dob-calendar-pick.is-selected,
+.dob-calendar-pick.is-selected:hover {
+  background: var(--brand); color: var(--text-on-brand); border-color: transparent;
+}
+.dob-calendar-pick.is-disabled,
+.dob-calendar-pick:disabled {
+  color: var(--text-tertiary); cursor: default; pointer-events: none;
+}
 .dob-calendar-footer {
   display: flex; align-items: center; justify-content: space-between;
   margin-top: 8px; padding-top: 4px;
@@ -1359,7 +1427,20 @@ button.inline-field-control.inline-dob-trigger {
 .list-item.inline-field .select-wrap {
   position: relative; z-index: 0; width: 100%;
 }
-.list-item.inline-field .select-wrap.is-open { z-index: 40; }
+/*
+ * Keep menu above sibling row borders through the leave animation.
+ * is-open is removed immediately on dismiss, but the menu stays visible ~120ms
+ * with is-leaving — elevate the row + wrap until [hidden] is set.
+ */
+.list-item.inline-field:has(.select-wrap.is-open),
+.list-item.inline-field:has(.select-menu:not([hidden])) {
+  position: relative;
+  z-index: 40;
+}
+.list-item.inline-field .select-wrap.is-open,
+.list-item.inline-field .select-wrap:has(.select-menu:not([hidden])) {
+  z-index: 40;
+}
 button.inline-field-control.select-trigger {
   display: flex; align-items: center; justify-content: space-between; gap: 8px;
   padding-right: 12px; text-align: left; cursor: pointer;
@@ -1506,9 +1587,6 @@ button.inline-field-control.select-trigger > svg {
   font-size: 14px; font-weight: 500; line-height: 20px; /* subtitle2 */
 }
 .select-menu button:hover { background: var(--surface-subtle); }
-.select-menu button > svg {
-  width: 14px; height: 14px; flex: 0 0 auto; color: var(--brand); stroke-width: 2.5;
-}
 .relationship { margin: 8px 0 0; padding: 0; border: 0; }
 .relationship legend { margin-bottom: 10px; color: var(--text-secondary); font-size: 13px; font-weight: 600; }
 .radio-row {
@@ -1591,6 +1669,7 @@ button.inline-field-control.select-trigger > svg {
 }
 .elig-summary .list-item dd,
 .elig-summary + .accordion .list-item dd {
+  min-width: 0; /* allow shrink so nowrap values don’t spill over dt */
   font-size: 14px; font-weight: 400; line-height: 20px; color: var(--text-primary); /* body1 */
   overflow-wrap: normal; word-break: normal;
 }
@@ -1601,12 +1680,19 @@ button.inline-field-control.select-trigger > svg {
   font-weight: 400;
 }
 .elig-company-dd {
-  display: inline-flex; align-items: center; justify-content: flex-end; gap: 4px;
-  max-width: 100%; white-space: nowrap;
+  display: inline-flex; align-items: flex-start; justify-content: flex-end; gap: 4px;
+  min-width: 0; max-width: 100%;
 }
 .elig-company-name {
+  min-width: 0; flex: 1 1 auto;
+  overflow-wrap: anywhere; word-break: normal; white-space: normal;
+  text-align: right;
   font-size: 14px; font-weight: 400; line-height: 20px; color: var(--text-primary); /* body1 */
-  white-space: nowrap;
+}
+/* Wide 2-up: keep employer in column 1; wrap value so it can’t spill over the label */
+html.is-panel-fields-wide [data-content="eligibility"] .elig-summary .list-item:has(.elig-company-dd) {
+  grid-column: 1;
+  align-items: start;
 }
 .elig-edit {
   width: 24px; height: 24px; flex: 0 0 auto; color: var(--icon-tertiary);
@@ -2466,6 +2552,10 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
   max-width: 280px; padding: 5px; border: 1px solid var(--border); border-radius: var(--radius-sm);
   background: var(--surface); box-shadow: 0 10px 24px rgba(16,29,56,.16);
 }
+/* Escapes panel overflow; may paint over the tool rail */
+.ins-dropdown-menu.is-fixed-popover {
+  position: fixed; z-index: 90;
+}
 .ins-dropdown-menu[hidden] { display: none; }
 .ins-dropdown-menu button {
   display: flex; width: 100%; min-height: 36px; align-items: center; justify-content: space-between; gap: 14px;
@@ -2475,7 +2565,6 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
   font-size: 14px; font-weight: 500; line-height: 20px; /* subtitle2 */
 }
 .ins-dropdown-menu button:hover { background: var(--surface-subtle); }
-.ins-dropdown-menu button > svg { width: 14px; height: 14px; color: var(--brand); stroke-width: 2.5; }
 /* Left-aligned under plan A dropdown; travels with that column — no z-index so menus paint above */
 .ins-share-tips-wrap {
   position: relative; display: flex; justify-content: flex-start;

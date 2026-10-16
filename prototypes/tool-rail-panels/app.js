@@ -344,8 +344,11 @@
     openDropdown: null,
   };
 
+  const ELIG_EMPLOYER_COMPANY = "Demo Premium Company";
+  const ELIG_IHP_COMPANY = "Included Health Plan";
+
   const eligibilityState = {
-    company: "Demo Premium Company",
+    company: ELIG_EMPLOYER_COMPANY,
     enrolled: true,
     coverageStatus: "Active",
     microsite: "—",
@@ -410,7 +413,7 @@
     /* Streamline Ultimate Regular — Upload Bottom */
     export: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.75V3.75"/><path d="m16.5 8.25-4.5-4.5-4.5 4.5"/><path d="M23.25 15.75v1.5a3 3 0 0 1-3 3H3.75a3 3 0 0 1-3-3v-1.5"/></svg>`,
     /* Filled info mark for Share tips chip */
-    infoFilled: `<svg class="ins-tips-info" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="7" fill="currentColor" stroke="none"/><path fill="#fff" stroke="none" d="M6.35 5.9h1.3v4.55h-1.3zm.65-3.15a.85.85 0 1 1 0 1.7.85.85 0 0 1 0-1.7z"/></svg>`,
+    infoFilled: `<svg class="ins-tips-info" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="7" fill="currentColor" stroke="none"/><path class="ins-tips-info-mark" fill="currentColor" stroke="none" d="M6.35 5.9h1.3v4.55h-1.3zm.65-3.15a.85.85 0 1 1 0 1.7.85.85 0 0 1 0-1.7z"/></svg>`,
   };
 
   const defaultBenefitDetail = (name, type = "Virtual Care") => ({
@@ -1421,7 +1424,7 @@
       </header>
       <div class="tabs" role="tablist">
         <button class="tab is-active" type="button" role="tab" data-tab="member" aria-selected="true">Member</button>
-        <button class="tab" type="button" role="tab" data-tab="care-team" aria-selected="false">Care Team <span class="soft-badge soft-neutral tab-count" aria-label="${careTeamMembers.length} care team members">${careTeamMembers.length}</span></button>
+        <button class="tab" type="button" role="tab" data-tab="care-team" aria-selected="false">Care Team</button>
         <button class="tab" type="button" role="tab" data-tab="dependents" aria-selected="false">Dependents</button>
       </div>
       <div class="tab-pane" data-pane="member">
@@ -1463,12 +1466,10 @@
   function insuranceTabsHtml() {
     return `<div class="tabs ins-tabs" role="tablist">
       ${[
-        ["member-plan", "Member Plan", null],
-        ["activity", "Insurance Activity", null],
-        ["prior-auth", "Prior Authorizations", priorAuths.length],
-      ].map(([id, label, count]) => `<button class="tab${insuranceState.tab === id ? " is-active" : ""}" type="button" role="tab" data-ins-tab="${id}" aria-selected="${insuranceState.tab === id}">${label}${
-        count != null ? ` <span class="soft-badge soft-neutral tab-count" aria-label="${count} items">${count}</span>` : ""
-      }</button>`).join("")}
+        ["member-plan", "Member Plan"],
+        ["activity", "Insurance Activity"],
+        ["prior-auth", "Prior Authorizations"],
+      ].map(([id, label]) => `<button class="tab${insuranceState.tab === id ? " is-active" : ""}" type="button" role="tab" data-ins-tab="${id}" aria-selected="${insuranceState.tab === id}">${label}</button>`).join("")}
     </div>`;
   }
 
@@ -1532,10 +1533,15 @@
   }
 
   function insurancePriorAuthHtml() {
+    const count = priorAuths.length;
     const badgeClass = (status) => status === "Approved" ? "soft-success" : status === "Denied" ? "soft-danger" : "soft-warning";
     return `<div class="ins-main-pane">
-      <div class="ins-auth-head ins-auth-head--meta">
-        <span>Updated 3 minutes ago</span>
+      <div class="ins-auth-head">
+        <div class="ins-auth-title">
+          <strong>Prior Authorizations</strong>
+          <span class="soft-badge soft-neutral ins-auth-count" aria-label="${count} prior authorizations">${count}</span>
+        </div>
+        <span class="ins-auth-updated">Updated 3 minutes ago</span>
       </div>
       <div class="ins-table-wrap ins-auth-scroll"><table class="ins-table ins-auth-table">
         <thead><tr><th>Diagnosis Code</th><th>Start Period</th><th>End Period</th><th>Procedure Code</th><th>Episode ID</th><th>Attending Provider</th><th>Status</th></tr></thead>
@@ -2027,7 +2033,7 @@
   }
 
   function benefitTrailingHtml(benefit) {
-    /* Last Activity column: activity meta, else Recommended badge (right-aligned), else dash */
+    /* Last Activity: activity meta, else Recommended + dash, else dash alone */
     if (benefit.lastActivity) {
       return `
         <span class="elig-benefit-activity">
@@ -2041,6 +2047,7 @@
       return `
         <span class="elig-benefit-activity elig-benefit-activity--badge">
           ${benefitRecommendedBadgeHtml()}
+          <span class="elig-benefit-activity-dash" aria-hidden="true">—</span>
         </span>`;
     }
     return `
@@ -2060,6 +2067,29 @@
   function setBenefitSelected(id, on) {
     if (on) eligibilityState.selectedBenefitIds.add(id);
     else eligibilityState.selectedBenefitIds.delete(id);
+  }
+
+  function visibleBenefitIds() {
+    return filteredBenefits().map((b) => b.id);
+  }
+
+  function syncSelectAllCheckbox() {
+    const master = stage.querySelector("#elig-benefit-select-all");
+    if (!master) return;
+    const ids = visibleBenefitIds();
+    const selected = ids.filter((id) => isBenefitSelected(id)).length;
+    master.checked = ids.length > 0 && selected === ids.length;
+    master.indeterminate = selected > 0 && selected < ids.length;
+    master.disabled = ids.length === 0;
+  }
+
+  function setAllVisibleBenefitsSelected(on) {
+    visibleBenefitIds().forEach((id) => setBenefitSelected(id, on));
+    stage.querySelectorAll(".elig-benefit-check[data-benefit-select]").forEach((input) => {
+      input.checked = isBenefitSelected(input.dataset.benefitSelect);
+    });
+    refreshBenefitsSelectionBar();
+    syncSelectAllCheckbox();
   }
 
   function eligibilitySelectedBarHtml() {
@@ -2088,6 +2118,12 @@
       const n = selectedBenefitCount();
       if (!n) return;
       showToast(`Marked ${n} benefit(s) as referred`);
+      eligibilityState.selectedBenefitIds.clear();
+      stage.querySelectorAll(".elig-benefit-check[data-benefit-select]").forEach((input) => {
+        input.checked = false;
+      });
+      refreshBenefitsSelectionBar();
+      syncSelectAllCheckbox();
     });
   }
 
@@ -2202,12 +2238,12 @@
   }
 
   function eligibilityOverviewTemplate() {
-    const coverageClass = eligibilityState.enrolled
-      ? "elig-coverage is-active"
-      : "elig-coverage is-inactive";
     const coverageLabel = eligibilityState.enrolled
       ? eligibilityState.coverageStatus
       : "Unenrolled";
+    const coverageBadge = eligibilityState.enrolled
+      ? "soft-badge soft-success"
+      : "soft-badge soft-neutral";
 
     return `
     <article class="panel-content" data-content="eligibility">
@@ -2226,7 +2262,7 @@
           </div>
           <div class="list-item">
             <dt>Coverage status</dt>
-            <dd><span class="${coverageClass}">${coverageLabel}</span></dd>
+            <dd><span class="${coverageBadge}"><span class="soft-badge-label">${coverageLabel}</span></span></dd>
           </div>
           <div class="list-item"><dt>Microsite</dt><dd>${eligibilityState.microsite}</dd></div>
           <div class="list-item"><dt>Dedicated phone line</dt><dd>${eligibilityState.phoneLine}</dd></div>
@@ -2256,9 +2292,11 @@
           </div>
           ${eligibilitySelectedBarHtml()}
           <div class="elig-benefits-head">
-            <h5 class="elig-benefits-all">All Benefits</h5>
             <div class="elig-benefits-cols">
-              <span>Benefit name</span>
+              <label class="elig-benefit-check-wrap">
+                <input type="checkbox" class="elig-benefit-check" id="elig-benefit-select-all" aria-label="Select all benefits" />
+              </label>
+              <span class="elig-benefits-cols-name">Benefit Name</span>
               <span>Last Activity</span>
             </div>
           </div>
@@ -2401,7 +2439,7 @@
       title: "Edit enrollment status",
       variant: "enrollment",
       body: `
-        <p class="modal-subtitle">${eligibilityState.company}</p>
+        <p class="modal-subtitle">${ELIG_EMPLOYER_COMPANY}</p>
         <div class="enroll-radios" role="radiogroup" aria-label="Enrollment status">
           <label class="radio-row">
             <input type="radio" name="enrollment-status" value="enrolled" ${enrolledChecked} />
@@ -2426,6 +2464,7 @@
       }
       eligibilityState.enrolled = true;
       eligibilityState.coverageStatus = "Active";
+      eligibilityState.company = ELIG_EMPLOYER_COMPANY;
       closeModal();
       render("eligibility");
       showToast("Enrollment updated");
@@ -2448,6 +2487,7 @@
     document.querySelector("#modal-confirm-unenroll")?.addEventListener("click", () => {
       eligibilityState.enrolled = false;
       eligibilityState.coverageStatus = "Unenrolled";
+      eligibilityState.company = ELIG_IHP_COMPANY;
       closeModal();
       render("eligibility");
       showToast("Member unenrolled");
@@ -2583,6 +2623,7 @@
     }
     if (!t.closest(".inline-select")) closeInlineSelects();
     if (!t.closest(".inline-dob-wrap")) closeInlineDobCalendars();
+    if (!t.closest(".mode-switcher-wrap")) closeModeSwitcherMenu();
   }
 
   function bindPanelActions() {
@@ -2701,13 +2742,18 @@
       if (list) {
         list.innerHTML = eligibilityBenefitsHtml();
         bindBenefitRowActions();
+        syncSelectAllCheckbox();
       }
     });
     stage.querySelector("#elig-benefit-filter")?.addEventListener("click", () => {
       showToast("Benefit filters coming soon");
     });
+    stage.querySelector("#elig-benefit-select-all")?.addEventListener("change", (event) => {
+      setAllVisibleBenefitsSelected(event.currentTarget.checked);
+    });
     bindBenefitRowActions();
     bindMarkReferredButton();
+    syncSelectAllCheckbox();
   }
 
   let benefitTipHideTimer = 0;
@@ -2773,6 +2819,7 @@
         if (!id) return;
         setBenefitSelected(id, input.checked);
         refreshBenefitsSelectionBar();
+        syncSelectAllCheckbox();
       });
     });
     const scheduleHide = () => {
@@ -2871,21 +2918,16 @@
     return (name || "?").trim().charAt(0).toUpperCase() || "?";
   }
 
-  function syncCareTeamTabCount() {
-    const tab = stage.querySelector('.tab[data-tab="care-team"]');
-    if (!tab) return;
+  function syncCareTeamCount() {
+    const badge = stage.querySelector(".ct-count");
+    if (!badge) return;
     const count = careTeamMembers.length;
-    let badge = tab.querySelector(".tab-count");
-    if (!badge) {
-      badge = document.createElement("span");
-      badge.className = "soft-badge soft-neutral tab-count";
-      tab.appendChild(badge);
-    }
     badge.textContent = String(count);
     badge.setAttribute("aria-label", `${count} care team members`);
   }
 
   function careTeamPanelHtml() {
+    const count = careTeamMembers.length;
     const rows = careTeamMembers
       .map(
         (m) => `
@@ -2903,7 +2945,11 @@
 
     return `
       <div class="ct-pane">
-        <div class="ct-pane-toolbar">
+        <div class="ct-section-head">
+          <div class="ct-section-title">
+            <strong>Current Care Team</strong>
+            <span class="soft-badge soft-neutral ct-count" aria-label="${count} care team members">${count}</span>
+          </div>
           <button class="icon-button elig-edit" type="button" id="manage-care-team" aria-label="Manage Care Team">${icon.edit}</button>
         </div>
         <div class="ct-table-card">
@@ -3045,7 +3091,7 @@
       careTeamSearchOpen = false;
       openCareTeamMenuId = null;
       closeModal();
-      syncCareTeamTabCount();
+      syncCareTeamCount();
       const pane = stage.querySelector(".tab-pane");
       if (pane?.dataset.pane === "care-team") {
         pane.innerHTML = careTeamPanelHtml();
@@ -3233,6 +3279,82 @@
     });
   });
 
+  let colorMode = localStorage.getItem("care-color-mode") || "system";
+  const modeSwitcherButton = document.getElementById("mode-switcher-button");
+  const modeSwitcherMenu = document.getElementById("mode-switcher-menu");
+  const modeSwitcherOptions = modeSwitcherMenu
+    ? [...modeSwitcherMenu.querySelectorAll(".mode-switcher-option")]
+    : [];
+  const colorSchemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function resolvedSystemDark() {
+    return colorSchemeMq.matches;
+  }
+
+  function syncHtmlColorMode() {
+    const root = document.documentElement;
+    if (colorMode === "dark") {
+      root.setAttribute("data-color-mode", "dark");
+      return;
+    }
+    if (colorMode === "light") {
+      root.removeAttribute("data-color-mode");
+      return;
+    }
+    if (resolvedSystemDark()) root.setAttribute("data-color-mode", "dark");
+    else root.removeAttribute("data-color-mode");
+  }
+
+  function updateModeSwitcherUi() {
+    modeSwitcherOptions.forEach((opt) => {
+      const selected = opt.dataset.mode === colorMode;
+      opt.setAttribute("aria-checked", selected ? "true" : "false");
+    });
+  }
+
+  function applyColorMode(mode) {
+    colorMode = mode;
+    localStorage.setItem("care-color-mode", colorMode);
+    syncHtmlColorMode();
+    updateModeSwitcherUi();
+  }
+
+  function closeModeSwitcherMenu() {
+    if (!modeSwitcherMenu || modeSwitcherMenu.hidden) return;
+    modeSwitcherMenu.hidden = true;
+    modeSwitcherButton?.setAttribute("aria-expanded", "false");
+  }
+
+  function openModeSwitcherMenu() {
+    if (!modeSwitcherMenu || !modeSwitcherButton) return;
+    modeSwitcherMenu.hidden = false;
+    modeSwitcherButton.setAttribute("aria-expanded", "true");
+  }
+
+  function toggleModeSwitcherMenu() {
+    if (!modeSwitcherMenu) return;
+    if (modeSwitcherMenu.hidden) openModeSwitcherMenu();
+    else closeModeSwitcherMenu();
+  }
+
+  applyColorMode(colorMode);
+
+  colorSchemeMq.addEventListener("change", () => {
+    if (colorMode === "system") syncHtmlColorMode();
+  });
+
+  modeSwitcherButton?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleModeSwitcherMenu();
+  });
+
+  modeSwitcherOptions.forEach((opt) => {
+    opt.addEventListener("click", () => {
+      applyColorMode(opt.dataset.mode || "system");
+      closeModeSwitcherMenu();
+    });
+  });
+
   bindPanelResizer();
 
   document.addEventListener("pointerdown", (event) => {
@@ -3267,6 +3389,10 @@
     if (event.key === "Escape") {
       if (isNavDrawerOpen()) {
         closeNavDrawer();
+        return;
+      }
+      if (modeSwitcherMenu && !modeSwitcherMenu.hidden) {
+        closeModeSwitcherMenu();
         return;
       }
       const hasMenu =
@@ -3689,5 +3815,6 @@
       window.setTimeout(finish, 1100);
     });
   }
+
   runPageEntrance();
 })();

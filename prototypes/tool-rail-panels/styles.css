@@ -1003,6 +1003,61 @@ button.soft-badge {
 .accordion-body { display: none; padding: 0 16px 16px; }
 .accordion.is-open .accordion-body { display: block; }
 .accordion-fields { margin: 0; }
+/* Member field lists — 2-up when the context panel is widened (class set in setPanelWidth) */
+html.is-panel-fields-wide .tab-pane[data-pane="member"] .accordion:not(.is-editing) .accordion-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+}
+html.is-panel-fields-wide .tab-pane[data-pane="member"] .accordion:not(.is-editing) .accordion-fields .list-item {
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+  gap: 10px;
+}
+html.is-panel-fields-wide .tab-pane[data-pane="member"] .accordion:not(.is-editing) .accordion-fields .list-item:hover {
+  margin: 0 -4px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+/* Dependents cards — same 2-up when the panel is widened; notes stay full width */
+html.is-panel-fields-wide .dep-card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+}
+html.is-panel-fields-wide .dep-card-body .dep-row {
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+  gap: 10px;
+}
+html.is-panel-fields-wide .dep-card-body .dep-notes {
+  grid-column: 1 / -1;
+}
+/* Insurance Member Plan summary — same 2-up when the panel is widened */
+html.is-panel-fields-wide .ins-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+}
+html.is-panel-fields-wide .ins-summary .list-item {
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+  gap: 10px;
+}
+/* Eligibility summary + info accordion — same 2-up when the panel is widened */
+html.is-panel-fields-wide [data-content="eligibility"] .elig-summary,
+html.is-panel-fields-wide [data-content="eligibility"] .accordion-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+}
+html.is-panel-fields-wide [data-content="eligibility"] .elig-summary .list-item,
+html.is-panel-fields-wide [data-content="eligibility"] .accordion-fields .list-item {
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+  gap: 10px;
+}
+/* Primary (multi-line) stays in the left column; values right-aligned like sibling rows */
+html.is-panel-fields-wide [data-content="eligibility"] .accordion-fields .list-item:has(.elig-meta) {
+  grid-column: 1;
+  align-items: start;
+}
 .panel-edit-bar {
   display: flex; flex: 0 0 auto; align-items: center; justify-content: flex-end;
   gap: 8px; z-index: 50; min-height: 56px; padding: 10px 16px;

@@ -24,6 +24,8 @@
   const PANEL_DEFAULT = 400;
   /** Insurance needs room for Prior Authorizations + count badge */
   const PANEL_INSURANCE = 440;
+  /** Member field lists go 2-up once the panel is this wide */
+  const PANEL_FIELDS_WIDE = 480;
 
   function isSheetMode() {
     return sheetModeMq.matches;
@@ -93,6 +95,7 @@
     const w = Math.round(Math.min(max, Math.max(PANEL_MIN, px)));
     document.documentElement.style.setProperty("--panel-width", `${w}px`);
     document.documentElement.style.setProperty("--panel-width-max", `${max}px`);
+    document.documentElement.classList.toggle("is-panel-fields-wide", w >= PANEL_FIELDS_WIDE);
     if (resizer) {
       resizer.setAttribute("aria-valuenow", String(w));
       resizer.setAttribute("aria-valuemin", String(PANEL_MIN));

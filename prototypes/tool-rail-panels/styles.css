@@ -916,9 +916,9 @@ html[data-color-mode="dark"] .badge-tip {
 @keyframes cleanup-pulse {
   50% { opacity: 0.45; }
 }
-/* Hover tip above rewrite / Clean up — clear of icon (caret must not clip pencil) */
+/* Hover tip above rewrite / Clean up — 8px offset (same as all tips) */
 .composer-icon-btn .tooltip.tooltip--above {
-  top: auto; right: 50%; bottom: calc(100% + 12px); left: auto;
+  top: auto; right: 50%; bottom: calc(100% + 8px); left: auto;
   transform: translate(50%, 4px);
 }
 .composer-icon-btn .tooltip.tooltip--above::after {
@@ -2503,8 +2503,8 @@ html[data-color-mode="dark"] .elig-benefit-check:indeterminate {
   font-size: 12px; font-weight: 400; line-height: 16px; text-align: left;
   box-shadow: 0 8px 20px rgba(16,24,40,.22); pointer-events: none;
   opacity: 0; visibility: hidden;
-  /* Opens below — emerge away from parent */
-  transform: translateY(-4px);
+  /* Default above — emerge away from parent */
+  transform: translateY(4px);
   transition:
     opacity var(--tip-duration-exit) var(--tip-easing-exit),
     transform var(--tip-duration-exit) var(--tip-easing-exit),
@@ -2519,9 +2519,16 @@ html[data-color-mode="dark"] .elig-benefit-check:indeterminate {
     visibility var(--tip-duration-enter) var(--tip-easing-enter);
   transition-delay: var(--tip-delay-enter);
 }
+.ins-info-tip-float.opens-below { transform: translateY(-4px); }
+.ins-info-tip-float.opens-below.is-visible { transform: translateY(0); }
 .ins-info-tip-float::after {
-  position: absolute; bottom: 100%; left: 12px; border: 5px solid transparent;
-  border-bottom-color: #101828; content: "";
+  position: absolute; top: 100%; left: var(--tip-arrow-left, 16px);
+  border: 5px solid transparent; border-top-color: #101828;
+  content: ""; transform: translateX(-50%);
+}
+.ins-info-tip-float.opens-below::after {
+  top: auto; bottom: 100%;
+  border-top-color: transparent; border-bottom-color: #101828;
 }
 .ins-meter {
   padding: 14px 12px;

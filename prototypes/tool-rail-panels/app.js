@@ -2408,7 +2408,7 @@
     const float = document.querySelector(".ins-info-tip-float");
     if (!float) return;
     /* Keep copy during leave so the box doesn’t collapse mid-fade */
-    float.classList.remove("is-visible");
+    float.classList.remove("is-visible", "opens-below");
   }
 
   function showInsInfoTipFloat(btn) {
@@ -2422,14 +2422,24 @@
       const rect = btn.getBoundingClientRect();
       const tipRect = float.getBoundingClientRect();
       const gap = 8;
-      let left = rect.left;
-      let top = rect.bottom + gap;
-      left = Math.max(8, Math.min(left, window.innerWidth - tipRect.width - 8));
-      if (top + tipRect.height > window.innerHeight - 8) {
-        top = Math.max(8, rect.top - tipRect.height - gap);
+      const tipWidth = Math.max(tipRect.width, 240);
+      const iconCenterX = rect.left + rect.width / 2;
+      /* Prefer above the info icon; flip below only if clipped */
+      let top = rect.top - tipRect.height - gap;
+      let side = "above";
+      if (top < 8) {
+        top = rect.bottom + gap;
+        side = "below";
       }
+      /* Start-align tip to the right of the caret; keep caret on the icon center */
+      const arrowInset = 16;
+      let left = iconCenterX - arrowInset;
+      left = Math.max(8, Math.min(left, window.innerWidth - tipWidth - 8));
+      const arrowLeft = Math.max(10, Math.min(iconCenterX - left, tipWidth - 10));
+      float.classList.toggle("opens-below", side === "below");
       float.style.left = `${Math.round(left)}px`;
       float.style.top = `${Math.round(top)}px`;
+      float.style.setProperty("--tip-arrow-left", `${Math.round(arrowLeft)}px`);
     };
     place();
     requestAnimationFrame(place);
@@ -3502,7 +3512,7 @@
     const place = () => {
       const rect = btn.getBoundingClientRect();
       const tipRect = float.getBoundingClientRect();
-      let left = rect.left - tipRect.width - 10;
+      let left = rect.left - tipRect.width - 8;
       let top = rect.top + rect.height / 2 - tipRect.height / 2;
       left = Math.max(8, Math.min(left, window.innerWidth - tipRect.width - 8));
       top = Math.max(8, Math.min(top, window.innerHeight - tipRect.height - 8));

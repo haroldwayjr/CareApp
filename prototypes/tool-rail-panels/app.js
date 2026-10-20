@@ -410,6 +410,7 @@
     comparePlanIds: ["aetna", "anthem"],
     tipsDismissed: false,
     openDropdown: null,
+    additionalPlansOpen: false,
   };
 
   const ELIG_EMPLOYER_COMPANY = "Demo Premium Company";
@@ -1724,6 +1725,9 @@
     { id: "aetna", name: "2026 Aetna PPO Premium", carrier: "Aetna", premium: "$62.76/mo", ihp: true },
     { id: "anthem", name: "2026 Anthem HMO Select", carrier: "Anthem", premium: "$48.50/mo" },
     { id: "cigna", name: "2026 Cigna EPO Plus", carrier: "Cigna", premium: "$55.20/mo" },
+    { id: "kaiser", name: "2026 Kaiser Permanente HMO Classic", carrier: "Kaiser Permanente", premium: "$42.00/mo", additional: true },
+    { id: "uhc", name: "2026 UnitedHealthcare HDHP Gold", carrier: "UnitedHealthcare", premium: "$51.25/mo", additional: true },
+    { id: "bcbs", name: "2026 Blue Cross Blue Shield PPO", carrier: "Blue Cross Blue Shield", premium: "$47.80/mo", additional: true },
   ];
 
   const priorAuths = [
@@ -1833,9 +1837,21 @@
     </article>`;
   }
 
+  function insPlanOptionHtml(plan, selected) {
+    const checked = selected.includes(plan.id);
+    const disabled = !checked && selected.length >= 2;
+    return `<label class="ins-plan-option${checked ? " is-selected" : ""}${disabled ? " is-disabled" : ""}">
+      <input type="checkbox" data-ins-plan="${plan.id}" ${checked ? "checked" : ""} ${disabled ? "disabled" : ""} />
+      <span><strong>${plan.name} ${plan.ihp ? `<span class="soft-badge soft-accent">IHP</span>` : ""}</strong><small>${plan.carrier} · Employee Only: ${plan.premium}</small></span>
+    </label>`;
+  }
+
   function insuranceCompareSelectTemplate() {
     const selected = insuranceState.compareSelected;
     const names = selected.map((id) => insurancePlans.find((p) => p.id === id)?.name).filter(Boolean);
+    const primaryPlans = insurancePlans.filter((p) => !p.additional);
+    const additionalPlans = insurancePlans.filter((p) => p.additional);
+    const additionalOpen = insuranceState.additionalPlansOpen;
     return `<article class="panel-content ins-panel" data-content="insurance">
       <header class="panel-header panel-header--detail">
         <div class="panel-title-stack with-back"><button class="icon-button panel-back" type="button" data-ins-back="main" aria-label="Back">${icon.chevronLeft}</button><h2>Compare Plans</h2></div>
@@ -1845,15 +1861,18 @@
         <div class="ins-plans-heading">
           <h3>Compare up to 2 plans for Riley</h3>
         </div>
-        <div class="ins-plan-options">${insurancePlans.map((plan) => {
-          const checked = selected.includes(plan.id);
-          const disabled = !checked && selected.length >= 2;
-          return `<label class="ins-plan-option${checked ? " is-selected" : ""}${disabled ? " is-disabled" : ""}">
-            <input type="checkbox" data-ins-plan="${plan.id}" ${checked ? "checked" : ""} ${disabled ? "disabled" : ""} />
-            <span><strong>${plan.name} ${plan.ihp ? `<span class="soft-badge soft-accent">IHP</span>` : ""}</strong><small>${plan.carrier} · Employee Only: ${plan.premium}</small></span>
-          </label>`;
-        }).join("")}</div>
-        <button class="ins-accordion-row" type="button">Additional Plans <span>${icon.chevron}</span></button>
+        <div class="ins-plan-options">${primaryPlans.map((plan) => insPlanOptionHtml(plan, selected)).join("")}</div>
+        <section class="accordion${additionalOpen ? " is-open" : ""}" data-section="additional-plans">
+          <div class="accordion-header-row">
+            <button class="accordion-toggle" type="button" aria-expanded="${additionalOpen}">
+              <span class="accordion-chevron" aria-hidden="true">${icon.chevron}</span>
+              <strong>Additional Plans</strong>
+            </button>
+          </div>
+          <div class="accordion-body">
+            <div class="ins-plan-options">${additionalPlans.map((plan) => insPlanOptionHtml(plan, selected)).join("")}</div>
+          </div>
+        </section>
         <section class="ins-employer"><h3>From the Employer</h3><p class="ins-employer-caption">Share this link so members can explore and compare all available plans.</p>
           <div class="ins-copy-field">${icon.link}<span class="ins-copy-url">https://benefits.employer.com/compare-plans</span><button class="button button-secondary button-small ins-compact-button" id="ins-copy" type="button">Copy link</button></div>
         </section>
@@ -2195,6 +2214,7 @@
     stage.querySelector("#ins-compare-open")?.addEventListener("click", () => {
       insuranceState.view = "compare-select";
       insuranceState.compareSelected = [];
+      insuranceState.additionalPlansOpen = false;
       render("insurance");
     });
     bindInsuranceActivityControls();
@@ -2716,6 +2736,7 @@
         comparePlanIds: ["aetna", "anthem"],
         tipsDismissed: false,
         openDropdown: null,
+        additionalPlansOpen: false,
       });
     }
     activePanel = name;
@@ -3232,6 +3253,9 @@
         if (sectionId === "elig-info") {
           eligibilityState.infoOpen = open;
         }
+        if (sectionId === "additional-plans") {
+          insuranceState.additionalPlansOpen = open;
+        }
       });
     });
     stage.querySelectorAll(".edit-section").forEach((edit) => {
@@ -3609,16 +3633,37 @@
     apply();
   }
 
+  function dismissToast(toast) {
+    if (!toast || toast.classList.contains("is-leaving")) return;
+    toast.classList.add("is-leaving");
+    toast.addEventListener("animationend", () => toast.remove(), { once: true });
+  }
+
   function showToast(message) {
     const toast = document.createElement("div");
     toast.className = "toast";
     toast.setAttribute("role", "status");
-    toast.textContent = message;
+
+    const label = document.createElement("span");
+    label.className = "toast-message";
+    label.textContent = message;
+
+    const dismiss = document.createElement("button");
+    dismiss.type = "button";
+    dismiss.className = "toast-dismiss";
+    dismiss.setAttribute("aria-label", "Dismiss");
+    dismiss.innerHTML = `
+      <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+        <path d="M3 3l8 8M11 3L3 11" fill="none" stroke-linecap="round"/>
+      </svg>
+    `;
+    dismiss.addEventListener("click", () => dismissToast(toast));
+
+    toast.append(label, dismiss);
     toasts.append(toast);
-    window.setTimeout(() => {
-      toast.classList.add("is-leaving");
-      toast.addEventListener("animationend", () => toast.remove(), { once: true });
-    }, 2400);
+
+    const dwellMs = 5000;
+    window.setTimeout(() => dismissToast(toast), dwellMs);
   }
 
   railButtons.forEach((button) => {

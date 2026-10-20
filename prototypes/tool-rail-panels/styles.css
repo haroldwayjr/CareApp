@@ -75,6 +75,40 @@
   --bp-lg: 1024px;
   --bp-xl: 1440px;
   --page-gutter: 24px;
+  /* Soma motion — https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md */
+  --motion-duration-fast: 100ms;
+  --motion-duration-normal: 150ms;
+  --motion-duration-moderate: 200ms;
+  --motion-duration-slow: 250ms;
+  --motion-duration-reveal: 900ms;
+  /* Accordion body — a notch above Soma slow/moderate so tall sections feel less rushed */
+  --motion-duration-accordion-open: 300ms;
+  --motion-duration-accordion-close: 250ms;
+  --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-easing-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);
+  /*
+   * Tooltip enter/leave — library motion.md Tooltip recipe.
+   * Default hover-intent: 200ms on all tips (not a duration token). Leave: 0.
+   */
+  --tip-duration-enter: var(--motion-duration-normal);
+  --tip-easing-enter: var(--motion-easing-emphasized);
+  --tip-duration-exit: var(--motion-duration-fast);
+  --tip-easing-exit: var(--motion-easing-exit);
+  --tip-delay-enter: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0ms;
+    --motion-duration-normal: 0ms;
+    --motion-duration-moderate: 0ms;
+    --motion-duration-slow: 0ms;
+    --motion-duration-reveal: 0ms;
+    --motion-duration-accordion-open: 0ms;
+    --motion-duration-accordion-close: 0ms;
+    --tip-delay-enter: 0ms;
+  }
 }
 
 * { box-sizing: border-box; }
@@ -456,14 +490,31 @@ button.soft-badge {
   text-align: left;
   white-space: normal;
   box-shadow: 0 10px 28px rgba(16, 29, 56, 0.22);
-  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
   pointer-events: none;
+  /* Emerge away from parent (below): start closer, settle outward */
+  transform: translate(-50%, -4px);
+  transition:
+    opacity var(--tip-duration-exit) var(--tip-easing-exit),
+    transform var(--tip-duration-exit) var(--tip-easing-exit),
+    visibility var(--tip-duration-exit) var(--tip-easing-exit);
+  transition-delay: 0ms;
+}
+.badge-tip.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition:
+    opacity var(--tip-duration-enter) var(--tip-easing-enter),
+    transform var(--tip-duration-enter) var(--tip-easing-enter),
+    visibility var(--tip-duration-enter) var(--tip-easing-enter);
+  transition-delay: var(--tip-delay-enter);
 }
 html[data-color-mode="dark"] .badge-tip {
   border-color: var(--border-subtle);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
 }
-.badge-tip[hidden] { display: none; }
 .badge-tip strong { font-weight: 600; }
 .badge-tip::before {
   position: absolute;
@@ -476,10 +527,36 @@ html[data-color-mode="dark"] .badge-tip {
   transform: translateX(-50%);
 }
 .button {
-  display: inline-flex; min-height: 40px; align-items: center; justify-content: center;
+  display: inline-flex; min-height: 40px; align-items: center; justify-content: center; gap: 8px;
   padding: 0 16px; border-radius: var(--radius-full); /* Soma Button — pill */
   font-size: 14px; font-weight: 600; cursor: pointer;
   transition: background 140ms ease, border-color 140ms ease, transform 100ms ease;
+}
+/* Soma Button loading — Icon / Spinner (xs on small / edit-bar), label “Saving...” */
+.button-spinner {
+  box-sizing: border-box;
+  width: 16px; height: 16px; flex: 0 0 auto;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+.button.is-loading {
+  pointer-events: none;
+  cursor: progress;
+}
+/* Loading keeps brand fill — distinct from tone-step disabled */
+.button.button-primary.is-loading,
+.button.button-primary.is-loading:disabled,
+.button.button-primary.is-loading:disabled:hover {
+  opacity: 1;
+  border-color: var(--brand);
+  background: var(--brand);
+  color: var(--text-on-brand);
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .button-spinner { animation: none; border-right-color: currentColor; opacity: .7; }
 }
 /* Soma Button Size=small — buttonSmall 13/18 Medium; height 36 (matches iconOnly small) */
 .button.button-small {
@@ -852,7 +929,12 @@ html[data-color-mode="dark"] .badge-tip {
 }
 .composer-icon-btn:hover .tooltip.tooltip--above,
 .composer-icon-btn:focus-visible .tooltip.tooltip--above {
-  opacity: 1; visibility: visible; transform: translate(50%, 0); transition-delay: 200ms;
+  opacity: 1; visibility: visible; transform: translate(50%, 0);
+  transition:
+    opacity var(--tip-duration-enter) var(--tip-easing-enter),
+    transform var(--tip-duration-enter) var(--tip-easing-enter),
+    visibility var(--tip-duration-enter) var(--tip-easing-enter);
+  transition-delay: var(--tip-delay-enter);
 }
 .composer-icon-btn:disabled:hover .tooltip.tooltip--above {
   opacity: 0; visibility: hidden;
@@ -1109,11 +1191,21 @@ html[data-color-mode="dark"] .badge-tip {
   color: var(--icon-secondary);
 }
 .more-menu-icon svg { width: 16px; height: 16px; stroke-width: 1.5; }
-/* Soma Tabs.List — left-aligned, hug label width (not equal columns when panel expands) */
+/* Soma Tabs.List — left-aligned, hug label width; sliding Tabs.Indicator */
 .tabs {
+  position: relative;
   display: flex; flex-wrap: nowrap; align-items: stretch; justify-content: flex-start;
   border-bottom: 1px solid var(--border);
 }
+.tabs-indicator {
+  position: absolute; left: 0; bottom: -1px; z-index: 1;
+  height: 2px; width: 0; background: var(--brand); pointer-events: none;
+  transform: translateX(0);
+  transition:
+    transform var(--motion-duration-moderate) var(--motion-easing-emphasized),
+    width var(--motion-duration-moderate) var(--motion-easing-emphasized);
+}
+.tabs-indicator.is-instant { transition: none; }
 /* Context panels — no header hairline (tabs / content carry separation) */
 .panel-content[data-content="member"] > .panel-header,
 .panel-content[data-content="eligibility"] > .panel-header { border-bottom: 0; }
@@ -1125,14 +1217,18 @@ html[data-color-mode="dark"] .badge-tip {
   font-family: "Figtree", system-ui, sans-serif;
   font-size: 14px; font-weight: 500; line-height: 20px; cursor: pointer;
   white-space: nowrap;
+  transition: color var(--motion-duration-normal) var(--motion-easing-standard);
 }
 .tab-count {
   height: 20px; min-height: 20px; padding: 0 6px;
   font-size: 12px; font-weight: 500; line-height: 16px; /* subtitle3 */
 }
 .tab.is-active { color: var(--brand); font-weight: 600; }
-.tab.is-active::after { position: absolute; right: 0; bottom: -1px; left: 0; height: 2px; background: var(--brand); content: ""; }
 .tab-pane { flex: 1; min-height: 0; overflow-y: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .tabs-indicator { transition: none; }
+  .tab { transition: none; }
+}
 .dependents-pane { padding: 16px 20px 20px; display: grid; gap: 12px; }
 .dep-card {
   overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface);
@@ -1164,6 +1260,50 @@ html[data-color-mode="dark"] .badge-tip {
   /* Keep Task list as pinned chrome, quieter while editing */
   opacity: 0.72;
 }
+/* Member edit focus-mode — header stays; body + siblings move */
+.accordion.is-edit-sibling-exit {
+  pointer-events: none;
+  animation: member-edit-sibling-out 160ms ease both;
+}
+.accordion.is-edit-sibling-enter {
+  animation: member-edit-sibling-in 180ms ease both;
+}
+@keyframes member-edit-sibling-out {
+  to { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes member-edit-sibling-in {
+  from { opacity: 0; transform: translateY(-4px); }
+}
+.accordion-body-pad.is-edit-body-exit {
+  pointer-events: none;
+  animation: member-edit-body-out 160ms ease both;
+}
+.accordion-body-pad.is-edit-body-enter {
+  animation: member-edit-body-in 180ms ease both;
+}
+@keyframes member-edit-body-out {
+  to { opacity: 0; transform: translateY(4px); }
+}
+@keyframes member-edit-body-in {
+  from { opacity: 0; transform: translateY(4px); }
+}
+.edit-section.is-header-action-exit,
+.edit-cancel.is-header-action-exit {
+  pointer-events: none;
+  animation: member-edit-action-out 120ms ease both;
+}
+.edit-section.is-header-action-enter,
+.edit-cancel.is-header-action-enter {
+  animation: member-edit-action-in 140ms ease both;
+}
+@keyframes member-edit-action-out { to { opacity: 0; } }
+@keyframes member-edit-action-in { from { opacity: 0; } }
+.panel-edit-bar.is-edit-bar-enter {
+  animation: member-edit-bar-in 180ms ease both;
+}
+@keyframes member-edit-bar-in {
+  from { opacity: 0; transform: translateY(6px); }
+}
 .quiet-state { display: grid; min-height: 260px; padding: 40px; place-items: center; color: var(--text-tertiary); font-size: 14px; text-align: center; }
 .accordion { border-bottom: 1px solid var(--border); }
 .accordion-header-row {
@@ -1182,7 +1322,7 @@ html[data-color-mode="dark"] .badge-tip {
 .accordion-chevron {
   display: grid; width: 14px; height: 14px; flex: 0 0 auto; place-items: center;
   color: var(--text-primary); /* match header ink — not icon/tertiary */
-  transition: transform 160ms ease;
+  transition: transform var(--motion-duration-normal) var(--motion-easing-emphasized);
   transform: rotate(-90deg); /* collapsed → */
 }
 .accordion-chevron svg {
@@ -1213,8 +1353,25 @@ html[data-color-mode="dark"] .badge-tip {
 .edit-cancel:hover { background: var(--brand-soft-hover); text-decoration: underline; }
 .accordion.is-editing .accordion-toggle { cursor: default; }
 .accordion.is-editing .accordion-toggle:hover { color: var(--text-primary); }
-.accordion-body { display: none; padding: 0 16px 16px; }
-.accordion.is-open .accordion-body { display: block; }
+/* Accordion — height via grid 0fr/1fr; duration set per toggle from content height (JS).
+   Padding lives on .accordion-body-pad (not the 0fr child) so collapse reaches true 0. */
+.accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows var(--motion-duration-accordion-close) var(--motion-easing-exit);
+}
+.accordion.is-open .accordion-body {
+  grid-template-rows: 1fr;
+  transition: grid-template-rows var(--motion-duration-accordion-open) var(--motion-easing-emphasized);
+}
+.accordion-body-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+.accordion-body-pad {
+  padding: 0 16px 16px;
+}
 .accordion-fields { margin: 0; }
 /* Member field lists — 2-up when the context panel is widened (class set in setPanelWidth) */
 html.is-panel-fields-wide .tab-pane[data-pane="member"] .accordion-fields {
@@ -1733,7 +1890,7 @@ html.is-panel-fields-wide [data-content="eligibility"] .elig-summary .list-item:
 /* Eligibility accordion — flush with summary rows (no body inset) */
 [data-content="eligibility"] .accordion-header-row { padding: 0; min-height: 44px; }
 [data-content="eligibility"] .accordion-toggle { padding: 10px 0; }
-[data-content="eligibility"] .accordion[data-section="elig-info"] .accordion-body {
+[data-content="eligibility"] .accordion[data-section="elig-info"] .accordion-body-pad {
   padding: 0 0 8px;
 }
 .elig-benefits { margin-top: 20px; }
@@ -1996,10 +2153,21 @@ html[data-color-mode="dark"] .elig-benefit-check:indeterminate {
 .benefit-tip-float {
   position: fixed; z-index: 400; margin: 0;
   opacity: 0; visibility: hidden; pointer-events: none;
-  transition: opacity 120ms ease, visibility 120ms ease;
+  /* Opens left of row — emerge away (from anchor outward) */
+  transform: translateX(4px);
+  transition:
+    opacity var(--tip-duration-exit) var(--tip-easing-exit),
+    transform var(--tip-duration-exit) var(--tip-easing-exit),
+    visibility var(--tip-duration-exit) var(--tip-easing-exit);
+  transition-delay: 0ms;
 }
 .benefit-tip-float.is-visible {
-  opacity: 1; visibility: visible; pointer-events: auto;
+  opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(0);
+  transition:
+    opacity var(--tip-duration-enter) var(--tip-easing-enter),
+    transform var(--tip-duration-enter) var(--tip-easing-enter),
+    visibility var(--tip-duration-enter) var(--tip-easing-enter);
+  transition-delay: var(--tip-delay-enter);
 }
 .benefit-tip-head {
   display: flex; align-items: center; gap: 10px;
@@ -2327,25 +2495,34 @@ html[data-color-mode="dark"] .elig-benefit-check:indeterminate {
 .ins-info .ins-info-glyph-dot {
   fill: currentColor; stroke: none;
 }
-/* Open below the icon — stays inside panel-scroll (above was clipped by the scrollport) */
-.ins-info-tip {
-  position: absolute; top: calc(100% + 8px); left: 0; z-index: 20; width: 240px;
+/* Source tip stays in the button for content; float escapes panel overflow + tool rail */
+.ins-info .ins-info-tip { display: none; }
+.ins-info-tip-float {
+  position: fixed; z-index: 400; width: 240px; margin: 0;
   padding: 10px 12px; border-radius: var(--radius-sm); background: #101828; color: white;
   font-size: 12px; font-weight: 400; line-height: 16px; text-align: left;
   box-shadow: 0 8px 20px rgba(16,24,40,.22); pointer-events: none;
   opacity: 0; visibility: hidden;
-  transition: opacity 0.15s ease, visibility 0.15s ease;
+  /* Opens below — emerge away from parent */
+  transform: translateY(-4px);
+  transition:
+    opacity var(--tip-duration-exit) var(--tip-easing-exit),
+    transform var(--tip-duration-exit) var(--tip-easing-exit),
+    visibility var(--tip-duration-exit) var(--tip-easing-exit);
+  transition-delay: 0ms;
 }
-.ins-info-tip::after {
+.ins-info-tip-float.is-visible {
+  opacity: 1; visibility: visible; transform: translateY(0);
+  transition:
+    opacity var(--tip-duration-enter) var(--tip-easing-enter),
+    transform var(--tip-duration-enter) var(--tip-easing-enter),
+    visibility var(--tip-duration-enter) var(--tip-easing-enter);
+  transition-delay: var(--tip-delay-enter);
+}
+.ins-info-tip-float::after {
   position: absolute; bottom: 100%; left: 12px; border: 5px solid transparent;
   border-bottom-color: #101828; content: "";
 }
-.ins-info:hover .ins-info-tip,
-.ins-info:focus-visible .ins-info-tip {
-  opacity: 1; visibility: visible;
-}
-.ins-meter-card:has(.ins-info:hover),
-.ins-meter-card:has(.ins-info:focus-visible) { z-index: 6; }
 .ins-meter {
   padding: 14px 12px;
   background: var(--surface);
@@ -2510,7 +2687,7 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
 .ins-compare-select .accordion[data-section="additional-plans"] .accordion-toggle {
   padding: 10px 0;
 }
-.ins-compare-select .accordion[data-section="additional-plans"] .accordion-body {
+.ins-compare-select .accordion[data-section="additional-plans"] .accordion-body-pad {
   padding: 0 0 12px;
 }
 .ins-compare-select .accordion[data-section="additional-plans"] .ins-plan-options {
@@ -2561,7 +2738,12 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
   font-size: 12px; font-weight: 400; line-height: 16px; text-align: left;
   box-shadow: 0 8px 20px rgba(16,24,40,.22); pointer-events: none;
   opacity: 0; visibility: hidden; white-space: normal;
-  transition: opacity 0.15s ease, visibility 0.15s ease;
+  transform: translateY(4px);
+  transition:
+    opacity var(--tip-duration-exit) var(--tip-easing-exit),
+    transform var(--tip-duration-exit) var(--tip-easing-exit),
+    visibility var(--tip-duration-exit) var(--tip-easing-exit);
+  transition-delay: 0ms;
 }
 .ins-sticky-footer-tip::after {
   position: absolute; top: 100%; left: 16px; border: 5px solid transparent;
@@ -2569,7 +2751,12 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
 }
 .ins-sticky-footer-label.is-truncated:hover .ins-sticky-footer-tip,
 .ins-sticky-footer-label.is-truncated:focus-within .ins-sticky-footer-tip {
-  opacity: 1; visibility: visible;
+  opacity: 1; visibility: visible; transform: translateY(0);
+  transition:
+    opacity var(--tip-duration-enter) var(--tip-easing-enter),
+    transform var(--tip-duration-enter) var(--tip-easing-enter),
+    visibility var(--tip-duration-enter) var(--tip-easing-enter);
+  transition-delay: var(--tip-delay-enter);
 }
 .ins-compare-detail {
   /* Shared tracks: 30% / 35% / 35% — controls + table use the same splits */
@@ -2661,10 +2848,25 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
   box-shadow: var(--shadow-card);
   font-size: 12px; line-height: 16px;
   opacity: 0; visibility: hidden; pointer-events: none;
-  transition: opacity 0.15s ease, visibility 0.15s ease;
+  /* Opens below — emerge away from parent */
+  transform: translateY(-4px);
+  transition:
+    opacity var(--tip-duration-exit) var(--tip-easing-exit),
+    transform var(--tip-duration-exit) var(--tip-easing-exit),
+    visibility var(--tip-duration-exit) var(--tip-easing-exit);
+  transition-delay: 0ms;
 }
 .ins-share-tips-wrap.is-tip-open .ins-tips-popover {
-  opacity: 1; visibility: visible; pointer-events: auto;
+  opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0);
+  transition:
+    opacity var(--tip-duration-enter) var(--tip-easing-enter),
+    transform var(--tip-duration-enter) var(--tip-easing-enter),
+    visibility var(--tip-duration-enter) var(--tip-easing-enter);
+  transition-delay: var(--tip-delay-enter);
+}
+/* Coach / open-by-default: no hover-intent — tip should be there on first paint */
+.ins-share-tips-wrap.is-tip-coach.is-tip-open .ins-tips-popover {
+  transition-delay: 0ms;
 }
 /* Caret centered on the 14px info icon (badge pad-left 4px + icon radius 7px) */
 .ins-tips-popover::before {
@@ -2750,9 +2952,12 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
   font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: 0;
   opacity: 0; visibility: hidden; pointer-events: none; white-space: nowrap;
   transform: translate(4px, -50%);
-  box-shadow: var(--shadow-card);
-  transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease;
   box-shadow: 0 4px 12px rgba(16, 24, 40, 0.18);
+  transition:
+    opacity var(--tip-duration-exit) var(--tip-easing-exit),
+    transform var(--tip-duration-exit) var(--tip-easing-exit),
+    visibility var(--tip-duration-exit) var(--tip-easing-exit);
+  transition-delay: 0ms;
 }
 .tooltip::after {
   position: absolute; top: 50%; left: 100%;
@@ -2761,7 +2966,12 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
 }
 .rail-button:hover .tooltip,
 .rail-button:focus-visible .tooltip {
-  opacity: 1; visibility: visible; transform: translate(0, -50%); transition-delay: 200ms;
+  opacity: 1; visibility: visible; transform: translate(0, -50%);
+  transition:
+    opacity var(--tip-duration-enter) var(--tip-easing-enter),
+    transform var(--tip-duration-enter) var(--tip-easing-enter),
+    visibility var(--tip-duration-enter) var(--tip-easing-enter);
+  transition-delay: var(--tip-delay-enter);
 }
 
 .modal-layer { position: fixed; inset: 0; z-index: 100; display: grid; visibility: hidden; place-items: center; }

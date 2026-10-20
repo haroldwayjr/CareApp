@@ -101,8 +101,13 @@
       resizer.setAttribute("aria-valuemin", String(PANEL_MIN));
       resizer.setAttribute("aria-valuemax", String(max));
     }
-    /* Footer tip depends on ellipsis — remeasure when panel width changes */
-    requestAnimationFrame(() => refreshStickyFooterTip());
+    /* Footer tip + tab indicator depend on layout — remeasure when panel width changes */
+    requestAnimationFrame(() => {
+      refreshStickyFooterTip();
+      stage?.querySelectorAll(".tabs").forEach((tabs) => {
+        layoutTabsIndicator(tabs, { animate: false });
+      });
+    });
   }
 
   const reduceMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -410,7 +415,7 @@
     comparePlanIds: ["aetna", "anthem"],
     tipsDismissed: false,
     openDropdown: null,
-    additionalPlansOpen: false,
+    additionalPlansOpen: true,
   };
 
   const ELIG_EMPLOYER_COMPANY = "Demo Premium Company";
@@ -676,6 +681,14 @@
   let memberEditingSection = null;
   /** Field snapshot at edit start — Save bar only when form ≠ baseline. */
   let memberEditBaseline = null;
+  /** True while member section save is in flight (spinner on Save). */
+  let memberSaving = false;
+  /** True while enter/exit edit focus-mode fade is running. */
+  let memberEditTransitioning = false;
+  /** Prototype latency so Save spinner is visible when a save takes a while. */
+  const MEMBER_SAVE_MS = 900;
+  /** Soma-ish moderate fade for member edit focus-mode swap. */
+  const MEMBER_EDIT_MOTION_MS = 160;
   /** Pending navigation after unsaved-changes Dialog (Save / Discard). */
   let pendingLeaveAction = null;
   let unsavedConfirmOpen = false;
@@ -1440,7 +1453,11 @@
         ${headerAction}
       </div>
       <div class="accordion-body">
-        <dl class="accordion-fields">${rows}</dl>
+        <div class="accordion-body-inner">
+          <div class="accordion-body-pad">
+            <dl class="accordion-fields">${rows}</dl>
+          </div>
+        </div>
       </div>
     </section>`;
   }
@@ -1501,17 +1518,41 @@
     content?.querySelector("[data-edit-bar]")?.remove();
   }
 
+  function setPrimaryButtonLoading(btn, loading, idleLabel = "Save") {
+    if (!btn) return;
+    btn.classList.toggle("is-loading", loading);
+    btn.disabled = loading;
+    btn.setAttribute("aria-busy", String(loading));
+    if (loading) {
+      btn.innerHTML = `<span class="button-spinner" aria-hidden="true"></span><span>Saving...</span>`;
+    } else {
+      btn.textContent = idleLabel;
+    }
+  }
+
   function syncMemberEditChrome() {
     const content = stage.querySelector('.panel-content[data-content="member"]');
     if (!content) return;
+    /* Keep Save spinner / disabled Cancel intact while a save is in flight */
+    if (memberSaving) return;
     const editing = Boolean(memberEditingSection);
     const dirty = isMemberEditDirty();
     content.classList.toggle("is-section-editing", editing);
+    const hadBar = Boolean(content.querySelector("[data-edit-bar]"));
     content.querySelector("[data-edit-bar]")?.remove();
     const taskList = content.querySelector(".task-list-accordion");
     /* Best practice: hide Save/Cancel until something actually changed */
     if (editing && dirty && taskList) {
       taskList.insertAdjacentHTML("beforebegin", memberEditBarHtml());
+      const bar = content.querySelector("[data-edit-bar]");
+      if (bar && !hadBar && !reduceMotion()) {
+        bar.classList.add("is-edit-bar-enter");
+        bar.addEventListener(
+          "animationend",
+          () => bar.classList.remove("is-edit-bar-enter"),
+          { once: true }
+        );
+      }
       content.querySelectorAll("[data-cancel-section]").forEach((btn) => {
         btn.addEventListener("click", () => cancelMemberEdit());
       });
@@ -1519,6 +1560,147 @@
         btn.addEventListener("click", () => saveMemberEdit(btn.dataset.saveSection));
       });
     }
+  }
+
+  function waitMemberEditMotion(ms = MEMBER_EDIT_MOTION_MS) {
+    if (reduceMotion()) return Promise.resolve();
+    return new Promise((r) => window.setTimeout(r, ms));
+  }
+
+  function bindMemberEditDirty(section) {
+    const onDirty = () => syncMemberEditChrome();
+    section?.querySelectorAll("[data-field], .inline-field-control").forEach((el) => {
+      el.addEventListener("input", onDirty);
+      el.addEventListener("change", onDirty);
+    });
+  }
+
+  /**
+   * Enter focus-mode edit: keep active header mounted; fade siblings + body;
+   * swap pencil → Cancel; fade body fields in.
+   */
+  async function enterMemberEditFocus(sectionId) {
+    const pane = stage.querySelector('.tab-pane[data-pane="member"]');
+    const active = pane?.querySelector(`.accordion[data-section="${sectionId}"]`);
+    if (!pane || !active) {
+      memberEditingSection = sectionId;
+      memberEditBaseline = snapshotMemberSection(sectionId);
+      memberAccordionOpen[sectionId] = true;
+      refreshMemberPane();
+      return;
+    }
+
+    const siblings = [...pane.querySelectorAll(":scope > .accordion")].filter((el) => el !== active);
+    const bodyMotion =
+      active.querySelector(".accordion-body-pad") ||
+      active.querySelector(".accordion-body-inner") ||
+      active.querySelector(".accordion-body");
+    const editBtn = active.querySelector(".edit-section");
+
+    active.classList.add("is-open");
+    memberAccordionOpen[sectionId] = true;
+
+    if (!reduceMotion()) {
+      siblings.forEach((el) => el.classList.add("is-edit-sibling-exit"));
+      bodyMotion?.classList.add("is-edit-body-exit");
+      editBtn?.classList.add("is-header-action-exit");
+      await waitMemberEditMotion();
+    }
+
+    siblings.forEach((el) => el.remove());
+
+    if (editBtn) {
+      editBtn.outerHTML = `<button class="edit-cancel${
+        reduceMotion() ? "" : " is-header-action-enter"
+      }" type="button" data-cancel-section="${sectionId}">Cancel</button>`;
+      const cancelBtn = active.querySelector(".edit-cancel");
+      cancelBtn?.addEventListener("click", () => cancelMemberEdit());
+      cancelBtn?.addEventListener(
+        "animationend",
+        () => cancelBtn.classList.remove("is-header-action-enter"),
+        { once: true }
+      );
+    }
+
+    memberEditingSection = sectionId;
+    memberEditBaseline = snapshotMemberSection(sectionId);
+    active.classList.add("is-editing");
+    active.querySelector(".accordion-toggle")?.setAttribute("data-editing", "true");
+
+    if (bodyMotion) {
+      bodyMotion.classList.remove("is-edit-body-exit");
+      bodyMotion.innerHTML = `<dl class="accordion-fields">${rowsForSection(sectionId, true)}</dl>`;
+      if (!reduceMotion()) {
+        bodyMotion.classList.add("is-edit-body-enter");
+        bodyMotion.addEventListener(
+          "animationend",
+          () => bodyMotion.classList.remove("is-edit-body-enter"),
+          { once: true }
+        );
+      }
+    }
+
+    stage.querySelector('.panel-content[data-content="member"]')?.classList.add("is-section-editing");
+    bindInlineSelects();
+    bindInlineDobFields();
+    bindMemberEditDirty(active);
+    syncMemberEditChrome();
+  }
+
+  /**
+   * Leave focus-mode edit: fade body (header stays through exit), then restore list.
+   */
+  async function exitMemberEditFocus() {
+    const sectionId = memberEditingSection;
+    const pane = stage.querySelector('.tab-pane[data-pane="member"]');
+    const active = sectionId
+      ? pane?.querySelector(`.accordion[data-section="${sectionId}"]`)
+      : null;
+    const bodyMotion =
+      active?.querySelector(".accordion-body-pad") ||
+      active?.querySelector(".accordion-body-inner") ||
+      active?.querySelector(".accordion-body");
+    const cancelBtn = active?.querySelector(".edit-cancel");
+
+    if (active && !reduceMotion()) {
+      bodyMotion?.classList.add("is-edit-body-exit");
+      cancelBtn?.classList.add("is-header-action-exit");
+      await waitMemberEditMotion();
+    }
+
+    abandonMemberEdit();
+    refreshMemberPane();
+
+    if (reduceMotion() || !sectionId) return;
+    const nextPane = stage.querySelector('.tab-pane[data-pane="member"]');
+    nextPane?.querySelectorAll(":scope > .accordion").forEach((acc) => {
+      if (acc.dataset.section === sectionId) {
+        const nextBody =
+          acc.querySelector(".accordion-body-pad") ||
+          acc.querySelector(".accordion-body-inner") ||
+          acc.querySelector(".accordion-body");
+        const pencil = acc.querySelector(".edit-section");
+        nextBody?.classList.add("is-edit-body-enter");
+        pencil?.classList.add("is-header-action-enter");
+        nextBody?.addEventListener(
+          "animationend",
+          () => nextBody.classList.remove("is-edit-body-enter"),
+          { once: true }
+        );
+        pencil?.addEventListener(
+          "animationend",
+          () => pencil.classList.remove("is-header-action-enter"),
+          { once: true }
+        );
+      } else {
+        acc.classList.add("is-edit-sibling-enter");
+        acc.addEventListener(
+          "animationend",
+          () => acc.classList.remove("is-edit-sibling-enter"),
+          { once: true }
+        );
+      }
+    });
   }
 
   function abandonMemberEdit() {
@@ -1542,18 +1724,19 @@
    * Dismiss / Escape keeps editing.
    */
   function requestLeaveMemberEdit(next) {
+    if (memberSaving || memberEditTransitioning) return;
     if (!memberEditingSection) {
       next?.();
       return;
     }
     if (!isMemberEditDirty()) {
-      abandonMemberEdit();
-      const pane = stage.querySelector('.tab-pane[data-pane="member"]');
-      if (pane) {
-        pane.innerHTML = memberAccordionsHtml();
-        bindAccordionActions();
-      }
-      next?.();
+      if (memberEditTransitioning) return;
+      memberEditTransitioning = true;
+      exitMemberEditFocus()
+        .then(() => next?.())
+        .finally(() => {
+          memberEditTransitioning = false;
+        });
       return;
     }
     pendingLeaveAction = next || null;
@@ -1572,52 +1755,90 @@
       const resume = pendingLeaveAction;
       pendingLeaveAction = null;
       unsavedConfirmOpen = false;
-      abandonMemberEdit();
       closeModal();
-      const pane = stage.querySelector('.tab-pane[data-pane="member"]');
-      if (pane) {
-        pane.innerHTML = memberAccordionsHtml();
-        bindAccordionActions();
-      }
-      resume?.();
+      memberEditTransitioning = true;
+      exitMemberEditFocus()
+        .then(() => resume?.())
+        .finally(() => {
+          memberEditTransitioning = false;
+        });
     });
-    document.querySelector("#unsaved-save")?.addEventListener("click", () => {
+    document.querySelector("#unsaved-save")?.addEventListener("click", async () => {
       const sectionId = memberEditingSection;
       const resume = pendingLeaveAction;
+      const saveBtn = document.querySelector("#unsaved-save");
+      const discardBtn = document.querySelector("#unsaved-discard");
+      if (!sectionId || memberSaving || memberEditTransitioning) return;
+      memberSaving = true;
+      setPrimaryButtonLoading(saveBtn, true);
+      if (discardBtn) discardBtn.disabled = true;
+      await new Promise((r) => window.setTimeout(r, MEMBER_SAVE_MS));
       pendingLeaveAction = null;
       unsavedConfirmOpen = false;
-      if (sectionId) {
-        commitMemberEditFields(sectionId);
-        const toast = memberSectionMeta[sectionId]?.toast;
-        abandonMemberEdit();
-        closeModal();
-        if (toast) showToast(toast);
-      } else {
-        closeModal();
+      commitMemberEditFields(sectionId);
+      const toast = memberSectionMeta[sectionId]?.toast;
+      memberSaving = false;
+      closeModal();
+      memberEditTransitioning = true;
+      try {
+        await exitMemberEditFocus();
+      } finally {
+        memberEditTransitioning = false;
       }
+      if (toast) showToast(toast);
       resume?.();
     });
   }
 
-  function startMemberEdit(sectionId) {
-    memberEditingSection = sectionId;
-    memberEditBaseline = snapshotMemberSection(sectionId);
-    memberAccordionOpen[sectionId] = true;
-    refreshMemberPane();
-    const pane = stage.querySelector('.tab-pane[data-pane="member"]');
-    pane?.scrollTo({ top: 0, behavior: "smooth" });
+  async function startMemberEdit(sectionId) {
+    if (!sectionId || memberEditTransitioning || memberSaving) return;
+    memberEditTransitioning = true;
+    try {
+      await enterMemberEditFocus(sectionId);
+      const pane = stage.querySelector('.tab-pane[data-pane="member"]');
+      pane?.scrollTo({ top: 0, behavior: reduceMotion() ? "auto" : "smooth" });
+    } finally {
+      memberEditTransitioning = false;
+    }
   }
 
-  function cancelMemberEdit() {
-    abandonMemberEdit();
-    refreshMemberPane();
+  async function cancelMemberEdit() {
+    if (memberSaving || memberEditTransitioning) return;
+    memberEditTransitioning = true;
+    try {
+      await exitMemberEditFocus();
+    } finally {
+      memberEditTransitioning = false;
+    }
   }
 
-  function saveMemberEdit(sectionId) {
+  async function saveMemberEdit(sectionId) {
+    if (!sectionId || memberSaving || memberEditTransitioning) return;
+    const content = stage.querySelector('.panel-content[data-content="member"]');
+    const saveBtn =
+      content?.querySelector(`[data-save-section="${sectionId}"]`) ||
+      content?.querySelector("[data-save-section]");
+    const cancelBtns = content?.querySelectorAll("[data-cancel-section]");
+    memberSaving = true;
+    setPrimaryButtonLoading(saveBtn, true);
+    cancelBtns?.forEach((btn) => {
+      btn.disabled = true;
+    });
+    content
+      ?.querySelectorAll(".accordion.is-editing [data-field], .accordion.is-editing .inline-field-control")
+      .forEach((el) => {
+        el.disabled = true;
+      });
+    await new Promise((r) => window.setTimeout(r, MEMBER_SAVE_MS));
     commitMemberEditFields(sectionId);
     const toast = memberSectionMeta[sectionId]?.toast;
-    abandonMemberEdit();
-    refreshMemberPane();
+    memberSaving = false;
+    memberEditTransitioning = true;
+    try {
+      await exitMemberEditFocus();
+    } finally {
+      memberEditTransitioning = false;
+    }
     if (toast) showToast(toast);
   }
 
@@ -1697,6 +1918,7 @@
         </div>
       </header>
       <div class="tabs" role="tablist">
+        <span class="tabs-indicator" aria-hidden="true"></span>
         <button class="tab is-active" type="button" role="tab" data-tab="member" aria-selected="true">Member</button>
         <button class="tab" type="button" role="tab" data-tab="care-team" aria-selected="false">Care Team</button>
         <button class="tab" type="button" role="tab" data-tab="dependents" aria-selected="false">Dependents</button>
@@ -1727,7 +1949,6 @@
     { id: "cigna", name: "2026 Cigna EPO Plus", carrier: "Cigna", premium: "$55.20/mo" },
     { id: "kaiser", name: "2026 Kaiser Permanente HMO Classic", carrier: "Kaiser Permanente", premium: "$42.00/mo", additional: true },
     { id: "uhc", name: "2026 UnitedHealthcare HDHP Gold", carrier: "UnitedHealthcare", premium: "$51.25/mo", additional: true },
-    { id: "bcbs", name: "2026 Blue Cross Blue Shield PPO", carrier: "Blue Cross Blue Shield", premium: "$47.80/mo", additional: true },
   ];
 
   const priorAuths = [
@@ -1742,6 +1963,7 @@
 
   function insuranceTabsHtml() {
     return `<div class="tabs ins-tabs" role="tablist">
+      <span class="tabs-indicator" aria-hidden="true"></span>
       ${[
         ["member-plan", "Member Plan"],
         ["activity", "Insurance Activity"],
@@ -1870,7 +2092,11 @@
             </button>
           </div>
           <div class="accordion-body">
-            <div class="ins-plan-options">${additionalPlans.map((plan) => insPlanOptionHtml(plan, selected)).join("")}</div>
+            <div class="accordion-body-inner">
+              <div class="accordion-body-pad">
+                <div class="ins-plan-options">${additionalPlans.map((plan) => insPlanOptionHtml(plan, selected)).join("")}</div>
+              </div>
+            </div>
           </div>
         </section>
         <section class="ins-employer"><h3>From the Employer</h3><p class="ins-employer-caption">Share this link so members can explore and compare all available plans.</p>
@@ -2064,6 +2290,25 @@
     return insuranceMainTemplate();
   }
 
+  /** Soma Tabs.Indicator — slide + resize to the active tab (full tab width). */
+  function layoutTabsIndicator(tabsRoot, { animate = true } = {}) {
+    const root = tabsRoot || stage.querySelector(".tabs");
+    const indicator = root?.querySelector(".tabs-indicator");
+    const active = root?.querySelector(".tab.is-active");
+    if (!root || !indicator || !active) return;
+    const skipMotion = !animate || reduceMotion();
+    if (skipMotion) indicator.classList.add("is-instant");
+    const rootRect = root.getBoundingClientRect();
+    const activeRect = active.getBoundingClientRect();
+    const left = activeRect.left - rootRect.left + root.scrollLeft;
+    indicator.style.width = `${Math.round(activeRect.width)}px`;
+    indicator.style.transform = `translateX(${Math.round(left)}px)`;
+    if (skipMotion) {
+      void indicator.offsetWidth;
+      indicator.classList.remove("is-instant");
+    }
+  }
+
   function layoutInsSegmentedThumb(segmented, { animate = true } = {}) {
     const root = segmented || stage.querySelector(".ins-segmented");
     const thumb = root?.querySelector(".ins-segmented-thumb");
@@ -2118,6 +2363,7 @@
         btn.classList.toggle("is-active", active);
         btn.setAttribute("aria-selected", String(active));
       });
+      layoutTabsIndicator(tabs, { animate: true });
       scroll.innerHTML =
         tabId === "activity"
           ? insuranceActivityHtml()
@@ -2140,7 +2386,74 @@
       });
     });
     stage.querySelector("#ins-claims")?.addEventListener("click", () => showToast("Opening claims"));
+    bindInsInfoTips();
     requestAnimationFrame(() => layoutInsSegmentedThumb(null, { animate: false }));
+  }
+
+  /** Meter info tips: fixed float so `.card` overflow + tool rail can’t cover them. */
+  let insInfoTipHideTimer = 0;
+
+  function ensureInsInfoTipFloat() {
+    let float = document.querySelector(".ins-info-tip-float");
+    if (!float) {
+      float = document.createElement("div");
+      float.className = "ins-info-tip-float";
+      float.setAttribute("role", "tooltip");
+      document.body.appendChild(float);
+    }
+    return float;
+  }
+
+  function hideInsInfoTipFloat() {
+    const float = document.querySelector(".ins-info-tip-float");
+    if (!float) return;
+    /* Keep copy during leave so the box doesn’t collapse mid-fade */
+    float.classList.remove("is-visible");
+  }
+
+  function showInsInfoTipFloat(btn) {
+    const source = btn.querySelector(".ins-info-tip");
+    if (!source) return;
+    const float = ensureInsInfoTipFloat();
+    float.textContent = source.textContent;
+    float.classList.add("is-visible");
+
+    const place = () => {
+      const rect = btn.getBoundingClientRect();
+      const tipRect = float.getBoundingClientRect();
+      const gap = 8;
+      let left = rect.left;
+      let top = rect.bottom + gap;
+      left = Math.max(8, Math.min(left, window.innerWidth - tipRect.width - 8));
+      if (top + tipRect.height > window.innerHeight - 8) {
+        top = Math.max(8, rect.top - tipRect.height - gap);
+      }
+      float.style.left = `${Math.round(left)}px`;
+      float.style.top = `${Math.round(top)}px`;
+    };
+    place();
+    requestAnimationFrame(place);
+  }
+
+  function bindInsInfoTips() {
+    const scheduleHide = () => {
+      window.clearTimeout(insInfoTipHideTimer);
+      insInfoTipHideTimer = window.setTimeout(() => hideInsInfoTipFloat(), 80);
+    };
+    const cancelHide = () => window.clearTimeout(insInfoTipHideTimer);
+
+    stage.querySelectorAll(".ins-info").forEach((btn) => {
+      btn.addEventListener("mouseenter", () => {
+        cancelHide();
+        showInsInfoTipFloat(btn);
+      });
+      btn.addEventListener("mouseleave", scheduleHide);
+      btn.addEventListener("focus", () => {
+        cancelHide();
+        showInsInfoTipFloat(btn);
+      });
+      btn.addEventListener("blur", scheduleHide);
+    });
   }
 
   /**
@@ -2214,7 +2527,7 @@
     stage.querySelector("#ins-compare-open")?.addEventListener("click", () => {
       insuranceState.view = "compare-select";
       insuranceState.compareSelected = [];
-      insuranceState.additionalPlansOpen = false;
+      insuranceState.additionalPlansOpen = true;
       render("insurance");
     });
     bindInsuranceActivityControls();
@@ -2503,7 +2816,11 @@
               <strong>When to recommend</strong>
             </button>
           </div>
-          <div class="accordion-body">${benefitBullets(detail.whenToRecommend)}</div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <div class="accordion-body-pad">${benefitBullets(detail.whenToRecommend)}</div>
+            </div>
+          </div>
         </section>
         <section class="accordion is-open" data-section="benefit-ask">
           <div class="accordion-header-row">
@@ -2512,7 +2829,11 @@
               <strong>Questions to ask</strong>
             </button>
           </div>
-          <div class="accordion-body">${benefitBullets(detail.questionsToAsk)}</div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <div class="accordion-body-pad">${benefitBullets(detail.questionsToAsk)}</div>
+            </div>
+          </div>
         </section>
 
         <h3 class="benefit-detail-section">Cost and Coverage</h3>
@@ -2575,7 +2896,11 @@
             </button>
           </div>
           <div class="accordion-body">
-            <dl class="accordion-fields">${eligibilityInfoRowsHtml()}</dl>
+            <div class="accordion-body-inner">
+              <div class="accordion-body-pad">
+                <dl class="accordion-fields">${eligibilityInfoRowsHtml()}</dl>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -2736,7 +3061,7 @@
         comparePlanIds: ["aetna", "anthem"],
         tipsDismissed: false,
         openDropdown: null,
-        additionalPlansOpen: false,
+        additionalPlansOpen: true,
       });
     }
     activePanel = name;
@@ -3011,6 +3336,12 @@
       render("eligibility");
     });
     bindBenefitListActions();
+
+    requestAnimationFrame(() => {
+      stage.querySelectorAll(".tabs").forEach((tabs) => {
+        layoutTabsIndicator(tabs, { animate: false });
+      });
+    });
   }
 
   function bindInsurancePanelActions() {
@@ -3157,8 +3488,8 @@
   function hideBenefitTipFloat() {
     const float = document.querySelector(".benefit-tip-float");
     if (!float) return;
+    /* Keep copy during leave so the box doesn’t collapse mid-fade */
     float.classList.remove("is-visible");
-    float.innerHTML = "";
   }
 
   function showBenefitTipFloat(btn) {
@@ -3239,12 +3570,36 @@
     });
   }
 
+  /**
+   * Scale accordion open/close duration with content height so tall sections
+   * (e.g. Personal Information) don’t rush. Clamped so short ones stay snappy.
+   * Close stays a bit faster than open.
+   */
+  function syncAccordionBodyDuration(section) {
+    const body = section?.querySelector(".accordion-body");
+    const measure =
+      section?.querySelector(".accordion-body-pad") ||
+      section?.querySelector(".accordion-body-inner");
+    if (!body || !measure) return;
+    if (reduceMotion()) {
+      body.style.setProperty("--motion-duration-accordion-open", "0ms");
+      body.style.setProperty("--motion-duration-accordion-close", "0ms");
+      return;
+    }
+    const height = Math.max(measure.scrollHeight, 1);
+    const openMs = Math.round(Math.min(560, Math.max(280, height * 1)));
+    const closeMs = Math.round(Math.min(450, Math.max(230, height * 0.8)));
+    body.style.setProperty("--motion-duration-accordion-open", `${openMs}ms`);
+    body.style.setProperty("--motion-duration-accordion-close", `${closeMs}ms`);
+  }
+
   function bindAccordionActions() {
     stage.querySelectorAll(".accordion-toggle").forEach((toggle) => {
       toggle.addEventListener("click", () => {
         if (toggle.dataset.editing === "true") return;
         const section = toggle.closest(".accordion");
         const sectionId = section?.dataset.section;
+        syncAccordionBodyDuration(section);
         const open = section.classList.toggle("is-open");
         toggle.setAttribute("aria-expanded", String(open));
         if (sectionId && memberAccordionOpen[sectionId] !== undefined) {
@@ -3602,11 +3957,13 @@
 
   function selectTab(name) {
     const apply = () => {
-      stage.querySelectorAll(".tab").forEach((tab) => {
+      const tabs = stage.querySelector('.panel-content[data-content="member"] > .tabs');
+      tabs?.querySelectorAll(".tab[data-tab]").forEach((tab) => {
         const selected = tab.dataset.tab === name;
         tab.classList.toggle("is-active", selected);
         tab.setAttribute("aria-selected", String(selected));
       });
+      layoutTabsIndicator(tabs, { animate: true });
       const pane = stage.querySelector(".tab-pane");
       if (name === "member") {
         pane.dataset.pane = "member";
@@ -3825,12 +4182,8 @@
     const tipId = badge.getAttribute("aria-describedby");
     const tip = tipId ? document.getElementById(tipId) : null;
     if (!tip) return;
-    const show = () => {
-      tip.hidden = false;
-    };
-    const hide = () => {
-      tip.hidden = true;
-    };
+    const show = () => tip.classList.add("is-visible");
+    const hide = () => tip.classList.remove("is-visible");
     badge.addEventListener("mouseenter", show);
     badge.addEventListener("mouseleave", hide);
     badge.addEventListener("focus", show);

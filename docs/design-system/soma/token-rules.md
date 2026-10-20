@@ -202,6 +202,23 @@ Do not bind Soft Badge strokes to primitives. Bind `border/{tone}/subtle`. These
 - Dark mode: ~2-step higher opacity on same ramp (cap `/90`).
 - Known weak point: shadow-only dark elevation may still read subtle — next step is surface-tint overlay, not more opacity.
 
+## Motion
+
+Duration + easing only (docs-first). Full tables and Accordion / Progress / Switch recipes: **[soma-ui-library `docs/motion.md`](https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md)**.
+
+| Semantic | Alias | Value |
+|---|---|---|
+| `motion.duration.fast` | `duration/100` | 100ms |
+| `motion.duration.normal` | `duration/150` | 150ms |
+| `motion.duration.moderate` | `duration/200` | 200ms |
+| `motion.duration.slow` | `duration/250` | 250ms |
+| `motion.duration.reveal` | `duration/900` | 900ms (Progress first-paint grow) |
+| `motion.easing.standard` | `easing/standard` | `cubic-bezier(0.2, 0, 0, 1)` |
+| `motion.easing.emphasized` | `easing/emphasized` | `cubic-bezier(0.16, 1, 0.3, 1)` |
+| `motion.easing.exit` | `easing/exit` | `cubic-bezier(0.4, 0, 1, 1)` |
+
+Components use semantic names only. Honor `prefers-reduced-motion` (durations → 0). Figma variables not published yet.
+
 ## Radius
 
 | Token | px |

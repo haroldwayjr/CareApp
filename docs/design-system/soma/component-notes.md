@@ -2,32 +2,36 @@
 
 ## Mockups / app examples (non-negotiable)
 
-Applies to every new or edited app frame — including [Chat tasks](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=4490-39171), Chat Assist, APD, Care Plans, and any other product mock. Same bar as masters: tokens + library components only.
+Applies to every new or edited app frame — including [Chat tasks](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=4490-39171), Chat Assist, APD, Care Plans, and any other product mock. Same bar as masters: **existing tokens + existing library components only**.
 
-### Tokens — bind, never type raw values
+### Tokens — bind existing variables only
 
-- **Radius, spacing, color, elevation:** bind Soma variables. A raw number in the panel (e.g. Corner radius `12`) is a bug even when the px matches a token — bind **`radius/xl`** (12), not a hardcoded `12`. Same for gap/padding (`inset.*` / `stack.*` / `inline.*`), fills/strokes (semantic color), and shadows (`shadow.*`).
+- **Always** bind published Soma variables for **color, radius, spacing, elevation**, and any other tokenized attribute. Never type raw Corner radius / gap / pad / hex when a variable exists (e.g. `12` → **`radius/xl`**, not a hardcoded `12`). Same for gap/padding (`inset.*` / `stack.*` / `inline.*`), fills/strokes (semantic color), and shadows (`shadow.*`).
 - **Common radius map:** `radius/xxs` 2 · `xs` 4 · `sm` 6 · `md` 8 · `lg` 10 · `xl` 12 · `2xl` 16 · `3xl` 20 · `4xl` 24 · `full` pill. Cards / side panels default **`radius/md`** unless the component recipe says otherwise (composer Message field → **`radius/xl`**; pills → **`radius/full`**).
 - **Do not** leave unbound hex, “mixed,” or local styles that duplicate a published token.
+- **Missing token / style:** if the needed color, radius, spacing, elevation, or text style does not exist in Soma — **stop and prompt the user** before creating a new variable, local style, or unbound value. Do not invent tokens to finish a mock.
 
-### Typography — styles only
+### Typography — existing styles only
 
 - Apply published Soma **text styles** (`body1`, `body2`, `subtitle2`, `caption`, `h3`–`h5`, etc.) with their typography variable bindings.
 - Font is **Figtree** via those styles — never Inter, system, or freehand Figtree with unbound size / weight / line-height.
 - Prefer the style that matches the job (e.g. interactive labels → **subtitle2**; prose → **body1**; dense meta → **caption**) — see Typography below and `token-rules.md`.
+- **Missing text style:** if no published style fits — **stop and prompt the user** before creating a new text style or freehand type.
 
-### Components — library first; ask before inventing
+### Components — existing library only; prompt before inventing
 
-- **Instance** published Soma masters from the library. Prefer variants and nested INSTANCE_SWAP over detaching or rebuilding chrome.
-- **Do not** invent new components, parallel masters, or one-off patterns for a mock. If nothing fits: stop and ask (or note the gap in `open-items.md`) — do not ship a custom frame that looks “close enough.”
-- **Do not** detach instances to restyle. Override exposed props / nested swaps only.
+- **Always instance** published Soma masters from the library. Prefer variants and nested INSTANCE_SWAP over detaching or rebuilding chrome.
 - Compose from existing pieces (Button, Tabs, Text Input, Card, Chat / Message, Chat / Composer, etc.) the way documented app examples already do.
+- **Do not** detach instances to restyle. Override exposed props / nested swaps only.
+- **Do not** invent new components, parallel masters, detached clones, or one-off patterns for a mock — even if something looks “close enough.”
+- **Missing component / pattern:** if nothing in the library fits — **stop and prompt the user** before building anything new. After they decide, note the gap in `open-items.md`. Never silently ship a custom frame or new master to unblock a mock.
 
 ### Acceptance check (before calling a mock done)
 
 1. Spot-check Corner radius, Gap, Padding, Fill, Stroke — linked-variable icon in the panel, not flat numbers/hex.
 2. Spot-check text — Soma text style applied; no custom font family or unbound type scale.
 3. Spot-check chrome — live library instances, not detached or freehand rebuilds.
+4. Confirm no new component, token, or style was created without an explicit user go-ahead.
 
 ## Color primitives (see `token-rules.md`)
 
@@ -52,9 +56,12 @@ Applies to every new or edited app frame — including [Chat tasks](https://www.
 - **Layout:** Root width **FIXED** (drag-resizable) + height **HUG**; Popup FILL × HUG; text `textAutoResize=HEIGHT` + FILL. **minWidth** Simple **120** · Rich **160** (Left/Right root +6 for arrow). No maxWidth — drag horizontal edges wider and copy reflows. Left/Right arrow track stays **FIXED 6** wide (never FILL). Never HUG width on the root (blocks drag-resize) and never FIXED skinny width on Label.
 - **Dismiss:** Default dismiss is pointer leave / blur. For **persistent tips** that open by default (e.g. IHP MCA tips), compose shared **Close** on the open Tooltip and keep Soft Brand Mini Alert as the re-open trigger — do not add a Callout component.
 - **IHP tips (APD compare):** Open by default under the IHP column as **`Tooltip`** (`Content=Rich`, Side=Bottom, Align=Start) + **Close** dismiss. Trigger **Alert Soft Brand Mini** (“Share these tips with member”) reopens the Tooltip after dismiss. No separate Callout / Popover for this pattern.
-- **vs Popover:** Tooltip = hint or persistent tip callout (title/body; optional composed Close). Need Accept/Cancel or links → **Popover / Popup**. Blocking confirm → **Dialog**.
+- **Motion:** enter `motion.duration.normal` + `motion.easing.emphasized`; leave `motion.duration.fast` + `motion.easing.exit`; ~4px settle **emerging away from the parent** on the open axis (not docking toward it). **Default hover-intent:** 200ms enter delay on all tips (not a duration token); leave has no delay. Persistent / open-by-default tips (e.g. IHP coach) skip the intent delay. Honor **`prefers-reduced-motion`** (instant show/hide, delay → 0). Full recipe: [motion docs](https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md) · Care App summary [`motion.md`](./motion.md).
+- **vs Popover:** Tooltip = hint or persistent tip callout (title/body; optional composed Close). Need Accept/Cancel or links → **Popover / Popup**. Blocking confirm → **Dialog**. Do not reuse menu/popover timings for tips.
 - **Do not** duplicate Simple variants (e.g. Shortcut/⌘K twins) — conflicting property combos reset instance content.
 
+**Added 2026-10-20:** Motion recipe — enter `normal` + `emphasized`, leave `fast` + `exit`, ~4px settle; default **200ms** hover-intent on all tips ([motion docs](https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md)).
+**Changed 2026-10-20:** Hover-intent default is **200ms for all tips** (was optional / rail–composer only).
 **Fixed 2026-10-09:** Align **Start · Center · End** arrow tracks were swapped (Center used Start inset; Start used Center) — restored MIN+8 / CENTER / MAX+8.
 **Changed 2026-10-09:** Simple **minWidth 120** · Rich **160** (Left/Right root +6).
 **Changed 2026-10-07:** Masters sticker ❖ panel; variants on an even Side × Align grid (Simple then Rich); Mode Light/Dark wrap to fit.
@@ -414,6 +421,7 @@ Not a conflict — different jobs. Keep both.
 - **Sticker:** Masters (Progress=40 grid) · Progress scale row · Overview matrix · curated Size / Shapes / Tones / Layout rows.
 - **Use:** Dashboard metrics and completion %. Complements **Progress Bar** (linear determinate, same Progress Indicators page) and **Spinner** (indeterminate, Spinners page).
 - **A11y:** `role=progressbar`; `aria-valuenow` / `min` / `max`; honor **`prefers-reduced-motion`**.
+- **Motion:** value update → `motion.duration.moderate` + `motion.easing.standard`; first-paint / Insurance Activity grow → `motion.duration.reveal` + `motion.easing.emphasized` ([motion docs](https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md)).
 
 **Added 2026-10-07:** `Progress Circle` — Size × Shape × Tone × Layout; Full | Semi rings; Brand | Success tones.
 **Changed 2026-10-07:** Masters on Progress circles sticker with ❖ icon + label panel; off-sheet masters frame removed; **Progress** variant links value + arc (replaces free Value text prop).
@@ -450,7 +458,7 @@ Not a conflict — different jobs. Keep both.
   - `Page · APD · Compare · Select open` — same table + Select / Popup on plan column (Current / in use meta composed).
   - `Page · APD · Compare · IHP tips inline` ([`3634:3048`](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=3634-3048)) — **IHP Tips / Disclosure** Expanded under IHP column (no popover).
   - `Page · APD · Compare · IHP tips collapsed` ([`3634:3494`](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=3634-3494)) — **IHP Tips / Disclosure** Collapsed under IHP column.
-- **Select plans sticky footer:** Match Care Pathways **Pathway header** recipe — title left (`text/primary`, Figtree SemiBold 16/24) + spacer FILL + primary CTA right; `border/subtle` hairline **above** the sticky block. **Task list** accordion sits under the CTA with its own top `border/subtle` hairline (same as other Care Plan accordions). Do not run Task list chrome into the CTA row.
+- **Select plans sticky footer:** Match Care Pathways **Pathway header** recipe — title left (`text/primary`) + spacer FILL + primary CTA right; `border/subtle` hairline **above** the sticky block. Incomplete compare helper (**`Select 1 more`** / **`Select 2 plans to compare`**) uses **`body1`** (Figtree Regular 14 / 20), not caption/11 or SemiBold. Plan-vs-plan summary can stay SemiBold. **Task list** accordion sits under the CTA with its own top `border/subtle` hairline (same as other Care Plan accordions). Do not run Task list chrome into the CTA row.
 - **Hairlines (Select plans):** `border/subtle` 1px above **Additional Plans** (accordion) and above the **Compare Plans** sticky CTA bar.
 - **IHP tips (two coexisting patterns):**
   - **Tooltip + Alert trigger** (Compare table · Compare · Select open): **Open by default** — **`Tooltip`** instance `Content=Rich`, `Side=Bottom`, `Align=Start`, named **`Tooltip · IHP tips`** (inverse surface). Title: *Don't forget to share these tips with the member*; description: three bulleted tips (MCA copy). **Dismiss:** composed shared **Close** (`Close · dismiss tips`). **Re-open:** **Alert Soft Brand Mini** (“Share these tips with member”) under the IHP column. Open state is an absolute overlay on the Context panel, anchored under the IHP column; Premiums sit directly under plan selectors.
@@ -511,6 +519,8 @@ Not a conflict — different jobs. Keep both.
 - Light Soft borders are `/300`. **Dark Soft fills:** `blue/900`, `purple/900`, `green/900`, `yellow/900`, `red/900` (via `surface/{tone}/soft`). Dark Soft borders are `/800` (success/warning/danger) or `/700` (neutral/brand/accent). `/900` fills are a **visual exception**, not a contrast fix — see `token-rules.md`.
 - Disabled Soft uses `surface/subtle` fill; stroke stays the tone subtle border.
 - Geometry: `radius.sm` (6), padding 6 / 2, label–leading gap 6.
+- **Type — Soft Neutral:** labels **Regular 400** — Small keeps `badgeSmall` metrics (`fontSize/11` · `lineHeight/16`) with **`fontWeight/regular`**; Medium uses **`caption`**. Do not use Medium / SemiBold on Soft Neutral meta badges (plan, Primary, employer, CCM). Chromatic Soft (Accent · Brand · Success · Warning · Danger) keeps Medium (`badgeSmall` / `subtitle3`).
+- **Soft label ink:** Soft Rest chromatic labels bind **`text/{tone}/subtle`** (Success → **`text/success/subtle`** → light **`green/800`** `#045623`). Do not use mid-ramp **`green/700`** / **`icon/success`** for Soft Success label text — that reads too light on `surface/success/soft`.
 - **Leading icons (non-negotiable):** match label semantics — never leave `icon/default` on toned badges.
   - Soft / Outlined Rest → `icon/{tone}` (Neutral → `icon/default`)
   - Solid Rest → `icon/on{Tone}` (Neutral → `icon/inverse`)
@@ -540,6 +550,7 @@ When a badge holds truncated or secondary metadata, compose shared **`Tooltip`**
 
 - **Affordance:** tip-capable badge labels use a **dotted `text/brand` underline** on the label (not a solid link underline). Badges without extra metadata stay plain — no underline, no tip.
 - **Placement:** `Side=Bottom`, `Align=Center` under the badge; inverse `surface/inverse` tip with arrow toward the badge.
+- **Motion:** same **Tooltip** recipe (enter `normal` + `emphasized`, leave `fast` + `exit`, ~4px settle; default **200ms** hover-intent). See [motion docs](https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md).
 - **Copy:** short label → value (or label → bullet list). Keep tip scannable — two blocks max.
 
 **Hover tip examples (Care App):**
@@ -554,6 +565,7 @@ When a badge holds truncated or secondary metadata, compose shared **`Tooltip`**
 
 **Added 2026-10-09:** Care App member-header badge recipes + Badge + Tooltip hover tip pattern (dotted brand underline affordance; Rich tip examples).
 **Changed 2026-10-09:** Chat Assist · Chat Tasks · APD mocks — meta **Member badges** max 3: Soft Neutral tippable plan + Primary, Soft Accent VIP; plan + **Primary** **Tooltip** Rich hover demos (dropped plan text link, Google, CCM from the row).
+**Fixed 2026-10-16:** Soft Neutral labels → **Regular** (Small `badgeSmall` metrics + `fontWeight/regular`; Medium **`caption`**). Chromatic Soft stays Medium.
 
 ## Buttons
 
@@ -628,6 +640,16 @@ When a badge holds truncated or secondary metadata, compose shared **`Tooltip`**
 - Do not use `check.bold`, Regular `check` / `minus`, or a filled rectangle.
 - On colored fills (`action/primary`), never bind indicators to `icon/default`.
 - **Focus ring** only on `State=Focus visible`. Rest / Hover / Disabled never show `focus/ring` (checked True is not a focus state).
+
+## Inputs / trailing help
+
+- Trailing-hint help on **Input / Email**, **Input / Phone**, **Input / Website**, **Input / Card**, **Input / Date**.
+- Glyph: **`icon/status/help`** **Size=sm**, **Style=outline**.
+- Ink **`icon/tertiary`** — not `icon/default`. Disabled → **`icon/disabled`**.
+- Library master `icon/status/help` stays `icon/default` for general use — override at the field instance.
+- Same de-emphasis pattern as Close, **Select / Trigger** chevron, **Input / Clear**.
+
+**Changed 2026-10-13:** Specialized Input trailing help binds **`icon/status/help` Size=sm outline** + **`icon/tertiary`** (disabled → `icon/disabled`); override at instance, not library master.
 
 ## Field.Error
 

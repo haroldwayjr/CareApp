@@ -2,7 +2,7 @@
 
 **Figma file:** [Soma Design System](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System) (`hB1NzwMnZt2ALeR0OslaWi`)
 
-**Status:** Colors, Spacing, Typography, Elevation, Radius foundations built and published (team-scoped library). Buttons and Chips in progress. **Spinner / Spinner Inverted:** indeterminate only; xs–lg, Bare | Labeled, Style Track | Line. **Chips:** Filled | Outlined only (Badge color tones removed 2026-09-03). **Trailing:** None | Dismiss | Chevron (mutually exclusive). **Dismiss / Chevron controls:** shared shell (Medium 24 / Small 16); glyph 10 / 8; ink `icon/tertiary`; Hover well + Focus ring. Dismiss = close xs bold; Chevron = chevron.down xs outline. **Button tones:** Brand and Danger only (Success removed 2026-08-31). **Button disabled:** contained — `action/{tone}/disabled` fill + `onBrand`/`onDanger` (white); outlined/text — `text|icon/{tone}/disabled` via `brand*Transparent/20` / `danger*Transparent/20` (not shared grey disabled). **Colors map:** `text.brand` family (`.subtle`, `.disabled`) + `icon.brand.disabled` / `icon.danger.disabled`. **Button ghost fills:** outlined/text hover → `action/ghost/hover`; pressed → `action/ghost/pressed` (contained stays opaque `action/{tone}/*`). **Button States docs:** live Button instances (not detached). **Button width:** hugs label (all variants/states); with leading/trailing icon stay **HUG** — `FIXED` width smaller than content collapses optical side padding while the pad field still shows 16. **Button focus:** 2px ring, 2px outside (`focus/ring` / `focus/ring/danger`). **Button iconOnly:** small → xs (~1); medium → sm (1.5). Size switch updates icon via exposed nested instances. iconOnly always shows leading icon; `Show leading icon` applies to label layout only. **`Button / Filter` count badge:** wrapper hugs Button; badge absolute top-right (not fixed to the 40×40 icon box). Deprecated filter still forbidden. Icons and Grids scoped, not confirmed built. Not org-wide yet.
+**Status:** Colors, Spacing, Typography, Elevation, Radius foundations built and published (team-scoped library). **Motion:** duration + easing docs v1 in [soma-ui-library](https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md) (Accordion · Progress · Switch · Tooltip); Figma variables not published yet. Buttons and Chips in progress. **Spinner / Spinner Inverted:** indeterminate only; xs–lg, Bare | Labeled, Style Track | Line. **Chips:** Filled | Outlined only (Badge color tones removed 2026-09-03). **Trailing:** None | Dismiss | Chevron (mutually exclusive). **Dismiss / Chevron controls:** shared shell (Medium 24 / Small 16); glyph 10 / 8; ink `icon/tertiary`; Hover well + Focus ring. Dismiss = close xs bold; Chevron = chevron.down xs outline. **Button tones:** Brand and Danger only (Success removed 2026-08-31). **Button disabled:** contained — `action/{tone}/disabled` fill + `onBrand`/`onDanger` (white); outlined/text — `text|icon/{tone}/disabled` via `brand*Transparent/20` / `danger*Transparent/20` (not shared grey disabled). **Colors map:** `text.brand` family (`.subtle`, `.disabled`) + `icon.brand.disabled` / `icon.danger.disabled`. **Button ghost fills:** outlined/text hover → `action/ghost/hover`; pressed → `action/ghost/pressed` (contained stays opaque `action/{tone}/*`). **Button States docs:** live Button instances (not detached). **Button width:** hugs label (all variants/states); with leading/trailing icon stay **HUG** — `FIXED` width smaller than content collapses optical side padding while the pad field still shows 16. **Button focus:** 2px ring, 2px outside (`focus/ring` / `focus/ring/danger`). **Button iconOnly:** small → xs (~1); medium → sm (1.5). Size switch updates icon via exposed nested instances. iconOnly always shows leading icon; `Show leading icon` applies to label layout only. **`Button / Filter` count badge:** wrapper hugs Button; badge absolute top-right (not fixed to the 40×40 icon box). Deprecated filter still forbidden. Icons and Grids scoped, not confirmed built. Not org-wide yet.
 
 ## File and library structure
 
@@ -15,10 +15,11 @@
 
 When building Chat tasks, Chat Assist, APD, Care Plans, or any other app frame:
 
-1. **Tokens only** — bind radius, spacing (`inset` / `stack` / `inline`), color, and elevation variables. Raw Corner radius `12` is wrong even if px matches — use **`radius/xl`**. Cards/panels → **`radius/md`** unless a recipe says otherwise.
-2. **Typography styles only** — apply Soma text styles (`body1`, `subtitle2`, `caption`, `h5`, …) with Figtree via those styles. No freehand fonts or unbound size/weight/line-height.
-3. **Library components only** — instance published masters; do not detach to restyle; do not invent new components or one-off patterns without asking first (gap → `open-items.md`).
-4. **Done check** — panel shows linked-variable icons (not flat numbers/hex); text has a Soma style; chrome is live instances.
+1. **Existing tokens only** — bind published radius, spacing (`inset` / `stack` / `inline`), color, and elevation variables. Raw Corner radius `12` is wrong even if px matches — use **`radius/xl`**. Cards/panels → **`radius/md`** unless a recipe says otherwise.
+2. **Existing typography styles only** — apply Soma text styles (`body1`, `subtitle2`, `caption`, `h5`, …) with Figtree via those styles. No freehand fonts or unbound size/weight/line-height.
+3. **Existing library components only** — instance published masters; do not detach to restyle; do not invent new components or one-off patterns.
+4. **Missing piece → prompt first** — if a needed component, token, or text/style is not in Soma, **stop and ask the user** before building or inventing anything. After they decide, note the gap in `open-items.md`.
+5. **Done check** — linked-variable icons (not flat numbers/hex); Soma text style applied; chrome is live instances; nothing new created without explicit go-ahead.
 
 Full rules: `component-notes.md` · token tables: `token-rules.md`.
 
@@ -51,7 +52,7 @@ Full rules: `component-notes.md` · token tables: `token-rules.md`.
 4. **Broad rebinding passes** — touch only named pages; confirm nothing else changed.
 5. **Polished page ≠ verified** — audit provenance before treating Grids/Icons pages as authoritative.
 6. **Deliberate rule reversals** — document with date and rationale (e.g. Chips off `radius.full`).
-7. **Mockups with raw radius / custom type / freehand chrome** — e.g. Corner radius typed as `12` instead of **`radius/xl`**, or unbound Figtree. Bind tokens + text styles; instance library components only. See **Mockups / app examples** above.
+7. **Mockups with raw radius / custom type / freehand chrome** — e.g. Corner radius typed as `12` instead of **`radius/xl`**, or unbound Figtree. Bind existing tokens + text styles; instance library components only. Missing piece → prompt the user, do not invent. See **Mockups / app examples** above.
 
 ## Publishing
 
@@ -108,7 +109,11 @@ Full rules: `component-notes.md` · token tables: `token-rules.md`.
 
 ## Progress indicators
 
-- [Progress Indicators](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=1156-16401): **`Progress Circle`** ([Progress circles](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=4280-19824)) — sm · md · lg × Full | Semi × Brand | Success × Bare | Labeled × Progress 0–100 (linked value + arc); Label wraps. **`Progress Bar`** — linear determinate (same page). Indeterminate waits → **`Spinner`** / **`Spinner Inverted`** on Spinners. See `component-notes.md`.
+- [Progress Indicators](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=1156-16401): **`Progress Circle`** ([Progress circles](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=4280-19824)) — sm · md · lg × Full | Semi × Brand | Success × Bare | Labeled × Progress 0–100 (linked value + arc); Label wraps. **`Progress Bar`** — linear determinate (same page). Indeterminate waits → **`Spinner`** / **`Spinner Inverted`** on Spinners. Value tween: `moderate` + `standard`; first-paint grow: `reveal` + `emphasized` — see [motion docs](https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md). See `component-notes.md`.
+
+## Motion
+
+- Docs v1 (eng): [soma-ui-library `docs/motion.md`](https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md) — primitives `duration/100`–`250` + `duration/900` (`reveal`); `easing/standard|emphasized|exit`. **Progress:** value update = `moderate` + `standard`; Insurance Activity–style first-paint grow = `reveal` + `emphasized`. Also **Accordion**, **Switch**. Figma variables not published. Honor `prefers-reduced-motion` (durations → 0).
 
 ## Loading indicators
 
@@ -129,6 +134,7 @@ Full rules: `component-notes.md` · token tables: `token-rules.md`.
 ## Tooltips
 
 - [Tooltips](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=702-6775): **`Tooltip`** (inverse hover/focus Simple | Rich). Text props **Label** · **Title** · **Description** (Side/Align keep copy). Root **FIXED** width (**minWidth** Simple 120 · Rich 160) + HUG height — drag edges wider to reflow. Persistent tips (e.g. IHP MCA) — **`Tooltip` Rich** open by default + composed **Close** dismiss; **Alert Soft Brand Mini** reopens after dismiss. **`Tooltip / Callout` removed 2026-09-10** — do not use. Footer actions → Popover. See `component-notes.md`.
+- **Motion:** enter `motion.duration.normal` + `motion.easing.emphasized`; leave `motion.duration.fast` + `motion.easing.exit`; ~4px settle emerging **away from the parent**; default **200ms** hover-intent on all tips (leave immediate). [motion.md](./motion.md) · [library motion](https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md).
 
 ## Logos
 

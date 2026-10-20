@@ -36,7 +36,8 @@ Do not silently fix these — confirm or file explicitly.
 - [ ] Grids — page exists, provenance unconfirmed; numbers not ratified.
 - [ ] Dark-mode component docs beyond token layer — not started (Buttons light-only).
 - [ ] z-index scale — not started.
-- [ ] Motion / animation tokens — not started.
+- [x] Motion / animation tokens — **docs v1** in [soma-ui-library `docs/motion.md`](https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md); **Figma Foundation page** [Motion](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=6040-28556) (primitives · semantic map · Accordion/Progress/Switch recipes). Figma Variables for motion still not published.
+- [x] **Tooltip motion recipe** — enter `normal` + `emphasized`, leave `fast` + `exit`, ~4px settle; default **200ms** hover-intent on all tips. Documented in library `motion.md` + Care App `component-notes.md` / `quick-reference.md` (2026-10-20).
 - [ ] Figma ↔ code pipeline — no export/sync; all decisions Figma-only until pipeline exists.
 
 ## Documentation / naming

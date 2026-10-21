@@ -1861,9 +1861,9 @@
           </button>
         </div>
         <button class="task-list-toggle" type="button" aria-expanded="${open}" aria-controls="task-list-panel">
+          <span class="task-list-chevron" aria-hidden="true">${icon.chevron}</span>
           <strong>Task list</strong>
           <span class="soft-badge soft-warning" aria-label="${taskListCount} tasks">${taskListCount}</span>
-          <span class="task-list-chevron" aria-hidden="true">${icon.chevron}</span>
         </button>
       </footer>`;
   }

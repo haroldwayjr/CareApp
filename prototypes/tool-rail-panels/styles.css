@@ -1213,17 +1213,20 @@ html[data-color-mode="dark"] .badge-tip {
 .tab {
   position: relative; display: inline-flex; align-items: center; gap: 6px;
   flex: 0 0 auto; height: 44px; padding: 0 12px; border: 0;
-  background: var(--surface); color: var(--text-secondary);
-  font-family: "Figtree", system-ui, sans-serif;
-  font-size: 14px; font-weight: 500; line-height: 20px; cursor: pointer;
+  background: var(--surface);
+  /* Soma Tab Rest: body1 + text/tertiary (not secondary — reads as Medium) */
+  color: var(--text-tertiary);
+  font: 400 14px / 20px "Figtree", system-ui, sans-serif;
+  cursor: pointer;
   white-space: nowrap;
   transition: color var(--motion-duration-normal) var(--motion-easing-standard);
 }
+.tab:hover { color: var(--text-secondary); }
 .tab-count {
   height: 20px; min-height: 20px; padding: 0 6px;
   font-size: 12px; font-weight: 500; line-height: 16px; /* subtitle3 */
 }
-.tab.is-active { color: var(--brand); font-weight: 600; }
+.tab.is-active { color: var(--brand); font-weight: 600; /* h5 + text/brand */ }
 .tab-pane { flex: 1; min-height: 0; overflow-y: auto; }
 @media (prefers-reduced-motion: reduce) {
   .tabs-indicator { transition: none; }
@@ -1697,12 +1700,12 @@ button.inline-field-control.select-trigger > svg {
   font-size: 14px; font-weight: 600; line-height: 20px; /* h5-ish dense */
 }
 .task-list-chevron {
-  display: grid; width: 16px; height: 16px; flex: 0 0 auto; place-items: center;
-  margin-left: auto; color: var(--icon-tertiary); transition: transform 160ms ease;
+  display: grid; width: 14px; height: 14px; flex: 0 0 auto; place-items: center;
+  color: var(--icon-tertiary); transition: transform 160ms ease;
   /* Collapsed ↑ — open expands toward content above */
   transform: rotate(180deg);
 }
-.task-list-chevron svg { width: 16px; height: 16px; stroke-width: 1.5; }
+.task-list-chevron svg { width: 14px; height: 14px; stroke-width: 2.25; }
 .task-list-accordion.is-open .task-list-chevron { transform: rotate(0deg); } /* open ↓ dock */
 .task-list-toggle .soft-badge.soft-warning {
   min-width: 20px; justify-content: center; padding-inline: 6px;

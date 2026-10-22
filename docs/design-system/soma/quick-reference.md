@@ -11,15 +11,15 @@
 - Published incrementally per foundation area; keep publish history granular.
 - Audit periodically for **stray external instances** (Anatomy: IH Design System, old MUI kit, etc.).
 
-## Mockups / app examples (non-negotiable)
+## Build rules (non-negotiable)
 
-When building Chat tasks, Chat Assist, APD, Care Plans, or any other app frame:
+When building or editing **any** Soma master, variant, sticker, or app frame (Chat tasks, Chat Assist, APD, Care Plans, …):
 
-1. **Existing tokens only** — bind published radius, spacing (`inset` / `stack` / `inline`), color, and elevation variables. Raw Corner radius `12` is wrong even if px matches — use **`radius/xl`**. Cards/panels → **`radius/md`** unless a recipe says otherwise.
-2. **Existing typography styles only** — apply Soma text styles (`body1`, `subtitle2`, `caption`, `h5`, …) with Figtree via those styles. No freehand fonts or unbound size/weight/line-height.
-3. **Existing library components only** — instance published masters; do not detach to restyle; do not invent new components or one-off patterns.
-4. **Missing piece → prompt first** — if a needed component, token, or text/style is not in Soma, **stop and ask the user** before building or inventing anything. After they decide, note the gap in `open-items.md`.
-5. **Done check** — linked-variable icons (not flat numbers/hex); Soma text style applied; chrome is live instances; nothing new created without explicit go-ahead.
+1. **Semantic tokens only** — bind `text/*`, `icon/*`, `surface/*`, `border/*`, `action/*`, `radius/*`, `inset` / `stack` / `inline`, `shadow.*`, etc. **Never** bind color primitives (`blue/600`, `grey/900`, …) or type raw numbers/hex on UI. Raw Corner radius `12` is wrong even if px matches — use **`radius/xl`**. Cards/panels → **`radius/md`** unless a recipe says otherwise.
+2. **No native hex. No native fonts.** Figtree only via published Soma **text styles** (`body1`, `subtitle2`, `caption`, `h5`, …). No Inter, system, or freehand Figtree with unbound size/weight/line-height. Do not hand-bind `fontSize/*` + `lineHeight/*` instead of a text style.
+3. **Library components only** — instance published masters; do not detach to restyle; do not invent new components or one-off patterns.
+4. **Gap gate** — if a needed component, variant, semantic token, or text style is missing: **state the gap and ask the user** before building anything custom. After they decide, note the gap in `open-items.md`. No silent invention or “close enough” freehand chrome.
+5. **Done check** — panel shows linked-variable icons on **semantic** tokens (not primitives, not flat numbers/hex); text has a Soma style; chrome is live instances; nothing new created without explicit go-ahead.
 
 Full rules: `component-notes.md` · token tables: `token-rules.md`.
 
@@ -52,7 +52,7 @@ Full rules: `component-notes.md` · token tables: `token-rules.md`.
 4. **Broad rebinding passes** — touch only named pages; confirm nothing else changed.
 5. **Polished page ≠ verified** — audit provenance before treating Grids/Icons pages as authoritative.
 6. **Deliberate rule reversals** — document with date and rationale (e.g. Chips off `radius.full`).
-7. **Mockups with raw radius / custom type / freehand chrome** — e.g. Corner radius typed as `12` instead of **`radius/xl`**, or unbound Figtree. Bind existing tokens + text styles; instance library components only. Missing piece → prompt the user, do not invent. See **Mockups / app examples** above.
+7. **UI with primitives / hex / custom type / freehand chrome** — e.g. fill bound to `blue/600` instead of `action/brand`, Corner radius typed as `12` instead of **`radius/xl`**, or unbound Figtree. Bind **semantic** tokens + text styles; instance library components only. Missing piece → state the gap and prompt the user; do not invent. See **Build rules** above.
 
 ## Publishing
 
@@ -118,6 +118,7 @@ Full rules: `component-notes.md` · token tables: `token-rules.md`.
 ## Loading indicators
 
 - [Spinners](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=3323-54489): `Spinner` · `Spinner Inverted` — xs · sm · md · lg; Bare | Labeled; Style Track | Line. Indeterminate only; prefer **Progress Bar** or **Progress Circle** on Progress Indicators when percent/duration is known. See `component-notes.md`.
+- [Skeletons](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=6241-63886): `Skeleton` Block · Line · Circle (Rest | Shimmer) + Panel, List row, Accordion header recipes — content-shaped waits; **`skeleton/base`** · **`skeleton/shimmer`**. See `component-notes.md`.
 
 ## View switcher
 

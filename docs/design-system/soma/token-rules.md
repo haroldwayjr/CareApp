@@ -1,5 +1,16 @@
 # Soma — token rules
 
+## Consumer vs foundation (non-negotiable)
+
+| Who / what | May bind | Must not |
+|---|---|---|
+| **Components, masters, stickers, app mocks** | Semantic tokens + published typography **styles** + library instances | Color/size **primitives**, typed hex/rgb, freehand fonts, inventing missing chrome |
+| **Colors / Semantic mapping / Gradients foundation** | Primitives (ramps) and semantic aliases that point at them | Hardcoded hex on a **semantic** row (semantics always alias a primitive or another semantic) |
+
+- Building UI → **semantic layer only.** `surface/default`, `text/primary`, `icon/brand`, `radius/md`, `inset.md` — never `blue/600` or `#002380` on a component fill.
+- Missing semantic token, text style, or component for the job → **state the gap and prompt the user** (then note in `open-items.md`) **before** drawing. Do not paper over with a primitive or a one-off local style.
+- Full build rules: `component-notes.md` · `quick-reference.md`.
+
 ## Color
 
 **Collections:** Primitives (single mode) → Semantic (Light/Dark). Semantic always aliases to Primitive, never hardcoded hex.
@@ -104,6 +115,8 @@ Never bind a dark-mode fill to a ramp's `/900` if it must read as a distinct sur
 Not an accessibility fix. Soft Badge dark fills (via **`surface/{tone}/soft`**) and the shared `border.*.subtle` aliases are a **visual** exception to the `/800` floor. Revisit before treating these as contrast-compliant.
 
 **Changed 2026-09-09:** Soft Badge chromatic fills bind **`surface/{tone}/soft`** (`/100` light · `/900` dark), not **`surface/{tone}/subtle`**. Neutral and Disabled Soft stay on **`surface/subtle`**. **`surface/*/subtle`** aliases unchanged for other consumers.
+
+**Skeleton placeholders (Semantic Light/Dark):** **`skeleton/base`** aliases **`surface/muted`**; **`skeleton/shimmer`** — Light **`coolLightTransparent/80`**, Dark **`coolLightTransparent/10`**. Used by **`Skeleton`** Rest and Shimmer appearances.
 
 **Brand surface ladder (light mode):**
 

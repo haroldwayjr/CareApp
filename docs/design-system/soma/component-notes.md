@@ -1,39 +1,57 @@
 # Soma — component notes
 
-## Mockups / app examples (non-negotiable)
+## Build rules (non-negotiable)
 
-Applies to every new or edited app frame — including [Chat tasks](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=4490-39171), Chat Assist, APD, Care Plans, and any other product mock. Same bar as masters: **existing tokens + existing library components only**.
+Applies to **every** new or edited Soma master, variant, sticker, and app frame — including [Chat tasks](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=4490-39171), Chat Assist, APD, Care Plans, and any other product mock. Same bar for masters and mocks: **library components + semantic tokens + typography styles only.**
 
-### Tokens — bind existing variables only
+### Hard ban — no primitives, no native values
 
-- **Always** bind published Soma variables for **color, radius, spacing, elevation**, and any other tokenized attribute. Never type raw Corner radius / gap / pad / hex when a variable exists (e.g. `12` → **`radius/xl`**, not a hardcoded `12`). Same for gap/padding (`inset.*` / `stack.*` / `inline.*`), fills/strokes (semantic color), and shadows (`shadow.*`).
+When building or restyling UI (components or mocks), **never** use:
+
+| Forbidden | Use instead |
+|---|---|
+| Color primitives (`blue/600`, `grey/900`, `yellow/400`, …) | Semantic color (`text/*`, `icon/*`, `surface/*`, `border/*`, `action/*`, `status/*`, …) |
+| Typed hex / rgb / “mixed” fills or strokes | Bound semantic color variables |
+| Raw numbers for radius, gap, padding, shadow | Semantic size tokens (`radius/*`, `inset.*` / `stack.*` / `inline.*`, `shadow.*`) |
+| Freehand font family, size, weight, or line-height | Published Soma **text styles** (`body1`, `subtitle2`, `caption`, `h5`, …) |
+| Detached / freehand chrome that duplicates a master | Live library **instances** |
+
+- **Semantic layer only for consumers.** Primitives exist for the Colors / Semantic mapping foundation — they are **not** paint for components or mocks. Binding `blue/600` on a Button fill is a bug even when that primitive is what `action/brand` aliases.
+- **No native hex. No native fonts.** Figtree arrives only through Soma text styles. Never Inter, system UI, or unbound Figtree with a typed size/weight.
+- **Typography primitives alone are not enough** — do not bind `fontSize/14` + `lineHeight/20` by hand; apply the **`body1`** (etc.) text style so the full recipe stays linked.
+
+### Tokens — bind semantic variables only
+
+- **Always** bind published Soma **semantic** variables for **color, radius, spacing, elevation**, and any other tokenized attribute. Never type raw Corner radius / gap / pad / hex (e.g. `12` → **`radius/xl`**, not a hardcoded `12`). Same for gap/padding (`inset.*` / `stack.*` / `inline.*`), fills/strokes (**semantic** color — never a primitive ramp), and shadows (`shadow.*`).
 - **Common radius map:** `radius/xxs` 2 · `xs` 4 · `sm` 6 · `md` 8 · `lg` 10 · `xl` 12 · `2xl` 16 · `3xl` 20 · `4xl` 24 · `full` pill. Cards / side panels default **`radius/md`** unless the component recipe says otherwise (composer Message field → **`radius/xl`**; pills → **`radius/full`**).
-- **Do not** leave unbound hex, “mixed,” or local styles that duplicate a published token.
-- **Missing token / style:** if the needed color, radius, spacing, elevation, or text style does not exist in Soma — **stop and prompt the user** before creating a new variable, local style, or unbound value. Do not invent tokens to finish a mock.
+- **Do not** leave unbound hex, “mixed,” local styles, or primitive aliases that duplicate a published semantic token. See `token-rules.md` (consumer vs foundation).
+- **Missing semantic token / style:** if the needed color, radius, spacing, elevation, or text style does not exist in Soma — **stop and prompt the user** before creating a new variable, local style, unbound value, or binding a primitive as a workaround. Do not invent tokens to finish a mock.
 
-### Typography — existing styles only
+### Typography — styles only
 
 - Apply published Soma **text styles** (`body1`, `body2`, `subtitle2`, `caption`, `h3`–`h5`, etc.) with their typography variable bindings.
 - Font is **Figtree** via those styles — never Inter, system, or freehand Figtree with unbound size / weight / line-height.
 - Prefer the style that matches the job (e.g. interactive labels → **subtitle2**; prose → **body1**; dense meta → **caption**) — see Typography below and `token-rules.md`.
 - **Missing text style:** if no published style fits — **stop and prompt the user** before creating a new text style or freehand type.
 
-### Components — existing library only; prompt before inventing
+### Components — library first; state gaps before building
 
 - **Always instance** published Soma masters from the library. Prefer variants and nested INSTANCE_SWAP over detaching or rebuilding chrome.
 - Compose from existing pieces (Button, Tabs, Text Input, Card, Chat / Message, Chat / Composer, etc.) the way documented app examples already do.
 - **Do not** detach instances to restyle. Override exposed props / nested swaps only.
 - **Do not** invent new components, parallel masters, detached clones, or one-off patterns for a mock — even if something looks “close enough.”
-- **Missing component / pattern:** if nothing in the library fits — **stop and prompt the user** before building anything new. After they decide, note the gap in `open-items.md`. Never silently ship a custom frame or new master to unblock a mock.
+- **Gap gate (mandatory):** if nothing in the library fits — **stop**. Clearly state the gap and **prompt the user** before building anything custom. After they decide, note the gap in `open-items.md`. Never silently ship a custom frame or new master to unblock a mock.
 
-### Acceptance check (before calling a mock done)
+### Acceptance check (before calling work done)
 
-1. Spot-check Corner radius, Gap, Padding, Fill, Stroke — linked-variable icon in the panel, not flat numbers/hex.
+1. Spot-check Corner radius, Gap, Padding, Fill, Stroke — linked-variable icon pointing at a **semantic** token (not a primitive, not a flat number/hex).
 2. Spot-check text — Soma text style applied; no custom font family or unbound type scale.
 3. Spot-check chrome — live library instances, not detached or freehand rebuilds.
-4. Confirm no new component, token, or style was created without an explicit user go-ahead.
+4. Confirm no new component, token, or style was created without an explicit user go-ahead; if anything was missing, the gap was stated first.
 
-## Color primitives (see `token-rules.md`)
+## Color primitives (foundation docs only — see `token-rules.md`)
+
+Ramp notes below document the Colors page. **Do not bind these primitives on components or mocks** — use semantic aliases (`surface/*`, `text/*`, `icon/*`, …) per **Build rules** above.
 
 - **Yellow** = warning (lemon → gold). **`/200` `#F9F0C3`** is the pastel subtle fill. **`/400` `#F0D033`** interpolates `/300`→`/500` — gold, not khaki. **Orange** = warm accent (apricot → tangerine). **Red** = danger (rose → scarlet) — yellow reads lemon/gold; orange reads amber/tangerine; red reads rose then scarlet, not candy pink.
 - **Mid-ramp (2026-09-04):** `/400`–`/700` use cleaner, more vivid chroma — professional, not neon. Soft `/100`–`/200` unchanged. Status ramps (green · yellow · red) are a step more chromatic in `/300`–`/500` than purple · orange · blue · teal; **`/500`–`/700` sit slightly brighter** (lemon/status vivid). **`/800` deepens** toward shared ladder ~0.08 Y for clear variance from `/700` base (yellow `#75600A` · green `#045623` · purple `#592C8A` · teal `#0E5555`; orange/red unchanged). **`blue/800` stays brand `#002380`**. **Blue** `/600` `#2B78F5`. **Green** hue ≈147°; **`/400` `#6EDB82`**, **`/500` `#3ACC5C`**, **`/600` `#16B04A`**, **`/700` `#0E8640`** — foliage, not sage or neon. **Yellow** `/300` `#F4E392`, `/400` `#F0D033`, `/500` `#E8C000`, `/600` `#D0A800`, `/700` `#A3890B`, `/800` `#75600A` — vivid gold status base. **Red** `/600` `#F24646`, `/700` `#D13238`.
@@ -406,6 +424,19 @@ Not a conflict — different jobs. Keep both.
 
 **Added 2026-09-04:** `Spinner` on Loading Indicators (Size × Layout × Style Track | Line).
 **Changed 2026-10-07:** Split `Spinner Inverted` masters onto a brand panel beside `Spinner`; Default track `surface/muted`; removed Appearance variant axis.
+
+## Skeletons
+
+- Figma: [Skeletons](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=6241-63886).
+- **Masters:** `Skeleton` — Shape **Block** · **Line** · **Circle** × Size **sm** · **md** · **lg** × Width **Full** · **3/4** · **Half** × Appearance **Rest** · **Shimmer**. **Circle** uses Width **Full** only.
+- **Recipes:** `Skeleton / Panel` · `Skeleton / List row` · `Skeleton / Accordion header` on Skeletons sticker.
+- **Tokens:** **`skeleton/base`** → **`surface/muted`**; **`skeleton/shimmer`** — Light **`coolLightTransparent/80`**, Dark **`coolLightTransparent/10`**.
+- **Radius:** Line and Block **sm** · **md** → **`radius/sm`**; Block **lg** → **`radius/md`**; Circle → **`radius/full`**.
+- **Use:** Content-shaped waits (panels, lists, disclosure headers). **`Spinner`** for short chrome-level indeterminate waits; **Button** loading stays **Icon / Spinner** — do not nest **`Spinner`** inside Button.
+- **Motion:** Sheen band loop **1100ms** · `linear` · infinite (prototype). Figma **Appearance=Shimmer** is a static sheen preview only. Honor **`prefers-reduced-motion`** (Rest / pause). Full recipe: [motion docs](https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md) · Care App summary [`motion.md`](./motion.md).
+
+**Added 2026-10-21:** `Skeleton` primitives + Panel, List row, and Accordion header Care recipes; **`skeleton/base`** and **`skeleton/shimmer`** semantic tokens.
+**Added 2026-10-21:** Motion recipe — sheen loop **1100ms** linear infinite ([motion docs](https://github.com/haroldwayjr/soma-ui-library/blob/master/docs/motion.md)).
 
 ## Progress Circle
 

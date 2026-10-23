@@ -32,7 +32,9 @@
   }
 
   function preferredPanelWidth(name) {
-    return name === "insurance" ? PANEL_INSURANCE : PANEL_DEFAULT;
+    if (name === "insurance") return PANEL_INSURANCE;
+    if (name === "provider-search") return PANEL_FIELDS_WIDE;
+    return PANEL_DEFAULT;
   }
 
   function currentPanelWidth() {
@@ -122,9 +124,14 @@
 
   function clearMenuPopoverPlacement(el) {
     if (!el) return;
+    const anchor = el._selectMenuHome || menuPopoverAnchor(el);
     el.classList.remove("opens-up", "is-fixed-popover");
-    menuPopoverAnchor(el)?.classList.remove("opens-up");
-    if (el.classList.contains("dob-calendar") || el.classList.contains("ins-dropdown-menu")) {
+    anchor?.classList.remove("opens-up");
+    if (
+      el.classList.contains("dob-calendar") ||
+      el.classList.contains("ins-dropdown-menu") ||
+      el.classList.contains("select-menu")
+    ) {
       el.style.position = "";
       el.style.top = "";
       el.style.right = "";
@@ -135,12 +142,18 @@
       el.style.maxWidth = "";
       el.style.zIndex = "";
     }
-    /* Return compare menus portaled to <body> back to their wrap */
+    /* Return menus portaled to <body> back to their wrap */
     if (el.classList.contains("ins-dropdown-menu") && el._insDropdownHome?.isConnected) {
       const home = el._insDropdownHome;
       home.appendChild(el);
       if (home._portedMenu === el) home._portedMenu = null;
       el._insDropdownHome = null;
+    }
+    if (el.classList.contains("select-menu") && el._selectMenuHome?.isConnected) {
+      const home = el._selectMenuHome;
+      home.appendChild(el);
+      if (home._portedMenu === el) home._portedMenu = null;
+      el._selectMenuHome = null;
     }
   }
 
@@ -196,6 +209,79 @@
     el.style.right = `${Math.max(gap, Math.round(window.innerWidth - triggerRect.right))}px`;
     el.style.width = "280px";
     el.style.zIndex = "60";
+  }
+
+  /**
+   * Inline Select / Item: portal to <body> + fixed so accordion `overflow: hidden`
+   * (and `.card`) can’t clip the menu. Prefer below the field; flip up if needed.
+   */
+  function positionSelectMenu(el) {
+    const wrap =
+      el._selectMenuHome || el.closest(".select-wrap") || menuPopoverAnchor(el);
+    const trigger = wrap?.querySelector(".select-trigger");
+    if (!wrap || !trigger) return;
+
+    if (el.parentElement !== document.body) {
+      el._selectMenuHome = wrap;
+      wrap._portedMenu = el;
+      document.body.appendChild(el);
+    }
+
+    const triggerRect = trigger.getBoundingClientRect();
+    /* Wrap stays in the panel — menu may already be on <body> */
+    const panelRoot = wrap.closest(".panel-content") || panel;
+    const panelRect = panelRoot?.getBoundingClientRect();
+    const gap = 4;
+    let bottomLimit = (panelRect?.bottom ?? window.innerHeight) - 8;
+    let topLimit = (panelRect?.top ?? 0) + 8;
+    panelRoot?.querySelectorAll(".panel-edit-bar, .ins-sticky-footer, .task-list-accordion").forEach((bar) => {
+      if (bar.hidden || getComputedStyle(bar).display === "none") return;
+      const barRect = bar.getBoundingClientRect();
+      if (barRect.height <= 0) return;
+      if (barRect.top > triggerRect.top) bottomLimit = Math.min(bottomLimit, barRect.top - gap);
+      if (barRect.bottom < triggerRect.top) topLimit = Math.max(topLimit, barRect.bottom + gap);
+    });
+    const menuHeight = Math.max(el.offsetHeight, el.scrollHeight, 48);
+    const spaceBelow = bottomLimit - triggerRect.bottom - gap;
+    const openUp = menuHeight > spaceBelow;
+    let top = openUp ? triggerRect.top - gap - menuHeight : triggerRect.bottom + gap;
+    if (top < topLimit) top = topLimit;
+    if (top + menuHeight > bottomLimit) top = Math.max(topLimit, bottomLimit - menuHeight);
+
+    el.classList.add("is-fixed-popover");
+    el.classList.toggle("opens-up", openUp);
+    wrap.classList.toggle("opens-up", openUp);
+    const triggerWidth = Math.round(triggerRect.width);
+    const rail = document.querySelector(".tool-rail");
+    const railLeft = rail ? rail.getBoundingClientRect().left - 8 : window.innerWidth - 8;
+    /* Stay inside the panel (and clear of the tool rail) — truncate when narrow */
+    const rightEdge = Math.min(
+      railLeft,
+      (panelRect?.right ?? window.innerWidth) - 8,
+      window.innerWidth - 8
+    );
+    const maxAllowed = Math.max(triggerWidth, rightEdge - Math.round(triggerRect.left));
+    el.style.position = "fixed";
+    el.style.top = `${Math.round(top)}px`;
+    el.style.bottom = "auto";
+    el.style.right = "auto";
+    el.style.left = `${Math.round(triggerRect.left)}px`;
+    el.style.minWidth = `${triggerWidth}px`;
+    el.style.zIndex = "1200";
+    /* Measure natural width, then clamp — labels ellipsis when capped */
+    el.classList.remove("is-truncated");
+    el.style.width = "max-content";
+    el.style.maxWidth = "none";
+    const natural = Math.ceil(el.getBoundingClientRect().width);
+    const menuWidth = Math.min(Math.max(natural, triggerWidth), maxAllowed);
+    let left = triggerRect.left;
+    if (left + menuWidth > rightEdge) {
+      left = Math.max(8, rightEdge - menuWidth);
+    }
+    el.style.left = `${Math.round(left)}px`;
+    el.style.width = `${Math.round(menuWidth)}px`;
+    el.style.maxWidth = `${Math.round(menuWidth)}px`;
+    el.classList.toggle("is-truncated", menuWidth < natural - 1);
   }
 
   /**
@@ -262,6 +348,10 @@
       positionInsDropdownMenu(el);
       return;
     }
+    if (el.classList.contains("select-menu")) {
+      positionSelectMenu(el);
+      return;
+    }
     const anchor = menuPopoverAnchor(el);
     if (!anchor) return;
     const gap = 8;
@@ -300,6 +390,7 @@
       el.classList.remove("is-measuring");
       /* Fixed menus need a second pass once visibility is restored */
       if (el.classList.contains("ins-dropdown-menu")) positionInsDropdownMenu(el);
+      if (el.classList.contains("select-menu")) positionSelectMenu(el);
     });
   }
 
@@ -394,12 +485,15 @@
     /* Keep width within half-page when the viewport shrinks */
     window.addEventListener("resize", () => {
       setPanelWidth(currentPanelWidth());
-      requestAnimationFrame(ensurePanelFitsTabs);
+      requestAnimationFrame(() => {
+        ensurePanelFitsTabs();
+        syncRailIndicator({ animate: false });
+      });
     });
   }
 
-  const loaded = new Set(["member"]);
-  let activePanel = "member";
+  const loaded = new Set(["assist"]);
+  let activePanel = "assist";
   let panelOpen = true;
   let transitionTimer;
   let loaderTimer;
@@ -417,6 +511,30 @@
     openDropdown: null,
     additionalPlansOpen: true,
   };
+
+  const assistState = {
+    tab: "ask-answers",
+    query: "",
+  };
+  const ASSIST_CONVERSATION_ID = "8f3c2a0b-f69e-4c1d-9a2e-7b1d4ca0bf69";
+  const ASSIST_CONVERSATION_ID_DISPLAY = "…a0bf69";
+  /** null = not yet played this load; true = armed (wordmark reset); false = consumed until reset. */
+  let assistGlowPending = null;
+
+  function resetAssistAiGlow() {
+    assistGlowPending = true;
+  }
+
+  /** Edge glow once per page load (in-memory); replays after wordmark reset. */
+  function shouldPlayAssistGlow() {
+    if (assistGlowPending === false) return false;
+    if (assistGlowPending === true) {
+      assistGlowPending = false; /* one paint only — don't restart on re-render */
+      return true;
+    }
+    assistGlowPending = false;
+    return true;
+  }
 
   const ELIG_EMPLOYER_COMPANY = "Demo Premium Company";
   const ELIG_IHP_COMPANY = "Included Health Plan";
@@ -436,6 +554,136 @@
     selectedBenefitId: null,
     selectedBenefitIds: new Set(),
   };
+
+  const PROVIDER_SEARCH_BY_OPTIONS = ["Name", "Specialty", "NPI"];
+  const PROVIDER_ADDRESS_OPTIONS = [
+    "1 California Street, San Francisco, CA 94111",
+    "Phoenix, AZ",
+    "San Diego, CA",
+    "San Antonio, TX",
+    "2000 Alameda de Las Pulgas, San Mateo, CA 94403",
+  ];
+  const PROVIDER_PLAN_OPTIONS = [
+    "Google PPO (Current Year)",
+    "Anthem PPO Plan (Current Year)",
+    "CalPERS PPO Basic Plan",
+  ];
+  const PROVIDER_SORT_OPTIONS = [
+    ["best", "Best Match"],
+    ["distance", "Distance"],
+    ["name", "Name A–Z"],
+  ];
+  const MOCK_PROVIDERS = [
+    {
+      id: "p1",
+      name: "Dr. Julianna Chen, MD",
+      specialty: "Obstetrics & Gynecology",
+      group: "Associated Obstetrics & Gynecology",
+      address: "7210 N Main St Ste 210, Clarkston, MI 48346",
+      distanceMiles: 17,
+      phone: "(503) 555-0198",
+      photoUrl: "assets/providers/lin.jpg",
+      acceptingNewPatients: true,
+      inNetwork: false,
+    },
+    {
+      id: "p2",
+      name: "Dr. Marcus Hale, MD",
+      specialty: "Cardiology",
+      group: "Bay Area Heart Institute",
+      address: "450 Sutter St Ste 1200, San Francisco, CA 94108",
+      distanceMiles: 2.4,
+      phone: "(415) 555-0144",
+      photoUrl: "assets/providers/avatar-sam.jpg",
+      acceptingNewPatients: false,
+      inNetwork: true,
+    },
+    {
+      id: "p3",
+      name: "Dr. Priya Shah, DO",
+      specialty: "Family Medicine",
+      group: "Mission Primary Care",
+      address: "1580 Valencia St, San Francisco, CA 94110",
+      distanceMiles: 4.1,
+      phone: "(415) 555-0162",
+      photoUrl: "assets/providers/avatar-priya.jpg",
+      acceptingNewPatients: false,
+      inNetwork: false,
+    },
+    {
+      id: "p4",
+      name: "Dr. Noah Brooks, MD",
+      specialty: "Internal Medicine",
+      group: "Cascade Regional Medical Group",
+      address: "88 Market St Ste 400, San Francisco, CA 94105",
+      distanceMiles: 1.2,
+      phone: "(415) 555-0118",
+      photoUrl: "assets/providers/avatar-noah.jpg",
+      acceptingNewPatients: false,
+      inNetwork: false,
+    },
+    {
+      id: "p5",
+      name: "Dr. Amara Patel, MD",
+      specialty: "Dermatology",
+      group: "Pacific Skin & Wellness",
+      address: "2100 Webster St Ste 305, San Francisco, CA 94115",
+      distanceMiles: 3.6,
+      phone: "(415) 555-0177",
+      photoUrl: "assets/providers/avatar-amara.jpg",
+      acceptingNewPatients: true,
+      inNetwork: true,
+    },
+    {
+      id: "p6",
+      name: "Dr. Luis Ortega, MD",
+      specialty: "Orthopedic Surgery",
+      group: "Golden Gate Orthopedics",
+      address: "3838 California St Ste 715, San Francisco, CA 94118",
+      distanceMiles: 5.8,
+      phone: "(415) 555-0133",
+      photoUrl: "assets/providers/avatar-luis.jpg",
+      acceptingNewPatients: false,
+      inNetwork: false,
+    },
+    {
+      id: "p7",
+      name: "Dr. Mei Lin, MD",
+      specialty: "Endocrinology",
+      group: "Northside Community Physicians",
+      address: "1100 Van Ness Ave, San Francisco, CA 94109",
+      distanceMiles: 2.9,
+      phone: "(415) 555-0191",
+      photoUrl: "assets/providers/patel.jpg",
+      acceptingNewPatients: false,
+      inNetwork: false,
+    },
+    {
+      id: "p8",
+      name: "Dr. Robert Kensington, MD",
+      specialty: "Cardiology",
+      group: "City Heart Specialists",
+      address: "1 California St Ste 2200, San Francisco, CA 94111",
+      distanceMiles: 0.8,
+      phone: "(415) 555-0102",
+      photoUrl: "assets/providers/avatar-kenji.jpg",
+      acceptingNewPatients: false,
+      inNetwork: true,
+    },
+  ];
+  const providerSearchDefaults = () => ({
+    searchBy: "Name",
+    query: "",
+    address: PROVIDER_ADDRESS_OPTIONS[0],
+    plan: "Google PPO (Current Year)",
+    hasSearched: false,
+    resultsLoading: false,
+    sortBy: "best",
+    sortMenuOpen: false,
+    selectedIds: new Set(),
+  });
+  let providerSearchState = providerSearchDefaults();
+  let providerResultsLoaderTimer = 0;
 
   const eligibilityInfo = [
     { label: "Insurance Carrier", value: "Aetna" },
@@ -467,7 +715,8 @@
     edit: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.19 1.81a3.639 3.639 0 0 0-5.17.035l-14.5 14.5L.75 23.25l6.905-1.771 14.5-14.5a3.637 3.637 0 0 0 .035-5.169Z"/><path d="m16.606 2.26 5.134 5.134"/><path d="m2.521 16.344 5.139 5.13"/></svg>`,
     back: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>`,
     /* Same mark as mode-switcher / Select Item — 18px via CSS, stroke 2, brand */
-    check: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L19 7"/></svg>`,
+    /* Select / Item — icon/actions/check.bold Size=xs Style=bold */
+    check: `<svg class="icon-check-bold" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.37.29a1.49 1.49 0 0 0-2.09.34L7.25 20.2l-4.69-4.69a1.5 1.5 0 0 0-2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28-.19l15.07-21a1.49 1.49 0 0 0-.35-2.09Z"/></svg>`,
     plus: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
     /* Streamline Ultimate Regular — Search (icon/misc/search) */
     search: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1.472 13.357a9.063 9.063 0 1 0 16.682-7.09 9.063 9.063 0 1 0-16.682 7.09Z"/><path d="m16.221 16.22 7.029 7.03"/></svg>`,
@@ -494,8 +743,19 @@
     link: `<svg class="ins-copy-link-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M8.5615 8.125C8.2477 7.77204 7.86286 7.48936 7.43221 7.29548C7.00155 7.10161 6.53478 7.00092 6.0625 7H4.9375C4.04239 7 3.18395 7.35558 2.55101 7.98851C1.91808 8.62145 1.5625 9.47989 1.5625 10.375C1.5625 11.2701 1.91808 12.1285 2.55101 12.7615C3.18395 13.3944 4.04239 13.75 4.9375 13.75H6.0625C6.53475 13.7489 7.00146 13.6481 7.43209 13.4543C7.86272 13.2604 8.24758 12.9778 8.5615 12.625"/><path d="M11.4385 8.125C11.7522 7.772 12.1371 7.48929 12.5677 7.29542C12.9984 7.10154 13.4652 7.00087 13.9375 7H15.0625C15.9576 7 16.816 7.35558 17.449 7.98851C18.0819 8.62145 18.4375 9.47989 18.4375 10.375C18.4375 11.2701 18.0819 12.1285 17.449 12.7615C16.816 13.3944 15.9576 13.75 15.0625 13.75H13.9375C13.4652 13.749 12.9985 13.6483 12.5678 13.4544C12.1372 13.2605 11.7523 12.9779 11.4385 12.625"/><path d="M6.0625 10.3743H13.9375"/></svg>`,
     /* Streamline Ultimate Regular — Upload Bottom */
     export: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.75V3.75"/><path d="m16.5 8.25-4.5-4.5-4.5 4.5"/><path d="M23.25 15.75v1.5a3 3 0 0 1-3 3H3.75a3 3 0 0 1-3-3v-1.5"/></svg>`,
+    copy: `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg>`,
+    /* Soft Success badge — icon/actions/check.circle Size=xs Style=bold @ 12×12, icon/success */
+    checkCircle: `<svg class="provider-check-circle" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 0a12 12 0 1 0 12 12A12 12 0 0 0 12 0Zm6.93 8.2-6.85 9.29a1 1 0 0 1-1.43.19l-4.89-3.91a1 1 0 0 1-.15-1.41A1 1 0 0 1 7 12.21l4.08 3.26L17.32 7a1 1 0 0 1 1.39-.21 1 1 0 0 1 .22 1.41Z"/></svg>`,
+    /* Soma icon/status/sparkles — Streamline Reward Stars 3 (Card / AI) */
+    sparkles: `<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" class="assist-sparkles-glyph"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M11.3051 1.52853C11.3299 1.43398 11.3853 1.3503 11.4627 1.29059C11.5401 1.23088 11.635 1.19849 11.7328 1.19849C11.8305 1.19849 11.9255 1.23088 12.0029 1.29059C12.0803 1.3503 12.1357 1.43398 12.1605 1.52853C12.355 2.27247 12.569 2.72933 12.8885 3.06711C13.2104 3.40725 13.6808 3.67252 14.4831 3.94192C14.5709 3.9714 14.6472 4.02772 14.7013 4.10293C14.7554 4.17813 14.7845 4.26842 14.7845 4.36105C14.7845 4.45368 14.7554 4.54398 14.7013 4.61918C14.6472 4.69438 14.5709 4.7507 14.4831 4.78018C13.6814 5.04958 13.2098 5.31486 12.8885 5.655C12.569 5.99337 12.3556 6.44964 12.1605 7.19358C12.1355 7.28787 12.08 7.37126 12.0027 7.43075C11.9254 7.49024 11.8306 7.5225 11.7331 7.5225C11.6355 7.5225 11.5407 7.49024 11.4634 7.43075C11.3861 7.37126 11.3307 7.28787 11.3057 7.19358C11.1106 6.44964 10.8966 5.99337 10.5771 5.655C10.2558 5.31486 9.7848 5.04958 8.9825 4.78018C8.89468 4.7507 8.81835 4.69438 8.76427 4.61918C8.71018 4.54398 8.68109 4.45368 8.68109 4.36105C8.68109 4.26842 8.71018 4.17813 8.76427 4.10293C8.81835 4.02772 8.89468 3.9714 8.9825 3.94192C9.7848 3.67252 10.2558 3.40725 10.5771 3.0677C10.8966 2.72933 11.1106 2.27188 11.3051 1.52912V1.52853ZM5.64123 3.99203C5.66601 3.89748 5.72142 3.81381 5.7988 3.75409C5.87619 3.69438 5.97117 3.66199 6.06891 3.66199C6.16666 3.66199 6.26164 3.69438 6.33902 3.75409C6.4164 3.81381 6.47181 3.89748 6.49659 3.99203C6.84734 5.33785 7.24525 6.21679 7.87012 6.88056C8.49616 7.5461 9.39338 8.0401 10.8359 8.52643C10.9237 8.55591 11 8.61223 11.0541 8.68743C11.1082 8.76264 11.1373 8.85293 11.1373 8.94556C11.1373 9.03819 11.1082 9.12848 11.0541 9.20369C11 9.27889 10.9237 9.33521 10.8359 9.36469C9.39338 9.85044 8.49616 10.345 7.87012 11.0106C7.24525 11.6743 6.84734 12.5533 6.49659 13.8991C6.47181 13.9936 6.4164 14.0773 6.33902 14.137C6.26164 14.1967 6.16666 14.2291 6.06891 14.2291C5.97117 14.2291 5.87619 14.1967 5.7988 14.137C5.72142 14.0773 5.66601 13.9936 5.64123 13.8991C5.2899 12.5533 4.89258 11.6743 4.26771 11.0106C3.64108 10.345 2.74445 9.85044 1.30137 9.36469C1.21355 9.33521 1.13722 9.27889 1.08314 9.20369C1.02905 9.12848 0.999959 9.03819 0.999959 8.94556C0.999959 8.85293 1.02905 8.76264 1.08314 8.68743C1.13722 8.61223 1.21355 8.55591 1.30137 8.52643C2.74445 8.0401 3.64167 7.5461 4.26771 6.88056C4.89258 6.21679 5.2899 5.33785 5.64123 3.99203ZM12.6268 9.97364C12.5294 9.97357 12.4347 10.0057 12.3574 10.0649C12.2801 10.1242 12.2246 10.2073 12.1994 10.3014C12.0579 10.8319 11.9064 11.1391 11.6906 11.3625C11.4725 11.5889 11.1448 11.774 10.557 11.9673C10.4686 11.9964 10.3916 12.0526 10.337 12.1281C10.2824 12.2035 10.253 12.2942 10.253 12.3873C10.253 12.4804 10.2824 12.5712 10.337 12.6466C10.3916 12.722 10.4686 12.7783 10.557 12.8073C11.1448 13.0001 11.4725 13.1852 11.6906 13.4116C11.9064 13.6356 12.0579 13.9421 12.1994 14.4727C12.2244 14.567 12.2798 14.6504 12.3571 14.7098C12.4344 14.7693 12.5292 14.8016 12.6268 14.8016C12.7243 14.8016 12.8191 14.7693 12.8964 14.7098C12.9737 14.6504 13.0292 14.567 13.0541 14.4727C13.1956 13.9421 13.3465 13.6356 13.5623 13.4116C13.7804 13.1852 14.1082 13.0001 14.6959 12.8073C14.7843 12.7783 14.8614 12.722 14.916 12.6466C14.9706 12.5712 15 12.4804 15 12.3873C15 12.2942 14.9706 12.2035 14.916 12.1281C14.8614 12.0526 14.7843 11.9964 14.6959 11.9673C14.1082 11.774 13.7804 11.5889 13.5623 11.3625C13.3465 11.1391 13.1956 10.8319 13.0536 10.3014C13.0284 10.2074 12.9729 10.1244 12.8958 10.0651C12.8186 10.0059 12.724 9.9737 12.6268 9.97364Z"/></svg>`,
     /* Filled info mark for Share tips chip */
     infoFilled: `<svg class="ins-tips-info" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="7" fill="currentColor" stroke="none"/><path class="ins-tips-info-mark" fill="currentColor" stroke="none" d="M6.35 5.9h1.3v4.55h-1.3zm.65-3.15a.85.85 0 1 1 0 1.7.85.85 0 0 1 0-1.7z"/></svg>`,
+    /* Notes / document — matches tool-rail Notes glyph */
+    notes: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>`,
+    /* Communication — matches tool-rail envelope glyph */
+    mail: `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>`,
+    /* Simple clinic / building mark for provider cards */
+    building: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16M14 21h6V10a1 1 0 0 0-1-1h-5"/><path d="M8 8h2M8 12h2M8 16h2M17 13h1M17 17h1"/></svg>`,
   };
 
   const defaultBenefitDetail = (name, type = "Virtual Care") => ({
@@ -1356,10 +1616,14 @@
     });
   }
 
+  function selectMenuForWrap(wrap) {
+    return wrap?.querySelector(".select-menu") || wrap?._portedMenu || null;
+  }
+
   function closeInlineSelects(except) {
     stage.querySelectorAll(".inline-select.is-open").forEach((wrap) => {
       if (wrap === except) return;
-      const menu = wrap.querySelector(".select-menu");
+      const menu = selectMenuForWrap(wrap);
       const trigger = wrap.querySelector(".select-trigger");
       if (!menu || menu.hidden) {
         wrap.classList.remove("is-open");
@@ -1373,11 +1637,14 @@
 
   function bindInlineSelects() {
     stage.querySelectorAll(".inline-select").forEach((wrap) => {
+      /* Avoid open→close from double-binding (accordion + notes both call this). */
+      if (wrap.dataset.selectBound === "1") return;
       const trigger = wrap.querySelector(".select-trigger");
-      const menu = wrap.querySelector(".select-menu");
+      const menu = selectMenuForWrap(wrap);
       const hidden = wrap.querySelector("input[data-field]");
       const label = wrap.querySelector(".select-trigger-label");
       if (!trigger || !menu || !hidden || !label) return;
+      wrap.dataset.selectBound = "1";
 
       trigger.addEventListener("click", (event) => {
         event.stopPropagation();
@@ -1388,6 +1655,11 @@
           showMenuPopover(menu);
           wrap.classList.add("is-open");
           trigger.setAttribute("aria-expanded", "true");
+          /* Remeasure after paint — fixed place clears accordion clip / Save bar */
+          requestAnimationFrame(() => {
+            positionSelectMenu(menu);
+            requestAnimationFrame(() => positionSelectMenu(menu));
+          });
         } else {
           hideMenuPopover(menu);
           wrap.classList.remove("is-open");
@@ -1413,6 +1685,7 @@
           wrap.classList.remove("is-open");
           trigger.setAttribute("aria-expanded", "false");
           syncMemberEditChrome();
+          syncNotesEditChrome();
         });
       });
     });
@@ -1438,7 +1711,7 @@
     const open = editing || memberAccordionOpen[sectionId];
     const rows = rowsForSection(sectionId, editing);
     const headerAction = editing
-      ? `<button class="edit-cancel" type="button" data-cancel-section="${sectionId}">Cancel</button>`
+      ? `<button class="button button-ghost button-small edit-cancel" type="button" data-cancel-section="${sectionId}">Cancel</button>`
       : `<button class="edit-section" type="button" data-edit-section="${sectionId}" aria-label="Edit ${title}">${icon.edit}</button>`;
 
     return `
@@ -1610,7 +1883,7 @@
     siblings.forEach((el) => el.remove());
 
     if (editBtn) {
-      editBtn.outerHTML = `<button class="edit-cancel${
+      editBtn.outerHTML = `<button class="button button-ghost button-small edit-cancel${
         reduceMotion() ? "" : " is-header-action-enter"
       }" type="button" data-cancel-section="${sectionId}">Cancel</button>`;
       const cancelBtn = active.querySelector(".edit-cancel");
@@ -2309,6 +2582,39 @@
     }
   }
 
+  let railIndicatorWasHidden = true;
+
+  /** Soma Rail / Indicator — slide to the active tool (vertical desktop, horizontal sheet). */
+  function syncRailIndicator({ animate = true } = {}) {
+    const rail = document.querySelector(".tool-rail");
+    const indicator = rail?.querySelector(".rail-indicator");
+    const active = rail?.querySelector(".rail-button.is-active");
+    if (!rail || !indicator) return;
+    if (!active) {
+      indicator.classList.remove("is-visible");
+      railIndicatorWasHidden = true;
+      return;
+    }
+    const skipMotion = !animate || reduceMotion() || railIndicatorWasHidden;
+    if (skipMotion) indicator.classList.add("is-instant");
+    const railRect = rail.getBoundingClientRect();
+    const activeRect = active.getBoundingClientRect();
+    if (isSheetMode()) {
+      const x = activeRect.left + activeRect.width / 2 - railRect.left - 10;
+      const y = activeRect.top - railRect.top;
+      indicator.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px)`;
+    } else {
+      const y = activeRect.top + activeRect.height / 2 - railRect.top - 10;
+      indicator.style.transform = `translateY(${Math.round(y)}px)`;
+    }
+    indicator.classList.add("is-visible");
+    if (skipMotion) {
+      void indicator.offsetWidth;
+      indicator.classList.remove("is-instant");
+    }
+    railIndicatorWasHidden = false;
+  }
+
   function layoutInsSegmentedThumb(segmented, { animate = true } = {}) {
     const root = segmented || stage.querySelector(".ins-segmented");
     const thumb = root?.querySelector(".ins-segmented-thumb");
@@ -2421,7 +2727,7 @@
     const place = () => {
       const rect = btn.getBoundingClientRect();
       const tipRect = float.getBoundingClientRect();
-      const gap = 8;
+      const gap = 4;
       const tipWidth = Math.max(tipRect.width, 240);
       const iconCenterX = rect.left + rect.width / 2;
       /* Prefer above the info icon; flip below only if clipped */
@@ -2717,34 +3023,53 @@
 
   function eligibilitySelectedBarHtml() {
     const count = selectedBenefitCount();
-    return `<div class="elig-selected-bar" ${count ? "" : "hidden"}>
-    <span class="elig-selected-count">${count} benefit(s) selected</span>
-    <button type="button" class="button button-primary elig-mark-referred">Mark benefit as referred</button>
-  </div>`;
+    if (!count) return "";
+    return `
+      <div class="panel-edit-bar elig-selected-bar" data-elig-selection-bar>
+        <span class="elig-selected-count">${count} benefit(s) selected</span>
+        <div class="elig-selected-actions">
+          <button class="button button-secondary elig-clear-selection" type="button">Cancel</button>
+          <button class="button button-primary elig-mark-referred" type="button">Mark benefit as referred</button>
+        </div>
+      </div>`;
+  }
+
+  function clearBenefitSelection() {
+    eligibilityState.selectedBenefitIds.clear();
+    stage.querySelectorAll(".elig-benefit-check[data-benefit-select]").forEach((input) => {
+      input.checked = false;
+    });
   }
 
   function refreshBenefitsSelectionBar() {
-    const section = stage.querySelector(".elig-benefits");
-    if (!section) return;
-    let bar = section.querySelector(".elig-selected-bar");
+    const panel = stage.querySelector('.panel-content[data-content="eligibility"]');
+    if (!panel) return;
+    const existing = panel.querySelector("[data-elig-selection-bar]");
     const html = eligibilitySelectedBarHtml();
-    if (bar) bar.outerHTML = html;
-    else {
-      const head = section.querySelector(".elig-benefits-head");
-      head?.insertAdjacentHTML("beforebegin", html);
+    if (!html) {
+      existing?.remove();
+      return;
     }
-    bindMarkReferredButton();
+    if (existing) {
+      existing.outerHTML = html;
+    } else {
+      const taskList = panel.querySelector(".task-list-accordion");
+      if (taskList) taskList.insertAdjacentHTML("beforebegin", html);
+      else panel.insertAdjacentHTML("beforeend", html);
+    }
+    bindEligSelectionBar();
   }
 
-  function bindMarkReferredButton() {
+  function bindEligSelectionBar() {
+    stage.querySelector(".elig-clear-selection")?.addEventListener("click", () => {
+      clearBenefitSelection();
+      refreshBenefitsSelectionBar();
+    });
     stage.querySelector(".elig-mark-referred")?.addEventListener("click", () => {
       const n = selectedBenefitCount();
       if (!n) return;
       showToast(`Marked ${n} benefit(s) as referred`);
-      eligibilityState.selectedBenefitIds.clear();
-      stage.querySelectorAll(".elig-benefit-check[data-benefit-select]").forEach((input) => {
-        input.checked = false;
-      });
+      clearBenefitSelection();
       refreshBenefitsSelectionBar();
     });
   }
@@ -2881,85 +3206,91 @@
         <h2>Eligibility</h2>
         <button class="icon-button panel-close" type="button" aria-label="Close Eligibility">${icon.close}</button>
       </header>
-      <div class="panel-scroll">
-        <dl class="elig-summary">
-          <div class="list-item">
-            <dt>Benefits covered by</dt>
-            <dd class="elig-company-dd">
-              <span class="elig-company-name">${eligibilityState.company}</span>
-              <button class="icon-button elig-edit" type="button" id="edit-enrollment" aria-label="Edit enrollment status">${icon.edit}</button>
-            </dd>
-          </div>
-          <div class="list-item">
-            <dt>Coverage status</dt>
-            <dd><span class="${coverageBadge}"><span class="soft-badge-label">${coverageLabel}</span></span></dd>
-          </div>
-          <div class="list-item"><dt>Microsite</dt><dd>${eligibilityState.microsite}</dd></div>
-          <div class="list-item"><dt>Dedicated phone line</dt><dd>${eligibilityState.phoneLine}</dd></div>
-        </dl>
+      <div class="panel-scroll elig-overview">
+        <div class="elig-overview-top">
+          <dl class="elig-summary">
+            <div class="list-item">
+              <dt>Benefits covered by</dt>
+              <dd class="elig-company-dd">
+                <span class="elig-company-name">${eligibilityState.company}</span>
+                <button class="icon-button elig-edit" type="button" id="edit-enrollment" aria-label="Edit enrollment status">${icon.edit}</button>
+              </dd>
+            </div>
+            <div class="list-item">
+              <dt>Coverage status</dt>
+              <dd><span class="${coverageBadge}"><span class="soft-badge-label">${coverageLabel}</span></span></dd>
+            </div>
+            <div class="list-item"><dt>Microsite</dt><dd>${eligibilityState.microsite}</dd></div>
+            <div class="list-item"><dt>Dedicated phone line</dt><dd>${eligibilityState.phoneLine}</dd></div>
+          </dl>
 
-        <section class="accordion${eligibilityState.infoOpen ? " is-open" : ""}" data-section="elig-info">
-          <div class="accordion-header-row">
-            <button class="accordion-toggle" type="button" id="toggle-elig-info" aria-expanded="${eligibilityState.infoOpen}">
-              <span class="accordion-chevron" aria-hidden="true">${icon.chevron}</span>
-              <strong>Eligibility information</strong>
-            </button>
-          </div>
-          <div class="accordion-body">
-            <div class="accordion-body-inner">
-              <div class="accordion-body-pad">
-                <dl class="accordion-fields">${eligibilityInfoRowsHtml()}</dl>
+          <section class="accordion${eligibilityState.infoOpen ? " is-open" : ""}" data-section="elig-info">
+            <div class="accordion-header-row">
+              <button class="accordion-toggle" type="button" id="toggle-elig-info" aria-expanded="${eligibilityState.infoOpen}">
+                <span class="accordion-chevron" aria-hidden="true">${icon.chevron}</span>
+                <strong>Eligibility information</strong>
+              </button>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">
+                <div class="accordion-body-pad">
+                  <dl class="accordion-fields">${eligibilityInfoRowsHtml()}</dl>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
 
         <section class="elig-benefits">
-          <h3 class="elig-benefits-title">Member benefits</h3>
-          <div class="elig-search-row">
-            <label class="elig-search">
-              <span class="elig-search-icon" aria-hidden="true">${icon.search}</span>
-              <input id="elig-benefit-search" type="search" placeholder="Search for benefit" value="${escapeAttr(eligibilityState.benefitQuery)}" />
-              <kbd class="elig-search-kbd">⌘K</kbd>
-            </label>
-            <div class="elig-filter-wrap">
-              <button
-                class="elig-filter-btn${eligibilityState.benefitFilter !== "all" ? " is-active" : ""}"
-                type="button"
-                id="elig-benefit-filter"
-                aria-label="Filter benefits"
-                aria-expanded="false"
-                aria-haspopup="menu"
-              >${icon.filter}</button>
-              <div class="elig-filter-menu" role="menu" hidden>
-                ${[
-                  ["all", "All"],
-                  ["ih", "Included Health"],
-                  ["other", "Other"],
-                ]
-                  .map(
-                    ([value, label]) => `
+          <div class="elig-benefits-sticky">
+            <h3 class="elig-benefits-title">Member benefits</h3>
+            <div class="elig-search-row">
+              <label class="elig-search">
+                <span class="elig-search-icon" aria-hidden="true">${icon.search}</span>
+                <input id="elig-benefit-search" type="search" placeholder="Search for benefit" value="${escapeAttr(eligibilityState.benefitQuery)}" autocomplete="off" />
+                <button type="button" class="elig-search-kbd" tabindex="-1" aria-label="Focus benefit search">⌘K</button>
+              </label>
+              <div class="elig-filter-wrap">
                 <button
+                  class="elig-filter-btn${eligibilityState.benefitFilter !== "all" ? " is-active" : ""}"
                   type="button"
-                  role="menuitemradio"
-                  data-benefit-filter="${value}"
-                  aria-checked="${eligibilityState.benefitFilter === value}"
-                  class="${eligibilityState.benefitFilter === value ? "is-selected" : ""}"
-                >
-                  <span>${label}</span>
-                  ${eligibilityState.benefitFilter === value ? icon.check : ""}
-                </button>`
-                  )
-                  .join("")}
+                  id="elig-benefit-filter"
+                  aria-label="Filter benefits"
+                  aria-expanded="false"
+                  aria-haspopup="menu"
+                >${icon.filter}</button>
+                <div class="elig-filter-menu" role="menu" hidden>
+                  <div class="elig-filter-group-label" id="elig-filter-group-label">Filter by</div>
+                  <div class="elig-filter-radio-group" role="group" aria-labelledby="elig-filter-group-label">
+                  ${[
+                    ["all", "All"],
+                    ["ih", "Included Health"],
+                    ["other", "Other"],
+                  ]
+                    .map(
+                      ([value, label]) => `
+                  <button
+                    type="button"
+                    role="menuitemradio"
+                    data-benefit-filter="${value}"
+                    aria-checked="${eligibilityState.benefitFilter === value}"
+                    class="${eligibilityState.benefitFilter === value ? "is-selected" : ""}"
+                  >
+                    <span class="menu-radio" aria-hidden="true"></span>
+                    <span class="elig-filter-item-label">${label}</span>
+                  </button>`
+                    )
+                    .join("")}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          ${eligibilitySelectedBarHtml()}
-          <div class="elig-benefits-head">
-            <h4 class="elig-benefits-all" id="elig-benefits-filter-label">${benefitFilterHeading()}</h4>
-            <div class="elig-benefits-cols">
-              <span class="elig-benefits-cols-name">Benefit Name</span>
-              <span>Last Activity</span>
+            <div class="elig-benefits-head">
+              <h4 class="elig-benefits-all" id="elig-benefits-filter-label">${benefitFilterHeading()}</h4>
+              <div class="elig-benefits-cols">
+                <span class="elig-benefits-cols-name">Benefit Name</span>
+                <span>Last Activity</span>
+              </div>
             </div>
           </div>
           <div class="elig-benefits-list">
@@ -2967,6 +3298,7 @@
           </div>
         </section>
       </div>
+      ${eligibilitySelectedBarHtml()}
       ${taskListHtml()}
     </article>`;
   }
@@ -2976,10 +3308,2660 @@
     return eligibilityOverviewTemplate();
   }
 
+
+  /* ——— Notes panel ——— */
+  const NOTE_TYPE_OPTIONS = [
+    "General note",
+    "After-hours pharmacy refill follow-up",
+    "Open enrollment — plan comparison help",
+    "Chat note",
+  ];
+  const NOTE_DISPOSITION_OPTIONS = [
+    "(Chat Only) Non-Business Hours",
+    "(Chat Only) Benefits Inquiry",
+    "(Chat Only) Claims Support",
+  ];
+  const NOTE_RESOLUTION_OPTIONS = [
+    "Chat Resolved - no follow up needed",
+    "Escalated to Care Team",
+    "Member to follow up",
+  ];
+
+  const notesState = {
+    view: "list",
+    editingId: null,
+    draft: { noteType: "General note", title: "", body: "" },
+    notes: [
+      {
+        id: "note-1",
+        title: "After-hours pharmacy refill follow-up",
+        noteType: "After-hours pharmacy refill follow-up",
+        disposition: "(Chat Only) Non-Business Hours",
+        resolution: "Chat Resolved - no follow up needed",
+        author: "Solon Gaylord",
+        when: "8/13/26, 11:53 AM",
+        body:
+          "Date: 08/13/2026\nTime: 11:53 AM\nTimezone: EDT\nIntent: Member needed after-hours pharmacy refill guidance. Confirmed coverage and shared next steps for the preferred pharmacy.",
+      },
+      {
+        id: "note-2",
+        title: "Chat note",
+        noteType: "Open enrollment — plan comparison help",
+        disposition: "",
+        resolution: "",
+        author: "Solon Gaylord",
+        when: "8/12/26, 3:18 PM",
+        body:
+          "Date: 08/12/2026\nTime: 3:18 PM\nTimezone: EDT\nIntent: The member requested to speak with a member advocate about open enrollment plan comparison. Walked through PPO vs HMO tradeoffs and documented preferred next steps.",
+      },
+      {
+        id: "note-3",
+        title: "Specialist referral follow-up",
+        noteType: "General note",
+        disposition: "",
+        resolution: "",
+        author: "Lila George",
+        when: "8/11/26, 9:42 AM",
+        body:
+          "Date: 08/11/2026\nTime: 9:42 AM\nTimezone: EDT\nIntent: Member asked about a specialist referral on their CalPERS PPO plan. Shared in-network referral steps and confirmed they will message back after scheduling.",
+      },
+    ],
+  };
+  let notesEditBaseline = null;
+  let notesSaving = false;
+  const notesExpandedIds = new Set();
+
+  function notesSelectHtml(id, fieldKey, value, options) {
+    const opts = (options || [])
+      .map((opt) => {
+        const selected = opt === value;
+        return `<button type="button" role="option" class="${selected ? "is-selected" : ""}" data-value="${escapeAttr(opt)}" aria-selected="${selected}">
+            <span>${escapeAttr(opt)}</span>${selected ? icon.check : ""}
+          </button>`;
+      })
+      .join("");
+    return `<div class="select-wrap inline-select">
+        <input type="hidden" id="${id}" data-field="${fieldKey}" value="${escapeAttr(value)}" />
+        <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-controls="${id}-menu" id="${id}-trigger">
+          <span class="select-trigger-label">${escapeAttr(value)}</span>${icon.down}
+        </button>
+        <div class="select-menu" id="${id}-menu" role="listbox" hidden>${opts}</div>
+      </div>`;
+  }
+
+  function notesFieldLabel(label, { required = false, tip = "" } = {}) {
+    const req = required ? ` <span class="notes-required" aria-hidden="true">*</span>` : "";
+    const tipBtn = tip
+      ? ` <button class="ins-info notes-field-tip" type="button" aria-label="About ${escapeAttr(label)}">${icon.info}<span class="ins-info-tip" role="tooltip">${escapeAttr(tip)}</span></button>`
+      : "";
+    return `<div class="notes-field-label">${escapeAttr(label)}${req}${tipBtn}</div>`;
+  }
+
+  function notesCreateFormHtml() {
+    const d = notesState.draft;
+    return `
+      <div class="notes-form" data-notes-form="create">
+        <div class="notes-field notes-field--compact">
+          ${notesFieldLabel("Note Type", { tip: "Choose the category that best matches this note." })}
+          ${notesSelectHtml("notes-create-type", "noteType", d.noteType, NOTE_TYPE_OPTIONS)}
+        </div>
+        <div class="notes-field notes-field--compact">
+          ${notesFieldLabel("Note Title", { required: true })}
+          <input class="inline-field-control" id="notes-create-title" type="text" data-field="title" placeholder="Placeholder" value="${escapeAttr(d.title)}" />
+        </div>
+        <div class="notes-field notes-field--body">
+          ${notesFieldLabel("Notes", { required: true })}
+          <textarea class="inline-field-control inline-field-textarea" id="notes-create-body" data-field="body" rows="4" placeholder="Enter a description">${escapeAttr(d.body)}</textarea>
+        </div>
+      </div>`;
+  }
+
+  function notesEditFormHtml(note) {
+    return `
+      <div class="notes-form" data-notes-form="edit">
+        <div class="notes-field notes-field--compact">
+          ${notesFieldLabel("Note Type", { tip: "Choose the category that best matches this note." })}
+          ${notesSelectHtml("notes-edit-type", "noteType", note.noteType, NOTE_TYPE_OPTIONS)}
+        </div>
+        <div class="notes-field notes-field--compact">
+          ${notesFieldLabel("Note Title", { required: true })}
+          <input class="inline-field-control" id="notes-edit-title" type="text" data-field="title" value="${escapeAttr(note.title)}" />
+        </div>
+        <div class="notes-field notes-field--compact">
+          ${notesFieldLabel("Primary Disposition", { required: true, tip: "Primary disposition for this chat note." })}
+          ${notesSelectHtml("notes-edit-disposition", "disposition", note.disposition, NOTE_DISPOSITION_OPTIONS)}
+        </div>
+        <div class="notes-field notes-field--compact">
+          ${notesFieldLabel("Resolution", { tip: "How this note was resolved." })}
+          ${notesSelectHtml("notes-edit-resolution", "resolution", note.resolution, NOTE_RESOLUTION_OPTIONS)}
+        </div>
+        <div class="notes-field notes-field--body">
+          ${notesFieldLabel("Notes", { required: true })}
+          <textarea class="inline-field-control inline-field-textarea" id="notes-edit-body" data-field="body" rows="6">${escapeAttr(note.body)}</textarea>
+        </div>
+      </div>`;
+  }
+
+  /** Rough check — refined after paint via syncNotesCardClamps. */
+  function noteBodyLikelyClamped(text) {
+    const raw = String(text || "").trim();
+    if (!raw) return false;
+    const lines = raw.split(/\n/).length;
+    return lines > 3 || raw.length > 160;
+  }
+
+  function notesCardHtml(note) {
+    const expanded = notesExpandedIds.has(note.id);
+    const bodyHtml = escapeAttr(note.body).replace(/\n/g, "<br>");
+    const showToggle = expanded || noteBodyLikelyClamped(note.body);
+    const toggleLabel = expanded ? "Show less" : "Show more";
+    const toggleIcon = expanded ? icon.up : icon.chevron;
+    return `
+      <article class="notes-card" data-note-id="${escapeAttr(note.id)}">
+        <div class="notes-card-head">
+          <span class="notes-card-icon" aria-hidden="true">${icon.notes}</span>
+          <div class="notes-card-titles">
+            <h4 class="notes-card-title">${escapeAttr(note.noteType || note.title)}</h4>
+            <p class="notes-card-meta">${escapeAttr(note.when)} • ${escapeAttr(note.author)}</p>
+          </div>
+          <button class="edit-section" type="button" data-edit-note="${escapeAttr(note.id)}" aria-label="Edit note">${icon.edit}</button>
+        </div>
+        <div class="notes-card-body">
+          <div class="notes-card-preview${expanded ? " is-expanded" : ""}">
+            ${note.disposition ? `<p class="notes-card-kv"><span>Disposition:</span> ${escapeAttr(note.disposition)}</p>` : ""}
+            ${note.resolution ? `<p class="notes-card-kv"><span>Resolution:</span> ${escapeAttr(note.resolution)}</p>` : ""}
+            <p class="notes-card-text">${bodyHtml}</p>
+          </div>
+          ${
+            showToggle
+              ? `<button class="notes-show-more" type="button" data-notes-toggle="${escapeAttr(note.id)}" aria-expanded="${expanded}"><span class="notes-show-more-label">${toggleLabel}</span><span class="notes-show-more-chevron" aria-hidden="true">${toggleIcon}</span></button>`
+              : ""
+          }
+        </div>
+      </article>`;
+  }
+
+  function syncNotesCardClamps() {
+    stage.querySelectorAll(".notes-card").forEach((card) => {
+      const preview = card.querySelector(".notes-card-preview");
+      const toggle = card.querySelector("[data-notes-toggle]");
+      if (!preview || !toggle) return;
+      if (preview.classList.contains("is-expanded")) {
+        toggle.hidden = false;
+        return;
+      }
+      const overflows = preview.scrollHeight > preview.clientHeight + 1;
+      toggle.hidden = !overflows;
+    });
+  }
+
+  function notesListTemplate() {
+    const cards = notesState.notes.map(notesCardHtml).join("");
+    return `
+    <article class="panel-content" data-content="notes">
+      <header class="panel-header">
+        <h2>Create Note</h2>
+        <button class="icon-button panel-close" type="button" aria-label="Close Notes">${icon.close}</button>
+      </header>
+      <div class="panel-scroll notes-scroll">
+        ${notesCreateFormHtml()}
+        <h3 class="notes-section-title">All Notes</h3>
+        <div class="notes-list">${cards || `<p class="quiet-state">No notes yet</p>`}</div>
+      </div>
+      ${taskListHtml()}
+    </article>`;
+  }
+
+  function notesEditTemplate() {
+    const note = notesState.notes.find((n) => n.id === notesState.editingId);
+    if (!note) {
+      notesState.view = "list";
+      notesState.editingId = null;
+      notesEditBaseline = null;
+      return notesListTemplate();
+    }
+    return `
+    <article class="panel-content" data-content="notes">
+      <header class="panel-header panel-header--detail">
+        <div class="panel-title-stack with-back">
+          <button class="icon-button panel-back" type="button" data-notes-back aria-label="Back">${icon.chevronLeft}</button>
+          <h2>Edit Note</h2>
+        </div>
+        <button class="icon-button panel-close" type="button" aria-label="Close Notes">${icon.close}</button>
+      </header>
+      <div class="panel-scroll notes-scroll">
+        ${notesEditFormHtml(note)}
+      </div>
+      ${taskListHtml()}
+    </article>`;
+  }
+
+  function notesTemplate() {
+    return notesState.view === "edit" ? notesEditTemplate() : notesListTemplate();
+  }
+
+  function notesEditBarHtml({ saveDisabled = false } = {}) {
+    const saveHint = "Add a title and notes to save";
+    const saveBtn = saveDisabled
+      ? `<span class="notes-save-wrap" data-notes-save-blocked>
+          <button class="button button-primary" type="button" data-notes-save disabled aria-disabled="true">${"Save note"}</button>
+          <span class="tooltip tooltip--above" role="tooltip">${saveHint}</span>
+        </span>`
+      : `<button class="button button-primary" type="button" data-notes-save>Save note</button>`;
+    return `
+      <div class="panel-edit-bar" data-edit-bar>
+        <button class="button button-secondary" type="button" data-notes-cancel>Cancel</button>
+        ${saveBtn}
+      </div>`;
+  }
+
+  function readNotesFormValues() {
+    const content = stage.querySelector('.panel-content[data-content="notes"]');
+    const values = {};
+    content?.querySelectorAll("[data-field]").forEach((el) => {
+      const key = el.dataset.field;
+      if (key) values[key] = el.value.trim();
+    });
+    return values;
+  }
+
+  function snapshotNotesEdit() {
+    const note = notesState.notes.find((n) => n.id === notesState.editingId);
+    if (!note) return null;
+    return {
+      noteType: String(note.noteType ?? "").trim(),
+      title: String(note.title ?? "").trim(),
+      disposition: String(note.disposition ?? "").trim(),
+      resolution: String(note.resolution ?? "").trim(),
+      body: String(note.body ?? "").trim(),
+    };
+  }
+
+  function isNotesEditDirty() {
+    if (notesState.view !== "edit" || !notesEditBaseline) return false;
+    const current = readNotesFormValues();
+    const keys = Object.keys(notesEditBaseline);
+    return keys.some((key) => (current[key] ?? "") !== (notesEditBaseline[key] ?? ""));
+  }
+
+  function readNotesCreateFields() {
+    const current = readNotesFormValues();
+    return {
+      noteType: (current.noteType ?? notesState.draft.noteType ?? "General note").trim(),
+      title: (current.title ?? notesState.draft.title ?? "").trim(),
+      body: (current.body ?? notesState.draft.body ?? "").trim(),
+    };
+  }
+
+  function isNotesCreateReady() {
+    if (notesState.view !== "list") return false;
+    const { title, body } = readNotesCreateFields();
+    return Boolean(title && body);
+  }
+
+  /** Any create draft change — shows Cancel/Save before all required fields are filled. */
+  function isNotesCreateDirty() {
+    if (notesState.view !== "list") return false;
+    const { noteType, title, body } = readNotesCreateFields();
+    return Boolean(title || body || noteType !== "General note");
+  }
+
+  function isNotesDirty() {
+    if (notesState.view === "edit") return isNotesEditDirty();
+    return isNotesCreateDirty();
+  }
+
+  function shouldShowNotesEditBar() {
+    if (notesState.view === "edit") return isNotesEditDirty();
+    return isNotesCreateDirty();
+  }
+
+  function clearNotesFieldErrors(content = stage.querySelector('.panel-content[data-content="notes"]')) {
+    content?.querySelectorAll(".notes-field.is-invalid").forEach((field) => {
+      field.classList.remove("is-invalid");
+      field.querySelector(".notes-field-error")?.remove();
+      field.querySelector("[data-field]")?.removeAttribute("aria-invalid");
+      field.querySelector("[data-field]")?.removeAttribute("aria-describedby");
+    });
+  }
+
+  function showNotesCreateFieldErrors() {
+    const content = stage.querySelector('.panel-content[data-content="notes"]');
+    if (!content || notesState.view !== "list") return;
+    clearNotesFieldErrors(content);
+    const { title, body } = readNotesCreateFields();
+    const missing = [];
+    if (!title) missing.push({ field: "title", message: "Title is required" });
+    if (!body) missing.push({ field: "body", message: "Notes are required" });
+    missing.forEach(({ field, message }, index) => {
+      const input = content.querySelector(`[data-field="${field}"]`);
+      const wrap = input?.closest(".notes-field");
+      if (!wrap || !input) return;
+      const errorId = `notes-error-${field}`;
+      wrap.classList.add("is-invalid");
+      input.setAttribute("aria-invalid", "true");
+      input.setAttribute("aria-describedby", errorId);
+      wrap.insertAdjacentHTML(
+        "beforeend",
+        `<p class="notes-field-error" id="${errorId}" role="alert">${message}</p>`
+      );
+      if (index === 0) input.focus();
+    });
+  }
+
+  function syncNotesCreateFieldErrors() {
+    const content = stage.querySelector('.panel-content[data-content="notes"]');
+    if (!content || notesState.view !== "list") return;
+    if (!content.querySelector(".notes-field.is-invalid")) return;
+    const { title, body } = readNotesCreateFields();
+    if (title) {
+      const titleField = content.querySelector('[data-field="title"]')?.closest(".notes-field");
+      titleField?.classList.remove("is-invalid");
+      titleField?.querySelector(".notes-field-error")?.remove();
+      content.querySelector('[data-field="title"]')?.removeAttribute("aria-invalid");
+      content.querySelector('[data-field="title"]')?.removeAttribute("aria-describedby");
+    }
+    if (body) {
+      const bodyField = content.querySelector('[data-field="body"]')?.closest(".notes-field");
+      bodyField?.classList.remove("is-invalid");
+      bodyField?.querySelector(".notes-field-error")?.remove();
+      content.querySelector('[data-field="body"]')?.removeAttribute("aria-invalid");
+      content.querySelector('[data-field="body"]')?.removeAttribute("aria-describedby");
+    }
+  }
+
+  function bindNotesEditBarActions(content) {
+    content.querySelector("[data-notes-cancel]")?.addEventListener("click", () => cancelNotesAction());
+    content.querySelector("[data-notes-save]")?.addEventListener("click", () => saveNotesAction());
+    content.querySelector("[data-notes-save-blocked]")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      showNotesCreateFieldErrors();
+    });
+  }
+
+  function syncNotesEditChrome() {
+    const content = stage.querySelector('.panel-content[data-content="notes"]');
+    if (!content) return;
+    if (notesSaving) return;
+    const show = shouldShowNotesEditBar();
+    const saveDisabled = notesState.view === "list" && !isNotesCreateReady();
+    content.classList.toggle("is-section-editing", show || notesState.view === "edit");
+    const existing = content.querySelector("[data-edit-bar]");
+    const taskList = content.querySelector(".task-list-accordion");
+
+    if (!show) {
+      existing?.remove();
+      clearNotesFieldErrors(content);
+      return;
+    }
+
+    /* Same Save enabled state — keep bar mounted (avoids flicker while typing) */
+    if (existing && Boolean(existing.querySelector("[data-notes-save]")?.disabled) === saveDisabled) {
+      syncNotesCreateFieldErrors();
+      return;
+    }
+
+    const hadBar = Boolean(existing);
+    existing?.remove();
+    if (!taskList) return;
+    taskList.insertAdjacentHTML("beforebegin", notesEditBarHtml({ saveDisabled }));
+    const bar = content.querySelector("[data-edit-bar]");
+    if (bar && !hadBar && !reduceMotion()) {
+      bar.classList.add("is-edit-bar-enter");
+      bar.addEventListener(
+        "animationend",
+        () => bar.classList.remove("is-edit-bar-enter"),
+        { once: true }
+      );
+    }
+    bindNotesEditBarActions(content);
+    syncNotesCreateFieldErrors();
+  }
+
+  function persistNotesDraftFromDom() {
+    if (notesState.view !== "list") return;
+    const values = readNotesFormValues();
+    notesState.draft = {
+      noteType: values.noteType || notesState.draft.noteType || "General note",
+      title: values.title || "",
+      body: values.body || "",
+    };
+  }
+
+  function clearNotesDraft() {
+    notesState.draft = { noteType: "General note", title: "", body: "" };
+  }
+
+  function exitNotesEditView() {
+    notesState.view = "list";
+    notesState.editingId = null;
+    notesEditBaseline = null;
+    render("notes");
+  }
+
+  function cancelNotesAction() {
+    if (notesSaving) return;
+    if (notesState.view === "edit") {
+      exitNotesEditView();
+      return;
+    }
+    clearNotesFieldErrors();
+    clearNotesDraft();
+    render("notes");
+  }
+
+  async function saveNotesAction() {
+    if (notesSaving) return;
+    const content = stage.querySelector('.panel-content[data-content="notes"]');
+    if (notesState.view === "list" && !isNotesCreateReady()) {
+      showNotesCreateFieldErrors();
+      return;
+    }
+    const saveBtn = content?.querySelector("[data-notes-save]");
+    const cancelBtn = content?.querySelector("[data-notes-cancel]");
+    const values = readNotesFormValues();
+    notesSaving = true;
+    setPrimaryButtonLoading(saveBtn, true, "Save note");
+    if (cancelBtn) cancelBtn.disabled = true;
+    content?.querySelectorAll("[data-field], .inline-field-control").forEach((el) => {
+      el.disabled = true;
+    });
+    await new Promise((r) => window.setTimeout(r, MEMBER_SAVE_MS));
+
+    if (notesState.view === "edit" && notesState.editingId) {
+      const note = notesState.notes.find((n) => n.id === notesState.editingId);
+      if (note) {
+        note.noteType = values.noteType || note.noteType;
+        note.title = values.title || note.title;
+        note.disposition = values.disposition || note.disposition;
+        note.resolution = values.resolution || note.resolution;
+        note.body = values.body || note.body;
+      }
+      notesSaving = false;
+      notesState.view = "list";
+      notesState.editingId = null;
+      notesEditBaseline = null;
+      render("notes");
+      showToast("Note saved");
+      return;
+    }
+
+    const now = new Date();
+    const when = `${now.getMonth() + 1}/${now.getDate()}/${String(now.getFullYear()).slice(-2)}, ${now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
+    notesState.notes.unshift({
+      id: `note-${Date.now()}`,
+      title: values.title,
+      noteType: values.noteType || "General note",
+      disposition: "",
+      resolution: "",
+      author: "Solon Gaylord",
+      when,
+      body: values.body,
+    });
+    clearNotesDraft();
+    notesSaving = false;
+    render("notes");
+    showToast("Note saved");
+  }
+
+  function enterNotesEdit(noteId) {
+    const note = notesState.notes.find((n) => n.id === noteId);
+    if (!note) return;
+    const go = () => {
+      notesState.view = "edit";
+      notesState.editingId = noteId;
+      notesEditBaseline = {
+        noteType: String(note.noteType ?? "").trim(),
+        title: String(note.title ?? "").trim(),
+        disposition: String(note.disposition ?? "").trim(),
+        resolution: String(note.resolution ?? "").trim(),
+        body: String(note.body ?? "").trim(),
+      };
+      render("notes");
+    };
+    if (notesState.view === "list" && isNotesCreateDirty()) {
+      requestLeaveNotes(go);
+      return;
+    }
+    go();
+  }
+
+  function requestLeaveNotes(next) {
+    if (notesSaving) return;
+    if (!isNotesDirty()) {
+      if (notesState.view === "edit") {
+        notesState.view = "list";
+        notesState.editingId = null;
+        notesEditBaseline = null;
+      }
+      next?.();
+      return;
+    }
+    pendingLeaveAction = next || null;
+    unsavedConfirmOpen = true;
+    openModal({
+      title: "Save your edits before leaving?",
+      body: `<p class="modal-copy">If you discard, your changes will be lost.</p>`,
+      footer: `
+        <button class="button button-secondary" type="button" id="unsaved-discard">Discard</button>
+        <button class="button button-primary" type="button" id="unsaved-save">Save</button>
+      `,
+      variant: "confirm",
+      dismissible: true,
+    });
+    document.querySelector("#unsaved-discard")?.addEventListener("click", () => {
+      const resume = pendingLeaveAction;
+      pendingLeaveAction = null;
+      unsavedConfirmOpen = false;
+      closeModal();
+      if (notesState.view === "edit") {
+        notesState.view = "list";
+        notesState.editingId = null;
+        notesEditBaseline = null;
+      } else {
+        clearNotesDraft();
+      }
+      resume?.();
+    });
+    document.querySelector("#unsaved-save")?.addEventListener("click", async () => {
+      const resume = pendingLeaveAction;
+      const saveBtn = document.querySelector("#unsaved-save");
+      const discardBtn = document.querySelector("#unsaved-discard");
+      if (notesSaving) return;
+      /* Incomplete create — stay on Notes, show required-field errors */
+      if (notesState.view === "list" && !isNotesCreateReady()) {
+        pendingLeaveAction = null;
+        unsavedConfirmOpen = false;
+        closeModal();
+        showNotesCreateFieldErrors();
+        return;
+      }
+      notesSaving = true;
+      setPrimaryButtonLoading(saveBtn, true, "Save note");
+      if (discardBtn) discardBtn.disabled = true;
+      await new Promise((r) => window.setTimeout(r, MEMBER_SAVE_MS));
+      /* Commit without full UI spinner path */
+      const values = readNotesFormValues();
+      if (notesState.view === "edit" && notesState.editingId) {
+        const note = notesState.notes.find((n) => n.id === notesState.editingId);
+        if (note) {
+          note.noteType = values.noteType || note.noteType;
+          note.title = values.title || note.title;
+          note.disposition = values.disposition || note.disposition;
+          note.resolution = values.resolution || note.resolution;
+          note.body = values.body || note.body;
+        }
+        notesState.view = "list";
+        notesState.editingId = null;
+        notesEditBaseline = null;
+      } else if (values.title && values.body) {
+        const now = new Date();
+        const when = `${now.getMonth() + 1}/${now.getDate()}/${String(now.getFullYear()).slice(-2)}, ${now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
+        notesState.notes.unshift({
+          id: `note-${Date.now()}`,
+          title: values.title,
+          noteType: values.noteType || "General note",
+          disposition: "",
+          resolution: "",
+          author: "Solon Gaylord",
+          when,
+          body: values.body,
+        });
+        clearNotesDraft();
+      }
+      notesSaving = false;
+      pendingLeaveAction = null;
+      unsavedConfirmOpen = false;
+      closeModal();
+      showToast("Note saved");
+      resume?.();
+    });
+  }
+
+  function bindNotesPanelActions() {
+    const content = stage.querySelector('.panel-content[data-content="notes"]');
+    if (!content) return;
+
+    bindInlineSelects();
+    bindInsInfoTips();
+
+    const onDirty = () => {
+      persistNotesDraftFromDom();
+      syncNotesEditChrome();
+    };
+    content.querySelectorAll("[data-field], .inline-field-control").forEach((el) => {
+      el.addEventListener("input", onDirty);
+      el.addEventListener("change", onDirty);
+      if (notesState.view === "list" && (el.dataset.field === "title" || el.dataset.field === "body")) {
+        el.addEventListener("blur", () => {
+          if (!isNotesCreateDirty()) return;
+          const key = el.dataset.field;
+          const wrap = el.closest(".notes-field");
+          if (!wrap) return;
+          const empty = !String(el.value || "").trim();
+          if (!empty) {
+            wrap.classList.remove("is-invalid");
+            wrap.querySelector(".notes-field-error")?.remove();
+            el.removeAttribute("aria-invalid");
+            el.removeAttribute("aria-describedby");
+            return;
+          }
+          if (wrap.classList.contains("is-invalid")) return;
+          const message = key === "title" ? "Title is required" : "Notes are required";
+          const errorId = `notes-error-${key}`;
+          wrap.classList.add("is-invalid");
+          el.setAttribute("aria-invalid", "true");
+          el.setAttribute("aria-describedby", errorId);
+          wrap.insertAdjacentHTML(
+            "beforeend",
+            `<p class="notes-field-error" id="${errorId}" role="alert">${message}</p>`
+          );
+        });
+      }
+    });
+
+    content.querySelectorAll("[data-edit-note]").forEach((btn) => {
+      btn.addEventListener("click", () => enterNotesEdit(btn.dataset.editNote));
+    });
+
+    content.querySelector("[data-notes-back]")?.addEventListener("click", () => {
+      requestLeaveNotes(() => {
+        notesState.view = "list";
+        notesState.editingId = null;
+        notesEditBaseline = null;
+        render("notes");
+      });
+    });
+
+    content.querySelectorAll("[data-notes-toggle]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.notesToggle;
+        if (!id) return;
+        const card = btn.closest(".notes-card");
+        const preview = card?.querySelector(".notes-card-preview");
+        const label = btn.querySelector(".notes-show-more-label");
+        const chevron = btn.querySelector(".notes-show-more-chevron");
+        if (!preview || !label || !chevron) return;
+
+        const expanded = !notesExpandedIds.has(id);
+        if (expanded) notesExpandedIds.add(id);
+        else notesExpandedIds.delete(id);
+
+        /* Toggle in place — full remount reset scroll to top */
+        preview.classList.toggle("is-expanded", expanded);
+        btn.setAttribute("aria-expanded", String(expanded));
+        label.textContent = expanded ? "Show less" : "Show more";
+        chevron.innerHTML = expanded ? icon.up : icon.chevron;
+      });
+    });
+
+    syncNotesEditChrome();
+    requestAnimationFrame(() => syncNotesCardClamps());
+  }
+
+  function assistSearchPlaceholder() {
+    return assistState.tab === "search-documents"
+      ? "Search documents..."
+      : "Search for answers...";
+  }
+
+  function assistTemplate() {
+    const askActive = assistState.tab === "ask-answers";
+    const docsActive = assistState.tab === "search-documents";
+    const glowOnce = shouldPlayAssistGlow() ? " is-glow-once" : "";
+    return `
+    <article class="panel-content" data-content="assist">
+      <header class="panel-header">
+        <h2>Conversation context</h2>
+        <button class="icon-button panel-close" type="button" aria-label="Close Conversation context">${icon.close}</button>
+      </header>
+      <div class="panel-scroll assist-scroll">
+        <div class="assist-meta">
+          <div class="assist-id-row">
+            <span class="assist-id-line">
+              <span class="assist-id-label type-caption">Conversation ID</span>
+              <span class="assist-id-wrap">
+                <span class="assist-id-text type-h6" tabindex="0" aria-label="Conversation ID ${escapeAttr(ASSIST_CONVERSATION_ID)}">${ASSIST_CONVERSATION_ID_DISPLAY}</span>
+                <span class="tooltip tooltip--above" role="tooltip">${escapeAttr(ASSIST_CONVERSATION_ID)}</span>
+              </span>
+            </span>
+            <button class="icon-button assist-copy-id" type="button" data-assist-copy-id aria-label="Copy conversation ID">${icon.copy}</button>
+          </div>
+          <div class="assist-ai-glow-wrap${glowOnce}">
+            <span class="assist-ai-glow" aria-hidden="true"></span>
+            <section class="assist-ai-summary" aria-labelledby="assist-ai-title">
+              <header class="assist-ai-header">
+                <div class="assist-ai-heading">
+                  <span class="assist-ai-icon" aria-hidden="true">${icon.sparkles}</span>
+                  <h3 class="assist-ai-title" id="assist-ai-title">Member request</h3>
+                </div>
+                <span class="soft-badge soft-neutral assist-ai-badge" aria-label="Generated by AI">
+                  <span class="soft-badge-label">AI</span>
+                </span>
+              </header>
+              <div class="assist-ai-body">
+                <p>The member is seeking assistance from the Care Team and has asked to connect with them to discuss their care needs and next steps.</p>
+                <p class="assist-ai-next"><strong>Next step:</strong> facilitate that connection.</p>
+              </div>
+            </section>
+          </div>
+          <div class="assist-transfer">
+            <h3 class="assist-transfer-label">Reason for transfer</h3>
+            <p class="assist-transfer-value">Wants to speak to a human.</p>
+          </div>
+        </div>
+        <div class="tabs assist-tabs" role="tablist">
+          <span class="tabs-indicator" aria-hidden="true"></span>
+          <button class="tab${askActive ? " is-active" : ""}" type="button" role="tab" data-assist-tab="ask-answers" aria-selected="${askActive}">Ask Answers</button>
+          <button class="tab${docsActive ? " is-active" : ""}" type="button" role="tab" data-assist-tab="search-documents" aria-selected="${docsActive}">Search Documents</button>
+        </div>
+        <div class="assist-tab-body">
+          <label class="elig-search assist-search">
+            <span class="elig-search-icon" aria-hidden="true">${icon.search}</span>
+            <input id="assist-search" type="search" placeholder="${escapeAttr(assistSearchPlaceholder())}" value="${escapeAttr(assistState.query)}" autocomplete="off" />
+            <button type="button" class="elig-search-kbd" tabindex="-1" aria-label="Focus search">⌘K</button>
+          </label>
+          <div class="assist-results quiet-state quiet-state--compact" data-assist-results></div>
+        </div>
+      </div>
+      ${taskListHtml()}
+    </article>`;
+  }
+
+  function selectAssistTab(name) {
+    if (assistState.tab === name) return;
+    assistState.tab = name;
+    assistState.query = "";
+    const tabs = stage.querySelector('.panel-content[data-content="assist"] .assist-tabs');
+    tabs?.querySelectorAll("[data-assist-tab]").forEach((tab) => {
+      const selected = tab.dataset.assistTab === name;
+      tab.classList.toggle("is-active", selected);
+      tab.setAttribute("aria-selected", String(selected));
+    });
+    layoutTabsIndicator(tabs, { animate: true });
+    const input = stage.querySelector("#assist-search");
+    if (input) {
+      input.value = "";
+      input.placeholder = assistSearchPlaceholder();
+    }
+  }
+
+  function bindAssistPanelActions() {
+    const root = stage.querySelector('.panel-content[data-content="assist"]');
+    if (!root) return;
+
+    stage.querySelectorAll("[data-assist-tab]").forEach((tab) => {
+      tab.addEventListener("click", () => selectAssistTab(tab.dataset.assistTab));
+    });
+
+    stage.querySelector("[data-assist-copy-id]")?.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard?.writeText(ASSIST_CONVERSATION_ID);
+      } catch {
+        /* prototype */
+      }
+      showToast("Copied");
+    });
+
+    const search = stage.querySelector("#assist-search");
+    const searchKbd = root.querySelector(".elig-search-kbd");
+    if (search && searchKbd) {
+      const isApple =
+        /Mac|iPhone|iPad|iPod/.test(navigator.platform || "") ||
+        navigator.userAgentData?.platform === "macOS";
+      searchKbd.textContent = isApple ? "⌘K" : "Ctrl+K";
+      searchKbd.setAttribute(
+        "aria-label",
+        isApple ? "Focus search (⌘K or /)" : "Focus search (Ctrl+K or /)"
+      );
+      searchKbd.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        focusAssistSearch(event);
+      });
+      search.addEventListener("input", () => {
+        assistState.query = search.value;
+      });
+    }
+
+    requestAnimationFrame(() => {
+      const tabs = root.querySelector(".assist-tabs");
+      if (tabs) layoutTabsIndicator(tabs, { animate: false });
+    });
+  }
+
+  /* ——— Communication panel — All conversations ——— */
+  const COMM_VISIBLE_INITIAL = 6;
+  const communicationState = {
+    view: "list",
+    activeId: null,
+    visibleCount: COMM_VISIBLE_INITIAL,
+    conversations: [
+      {
+        id: "7c3e91a2-4b8f-4d21-9e05-18af4d2f8ad5",
+        title: "Specialist referral — Dr. Patel",
+        lastMessage: "10/21/2026",
+        month: "Oct 2026",
+      },
+      {
+        id: "a1b2c3d4-5e6f-7890-abcd-ef1234567890",
+        title: "In-network cardiologist options",
+        lastMessage: "10/18/2026",
+        month: "Oct 2026",
+      },
+      {
+        id: "f0e1d2c3-b4a5-9687-0fed-cba987654321",
+        title: "Pharmacy refill follow-up",
+        lastMessage: "10/12/2026",
+        month: "Oct 2026",
+      },
+      {
+        id: "11223344-5566-7788-99aa-bbccddeeff00",
+        title: "Benefits inquiry — CalPERS PPO",
+        lastMessage: "10/03/2026",
+        month: "Oct 2026",
+      },
+      {
+        id: "99887766-5544-3322-1100-ffeeddccbbaa",
+        title: "Open enrollment plan comparison",
+        lastMessage: "09/24/2026",
+        month: "Sep 2026",
+      },
+      {
+        id: "deadbeef-cafe-babe-0000-111122223333",
+        title: "Prior authorization question",
+        lastMessage: "09/16/2026",
+        month: "Sep 2026",
+      },
+      {
+        id: "c0ffee00-1234-5678-9abc-def012345678",
+        title: "Claims status check",
+        lastMessage: "09/08/2026",
+        month: "Sep 2026",
+      },
+      {
+        id: "abcdef01-2345-6789-abcd-ef0123456789",
+        title: "Care Team handoff",
+        lastMessage: "08/27/2026",
+        month: "Aug 2026",
+      },
+      {
+        id: "01234567-89ab-cdef-0123-456789abcdef",
+        title: "Telehealth visit scheduling",
+        lastMessage: "08/14/2026",
+        month: "Aug 2026",
+      },
+    ],
+  };
+
+  /** @type {Record<string, { dateLabel: string, turns: Array<{ role: "member" | "agent", time: string, lines: string[], readStatus?: string }> }>} */
+  const COMM_THREAD_MOCKS = {
+    "7c3e91a2-4b8f-4d21-9e05-18af4d2f8ad5": {
+      dateLabel: "Oct 21, 2026",
+      turns: [
+        {
+          role: "member",
+          time: "2:14 PM",
+          lines: [
+            "My PCP referred me to Dr. Patel for cardiology — can you confirm the referral is on file?",
+            "Member ID ending in 4821 if that helps.",
+          ],
+        },
+        {
+          role: "agent",
+          time: "2:16 PM",
+          lines: [
+            "I see an in-network referral to Dr. Anika Patel (cardiology) effective through Jan 2027. You're good to schedule — want help finding open appointment times?",
+          ],
+          readStatus: "Read by Member",
+        },
+      ],
+    },
+    "a1b2c3d4-5e6f-7890-abcd-ef1234567890": {
+      dateLabel: "Oct 18, 2026",
+      turns: [
+        {
+          role: "member",
+          time: "10:02 AM",
+          lines: ["I'm looking for in-network cardiologists near Sacramento — preferably someone who takes CalPERS PPO."],
+        },
+        {
+          role: "agent",
+          time: "10:05 AM",
+          lines: [
+            "I pulled three in-network cardiologists within 15 miles. Dr. Patel and Dr. Nguyen both have availability this month. I can share phone numbers and whether they require a referral.",
+          ],
+          readStatus: "Read by Member",
+        },
+      ],
+    },
+    "f0e1d2c3-b4a5-9687-0fed-cba987654321": {
+      dateLabel: "Oct 12, 2026",
+      turns: [
+        {
+          role: "member",
+          time: "4:48 PM",
+          lines: ["My pharmacy said my lisinopril refill was denied — can you check what's blocking it?"],
+        },
+        {
+          role: "agent",
+          time: "4:51 PM",
+          lines: [
+            "The claim shows a prior authorization is required for the 90-day supply. I can start a PA request with your pharmacy details, or you can switch to a 30-day fill today.",
+          ],
+          readStatus: "Read by Member",
+        },
+      ],
+    },
+    "11223344-5566-7788-99aa-bbccddeeff00": {
+      dateLabel: "Oct 3, 2026",
+      turns: [
+        {
+          role: "member",
+          time: "11:20 AM",
+          lines: [
+            "I have a question about my CalPERS PPO benefits — do specialist visits need a referral?",
+            "I'm trying to book dermatology and don't want a surprise bill.",
+          ],
+        },
+        {
+          role: "agent",
+          time: "11:23 AM",
+          lines: [
+            "For your CalPERS PPO plan, most specialists require a PCP referral unless it's urgent care or preventive screening. Dermatology for a new concern typically needs one — I can confirm against your benefit year if you'd like.",
+          ],
+          readStatus: "Read by Member",
+        },
+      ],
+    },
+    "99887766-5544-3322-1100-ffeeddccbbaa": {
+      dateLabel: "Sep 24, 2026",
+      turns: [
+        {
+          role: "member",
+          time: "9:05 AM",
+          lines: ["Open enrollment starts soon — can you compare the PPO vs HMO options for my family?"],
+        },
+        {
+          role: "agent",
+          time: "9:08 AM",
+          lines: [
+            "Happy to help. Your current PPO has broader out-of-network coverage; the HMO lowers premiums but requires PCP gatekeeping. I can send a side-by-side of deductibles and Rx tiers for both.",
+          ],
+          readStatus: "Read by Member",
+        },
+      ],
+    },
+    "deadbeef-cafe-babe-0000-111122223333": {
+      dateLabel: "Sep 16, 2026",
+      turns: [
+        {
+          role: "member",
+          time: "3:30 PM",
+          lines: ["My MRI was scheduled but imaging called saying they need prior auth — where does that stand?"],
+        },
+        {
+          role: "agent",
+          time: "3:34 PM",
+          lines: [
+            "Prior auth PA-88421 is in review; clinical notes were received today. Typical turnaround is 2 business days — I'll notify you as soon as it's approved or if anything else is needed.",
+          ],
+          readStatus: "Read by Member",
+        },
+      ],
+    },
+    "c0ffee00-1234-5678-9abc-def012345678": {
+      dateLabel: "Sep 8, 2026",
+      turns: [
+        {
+          role: "member",
+          time: "1:12 PM",
+          lines: ["Checking on claim #CLM-902184 — it still shows processing on the portal."],
+        },
+        {
+          role: "agent",
+          time: "1:15 PM",
+          lines: [
+            "That claim finished adjudication yesterday: plan paid $842, member responsibility $65. An EOB was mailed — I can resend a digital copy to your email on file.",
+          ],
+          readStatus: "Read by Member",
+        },
+      ],
+    },
+    "abcdef01-2345-6789-abcd-ef0123456789": {
+      dateLabel: "Aug 27, 2026",
+      turns: [
+        {
+          role: "member",
+          time: "8:44 AM",
+          lines: ["Dot connected me earlier — I'd like to continue with the Care Team about my care plan."],
+        },
+        {
+          role: "agent",
+          time: "8:46 AM",
+          lines: [
+            "I've handed this thread to Lila on the Care Team. She'll pick up here with your care plan notes — you should see her reply shortly.",
+          ],
+          readStatus: "Read by Member",
+        },
+      ],
+    },
+    "01234567-89ab-cdef-0123-456789abcdef": {
+      dateLabel: "Aug 14, 2026",
+      turns: [
+        {
+          role: "member",
+          time: "5:02 PM",
+          lines: ["Can I schedule a telehealth visit for next week? Prefer morning slots."],
+        },
+        {
+          role: "agent",
+          time: "5:05 PM",
+          lines: [
+            "Yes — telehealth with your PCP is covered the same as in-person. I found Tue and Thu openings at 9:30 AM; say which you prefer and I'll hold the slot.",
+          ],
+          readStatus: "Read by Member",
+        },
+      ],
+    },
+  };
+
+  function commThreadMockFor(conversation) {
+    const keyed = COMM_THREAD_MOCKS[conversation.id];
+    if (keyed) return keyed;
+    return {
+      dateLabel: conversation.lastMessage,
+      turns: [
+        {
+          role: "member",
+          time: "9:00 AM",
+          lines: [`Following up on: ${conversation.title}`],
+        },
+        {
+          role: "agent",
+          time: "9:02 AM",
+          lines: ["Thanks for reaching out — I'm reviewing your plan details and will follow up with next steps here."],
+          readStatus: "Read by Member",
+        },
+      ],
+    };
+  }
+
+  function commThreadTurnHtml(turn) {
+    if (turn.role === "member") {
+      const bubbles = turn.lines.map((line) => `<p class="msg-bubble msg-bubble--member">${escapeAttr(line)}</p>`).join("");
+      return `
+      <article class="msg-group msg-group--member">
+        <header class="msg-sender-head">
+          <img class="avatar-img avatar-img--msg" src="assets/riley-smith.jpg" width="20" height="20" alt="" />
+          <strong class="msg-sender-name">Riley Smith</strong>
+        </header>
+        <div class="msg-content">
+          <div class="msg-stack">${bubbles}</div>
+          <footer class="msg-meta"><time>${escapeAttr(turn.time)}</time></footer>
+        </div>
+      </article>`;
+    }
+    const status = turn.readStatus
+      ? `<span class="msg-meta-status">${escapeAttr(turn.readStatus)}</span>`
+      : "";
+    const body = turn.lines.map((line) => `<p class="msg-plain">${escapeAttr(line)}</p>`).join("");
+    return `
+      <article class="msg-group msg-group--agent">
+        <header class="msg-sender-head">
+          <img class="logo-dot" src="assets/logo-dot.svg?v=cluster" width="20" height="20" alt="" />
+          <span class="msg-sender-name">Dot</span>
+        </header>
+        <div class="msg-content">
+          ${body}
+          <footer class="msg-meta">
+            <time>${escapeAttr(turn.time)}</time>
+            ${status}
+          </footer>
+        </div>
+      </article>`;
+  }
+
+  function commThreadBodyHtml(conversation) {
+    const mock = commThreadMockFor(conversation);
+    const turns = mock.turns.map(commThreadTurnHtml).join("");
+    return `
+      <p class="msg-date">${escapeAttr(mock.dateLabel)}</p>
+      ${turns}`;
+  }
+
+  function commThreadComposerHtml() {
+    return `
+      <footer class="composer comm-thread-composer">
+        <div class="composer-field" data-comm-composer-field>
+          <label class="composer-input-wrap">
+            <span class="visually-hidden">Message</span>
+            <textarea class="composer-input" data-comm-composer-input rows="1" placeholder="Describe your issue..."></textarea>
+          </label>
+          <div class="composer-toolbar">
+            <button class="composer-icon-btn composer-icon-btn--attach" type="button" aria-label="Attach an image" tabindex="-1">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+                <path d="M1 12h22M12 1v22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25"/>
+              </svg>
+            </button>
+            <div class="composer-toolbar-end">
+              <button class="composer-icon-btn composer-icon-btn--rewrite" type="button" aria-label="Clean up" tabindex="-1" disabled>
+                ${icon.sparkles}
+              </button>
+              <button class="composer-send" data-comm-composer-send type="button" disabled aria-label="Send message">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                  <path d="M1.4 3.743a1.5 1.5 0 0 1 1.973-2.077l19.014 9.659a.75.75 0 0 1 0 1.337L3.373 22.334A1.5 1.5 0 0 1 1.4 20.257l5.058-8.264Z" fill="currentColor"/>
+                  <path d="M6.453 11.993h16.344" class="composer-send-seam" stroke-linecap="round" stroke-width="1.75"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </footer>`;
+  }
+
+  function commIdDisplay(id) {
+    const compact = String(id).replace(/-/g, "");
+    return `…${compact.slice(-6)}`;
+  }
+
+  function commRowHtml(item) {
+    const displayId = commIdDisplay(item.id);
+    return `
+      <article class="comm-row" data-comm-id="${escapeAttr(item.id)}">
+        <span class="comm-row-icon" aria-hidden="true">${icon.mail}</span>
+        <div class="comm-row-body">
+          <h3 class="comm-row-title">${escapeAttr(item.title)}</h3>
+          <div class="comm-row-meta">
+            <div class="comm-row-id-line">
+              <span class="comm-row-id-label type-caption">Conversation ID</span>
+              <span class="comm-row-id-wrap">
+                <span class="comm-row-id-text type-h6" tabindex="0" aria-label="Conversation ID ${escapeAttr(item.id)}">${escapeAttr(displayId)}</span>
+                <span class="tooltip tooltip--above" role="tooltip">${escapeAttr(item.id)}</span>
+              </span>
+              <button class="icon-button assist-copy-id" type="button" data-comm-copy-id="${escapeAttr(item.id)}" aria-label="Copy conversation ID">${icon.copy}</button>
+            </div>
+            <p class="comm-row-last">Last message ${escapeAttr(item.lastMessage)}</p>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  function communicationListHtml() {
+    const visible = communicationState.conversations.slice(0, communicationState.visibleCount);
+    const groups = [];
+    let currentMonth = null;
+    let bucket = [];
+    visible.forEach((item) => {
+      if (item.month !== currentMonth) {
+        if (currentMonth && bucket.length) {
+          groups.push({ month: currentMonth, items: bucket });
+        }
+        currentMonth = item.month;
+        bucket = [item];
+      } else {
+        bucket.push(item);
+      }
+    });
+    if (currentMonth && bucket.length) {
+      groups.push({ month: currentMonth, items: bucket });
+    }
+
+    const sections = groups
+      .map(
+        (group) => `
+      <section class="comm-month" aria-label="${escapeAttr(group.month)}">
+        <h3 class="comm-month-label">${escapeAttr(group.month)}</h3>
+        <div class="comm-month-list">${group.items.map(commRowHtml).join("")}</div>
+      </section>`
+      )
+      .join("");
+
+    const hasMore = communicationState.visibleCount < communicationState.conversations.length;
+    const loadMore = hasMore
+      ? `<button class="button button-secondary comm-load-more" type="button" data-comm-load-more>Load more</button>`
+      : "";
+
+    return `${sections}${loadMore}`;
+  }
+
+  function communicationListTemplate() {
+    return `
+    <article class="panel-content" data-content="communication">
+      <header class="panel-header">
+        <h2>All conversations</h2>
+        <button class="icon-button panel-close" type="button" aria-label="Close Communication">${icon.close}</button>
+      </header>
+      <div class="panel-scroll comm-scroll">
+        ${communicationListHtml()}
+      </div>
+      ${taskListHtml()}
+    </article>`;
+  }
+
+  function communicationThreadTemplate() {
+    const conversation = communicationState.conversations.find((c) => c.id === communicationState.activeId);
+    if (!conversation) {
+      communicationState.view = "list";
+      communicationState.activeId = null;
+      return communicationListTemplate();
+    }
+    return `
+    <article class="panel-content" data-content="communication">
+      <header class="panel-header panel-header--detail">
+        <div class="panel-title-stack with-back">
+          <button class="icon-button panel-back" type="button" data-comm-back aria-label="Back">${icon.chevronLeft}</button>
+          <h2>${escapeAttr(conversation.title)}</h2>
+        </div>
+        <button class="icon-button panel-close" type="button" aria-label="Close Communication">${icon.close}</button>
+      </header>
+      <div class="panel-scroll comm-scroll comm-scroll--thread">
+        <div class="comm-thread">${commThreadBodyHtml(conversation)}</div>
+        ${commThreadComposerHtml()}
+      </div>
+      ${taskListHtml()}
+    </article>`;
+  }
+
+  function communicationTemplate() {
+    return communicationState.view === "thread" ? communicationThreadTemplate() : communicationListTemplate();
+  }
+
+  /** List ↔ thread without remounting .panel-content (avoids full panel-in). */
+  function syncCommunicationView({ direction = "forward" } = {}) {
+    const root = stage.querySelector('.panel-content[data-content="communication"]');
+    if (!root) {
+      render("communication", { skipEnter: true });
+      return;
+    }
+    const tmp = document.createElement("div");
+    tmp.innerHTML = communicationTemplate();
+    const next = tmp.querySelector(".panel-content");
+    const nextHeader = next?.querySelector(".panel-header");
+    const nextScroll = next?.querySelector(".comm-scroll");
+    const curHeader = root.querySelector(".panel-header");
+    const curScroll = root.querySelector(".comm-scroll");
+    if (!nextHeader || !nextScroll || !curHeader || !curScroll) {
+      render("communication", { skipEnter: true });
+      return;
+    }
+    curHeader.replaceWith(nextHeader);
+    curScroll.replaceWith(nextScroll);
+    if (!reduceMotion()) {
+      const animClass = direction === "back" ? "is-comm-drill-back" : "is-comm-drill-forward";
+      [nextHeader, nextScroll].forEach((el) => {
+        el.classList.add(animClass);
+        el.addEventListener(
+          "animationend",
+          () => el.classList.remove(animClass),
+          { once: true }
+        );
+      });
+    }
+    root.querySelector(".panel-close")?.addEventListener("click", collapsePanel);
+    bindCommunicationPanelActions();
+  }
+
+  function syncCommThreadComposer(root) {
+    const input = root.querySelector("[data-comm-composer-input]");
+    const send = root.querySelector("[data-comm-composer-send]");
+    const field = root.querySelector("[data-comm-composer-field]");
+    if (!input || !send) return;
+    const hasText = input.value.trim().length > 0;
+    send.disabled = !hasText;
+    send.classList.toggle("is-active", hasText);
+    send.setAttribute("aria-disabled", hasText ? "false" : "true");
+    field?.classList.toggle("is-filled", hasText);
+  }
+
+  function bindCommunicationListActions(root) {
+    root.querySelectorAll(".comm-row").forEach((row) => {
+      row.addEventListener("click", (event) => {
+        if (event.target.closest("[data-comm-copy-id]")) return;
+        const id = row.dataset.commId;
+        if (!id) return;
+        communicationState.view = "thread";
+        communicationState.activeId = id;
+        syncCommunicationView({ direction: "forward" });
+      });
+    });
+
+    root.querySelectorAll("[data-comm-copy-id]").forEach((btn) => {
+      btn.addEventListener("click", async (event) => {
+        event.stopPropagation();
+        const id = btn.dataset.commCopyId;
+        if (!id) return;
+        try {
+          await navigator.clipboard?.writeText(id);
+        } catch {
+          /* prototype */
+        }
+        showToast("Copied");
+      });
+    });
+
+    root.querySelector("[data-comm-load-more]")?.addEventListener("click", () => {
+      communicationState.visibleCount = Math.min(
+        communicationState.visibleCount + 3,
+        communicationState.conversations.length
+      );
+      /* Swap list only — full render() re-triggers panel-in from the right */
+      const scroll = root.querySelector(".comm-scroll");
+      if (!scroll) return;
+      scroll.innerHTML = communicationListHtml();
+      bindCommunicationListActions(root);
+    });
+  }
+
+  function bindCommunicationPanelActions() {
+    const root = stage.querySelector('.panel-content[data-content="communication"]');
+    if (!root) return;
+    bindCommunicationListActions(root);
+
+    root.querySelector("[data-comm-back]")?.addEventListener("click", () => {
+      communicationState.view = "list";
+      communicationState.activeId = null;
+      syncCommunicationView({ direction: "back" });
+    });
+
+    const composerInput = root.querySelector("[data-comm-composer-input]");
+    if (composerInput) {
+      composerInput.addEventListener("input", () => syncCommThreadComposer(root));
+      syncCommThreadComposer(root);
+    }
+  }
+
+  /* ——— Activity panel — member timeline ——— */
+  const activityState = {
+    status: "all",
+    type: "all",
+    alertDismissed: false,
+    openFilter: null,
+    events: [
+      {
+        id: "act-chat-support-sep",
+        month: "Sep 2026",
+        title: "Chat Support",
+        meta: "Last updated: 9/22/26, 2:48 PM",
+        status: "in-progress",
+        type: "chat",
+        linked: true,
+        expanded: false,
+        detail: "Care Team is actively assisting Riley with billing questions on this chat thread.",
+      },
+      {
+        id: "act-therapy-root-sep",
+        month: "Sep 2026",
+        title: "Therapy visit with Dr. Robert Root, MD",
+        meta: "Appointment: 9/22/26, 1:00 PM - 2:00 PM Pacific",
+        status: "in-progress",
+        type: "visit",
+        linked: true,
+        expanded: false,
+        detail: "Virtual therapy session scheduled with Dr. Robert Root. Member confirmed attendance.",
+        length: "60 mins",
+        timezone: "Pacific",
+        reason: "Therapy",
+        created: "9/20/26 9:00 AM",
+        apptId: "APT-ROOT-922",
+        serviceId: "SD-88214",
+      },
+      {
+        id: "act-ccm-enrollment-sep",
+        month: "Sep 2026",
+        title: "CCM enrollment status change",
+        meta: "Last updated: 9/22/26, 11:07 AM",
+        status: "in-progress",
+        type: "enrollment",
+        linked: false,
+        expanded: false,
+        detail: "Chronic Care Management enrollment moved to in review pending PCP attestation.",
+        prevStatus: "Enrolled: Other",
+        newStatus: "Enrolled: Care Manager",
+        changedAt: "9/22/26, 11:07 AM",
+      },
+      {
+        id: "act-vpc-quinn-sep",
+        month: "Sep 2026",
+        title: "Virtual Primary Care visit with Dr. Jose Quinn, MD",
+        meta: "Appointment: 9/22/26, 10:00 AM - 10:30 AM Pacific",
+        status: "in-progress",
+        type: "visit",
+        linked: true,
+        expanded: false,
+        detail: "Primary care video visit with Dr. Jose Quinn for medication follow-up.",
+        length: "30 mins",
+        timezone: "Pacific",
+        reason: "Medication follow-up",
+        created: "9/15/26 2:10 PM",
+        apptId: "APT-QUINN-917",
+        serviceId: "SD-77102",
+      },
+      {
+        id: "act-support-issue-sep",
+        month: "Sep 2026",
+        title: "Support issue submitted",
+        meta: "Last updated: 9/22/26, 10:58 AM",
+        status: "in-progress",
+        type: "support",
+        linked: true,
+        expanded: false,
+        detail: "Member submitted a support ticket regarding portal access; Care Team is investigating.",
+        subject: "Portal access issue",
+        recipient: "Member",
+        caseId: "16037",
+      },
+      {
+        id: "act-referral-pc-sep",
+        month: "Sep 2026",
+        title: "Concierge Referral for Primary Care",
+        meta: "Last updated: 9/22/26, 10:56 AM",
+        status: "in-progress",
+        type: "referral",
+        linked: true,
+        expanded: false,
+        detail: "Concierge referral opened to match Riley with an in-network primary care provider.",
+        specialty: "Primary Care",
+        provider: "Pending match",
+        referralId: "REF-PC-915",
+        created: "9/22/26, 10:56 AM",
+      },
+      {
+        id: "act-pharmacy-refill-aug",
+        month: "Aug 2026",
+        title: "Pharmacy refill request",
+        meta: "Last updated: 8/28/26, 4:12 PM",
+        status: "completed",
+        type: "support",
+        linked: true,
+        expanded: false,
+        detail: "90-day refill for atorvastatin approved and routed to member’s preferred pharmacy.",
+      },
+      {
+        id: "act-bh-visit-aug",
+        month: "Aug 2026",
+        title: "Behavioral health visit with Dr. Amira Shah, PhD",
+        meta: "Appointment: 8/19/26, 3:00 PM - 3:50 PM Pacific",
+        status: "completed",
+        type: "visit",
+        linked: true,
+        expanded: false,
+        detail: "Completed telehealth session; follow-up scheduled for September.",
+      },
+      {
+        id: "act-chat-benefits-aug",
+        month: "Aug 2026",
+        title: "Chat Support",
+        meta: "Last updated: 8/14/26, 11:33 AM",
+        status: "completed",
+        type: "chat",
+        linked: true,
+        expanded: false,
+        detail: "Resolved questions about specialist copay and referral requirements.",
+      },
+      {
+        id: "act-ccm-checkin-aug",
+        month: "Aug 2026",
+        title: "CCM care plan check-in",
+        meta: "Last updated: 8/7/26, 9:05 AM",
+        status: "completed",
+        type: "enrollment",
+        linked: false,
+        expanded: false,
+        detail: "Care manager documented monthly goals and medication adherence notes.",
+      },
+      {
+        id: "act-lab-referral-jul",
+        month: "Jul 2026",
+        title: "Concierge Referral for Lab Services",
+        meta: "Last updated: 7/30/26, 2:18 PM",
+        status: "completed",
+        type: "referral",
+        linked: true,
+        expanded: false,
+        detail: "Member matched to in-network lab; fasting instructions sent via message.",
+      },
+      {
+        id: "act-vpc-jul",
+        month: "Jul 2026",
+        title: "Virtual Primary Care visit with Dr. Jose Quinn, MD",
+        meta: "Appointment: 7/22/26, 9:30 AM - 10:00 AM Pacific",
+        status: "completed",
+        type: "visit",
+        linked: true,
+        expanded: false,
+        detail: "Annual wellness review; labs ordered and preventive care checklist updated.",
+      },
+      {
+        id: "act-support-id-card-jul",
+        month: "Jul 2026",
+        title: "Support issue submitted",
+        meta: "Last updated: 7/15/26, 1:44 PM",
+        status: "completed",
+        type: "support",
+        linked: true,
+        expanded: false,
+        detail: "Digital ID card not loading in the app; issue resolved after cache reset.",
+      },
+      {
+        id: "act-therapy-jul",
+        month: "Jul 2026",
+        title: "Therapy visit with Dr. Robert Root, MD",
+        meta: "Appointment: 7/8/26, 1:00 PM - 2:00 PM Pacific",
+        status: "completed",
+        type: "visit",
+        linked: true,
+        expanded: false,
+        detail: "Session completed; member reported improved sleep and stress management.",
+      },
+      {
+        id: "act-chat-jun",
+        month: "Jun 2026",
+        title: "Chat Support",
+        meta: "Last updated: 6/25/26, 5:02 PM",
+        status: "completed",
+        type: "chat",
+        linked: true,
+        expanded: false,
+        detail: "Helped member locate in-network dermatology options near home.",
+      },
+      {
+        id: "act-derm-referral-jun",
+        month: "Jun 2026",
+        title: "Concierge Referral for Dermatology",
+        meta: "Last updated: 6/18/26, 10:21 AM",
+        status: "completed",
+        type: "referral",
+        linked: true,
+        expanded: false,
+        detail: "Referral booked with Dr. Lena Ortiz; appointment confirmation emailed.",
+      },
+      {
+        id: "act-enrollment-jun",
+        month: "Jun 2026",
+        title: "CCM enrollment status change",
+        meta: "Last updated: 6/10/26, 8:40 AM",
+        status: "completed",
+        type: "enrollment",
+        linked: false,
+        expanded: false,
+        detail: "Member enrolled in Chronic Care Management with assigned care manager.",
+      },
+      {
+        id: "act-nutrition-jun",
+        month: "Jun 2026",
+        title: "Nutrition consult with Priya Nair, RD",
+        meta: "Appointment: 6/3/26, 11:00 AM - 11:45 AM Pacific",
+        status: "completed",
+        type: "visit",
+        linked: true,
+        expanded: false,
+        detail: "Nutrition plan shared; grocery list and follow-up goals documented.",
+      },
+      {
+        id: "act-pt-may",
+        month: "May 2026",
+        title: "Physical therapy visit with Sam Ortiz, DPT",
+        meta: "Appointment: 5/20/26, 4:00 PM - 4:45 PM Pacific",
+        status: "completed",
+        type: "visit",
+        linked: true,
+        expanded: false,
+        detail: "Home exercise program provided for lower back mobility.",
+      },
+      {
+        id: "act-support-claims-may",
+        month: "May 2026",
+        title: "Support issue submitted",
+        meta: "Last updated: 5/12/26, 3:27 PM",
+        status: "completed",
+        type: "support",
+        linked: true,
+        expanded: false,
+        detail: "Claim status clarified; EOB explanation shared with the member.",
+      },
+      {
+        id: "act-visit-cancelled-may",
+        month: "May 2026",
+        title: "Therapy visit with Dr. Robert Root, MD",
+        meta: "Appointment: 5/8/26, 2:00 PM - 3:00 PM Pacific",
+        status: "cancelled",
+        type: "visit",
+        linked: false,
+        expanded: false,
+        detail: "Visit was cancelled by the member before the scheduled start time.",
+      },
+      {
+        id: "act-chat-cancelled-may",
+        month: "May 2026",
+        title: "Chat Support",
+        meta: "Last updated: 5/3/26, 10:15 AM",
+        status: "cancelled",
+        type: "chat",
+        linked: false,
+        expanded: false,
+        detail: "Support chat was closed without resolution at the member's request.",
+      },
+    ],
+  };
+
+  const ACTIVITY_STATUS_OPTIONS = [
+    ["all", "All"],
+    ["in-progress", "In progress"],
+    ["cancelled", "Cancelled"],
+    ["completed", "Completed"],
+  ];
+
+  const ACTIVITY_TYPE_OPTIONS = [
+    ["all", "All"],
+    ["chat", "Chat"],
+    ["visit", "Visit"],
+    ["enrollment", "Enrollment"],
+    ["support", "Support"],
+    ["referral", "Referral"],
+  ];
+
+  function activityStatusLabel(status) {
+    if (status === "in-progress") return "In progress";
+    if (status === "cancelled") return "Cancelled";
+    if (status === "completed") return "Completed";
+    return "All";
+  }
+
+  function activityTypeLabel(type) {
+    const found = ACTIVITY_TYPE_OPTIONS.find(([value]) => value === type);
+    return found ? found[1] : "All";
+  }
+
+  function activityBadgeHtml(status) {
+    const label = activityStatusLabel(status);
+    if (status === "cancelled") {
+      return `<span class="soft-badge soft-danger"><span class="soft-badge-label">${escapeAttr(label)}</span></span>`;
+    }
+    if (status === "completed") {
+      return `<span class="soft-badge soft-success"><span class="soft-badge-label">${escapeAttr(label)}</span></span>`;
+    }
+    return `<span class="soft-badge soft-neutral"><span class="soft-badge-label">${escapeAttr(label)}</span></span>`;
+  }
+
+  function activityMetaValue(meta, prefix) {
+    if (!meta) return "—";
+    const re = new RegExp(`^${prefix}\\s*`, "i");
+    return meta.replace(re, "") || meta;
+  }
+
+  function activityDetailFieldHtml(field) {
+    const full = field.span === 2 ? " activity-detail-field--full" : "";
+    const raw = field.value == null || field.value === "" ? "—" : String(field.value);
+    const copyVal = field.copy ? String(field.copy) : "";
+    const copy = copyVal
+      ? `<button class="icon-button activity-detail-copy" type="button" data-activity-copy="${escapeAttr(copyVal)}" aria-label="Copy ${escapeAttr(field.label)}">${icon.copy}</button>`
+      : "";
+    return `<div class="activity-detail-field${full}">
+      <div class="activity-detail-label-row">
+        <span class="activity-detail-label">${escapeAttr(field.label)}</span>
+        ${copy}
+      </div>
+      <p class="activity-detail-value">${escapeAttr(raw)}</p>
+    </div>`;
+  }
+
+  function activityFieldsFor(item) {
+    if (Array.isArray(item.fields) && item.fields.length) return item.fields;
+    const idTail = item.id.replace(/^act-/, "").slice(-6).toUpperCase();
+    if (item.type === "visit") {
+      return [
+        { label: "Description", value: item.detail || "", span: 2 },
+        { label: "Appointment Length", value: item.length || "30 mins" },
+        { label: "Member's timezone", value: item.timezone || "Pacific" },
+        { label: "Reason for visit", value: item.reason || "Follow-up" },
+        { label: "Appointment Dates", value: item.apptDates || activityMetaValue(item.meta, "Appointment:"), span: 2 },
+        { label: "Date created", value: item.created || "—" },
+        { label: "Appt ID", value: item.apptId || `APT-${idTail}`, copy: item.apptId || `APT-${idTail}` },
+        {
+          label: "Service Delivery ID",
+          value: item.serviceId || `SD-${idTail}`,
+          copy: item.serviceId || `SD-${idTail}`,
+        },
+      ];
+    }
+    if (item.type === "enrollment") {
+      return [
+        { label: "Previous status", value: item.prevStatus || "Not enrolled" },
+        { label: "New status", value: item.newStatus || "In review" },
+        { label: "Status changed", value: item.changedAt || activityMetaValue(item.meta, "Last updated:"), span: 2 },
+        { label: "Description", value: item.detail || "", span: 2 },
+      ];
+    }
+    if (item.type === "support") {
+      return [
+        { label: "Subject", value: item.subject || item.title, span: 2 },
+        { label: "Description", value: item.detail || "", span: 2 },
+        { label: "Recipient", value: item.recipient || "Care Team" },
+        { label: "Member Patient Case ID", value: item.caseId || "16037", copy: item.caseId || "16037" },
+      ];
+    }
+    if (item.type === "referral") {
+      return [
+        { label: "Description", value: item.detail || "", span: 2 },
+        { label: "Specialty", value: item.specialty || "Primary Care" },
+        { label: "Provider", value: item.provider || "—" },
+        { label: "Referral ID", value: item.referralId || `REF-${idTail}`, copy: item.referralId || `REF-${idTail}` },
+        { label: "Date created", value: item.created || activityMetaValue(item.meta, "Last updated:") },
+      ];
+    }
+    if (item.type === "chat") {
+      return [
+        { label: "Summary", value: item.detail || "", span: 2 },
+        {
+          label: "Conversation ID",
+          value: item.conversationId || `CONV-${idTail}`,
+          copy: item.conversationId || `CONV-${idTail}`,
+        },
+        { label: "Last updated", value: activityMetaValue(item.meta, "Last updated:") },
+      ];
+    }
+    return null;
+  }
+
+  function activityDetailHtml(item) {
+    const fields = activityFieldsFor(item);
+    if (fields?.length) {
+      return `<div class="activity-detail-grid" id="activity-detail-${escapeAttr(item.id)}">${fields
+        .map(activityDetailFieldHtml)
+        .join("")}</div>`;
+    }
+    return `<div class="activity-row-detail" id="activity-detail-${escapeAttr(item.id)}">${escapeAttr(
+      item.detail || ""
+    )}</div>`;
+  }
+
+  function filteredActivityEvents() {
+    return activityState.events.filter((item) => {
+      if (activityState.status !== "all" && item.status !== activityState.status) return false;
+      if (activityState.type !== "all" && item.type !== activityState.type) return false;
+      return true;
+    });
+  }
+
+  function activityTitleHtml(item) {
+    if (item.linked) {
+      return `<a
+        class="activity-row-title activity-row-title--link"
+        href="#"
+        data-activity-title-link="${escapeAttr(item.id)}"
+      >${escapeAttr(item.title)}</a>`;
+    }
+    return `<h3 class="activity-row-title">${escapeAttr(item.title)}</h3>`;
+  }
+
+  function activityRowHtml(item) {
+    const expanded = item.expanded;
+    const cancelled = item.status === "cancelled";
+    return `
+      <article
+        class="activity-row${expanded ? " is-expanded" : ""}${cancelled ? " is-cancelled" : ""}"
+        data-activity-id="${escapeAttr(item.id)}"
+      >
+        <div class="activity-row-header">
+          <button
+            class="activity-row-toggle"
+            type="button"
+            aria-expanded="${expanded}"
+            aria-controls="activity-detail-${escapeAttr(item.id)}"
+            aria-label="${expanded ? "Collapse" : "Expand"} ${escapeAttr(item.title)}"
+          >
+            <span class="accordion-chevron activity-row-chevron" aria-hidden="true">${icon.chevron}</span>
+          </button>
+          <div class="activity-row-text">
+            ${activityTitleHtml(item)}
+            <p class="activity-row-meta">${escapeAttr(item.meta)}</p>
+          </div>
+          ${activityBadgeHtml(item.status)}
+        </div>
+        <div class="activity-row-body">
+          <div class="activity-row-body-inner">
+            ${activityDetailHtml(item)}
+          </div>
+        </div>
+      </article>`;
+  }
+
+  function syncActivityRowDuration(row) {
+    const body = row?.querySelector(".activity-row-body");
+    const measure =
+      row?.querySelector(".activity-detail-grid") ||
+      row?.querySelector(".activity-row-detail") ||
+      row?.querySelector(".activity-row-body-inner");
+    if (!body || !measure) return;
+    if (reduceMotion()) {
+      body.style.setProperty("--motion-duration-accordion-open", "0ms");
+      body.style.setProperty("--motion-duration-accordion-close", "0ms");
+      return;
+    }
+    const height = Math.max(measure.scrollHeight, 1);
+    const openMs = Math.round(Math.min(560, Math.max(280, height * 1)));
+    const closeMs = Math.round(Math.min(450, Math.max(230, height * 0.8)));
+    body.style.setProperty("--motion-duration-accordion-open", `${openMs}ms`);
+    body.style.setProperty("--motion-duration-accordion-close", `${closeMs}ms`);
+  }
+
+  function activityListHtml() {
+    const visible = filteredActivityEvents();
+    const groups = [];
+    let currentMonth = null;
+    let bucket = [];
+    visible.forEach((item) => {
+      if (item.month !== currentMonth) {
+        if (currentMonth && bucket.length) {
+          groups.push({ month: currentMonth, items: bucket });
+        }
+        currentMonth = item.month;
+        bucket = [item];
+      } else {
+        bucket.push(item);
+      }
+    });
+    if (currentMonth && bucket.length) {
+      groups.push({ month: currentMonth, items: bucket });
+    }
+
+    if (!groups.length) {
+      return `<div class="quiet-state quiet-state--compact">No activity matches these filters.</div>`;
+    }
+
+    return groups
+      .map(
+        (group) => `
+      <section class="activity-month" aria-label="${escapeAttr(group.month)}">
+        <h3 class="activity-month-label">${escapeAttr(group.month)}</h3>
+        <div class="activity-month-list">${group.items.map(activityRowHtml).join("")}</div>
+      </section>`
+      )
+      .join("");
+  }
+
+  function activityFilterMenuHtml(kind, options, selected, menuId, groupLabel) {
+    const open = activityState.openFilter === kind;
+    const triggerId = kind === "status" ? "activity-status-filter" : "activity-type-filter";
+    const active = selected !== "all";
+    return `
+      <div class="elig-filter-wrap activity-filter-wrap${open ? " is-open" : ""}">
+        <button
+          class="inline-field-control select-trigger activity-filter-trigger${active ? " is-active" : ""}"
+          type="button"
+          id="${triggerId}"
+          data-activity-filter="${kind}"
+          aria-label="${kind === "status" ? "Filter by status" : "Filter by type"}"
+          aria-expanded="${open}"
+          aria-haspopup="menu"
+        >
+          <span class="select-trigger-label">${kind === "status" ? "Status" : "Type"}</span>${icon.down}
+        </button>
+        <div class="elig-filter-menu activity-filter-menu" role="menu" id="${menuId}" ${open ? "" : "hidden"}>
+          <div class="elig-filter-group-label" id="${menuId}-label">${escapeAttr(groupLabel)}</div>
+          <div class="elig-filter-radio-group" role="group" aria-labelledby="${menuId}-label">
+            ${options
+              .map(
+                ([value, label]) => `
+            <button
+              type="button"
+              role="menuitemradio"
+              data-activity-${kind}="${value}"
+              aria-checked="${selected === value}"
+              class="${selected === value ? "is-selected" : ""}"
+            >
+              <span class="menu-radio" aria-hidden="true"></span>
+              <span class="elig-filter-item-label">${escapeAttr(label)}</span>
+            </button>`
+              )
+              .join("")}
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function activityToolbarHtml() {
+    return `
+      <div class="activity-toolbar">
+        <div class="activity-toolbar-filters">
+          ${activityFilterMenuHtml("status", ACTIVITY_STATUS_OPTIONS, activityState.status, "activity-status-menu", "Status")}
+          ${activityFilterMenuHtml("type", ACTIVITY_TYPE_OPTIONS, activityState.type, "activity-type-menu", "Type")}
+        </div>
+        <button class="button button-ghost button-small activity-clear" type="button" data-activity-clear>Clear</button>
+      </div>`;
+  }
+
+  function activityAlertHtml() {
+    if (activityState.alertDismissed) return "";
+    return `
+      <div class="activity-alert" role="status">
+        <span class="activity-alert-icon" aria-hidden="true">${icon.infoFilled}</span>
+        <div class="activity-alert-copy">
+          <p class="activity-alert-title">More member events coming soon.</p>
+          <p class="activity-alert-body">Use Type filter to view what's included today.</p>
+        </div>
+        <button class="icon-button activity-alert-dismiss" type="button" data-activity-alert-dismiss aria-label="Dismiss activity info">${icon.close}</button>
+      </div>`;
+  }
+
+  function activityTemplate() {
+    return `
+    <article class="panel-content" data-content="activity">
+      <header class="panel-header">
+        <h2>Activity</h2>
+        <button class="icon-button panel-close" type="button" aria-label="Close Activity">${icon.close}</button>
+      </header>
+      <div class="panel-scroll activity-scroll">
+        <div class="activity-alert-slot" data-activity-alert>${activityAlertHtml()}</div>
+        <div class="activity-toolbar-sticky" data-activity-toolbar>${activityToolbarHtml()}</div>
+        <div class="activity-list-region" data-activity-list>
+          ${activityListHtml()}
+        </div>
+      </div>
+      ${taskListHtml()}
+    </article>`;
+  }
+
+  function syncActivityFilterMenuDom(kind) {
+    const root = stage.querySelector('.panel-content[data-content="activity"]');
+    if (!root) return;
+    const selected = kind === "status" ? activityState.status : activityState.type;
+    root.querySelectorAll(`[data-activity-${kind}]`).forEach((option) => {
+      const value = option.getAttribute(`data-activity-${kind}`) || "all";
+      const on = value === selected;
+      option.setAttribute("aria-checked", String(on));
+      option.classList.toggle("is-selected", on);
+    });
+    const trigger = root.querySelector(`#activity-${kind}-filter`);
+    const active = selected !== "all";
+    trigger?.classList.toggle("is-active", active);
+  }
+
+  function closeActivityFilterMenus() {
+    activityState.openFilter = null;
+    const root = stage.querySelector('.panel-content[data-content="activity"]');
+    if (!root) return;
+    root.querySelectorAll(".activity-filter-wrap").forEach((wrap) => wrap.classList.remove("is-open"));
+    root.querySelectorAll(".activity-filter-trigger").forEach((btn) => btn.setAttribute("aria-expanded", "false"));
+    root.querySelectorAll(".activity-filter-menu").forEach((menu) => {
+      hideMenuPopover(menu);
+      menu.hidden = true;
+    });
+  }
+
+  function openActivityFilterMenu(kind) {
+    const root = stage.querySelector('.panel-content[data-content="activity"]');
+    if (!root) return;
+    const menuId = kind === "status" ? "activity-status-menu" : "activity-type-menu";
+    const menu = root.querySelector(`#${menuId}`);
+    const trigger = root.querySelector(`#activity-${kind}-filter`);
+    const wrap = trigger?.closest(".activity-filter-wrap");
+    if (!menu || !trigger) return;
+    activityState.openFilter = kind;
+    wrap?.classList.add("is-open");
+    trigger.setAttribute("aria-expanded", "true");
+    menu.hidden = false;
+    showMenuPopover(menu);
+  }
+
+  function syncActivityList(options = {}) {
+    const root = stage.querySelector('.panel-content[data-content="activity"]');
+    if (!root) return;
+    if (options.chrome) {
+      const alertSlot = root.querySelector("[data-activity-alert]");
+      const toolbar = root.querySelector("[data-activity-toolbar]");
+      if (alertSlot) alertSlot.innerHTML = activityAlertHtml();
+      if (toolbar) toolbar.innerHTML = activityToolbarHtml();
+      bindActivityToolbarActions(root);
+    }
+    const list = root.querySelector("[data-activity-list]");
+    if (list) list.innerHTML = activityListHtml();
+    bindActivityListActions(root);
+  }
+
+  function toggleActivityRowExpand(row) {
+    const id = row?.dataset.activityId;
+    if (!id || !row) return;
+    const item = activityState.events.find((e) => e.id === id);
+    if (!item) return;
+    const toggle = row.querySelector(".activity-row-toggle");
+    syncActivityRowDuration(row);
+    item.expanded = !item.expanded;
+    row.classList.toggle("is-expanded", item.expanded);
+    toggle?.setAttribute("aria-expanded", String(item.expanded));
+    toggle?.setAttribute(
+      "aria-label",
+      `${item.expanded ? "Collapse" : "Expand"} ${item.title}`
+    );
+  }
+
+  function bindActivityListActions(root = stage) {
+    /* Whole header expands (chevron, meta, badge). Title links navigate only. */
+    root.querySelectorAll(".activity-row-header").forEach((header) => {
+      header.addEventListener("click", (event) => {
+        if (event.target.closest("[data-activity-title-link]")) return;
+        toggleActivityRowExpand(header.closest(".activity-row"));
+      });
+    });
+
+    root.querySelectorAll(".activity-row-toggle").forEach((toggle) => {
+      toggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        toggleActivityRowExpand(toggle.closest(".activity-row"));
+      });
+    });
+
+    root.querySelectorAll("[data-activity-title-link]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const id = link.getAttribute("data-activity-title-link");
+        const item = activityState.events.find((e) => e.id === id);
+        showToast(item ? `Open ${item.title}` : "Opening activity");
+      });
+    });
+
+    root.querySelectorAll("[data-activity-copy]").forEach((btn) => {
+      btn.addEventListener("click", async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const text = btn.getAttribute("data-activity-copy");
+        if (!text) return;
+        try {
+          await navigator.clipboard?.writeText(text);
+        } catch {
+          /* prototype */
+        }
+        showToast("Copied");
+      });
+    });
+  }
+
+  function bindActivityToolbarActions(root = stage) {
+    root.querySelector("[data-activity-clear]")?.addEventListener("click", () => {
+      activityState.status = "all";
+      activityState.type = "all";
+      closeActivityFilterMenus();
+      syncActivityList({ chrome: true });
+    });
+
+    root.querySelector("[data-activity-alert-dismiss]")?.addEventListener("click", () => {
+      activityState.alertDismissed = true;
+      syncActivityList({ chrome: true });
+    });
+
+    ["status", "type"].forEach((kind) => {
+      const trigger = root.querySelector(`#activity-${kind}-filter`);
+      const menuId = kind === "status" ? "activity-status-menu" : "activity-type-menu";
+      const menu = root.querySelector(`#${menuId}`);
+      trigger?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const opening = activityState.openFilter !== kind;
+        closeOverlayMenus("activity-filter");
+        closeActivityFilterMenus();
+        if (opening) openActivityFilterMenu(kind);
+      });
+      menu?.querySelectorAll(`[data-activity-${kind}]`).forEach((option) => {
+        option.addEventListener("click", () => {
+          const next = option.getAttribute(`data-activity-${kind}`) || "all";
+          if (kind === "status") activityState.status = next;
+          else activityState.type = next;
+          syncActivityFilterMenuDom(kind);
+          closeActivityFilterMenus();
+          syncActivityList({ chrome: true });
+        });
+      });
+    });
+
+    if (activityState.openFilter) {
+      const menu = root.querySelector(
+        `#activity-${activityState.openFilter === "status" ? "status" : "type"}-menu`
+      );
+      if (menu) {
+        menu.hidden = false;
+        requestAnimationFrame(() => showMenuPopover(menu));
+      }
+    }
+  }
+
+  function bindActivityPanelActions() {
+    const root = stage.querySelector('.panel-content[data-content="activity"]');
+    if (!root) return;
+    bindActivityToolbarActions(root);
+    bindActivityListActions(root);
+  }
+
+  function providerSearchPlaceholder() {
+    if (providerSearchState.searchBy === "Specialty") return "Search by specialty";
+    if (providerSearchState.searchBy === "NPI") return "Search by NPI";
+    return "Search by name";
+  }
+
+  function providerSearchEmptyIllustration() {
+    return `<img class="provider-lookup-empty-art" src="assets/provider-lookup-empty.png" width="88" height="73" alt="" draggable="false" />`;
+  }
+
+  function providerSortLabel() {
+    return PROVIDER_SORT_OPTIONS.find(([value]) => value === providerSearchState.sortBy)?.[1] || "Best Match";
+  }
+
+  function filterProviderResults() {
+    const q = String(providerSearchState.query || "")
+      .trim()
+      .toLowerCase();
+    if (!q) return [...MOCK_PROVIDERS];
+    const by = providerSearchState.searchBy;
+    return MOCK_PROVIDERS.filter((p) => {
+      if (by === "Specialty") return p.specialty.toLowerCase().includes(q);
+      if (by === "NPI") return p.id.toLowerCase().includes(q) || p.name.toLowerCase().includes(q);
+      return p.name.toLowerCase().includes(q) || p.specialty.toLowerCase().includes(q);
+    });
+  }
+
+  function sortProviderResults(list) {
+    const sorted = [...list];
+    if (providerSearchState.sortBy === "distance") {
+      sorted.sort((a, b) => a.distanceMiles - b.distanceMiles);
+    } else if (providerSearchState.sortBy === "name") {
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    return sorted;
+  }
+
+  function providerBadgesHtml(provider) {
+    const badges = [];
+    if (provider.acceptingNewPatients) {
+      badges.push(
+        `<span class="soft-badge soft-success"><span class="provider-badge-check" aria-hidden="true">${icon.checkCircle}</span><span class="soft-badge-label">Accepting new patients</span></span>`
+      );
+    }
+    if (provider.inNetwork) {
+      badges.push(
+        `<span class="soft-badge soft-neutral"><span class="soft-badge-label">In network</span></span>`
+      );
+    }
+    if (!badges.length) return "";
+    return `<div class="provider-card-badges">${badges.join("")}</div>`;
+  }
+
+  function providerCopyText(provider) {
+    const dist =
+      provider.distanceMiles % 1 === 0
+        ? `${provider.distanceMiles} mi`
+        : `${provider.distanceMiles.toFixed(1)} mi`;
+    return [
+      provider.name,
+      provider.specialty,
+      provider.group,
+      `${provider.address} · ${dist}`,
+      provider.phone,
+    ].join("\n");
+  }
+
+  function providerCardHtml(provider) {
+    const checked = providerSearchState.selectedIds.has(provider.id);
+    const dist =
+      provider.distanceMiles % 1 === 0
+        ? `${provider.distanceMiles} mi`
+        : `${provider.distanceMiles.toFixed(1)} mi`;
+    return `
+      <article class="provider-card${checked ? " is-selected" : ""}" data-provider-id="${escapeAttr(provider.id)}">
+        <div class="provider-card-lead">
+          <label class="provider-card-check">
+            <input type="checkbox" data-provider-select="${escapeAttr(provider.id)}" ${checked ? "checked" : ""} aria-label="Select ${escapeAttr(provider.name)}" />
+          </label>
+          <img class="provider-card-avatar" src="${escapeAttr(provider.photoUrl)}" width="40" height="40" alt="" draggable="false" />
+        </div>
+        <div class="provider-card-body">
+          <div class="provider-card-identity">
+            <div class="provider-card-name-row">
+              <button type="button" class="provider-card-name">${escapeAttr(provider.name)}</button>
+              <button type="button" class="provider-card-copy" data-provider-copy="${escapeAttr(provider.id)}" aria-label="Copy ${escapeAttr(provider.name)}">
+                ${icon.copy}
+              </button>
+            </div>
+            <p class="provider-card-specialty">${escapeAttr(provider.specialty)}</p>
+          </div>
+          ${providerBadgesHtml(provider)}
+          <p class="provider-card-meta">
+            <span class="provider-card-group">${escapeAttr(provider.group)}</span>
+            <span class="provider-card-dot" aria-hidden="true">·</span>
+            <span>${escapeAttr(provider.address)}</span>
+            <span class="provider-card-dot" aria-hidden="true">·</span>
+            <span>${escapeAttr(dist)}</span>
+          </p>
+          <a class="provider-card-phone" href="tel:${escapeAttr(provider.phone.replace(/[^\d+]/g, ""))}">${escapeAttr(provider.phone)}</a>
+        </div>
+      </article>`;
+  }
+
+  function providerSortControlHtml() {
+    const open = providerSearchState.sortMenuOpen;
+    return `
+      <div class="select-wrap inline-select provider-sort-wrap${open ? " is-open" : ""}">
+        <button
+          class="inline-field-control select-trigger provider-sort-trigger"
+          type="button"
+          id="provider-sort-trigger"
+          aria-label="Sort by"
+          aria-expanded="${open}"
+          aria-haspopup="menu"
+        >
+          <span class="select-trigger-label">${escapeAttr(providerSortLabel())}</span>${icon.down}
+        </button>
+        <div class="elig-filter-menu provider-sort-menu" role="menu" ${open ? "" : "hidden"}>
+          <div class="elig-filter-group-label" id="provider-sort-group-label">Sort by</div>
+          <div class="elig-filter-radio-group" role="group" aria-labelledby="provider-sort-group-label">
+            ${PROVIDER_SORT_OPTIONS.map(
+              ([value, label]) => `
+            <button
+              type="button"
+              role="menuitemradio"
+              data-provider-sort="${value}"
+              aria-checked="${providerSearchState.sortBy === value}"
+              class="${providerSearchState.sortBy === value ? "is-selected" : ""}"
+            >
+              <span class="menu-radio" aria-hidden="true"></span>
+              <span class="elig-filter-item-label">${escapeAttr(label)}</span>
+            </button>`
+            ).join("")}
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function providerResultsSkeletonHtml() {
+    return `
+      <div class="provider-results-toolbar">
+        <div class="provider-results-copy">
+          <h4 class="provider-results-title">Results</h4>
+          <span class="skeleton skeleton-line provider-results-count-skel" aria-hidden="true"></span>
+        </div>
+        <div class="skeleton skeleton-line provider-sort-skel" aria-hidden="true"></div>
+      </div>
+      <div class="provider-results-list" aria-busy="true" aria-label="Loading providers">
+        ${[0, 1, 2, 3]
+          .map(
+            () => `
+        <div class="provider-card provider-card--skeleton">
+          <div class="provider-card-lead">
+            <span class="skeleton provider-skel-check"></span>
+            <span class="skeleton provider-skel-avatar"></span>
+          </div>
+          <div class="provider-card-body">
+            <span class="skeleton skeleton-line provider-skel-name"></span>
+            <span class="skeleton skeleton-line provider-skel-specialty"></span>
+            <span class="skeleton skeleton-line provider-skel-meta"></span>
+            <span class="skeleton skeleton-line provider-skel-phone"></span>
+          </div>
+        </div>`
+          )
+          .join("")}
+      </div>`;
+  }
+
+  function providerResultsBodyHtml() {
+    if (!providerSearchState.hasSearched) {
+      return `
+        <div class="quiet-state provider-lookup-empty">
+          ${providerSearchEmptyIllustration()}
+          <p>Provider results will show here</p>
+        </div>`;
+    }
+    if (providerSearchState.resultsLoading) {
+      return providerResultsSkeletonHtml();
+    }
+    const results = sortProviderResults(filterProviderResults());
+    const count = results.length;
+    const cards = results.map(providerCardHtml).join("");
+    return `
+      <div class="provider-results-toolbar">
+        <div class="provider-results-copy">
+          <h4 class="provider-results-title">Results</h4>
+          <span class="provider-results-found">${count} provider${count === 1 ? "" : "s"} found</span>
+        </div>
+        ${providerSortControlHtml()}
+      </div>
+      <div class="provider-results-list">
+        ${
+          cards ||
+          `<div class="quiet-state quiet-state--compact">No providers match your search.</div>`
+        }
+      </div>`;
+  }
+
+  function runProviderSearch() {
+    syncProviderSearchFromDom();
+    clearTimeout(providerResultsLoaderTimer);
+    providerSearchState.hasSearched = true;
+    providerSearchState.resultsLoading = true;
+    providerSearchState.sortMenuOpen = false;
+    render("provider-search", { skipEnter: true });
+    providerResultsLoaderTimer = window.setTimeout(() => {
+      providerSearchState.resultsLoading = false;
+      render("provider-search", { skipEnter: true });
+    }, 620);
+  }
+
+  function syncProviderSortMenuDom() {
+    const content = stage.querySelector('.panel-content[data-content="provider-search"]');
+    if (!content) return;
+    const label = content.querySelector("#provider-sort-trigger .select-trigger-label");
+    if (label) label.textContent = providerSortLabel();
+    content.querySelectorAll("[data-provider-sort]").forEach((option) => {
+      const on = option.dataset.providerSort === providerSearchState.sortBy;
+      option.setAttribute("aria-checked", String(on));
+      option.classList.toggle("is-selected", on);
+    });
+  }
+
+  function selectedProviderCount() {
+    return providerSearchState.selectedIds.size;
+  }
+
+  function providerSelectedBarHtml() {
+    const count = selectedProviderCount();
+    if (!count) return "";
+    const label = `${count} provider${count === 1 ? "" : "s"} selected`;
+    return `
+      <div class="panel-edit-bar provider-selected-bar" data-provider-selection-bar>
+        <span class="provider-selected-count">${label}</span>
+        <div class="provider-selected-actions">
+          <button class="button button-ghost" type="button" data-provider-selection-clear>Clear</button>
+          <button class="button button-primary" type="button" data-provider-send>Send to member</button>
+        </div>
+      </div>`;
+  }
+
+  function clearProviderSelection() {
+    providerSearchState.selectedIds.clear();
+    stage.querySelectorAll("[data-provider-select]").forEach((input) => {
+      input.checked = false;
+      input.closest(".provider-card")?.classList.remove("is-selected");
+    });
+  }
+
+  function refreshProviderSelectionBar() {
+    const panel = stage.querySelector('.panel-content[data-content="provider-search"]');
+    if (!panel) return;
+    const existing = panel.querySelector("[data-provider-selection-bar]");
+    const html = providerSelectedBarHtml();
+    if (!html) {
+      existing?.remove();
+      return;
+    }
+    if (existing) {
+      existing.outerHTML = html;
+    } else {
+      const taskList = panel.querySelector(".task-list-accordion");
+      if (taskList) taskList.insertAdjacentHTML("beforebegin", html);
+      else panel.insertAdjacentHTML("beforeend", html);
+      panel
+        .querySelector("[data-provider-selection-bar]")
+        ?.classList.add("is-edit-bar-enter");
+    }
+    bindProviderSelectionBar();
+  }
+
+  function bindProviderSelectionBar() {
+    stage.querySelector("[data-provider-selection-clear]")?.addEventListener("click", () => {
+      clearProviderSelection();
+      refreshProviderSelectionBar();
+    });
+    stage.querySelector("[data-provider-send]")?.addEventListener("click", () => {
+      const n = selectedProviderCount();
+      if (!n) return;
+      showToast(
+        n === 1 ? "Sent 1 provider to member" : `Sent ${n} providers to member`
+      );
+      clearProviderSelection();
+      refreshProviderSelectionBar();
+    });
+  }
+
+  function bindProviderResultCardActions(root = stage) {
+    const syncCardSelection = (checkbox) => {
+      const id = checkbox.dataset.providerSelect;
+      if (!id) return;
+      if (checkbox.checked) providerSearchState.selectedIds.add(id);
+      else providerSearchState.selectedIds.delete(id);
+      checkbox.closest(".provider-card")?.classList.toggle("is-selected", checkbox.checked);
+      refreshProviderSelectionBar();
+    };
+
+    root.querySelectorAll("[data-provider-select]").forEach((checkbox) => {
+      checkbox.addEventListener("change", () => syncCardSelection(checkbox));
+    });
+
+    root.querySelectorAll(".provider-card").forEach((card) => {
+      card.addEventListener("click", (event) => {
+        const t = event.target;
+        if (
+          t.closest("a, button, input, label.provider-card-check") ||
+          t.closest("[data-provider-copy]")
+        ) {
+          return;
+        }
+        const checkbox = card.querySelector("[data-provider-select]");
+        if (!checkbox) return;
+        checkbox.checked = !checkbox.checked;
+        syncCardSelection(checkbox);
+      });
+    });
+
+    root.querySelectorAll("[data-provider-copy]").forEach((button) => {
+      button.addEventListener("click", async (event) => {
+        event.stopPropagation();
+        const id = button.dataset.providerCopy;
+        const provider = MOCK_PROVIDERS.find((item) => item.id === id);
+        if (!provider) return;
+        const text = providerCopyText(provider);
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast("Provider copied");
+        } catch {
+          showToast("Couldn’t copy provider");
+        }
+      });
+    });
+  }
+
+  function refreshProviderResultsList({ ease = true } = {}) {
+    const content = stage.querySelector('.panel-content[data-content="provider-search"]');
+    const list = content?.querySelector(".provider-results-list");
+    if (!content || !list || providerSearchState.resultsLoading) return;
+
+    const results = sortProviderResults(filterProviderResults());
+    const countEl = content.querySelector(".provider-results-found");
+    if (countEl) {
+      countEl.textContent = `${results.length} provider${results.length === 1 ? "" : "s"} found`;
+    }
+
+    const cards = results.map(providerCardHtml).join("");
+    list.innerHTML =
+      cards ||
+      `<div class="quiet-state quiet-state--compact">No providers match your search.</div>`;
+    bindProviderResultCardActions(list);
+
+    if (ease) {
+      list.querySelectorAll(".provider-card").forEach((card, index) => {
+        card.classList.add("is-sort-enter");
+        card.style.setProperty("--provider-sort-delay", `${Math.min(index, 8) * 28}ms`);
+      });
+    }
+  }
+
+  function providerSearchTemplate() {
+    const s = providerSearchState;
+    return `
+    <article class="panel-content" data-content="provider-search">
+      <header class="panel-header">
+        <h2>Provider Lookup</h2>
+        <button class="icon-button panel-close" type="button" aria-label="Close Provider Lookup">${icon.close}</button>
+      </header>
+      <div class="panel-scroll provider-lookup">
+        <div class="provider-lookup-filters">
+          <div class="provider-lookup-form">
+            <div class="notes-field">
+              ${notesFieldLabel("Search by")}
+              ${notesSelectHtml("provider-search-by", "searchBy", s.searchBy, PROVIDER_SEARCH_BY_OPTIONS)}
+            </div>
+            <div class="notes-field">
+              ${notesFieldLabel("Search for")}
+              <label class="provider-lookup-query">
+                <span class="provider-lookup-query-icon" aria-hidden="true">${icon.search}</span>
+                <input id="provider-search-query" type="search" data-field="query" placeholder="${escapeAttr(providerSearchPlaceholder())}" value="${escapeAttr(s.query)}" autocomplete="off" />
+              </label>
+            </div>
+            <div class="notes-field">
+              ${notesFieldLabel("Address")}
+              ${notesSelectHtml("provider-search-address", "address", s.address, PROVIDER_ADDRESS_OPTIONS)}
+            </div>
+            <div class="notes-field">
+              ${notesFieldLabel("Insurance plan")}
+              ${notesSelectHtml("provider-search-plan", "plan", s.plan, PROVIDER_PLAN_OPTIONS)}
+            </div>
+          </div>
+          <div class="provider-lookup-actions">
+            <button class="button button-secondary button-small" type="button" data-provider-clear>Clear</button>
+            <button class="button button-primary button-small" type="button" data-provider-search>Search</button>
+          </div>
+        </div>
+        <section class="provider-lookup-results">
+          ${providerResultsBodyHtml()}
+        </section>
+      </div>
+      ${providerSelectedBarHtml()}
+      ${taskListHtml()}
+    </article>`;
+  }
+
+  function syncProviderSearchFromDom() {
+    const content = stage.querySelector('.panel-content[data-content="provider-search"]');
+    if (!content) return;
+    providerSearchState.searchBy =
+      content.querySelector('[data-field="searchBy"]')?.value || providerSearchState.searchBy;
+    providerSearchState.query = content.querySelector('[data-field="query"]')?.value ?? "";
+    providerSearchState.address = content.querySelector('[data-field="address"]')?.value ?? "";
+    providerSearchState.plan =
+      content.querySelector('[data-field="plan"]')?.value || providerSearchState.plan;
+  }
+
+  function closeProviderSortMenu() {
+    providerSearchState.sortMenuOpen = false;
+    const wrap = stage.querySelector(".provider-sort-wrap");
+    const btn = stage.querySelector("#provider-sort-trigger");
+    const menu = stage.querySelector(".provider-sort-menu");
+    if (wrap) wrap.classList.remove("is-open");
+    if (btn) btn.setAttribute("aria-expanded", "false");
+    if (menu) {
+      hideMenuPopover(menu);
+      menu.hidden = true;
+    }
+  }
+
+  function bindProviderSearchPanelActions() {
+    const content = stage.querySelector('.panel-content[data-content="provider-search"]');
+    if (!content) return;
+
+    bindInlineSelects();
+
+    content.querySelectorAll(".inline-select").forEach((wrap) => {
+      const hidden = wrap.querySelector("input[data-field]");
+      if (!hidden) return;
+      wrap.querySelectorAll("[data-value]").forEach((option) => {
+        option.addEventListener("click", () => {
+          const key = hidden.dataset.field;
+          const value = option.dataset.value ?? "";
+          if (key === "searchBy") {
+            providerSearchState.searchBy = value;
+            render("provider-search", { skipEnter: true });
+          } else if (key === "address") {
+            providerSearchState.address = value;
+          } else if (key === "plan") {
+            providerSearchState.plan = value;
+          }
+        });
+      });
+    });
+
+    content.querySelectorAll('[data-field="query"]').forEach((el) => {
+      el.addEventListener("input", () => {
+        syncProviderSearchFromDom();
+      });
+      el.addEventListener("change", () => {
+        syncProviderSearchFromDom();
+      });
+      el.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") return;
+        event.preventDefault();
+        runProviderSearch();
+      });
+    });
+
+    content.querySelector("[data-provider-clear]")?.addEventListener("click", () => {
+      clearTimeout(providerResultsLoaderTimer);
+      providerSearchState = providerSearchDefaults();
+      render("provider-search", { skipEnter: true });
+    });
+
+    content.querySelector("[data-provider-search]")?.addEventListener("click", () => {
+      runProviderSearch();
+    });
+
+    bindProviderResultCardActions(content);
+    bindProviderSelectionBar();
+
+    const sortBtn = content.querySelector("#provider-sort-trigger");
+    const sortMenu = content.querySelector(".provider-sort-menu");
+    sortBtn?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const opening = !providerSearchState.sortMenuOpen;
+      closeOverlayMenus("provider-sort");
+      providerSearchState.sortMenuOpen = opening;
+      sortBtn.setAttribute("aria-expanded", String(opening));
+      content.querySelector(".provider-sort-wrap")?.classList.toggle("is-open", opening);
+      if (opening && sortMenu) {
+        sortMenu.hidden = false;
+        showMenuPopover(sortMenu);
+      } else if (sortMenu) {
+        hideMenuPopover(sortMenu);
+        sortMenu.hidden = true;
+      }
+    });
+
+    content.querySelectorAll("[data-provider-sort]").forEach((option) => {
+      option.addEventListener("click", () => {
+        const next = option.dataset.providerSort || "best";
+        if (next === providerSearchState.sortBy) {
+          closeProviderSortMenu();
+          return;
+        }
+        providerSearchState.sortBy = next;
+        providerSearchState.sortMenuOpen = false;
+        closeProviderSortMenu();
+        syncProviderSortMenuDom();
+        refreshProviderResultsList({ ease: true });
+      });
+    });
+
+    if (providerSearchState.sortMenuOpen && sortMenu) {
+      sortMenu.hidden = false;
+      requestAnimationFrame(() => showMenuPopover(sortMenu));
+    }
+  }
+
+
   const templates = {
+    assist: assistTemplate,
     member: memberTemplate,
     insurance: insuranceTemplate,
     eligibility: eligibilityTemplate,
+    notes: notesTemplate,
+    communication: communicationTemplate,
+    activity: activityTemplate,
+    "provider-search": providerSearchTemplate,
   };
 
   function skeleton(title) {
@@ -2995,7 +5977,13 @@
   }
 
   function titleFor(name) {
-    return name === "member" ? "Member Information" : name[0].toUpperCase() + name.slice(1);
+    if (name === "assist") return "Conversation context";
+    if (name === "member") return "Member Information";
+    if (name === "notes") return "Notes";
+    if (name === "communication") return "All conversations";
+    if (name === "activity") return "Activity";
+    if (name === "provider-search") return "Provider Lookup";
+    return name[0].toUpperCase() + name.slice(1);
   }
 
   function updateRail(name, expanded) {
@@ -3004,6 +5992,7 @@
       button.classList.toggle("is-active", selected);
       button.setAttribute("aria-pressed", String(selected));
     });
+    syncRailIndicator({ animate: expanded });
   }
 
   function syncBreadcrumb(panelName, expanded) {
@@ -3025,7 +6014,7 @@
       syncSheetChrome();
       closeModal();
     };
-    requestLeaveMemberEdit(doCollapse);
+    requestLeaveMemberEdit(() => requestLeaveNotes(doCollapse));
   }
 
   function isPageEntranceActive() {
@@ -3051,7 +6040,9 @@
     }
     stage.innerHTML = templates[name]();
     /* Skip from-right enter during page-rise — otherwise settle re-triggers panel-in */
-    if (!isPageEntranceActive() && !options.skipEnter) {
+    if (options.skipEnter) {
+      stage.querySelector(".panel-content")?.classList.add("is-content-reveal");
+    } else if (!isPageEntranceActive()) {
       stage.querySelector(".panel-content")?.classList.add("is-entering");
     }
     bindPanelActions();
@@ -3080,7 +6071,8 @@
     panel.removeAttribute("inert");
     panel.setAttribute("aria-hidden", "false");
     panel.setAttribute("aria-label", `${titleFor(name)} panel`);
-    setPanelWidth(preferredPanelWidth(name));
+    /* Keep user resize across tabs — only grow for panels that need a wider floor */
+    setPanelWidth(Math.max(currentPanelWidth(), preferredPanelWidth(name)));
     updateRail(name, true);
     syncBreadcrumb(name, true);
     syncSheetChrome();
@@ -3236,6 +6228,8 @@
       moreButton.setAttribute("aria-expanded", "false");
     }
     if (except !== "elig-filter") closeBenefitFilterMenu();
+    if (except !== "provider-sort") closeProviderSortMenu();
+    if (except !== "activity-filter") closeActivityFilterMenus();
     if (except !== "ins-dropdown" && insuranceState.openDropdown) {
       insuranceState.openDropdown = null;
       applyCompareDropdownOpenState();
@@ -3272,7 +6266,16 @@
         moreButton?.setAttribute("aria-expanded", "false");
       }
     }
-    if (!t.closest(".elig-filter-wrap")) closeBenefitFilterMenu();
+    /* Benefit filter + provider sort both use .elig-filter-wrap — close each by id/class */
+    if (!t.closest("#elig-benefit-filter") && !t.closest(".elig-filter-menu:not(.provider-sort-menu)")) {
+      closeBenefitFilterMenu();
+    }
+    if (!t.closest(".provider-sort-wrap") && !t.closest(".provider-sort-menu")) {
+      closeProviderSortMenu();
+    }
+    if (!t.closest(".activity-filter-wrap")) {
+      closeActivityFilterMenus();
+    }
     if (
       !t.closest(".ins-dropdown-wrap") &&
       !t.closest(".ins-dropdown-menu") &&
@@ -3290,7 +6293,7 @@
       careTeamSearchOpen = false;
       if (modal.classList.contains("is-open")) refreshCareTeamManageModal(true);
     }
-    if (!t.closest(".inline-select")) closeInlineSelects();
+    if (!t.closest(".inline-select") && !t.closest(".select-menu")) closeInlineSelects();
     if (!t.closest(".inline-dob-wrap")) closeInlineDobCalendars();
     if (!t.closest(".mode-switcher-wrap")) closeModeSwitcherMenu();
   }
@@ -3327,7 +6330,12 @@
     moreMenu?.querySelectorAll("button").forEach((button) => {
       button.addEventListener("click", () => {
         closeOverlayMenus();
-        showToast(button.dataset.moreAction);
+        const action = button.dataset.moreAction;
+        if (action === "Search Provider") {
+          openPanel("provider-search");
+          return;
+        }
+        showToast(action);
       });
     });
 
@@ -3346,6 +6354,11 @@
       render("eligibility");
     });
     bindBenefitListActions();
+    bindNotesPanelActions();
+    bindAssistPanelActions();
+    bindCommunicationPanelActions();
+    bindActivityPanelActions();
+    bindProviderSearchPanelActions();
 
     requestAnimationFrame(() => {
       stage.querySelectorAll(".tabs").forEach((tabs) => {
@@ -3409,7 +6422,21 @@
     refreshStickyFooterTip();
   }
 
+  function syncEligBenefitsListMinHeight() {
+    const scroller = stage.querySelector(".panel-scroll.elig-overview");
+    const sticky = stage.querySelector(".elig-benefits-sticky");
+    const list = stage.querySelector(".elig-benefits-list");
+    if (!scroller || !sticky || !list) return;
+    const min = Math.max(120, scroller.clientHeight - sticky.offsetHeight - 8);
+    list.style.minHeight = `${min}px`;
+  }
+
   function refreshBenefitListDom() {
+    const scroller = stage.querySelector(".panel-scroll.elig-overview");
+    const sticky = stage.querySelector(".elig-benefits-sticky");
+    const scrollerTop = scroller?.getBoundingClientRect().top ?? 0;
+    const yBefore = sticky?.getBoundingClientRect().top;
+    const wasStuck = sticky && yBefore != null && yBefore <= scrollerTop + 8;
     const list = stage.querySelector(".elig-benefits-list");
     if (list) {
       list.innerHTML = eligibilityBenefitsHtml();
@@ -3420,24 +6447,34 @@
     const filterBtn = stage.querySelector("#elig-benefit-filter");
     filterBtn?.classList.toggle("is-active", eligibilityState.benefitFilter !== "all");
     refreshBenefitsSelectionBar();
+    syncEligBenefitsListMinHeight();
+    // Keep Member benefits chrome glued when the list shortens (scroll clamping).
+    if (scroller && sticky && yBefore != null) {
+      if (wasStuck) {
+        const topInScroller =
+          sticky.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop;
+        scroller.scrollTop = Math.max(0, topInScroller);
+      } else {
+        const yAfter = sticky.getBoundingClientRect().top;
+        if (yAfter !== yBefore) scroller.scrollTop += yAfter - yBefore;
+      }
+    }
   }
 
   function syncBenefitFilterMenu() {
-    const menu = stage.querySelector(".elig-filter-menu");
+    const btn = stage.querySelector("#elig-benefit-filter");
+    const menu = btn?.closest(".elig-filter-wrap")?.querySelector(".elig-filter-menu");
     if (!menu) return;
-    menu.querySelectorAll("[data-benefit-filter]").forEach((btn) => {
-      const on = btn.dataset.benefitFilter === eligibilityState.benefitFilter;
-      btn.setAttribute("aria-checked", String(on));
-      btn.classList.toggle("is-selected", on);
-      const existing = btn.querySelector(":scope > svg");
-      if (on && !existing) btn.insertAdjacentHTML("beforeend", icon.check);
-      if (!on && existing) existing.remove();
+    menu.querySelectorAll("[data-benefit-filter]").forEach((option) => {
+      const on = option.dataset.benefitFilter === eligibilityState.benefitFilter;
+      option.setAttribute("aria-checked", String(on));
+      option.classList.toggle("is-selected", on);
     });
   }
 
   function closeBenefitFilterMenu() {
-    const menu = stage.querySelector(".elig-filter-menu");
     const btn = stage.querySelector("#elig-benefit-filter");
+    const menu = btn?.closest(".elig-filter-wrap")?.querySelector(".elig-filter-menu");
     if (menu && !menu.hidden) hideMenuPopover(menu);
     btn?.setAttribute("aria-expanded", "false");
   }
@@ -3449,8 +6486,26 @@
       refreshBenefitListDom();
     });
 
+    const searchKbd = stage.querySelector(".elig-search-kbd");
+    if (searchKbd) {
+      const isApple = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent || "");
+      searchKbd.textContent = isApple ? "⌘K" : "Ctrl+K";
+      searchKbd.title = isApple
+        ? "Focus search (⌘K or /)"
+        : "Focus search (Ctrl+K or /)";
+      searchKbd.setAttribute(
+        "aria-label",
+        isApple ? "Focus benefit search, shortcut Command K or slash" : "Focus benefit search, shortcut Control K or slash"
+      );
+      searchKbd.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        focusBenefitSearch(event);
+      });
+    }
+
     const filterBtn = stage.querySelector("#elig-benefit-filter");
-    const filterMenu = stage.querySelector(".elig-filter-menu");
+    const filterMenu = filterBtn?.closest(".elig-filter-wrap")?.querySelector(".elig-filter-menu");
     filterBtn?.addEventListener("click", () => {
       if (!filterMenu) return;
       const opening = filterMenu.hidden || filterMenu.classList.contains("is-leaving");
@@ -3464,9 +6519,9 @@
         filterBtn.setAttribute("aria-expanded", "false");
       }
     });
-    filterMenu?.querySelectorAll("[data-benefit-filter]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        eligibilityState.benefitFilter = btn.dataset.benefitFilter || "all";
+    filterMenu?.querySelectorAll("[data-benefit-filter]").forEach((option) => {
+      option.addEventListener("click", () => {
+        eligibilityState.benefitFilter = option.dataset.benefitFilter || "all";
         syncBenefitFilterMenu();
         refreshBenefitListDom();
         closeBenefitFilterMenu();
@@ -3474,8 +6529,13 @@
     });
 
     bindBenefitRowActions();
-    bindMarkReferredButton();
+    bindEligSelectionBar();
+    syncEligBenefitsListMinHeight();
   }
+
+  window.addEventListener("resize", () => {
+    if (stage.querySelector(".elig-benefits-list")) syncEligBenefitsListMinHeight();
+  });
 
   let benefitTipHideTimer = 0;
 
@@ -3512,7 +6572,7 @@
     const place = () => {
       const rect = btn.getBoundingClientRect();
       const tipRect = float.getBoundingClientRect();
-      let left = rect.left - tipRect.width - 8;
+      let left = rect.left - tipRect.width - 4;
       let top = rect.top + rect.height / 2 - tipRect.height / 2;
       left = Math.max(8, Math.min(left, window.innerWidth - tipRect.width - 8));
       top = Math.max(8, Math.min(top, window.innerHeight - tipRect.height - 8));
@@ -4042,8 +7102,17 @@
       };
       if (memberEditingSection && !(panelOpen && activePanel === name && !isMemberEditDirty())) {
         /* Closing same panel or switching tools — gate on dirty edit */
-        requestLeaveMemberEdit(go);
+        requestLeaveMemberEdit(() => requestLeaveNotes(go));
         return;
+      }
+      if (activePanel === "notes" && isNotesDirty() && !(panelOpen && activePanel === name && !isNotesDirty())) {
+        requestLeaveNotes(go);
+        return;
+      }
+      if (activePanel === "notes" && notesState.view === "edit" && !isNotesDirty() && !(panelOpen && name === "notes")) {
+        notesState.view = "list";
+        notesState.editingId = null;
+        notesEditBaseline = null;
       }
       go();
     });
@@ -4139,6 +7208,7 @@
   });
   sheetModeMq.addEventListener("change", () => {
     syncSheetChrome();
+    syncRailIndicator({ animate: false });
   });
   compactNavMq.addEventListener("change", () => {
     if (!compactNavMq.matches) closeNavDrawer();
@@ -4154,6 +7224,96 @@
   navDrawerLayer?.querySelectorAll(".nav-drawer-links a").forEach((a) => {
     a.addEventListener("click", closeNavDrawer);
   });
+
+  document.querySelector(".wordmark")?.addEventListener("click", (event) => {
+    event.preventDefault();
+    resetAssistAiGlow();
+    if (panelOpen && activePanel === "assist") {
+      render("assist", { skipEnter: true });
+    }
+  });
+
+  function isBenefitSearchVisible(el) {
+    if (!el?.isConnected) return false;
+    const style = getComputedStyle(el);
+    if (style.display === "none" || style.visibility === "hidden") return false;
+    const rect = el.getBoundingClientRect();
+    return rect.width > 0 && rect.height > 0;
+  }
+
+  function isEditableKeyTarget(target) {
+    if (!(target instanceof Element)) return false;
+    if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) {
+      return !target.readOnly && !target.disabled;
+    }
+    if (target instanceof HTMLSelectElement) return true;
+    return target.isContentEditable;
+  }
+
+  function flashSearchShortcut(shell) {
+    shell?.classList.remove("is-shortcut-flash");
+    void shell?.offsetWidth;
+    shell?.classList.add("is-shortcut-flash");
+    window.setTimeout(() => shell?.classList.remove("is-shortcut-flash"), 600);
+  }
+
+  function focusPanelSearchInput(input, event) {
+    if (!isBenefitSearchVisible(input)) return false;
+    event?.preventDefault?.();
+    event?.stopPropagation?.();
+    const shell = input.closest(".elig-search");
+    input.scrollIntoView({ block: "nearest", inline: "nearest" });
+    input.focus({ preventScroll: true });
+    try {
+      input.select();
+    } catch {
+      /* type=search may reject select in some engines */
+    }
+    flashSearchShortcut(shell);
+    return true;
+  }
+
+  function focusAssistSearch(event) {
+    if (activePanel !== "assist" || !panelOpen) return false;
+    return focusPanelSearchInput(stage?.querySelector("#assist-search"), event);
+  }
+
+  function focusBenefitSearch(event) {
+    if (activePanel !== "eligibility") return false;
+    return focusPanelSearchInput(stage?.querySelector("#elig-benefit-search"), event);
+  }
+
+  /*
+   * Focus panel search (Assist or Eligibility benefits):
+   * - ⌘/Ctrl+K when the field is on screen (capture — beat inputs)
+   * - "/" when not typing in another field (Cursor / Chrome often steal ⌘K)
+   */
+  window.addEventListener(
+    "keydown",
+    (event) => {
+      if (event.defaultPrevented || event.repeat || event.altKey) return;
+
+      const isK =
+        event.code === "KeyK" || event.key === "k" || event.key === "K";
+      const modK =
+        isK && (event.metaKey || event.ctrlKey) && !event.shiftKey;
+      const slash =
+        !event.metaKey &&
+        !event.ctrlKey &&
+        !event.shiftKey &&
+        (event.key === "/" || event.code === "Slash") &&
+        !isEditableKeyTarget(event.target);
+
+      if (!modK && !slash) return;
+      if (panelOpen && activePanel === "assist") {
+        if (focusAssistSearch(event)) return;
+      }
+      if (activePanel === "eligibility") {
+        focusBenefitSearch(event);
+      }
+    },
+    true
+  );
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
@@ -4372,7 +7532,7 @@
     article.innerHTML = isDot
       ? `
       <header class="msg-sender-head">
-        <img class="logo-dot" src="assets/logo-dot.svg" width="20" height="20" alt="" />
+        <img class="logo-dot" src="assets/logo-dot.svg?v=cluster" width="20" height="20" alt="" />
         <span class="msg-sender-name">Dot</span>
       </header>
       <div class="msg-content">
@@ -4595,8 +7755,11 @@
   paintReplyTimers();
   startReplyTimerTick();
 
-  render("member");
+  panel.setAttribute("aria-label", `${titleFor("assist")} panel`);
+  render("assist", { skipEnter: true });
+  updateRail("assist", true);
   syncSheetChrome();
+  requestAnimationFrame(() => syncRailIndicator({ animate: false }));
 
   /** Staggered ease-up on first paint; skipped when prefers-reduced-motion. */
   function runPageEntrance() {

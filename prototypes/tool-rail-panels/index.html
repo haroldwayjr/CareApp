@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=tab-rest-body1" />
+    <link rel="stylesheet" href="styles.css?v=comm-drill-motion-1" />
   </head>
   <body>
     <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
@@ -147,7 +147,7 @@
                   <span class="soft-badge-label">CalPERS PPO Basic Plan</span>
                 </button>
                 <div class="badge-tip" id="tip-plan" role="tooltip">
-                  <strong>Plan Name:</strong> Aetna Choice<br /><strong>Network Name:</strong> Aetna Choice
+                  <span class="badge-tip-label">Plan Name:</span> <strong>Aetna Choice</strong><br /><span class="badge-tip-label">Network Name:</span> <strong>Aetna Choice</strong>
                 </div>
               </span>
               <span class="badge-tip-wrap">
@@ -155,14 +155,24 @@
                   <span class="soft-badge-label">Primary</span>
                 </button>
                 <div class="badge-tip" id="tip-primary" role="tooltip">
-                  <strong>Caregiver for:</strong> — None<br /><strong>Receiving care from:</strong> — None
+                  <span class="badge-tip-label">Caregiver for:</span> <strong>None</strong><br /><span class="badge-tip-label">Receiving care from:</span> <strong>None</strong>
                 </div>
               </span>
               <span class="soft-badge soft-accent"><span class="soft-badge-label">VIP</span></span>
             </div>
           </div>
         </div>
-        <button class="button button-secondary create-task" type="button">Create Task</button>
+        <div class="page-heading-actions">
+          <button class="button button-primary end-session" type="button" hidden>
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none">
+              <path d="m0.75 12.004 15.75 0" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+              <path d="m12.75 15.754 3.75 -3.75 -3.75 -3.75" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+              <path d="M3.306 16.6a10.5 10.5 0 1 0 0.179 -9.542" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+            </svg>
+            End Session
+          </button>
+          <button class="button button-secondary create-task" type="button">Create Task</button>
+        </div>
       </section>
 
       <div class="workspace">
@@ -210,7 +220,7 @@
 
             <article class="msg-group msg-group--agent" id="msg-dot-first">
               <header class="msg-sender-head">
-                <img class="logo-dot" src="assets/logo-dot.svg" width="20" height="20" alt="" />
+                <img class="logo-dot" src="assets/logo-dot.svg?v=cluster" width="20" height="20" alt="" />
                 <span class="msg-sender-name">Dot</span>
               </header>
               <div class="msg-content">
@@ -237,7 +247,7 @@
 
             <article class="msg-group msg-group--agent">
               <header class="msg-sender-head">
-                <img class="logo-dot" src="assets/logo-dot.svg" width="20" height="20" alt="" />
+                <img class="logo-dot" src="assets/logo-dot.svg?v=cluster" width="20" height="20" alt="" />
                 <span class="msg-sender-name">Dot</span>
               </header>
               <div class="msg-content">
@@ -320,9 +330,6 @@
                 </div>
               </div>
             </div>
-            <div class="composer-footer-row">
-              <button class="button button-secondary composer-chat-note" type="button">Start Chat Note</button>
-            </div>
           </footer>
         </section>
 
@@ -338,19 +345,20 @@
         <!-- Tablet/phone: tap dimmed chat to dismiss context sheet -->
         <button type="button" class="workspace-sheet-scrim" id="workspace-sheet-scrim" aria-label="Close panel"></button>
 
-        <aside class="card context-panel page-rise" style="--rise: 3" id="context-panel" aria-label="Member Information panel">
+        <aside class="card context-panel page-rise" style="--rise: 3" id="context-panel" aria-label="Conversation context panel">
           <div class="panel-stage" id="panel-stage"></div>
         </aside>
 
         <nav class="card tool-rail page-rise" style="--rise: 4" aria-label="Member tools">
-          <button class="rail-button is-disabled" type="button" aria-disabled="true" aria-label="Chat Assist"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg><span class="tooltip">Chat Assist</span></button>
-          <button class="rail-button is-active" type="button" data-panel="member" aria-label="Member Information" aria-pressed="true" aria-controls="context-panel"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="tooltip">Member Information</span></button>
+          <span class="rail-indicator" aria-hidden="true"></span>
+          <button class="rail-button is-active" type="button" data-panel="assist" aria-label="Chat Assist" aria-pressed="true" aria-controls="context-panel"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg><span class="tooltip">Chat Assist</span></button>
+          <button class="rail-button" type="button" data-panel="member" aria-label="Member Information" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="tooltip">Member Information</span></button>
           <button class="rail-button" type="button" data-panel="insurance" aria-label="Insurance" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M12 8v8M8 12h8"/></svg><span class="tooltip">Insurance</span></button>
           <button class="rail-button" type="button" data-panel="eligibility" aria-label="Eligibility" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><path d="M9 5H6a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3"/><rect x="9" y="2" width="6" height="5" rx="1"/><path d="m9 15 2 2 4-5"/></svg><span class="tooltip">Eligibility</span></button>
-          <button class="rail-button is-disabled" type="button" aria-disabled="true" aria-label="Notes"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><span class="tooltip">Notes</span></button>
-          <button class="rail-button is-disabled" type="button" aria-disabled="true" aria-label="Communication"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span class="tooltip">Communication</span></button>
-          <button class="rail-button is-disabled" type="button" aria-disabled="true" aria-label="Member Activity"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="tooltip">Member Activity</span></button>
-          <button class="rail-button is-disabled" type="button" aria-disabled="true" aria-label="Provider Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="tooltip">Provider Search</span></button>
+          <button class="rail-button" type="button" data-panel="notes" aria-label="Notes" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><span class="tooltip">Notes</span></button>
+          <button class="rail-button" type="button" data-panel="communication" aria-label="Communication" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span class="tooltip">Communication</span></button>
+          <button class="rail-button" type="button" data-panel="activity" aria-controls="context-panel" aria-pressed="false" aria-label="Member Activity"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="tooltip">Member Activity</span></button>
+          <button class="rail-button" type="button" data-panel="provider-search" aria-label="Provider Search" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="tooltip">Provider Search</span></button>
         </nav>
       </div>
     </main>
@@ -388,6 +396,6 @@
     </div>
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
     <script src="chat-engine.js?v=riley-fluid"></script>
-    <script src="app.js?v=elig-filter-menu"></script>
+    <script src="app.js?v=comm-drill-motion-1"></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 # Care App tool rail panels prototype
 
-Local HTML prototype of Chat Tasks with Member Information, Insurance, and Eligibility flows.
+Local HTML prototype of Chat Tasks with Chat Assist (Conversation context), Member Information, Insurance, Eligibility, Notes, Communication, and Activity flows.
 
 ## Open locally
 
@@ -21,5 +21,9 @@ Or open `index.html` directly in a browser.
 - **Member Information** (person icon): View in menu, Member / Care Team / Dependents tabs, Personal · Contact · Account accordions, Compact list items, edit modal, Task list footer.
 - **Insurance** (shield): Verify Insurance → payer select → Verify spinner → Insurance Details (coverage table) → Save to profile → Active plan card → History.
 - **Eligibility** (clipboard): Empty primary insurance → Add / Confirm plan modals → Active BCBS row → Details → full insurance page → Back to chat.
+- **Notes** (document): Create Note form + All Notes feed → edit pencil opens Edit Note (disposition / resolution) → Cancel / Save note bar appears when required fields are filled (create) or dirty (edit).
+- **Chat Assist** (chat bubble, default open): Conversation context — conversation ID, Card / AI “Member request” summary, transfer reason, Ask Answers / Search Documents tabs, and search (⌘K / /).
+- **Communication** (envelope): All conversations — month-grouped message rows with title, conversation ID (copy + full-ID tooltip), last message date, row hover fill, and Load more.
+- **Activity** (clock): Member timeline — info banner, Status/Type filters, month-grouped rows with expand/collapse detail, soft status badges, and Clear filters.
 
-Hover the three active rail icons for Soma-style inverse tooltips. Other rail icons stay disabled.
+Hover the active rail icons for Soma-style inverse tooltips.

@@ -16,6 +16,7 @@
   --text-primary: #101828;
   --text-secondary: #344054;
   --text-tertiary: #475467;
+  --icon-default: #101828; /* icon/default — Modal Close */
   --icon-secondary: #344054; /* icon/secondary — Select Item / menu leading icons */
   --icon-tertiary: #667085;
   --success: #16794a;
@@ -193,9 +194,10 @@ svg { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: 
   text-decoration: none;
 }
 .global-nav a.is-active { color: var(--brand); font-weight: 600; }
+/* Match Tabs.Indicator — 2px brand, full tab width, flush to shell edge */
 .global-nav a.is-active::after {
-  position: absolute; right: 12px; bottom: 0; left: 12px; height: 3px;
-  border-radius: 3px 3px 0 0; background: var(--brand); content: "";
+  position: absolute; right: 0; bottom: 0; left: 0; height: 2px;
+  background: var(--brand); content: "";
 }
 .header-actions { gap: 4px; color: var(--text-secondary); }
 
@@ -308,6 +310,7 @@ html[data-color-mode="dark"] {
   --text-primary: #f3f5f8;
   --text-secondary: #b7c0d0;
   --text-tertiary: #8b95a8;
+  --icon-default: #f3f5f8; /* icon/default on dark */
   --icon-secondary: #b7c0d0; /* icon/secondary on dark */
   --icon-tertiary: #8b95a8;
   --success: #3dd68c;
@@ -2626,6 +2629,44 @@ html[data-color-mode="dark"] .provider-card-check input:checked {
   display: flex; align-items: center; gap: 10px; min-height: 36px;
   color: var(--text-primary); font-size: 14px; font-weight: 500; cursor: pointer;
 }
+/* Soma Radio / Control — 16 ring; checked stroke + 8px dot = icon/brand */
+.radio-row input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  flex: 0 0 auto;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-full);
+  background: transparent;
+  cursor: pointer;
+}
+.radio-row input[type="radio"]:hover:not(:disabled):not(:checked) {
+  border-color: var(--text-secondary); /* border/strong/hover stand-in */
+}
+.radio-row input[type="radio"]:checked {
+  border-color: var(--brand); /* icon/brand */
+  background: radial-gradient(circle, var(--brand) 0 4px, transparent 4.5px);
+}
+.radio-row input[type="radio"]:hover:not(:disabled):checked {
+  border-color: var(--brand-hover); /* action/primary/hover */
+  background: radial-gradient(circle, var(--brand-hover) 0 4px, transparent 4.5px);
+}
+.radio-row input[type="radio"]:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 4px; /* 24×24 focus target */
+}
+.radio-row input[type="radio"]:disabled {
+  border-color: var(--border-subtle);
+  background: var(--surface-muted);
+  cursor: not-allowed;
+}
+.radio-row input[type="radio"]:disabled:checked {
+  border-color: var(--border-subtle);
+  background: radial-gradient(circle, var(--icon-tertiary) 0 4px, transparent 4.5px);
+}
 .button:disabled { cursor: not-allowed; transform: none; }
 /* Non-primary still fade; primary uses action/primary/disabled fill (see .button-primary:disabled) */
 .button:disabled:not(.button-primary) { opacity: .45; }
@@ -3984,9 +4025,8 @@ html[data-color-mode="dark"] .modal {
 }
 .modal.modal--care-team { width: min(520px, calc(100vw - 32px)); overflow: visible; }
 /*
- * Soma Modal.Popup — 400 wide, inset/xl (24).
- * Confirm: title → body 16, body → CTAs 24.
- * Enrollment content ~220–248.
+ * Soma Modal.Popup — 400 wide, inset/xl (24). Hug height (enrollment ~228).
+ * Header row 24; Close Large 32 with −4 optical bleed; gaps 16 / 24 to CTAs.
  */
 .modal.modal--enrollment,
 .modal.modal--confirm {
@@ -3997,30 +4037,45 @@ html[data-color-mode="dark"] .modal {
   border-radius: 12px; /* radius.md */
   box-shadow: 0 16px 48px rgba(16, 29, 56, 0.22);
 }
-.modal.modal--enrollment { min-height: 220px; }
 .modal.modal--enrollment .modal-header,
 .modal.modal--confirm .modal-header {
   flex: 0 0 auto;
+  align-items: center;
+  min-height: 24px;
   padding: 24px 24px 0;
   border-bottom: 0;
 }
-.modal.modal--enrollment .modal-body {
-  flex: 1 1 auto;
-  padding: 16px 24px 0;
+/* Modal.Title — h3 18/24 SemiBold */
+.modal.modal--enrollment .modal-header h4,
+.modal.modal--enrollment #modal-title,
+.modal.modal--confirm .modal-header h4,
+.modal.modal--confirm #modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
 }
+/* Close Large 32 · icon/default · −4 bleed into inset/xl (Figma Modal.Close) */
+.modal.modal--enrollment .modal-header [data-close-modal],
+.modal.modal--confirm .modal-header [data-close-modal] {
+  width: 32px;
+  height: 32px;
+  margin: -4px -4px -4px 0;
+  color: var(--icon-default);
+}
+.modal.modal--enrollment .modal-header [data-close-modal]:hover,
+.modal.modal--confirm .modal-header [data-close-modal]:hover {
+  color: var(--icon-default);
+}
+.modal.modal--enrollment .modal-body,
 .modal.modal--confirm .modal-body {
   flex: 0 0 auto;
-  padding: 16px 24px 0; /* 16 under title */
+  padding: 24px 24px 0; /* inset/xl under header */
 }
-.modal.modal--enrollment .modal-footer {
-  flex: 0 0 auto;
-  gap: 8px;
-  padding: 16px 24px 24px;
-}
+.modal.modal--enrollment .modal-footer,
 .modal.modal--confirm .modal-footer {
   flex: 0 0 auto;
-  gap: 8px;
-  padding: 24px 24px 24px; /* 24 above CTAs */
+  gap: 8px; /* inline/sm */
+  padding: 24px; /* inset/xl to CTAs + bottom */
 }
 .modal.modal--confirm .modal-copy {
   margin: 0;
@@ -4036,11 +4091,11 @@ html[data-color-mode="dark"] .modal {
   font-weight: 500;
   line-height: 16px;
 }
-.modal.modal--enrollment .enroll-radios { gap: 10px; }
+.modal.modal--enrollment .enroll-radios { gap: 8px; /* stack/sm */ }
 .modal.modal--enrollment .radio-row {
   min-height: 0;
   gap: 10px;
-  font-weight: 400;
+  font-weight: 500; /* subtitle2 */
   line-height: 20px;
 }
 .modal-footer .button {

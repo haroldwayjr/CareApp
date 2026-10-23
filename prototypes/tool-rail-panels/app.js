@@ -716,7 +716,7 @@
     back: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>`,
     /* Same mark as mode-switcher / Select Item — 18px via CSS, stroke 2, brand */
     /* Select / Item — icon/actions/check.bold Size=xs Style=bold */
-    check: `<svg class="icon-check-bold" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.37.29a1.49 1.49 0 0 0-2.09.34L7.25 20.2l-4.69-4.69a1.5 1.5 0 0 0-2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28-.19l15.07-21a1.49 1.49 0 0 0-.35-2.09Z"/></svg>`,
+    check: `<svg class="icon-check-bold" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m23.15 5.4-2.8-2.8a0.5 0.5 0 0 0-0.7 0L7.85 14.4a0.5 0.5 0 0 1-0.7 0l-2.8-2.8a0.5 0.5 0 0 0-0.7 0l-2.8 2.8a0.5 0.5 0 0 0 0 0.7l6.3 6.3a0.5 0.5 0 0 0 0.7 0l15.3-15.3a0.5 0.5 0 0 0 0-0.7Z"/></svg>`,
     plus: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
     /* Streamline Ultimate Regular — Search (icon/misc/search) */
     search: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1.472 13.357a9.063 9.063 0 1 0 16.682-7.09 9.063 9.063 0 1 0-16.682 7.09Z"/><path d="m16.221 16.22 7.029 7.03"/></svg>`,

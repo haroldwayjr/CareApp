@@ -1780,10 +1780,11 @@ button.inline-field-control.select-trigger > svg {
   flex-direction: column;
   gap: 6px;
 }
-/* Selects + short text — cap when panel is wide; Notes body stays full bleed */
+/* Selects + short text — match Notes body width in the panel */
 .notes-field--compact {
   width: 100%;
-  max-width: 360px;
+  max-width: none;
+  min-width: 0;
 }
 .notes-field--body {
   width: 100%;

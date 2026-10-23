@@ -1389,9 +1389,10 @@ html[data-color-mode="dark"] .badge-tip {
   margin: 0; padding: 12px 4px; border: 0; background: transparent;
   color: var(--text-primary); text-align: left; cursor: pointer;
 }
+/* Label + chevron stay text/primary on hover — only row fill changes */
 .accordion-toggle:hover,
 .accordion-header-row:hover .accordion-toggle {
-  color: var(--brand);
+  color: var(--text-primary);
 }
 .accordion-toggle strong {
   overflow: hidden; font-size: 14px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap;

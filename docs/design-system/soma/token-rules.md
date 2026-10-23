@@ -181,7 +181,9 @@ Do not bind Soft Badge strokes to primitives. Bind `border/{tone}/subtle`. These
 
 **`text/brand/disabled`** — light `brandDarkTransparent/20`; dark `brandLightTransparent/20`. Disabled must read as a **faded brand shade**, not a mid-ramp sky blue (`/300`–`/500`). Mid-ramp blues shift chroma/hue away from navy. Outlined and text Button disabled labels; Colors map row `text.brand.disabled`.
 
-**Danger parallels:** `text/danger/subtle`; **`text/danger/disabled`** — light `dangerDarkTransparent/20`; dark `dangerLightTransparent/20`. **`icon/brand/disabled`** and **`icon/danger/disabled`** alias the matching text tokens.
+**Danger text:** **`text/danger`** — field error helpers and danger status text on default surfaces (light `red/700` `#d13238`; pairs with **`border/danger`**). **`text/danger/subtle`** — ink on soft/subtle danger fills only (Soft Badge / Soft Alert labels), not field helpers. **`text/danger/disabled`** — light `dangerDarkTransparent/20`; dark `dangerLightTransparent/20`. **`icon/brand/disabled`** and **`icon/danger/disabled`** alias the matching text tokens.
+
+**Changed 2026-10-23:** Clarified **`text/danger`** (field errors / status) vs **`text/danger/subtle`** (Soft surfaces only).
 
 **Icon tone aliases (light, 2026-09-04):** `icon/brand` → `blue/800` (navy — matches `text/brand` / outlined Brand buttons); `icon/success` → `green/600`; `icon/warning` → `yellow/700`; `icon/danger` → `red/600` — status mids for Soft Alert icons; brand stays navy.
 
@@ -200,7 +202,7 @@ Do not bind Soft Badge strokes to primitives. Bind `border/{tone}/subtle`. These
 - Font: **Figtree**. Root: **16px** (`htmlFontSize`). `fontSize/base = 14` is MUI scale factor — both intentional.
 - **body1:** 14 / **20** (`lineHeight/20`), **Regular 400** — prose only. Do not use `lineHeight/22` on body1. Interactive list labels (Select / Menu) use **subtitle2** (Medium 500), not body1.
 - **body2:** 12 / 18, **Regular 400** — compact multi-line prose.
-- **caption:** 12 / 16 (`lineHeight/16`), **Regular 400**, 0.75rem — dense meta / helpers / tip lines. Prefer over body2 when line-height should stay tight. Bind the **caption** text style (not `fontSize/12` alone).
+- **caption:** 12 / 16 (`lineHeight/16`), **Regular 400**, 0.75rem — dense meta / helpers / tip lines. Field error helpers: **caption** + **`text/danger`**. Prefer over body2 when line-height should stay tight. Bind the **caption** text style (not `fontSize/12` alone).
 - `fontWeight/light (300)` removed.
 - **h1:** SemiBold (600), not Medium — corrected for hierarchy.
 - Line-height is a **separate scale** from Spacing; vertical rhythm uses `stack.*` outside the text box.

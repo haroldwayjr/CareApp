@@ -63,7 +63,7 @@ Ramp notes below document the Colors page. **Do not bind these primitives on com
 - **body1:** 14 / 20 (`lineHeight/20`), **Regular 400** — prose only (paragraphs, descriptions, helpers). Do not use for interactive list labels.
 - **body2:** 12 / 18, **Regular 400** — compact multi-line prose at the 12px floor.
 - **subtitle2:** 14 / 20, **Medium 500** — compact UI labels at body size (Select / Menu item labels, field item labels).
-- **caption:** 12 / 16 (`lineHeight/16`), **Regular 400**, 0.75rem — dense meta, timestamps, field helpers / errors, tip lines. Same size as **subtitle3** / **subtitle4**; tighter than **body2**. Prefer caption for short dense UI copy; body2 for wrapped 12px reading. Not the `fontSize/12` primitive alone — bind the **caption** text style.
+- **caption:** 12 / 16 (`lineHeight/16`), **Regular 400**, 0.75rem — dense meta, timestamps, field helpers / errors, tip lines. Same size as **subtitle3** / **subtitle4**; tighter than **body2**. Prefer caption for short dense UI copy; body2 for wrapped 12px reading. Field error helpers stay **caption** + **`text/danger`** (not subtitle3). Not the `fontSize/12` primitive alone — bind the **caption** text style.
 
 ## Tooltip
 
@@ -684,8 +684,12 @@ When a badge holds truncated or secondary metadata, compose shared **`Tooltip`**
 
 ## Field.Error
 
+- **Helper copy:** text style **`caption`** (Figtree Regular 12 / 16) + ink **`text/danger`**. Do not use **`text/danger/subtle`** (that token is for Soft Danger surfaces) and do not bump to **subtitle3** for weight.
+- **Border:** error field stroke binds **`border/danger`** (same light paint as `text/danger` today — `#d13238` / `red/700`).
 - Leading `icon/status/error` on error helpers binds **`icon/danger`**, matching `text/danger`. Never leave `icon/default` on error states.
 - Library master `icon/status/error` stays `icon/default` for general use — override at the Field.Error instance (Select / Field, Select / Field Multi).
+
+**Changed 2026-10-23:** Documented Field.Error helper as **caption** + **`text/danger`** (not subtle; not subtitle3); border **`border/danger`**.
 
 ## Icons (scoped, not confirmed built)
 

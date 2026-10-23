@@ -25,7 +25,7 @@
   --success-fg: #045623; /* text/success/subtle → green/800 */
   --danger-soft: #ffeceb; /* surface/danger/soft → red/100 */
   --danger-border: #ff9b96; /* border/danger/subtle → red/300 */
-  --danger-fg: #d13238; /* text/danger/subtle → red/700 */
+  --danger-fg: #d13238; /* text/danger → red/700 (field errors; Soft Danger label shares paint) */
   --accent: #7e22ce;
   --accent-soft: #f3e8ff; /* surface/accent/soft → purple/100 */
   --accent-border: #e9d5ff; /* border/accent/subtle → purple/200 */
@@ -320,7 +320,7 @@ html[data-color-mode="dark"] {
   --success-fg: #6edb82; /* text/success/subtle on dark soft */
   --danger-soft: #3a1518; /* surface/danger/soft → red/900 */
   --danger-border: #8b1e22; /* border/danger/subtle → red/800 */
-  --danger-fg: #ff9b96; /* text/danger/subtle on dark soft */
+  --danger-fg: #ff9b96; /* text/danger on dark (field errors; Soft Danger label shares paint) */
   --accent: #c084fc;
   --accent-soft: #3b2060; /* surface/accent/soft — lifts off dark navy */
   --accent-border: #7c3aed; /* border/accent/subtle → purple/600 */
@@ -1781,10 +1781,10 @@ button.inline-field-control.select-trigger > svg {
   flex-direction: column;
   gap: 6px;
 }
-/* Selects + short text — match Notes body width in the panel */
+/* Selects + short text — cap when panel is wide; Notes body stays full bleed */
 .notes-field--compact {
   width: 100%;
-  max-width: none;
+  max-width: 360px;
   min-width: 0;
 }
 .notes-field--body {
@@ -1816,7 +1816,7 @@ button.inline-field-control.select-trigger > svg {
 }
 .notes-field-error {
   margin: 4px 0 0;
-  color: var(--danger-fg);
+  color: var(--danger-fg); /* text/danger — not text/danger/subtle */
   font-size: 12px;
   font-weight: 400;
   line-height: 16px; /* caption */

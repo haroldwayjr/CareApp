@@ -63,7 +63,7 @@ Full rules: `component-notes.md` · token tables: `token-rules.md`.
 ## Typography
 
 - Font: **Figtree**. Rem root **16px** (`htmlFontSize`); `fontSize/base = 14` is the MUI scale factor (both intentional).
-- **caption:** 12 / 16, **Regular 400**, 0.75rem — dense meta, helpers, tip lines. Distinct from **body2** (12 / 18 prose) and from **subtitle3** (12 / 16 Medium). Bind the **caption** text style, not the `fontSize/12` primitive alone. See `token-rules.md` · `component-notes.md`.
+- **caption:** 12 / 16, **Regular 400**, 0.75rem — dense meta, helpers, tip lines. Field errors: **caption** + **`text/danger`** (not `text/danger/subtle`, not subtitle3). Distinct from **body2** (12 / 18 prose) and from **subtitle3** (12 / 16 Medium). Bind the **caption** text style, not the `fontSize/12` primitive alone. See `token-rules.md` · `component-notes.md`.
 
 ## Profile Menu / StatusSelector
 

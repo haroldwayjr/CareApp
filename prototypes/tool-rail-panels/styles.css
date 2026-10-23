@@ -260,12 +260,12 @@ svg { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: 
   color: var(--brand);
 }
 .mode-switcher-option[aria-checked="true"] .mode-switcher-check { display: block; }
-/* Shared selection check — Select / Item check.bold xs @ 16, icon/brand */
+/* Shared selection check — check.bold xs filled, scaled 12×12 (Button trailing pattern), icon/brand */
 .mode-switcher-check svg,
 .select-menu button > svg,
 .ins-dropdown-menu button > svg {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   flex: 0 0 auto;
   color: var(--brand);
   fill: currentColor;
@@ -274,10 +274,11 @@ svg { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: 
 .mode-switcher-check svg path,
 .select-menu button > svg path,
 .ins-dropdown-menu button > svg path,
-svg.icon-check-bold,
-svg.icon-check-bold path {
+svg.icon-check,
+svg.icon-check path {
   fill: currentColor;
   stroke: none;
+  stroke-width: 0;
 }
 .mode-switcher-sep {
   height: 1px;
@@ -4767,11 +4768,6 @@ html.is-page-settled .page-rise {
   font-weight: 600;
   line-height: 20px;
   color: var(--text-primary);
-}
-/* Soft Neutral — trailing status chip (6px, never pill) */
-.assist-ai-badge {
-  flex: 0 0 auto;
-  letter-spacing: 0.02em;
 }
 .assist-ai-body {
   display: flex;

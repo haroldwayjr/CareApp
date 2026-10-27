@@ -6833,11 +6833,11 @@
     return `
       <div class="ct-manage">
         <div class="ct-search-wrap">
-          ${notesFieldLabel("Add someone")}
-          <label class="elig-search">
+          <label class="notes-field-label" for="ct-add-search">Add someone</label>
+          <div class="elig-search">
             <span class="elig-search-icon" aria-hidden="true">${icon.search}</span>
-            <input id="ct-add-search" type="search" placeholder="Search by name or role" value="${escapeAttr(careTeamSearchQuery)}" autocomplete="off" aria-label="Search to add someone" />
-          </label>
+            <input id="ct-add-search" type="search" placeholder="Search by name or role" value="${escapeAttr(careTeamSearchQuery)}" autocomplete="off" />
+          </div>
           ${dropdown}
         </div>
         <div class="ct-manage-heading-row">

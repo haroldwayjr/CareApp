@@ -6828,14 +6828,21 @@
       </div>`
       : "";
 
+    const count = draft.length;
+
     return `
       <div class="ct-manage">
         <div class="ct-search-wrap">
+          ${notesFieldLabel("Add someone")}
           <label class="ct-search">
-            <input id="ct-add-search" type="search" placeholder="Add Care Team member" value="${escapeAttr(careTeamSearchQuery)}" autocomplete="off" />
+            <input id="ct-add-search" type="search" placeholder="Search by name or role" value="${escapeAttr(careTeamSearchQuery)}" autocomplete="off" aria-label="Search to add someone" />
             <span class="ct-search-icon" aria-hidden="true">${icon.search}</span>
           </label>
           ${dropdown}
+        </div>
+        <div class="ct-manage-heading-row">
+          <h5>Current Care Team</h5>
+          <span class="soft-badge soft-neutral ct-count" aria-label="${count} care team members">${count}</span>
         </div>
         <div class="ct-manage-list">
           ${rows || `<p class="ct-search-empty">No care team members yet. Search to add someone.</p>`}

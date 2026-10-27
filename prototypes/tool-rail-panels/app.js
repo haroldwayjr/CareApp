@@ -252,6 +252,10 @@
     el.classList.toggle("opens-up", openUp);
     wrap.classList.toggle("opens-up", openUp);
     const triggerWidth = Math.round(triggerRect.width);
+    /* Activity toolbar filters: a bit wider than the trigger so checks aren’t cramped */
+    const minMenuWidth = el.classList.contains("activity-filter-menu")
+      ? Math.max(triggerWidth + 28, 168)
+      : triggerWidth;
     const rail = document.querySelector(".tool-rail");
     const railLeft = rail ? rail.getBoundingClientRect().left - 8 : window.innerWidth - 8;
     /* Stay inside the panel (and clear of the tool rail) — truncate when narrow */
@@ -260,20 +264,20 @@
       (panelRect?.right ?? window.innerWidth) - 8,
       window.innerWidth - 8
     );
-    const maxAllowed = Math.max(triggerWidth, rightEdge - Math.round(triggerRect.left));
+    const maxAllowed = Math.max(minMenuWidth, rightEdge - Math.round(triggerRect.left));
     el.style.position = "fixed";
     el.style.top = `${Math.round(top)}px`;
     el.style.bottom = "auto";
     el.style.right = "auto";
     el.style.left = `${Math.round(triggerRect.left)}px`;
-    el.style.minWidth = `${triggerWidth}px`;
+    el.style.minWidth = `${minMenuWidth}px`;
     el.style.zIndex = "1200";
     /* Measure natural width, then clamp — labels ellipsis when capped */
     el.classList.remove("is-truncated");
     el.style.width = "max-content";
     el.style.maxWidth = "none";
     const natural = Math.ceil(el.getBoundingClientRect().width);
-    const menuWidth = Math.min(Math.max(natural, triggerWidth), maxAllowed);
+    const menuWidth = Math.min(Math.max(natural, minMenuWidth), maxAllowed);
     let left = triggerRect.left;
     if (left + menuWidth > rightEdge) {
       left = Math.max(8, rightEdge - menuWidth);
@@ -958,10 +962,10 @@
   /** Panel table — initial mockup roster */
   let careTeamMembers = [
     { id: "kelly", name: "Kelly Smith", role: "CCA", initial: "K", visibleToMembers: true },
-    { id: "secondary", name: "Secondary Clinician", role: "Secondary Clinician", initial: "S", visibleToMembers: true },
-    { id: "dietitian-panel", name: "Dietitian", role: "Dietitian", initial: "D", visibleToMembers: true },
-    { id: "doula-panel", name: "Doula", role: "Doula", initial: "D", visibleToMembers: true },
-    { id: "nurse", name: "Nurse Care Manager", role: "Nurse Care Manager", initial: "N", visibleToMembers: true },
+    { id: "marcus", name: "Marcus Nguyen", role: "Secondary Clinician", initial: "M", visibleToMembers: true },
+    { id: "priya", name: "Priya Shah", role: "Dietitian", initial: "P", visibleToMembers: true },
+    { id: "amara", name: "Amara Okonkwo", role: "Doula", initial: "A", visibleToMembers: true },
+    { id: "sam", name: "Sam Ortiz", role: "Nurse Care Manager", initial: "S", visibleToMembers: true },
   ];
 
   /** Manage modal draft — always mirrors panel roster on open; Done writes back. */
@@ -971,14 +975,16 @@
   let openCareTeamMenuId = null;
 
   const careTeamCandidates = [
-    { id: "cca-one", name: "CCAOne One", role: "CCA", initial: "C" },
-    { id: "cca-two", name: "CCATwo Two", role: "CCA", initial: "C" },
-    { id: "cca-three", name: "CCAThree Three", role: "CCA", initial: "C" },
-    { id: "dietitian-one", name: "Dietitian One", role: "Dietitian", initial: "D" },
-    { id: "dietitian-two", name: "Dietitian Two", role: "Dietitian", initial: "D" },
-    { id: "dietitian-three", name: "Dietitian Three", role: "Dietitian", initial: "D" },
-    { id: "doula-one", name: "Doula One", role: "Doula", initial: "D" },
-    { id: "doula-two", name: "Doula Two", role: "Doula", initial: "D" },
+    { id: "maya", name: "Maya Chen", role: "CCA", initial: "M" },
+    { id: "jordan", name: "Jordan Lee", role: "CCA", initial: "J" },
+    { id: "devon", name: "Devon Brooks", role: "CCA", initial: "D" },
+    { id: "elena", name: "Elena Vargas", role: "Dietitian", initial: "E" },
+    { id: "noah", name: "Noah Patel", role: "Dietitian", initial: "N" },
+    { id: "sofia", name: "Sofia Alvarez", role: "Dietitian", initial: "S" },
+    { id: "tasha", name: "Tasha Williams", role: "Doula", initial: "T" },
+    { id: "riley-d", name: "Riley Diaz", role: "Doula", initial: "R" },
+    { id: "aisha", name: "Aisha Rahman", role: "Nurse Care Manager", initial: "A" },
+    { id: "ben", name: "Ben Carter", role: "Secondary Clinician", initial: "B" },
   ];
 
   const dependents = [
@@ -3598,6 +3604,24 @@
     return Boolean(title && body);
   }
 
+  function readNotesRequiredFields() {
+    const values = readNotesFormValues();
+    return {
+      title: String(values.title ?? "").trim(),
+      body: String(values.body ?? "").trim(),
+    };
+  }
+
+  function isNotesEditReady() {
+    if (notesState.view !== "edit") return false;
+    const { title, body } = readNotesRequiredFields();
+    return Boolean(title && body);
+  }
+
+  function isNotesFormReady() {
+    return notesState.view === "edit" ? isNotesEditReady() : isNotesCreateReady();
+  }
+
   /** Any create draft change — shows Cancel/Save before all required fields are filled. */
   function isNotesCreateDirty() {
     if (notesState.view !== "list") return false;
@@ -3624,11 +3648,12 @@
     });
   }
 
-  function showNotesCreateFieldErrors() {
+  function showNotesRequiredFieldErrors() {
     const content = stage.querySelector('.panel-content[data-content="notes"]');
-    if (!content || notesState.view !== "list") return;
+    if (!content) return;
+    if (notesState.view !== "list" && notesState.view !== "edit") return;
     clearNotesFieldErrors(content);
-    const { title, body } = readNotesCreateFields();
+    const { title, body } = readNotesRequiredFields();
     const missing = [];
     if (!title) missing.push({ field: "title", message: "Title is required" });
     if (!body) missing.push({ field: "body", message: "Notes are required" });
@@ -3648,11 +3673,12 @@
     });
   }
 
-  function syncNotesCreateFieldErrors() {
+  function syncNotesRequiredFieldErrors() {
     const content = stage.querySelector('.panel-content[data-content="notes"]');
-    if (!content || notesState.view !== "list") return;
+    if (!content) return;
+    if (notesState.view !== "list" && notesState.view !== "edit") return;
     if (!content.querySelector(".notes-field.is-invalid")) return;
-    const { title, body } = readNotesCreateFields();
+    const { title, body } = readNotesRequiredFields();
     if (title) {
       const titleField = content.querySelector('[data-field="title"]')?.closest(".notes-field");
       titleField?.classList.remove("is-invalid");
@@ -3674,7 +3700,7 @@
     content.querySelector("[data-notes-save]")?.addEventListener("click", () => saveNotesAction());
     content.querySelector("[data-notes-save-blocked]")?.addEventListener("click", (event) => {
       event.preventDefault();
-      showNotesCreateFieldErrors();
+      showNotesRequiredFieldErrors();
     });
   }
 
@@ -3683,7 +3709,7 @@
     if (!content) return;
     if (notesSaving) return;
     const show = shouldShowNotesEditBar();
-    const saveDisabled = notesState.view === "list" && !isNotesCreateReady();
+    const saveDisabled = !isNotesFormReady();
     content.classList.toggle("is-section-editing", show || notesState.view === "edit");
     const existing = content.querySelector("[data-edit-bar]");
     const taskList = content.querySelector(".task-list-accordion");
@@ -3696,7 +3722,7 @@
 
     /* Same Save enabled state — keep bar mounted (avoids flicker while typing) */
     if (existing && Boolean(existing.querySelector("[data-notes-save]")?.disabled) === saveDisabled) {
-      syncNotesCreateFieldErrors();
+      syncNotesRequiredFieldErrors();
       return;
     }
 
@@ -3714,7 +3740,7 @@
       );
     }
     bindNotesEditBarActions(content);
-    syncNotesCreateFieldErrors();
+    syncNotesRequiredFieldErrors();
   }
 
   function persistNotesDraftFromDom() {
@@ -3752,8 +3778,8 @@
   async function saveNotesAction() {
     if (notesSaving) return;
     const content = stage.querySelector('.panel-content[data-content="notes"]');
-    if (notesState.view === "list" && !isNotesCreateReady()) {
-      showNotesCreateFieldErrors();
+    if (!isNotesFormReady()) {
+      showNotesRequiredFieldErrors();
       return;
     }
     const saveBtn = content?.querySelector("[data-notes-save]");
@@ -3867,12 +3893,12 @@
       const saveBtn = document.querySelector("#unsaved-save");
       const discardBtn = document.querySelector("#unsaved-discard");
       if (notesSaving) return;
-      /* Incomplete create — stay on Notes, show required-field errors */
-      if (notesState.view === "list" && !isNotesCreateReady()) {
+      /* Incomplete form — stay on Notes, show required-field errors */
+      if (!isNotesFormReady()) {
         pendingLeaveAction = null;
         unsavedConfirmOpen = false;
         closeModal();
-        showNotesCreateFieldErrors();
+        showNotesRequiredFieldErrors();
         return;
       }
       notesSaving = true;
@@ -3931,9 +3957,9 @@
     content.querySelectorAll("[data-field], .inline-field-control").forEach((el) => {
       el.addEventListener("input", onDirty);
       el.addEventListener("change", onDirty);
-      if (notesState.view === "list" && (el.dataset.field === "title" || el.dataset.field === "body")) {
+      if (el.dataset.field === "title" || el.dataset.field === "body") {
         el.addEventListener("blur", () => {
-          if (!isNotesCreateDirty()) return;
+          if (!isNotesDirty()) return;
           const key = el.dataset.field;
           const wrap = el.closest(".notes-field");
           if (!wrap) return;
@@ -5177,42 +5203,67 @@
       .join("");
   }
 
+  function activityFilterValueLabel(kind, selected) {
+    return kind === "status" ? activityStatusLabel(selected) : activityTypeLabel(selected);
+  }
+
+  /**
+   * Compact toolbar Select — Trigger = "{Facet}: {value}" (not value-only).
+   * Form Selects (Search by) keep the facet on Field label; toolbars have no label row,
+   * so two default "All"s would be ambiguous. Docs: soma/component-notes.md → Select.
+   * Facet = text/tertiary; value = text/primary (brand when filtered).
+   */
+  function activityFilterFacet(kind) {
+    return kind === "status" ? "Status" : "Type";
+  }
+
+  function activityFilterTriggerLabel(kind, selected) {
+    return `${activityFilterFacet(kind)}: ${activityFilterValueLabel(kind, selected)}`;
+  }
+
+  function activityFilterTriggerLabelHtml(kind, selected) {
+    const facet = activityFilterFacet(kind);
+    const value = activityFilterValueLabel(kind, selected);
+    return `<span class="select-trigger-label"><span class="activity-filter-facet">${escapeAttr(facet)}:</span> <span class="activity-filter-value">${escapeAttr(value)}</span></span>`;
+  }
+
+  /** Soma Select / Trigger + Select / Item (trailing check) — not Menu / RadioItem. */
   function activityFilterMenuHtml(kind, options, selected, menuId, groupLabel) {
     const open = activityState.openFilter === kind;
     const triggerId = kind === "status" ? "activity-status-filter" : "activity-type-filter";
     const active = selected !== "all";
+    const triggerLabel = activityFilterTriggerLabel(kind, selected);
+    const optionsHtml = options
+      .map(([value, label]) => {
+        const on = selected === value;
+        return `
+            <button
+              type="button"
+              role="option"
+              data-activity-${kind}="${value}"
+              aria-selected="${on}"
+              class="${on ? "is-selected" : ""}"
+            >
+              <span>${escapeAttr(label)}</span>${on ? icon.check : ""}
+            </button>`;
+      })
+      .join("");
     return `
-      <div class="elig-filter-wrap activity-filter-wrap${open ? " is-open" : ""}">
+      <div class="select-wrap activity-filter-wrap${open ? " is-open" : ""}">
         <button
           class="inline-field-control select-trigger activity-filter-trigger${active ? " is-active" : ""}"
           type="button"
           id="${triggerId}"
           data-activity-filter="${kind}"
-          aria-label="${kind === "status" ? "Filter by status" : "Filter by type"}"
+          aria-label="${escapeAttr(triggerLabel)}"
           aria-expanded="${open}"
-          aria-haspopup="menu"
+          aria-haspopup="listbox"
+          aria-controls="${menuId}"
         >
-          <span class="select-trigger-label">${kind === "status" ? "Status" : "Type"}</span>${icon.down}
+          ${activityFilterTriggerLabelHtml(kind, selected)}${icon.down}
         </button>
-        <div class="elig-filter-menu activity-filter-menu" role="menu" id="${menuId}" ${open ? "" : "hidden"}>
-          <div class="elig-filter-group-label" id="${menuId}-label">${escapeAttr(groupLabel)}</div>
-          <div class="elig-filter-radio-group" role="group" aria-labelledby="${menuId}-label">
-            ${options
-              .map(
-                ([value, label]) => `
-            <button
-              type="button"
-              role="menuitemradio"
-              data-activity-${kind}="${value}"
-              aria-checked="${selected === value}"
-              class="${selected === value ? "is-selected" : ""}"
-            >
-              <span class="menu-radio" aria-hidden="true"></span>
-              <span class="elig-filter-item-label">${escapeAttr(label)}</span>
-            </button>`
-              )
-              .join("")}
-          </div>
+        <div class="select-menu activity-filter-menu" role="listbox" aria-label="${escapeAttr(groupLabel)}" id="${menuId}" ${open ? "" : "hidden"}>
+          ${optionsHtml}
         </div>
       </div>`;
   }
@@ -5263,41 +5314,64 @@
     const root = stage.querySelector('.panel-content[data-content="activity"]');
     if (!root) return;
     const selected = kind === "status" ? activityState.status : activityState.type;
-    root.querySelectorAll(`[data-activity-${kind}]`).forEach((option) => {
+    const triggerLabel = activityFilterTriggerLabel(kind, selected);
+    const menu = activityFilterMenuEl(kind);
+    menu?.querySelectorAll(`[data-activity-${kind}]`).forEach((option) => {
       const value = option.getAttribute(`data-activity-${kind}`) || "all";
       const on = value === selected;
-      option.setAttribute("aria-checked", String(on));
+      option.setAttribute("aria-selected", String(on));
       option.classList.toggle("is-selected", on);
+      const mark = option.querySelector(".icon-check");
+      if (on && !mark) option.insertAdjacentHTML("beforeend", icon.check);
+      if (!on && mark) mark.remove();
     });
     const trigger = root.querySelector(`#activity-${kind}-filter`);
     const active = selected !== "all";
     trigger?.classList.toggle("is-active", active);
+    trigger?.setAttribute("aria-label", triggerLabel);
+    const facetEl = trigger?.querySelector(".activity-filter-facet");
+    const valueEl = trigger?.querySelector(".activity-filter-value");
+    if (facetEl) facetEl.textContent = `${activityFilterFacet(kind)}:`;
+    if (valueEl) valueEl.textContent = activityFilterValueLabel(kind, selected);
+  }
+
+  function activityFilterMenuEl(kind) {
+    const menuId = kind === "status" ? "activity-status-menu" : "activity-type-menu";
+    return document.getElementById(menuId);
   }
 
   function closeActivityFilterMenus() {
     activityState.openFilter = null;
     const root = stage.querySelector('.panel-content[data-content="activity"]');
     if (!root) return;
-    root.querySelectorAll(".activity-filter-wrap").forEach((wrap) => wrap.classList.remove("is-open"));
+    root.querySelectorAll(".activity-filter-wrap").forEach((wrap) => {
+      wrap.classList.remove("is-open");
+      const menu = wrap._portedMenu || wrap.querySelector(".activity-filter-menu");
+      if (menu) {
+        hideMenuPopover(menu);
+        menu.hidden = true;
+      }
+    });
     root.querySelectorAll(".activity-filter-trigger").forEach((btn) => btn.setAttribute("aria-expanded", "false"));
-    root.querySelectorAll(".activity-filter-menu").forEach((menu) => {
-      hideMenuPopover(menu);
-      menu.hidden = true;
+    ["status", "type"].forEach((kind) => {
+      const menu = activityFilterMenuEl(kind);
+      if (menu && !menu.hidden) {
+        hideMenuPopover(menu);
+        menu.hidden = true;
+      }
     });
   }
 
   function openActivityFilterMenu(kind) {
     const root = stage.querySelector('.panel-content[data-content="activity"]');
     if (!root) return;
-    const menuId = kind === "status" ? "activity-status-menu" : "activity-type-menu";
-    const menu = root.querySelector(`#${menuId}`);
+    const menu = activityFilterMenuEl(kind);
     const trigger = root.querySelector(`#activity-${kind}-filter`);
     const wrap = trigger?.closest(".activity-filter-wrap");
     if (!menu || !trigger) return;
     activityState.openFilter = kind;
     wrap?.classList.add("is-open");
     trigger.setAttribute("aria-expanded", "true");
-    menu.hidden = false;
     showMenuPopover(menu);
   }
 
@@ -5389,8 +5463,7 @@
 
     ["status", "type"].forEach((kind) => {
       const trigger = root.querySelector(`#activity-${kind}-filter`);
-      const menuId = kind === "status" ? "activity-status-menu" : "activity-type-menu";
-      const menu = root.querySelector(`#${menuId}`);
+      const menu = activityFilterMenuEl(kind);
       trigger?.addEventListener("click", (event) => {
         event.stopPropagation();
         const opening = activityState.openFilter !== kind;
@@ -5399,7 +5472,8 @@
         if (opening) openActivityFilterMenu(kind);
       });
       menu?.querySelectorAll(`[data-activity-${kind}]`).forEach((option) => {
-        option.addEventListener("click", () => {
+        option.addEventListener("click", (event) => {
+          event.stopPropagation();
           const next = option.getAttribute(`data-activity-${kind}`) || "all";
           if (kind === "status") activityState.status = next;
           else activityState.type = next;
@@ -5411,13 +5485,8 @@
     });
 
     if (activityState.openFilter) {
-      const menu = root.querySelector(
-        `#activity-${activityState.openFilter === "status" ? "status" : "type"}-menu`
-      );
-      if (menu) {
-        menu.hidden = false;
-        requestAnimationFrame(() => showMenuPopover(menu));
-      }
+      const menu = activityFilterMenuEl(activityState.openFilter);
+      if (menu) requestAnimationFrame(() => showMenuPopover(menu));
     }
   }
 
@@ -6269,7 +6338,7 @@
     if (!t.closest(".provider-sort-wrap") && !t.closest(".provider-sort-menu")) {
       closeProviderSortMenu();
     }
-    if (!t.closest(".activity-filter-wrap")) {
+    if (!t.closest(".activity-filter-wrap") && !t.closest(".activity-filter-menu")) {
       closeActivityFilterMenus();
     }
     if (
@@ -6780,11 +6849,12 @@
 
   function careTeamManageBodyHtml() {
     const draft = careTeamDraft || [];
+    const count = draft.length;
     const rows = draft
       .map((m) => {
         const visibility = m.visibleToMembers ? "Visible to members" : "Not visible to members";
         const menuOpen = openCareTeamMenuId === m.id;
-        const visibilityAction = m.visibleToMembers ? "Hide from member app" : "Show in member app";
+        const visibilityAction = m.visibleToMembers ? "Hide from Member app" : "Show in Member app";
         return `
         <div class="ct-manage-row" data-ct-id="${m.id}">
           <span class="ct-avatar" aria-hidden="true">${m.initial || careTeamInitial(m.name)}</span>
@@ -6797,7 +6867,7 @@
             <button class="icon-button icon-button--more" type="button" data-ct-menu="${m.id}" aria-label="More options for ${m.name}" aria-expanded="${menuOpen}" aria-haspopup="menu">${icon.more}</button>
             <div class="ct-row-menu" role="menu" ${menuOpen ? "" : "hidden"}>
               <button type="button" role="menuitem" data-ct-visibility="${m.id}">${visibilityAction}</button>
-              <button type="button" role="menuitem" data-ct-remove="${m.id}">Remove from care team</button>
+              <button type="button" role="menuitem" data-ct-remove="${m.id}">Remove from Care Team</button>
             </div>
           </div>
         </div>`;
@@ -6814,8 +6884,11 @@
                 .map(
                   (c) => `
             <button type="button" class="ct-search-option" role="option" data-ct-add="${c.id}">
-              <strong>${c.name}</strong>
-              <span>${c.role}</span>
+              <span class="ct-avatar" aria-hidden="true">${c.initial || careTeamInitial(c.name)}</span>
+              <span class="ct-search-option-meta">
+                <strong>${c.name}</strong>
+                <span>${c.role}</span>
+              </span>
             </button>`
                 )
                 .join("")
@@ -6827,11 +6900,18 @@
     return `
       <div class="ct-manage">
         <div class="ct-search-wrap">
-          <label class="ct-search">
-            <input id="ct-add-search" type="search" placeholder="Add Care Team member" value="${escapeAttr(careTeamSearchQuery)}" autocomplete="off" />
-            <span class="ct-search-icon" aria-hidden="true">${icon.search}</span>
-          </label>
+          <div class="notes-field">
+            ${notesFieldLabel("Add someone")}
+            <label class="elig-search">
+              <span class="elig-search-icon" aria-hidden="true">${icon.search}</span>
+              <input id="ct-add-search" type="search" placeholder="Search by name or role" value="${escapeAttr(careTeamSearchQuery)}" autocomplete="off" aria-label="Add someone" />
+            </label>
+          </div>
           ${dropdown}
+        </div>
+        <div class="ct-manage-heading-row">
+          <h5>Current Care Team</h5>
+          <span class="soft-badge soft-neutral ct-count" aria-label="${count} care team members">${count}</span>
         </div>
         <div class="ct-manage-list">
           ${rows || `<p class="ct-search-empty">No care team members yet. Search to add someone.</p>`}
@@ -6904,6 +6984,30 @@
     });
   }
 
+  /** Fixed-place open row menus so they escape the scrollable roster clip. */
+  function pinOpenCareTeamRowMenu() {
+    if (!openCareTeamMenuId) return;
+    const btn = document.querySelector(`[data-ct-menu="${openCareTeamMenuId}"]`);
+    const menu = btn?.closest(".ct-row-menu-wrap")?.querySelector(".ct-row-menu");
+    if (!btn || !menu || menu.hidden) return;
+    const rect = btn.getBoundingClientRect();
+    const menuHeight = Math.max(menu.offsetHeight, menu.scrollHeight, 88);
+    const gap = 4;
+    const openUp = rect.bottom + gap + menuHeight > window.innerHeight - 12 && rect.top > menuHeight + gap;
+    menu.classList.add("is-fixed-popover");
+    menu.classList.toggle("opens-up", openUp);
+    menu.style.position = "fixed";
+    menu.style.left = "auto";
+    menu.style.right = `${Math.max(12, window.innerWidth - rect.right)}px`;
+    if (openUp) {
+      menu.style.top = "auto";
+      menu.style.bottom = `${Math.max(12, window.innerHeight - rect.top + gap)}px`;
+    } else {
+      menu.style.bottom = "auto";
+      menu.style.top = `${rect.bottom + gap}px`;
+    }
+  }
+
   function refreshCareTeamManageModal(keepFocus = false) {
     const activeId = document.activeElement?.id;
     const selStart = document.activeElement?.selectionStart;
@@ -6914,6 +7018,7 @@
     `;
     modalFooter.hidden = false;
     bindCareTeamManageModal();
+    pinOpenCareTeamRowMenu();
     if (keepFocus && activeId === "ct-add-search") {
       const input = document.querySelector("#ct-add-search");
       input?.focus();
@@ -7121,6 +7226,7 @@
     ? [...modeSwitcherMenu.querySelectorAll(".mode-switcher-option")]
     : [];
   const colorSchemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+  const MODE_LABELS = { system: "System", light: "Light", dark: "Dark" };
 
   function resolvedSystemDark() {
     return colorSchemeMq.matches;
@@ -7140,11 +7246,32 @@
     else root.removeAttribute("data-color-mode");
   }
 
+  function updateModeSwitcherTriggerIcon() {
+    if (!modeSwitcherButton) return;
+    const selected =
+      modeSwitcherOptions.find((opt) => opt.dataset.mode === colorMode) ||
+      modeSwitcherOptions.find((opt) => opt.dataset.mode === "system");
+    const source = selected?.querySelector(".mode-switcher-option-main > svg");
+    if (!source) return;
+    const next = source.cloneNode(true);
+    next.setAttribute("class", "mode-icon");
+    next.setAttribute("aria-hidden", "true");
+    const current = modeSwitcherButton.querySelector(".mode-icon");
+    if (current) current.replaceWith(next);
+    else modeSwitcherButton.prepend(next);
+    modeSwitcherButton.dataset.mode = colorMode;
+    modeSwitcherButton.setAttribute(
+      "aria-label",
+      `Color mode: ${MODE_LABELS[colorMode] || "System"}`
+    );
+  }
+
   function updateModeSwitcherUi() {
     modeSwitcherOptions.forEach((opt) => {
       const selected = opt.dataset.mode === colorMode;
       opt.setAttribute("aria-checked", selected ? "true" : "false");
     });
+    updateModeSwitcherTriggerIcon();
   }
 
   function applyColorMode(mode) {
@@ -7632,6 +7759,7 @@
     try {
       const cleaned = await CareChatEngine.rewriteDraft({
         text: draft,
+        messages: chatHistory.slice(-12),
         signal: cleanupAbort.signal,
       });
       if (cleaned && cleaned !== draft) {
@@ -7653,6 +7781,14 @@
     }
   };
 
+  const cancelChatInFlight = (reason = "cancelled") => {
+    if (!chatBusy && !chatAbort) return;
+    chatAbort?.abort(reason);
+    document.querySelectorAll(".msg-group--typing").forEach((el) => el.remove());
+    setComposerBusy(false);
+    composerInput?.focus();
+  };
+
   const sendAdvocateMessage = async () => {
     if (!composerInput || !conversationEl || chatBusy) return;
     const text = composerInput.value.trim();
@@ -7665,6 +7801,12 @@
     seedChatHistoryFromDom();
     chatAbort?.abort();
     chatAbort = new AbortController();
+    const safetyTimer = window.setTimeout(() => {
+      if (!chatBusy) return;
+      console.warn("[care-chat] reply timed out — unlocking composer");
+      cancelChatInFlight("timeout");
+      showToast("Reply timed out — try again");
+    }, 20000);
 
     composerInput.value = "";
     syncComposerSend();
@@ -7677,6 +7819,7 @@
     let bubble = null;
     let assembled = "";
     let replySpeaker = "member";
+    let gotDone = false;
 
     try {
       for await (const event of CareChatEngine.generate({
@@ -7684,6 +7827,10 @@
         signal: chatAbort.signal,
       })) {
         if (event.type === "speaker") {
+          if (event.speaker === "none") {
+            replySpeaker = "none";
+            continue;
+          }
           replySpeaker = event.speaker === "dot" ? "dot" : "member";
           typingArticle = appendTypingIndicator(replySpeaker);
         }
@@ -7691,6 +7838,7 @@
           bubble = promoteTypingToStream(typingArticle);
         }
         if (event.type === "token") {
+          if (replySpeaker === "none") continue;
           if (!typingArticle) {
             typingArticle = appendTypingIndicator(replySpeaker);
           }
@@ -7700,14 +7848,24 @@
           scrollConversationToEnd(false);
         }
         if (event.type === "done") {
+          gotDone = true;
+          // Rare: explicit no-reply turns
+          if (event.speaker === "none" || replySpeaker === "none") {
+            typingArticle?.remove();
+            continue;
+          }
           const speaker = event.speaker === "dot" || replySpeaker === "dot" ? "dot" : "riley";
           assembled = assembled
             .replace(/^(Riley\s*\(member\)|Riley|As Riley|Dot(?:\s*\(assistant\))?)\s*[:\-–]\s*/i, "")
             .trim();
+          if (!assembled) {
+            typingArticle?.remove();
+            continue;
+          }
           if (!typingArticle) typingArticle = appendTypingIndicator(speaker === "dot" ? "dot" : "member");
           if (!bubble) {
             bubble = promoteTypingToStream(typingArticle);
-            bubble.textContent = assembled || "…";
+            bubble.textContent = assembled;
           } else {
             bubble.textContent = assembled || bubble.textContent;
           }
@@ -7720,6 +7878,9 @@
           bumpReplyTimers("member");
         }
       }
+      if (!gotDone) {
+        typingArticle?.remove();
+      }
     } catch (err) {
       if (err?.name === "AbortError") {
         typingArticle?.remove();
@@ -7729,6 +7890,7 @@
         showToast("Couldn’t get a reply — try again");
       }
     } finally {
+      window.clearTimeout(safetyTimer);
       setComposerBusy(false);
       composerInput?.focus();
     }
@@ -7741,6 +7903,19 @@
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
       sendAdvocateMessage();
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && (chatBusy || cleanupBusy)) {
+      event.preventDefault();
+      if (cleanupBusy) {
+        cleanupAbort?.abort();
+        cleanupBusy = false;
+        if (composerInput) composerInput.disabled = chatBusy;
+        syncComposerSend();
+      }
+      if (chatBusy) cancelChatInFlight("escape");
+      showToast("Cancelled");
     }
   });
   composerSend?.addEventListener("click", () => sendAdvocateMessage());

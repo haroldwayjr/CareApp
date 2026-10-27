@@ -103,13 +103,31 @@
       resizer.setAttribute("aria-valuemin", String(PANEL_MIN));
       resizer.setAttribute("aria-valuemax", String(max));
     }
-    /* Footer tip + tab indicator depend on layout — remeasure when panel width changes */
+    /* Footer tip + tab indicator + open Menu/Select depend on layout */
     requestAnimationFrame(() => {
       refreshStickyFooterTip();
       stage?.querySelectorAll(".tabs").forEach((tabs) => {
         layoutTabsIndicator(tabs, { animate: false });
       });
+      /* Panel width animates 220ms — keep menus glued through the transition */
+      trackFixedMenusThroughPanelResize();
     });
+  }
+
+  let panelResizeMenuRaf = 0;
+  let panelResizeMenuUntil = 0;
+  function trackFixedMenusThroughPanelResize() {
+    panelResizeMenuUntil = performance.now() + 280;
+    const tick = () => {
+      scheduleFixedMenuSync();
+      if (performance.now() < panelResizeMenuUntil) {
+        panelResizeMenuRaf = requestAnimationFrame(tick);
+      } else {
+        panelResizeMenuRaf = 0;
+        scheduleFixedMenuSync();
+      }
+    };
+    if (!panelResizeMenuRaf) panelResizeMenuRaf = requestAnimationFrame(tick);
   }
 
   const reduceMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -251,41 +269,45 @@
     el.classList.add("is-fixed-popover");
     el.classList.toggle("opens-up", openUp);
     wrap.classList.toggle("opens-up", openUp);
-    const triggerWidth = Math.round(triggerRect.width);
-    /* Activity toolbar filters: a bit wider than the trigger so checks aren’t cramped */
-    const minMenuWidth = el.classList.contains("activity-filter-menu")
-      ? Math.max(triggerWidth + 28, 168)
-      : triggerWidth;
+    const triggerWidth = Math.max(1, Math.round(triggerRect.width));
     const rail = document.querySelector(".tool-rail");
     const railLeft = rail ? rail.getBoundingClientRect().left - 8 : window.innerWidth - 8;
-    /* Stay inside the panel (and clear of the tool rail) — truncate when narrow */
+    /* Clip to panel + rail — use the panel that still owns the wrap (menu is on <body>) */
     const rightEdge = Math.min(
       railLeft,
       (panelRect?.right ?? window.innerWidth) - 8,
       window.innerWidth - 8
     );
-    const maxAllowed = Math.max(minMenuWidth, rightEdge - Math.round(triggerRect.left));
+    /* Flush with trigger left; form Select matches trigger width */
+    const left = Math.round(triggerRect.left);
+    const isActivityFilter = el.classList.contains("activity-filter-menu");
+    /* Activity filters may grow a bit for checks; form Select stays trigger-wide */
+    const preferredMin = isActivityFilter ? Math.max(triggerWidth + 28, 168) : triggerWidth;
+    const maxGrow = Math.max(preferredMin, rightEdge - left);
     el.style.position = "fixed";
     el.style.top = `${Math.round(top)}px`;
     el.style.bottom = "auto";
     el.style.right = "auto";
-    el.style.left = `${Math.round(triggerRect.left)}px`;
-    el.style.minWidth = `${minMenuWidth}px`;
+    el.style.left = `${left}px`;
     el.style.zIndex = "1200";
-    /* Measure natural width, then clamp — labels ellipsis when capped */
     el.classList.remove("is-truncated");
-    el.style.width = "max-content";
-    el.style.maxWidth = "none";
-    const natural = Math.ceil(el.getBoundingClientRect().width);
-    const menuWidth = Math.min(Math.max(natural, minMenuWidth), maxAllowed);
-    let left = triggerRect.left;
-    if (left + menuWidth > rightEdge) {
-      left = Math.max(8, rightEdge - menuWidth);
+    let menuWidth = preferredMin;
+    if (isActivityFilter) {
+      el.style.minWidth = "0";
+      el.style.width = "max-content";
+      el.style.maxWidth = "none";
+      const natural = Math.ceil(el.getBoundingClientRect().width);
+      menuWidth = Math.min(Math.max(natural, preferredMin), maxGrow);
+      el.classList.toggle("is-truncated", menuWidth < natural - 1);
+    } else {
+      /* Form Select — always span the trigger; ellipsis long labels */
+      menuWidth = Math.min(triggerWidth, maxGrow);
+      el.classList.add("is-truncated");
     }
-    el.style.left = `${Math.round(left)}px`;
+    el.style.left = `${left}px`;
     el.style.width = `${Math.round(menuWidth)}px`;
+    el.style.minWidth = `${Math.round(menuWidth)}px`;
     el.style.maxWidth = `${Math.round(menuWidth)}px`;
-    el.classList.toggle("is-truncated", menuWidth < natural - 1);
   }
 
   /**
@@ -380,6 +402,129 @@
     el.classList.toggle("opens-up", openUp);
     anchor.classList.toggle("opens-up", openUp);
   }
+
+  /**
+   * True when the trigger has no visible intersection with the viewport and its
+   * nearest scrollport (fully clipped / off-screen). Partial visibility keeps menus open.
+   */
+  function isTriggerFullyClipped(trigger) {
+    if (!trigger?.isConnected) return true;
+    const rect = trigger.getBoundingClientRect();
+    if (rect.width <= 0 || rect.height <= 0) return true;
+    if (
+      rect.bottom <= 0 ||
+      rect.top >= window.innerHeight ||
+      rect.right <= 0 ||
+      rect.left >= window.innerWidth
+    ) {
+      return true;
+    }
+    const clip = nearestScrollClip(trigger);
+    if (!clip || clip === document.documentElement || clip === document.body) return false;
+    const clipRect = clip.getBoundingClientRect();
+    return (
+      rect.bottom <= clipRect.top ||
+      rect.top >= clipRect.bottom ||
+      rect.right <= clipRect.left ||
+      rect.left >= clipRect.right
+    );
+  }
+
+  function dismissSelectMenuForTriggerLoss(el) {
+    const wrap = el._selectMenuHome || el.closest?.(".select-wrap");
+    if (wrap?.classList.contains("activity-filter-wrap")) {
+      closeActivityFilterMenus();
+      return;
+    }
+    hideMenuPopover(el);
+    wrap?.classList.remove("is-open");
+    wrap?.querySelector(".select-trigger")?.setAttribute("aria-expanded", "false");
+  }
+
+  function dismissInsDropdownForTriggerLoss(el) {
+    insuranceState.openDropdown = null;
+    const wrap = el._insDropdownHome || el.closest?.(".ins-dropdown-wrap");
+    wrap?.classList.remove("is-open");
+    wrap?.querySelector(".ins-dropdown-trigger")?.setAttribute("aria-expanded", "false");
+    hideMenuPopover(el);
+  }
+
+  function dismissDobCalendarForTriggerLoss(el) {
+    const wrap =
+      el.closest?.(".inline-dob-wrap") ||
+      stage.querySelector(".inline-dob-wrap.is-open");
+    hideMenuPopover(el);
+    wrap?.querySelector(".inline-dob-trigger")?.setAttribute("aria-expanded", "false");
+    const release = () => {
+      if (el.hidden) wrap?.classList.remove("is-open");
+    };
+    el.addEventListener("animationend", release, { once: true });
+    window.setTimeout(release, 180);
+  }
+
+  /**
+   * Fixed menus are portaled to <body>:
+   * - Scroll/resize while trigger is (partly) visible → stay open + reposition
+   * - Trigger fully clipped / off-screen → dismiss (Menu + Select shared rule)
+   * - Resize alone never closes while the trigger remains a valid visible anchor
+   */
+  function syncFixedMenuPopovers() {
+    document
+      .querySelectorAll(".select-menu.is-fixed-popover:not([hidden]):not(.is-leaving)")
+      .forEach((el) => {
+        const wrap = el._selectMenuHome || el.closest(".select-wrap");
+        const trigger = wrap?.querySelector(".select-trigger");
+        if (!trigger || isTriggerFullyClipped(trigger)) {
+          dismissSelectMenuForTriggerLoss(el);
+          return;
+        }
+        positionSelectMenu(el);
+      });
+    document
+      .querySelectorAll(".ins-dropdown-menu.is-fixed-popover:not([hidden]):not(.is-leaving)")
+      .forEach((el) => {
+        const wrap = el._insDropdownHome || el.closest(".ins-dropdown-wrap");
+        const trigger = wrap?.querySelector(".ins-dropdown-trigger");
+        if (!trigger || isTriggerFullyClipped(trigger)) {
+          dismissInsDropdownForTriggerLoss(el);
+          return;
+        }
+        positionInsDropdownMenu(el);
+      });
+    document
+      .querySelectorAll(".dob-calendar.is-fixed-popover:not([hidden]):not(.is-leaving)")
+      .forEach((el) => {
+        const wrap = el.closest(".inline-dob-wrap") || stage.querySelector(".inline-dob-wrap.is-open");
+        const trigger = wrap?.querySelector(".inline-dob-trigger");
+        if (!trigger || isTriggerFullyClipped(trigger)) {
+          dismissDobCalendarForTriggerLoss(el);
+          return;
+        }
+        positionDobCalendar(el);
+      });
+    if (openCareTeamMenuId) {
+      const btn = document.querySelector(`[data-ct-menu="${openCareTeamMenuId}"]`);
+      if (!btn || isTriggerFullyClipped(btn)) {
+        openCareTeamMenuId = null;
+        if (modal.classList.contains("is-open")) refreshCareTeamManageModal(true);
+      } else {
+        pinOpenCareTeamRowMenu();
+      }
+    }
+  }
+
+  let fixedMenuSyncRaf = 0;
+  function scheduleFixedMenuSync() {
+    if (fixedMenuSyncRaf) return;
+    fixedMenuSyncRaf = requestAnimationFrame(() => {
+      fixedMenuSyncRaf = 0;
+      syncFixedMenuPopovers();
+    });
+  }
+
+  /* Capture: nested panel scrollports don’t bubble */
+  document.addEventListener("scroll", scheduleFixedMenuSync, true);
+  window.addEventListener("resize", scheduleFixedMenuSync);
 
   /** Show a `[hidden]` menu popover (open animation via CSS). */
   function showMenuPopover(el) {
@@ -6313,6 +6458,10 @@
     const t = target;
     if (!t?.closest) {
       closeOverlayMenus();
+      return;
+    }
+    /* Panel gutter resize is layout chrome — keep Menu/Select open and remeasure */
+    if (t.closest("#panel-resizer, .panel-resizer") || workspace?.classList.contains("is-resizing")) {
       return;
     }
     if (!t.closest(".view-menu-wrap")) {

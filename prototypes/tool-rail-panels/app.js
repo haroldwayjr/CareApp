@@ -6834,9 +6834,9 @@
       <div class="ct-manage">
         <div class="ct-search-wrap">
           ${notesFieldLabel("Add someone")}
-          <label class="ct-search">
+          <label class="elig-search">
+            <span class="elig-search-icon" aria-hidden="true">${icon.search}</span>
             <input id="ct-add-search" type="search" placeholder="Search by name or role" value="${escapeAttr(careTeamSearchQuery)}" autocomplete="off" aria-label="Search to add someone" />
-            <span class="ct-search-icon" aria-hidden="true">${icon.search}</span>
           </label>
           ${dropdown}
         </div>

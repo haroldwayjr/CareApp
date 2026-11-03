@@ -158,6 +158,7 @@
       el.style.width = "";
       el.style.minWidth = "";
       el.style.maxWidth = "";
+      el.style.maxHeight = "";
       el.style.zIndex = "";
     }
     /* Return menus portaled to <body> back to their wrap */
@@ -259,12 +260,39 @@
       if (barRect.top > triggerRect.top) bottomLimit = Math.min(bottomLimit, barRect.top - gap);
       if (barRect.bottom < triggerRect.top) topLimit = Math.max(topLimit, barRect.bottom + gap);
     });
-    const menuHeight = Math.max(el.offsetHeight, el.scrollHeight, 48);
+    const isActivityFilter = el.classList.contains("activity-filter-menu");
+    const isActivityType = el.classList.contains("activity-filter-menu--type");
+    const naturalMenuHeight = Math.max(el.offsetHeight, el.scrollHeight, 48);
     const spaceBelow = bottomLimit - triggerRect.bottom - gap;
-    const openUp = menuHeight > spaceBelow;
-    let top = openUp ? triggerRect.top - gap - menuHeight : triggerRect.bottom + gap;
-    if (top < topLimit) top = topLimit;
-    if (top + menuHeight > bottomLimit) top = Math.max(topLimit, bottomLimit - menuHeight);
+    const spaceAbove = triggerRect.top - gap - topLimit;
+    /*
+     * Activity Status/Type: prefer dropdown below the field. Tall Type menus shrink
+     * (options scroll) instead of flipping up and covering the trigger/header.
+     * Other Selects keep flip-up when they don't fit below.
+     */
+    let openUp = false;
+    let menuMaxHeight = 0;
+    if (isActivityFilter) {
+      const minUseful = 160;
+      if (spaceBelow >= minUseful || spaceBelow >= spaceAbove) {
+        openUp = false;
+        menuMaxHeight = Math.max(120, Math.floor(spaceBelow));
+      } else {
+        openUp = true;
+        menuMaxHeight = Math.max(120, Math.floor(spaceAbove));
+      }
+    } else {
+      openUp = naturalMenuHeight > spaceBelow;
+    }
+    let top = openUp ? triggerRect.top - gap - naturalMenuHeight : triggerRect.bottom + gap;
+    if (!isActivityFilter) {
+      if (top < topLimit) top = topLimit;
+      if (top + naturalMenuHeight > bottomLimit) top = Math.max(topLimit, bottomLimit - naturalMenuHeight);
+    } else if (openUp) {
+      top = Math.max(topLimit, triggerRect.top - gap - Math.min(naturalMenuHeight, menuMaxHeight));
+    } else {
+      top = triggerRect.bottom + gap;
+    }
 
     el.classList.add("is-fixed-popover");
     el.classList.toggle("opens-up", openUp);
@@ -279,10 +307,21 @@
       window.innerWidth - 8
     );
     /* Flush with trigger left; form Select matches trigger width */
-    const left = Math.round(triggerRect.left);
-    const isActivityFilter = el.classList.contains("activity-filter-menu");
-    /* Activity filters may grow a bit for checks; form Select stays trigger-wide */
-    const preferredMin = isActivityFilter ? Math.max(triggerWidth + 28, 168) : triggerWidth;
+    let left = Math.round(triggerRect.left);
+    /*
+     * Activity multi-select needs room for leading checkboxes + labels.
+     * Type (searchable, long labels) floors at ~288; Status a bit above trigger.
+     * Form Select stays trigger-wide.
+     */
+    const preferredMin = isActivityType
+      ? Math.max(triggerWidth + 28, 288)
+      : isActivityFilter
+        ? Math.max(triggerWidth + 28, 200)
+        : triggerWidth;
+    /* If Type can't fit flush-left, shift left so the floor still fits in the panel */
+    if (isActivityType && rightEdge - left < preferredMin) {
+      left = Math.max(Math.round(panelRect?.left ?? 8) + 8, Math.round(rightEdge - preferredMin));
+    }
     const maxGrow = Math.max(preferredMin, rightEdge - left);
     el.style.position = "fixed";
     el.style.top = `${Math.round(top)}px`;
@@ -290,15 +329,21 @@
     el.style.right = "auto";
     el.style.left = `${left}px`;
     el.style.zIndex = "1200";
+    if (isActivityFilter && menuMaxHeight > 0) {
+      el.style.maxHeight = `${menuMaxHeight}px`;
+    } else {
+      el.style.maxHeight = "";
+    }
     el.classList.remove("is-truncated");
     let menuWidth = preferredMin;
     if (isActivityFilter) {
-      el.style.minWidth = "0";
+      el.style.minWidth = `${preferredMin}px`;
       el.style.width = "max-content";
       el.style.maxWidth = "none";
       const natural = Math.ceil(el.getBoundingClientRect().width);
       menuWidth = Math.min(Math.max(natural, preferredMin), maxGrow);
-      el.classList.toggle("is-truncated", menuWidth < natural - 1);
+      /* Always truncated layout — full-width Multi Item rows (leading check + label) */
+      el.classList.add("is-truncated");
     } else {
       /* Form Select — always span the trigger; ellipsis long labels */
       menuWidth = Math.min(triggerWidth, maxGrow);
@@ -830,8 +875,13 @@
     sortBy: "best",
     sortMenuOpen: false,
     selectedIds: new Set(),
+    view: "results",
+    overviewId: null,
+    locationIndex: 0,
   });
   let providerSearchState = providerSearchDefaults();
+  /** In-place Show more keys for the open Provider Overview. */
+  const providerOverviewExpanded = new Set();
   let providerResultsLoaderTimer = 0;
 
   const eligibilityInfo = [
@@ -4299,6 +4349,9 @@
 
   /* ——— Communication panel — All conversations ——— */
   const COMM_VISIBLE_INITIAL = 6;
+  const COMM_VISIBLE_PAGE = 3;
+  /** @type {IntersectionObserver | null} */
+  let commLoadObserver = null;
   const communicationState = {
     view: "list",
     activeId: null,
@@ -4685,11 +4738,11 @@
       .join("");
 
     const hasMore = communicationState.visibleCount < communicationState.conversations.length;
-    const loadMore = hasMore
-      ? `<button class="button button-secondary comm-load-more" type="button" data-comm-load-more>Load more</button>`
+    const sentinel = hasMore
+      ? `<div class="comm-load-sentinel" data-comm-load-sentinel aria-hidden="true"></div>`
       : "";
 
-    return `${sections}${loadMore}`;
+    return `${sections}${sentinel}`;
   }
 
   function communicationListTemplate() {
@@ -4807,17 +4860,33 @@
       });
     });
 
-    root.querySelector("[data-comm-load-more]")?.addEventListener("click", () => {
-      communicationState.visibleCount = Math.min(
-        communicationState.visibleCount + 3,
-        communicationState.conversations.length
-      );
-      /* Swap list only — full render() re-triggers panel-in from the right */
-      const scroll = root.querySelector(".comm-scroll");
-      if (!scroll) return;
-      scroll.innerHTML = communicationListHtml();
-      bindCommunicationListActions(root);
-    });
+    commLoadObserver?.disconnect();
+    commLoadObserver = null;
+    const scroll = root.querySelector(".comm-scroll");
+    const sentinel = scroll?.querySelector("[data-comm-load-sentinel]");
+    if (!scroll || !sentinel || communicationState.view !== "list") return;
+
+    commLoadObserver = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        if (communicationState.view !== "list") return;
+        commLoadObserver?.disconnect();
+        commLoadObserver = null;
+        communicationState.visibleCount = Math.min(
+          communicationState.visibleCount + COMM_VISIBLE_PAGE,
+          communicationState.conversations.length
+        );
+        /* Swap list only — full render() re-triggers panel-in from the right */
+        const nextScroll = root.querySelector(".comm-scroll");
+        if (!nextScroll || nextScroll.classList.contains("comm-scroll--thread")) return;
+        const prevTop = nextScroll.scrollTop;
+        nextScroll.innerHTML = communicationListHtml();
+        nextScroll.scrollTop = prevTop;
+        bindCommunicationListActions(root);
+      },
+      { root: scroll, rootMargin: "0px 0px 120px 0px" }
+    );
+    commLoadObserver.observe(sentinel);
   }
 
   function bindCommunicationPanelActions() {
@@ -4840,18 +4909,36 @@
 
   /* ——— Activity panel — member timeline ——— */
   const activityState = {
-    status: "all",
-    type: "all",
+    status: [],
+    type: [],
+    typeQuery: "",
     alertDismissed: false,
     openFilter: null,
     events: [
+      {
+        id: "act-vpc-followup-future-oct",
+        month: "Oct 2026",
+        title: "Virtual Primary Care visit with Dr. Jose Quinn, MD",
+        meta: "Appointment: 11/5/26, 9:30 AM - 10:00 AM Pacific",
+        status: "future",
+        type: "virtual-visit",
+        linked: true,
+        expanded: false,
+        detail: "Upcoming primary care follow-up; member confirmed calendar hold.",
+        length: "30 mins",
+        timezone: "Pacific",
+        reason: "Follow-up",
+        created: "10/20/26 11:00 AM",
+        apptId: "APT-QUINN-1105",
+        serviceId: "SD-90102",
+      },
       {
         id: "act-chat-support-sep",
         month: "Sep 2026",
         title: "Chat Support",
         meta: "Last updated: 9/22/26, 2:48 PM",
         status: "in-progress",
-        type: "chat",
+        type: "chat-support",
         linked: true,
         expanded: false,
         detail: "Care Team is actively assisting Riley with billing questions on this chat thread.",
@@ -4862,7 +4949,7 @@
         title: "Therapy visit with Dr. Robert Root, MD",
         meta: "Appointment: 9/22/26, 1:00 PM - 2:00 PM Pacific",
         status: "in-progress",
-        type: "visit",
+        type: "virtual-visit",
         linked: true,
         expanded: false,
         detail: "Virtual therapy session scheduled with Dr. Robert Root. Member confirmed attendance.",
@@ -4879,7 +4966,7 @@
         title: "CCM enrollment status change",
         meta: "Last updated: 9/22/26, 11:07 AM",
         status: "in-progress",
-        type: "enrollment",
+        type: "ccm-enrollment",
         linked: false,
         expanded: false,
         detail: "Chronic Care Management enrollment moved to in review pending PCP attestation.",
@@ -4893,7 +4980,7 @@
         title: "Virtual Primary Care visit with Dr. Jose Quinn, MD",
         meta: "Appointment: 9/22/26, 10:00 AM - 10:30 AM Pacific",
         status: "in-progress",
-        type: "visit",
+        type: "virtual-visit",
         linked: true,
         expanded: false,
         detail: "Primary care video visit with Dr. Jose Quinn for medication follow-up.",
@@ -4910,7 +4997,7 @@
         title: "Support issue submitted",
         meta: "Last updated: 9/22/26, 10:58 AM",
         status: "in-progress",
-        type: "support",
+        type: "claims-advocacy",
         linked: true,
         expanded: false,
         detail: "Member submitted a support ticket regarding portal access; Care Team is investigating.",
@@ -4924,7 +5011,7 @@
         title: "Concierge Referral for Primary Care",
         meta: "Last updated: 9/22/26, 10:56 AM",
         status: "in-progress",
-        type: "referral",
+        type: "external-referral",
         linked: true,
         expanded: false,
         detail: "Concierge referral opened to match Riley with an in-network primary care provider.",
@@ -4939,7 +5026,7 @@
         title: "Pharmacy refill request",
         meta: "Last updated: 8/28/26, 4:12 PM",
         status: "completed",
-        type: "support",
+        type: "prescription",
         linked: true,
         expanded: false,
         detail: "90-day refill for atorvastatin approved and routed to member’s preferred pharmacy.",
@@ -4950,7 +5037,7 @@
         title: "Behavioral health visit with Dr. Amira Shah, PhD",
         meta: "Appointment: 8/19/26, 3:00 PM - 3:50 PM Pacific",
         status: "completed",
-        type: "visit",
+        type: "virtual-visit",
         linked: true,
         expanded: false,
         detail: "Completed telehealth session; follow-up scheduled for September.",
@@ -4961,7 +5048,7 @@
         title: "Chat Support",
         meta: "Last updated: 8/14/26, 11:33 AM",
         status: "completed",
-        type: "chat",
+        type: "chat-support",
         linked: true,
         expanded: false,
         detail: "Resolved questions about specialist copay and referral requirements.",
@@ -4972,7 +5059,7 @@
         title: "CCM care plan check-in",
         meta: "Last updated: 8/7/26, 9:05 AM",
         status: "completed",
-        type: "enrollment",
+        type: "ccm-enrollment",
         linked: false,
         expanded: false,
         detail: "Care manager documented monthly goals and medication adherence notes.",
@@ -4983,7 +5070,7 @@
         title: "Concierge Referral for Lab Services",
         meta: "Last updated: 7/30/26, 2:18 PM",
         status: "completed",
-        type: "referral",
+        type: "external-referral",
         linked: true,
         expanded: false,
         detail: "Member matched to in-network lab; fasting instructions sent via message.",
@@ -4994,7 +5081,7 @@
         title: "Virtual Primary Care visit with Dr. Jose Quinn, MD",
         meta: "Appointment: 7/22/26, 9:30 AM - 10:00 AM Pacific",
         status: "completed",
-        type: "visit",
+        type: "virtual-visit",
         linked: true,
         expanded: false,
         detail: "Annual wellness review; labs ordered and preventive care checklist updated.",
@@ -5005,7 +5092,7 @@
         title: "Support issue submitted",
         meta: "Last updated: 7/15/26, 1:44 PM",
         status: "completed",
-        type: "support",
+        type: "claims-advocacy",
         linked: true,
         expanded: false,
         detail: "Digital ID card not loading in the app; issue resolved after cache reset.",
@@ -5016,7 +5103,7 @@
         title: "Therapy visit with Dr. Robert Root, MD",
         meta: "Appointment: 7/8/26, 1:00 PM - 2:00 PM Pacific",
         status: "completed",
-        type: "visit",
+        type: "virtual-visit",
         linked: true,
         expanded: false,
         detail: "Session completed; member reported improved sleep and stress management.",
@@ -5027,7 +5114,7 @@
         title: "Chat Support",
         meta: "Last updated: 6/25/26, 5:02 PM",
         status: "completed",
-        type: "chat",
+        type: "chat-support",
         linked: true,
         expanded: false,
         detail: "Helped member locate in-network dermatology options near home.",
@@ -5038,7 +5125,7 @@
         title: "Concierge Referral for Dermatology",
         meta: "Last updated: 6/18/26, 10:21 AM",
         status: "completed",
-        type: "referral",
+        type: "external-referral",
         linked: true,
         expanded: false,
         detail: "Referral booked with Dr. Lena Ortiz; appointment confirmation emailed.",
@@ -5049,7 +5136,7 @@
         title: "CCM enrollment status change",
         meta: "Last updated: 6/10/26, 8:40 AM",
         status: "completed",
-        type: "enrollment",
+        type: "ccm-enrollment",
         linked: false,
         expanded: false,
         detail: "Member enrolled in Chronic Care Management with assigned care manager.",
@@ -5060,7 +5147,7 @@
         title: "Nutrition consult with Priya Nair, RD",
         meta: "Appointment: 6/3/26, 11:00 AM - 11:45 AM Pacific",
         status: "completed",
-        type: "visit",
+        type: "virtual-visit",
         linked: true,
         expanded: false,
         detail: "Nutrition plan shared; grocery list and follow-up goals documented.",
@@ -5071,7 +5158,7 @@
         title: "Physical therapy visit with Sam Ortiz, DPT",
         meta: "Appointment: 5/20/26, 4:00 PM - 4:45 PM Pacific",
         status: "completed",
-        type: "visit",
+        type: "virtual-visit",
         linked: true,
         expanded: false,
         detail: "Home exercise program provided for lower back mobility.",
@@ -5082,7 +5169,7 @@
         title: "Support issue submitted",
         meta: "Last updated: 5/12/26, 3:27 PM",
         status: "completed",
-        type: "support",
+        type: "claims-advocacy",
         linked: true,
         expanded: false,
         detail: "Claim status clarified; EOB explanation shared with the member.",
@@ -5093,7 +5180,7 @@
         title: "Therapy visit with Dr. Robert Root, MD",
         meta: "Appointment: 5/8/26, 2:00 PM - 3:00 PM Pacific",
         status: "cancelled",
-        type: "visit",
+        type: "virtual-visit",
         linked: false,
         expanded: false,
         detail: "Visit was cancelled by the member before the scheduled start time.",
@@ -5104,7 +5191,7 @@
         title: "Chat Support",
         meta: "Last updated: 5/3/26, 10:15 AM",
         status: "cancelled",
-        type: "chat",
+        type: "chat-support",
         linked: false,
         expanded: false,
         detail: "Support chat was closed without resolution at the member's request.",
@@ -5113,31 +5200,45 @@
   };
 
   const ACTIVITY_STATUS_OPTIONS = [
-    ["all", "All"],
-    ["in-progress", "In progress"],
     ["cancelled", "Cancelled"],
     ["completed", "Completed"],
+    ["future", "Future"],
+    ["in-progress", "In Progress"],
   ];
 
   const ACTIVITY_TYPE_OPTIONS = [
-    ["all", "All"],
-    ["chat", "Chat"],
-    ["visit", "Visit"],
-    ["enrollment", "Enrollment"],
-    ["support", "Support"],
-    ["referral", "Referral"],
+    ["assessment", "Assessment"],
+    ["care-and-case-management", "Care And Case Management"],
+    ["care-and-case-management-notes", "Care And Case Management Notes"],
+    ["ccm-enrollment", "CCM Enrollment"],
+    ["claims-advocacy", "Claims Advocacy"],
+    ["device-kits-order", "Device Kits Order"],
+    ["expert-medical-opinion", "Expert Medical Opinion"],
+    ["external-referral", "External Referral"],
+    ["healthy-days-survey-result", "Healthy Days Survey Result"],
+    ["lab-order", "Lab Order"],
+    ["prescription", "Prescription"],
+    ["refund", "Refund"],
+    ["treatment-decision-support", "Treatment Decision Support"],
+    ["triage", "Triage"],
+    ["vcs", "VCS"],
+    ["virtual-visit", "Virtual Visit"],
+    ["adhoc-call", "Adhoc Call"],
+    ["chat-support", "Chat Support"],
   ];
 
   function activityStatusLabel(status) {
-    if (status === "in-progress") return "In progress";
+    if (status === "in-progress") return "In Progress";
     if (status === "cancelled") return "Cancelled";
     if (status === "completed") return "Completed";
-    return "All";
+    if (status === "future") return "Future";
+    return status;
   }
 
-  function activityTypeLabel(type) {
-    const found = ACTIVITY_TYPE_OPTIONS.find(([value]) => value === type);
-    return found ? found[1] : "All";
+  function activityFilterOptionLabel(kind, value) {
+    const options = kind === "status" ? ACTIVITY_STATUS_OPTIONS : ACTIVITY_TYPE_OPTIONS;
+    const found = options.find(([v]) => v === value);
+    return found ? found[1] : value;
   }
 
   function activityBadgeHtml(status) {
@@ -5176,7 +5277,7 @@
   function activityFieldsFor(item) {
     if (Array.isArray(item.fields) && item.fields.length) return item.fields;
     const idTail = item.id.replace(/^act-/, "").slice(-6).toUpperCase();
-    if (item.type === "visit") {
+    if (item.type === "virtual-visit") {
       return [
         { label: "Description", value: item.detail || "", span: 2 },
         { label: "Appointment Length", value: item.length || "30 mins" },
@@ -5192,7 +5293,7 @@
         },
       ];
     }
-    if (item.type === "enrollment") {
+    if (item.type === "ccm-enrollment") {
       return [
         { label: "Previous status", value: item.prevStatus || "Not enrolled" },
         { label: "New status", value: item.newStatus || "In review" },
@@ -5200,7 +5301,7 @@
         { label: "Description", value: item.detail || "", span: 2 },
       ];
     }
-    if (item.type === "support") {
+    if (item.type === "claims-advocacy") {
       return [
         { label: "Subject", value: item.subject || item.title, span: 2 },
         { label: "Description", value: item.detail || "", span: 2 },
@@ -5208,7 +5309,7 @@
         { label: "Member Patient Case ID", value: item.caseId || "16037", copy: item.caseId || "16037" },
       ];
     }
-    if (item.type === "referral") {
+    if (item.type === "external-referral") {
       return [
         { label: "Description", value: item.detail || "", span: 2 },
         { label: "Specialty", value: item.specialty || "Primary Care" },
@@ -5217,7 +5318,7 @@
         { label: "Date created", value: item.created || activityMetaValue(item.meta, "Last updated:") },
       ];
     }
-    if (item.type === "chat") {
+    if (item.type === "chat-support") {
       return [
         { label: "Summary", value: item.detail || "", span: 2 },
         {
@@ -5244,9 +5345,11 @@
   }
 
   function filteredActivityEvents() {
+    const statuses = activityState.status;
+    const types = activityState.type;
     return activityState.events.filter((item) => {
-      if (activityState.status !== "all" && item.status !== activityState.status) return false;
-      if (activityState.type !== "all" && item.type !== activityState.type) return false;
+      if (statuses.length && !statuses.includes(item.status)) return false;
+      if (types.length && !types.includes(item.type)) return false;
       return true;
     });
   }
@@ -5334,7 +5437,13 @@
     }
 
     if (!groups.length) {
-      return `<div class="quiet-state quiet-state--compact">No activity matches these filters.</div>`;
+      return `
+      <div class="activity-list-empty" role="status">
+        <img class="activity-list-empty-art" src="assets/activity-type-empty.svg" width="120" height="120" alt="" draggable="false" />
+        <p class="activity-list-empty-title">No activity matches these filters</p>
+        <p class="activity-list-empty-body">Try adjusting Status or Type, or clear filters to see all events.</p>
+        <button type="button" class="button button-secondary button-small activity-list-empty-clear" data-activity-clear>Clear filters</button>
+      </div>`;
     }
 
     return groups
@@ -5349,15 +5458,14 @@
   }
 
   function activityFilterValueLabel(kind, selected) {
-    return kind === "status" ? activityStatusLabel(selected) : activityTypeLabel(selected);
+    const values = Array.isArray(selected) ? selected : [];
+    if (!values.length) return "All";
+    const firstLabel = activityFilterOptionLabel(kind, values[0]);
+    if (values.length === 1) return firstLabel;
+    return `${firstLabel} +${values.length - 1}`;
   }
 
-  /**
-   * Compact toolbar Select — Trigger = "{Facet}: {value}" (not value-only).
-   * Form Selects (Search by) keep the facet on Field label; toolbars have no label row,
-   * so two default "All"s would be ambiguous. Docs: soma/component-notes.md → Select.
-   * Facet = text/tertiary; value = text/primary (brand when filtered).
-   */
+  /** Select / Field + Multi Item — label row carries facet; trigger shows value only (aria-label keeps facet). */
   function activityFilterFacet(kind) {
     return kind === "status" ? "Status" : "Type";
   }
@@ -5366,51 +5474,163 @@
     return `${activityFilterFacet(kind)}: ${activityFilterValueLabel(kind, selected)}`;
   }
 
-  function activityFilterTriggerLabelHtml(kind, selected) {
-    const facet = activityFilterFacet(kind);
-    const value = activityFilterValueLabel(kind, selected);
-    return `<span class="select-trigger-label"><span class="activity-filter-facet">${escapeAttr(facet)}:</span> <span class="activity-filter-value">${escapeAttr(value)}</span></span>`;
+  function activityFilterTriggerLabelHtml(_kind, selected) {
+    const value = activityFilterValueLabel(_kind, selected);
+    return `<span class="select-trigger-label"><span class="activity-filter-value">${escapeAttr(value)}</span></span>`;
   }
 
-  /** Soma Select / Trigger + Select / Item (trailing check) — not Menu / RadioItem. */
-  function activityFilterMenuHtml(kind, options, selected, menuId, groupLabel) {
-    const open = activityState.openFilter === kind;
-    const triggerId = kind === "status" ? "activity-status-filter" : "activity-type-filter";
-    const active = selected !== "all";
-    const triggerLabel = activityFilterTriggerLabel(kind, selected);
-    const optionsHtml = options
-      .map(([value, label]) => {
-        const on = selected === value;
-        return `
+  function activityFilteredTypeOptions() {
+    const q = String(activityState.typeQuery || "")
+      .trim()
+      .toLowerCase();
+    if (!q) return ACTIVITY_TYPE_OPTIONS;
+    return ACTIVITY_TYPE_OPTIONS.filter(([, label]) => label.toLowerCase().includes(q));
+  }
+
+  function activityFilterOptionButtonHtml(kind, value, label, selected) {
+    const on = selected.includes(value);
+    /* Use <i> for the check — global `.select-menu button > span` was collapsing empty check spans */
+    return `
             <button
               type="button"
               role="option"
               data-activity-${kind}="${value}"
               aria-selected="${on}"
-              class="${on ? "is-selected" : ""}"
+              class="activity-filter-option${on ? " is-selected" : ""}"
             >
-              <span>${escapeAttr(label)}</span>${on ? icon.check : ""}
+              <i class="activity-filter-check${on ? " is-checked" : ""}" aria-hidden="true"></i>
+              <span class="activity-filter-option-label">${escapeAttr(label)}</span>
             </button>`;
-      })
+  }
+
+  function activityTypeOptionsInnerHtml() {
+    const selected = activityState.type;
+    const filtered = activityFilteredTypeOptions();
+    if (!filtered.length) {
+      return `
+          <div class="activity-filter-empty" role="status">
+            <img class="activity-filter-empty-art" src="assets/activity-type-empty.svg" width="96" height="96" alt="" draggable="false" />
+            <p class="activity-filter-empty-title">No types found</p>
+            <p class="activity-filter-empty-body">Please try a different search term</p>
+            <button type="button" class="button button-secondary button-small activity-filter-empty-clear" data-activity-type-clear-search>Clear search</button>
+          </div>`;
+    }
+    return filtered
+      .map(([value, label]) => activityFilterOptionButtonHtml("type", value, label, selected))
       .join("");
+  }
+
+  function activityTypeFilterSearchHtml() {
+    const q = activityState.typeQuery || "";
+    const showClear = Boolean(String(q).trim());
     return `
-      <div class="select-wrap activity-filter-wrap${open ? " is-open" : ""}">
-        <button
-          class="inline-field-control select-trigger activity-filter-trigger${active ? " is-active" : ""}"
-          type="button"
-          id="${triggerId}"
-          data-activity-filter="${kind}"
-          aria-label="${escapeAttr(triggerLabel)}"
-          aria-expanded="${open}"
-          aria-haspopup="listbox"
-          aria-controls="${menuId}"
-        >
-          ${activityFilterTriggerLabelHtml(kind, selected)}${icon.down}
-        </button>
-        <div class="select-menu activity-filter-menu" role="listbox" aria-label="${escapeAttr(groupLabel)}" id="${menuId}" ${open ? "" : "hidden"}>
-          ${optionsHtml}
+          <div class="activity-filter-search">
+            <label class="provider-lookup-query activity-filter-search-field">
+              <span class="provider-lookup-query-icon" aria-hidden="true">${icon.search}</span>
+              <input
+                type="search"
+                data-activity-type-search
+                placeholder="Search..."
+                value="${escapeAttr(q)}"
+                autocomplete="off"
+                aria-label="Search activity types"
+              />
+              <button
+                type="button"
+                class="icon-button activity-filter-search-clear"
+                data-activity-type-search-clear
+                aria-label="Clear search"
+                ${showClear ? "" : "hidden"}
+              >${icon.close}</button>
+            </label>
+          </div>`;
+  }
+
+  function activityStatusOptionsInnerHtml() {
+    const selected = activityState.status;
+    return ACTIVITY_STATUS_OPTIONS.map(([value, label]) =>
+      activityFilterOptionButtonHtml("status", value, label, selected)
+    ).join("");
+  }
+
+  function activityFilterFooterHtml(kind) {
+    return `
+          <div class="activity-filter-footer">
+            <button type="button" data-activity-${kind}-reset class="button button-ghost button-small">Reset</button>
+            <button type="button" data-activity-${kind}-select-all class="button button-ghost button-small activity-filter-select-all">Select all</button>
+          </div>`;
+  }
+
+  function activityStatusFilterMenuInnerHtml(groupLabel) {
+    return `
+          <div class="activity-filter-options" role="listbox" aria-multiselectable="true" aria-label="${escapeAttr(groupLabel)}">
+            ${activityStatusOptionsInnerHtml()}
+          </div>
+          ${activityFilterFooterHtml("status")}`;
+  }
+
+  function activityTypeFilterMenuInnerHtml(groupLabel) {
+    return `
+          ${activityTypeFilterSearchHtml()}
+          <div class="activity-filter-options" role="listbox" aria-multiselectable="true" aria-label="${escapeAttr(groupLabel)}">
+            ${activityTypeOptionsInnerHtml()}
+          </div>
+          ${activityFilterFooterHtml("type")}`;
+  }
+
+  /** Soma Select / Trigger + Select / Multi Item (leading checkbox) — not Menu / RadioItem. */
+  function activityFilterMenuHtml(kind, options, selected, menuId, groupLabel) {
+    const open = activityState.openFilter === kind;
+    const triggerId = kind === "status" ? "activity-status-filter" : "activity-type-filter";
+    const values = Array.isArray(selected) ? selected : [];
+    const active = values.length > 0;
+    const triggerLabel = activityFilterTriggerLabel(kind, values);
+    const menuBody =
+      kind === "type"
+        ? activityTypeFilterMenuInnerHtml(groupLabel)
+        : activityStatusFilterMenuInnerHtml(groupLabel);
+    const menuClass =
+      kind === "type"
+        ? "select-menu activity-filter-menu activity-filter-menu--multi activity-filter-menu--type"
+        : "select-menu activity-filter-menu activity-filter-menu--multi";
+    const fieldLabel = activityFilterFacet(kind);
+    return `
+      <div class="activity-filter-field">
+        <span class="activity-filter-field-label notes-field-label" id="${triggerId}-label">${escapeAttr(fieldLabel)}</span>
+        <div class="select-wrap activity-filter-wrap${open ? " is-open" : ""}">
+          <button
+            class="inline-field-control select-trigger activity-filter-trigger${active ? " is-active" : ""}"
+            type="button"
+            id="${triggerId}"
+            data-activity-filter="${kind}"
+            aria-labelledby="${triggerId}-label"
+            aria-label="${escapeAttr(triggerLabel)}"
+            aria-expanded="${open}"
+            aria-haspopup="listbox"
+            aria-controls="${menuId}"
+          >
+            ${activityFilterTriggerLabelHtml(kind, values)}${icon.down}
+          </button>
+          <div class="${menuClass}" id="${menuId}" ${open ? "" : "hidden"}>
+            ${menuBody}
+          </div>
         </div>
       </div>`;
+  }
+
+  function refreshActivityTypeOptionsPanel({ reposition = false } = {}) {
+    const menu = activityFilterMenuEl("type");
+    const panel = menu?.querySelector(".activity-filter-options");
+    if (!panel) return;
+    panel.innerHTML = activityTypeOptionsInnerHtml();
+    const clearBtn = menu.querySelector("[data-activity-type-search-clear]");
+    const hasQuery = Boolean(String(activityState.typeQuery || "").trim());
+    if (clearBtn) clearBtn.hidden = !hasQuery;
+    const input = menu.querySelector("[data-activity-type-search]");
+    if (input && input.value !== activityState.typeQuery) input.value = activityState.typeQuery;
+    if (reposition && activityState.openFilter === "type" && menu && !menu.hidden) {
+      requestAnimationFrame(() => showMenuPopover(menu));
+    }
   }
 
   function activityToolbarHtml() {
@@ -5462,22 +5682,35 @@
     const triggerLabel = activityFilterTriggerLabel(kind, selected);
     const menu = activityFilterMenuEl(kind);
     menu?.querySelectorAll(`[data-activity-${kind}]`).forEach((option) => {
-      const value = option.getAttribute(`data-activity-${kind}`) || "all";
-      const on = value === selected;
+      const value = option.getAttribute(`data-activity-${kind}`) || "";
+      const on = selected.includes(value);
       option.setAttribute("aria-selected", String(on));
       option.classList.toggle("is-selected", on);
-      const mark = option.querySelector(".icon-check");
-      if (on && !mark) option.insertAdjacentHTML("beforeend", icon.check);
-      if (!on && mark) mark.remove();
+      option.querySelector(".activity-filter-check")?.classList.toggle("is-checked", on);
     });
     const trigger = root.querySelector(`#activity-${kind}-filter`);
-    const active = selected !== "all";
+    const active = selected.length > 0;
     trigger?.classList.toggle("is-active", active);
     trigger?.setAttribute("aria-label", triggerLabel);
-    const facetEl = trigger?.querySelector(".activity-filter-facet");
     const valueEl = trigger?.querySelector(".activity-filter-value");
-    if (facetEl) facetEl.textContent = `${activityFilterFacet(kind)}:`;
     if (valueEl) valueEl.textContent = activityFilterValueLabel(kind, selected);
+  }
+
+  function toggleActivityFilterValue(kind, value) {
+    if (!value) return;
+    if (kind === "status") {
+      const next = [...activityState.status];
+      const idx = next.indexOf(value);
+      if (idx >= 0) next.splice(idx, 1);
+      else next.push(value);
+      activityState.status = next;
+    } else {
+      const next = [...activityState.type];
+      const idx = next.indexOf(value);
+      if (idx >= 0) next.splice(idx, 1);
+      else next.push(value);
+      activityState.type = next;
+    }
   }
 
   function activityFilterMenuEl(kind) {
@@ -5487,6 +5720,7 @@
 
   function closeActivityFilterMenus() {
     activityState.openFilter = null;
+    activityState.typeQuery = "";
     const root = stage.querySelector('.panel-content[data-content="activity"]');
     if (!root) return;
     root.querySelectorAll(".activity-filter-wrap").forEach((wrap) => {
@@ -5517,7 +5751,19 @@
     activityState.openFilter = kind;
     wrap?.classList.add("is-open");
     trigger.setAttribute("aria-expanded", "true");
+    if (kind === "type") {
+      const input = menu.querySelector("[data-activity-type-search]");
+      if (input) input.value = activityState.typeQuery;
+      refreshActivityTypeOptionsPanel({ reposition: false });
+    }
     showMenuPopover(menu);
+    if (kind === "type") {
+      requestAnimationFrame(() => {
+        /* Re-anchor after layout (search focus / sticky toolbar) so it stays under the field */
+        positionSelectMenu(menu);
+        menu.querySelector("[data-activity-type-search]")?.focus({ preventScroll: true });
+      });
+    }
   }
 
   function syncActivityList(options = {}) {
@@ -5549,6 +5795,14 @@
       "aria-label",
       `${item.expanded ? "Collapse" : "Expand"} ${item.title}`
     );
+  }
+
+  function clearActivityFilters() {
+    activityState.status = [];
+    activityState.type = [];
+    activityState.typeQuery = "";
+    closeActivityFilterMenus();
+    syncActivityList({ chrome: true });
   }
 
   function bindActivityListActions(root = stage) {
@@ -5591,14 +5845,14 @@
         showToast("Copied");
       });
     });
+
+    /* Empty-state Clear — list rebuilds without chrome, so bind here */
+    root.querySelector(".activity-list-empty-clear")?.addEventListener("click", clearActivityFilters);
   }
 
   function bindActivityToolbarActions(root = stage) {
-    root.querySelector("[data-activity-clear]")?.addEventListener("click", () => {
-      activityState.status = "all";
-      activityState.type = "all";
-      closeActivityFilterMenus();
-      syncActivityList({ chrome: true });
+    root.querySelectorAll(".activity-toolbar [data-activity-clear]").forEach((btn) => {
+      btn.addEventListener("click", clearActivityFilters);
     });
 
     root.querySelector("[data-activity-alert-dismiss]")?.addEventListener("click", () => {
@@ -5606,9 +5860,11 @@
       syncActivityList({ chrome: true });
     });
 
+    const statusMenu = activityFilterMenuEl("status");
+    const typeMenu = activityFilterMenuEl("type");
+
     ["status", "type"].forEach((kind) => {
       const trigger = root.querySelector(`#activity-${kind}-filter`);
-      const menu = activityFilterMenuEl(kind);
       trigger?.addEventListener("click", (event) => {
         event.stopPropagation();
         const opening = activityState.openFilter !== kind;
@@ -5616,22 +5872,89 @@
         closeActivityFilterMenus();
         if (opening) openActivityFilterMenu(kind);
       });
-      menu?.querySelectorAll(`[data-activity-${kind}]`).forEach((option) => {
-        option.addEventListener("click", (event) => {
-          event.stopPropagation();
-          const next = option.getAttribute(`data-activity-${kind}`) || "all";
-          if (kind === "status") activityState.status = next;
-          else activityState.type = next;
-          syncActivityFilterMenuDom(kind);
-          closeActivityFilterMenus();
-          syncActivityList({ chrome: true });
-        });
-      });
     });
+
+    const activityFilterMenuChromeSelector =
+      ".activity-filter-search, .activity-filter-footer, .activity-filter-empty";
+
+    function bindActivityFilterMenuActions(kind, menu) {
+      if (!menu) return;
+      menu.addEventListener("mousedown", (event) => {
+        if (event.target.closest(activityFilterMenuChromeSelector)) event.stopPropagation();
+      });
+      menu.addEventListener("click", (event) => {
+        if (event.target.closest(activityFilterMenuChromeSelector)) event.stopPropagation();
+        const option = event.target.closest(`[data-activity-${kind}]`);
+        if (option) {
+          event.stopPropagation();
+          const value = option.getAttribute(`data-activity-${kind}`) || "";
+          toggleActivityFilterValue(kind, value);
+          syncActivityFilterMenuDom(kind);
+          syncActivityList();
+          return;
+        }
+        if (event.target.closest(`[data-activity-${kind}-reset]`)) {
+          if (kind === "status") {
+            activityState.status = [];
+          } else {
+            const hadQuery = Boolean(String(activityState.typeQuery || "").trim());
+            activityState.type = [];
+            activityState.typeQuery = "";
+            const input = menu.querySelector("[data-activity-type-search]");
+            if (input) input.value = "";
+            /* Only rebuild the list when search was filtering rows */
+            if (hadQuery) refreshActivityTypeOptionsPanel({ reposition: false });
+          }
+          syncActivityFilterMenuDom(kind);
+          syncActivityList();
+          return;
+        }
+        if (event.target.closest(`[data-activity-${kind}-select-all]`)) {
+          if (kind === "status") {
+            activityState.status = ACTIVITY_STATUS_OPTIONS.map(([value]) => value);
+          } else {
+            activityState.type = ACTIVITY_TYPE_OPTIONS.map(([value]) => value);
+          }
+          /* In-place check updates only — do not rebuild options (avoids popover flash) */
+          syncActivityFilterMenuDom(kind);
+          syncActivityList();
+          return;
+        }
+        if (kind !== "type") return;
+        if (event.target.closest("[data-activity-type-clear-search]")) {
+          activityState.typeQuery = "";
+          const input = menu.querySelector("[data-activity-type-search]");
+          if (input) input.value = "";
+          refreshActivityTypeOptionsPanel({ reposition: false });
+          input?.focus();
+          return;
+        }
+        if (event.target.closest("[data-activity-type-search-clear]")) {
+          activityState.typeQuery = "";
+          const input = menu.querySelector("[data-activity-type-search]");
+          if (input) {
+            input.value = "";
+            input.focus();
+          }
+          refreshActivityTypeOptionsPanel({ reposition: false });
+        }
+      });
+      if (kind === "type") {
+        menu.addEventListener("input", (event) => {
+          const input = event.target.closest("[data-activity-type-search]");
+          if (!input) return;
+          activityState.typeQuery = input.value;
+          refreshActivityTypeOptionsPanel({ reposition: false });
+        });
+      }
+    }
+
+    bindActivityFilterMenuActions("status", statusMenu);
+    bindActivityFilterMenuActions("type", typeMenu);
 
     if (activityState.openFilter) {
       const menu = activityFilterMenuEl(activityState.openFilter);
-      if (menu) requestAnimationFrame(() => showMenuPopover(menu));
+      if (menu?.hidden) requestAnimationFrame(() => showMenuPopover(menu));
     }
   }
 
@@ -5920,14 +6243,89 @@
       refreshProviderSelectionBar();
     });
     stage.querySelector("[data-provider-send]")?.addEventListener("click", () => {
-      const n = selectedProviderCount();
-      if (!n) return;
-      showToast(
-        n === 1 ? "Sent 1 provider to member" : `Sent ${n} providers to member`
-      );
+      if (!selectedProviderCount()) return;
+      openSendToMemberModal();
+    });
+  }
+
+  function providerDistanceLabel(miles) {
+    const n = Number(miles);
+    return n % 1 === 0 ? `${n} mi` : `${n.toFixed(1)} mi`;
+  }
+
+  function providerMilesAwayLabel(miles) {
+    const n = Number(miles);
+    const text = n % 1 === 0 ? String(n) : n.toFixed(1);
+    return `${text} miles away`;
+  }
+
+  function providerFaxFromPhone(phone) {
+    const digits = String(phone).replace(/\D/g, "");
+    if (digits.length < 4) return phone;
+    const bumped = String((Number(digits.slice(-4)) + 41) % 10000).padStart(4, "0");
+    return String(phone).replace(/\d{4}(?!.*\d)/, bumped);
+  }
+
+  function providerWebsite(provider) {
+    const slug = provider.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+    return `https://www.sutterhealth.org/find-doctor/${slug}`;
+  }
+
+  function openSendToMemberModal() {
+    const selected = MOCK_PROVIDERS.filter((provider) => providerSearchState.selectedIds.has(provider.id));
+    if (!selected.length) return;
+    const rows = selected
+      .map((provider) => {
+        const dist = providerDistanceLabel(provider.distanceMiles);
+        return `
+        <div class="provider-send-row">
+          <p class="provider-send-name">${escapeAttr(provider.name)}</p>
+          <p class="provider-send-meta">${escapeAttr(provider.specialty)}</p>
+          <p class="provider-send-meta">${escapeAttr(provider.address)} · ${escapeAttr(dist)}</p>
+        </div>`;
+      })
+      .join("");
+    openModal({
+      title: "Send provider list to member",
+      variant: "provider-send",
+      body: `
+        <p class="modal-copy">The email will include a list of all locations & network statuses for the selected providers.</p>
+        <div class="notes-field">
+          ${notesFieldLabel("Send to")}
+          <input class="inline-field-control" id="provider-send-email" type="email" autocomplete="email" value="${escapeAttr(memberContact.email)}" />
+        </div>
+        <div class="provider-send-list">${rows}</div>
+      `,
+      footer: `
+        <button class="button button-secondary" type="button" data-close-modal>Cancel</button>
+        <button class="button button-primary" type="button" id="provider-send-confirm">Send</button>
+      `,
+    });
+    const email = document.querySelector("#provider-send-email");
+    const send = document.querySelector("#provider-send-confirm");
+    const syncSend = () => {
+      if (send) send.disabled = !String(email?.value || "").trim();
+    };
+    syncSend();
+    email?.addEventListener("input", syncSend);
+    email?.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter") return;
+      event.preventDefault();
+      if (send?.disabled) return;
+      send?.click();
+    });
+    send?.addEventListener("click", () => {
+      if (!String(email?.value || "").trim()) return;
+      closeModal();
       clearProviderSelection();
       refreshProviderSelectionBar();
+      showToast("Provider list email successfully sent");
     });
+    email?.focus();
+    email?.select();
   }
 
   function bindProviderResultCardActions(root = stage) {
@@ -5975,6 +6373,14 @@
         }
       });
     });
+
+    root.querySelectorAll(".provider-card-name").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const id = button.closest("[data-provider-id]")?.dataset.providerId;
+        if (id) openProviderOverview(id);
+      });
+    });
   }
 
   function refreshProviderResultsList({ ease = true } = {}) {
@@ -6002,7 +6408,334 @@
     }
   }
 
+  const PROVIDER_PROFILE = {
+    p1: { gender: "Female", school: "University of Michigan Medical School", npi: "1457382910" },
+    p2: { gender: "Male", school: "Yale University School of Medicine", npi: "1871515205", rich: true },
+    p3: { gender: "Female", school: "UCSF School of Medicine", npi: "1629384750" },
+    p4: { gender: "Male", school: "Stanford University School of Medicine", npi: "1392048576" },
+    p5: { gender: "Female", school: "Johns Hopkins School of Medicine", npi: "1748293650", rich: true },
+    p6: { gender: "Male", school: "UCLA David Geffen School of Medicine", npi: "1582736409" },
+    p7: { gender: "Female", school: "University of Washington School of Medicine", npi: "1203948576" },
+    p8: { gender: "Male", school: "Columbia University Vagelos College of Physicians and Surgeons", npi: "1982736450", rich: true },
+  };
+
+  const CONDITIONS_BY_SPECIALTY = {
+    Cardiology: ["Coronary artery disease", "Heart failure", "Atrial fibrillation", "Hypertension", "Valvular heart disease", "High cholesterol"],
+    "Family Medicine": ["Diabetes", "Hypertension", "Asthma", "Annual wellness", "Preventive care", "Anxiety"],
+    "Internal Medicine": ["Hypertension", "Diabetes", "High cholesterol", "COPD", "Thyroid disease", "Arthritis"],
+    Dermatology: ["Acne", "Eczema", "Psoriasis", "Skin cancer screening", "Rashes", "Rosacea"],
+    "Obstetrics & Gynecology": ["Prenatal care", "Annual exams", "Menopause", "Endometriosis", "Contraception"],
+    "Orthopedic Surgery": ["Knee pain", "Shoulder injury", "Arthritis", "Fractures", "Sports injuries", "Back pain"],
+    Endocrinology: ["Diabetes", "Thyroid disorders", "Osteoporosis", "Adrenal disorders", "PCOS"],
+  };
+
+  const SERVICES_BY_SPECIALTY = {
+    Cardiology: ["Diagnostic catheterization", "Echocardiography", "Stress testing", "Preventive cardiology", "Lipid management"],
+    "Family Medicine": ["Annual physicals", "Chronic disease management", "Immunizations", "Minor procedures", "Well-child visits"],
+    "Internal Medicine": ["Adult primary care", "Chronic disease management", "Hospital follow-up", "Preventive screening"],
+    Dermatology: ["Skin exams", "Biopsy", "Acne treatment", "Eczema care", "Mole checks"],
+    "Obstetrics & Gynecology": ["Prenatal visits", "Annual gynecologic exam", "Contraceptive counseling", "Ultrasound"],
+    "Orthopedic Surgery": ["Joint evaluation", "Fracture care", "Sports medicine", "Post-operative follow-up", "Injections"],
+    Endocrinology: ["Diabetes management", "Thyroid evaluation", "Insulin adjustment", "Bone density review"],
+  };
+
+  const PROVIDER_AFFILIATIONS = [
+    "California Pacific Medical Center",
+    "UCSF Medical Center",
+    "St. Mary's Medical Center",
+    "Kaiser San Francisco",
+    "Zuckerberg San Francisco General",
+  ];
+
+  const PROVIDER_LONG_NOTE = `Location: confirmed
+Accepting new patients: see location row
+In network: CalPERS PPO Basic Plan
+Next available appointment: Provider will call the patient once intake has been completed
+Referral/Records required to book: no
+
+Spoke with: Front desk
+Other services: Patient completes intake online before the first visit
+Timestamp: 8/21/18 KS`;
+
+  const MEMBER_COVERAGE_PLANS = ["PPO Plan", "PPO COBRA", "gHIP Plan", "gHIP Plan COBRA"];
+
+  function providerOverview(provider) {
+    const profile = PROVIDER_PROFILE[provider.id] || {
+      gender: "Female",
+      school: "UCSF School of Medicine",
+      npi: "1000000000",
+      rich: false,
+    };
+    const conditions = CONDITIONS_BY_SPECIALTY[provider.specialty] || ["General care"];
+    const services = SERVICES_BY_SPECIALTY[provider.specialty] || ["Office visits"];
+    const website = providerWebsite(provider);
+    const primary = {
+      name: provider.group,
+      address: provider.address,
+      acceptingNewPatients: Boolean(provider.acceptingNewPatients),
+      thirdPartyScheduling: null,
+      nextAppointment: null,
+      telemedicine: !profile.rich,
+      requiredReferral: /surgery/i.test(provider.specialty),
+      requiresRecords: false,
+      distanceMiles: provider.distanceMiles,
+      networkStatus: provider.inNetwork ? "In network" : "No network status data available",
+      phone: provider.phone,
+      fax: providerFaxFromPhone(provider.phone),
+      website,
+      notes: profile.rich ? PROVIDER_LONG_NOTE : "",
+    };
+    const locations = [primary];
+    if (profile.rich || provider.id === "p1") {
+      locations.push({
+        name: "Mission Bay Campus",
+        address: "1825 Fourth St, San Francisco, CA 94158",
+        acceptingNewPatients: false,
+        thirdPartyScheduling: null,
+        nextAppointment: null,
+        telemedicine: true,
+        requiredReferral: primary.requiredReferral,
+        requiresRecords: false,
+        distanceMiles: Math.round((Number(provider.distanceMiles) + 1.4) * 10) / 10,
+        networkStatus: primary.networkStatus,
+        phone: "(415) 555-0190",
+        fax: "(415) 555-0191",
+        website,
+        notes: "",
+      });
+    }
+    return {
+      gender: profile.gender,
+      npi: profile.npi,
+      studiedAt: profile.school,
+      specialties: profile.rich
+        ? [provider.specialty, "Consultative care", "Second opinions", "Care coordination"]
+        : [provider.specialty],
+      conditions: conditions.slice(0, profile.rich ? conditions.length : 2),
+      services: services.slice(0, profile.rich ? services.length : 2),
+      affiliations: PROVIDER_AFFILIATIONS.slice(0, profile.rich ? PROVIDER_AFFILIATIONS.length : 2),
+      locations,
+    };
+  }
+
+  function providerYesNoHtml(value) {
+    if (value == null) return "—";
+    const yes = Boolean(value);
+    const mark = yes
+      ? `<span class="provider-yn-mark" aria-hidden="true">${icon.checkCircle}</span>`
+      : `<span class="provider-yn-mark" aria-hidden="true">×</span>`;
+    return `<span class="provider-yn provider-yn--${yes ? "yes" : "no"}">${mark}${yes ? "Yes" : "No"}</span>`;
+  }
+
+  function providerTelLink(phone) {
+    const href = `tel:${String(phone).replace(/[^\d+]/g, "")}`;
+    return `<a class="provider-overview-phone" href="${escapeAttr(href)}">${escapeAttr(phone)}</a>`;
+  }
+
+  function providerWebsiteLink(url) {
+    const label = String(url).replace(/^https?:\/\//, "");
+    return `<a class="benefit-resource-link" href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${escapeAttr(label)}<span aria-hidden="true">${icon.arrowTopRight}</span></a>`;
+  }
+
+  function providerOverviewRow(label, content, multiline = false) {
+    return `<div class="list-item${multiline ? " is-multiline" : ""}"><dt>${escapeAttr(label)}</dt><dd>${content}</dd></div>`;
+  }
+
+  function providerClampValueHtml(key, lines) {
+    const text = Array.isArray(lines) ? lines.filter(Boolean).join("\n") : String(lines || "");
+    if (!text.trim()) return "—";
+    const expanded = providerOverviewExpanded.has(key);
+    const body = escapeAttr(text).replace(/\n/g, "<br>");
+    return `
+      <div class="provider-overview-value">
+        <div class="provider-overview-clamp${expanded ? " is-expanded" : ""}" data-provider-clamp="${escapeAttr(key)}">${body}</div>
+        <button class="notes-show-more" type="button" data-provider-more="${escapeAttr(key)}" aria-expanded="${expanded}"${expanded ? "" : " hidden"}>
+          <span class="notes-show-more-label">${expanded ? "Show less" : "Show more"}</span>
+          <span class="notes-show-more-chevron" aria-hidden="true">${expanded ? icon.up : icon.chevron}</span>
+        </button>
+      </div>`;
+  }
+
+  function providerLocationCardHtml(location, index) {
+    const next = location.nextAppointment ? escapeAttr(location.nextAppointment) : "—";
+    return `
+      <p class="provider-location-name">${escapeAttr(location.name)}</p>
+      <p class="provider-location-address">${escapeAttr(location.address)}</p>
+      <div class="provider-location-rows">
+        ${providerOverviewRow("Accepting new patients", providerYesNoHtml(location.acceptingNewPatients))}
+        ${providerOverviewRow("Allows third-party scheduling", providerYesNoHtml(location.thirdPartyScheduling))}
+        ${providerOverviewRow("Next appointment", next)}
+        ${providerOverviewRow("Telemedicine available", providerYesNoHtml(location.telemedicine))}
+        ${providerOverviewRow("Required referral", providerYesNoHtml(location.requiredReferral))}
+        ${providerOverviewRow("Requires records", providerYesNoHtml(location.requiresRecords))}
+        ${providerOverviewRow("Distance", escapeAttr(providerMilesAwayLabel(location.distanceMiles)))}
+        ${providerOverviewRow("Network status", escapeAttr(location.networkStatus || "No network status data available"))}
+        ${providerOverviewRow("Phone", providerTelLink(location.phone))}
+        ${providerOverviewRow("Fax", providerTelLink(location.fax))}
+        ${providerOverviewRow("Website", providerWebsiteLink(location.website))}
+        ${providerOverviewRow("Notes", providerClampValueHtml(`notes-${index}`, location.notes), true)}
+      </div>`;
+  }
+
+  function openProviderOverview(id) {
+    if (!MOCK_PROVIDERS.some((provider) => provider.id === id)) return;
+    providerOverviewExpanded.clear();
+    providerSearchState.view = "overview";
+    providerSearchState.overviewId = id;
+    providerSearchState.locationIndex = 0;
+    render("provider-search");
+  }
+
+  function toggleProviderOverviewClamp(btn) {
+    const key = btn.dataset.providerMore;
+    const clamp = btn.parentElement?.querySelector(`[data-provider-clamp="${CSS.escape(key)}"]`);
+    const label = btn.querySelector(".notes-show-more-label");
+    const chevron = btn.querySelector(".notes-show-more-chevron");
+    if (!key || !clamp || !label || !chevron) return;
+    const expanded = !providerOverviewExpanded.has(key);
+    if (expanded) providerOverviewExpanded.add(key);
+    else providerOverviewExpanded.delete(key);
+    clamp.classList.toggle("is-expanded", expanded);
+    btn.hidden = false;
+    btn.setAttribute("aria-expanded", String(expanded));
+    label.textContent = expanded ? "Show less" : "Show more";
+    chevron.innerHTML = expanded ? icon.up : icon.chevron;
+  }
+
+  function bindProviderOverviewClamps(root) {
+    root.querySelectorAll("[data-provider-more]").forEach((btn) => {
+      btn.addEventListener("click", () => toggleProviderOverviewClamp(btn));
+    });
+  }
+
+  function syncProviderOverviewClamps(root = stage) {
+    root.querySelectorAll("[data-provider-clamp]").forEach((clamp) => {
+      const key = clamp.dataset.providerClamp;
+      const toggle = clamp.parentElement?.querySelector(`[data-provider-more="${CSS.escape(key)}"]`);
+      if (!toggle) return;
+      if (clamp.classList.contains("is-expanded")) {
+        toggle.hidden = false;
+        return;
+      }
+      toggle.hidden = clamp.scrollHeight <= clamp.clientHeight + 1;
+    });
+  }
+
+  function shiftProviderLocation(delta) {
+    const provider = MOCK_PROVIDERS.find((item) => item.id === providerSearchState.overviewId);
+    if (!provider) return;
+    const locations = providerOverview(provider).locations;
+    const count = locations.length;
+    if (count < 2) return;
+    providerSearchState.locationIndex = (providerSearchState.locationIndex + delta + count) % count;
+    const card = stage.querySelector("[data-provider-location-card]");
+    if (!card) return;
+    const index = providerSearchState.locationIndex;
+    card.innerHTML = providerLocationCardHtml(locations[index], index);
+    bindProviderOverviewClamps(card);
+    requestAnimationFrame(() => syncProviderOverviewClamps(card));
+  }
+
+  function bindProviderOverviewActions(content) {
+    content.querySelector("[data-provider-overview-back]")?.addEventListener("click", () => {
+      providerSearchState.view = "results";
+      providerSearchState.overviewId = null;
+      providerSearchState.locationIndex = 0;
+      providerOverviewExpanded.clear();
+      render("provider-search");
+    });
+    content.querySelector("[data-provider-location-prev]")?.addEventListener("click", () => shiftProviderLocation(-1));
+    content.querySelector("[data-provider-location-next]")?.addEventListener("click", () => shiftProviderLocation(1));
+    bindProviderOverviewClamps(content);
+    bindProviderResultCardActions(content);
+    requestAnimationFrame(() => syncProviderOverviewClamps(content));
+  }
+
+  function providerOverviewTemplate() {
+    const provider = MOCK_PROVIDERS.find((item) => item.id === providerSearchState.overviewId);
+    if (!provider) {
+      providerSearchState.view = "results";
+      providerSearchState.overviewId = null;
+      return null;
+    }
+    const overview = providerOverview(provider);
+    const count = overview.locations.length;
+    const index = Math.min(providerSearchState.locationIndex, count - 1);
+    providerSearchState.locationIndex = index;
+    const locationNav =
+      count > 1
+        ? `<div class="provider-location-nav">
+            <button class="icon-button" type="button" data-provider-location-prev aria-label="Previous location">${icon.chevronLeft}</button>
+            <button class="icon-button provider-location-next" type="button" data-provider-location-next aria-label="Next location">${icon.chevronLeft}</button>
+          </div>`
+        : "";
+    const inNetworkCount = MEMBER_COVERAGE_PLANS.length;
+    const planRows = MEMBER_COVERAGE_PLANS.map((name) =>
+      providerOverviewRow(
+        name,
+        `<span class="provider-yn provider-yn--yes"><span class="provider-yn-mark" aria-hidden="true">${icon.checkCircle}</span>In Network</span>`
+      )
+    ).join("");
+    return `
+    <article class="panel-content" data-content="provider-search">
+      <header class="panel-header panel-header--detail">
+        <div class="panel-title-stack with-back">
+          <button class="icon-button panel-back" type="button" data-provider-overview-back aria-label="Back">${icon.chevronLeft}</button>
+          <h2>Provider Overview</h2>
+        </div>
+        <button class="icon-button panel-close" type="button" aria-label="Close Provider Lookup">${icon.close}</button>
+      </header>
+      <div class="panel-scroll provider-overview">
+        <div class="provider-overview-identity">
+          <h3 class="provider-overview-name">${escapeAttr(provider.name)}</h3>
+          <button type="button" class="provider-card-copy" data-provider-copy="${escapeAttr(provider.id)}" aria-label="Copy ${escapeAttr(provider.name)}">${icon.copy}</button>
+        </div>
+        <h3 class="benefit-detail-section provider-overview-section">Provider Information</h3>
+        <div class="provider-overview-fields">
+          ${providerOverviewRow("Specialties", providerClampValueHtml("specialties", overview.specialties), true)}
+          ${providerOverviewRow("Conditions treated", providerClampValueHtml("conditions", overview.conditions), true)}
+          ${providerOverviewRow("Services offered", providerClampValueHtml("services", overview.services), true)}
+          ${providerOverviewRow("Gender", escapeAttr(overview.gender))}
+          ${providerOverviewRow("Provider NPI", escapeAttr(overview.npi))}
+          ${providerOverviewRow("Studied at", escapeAttr(overview.studiedAt))}
+          ${providerOverviewRow("Hospital affiliations", providerClampValueHtml("affiliations", overview.affiliations), true)}
+        </div>
+        <div class="provider-overview-section-head">
+          <h3 class="benefit-detail-section">Locations (${count})</h3>
+          ${locationNav}
+        </div>
+        <article class="provider-location-card" data-provider-location-card>
+          ${providerLocationCardHtml(overview.locations[index], index)}
+        </article>
+        <h3 class="benefit-detail-section">Member's Insurance Coverage (${inNetworkCount})</h3>
+        <section class="accordion provider-coverage" data-section="provider-coverage">
+          <div class="accordion-header-row">
+            <button class="accordion-toggle" type="button" aria-expanded="false">
+              <span class="accordion-chevron" aria-hidden="true">${icon.chevron}</span>
+              <span class="provider-coverage-heading">
+                <span class="provider-coverage-plan">${escapeAttr(memberAccount.plan)}</span>
+                <span class="provider-coverage-count">${inNetworkCount} In Network</span>
+              </span>
+            </button>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <div class="accordion-body-pad">
+                <div class="provider-overview-fields">${planRows}</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      ${taskListHtml()}
+    </article>`;
+  }
+
   function providerSearchTemplate() {
+    if (providerSearchState.view === "overview") {
+      const overview = providerOverviewTemplate();
+      if (overview) return overview;
+    }
     const s = providerSearchState;
     return `
     <article class="panel-content" data-content="provider-search">
@@ -6074,6 +6807,10 @@
   function bindProviderSearchPanelActions() {
     const content = stage.querySelector('.panel-content[data-content="provider-search"]');
     if (!content) return;
+    if (providerSearchState.view === "overview") {
+      bindProviderOverviewActions(content);
+      return;
+    }
 
     bindInlineSelects();
 
@@ -6113,6 +6850,7 @@
     content.querySelector("[data-provider-clear]")?.addEventListener("click", () => {
       clearTimeout(providerResultsLoaderTimer);
       providerSearchState = providerSearchDefaults();
+      providerOverviewExpanded.clear();
       render("provider-search", { skipEnter: true });
     });
 
@@ -6216,6 +6954,10 @@
       clearTimeout(transitionTimer);
       clearTimeout(loaderTimer);
       panelOpen = false;
+      providerSearchState.view = "results";
+      providerSearchState.overviewId = null;
+      providerSearchState.locationIndex = 0;
+      providerOverviewExpanded.clear();
       panel.classList.add("is-collapsed");
       panel.setAttribute("aria-hidden", "true");
       panel.inert = true;
@@ -6369,10 +7111,11 @@
     modalFooter.hidden = !footer;
     modal.dataset.dismissible = String(dismissible);
     /* Apply size variant before fade-up so width doesn't jump mid-transition */
-    dialog?.classList.remove("modal--care-team", "modal--enrollment", "modal--confirm");
+    dialog?.classList.remove("modal--care-team", "modal--enrollment", "modal--confirm", "modal--provider-send");
     if (variant === "care-team") dialog?.classList.add("modal--care-team");
     else if (variant === "enrollment") dialog?.classList.add("modal--enrollment");
     else if (variant === "confirm") dialog?.classList.add("modal--confirm");
+    else if (variant === "provider-send") dialog?.classList.add("modal--provider-send");
 
     if (alreadyOpen) {
       /*
@@ -6413,7 +7156,7 @@
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     modal.dataset.dismissible = "true";
-    document.querySelector(".modal")?.classList.remove("modal--care-team", "modal--enrollment", "modal--confirm", "is-content-swap");
+    document.querySelector(".modal")?.classList.remove("modal--care-team", "modal--enrollment", "modal--confirm", "modal--provider-send", "is-content-swap");
     /* Dismiss without Done discards manage draft */
     careTeamDraft = null;
     careTeamSearchQuery = "";
@@ -6510,6 +7253,7 @@
     if (!t.closest(".inline-select") && !t.closest(".select-menu")) closeInlineSelects();
     if (!t.closest(".inline-dob-wrap")) closeInlineDobCalendars();
     if (!t.closest(".mode-switcher-wrap")) closeModeSwitcherMenu();
+    if (!t.closest(".status-switcher-wrap")) closeStatusMenu();
   }
 
   function bindPanelActions() {
@@ -7091,6 +7835,7 @@
         careTeamSearchOpen = false;
         openCareTeamMenuId = null;
         refreshCareTeamManageModal();
+        showToast(`${candidate.name} added`);
       });
     });
     document.querySelectorAll("[data-ct-menu]").forEach((btn) => {
@@ -7438,6 +8183,7 @@
 
   function openModeSwitcherMenu() {
     if (!modeSwitcherMenu || !modeSwitcherButton) return;
+    closeStatusMenu();
     modeSwitcherMenu.hidden = false;
     modeSwitcherButton.setAttribute("aria-expanded", "true");
   }
@@ -7463,6 +8209,189 @@
     opt.addEventListener("click", () => {
       applyColorMode(opt.dataset.mode || "system");
       closeModeSwitcherMenu();
+    });
+  });
+
+  const STATUS_OPTIONS = [
+    { id: "available", label: "Available" },
+    { id: "meeting", label: "Meeting" },
+    { id: "break", label: "Break" },
+    { id: "meal", label: "Meal" },
+    { id: "away", label: "Away from Desk" },
+    { id: "unavailable", label: "Unavailable" },
+  ];
+  const STATUS_SEED_SECONDS = 12 * 60 + 32;
+  const STATUS_CONNECT_MS = 700;
+  const statusSwitcher = document.getElementById("status-switcher");
+  const statusButton = document.getElementById("status-switcher-button");
+  const statusMenu = document.getElementById("status-switcher-menu");
+  const statusOptions = statusMenu
+    ? [...statusMenu.querySelectorAll(".status-switcher-option")]
+    : [];
+  const statusLabel = statusSwitcher?.querySelector("[data-status-label]");
+  const statusTime = statusSwitcher?.querySelector("[data-status-time]");
+  const statusSignal = statusSwitcher?.querySelector("[data-status-signal]");
+  const statusLive = statusSwitcher?.querySelector("[data-status-live]");
+  const statusTip = document.getElementById("status-switcher-tip");
+  const STATUS_TIP_CONNECTING = "Updating your status.";
+  const STATUS_TIP_REFUSED = "The system set you to unavailable. Switch back to Available when you are ready to take new tasks.";
+  let statusId = "available";
+  let statusSeconds = STATUS_SEED_SECONDS;
+  let statusConnecting = false;
+  let statusRefused = new URLSearchParams(location.search).get("status") === "refused";
+  let statusConnectTimer = 0;
+  let statusAnnounce = false;
+
+  function formatStatusTime(total) {
+    const seconds = Math.max(0, Math.floor(total));
+    const mm = Math.floor(seconds / 60);
+    const ss = seconds % 60;
+    return `${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
+  }
+
+  function statusOptionById(id) {
+    return STATUS_OPTIONS.find((item) => item.id === id) || STATUS_OPTIONS[0];
+  }
+
+  function syncStatusTip() {
+    if (!statusTip || !statusButton) return;
+    if (statusConnecting) {
+      statusTip.textContent = STATUS_TIP_CONNECTING;
+      statusButton.setAttribute("aria-describedby", "status-switcher-tip");
+      return;
+    }
+    if (statusRefused) {
+      statusTip.textContent = STATUS_TIP_REFUSED;
+      statusButton.setAttribute("aria-describedby", "status-switcher-tip");
+      return;
+    }
+    statusTip.textContent = "";
+    statusButton.removeAttribute("aria-describedby");
+  }
+
+  function paintStatusTrigger() {
+    const option = statusOptionById(statusId);
+    if (statusSignal) statusSignal.className = `status-signal status-signal--${option.id}`;
+    statusSwitcher?.classList.toggle("is-connecting", statusConnecting);
+    statusSwitcher?.classList.toggle("is-refused", statusRefused && !statusConnecting);
+    syncStatusTip();
+    if (!statusButton) return;
+    if (statusConnecting) {
+      statusButton.setAttribute("aria-busy", "true");
+      statusButton.setAttribute("aria-disabled", "true");
+      statusButton.setAttribute("aria-expanded", "false");
+      if (statusLabel) statusLabel.textContent = "Connecting";
+      statusButton.setAttribute("aria-label", "Status: Connecting");
+      return;
+    }
+    statusButton.removeAttribute("aria-busy");
+    statusButton.removeAttribute("aria-disabled");
+    if (statusTime) statusTime.textContent = formatStatusTime(statusSeconds);
+    if (statusRefused) {
+      if (statusLabel) statusLabel.textContent = "Refused";
+      statusButton.setAttribute("aria-label", "Status: Refused");
+      return;
+    }
+    if (statusLabel) statusLabel.textContent = option.label;
+    statusButton.setAttribute("aria-label", `Status: ${option.label}`);
+  }
+
+  function announceStatus(text) {
+    if (!statusAnnounce || !statusLive) return;
+    statusLive.textContent = "";
+    statusLive.textContent = text;
+  }
+
+  function syncStatusChecks() {
+    statusOptions.forEach((opt) => {
+      const selected = !statusRefused && opt.dataset.status === statusId;
+      opt.setAttribute("aria-selected", selected ? "true" : "false");
+      opt.setAttribute("aria-checked", selected ? "true" : "false");
+    });
+  }
+
+  function closeStatusMenu({ restoreFocus = false } = {}) {
+    if (statusMenu && !statusMenu.hidden) {
+      statusMenu.hidden = true;
+      statusButton?.setAttribute("aria-expanded", "false");
+    }
+    if (restoreFocus) statusButton?.focus();
+  }
+
+  function openStatusMenu({ focusOption = false } = {}) {
+    if (!statusMenu || !statusButton || statusConnecting) return;
+    closeModeSwitcherMenu();
+    statusMenu.hidden = false;
+    statusButton.setAttribute("aria-expanded", "true");
+    if (!focusOption) return;
+    const selected =
+      statusOptions.find((opt) => opt.getAttribute("aria-selected") === "true") ||
+      statusOptions[0];
+    selected?.focus();
+  }
+
+  function beginStatusConnecting() {
+    statusConnecting = true;
+    window.clearTimeout(statusConnectTimer);
+    closeStatusMenu();
+    paintStatusTrigger();
+    announceStatus("Connecting");
+    statusConnectTimer = window.setTimeout(() => {
+      statusConnecting = false;
+      statusSeconds = 0;
+      paintStatusTrigger();
+      announceStatus(statusOptionById(statusId).label);
+    }, STATUS_CONNECT_MS);
+  }
+
+  function selectStatus(nextId) {
+    statusRefused = false;
+    statusId = statusOptionById(nextId).id;
+    syncStatusChecks();
+    beginStatusConnecting();
+    statusButton?.focus();
+  }
+
+  if (statusRefused) syncStatusChecks();
+
+  paintStatusTrigger();
+  statusAnnounce = true;
+  window.setInterval(() => {
+    if (statusConnecting) return;
+    statusSeconds += 1;
+    if (statusTime) statusTime.textContent = formatStatusTime(statusSeconds);
+  }, 1000);
+
+  statusButton?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    if (statusConnecting || !statusMenu) return;
+    if (statusMenu.hidden) openStatusMenu();
+    else closeStatusMenu();
+  });
+
+  statusSwitcher?.addEventListener("keydown", (event) => {
+    if (statusConnecting || !statusOptions.length) return;
+    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+    event.preventDefault();
+    const open = statusMenu && !statusMenu.hidden;
+    if (!open) {
+      openStatusMenu({ focusOption: event.key === "ArrowDown" });
+      if (event.key === "ArrowUp") statusOptions[statusOptions.length - 1]?.focus();
+      return;
+    }
+    const current = statusOptions.findIndex((opt) => opt === document.activeElement);
+    const selected = statusOptions.findIndex((opt) => opt.getAttribute("aria-selected") === "true");
+    const start = current >= 0 ? current : Math.max(selected, 0);
+    const next =
+      event.key === "ArrowDown"
+        ? (start + 1) % statusOptions.length
+        : (start - 1 + statusOptions.length) % statusOptions.length;
+    statusOptions[next]?.focus();
+  });
+
+  statusOptions.forEach((opt) => {
+    opt.addEventListener("click", () => {
+      selectStatus(opt.dataset.status || "available");
     });
   });
 
@@ -7591,6 +8520,10 @@
     if (event.key === "Escape") {
       if (isNavDrawerOpen()) {
         closeNavDrawer();
+        return;
+      }
+      if (statusMenu && !statusMenu.hidden) {
+        closeStatusMenu({ restoreFocus: true });
         return;
       }
       if (modeSwitcherMenu && !modeSwitcherMenu.hidden) {

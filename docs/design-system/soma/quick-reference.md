@@ -79,7 +79,7 @@ Full rules: `component-notes.md` · token tables: `token-rules.md`.
 
 ## Theme Menu
 
-- **Deliberate exception:** **Menu / Popup** chrome + **Select / Item** rows (leading icon + trailing check) — System · Light · Dark. Not RadioItem; not a form Select / Field / Trigger. Icons: desktop · sun · moon. See `component-notes.md`.
+- **Deliberate exception:** **Menu / Popup** chrome + **Select / Item** rows (leading icon + trailing check) — System · Light · Dark. Not RadioItem; not a form Select / Field / Trigger. Icons: light.mode · sun · moon (System = hybrid). Nav **IconButton / Theme** matches saved preference, not OS theme. See `component-notes.md`.
 
 ## Menu / Panel
 
@@ -90,6 +90,7 @@ Full rules: `component-notes.md` · token tables: `token-rules.md`.
 - **Menu / RadioItem** — exclusive choice inside a menu (Sort by, Density).
 - **Theme Menu** — exception: Menu popup + Select / Item (icon + check), not RadioItem.
 - **Select / Popup** — exclusive choice as a form/filter field (Assignee, etc.). Both stay; different jobs. Select / Item check = `check.bold` xs bold, `icon/brand`. Item labels = **subtitle2** (Medium), matching Menu. **body1** stays Regular for prose. See `component-notes.md`.
+- **Select composition:** Form rows (**Select / Field**) — label above, Trigger = value only (e.g. Search by → `Name`). Compact toolbars (no label row) — Trigger = `{Facet}: {value}` (e.g. Activity `Status: All`); facet **`text/tertiary`**, value **`text/primary`**. Activity Status·Type are **multi-select** (**Select / Multi Item** checkboxes; empty = All; `First +N` when multiple); filtered summary stays **`text/primary`**, not brand. Exclusive toolbars still use Select / Item. See `component-notes.md` → Select.
 
 ## Tables
 

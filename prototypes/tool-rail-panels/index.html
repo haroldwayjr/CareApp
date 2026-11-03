@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=ct-done-medium-1" />
+    <link rel="stylesheet" href="styles.css?v=status-align-1" />
   </head>
   <body>
     <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
@@ -42,6 +42,100 @@
         </nav>
       </div>
       <div class="header-actions">
+        <div class="status-switcher-wrap" id="status-switcher">
+          <button
+            class="status-switcher-trigger"
+            type="button"
+            id="status-switcher-button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-controls="status-switcher-menu"
+            aria-label="Status: Available"
+          >
+            <span class="status-switcher-face">
+              <span class="status-switcher-mark">
+                <span class="status-signal status-signal--available" data-status-signal aria-hidden="true"></span>
+                <span class="status-switcher-spinner" data-status-spinner aria-hidden="true"></span>
+                <svg class="status-switcher-warning" viewBox="0 0 24 24" aria-hidden="true">
+                  <path class="warning-shape" d="M12 2.8 1.6 21.2h20.8L12 2.8Z"/>
+                  <path class="warning-mark" d="M12 9.2v5.2"/>
+                  <circle class="warning-dot" cx="12" cy="17.4" r="1.15"/>
+                </svg>
+              </span>
+              <span class="status-switcher-label" data-status-label>Available</span>
+              <span class="status-switcher-timer type-caption" data-status-timer>
+                <svg class="status-switcher-clock" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.25"/>
+                  <path d="M12 7.75V12l3 2"/>
+                </svg>
+                <span data-status-time>12:32</span>
+              </span>
+              <svg class="status-switcher-chevron" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/>
+              </svg>
+            </span>
+            <span class="status-switcher-sizer" aria-hidden="true">
+              <span class="status-switcher-mark"></span>
+              <span class="status-switcher-label">Away from Desk</span>
+              <span class="status-switcher-timer type-caption">
+                <svg class="status-switcher-clock" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.25"/>
+                  <path d="M12 7.75V12l3 2"/>
+                </svg>
+                <span>00:00</span>
+              </span>
+              <svg class="status-switcher-chevron" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/>
+              </svg>
+            </span>
+          </button>
+          <div class="status-switcher-tip" id="status-switcher-tip" role="tooltip"></div>
+          <div class="status-switcher-menu" id="status-switcher-menu" role="listbox" aria-label="Status" hidden>
+            <button type="button" role="option" class="status-switcher-option" data-status="available" aria-selected="true" aria-checked="true">
+              <span class="status-signal status-signal--available" aria-hidden="true"></span>
+              <span class="status-switcher-option-label">Available</span>
+              <span class="status-switcher-check" aria-hidden="true">
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            <button type="button" role="option" class="status-switcher-option" data-status="meeting" aria-selected="false" aria-checked="false">
+              <span class="status-signal status-signal--meeting" aria-hidden="true"></span>
+              <span class="status-switcher-option-label">Meeting</span>
+              <span class="status-switcher-check" aria-hidden="true">
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            <button type="button" role="option" class="status-switcher-option" data-status="break" aria-selected="false" aria-checked="false">
+              <span class="status-signal status-signal--break" aria-hidden="true"></span>
+              <span class="status-switcher-option-label">Break</span>
+              <span class="status-switcher-check" aria-hidden="true">
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            <button type="button" role="option" class="status-switcher-option" data-status="meal" aria-selected="false" aria-checked="false">
+              <span class="status-signal status-signal--meal" aria-hidden="true"></span>
+              <span class="status-switcher-option-label">Meal</span>
+              <span class="status-switcher-check" aria-hidden="true">
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            <button type="button" role="option" class="status-switcher-option" data-status="away" aria-selected="false" aria-checked="false">
+              <span class="status-signal status-signal--away" aria-hidden="true"></span>
+              <span class="status-switcher-option-label">Away from Desk</span>
+              <span class="status-switcher-check" aria-hidden="true">
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            <button type="button" role="option" class="status-switcher-option" data-status="unavailable" aria-selected="false" aria-checked="false">
+              <span class="status-signal status-signal--unavailable" aria-hidden="true"></span>
+              <span class="status-switcher-option-label">Unavailable</span>
+              <span class="status-switcher-check" aria-hidden="true">
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+          </div>
+          <span class="visually-hidden" data-status-live aria-live="polite"></span>
+        </div>
         <div class="mode-switcher-wrap">
           <button
             class="icon-button mode-switcher-button"
@@ -403,6 +497,6 @@
     </div>
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
     <script src="chat-engine.js?v=mode-trigger-1"></script>
-    <script src="app.js?v=ct-done-medium-1"></script>
+    <script src="app.js?v=provider-overview-1"></script>
   </body>
 </html>

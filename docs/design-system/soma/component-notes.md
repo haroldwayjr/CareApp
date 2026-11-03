@@ -302,16 +302,17 @@ Ramp notes below document the Colors page. **Do not bind these primitives on com
 ## Theme Menu
 
 - **Deliberate exception** — not Menu / RadioItem. Still **Menu / Popup** chrome (same popup as Sort by / Density); rows are **Select / Item** with **leading icon + trailing check** (not radio).
-- **Trigger:** App Shell **IconButton / Theme** (`icon/misc/light.mode`, sm outline, `icon/tertiary`) — left of notifications. Opens the menu; not a binary toggle. **Not** a form **Select / Field / Trigger** — ephemeral UI preference only.
+- **Trigger:** App Shell **IconButton / Theme** (sm outline, `icon/tertiary`) — left of notifications. Glyph follows **saved preference** (not resolved OS appearance): System → `icon/misc/light.mode`; Light → `icon/misc/sun`; Dark → `icon/misc/moon`. Opens the menu; not a binary toggle. **Not** a form **Select / Field / Trigger** — ephemeral UI preference only.
 - **Preference (exclusive):** **System** (auto / OS) · **Light** · **Dark**. Default **System**. Structure unchanged: System → Separator → GroupLabel `Mode` → Light · Dark.
-- **Leading icons:** System → `icon/misc/desktop`; Light → `icon/misc/sun`; Dark → `icon/misc/moon`. Trailing check = Select / Item recipe (`icon/actions/check.bold` xs bold, `icon/brand`).
+- **Leading icons:** System → `icon/misc/light.mode` (hybrid sun/moon; do not use `icon/misc/desktop` on Theme Menu rows); Light → `icon/misc/sun`; Dark → `icon/misc/moon`. Trailing check = Select / Item recipe (`icon/actions/check.bold` xs bold, `icon/brand`).
 - **Published composition:** `Theme Menu / Panel` on App components — convenience wrapper for App Shell demos; do not invent parallel row components.
 - **Also documented on** Dropdowns → Assembled menus: Theme · Select / Item panel (icon + check exception).
 - **Account menu slot:** `Menu / Item` with trailing value + chevron (`Theme` / `System`) drills into this panel as a submenu — do not put a Select field in the account list.
 - **Sort by / Density** stay on **Menu / RadioItem** (`Menu.RadioGroup`) — radio + icon too busy for Theme; RadioItem has no leading-icon slot.
-- Figma: [Theme Menu · Pattern](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=3180-26743) · [Dropdowns](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=267-3472).
+- Figma: [Theme Menu · Pattern](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=3180-1373) · [Dropdowns](https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=267-3472).
 
 **Changed 2026-09-03:** Theme Menu switched to Select / Item (leading icon + trailing check); RadioItem recipe retired for Theme only.
+**Changed 2026-10-23:** System row + nav trigger use `icon/misc/light.mode`; trigger icon reflects saved preference (light.mode · sun · moon), not OS-resolved theme; `icon/misc/desktop` retired for Theme Menu.
 
 ## Menu vs Select (exclusive choice)
 
@@ -337,11 +338,35 @@ Not a conflict — different jobs. Keep both.
 - Matches Menu / CheckboxItem indicator weight (xs bold), not Regular outline Check 1.
 - **Select / Trigger** trailing chevron: library chevron **Size=sm**, ink **`icon/tertiary`** — not Size=xs, not `icon/default`.
 
+### Select / Field vs compact toolbar filters
+
+Same Select job (exclusive filter/form value + trailing check). Different composition by density:
+
+| Surface | Pattern | Trigger Value | Example |
+|---|---|---|---|
+| **Form / filter row** | **`Select / Field`** — Field label above, Trigger shows value only | Option text (`Name`, `All`) | Provider lookup **Search by** |
+| **Compact toolbar** (no label row) | **`Select / Trigger`** only — facet + value in one string | `{Facet}: {value}` (`Status: All`, `Type: Assessment +1`) | Care Plan toolbar filters (Figma) |
+| **Toolbar + Field label** | **`Select / Field`** — label above, Trigger value only | Option text (`All`, `Assessment +6`) | Activity panel Status · Type (tool-rail prototype) |
+
+- **Activity Status · Type** (Field label above + value-only Trigger): **multi-select** — **Select / Multi Item** with leading checkbox; empty selection = **All** (no “All” row). Trigger shows value only (`All`, `Assessment`, `Assessment +6`); **`aria-label`** keeps `Status: …` / `Type: …`. Both popups: scrollable options + footer **Reset** / **Select all**; **Type** adds search (Status does not).
+
+**Activity trigger ink:** Value → **`text/primary`** always (including when filtered / multi-selected) — not **`text/brand`**. Field labels use **`text/secondary`** (same as other Field labels).
+
+**Basis (2026-10-23):**
+- Value-only on the trigger matches **Select / Field** (Search by) when a visible Field label carries the facet.
+- Two adjacent toolbar Selects both defaulting to **All** lose facet identity if Value is option-only — users cannot tell Status from Type.
+- Prefixed Value (`Status: All`) keeps a single 32px trigger row (no taller label stack) while remaining Select / Item in the popup (not Menu / RadioItem).
+- Deliberate visual difference from Search by is OK: form density vs toolbar density — do not force label-above into toolbars, and do not put `Facet:` prefixes on Field triggers that already have labels.
+- Tertiary facet + primary/brand value keeps the prefix scannable without competing with the selection.
+
+**Do not:** use Menu / RadioItem for these filter fields; show bare `All` on both toolbar triggers; invent a separate “filter chip select” component.
+
 **Changed 2026-09-03:** Select item labels use subtitle2 (Medium) to match Menu list rows.
 **Fixed 2026-09-03:** Select / Item check was `check.bold` Size=xs Style=outline — switched to Style=bold.
 
 **Changed 2026-09-03:** Documented Menu RadioGroup vs Select popup rules; Theme called out as Select / Item (icon + check) exception.
 **Changed 2026-09-09:** Select / Trigger chevron is **Size=sm** + **`icon/tertiary`**.
+**Changed 2026-10-23:** Documented Select / Field vs compact toolbar filter composition (`Facet: value` on Trigger).
 
 ## Tables
 
@@ -515,7 +540,7 @@ Not a conflict — different jobs. Keep both.
 - **Shell recipe** (Member Profile pattern): App Shell → page header → member Nav tabs → Workspace = **Care Plan column (FILL)** + **Overview Card (340)** + **Tool rail (56)**. Overview on the **right**; tool rail far right — not production’s left Overview.
 - **Frames:**
   - `Page · Care Plan · Mock_green Mock_spinka` (`2919:1657`) — default / At a Glance + Problems.
-  - `Page · Care Plan · Activity · …` (`2941:25446`) — **Activity** active; Care Team View; info Alert; Status/Type filters; Jun expanded rows + May collapsed (strikethrough cancelled) + Pagination.
+  - `Page · Care Plan · Activity · …` (`2941:25446`) — **Activity** active; Care Team View; info Alert; Status/Type **Select / Trigger** filters (`Status: {value}` / `Type: {value}`, Select / Item checks — see Select toolbar recipe); Jun expanded rows + May collapsed (strikethrough cancelled) + Pagination.
   - `Page · Care Plan · Care Pathways · …` (`2942:28182`) — **Care Pathways** active; Filter count badge; recommendation Alert; **Maternity Multifetal Pregnancy** (Active) + **Maternity Standard Care** (Not Started) objective tables (no outer border).
   - Overlay variants: **Filters** (`2945:25445`) · **Add** modal (`2945:25753`) · **Status menu** on Active (`2945:26061`).
 - **Overview:** Member Information + Care Team from **Card** — no Overview panel master. Member fields = stacked **`ListItem` Compact / Single** (Primary = label, Trailing meta = value; optional Soft Success Badge or trailing `icon/actions/edit`). Not freehand field frames. Keep Card for panel chrome.
@@ -525,6 +550,8 @@ Not a conflict — different jobs. Keep both.
 
 **Changed 2026-09-09:** Overview Member Information field rows → `ListItem` Compact / Single (label + trailing value; Badge / edit).
 **Changed 2026-09-09:** Care Pathways interactive status → Chip Filled Small · Trailing=Chevron.
+**Changed 2026-10-23:** Activity Status/Type filters — compact toolbar Select (`Facet: value` on Trigger + Select / Item); not bare facet labels or Menu radios.
+**Changed 2026-10-27:** Activity Status/Type → multi-select (**Select / Multi Item** leading checkboxes); empty = All; Field labels + value-only triggers; Reset/Select all on both (Type + search); filtered trigger value **`text/primary`** (not brand).
 
 
 ## Profile Menu / StatusSelector

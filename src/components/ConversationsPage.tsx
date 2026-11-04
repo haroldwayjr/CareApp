@@ -3,6 +3,8 @@ import {
   useMemo,
   useRef,
   useState,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
   type ReactNode,
   type RefObject,
 } from 'react'
@@ -77,6 +79,122 @@ const soma = {
 } as const
 
 const panelShadow = '0px 1px 2px 0px rgba(0, 0, 0, 0.04)'
+
+/** Gutter between panels — also the resize hit target, so the cards stay 16px apart. */
+const PANEL_GUTTER = 16
+const THREADS_MIN = 240
+const THREADS_MAX = 520
+const THREADS_DEFAULT = 320
+const SIDE_MIN = 280
+const SIDE_MAX = 560
+const SIDE_DEFAULT = 360
+/** Preferred floor for the conversation column while a gutter is dragged. */
+const CENTER_MIN = 360
+const THREADS_WIDTH_KEY = 'care.conversations.threadsWidth'
+const SIDE_WIDTH_KEY = 'care.conversations.sideWidth'
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value))
+}
+
+function readStoredWidth(key: string, fallback: number, min: number, max: number) {
+  try {
+    const raw = window.localStorage.getItem(key)
+    if (raw == null || raw === '') return fallback
+    const stored = Number(raw)
+    if (!Number.isFinite(stored)) return fallback
+    return clamp(stored, min, max)
+  } catch {
+    return fallback
+  }
+}
+
+function PanelResizeHandle({
+  label,
+  value,
+  min,
+  max,
+  active,
+  visibleFrom,
+  onPointerDown,
+  onPointerMove,
+  onPointerUp,
+  onKeyDown,
+  onDoubleClick,
+}: {
+  label: string
+  value: number
+  min: number
+  max: number
+  active: boolean
+  visibleFrom: 'md' | 'lg'
+  onPointerDown: (event: ReactPointerEvent<HTMLDivElement>) => void
+  onPointerMove: (event: ReactPointerEvent<HTMLDivElement>) => void
+  onPointerUp: (event: ReactPointerEvent<HTMLDivElement>) => void
+  onKeyDown: (event: ReactKeyboardEvent<HTMLDivElement>) => void
+  onDoubleClick: () => void
+}) {
+  return (
+    <Box
+      role="separator"
+      aria-orientation="vertical"
+      aria-label={label}
+      aria-valuenow={Math.round(value)}
+      aria-valuemin={min}
+      aria-valuemax={max}
+      tabIndex={0}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
+      onDoubleClick={onDoubleClick}
+      onKeyDown={onKeyDown}
+      sx={{
+        display: { xs: 'none', [visibleFrom]: 'flex' },
+        flex: `0 0 ${PANEL_GUTTER}px`,
+        width: PANEL_GUTTER,
+        alignSelf: 'stretch',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'col-resize',
+        touchAction: 'none',
+        position: 'relative',
+        '&:focus-visible': {
+          outline: `2px solid ${soma.actionPrimary}`,
+          outlineOffset: -2,
+          borderRadius: soma.radiusSm,
+        },
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 12,
+          bottom: 12,
+          left: '50%',
+          width: 2,
+          transform: 'translateX(-50%)',
+          borderRadius: soma.radiusFull,
+          bgcolor: active ? soma.actionPrimary : 'transparent',
+          transition: 'background-color 120ms ease',
+        },
+        '&:hover::before, &:focus-visible::before': {
+          bgcolor: active ? soma.actionPrimary : soma.borderSubtle,
+        },
+      }}
+    >
+      <Box
+        aria-hidden
+        sx={{
+          width: 4,
+          height: 36,
+          borderRadius: soma.radiusFull,
+          bgcolor: active ? soma.actionPrimary : soma.iconTertiary,
+          position: 'relative',
+          zIndex: 1,
+        }}
+      />
+    </Box>
+  )
+}
 
 type ConversationsPageProps = {
   onPrototypeAction?: (message: string) => void
@@ -1031,8 +1149,9 @@ function TaskProgressPanel({
         borderRadius: soma.radius2xl,
         boxShadow: panelShadow,
         overflow: 'hidden',
-        display: { xs: 'none', lg: 'flex' },
+        display: 'flex',
         flexDirection: 'column',
+        height: '100%',
         pb: 2.5,
       }}
     >
@@ -1184,6 +1303,22 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
   const [selectedTime, setSelectedTime] = useState('')
   const threadEndRef = useRef<HTMLDivElement | null>(null)
   const staffCardRef = useRef<HTMLDivElement | null>(null)
+  const layoutRef = useRef<HTMLDivElement | null>(null)
+  const [threadsWidth, setThreadsWidth] = useState(() =>
+    readStoredWidth(THREADS_WIDTH_KEY, THREADS_DEFAULT, THREADS_MIN, THREADS_MAX),
+  )
+  const [sideWidth, setSideWidth] = useState(() =>
+    readStoredWidth(SIDE_WIDTH_KEY, SIDE_DEFAULT, SIDE_MIN, SIDE_MAX),
+  )
+  const [dragging, setDragging] = useState<'threads' | 'side' | null>(null)
+  const threadsWidthRef = useRef(threadsWidth)
+  const sideWidthRef = useRef(sideWidth)
+  const dragRef = useRef<{
+    which: 'threads' | 'side'
+    startX: number
+    startThreads: number
+    startSide: number
+  } | null>(null)
 
   const isDeniedClaimDemo = selectedId === 'denied-claim'
   const interaction = getDemoInteraction(demoStep)
@@ -1253,6 +1388,150 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
     }
   }
 
+  useEffect(() => {
+    threadsWidthRef.current = threadsWidth
+    sideWidthRef.current = sideWidth
+    try {
+      window.localStorage.setItem(THREADS_WIDTH_KEY, String(threadsWidth))
+      window.localStorage.setItem(SIDE_WIDTH_KEY, String(sideWidth))
+    } catch {
+      /* private mode — widths still work for this session */
+    }
+  }, [threadsWidth, sideWidth])
+
+  useEffect(() => {
+    function fitPanels() {
+      const total = layoutRef.current?.clientWidth ?? 0
+      if (!total || !window.matchMedia('(min-width:900px)').matches) return
+      const showSide = taskOpen && window.matchMedia('(min-width:1200px)').matches
+      const gutters = (showSide ? 2 : 1) * PANEL_GUTTER
+      const available = Math.max(0, total - gutters - CENTER_MIN)
+      let nextThreads = threadsWidthRef.current
+      let nextSide = sideWidthRef.current
+      if (!showSide) {
+        nextThreads = clamp(
+          nextThreads,
+          THREADS_MIN,
+          Math.min(THREADS_MAX, Math.max(THREADS_MIN, available)),
+        )
+      } else if (nextThreads + nextSide > available) {
+        const share = nextThreads / (nextThreads + nextSide)
+        nextThreads = clamp(Math.round(available * share), THREADS_MIN, THREADS_MAX)
+        nextSide = clamp(available - nextThreads, SIDE_MIN, SIDE_MAX)
+        if (nextThreads + nextSide > available) {
+          nextThreads = clamp(available - nextSide, THREADS_MIN, THREADS_MAX)
+        }
+      }
+      if (nextThreads !== threadsWidthRef.current) setThreadsWidth(nextThreads)
+      if (showSide && nextSide !== sideWidthRef.current) setSideWidth(nextSide)
+    }
+    fitPanels()
+    window.addEventListener('resize', fitPanels)
+    return () => window.removeEventListener('resize', fitPanels)
+  }, [taskOpen])
+
+  useEffect(() => {
+    if (!dragging) return
+    const previousCursor = document.body.style.cursor
+    const previousUserSelect = document.body.style.userSelect
+    document.body.style.cursor = 'col-resize'
+    document.body.style.userSelect = 'none'
+    return () => {
+      document.body.style.cursor = previousCursor
+      document.body.style.userSelect = previousUserSelect
+    }
+  }, [dragging])
+
+  function sidePanelVisible() {
+    return taskOpen && window.matchMedia('(min-width:1200px)').matches
+  }
+
+  function applyDrag(clientX: number) {
+    const drag = dragRef.current
+    const layout = layoutRef.current
+    if (!drag || !layout) return
+    const dx = clientX - drag.startX
+    const total = layout.clientWidth
+    const showSide = sidePanelVisible()
+    const gutters = (showSide ? 2 : 1) * PANEL_GUTTER
+    if (drag.which === 'threads') {
+      const reserved = (showSide ? drag.startSide : 0) + gutters + CENTER_MIN
+      const max = Math.min(THREADS_MAX, Math.max(THREADS_MIN, total - reserved))
+      setThreadsWidth(clamp(drag.startThreads + dx, THREADS_MIN, max))
+      return
+    }
+    const reserved = drag.startThreads + gutters + CENTER_MIN
+    const max = Math.min(SIDE_MAX, Math.max(SIDE_MIN, total - reserved))
+    setSideWidth(clamp(drag.startSide - dx, SIDE_MIN, max))
+  }
+
+  function beginResize(
+    which: 'threads' | 'side',
+    event: ReactPointerEvent<HTMLDivElement>,
+  ) {
+    if (event.button !== 0) return
+    event.preventDefault()
+    event.currentTarget.setPointerCapture(event.pointerId)
+    dragRef.current = {
+      which,
+      startX: event.clientX,
+      startThreads: threadsWidth,
+      startSide: sideWidth,
+    }
+    setDragging(which)
+  }
+
+  function moveResize(event: ReactPointerEvent<HTMLDivElement>) {
+    if (!dragRef.current) return
+    applyDrag(event.clientX)
+  }
+
+  function endResize(event: ReactPointerEvent<HTMLDivElement>) {
+    if (!dragRef.current) return
+    dragRef.current = null
+    setDragging(null)
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId)
+    }
+  }
+
+  function resizeLimits(which: 'threads' | 'side') {
+    const total = layoutRef.current?.clientWidth ?? 0
+    const showSide = sidePanelVisible()
+    const gutters = (showSide ? 2 : 1) * PANEL_GUTTER
+    if (which === 'threads') {
+      const reserved = (showSide ? sideWidth : 0) + gutters + CENTER_MIN
+      const max = Math.min(THREADS_MAX, Math.max(THREADS_MIN, total - reserved))
+      return { min: THREADS_MIN, max }
+    }
+    const reserved = threadsWidth + gutters + CENTER_MIN
+    const max = Math.min(SIDE_MAX, Math.max(SIDE_MIN, total - reserved))
+    return { min: SIDE_MIN, max }
+  }
+
+  function nudgeResize(
+    which: 'threads' | 'side',
+    event: ReactKeyboardEvent<HTMLDivElement>,
+  ) {
+    const step = event.shiftKey ? 32 : 16
+    const grow = event.key === 'ArrowRight' || event.key === 'ArrowUp'
+    const shrink = event.key === 'ArrowLeft' || event.key === 'ArrowDown'
+    if (!grow && !shrink && event.key !== 'Home' && event.key !== 'End') return
+    event.preventDefault()
+    const limits = resizeLimits(which)
+    const delta = which === 'threads' ? (grow ? step : -step) : grow ? -step : step
+    if (which === 'threads') {
+      if (event.key === 'Home') setThreadsWidth(limits.min)
+      else if (event.key === 'End') setThreadsWidth(limits.max)
+      else setThreadsWidth((current) => clamp(current + delta, limits.min, limits.max))
+      return
+    }
+    // The side gutter sits on the panel's left edge, so ArrowLeft widens it.
+    if (event.key === 'Home') setSideWidth(limits.min)
+    else if (event.key === 'End') setSideWidth(limits.max)
+    else setSideWidth((current) => clamp(current + delta, limits.min, limits.max))
+  }
+
   return (
     <Box
       sx={{
@@ -1312,18 +1591,13 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
       </Stack>
 
       <Box
+        ref={layoutRef}
         sx={{
           flex: 1,
           minHeight: 0,
-          display: 'grid',
-          gridTemplateColumns: {
-            xs: '1fr',
-            md: 'minmax(260px, 300px) minmax(0, 1fr)',
-            lg: taskOpen
-              ? 'minmax(280px, 320px) minmax(0, 1fr) minmax(300px, 360px)'
-              : 'minmax(280px, 320px) minmax(0, 1fr)',
-          },
-          gap: 2,
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: { xs: 2, md: 0 },
           alignItems: 'stretch',
         }}
       >
@@ -1339,6 +1613,8 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
             gap: 1,
             minHeight: 0,
             overflow: 'hidden',
+            width: { xs: '100%', md: threadsWidth },
+            flex: { xs: '1 1 auto', md: '0 0 auto' },
           }}
         >
           <Typography
@@ -1410,6 +1686,20 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
           </Stack>
         </Box>
 
+        <PanelResizeHandle
+          label="Resize threads panel"
+          value={threadsWidth}
+          min={THREADS_MIN}
+          max={THREADS_MAX}
+          active={dragging === 'threads'}
+          visibleFrom="md"
+          onPointerDown={(event) => beginResize('threads', event)}
+          onPointerMove={moveResize}
+          onPointerUp={endResize}
+          onKeyDown={(event) => nudgeResize('threads', event)}
+          onDoubleClick={() => setThreadsWidth(THREADS_DEFAULT)}
+        />
+
         <Box
           sx={{
             bgcolor: soma.surfaceDefault,
@@ -1422,6 +1712,7 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
             gap: 1.5,
             minHeight: 520,
             minWidth: 0,
+            flex: '1 1 auto',
             overflow: 'hidden',
           }}
         >
@@ -1621,12 +1912,38 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
           <Composer onAction={onPrototypeAction} />
         </Box>
 
-        <TaskProgressPanel
-          open={taskOpen}
-          onClose={() => setTaskOpen(false)}
-          details={taskDetails}
-          timeline={timeline}
-        />
+        {taskOpen ? (
+          <PanelResizeHandle
+            label="Resize task progress panel"
+            value={sideWidth}
+            min={SIDE_MIN}
+            max={SIDE_MAX}
+            active={dragging === 'side'}
+            visibleFrom="lg"
+            onPointerDown={(event) => beginResize('side', event)}
+            onPointerMove={moveResize}
+            onPointerUp={endResize}
+            onKeyDown={(event) => nudgeResize('side', event)}
+            onDoubleClick={() => setSideWidth(SIDE_DEFAULT)}
+          />
+        ) : null}
+
+        <Box
+          sx={{
+            display: taskOpen ? { xs: 'none', lg: 'flex' } : 'none',
+            width: { lg: sideWidth },
+            flex: '0 0 auto',
+            minWidth: 0,
+            minHeight: 0,
+          }}
+        >
+          <TaskProgressPanel
+            open={taskOpen}
+            onClose={() => setTaskOpen(false)}
+            details={taskDetails}
+            timeline={timeline}
+          />
+        </Box>
       </Box>
     </Box>
   )

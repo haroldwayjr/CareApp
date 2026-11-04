@@ -779,7 +779,8 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
   padding: 16px 18px 0;
 }
 .thread-top h2 { margin: 0; font-size: 16px; font-weight: 600; line-height: 22px; }
-.thread-top .sub { margin: 1px 0 0; color: var(--warning-title); font-size: 13px; line-height: 18px; }
+.thread-top .sub { margin: 1px 0 0; color: var(--text-secondary); font-size: 13px; line-height: 18px; }
+.thread-top .sub.is-task { color: var(--text-primary); }
 .avatar, .avatar-fallback {
   width: 36px;
   height: 36px;
@@ -943,6 +944,13 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 .history-item span { color: var(--text-tertiary); font-size: 13px; }
 .history-quote { margin: 6px 0 0; color: var(--text-secondary); font-size: 13px; line-height: 18px; }
 
+.composer-note {
+  margin: 2px 16px 0;
+  color: var(--text-tertiary);
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+}
 .composer {
   display: flex;
   flex-wrap: wrap;

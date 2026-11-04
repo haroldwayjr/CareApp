@@ -682,12 +682,12 @@ function renderStage() {
     </div>`;
     return;
   }
-  const sub = state.view === "conversation" ? thread.title : thread.task ? thread.taskTitle : "Task";
-  const subColor = state.view === "conversation" ? "" : ` style="color:var(--warning-title)"`;
+  const onTask = state.view !== "conversation";
+  const sub = onTask ? (thread.task ? thread.taskTitle : "Task") : thread.title;
   const body = state.stageLoading
     ? stageSkeleton()
-    : `<div class="stage-body rise">${transcriptFor(thread)}</div>${state.view === "conversation" ? composerHTML() : ""}`;
-  root.innerHTML = `<div class="thread-top">${avatar(thread.person)}<div><h2>${people[thread.person].name}</h2><p class="sub"${subColor}>${sub}</p></div></div>${tabs(thread)}${body}`;
+    : `<div class="stage-body rise">${transcriptFor(thread)}</div>${state.view === "conversation" ? composerHTML(thread) : ""}`;
+  root.innerHTML = `<div class="thread-top">${avatar(thread.person)}<div><h2>${people[thread.person].name}</h2><p class="sub${onTask ? " is-task" : ""}">${sub}</p></div></div>${tabs(thread)}${body}`;
   const scroller = root.querySelector(".stage-body");
   if (scroller && state.view === "conversation") scroller.scrollTop = scroller.scrollHeight;
   const field = root.querySelector("textarea");
@@ -701,11 +701,12 @@ function renderStage() {
   }
 }
 
-function composerHTML() {
+function composerHTML(thread) {
+  const waiting = thread?.status === "waiting" ? `<p class="composer-note">Waiting on the plan.</p>` : "";
   const reply = state.reply
     ? `<div class="reply-chip"><span class="ask-bar" aria-hidden="true"></span><span class="reply-copy"><span class="reply-name">${esc(state.reply.name)}</span><span class="reply-text">${esc(state.reply.text)}</span></span><button class="icon-button reply-clear" type="button" data-clear-reply aria-label="Remove reply">${closeIcon()}</button></div>`
     : "";
-  return `<form class="composer" id="composer">${reply}
+  return `${waiting}<form class="composer" id="composer">${reply}
     <button class="icon-button" type="button" aria-label="Add" data-add>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg>
     </button>
@@ -1125,9 +1126,9 @@ function placeMoreMenu(menu) {
   if (rect.bottom <= bounds.bottom - 8) return;
   menu.classList.add("opens-up");
   const flipped = menu.getBoundingClientRect();
-  if (flipped.top < bounds.top + 8 && bounds.bottom - rect.bottom < bounds.top - flipped.top) {
-    menu.classList.remove("opens-up");
-  }
+  const downOverflow = rect.bottom - bounds.bottom;
+  const upOverflow = bounds.top - flipped.top;
+  if (upOverflow > downOverflow) menu.classList.remove("opens-up");
 }
 
 function fallbackCopy(text) {

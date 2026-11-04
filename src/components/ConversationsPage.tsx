@@ -1443,9 +1443,9 @@ function MemberToolRail({
 }) {
   const items: { id: RailPanel; label: string; icon: 'info' | 'chat' | 'chart' | 'mail' }[] = [
     { id: 'details', label: 'Details', icon: 'info' },
+    { id: 'communication', label: 'Closed conversations', icon: 'mail' },
     { id: 'chat', label: 'Team chat', icon: 'chat' },
     { id: 'activity', label: 'Activity', icon: 'chart' },
-    { id: 'communication', label: 'Closed conversations', icon: 'mail' },
   ]
 
   return (
@@ -1640,7 +1640,7 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
     function fitPanels() {
       const total = layoutRef.current?.clientWidth ?? 0
       if (!total || !window.matchMedia('(min-width:900px)').matches) return
-      const showSide = railPanel != null && window.matchMedia('(min-width:1200px)').matches
+      const showSide = railPanel != null && window.matchMedia('(min-width:900px)').matches
       const gutters = (showSide ? 2 : 1) * PANEL_GUTTER
       const available = Math.max(0, total - gutters - CENTER_MIN)
       let nextThreads = threadsWidthRef.current
@@ -1680,7 +1680,7 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
   }, [dragging])
 
   function sidePanelVisible() {
-    return railPanel != null && window.matchMedia('(min-width:1200px)').matches
+    return railPanel != null && window.matchMedia('(min-width:900px)').matches
   }
 
   function applyDrag(clientX: number) {
@@ -2155,7 +2155,7 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
           min={SIDE_MIN}
           max={SIDE_MAX}
           active={dragging === 'side'}
-          visibleFrom="lg"
+          visibleFrom="md"
           onPointerDown={(event) => beginResize('side', event)}
           onPointerMove={moveResize}
           onPointerUp={endResize}
@@ -2165,8 +2165,8 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
 
         <Box
           sx={{
-            display: { xs: 'none', lg: 'flex' },
-            width: { lg: railPanel ? sideWidth : 'auto' },
+            display: { xs: 'none', md: 'flex' },
+            width: { md: railPanel ? sideWidth : 'auto' },
             flex: '0 0 auto',
             minWidth: 0,
             minHeight: 0,

@@ -1,5 +1,6 @@
 import {
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -200,6 +201,10 @@ type ConversationsPageProps = {
   onPrototypeAction?: (message: string) => void
 }
 
+/** Slide between Assigned / Watching / All. Matches Soma emphasized settle. */
+const SCOPE_SLIDE_MS = 240
+const SCOPE_SLIDE_EASE = 'cubic-bezier(0.16, 1, 0.3, 1)'
+
 function ScopePills({
   value,
   onChange,
@@ -208,14 +213,69 @@ function ScopePills({
   onChange: (next: ScopeFilter) => void
 }) {
   const options: { id: ScopeFilter; label: string; count: number }[] = [
-    { id: 'all', label: 'All', count: SCOPE_COUNTS.all },
     { id: 'assigned', label: 'Assigned', count: SCOPE_COUNTS.assigned },
     { id: 'watching', label: 'Watching', count: SCOPE_COUNTS.watching },
+    { id: 'all', label: 'All', count: SCOPE_COUNTS.all },
   ]
+  const trackRef = useRef<HTMLDivElement | null>(null)
+  const [indicator, setIndicator] = useState<{
+    x: number
+    y: number
+    width: number
+    height: number
+  } | null>(null)
+  const reduceMotion = useMemo(
+    () =>
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    [],
+  )
+
+  useLayoutEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+
+    function measure() {
+      const current = trackRef.current
+      const button = current?.querySelector<HTMLElement>(
+        `[data-scope="${value}"]`,
+      )
+      if (!current || !button) return
+      const trackRect = current.getBoundingClientRect()
+      const buttonRect = button.getBoundingClientRect()
+      const style = window.getComputedStyle(current)
+      const borderLeft = Number.parseFloat(style.borderLeftWidth) || 0
+      const borderTop = Number.parseFloat(style.borderTopWidth) || 0
+      const next = {
+        x: Math.round(buttonRect.left - trackRect.left - borderLeft),
+        y: Math.round(buttonRect.top - trackRect.top - borderTop),
+        width: Math.round(buttonRect.width),
+        height: Math.round(buttonRect.height),
+      }
+      setIndicator((previous) =>
+        previous &&
+        previous.x === next.x &&
+        previous.y === next.y &&
+        previous.width === next.width &&
+        previous.height === next.height
+          ? previous
+          : next,
+      )
+    }
+
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(track)
+    return () => observer.disconnect()
+  }, [value])
 
   return (
     <Box
+      ref={trackRef}
+      role="group"
+      aria-label="Conversation view"
       sx={{
+        position: 'relative',
         display: 'inline-flex',
         alignItems: 'center',
         gap: '2px',
@@ -226,6 +286,24 @@ function ScopePills({
         height: 42,
       }}
     >
+      <Box
+        aria-hidden
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: indicator?.width ?? 0,
+          height: indicator?.height ?? 0,
+          borderRadius: soma.radiusMd,
+          bgcolor: soma.actionGhostSelected,
+          transform: `translate(${indicator?.x ?? 0}px, ${indicator?.y ?? 0}px)`,
+          opacity: indicator ? 1 : 0,
+          pointerEvents: 'none',
+          transition: reduceMotion
+            ? 'none'
+            : `transform ${SCOPE_SLIDE_MS}ms ${SCOPE_SLIDE_EASE}, width ${SCOPE_SLIDE_MS}ms ${SCOPE_SLIDE_EASE}, height ${SCOPE_SLIDE_MS}ms ${SCOPE_SLIDE_EASE}`,
+        }}
+      />
       {options.map((option) => {
         const selected = value === option.id
         return (
@@ -233,35 +311,45 @@ function ScopePills({
             key={option.id}
             component="button"
             type="button"
+            data-scope={option.id}
+            aria-pressed={selected}
             onClick={() => onChange(option.id)}
             sx={{
+              position: 'relative',
+              zIndex: 1,
               display: 'inline-flex',
               alignItems: 'center',
               gap: 0.75,
               border: 0,
               cursor: 'pointer',
-              px: selected ? 1.75 : 1.5,
-              py: selected ? 1 : 0.75,
-              borderRadius: selected ? soma.radiusMd : soma.radiusFull,
-              bgcolor: selected ? soma.actionGhostSelected : 'transparent',
+              px: 1.75,
+              py: 1,
+              borderRadius: soma.radiusMd,
+              bgcolor: 'transparent',
               color: selected
                 ? soma.actionGhostSelectedText
                 : soma.textSecondary,
               fontFamily: 'inherit',
               fontSize: 13,
               fontWeight: selected ? 600 : 400,
-              lineHeight: selected ? '18px' : 'normal',
+              lineHeight: '18px',
+              transition: reduceMotion
+                ? 'none'
+                : `color ${SCOPE_SLIDE_MS}ms ${SCOPE_SLIDE_EASE}`,
             }}
           >
             <Box component="span">{option.label}</Box>
             <Box
               component="span"
               sx={{
-                fontSize: selected ? 13 : 12,
+                fontSize: 13,
                 color: selected
                   ? soma.actionGhostSelectedText
                   : soma.textTertiary,
                 fontWeight: selected ? 600 : 400,
+                transition: reduceMotion
+                  ? 'none'
+                  : `color ${SCOPE_SLIDE_MS}ms ${SCOPE_SLIDE_EASE}`,
               }}
             >
               {option.count}

@@ -21,9 +21,10 @@ import Typography from '@mui/material/Typography'
 import {
   ACTIVITY_ITEMS,
   DEMO_STEPS,
+  MEMBER_QUARTERBACK,
+  closedChatsForMember,
   getDemoInteraction,
   getMessagesThroughStep,
-  getTaskDetailsForDemo,
   getTimelineForDemo,
   SCOPE_COUNTS,
   THREAD_TEAMS,
@@ -31,7 +32,7 @@ import {
   type ProceedChoiceId,
   type ScopeFilter,
   type StatusCardData,
-  type TaskDetail,
+  type ClosedChat,
   type ThreadItem,
   type ThreadTeam,
   type TimelineEvent,
@@ -86,9 +87,9 @@ const PANEL_GUTTER = 16
 const THREADS_MIN = 240
 const THREADS_MAX = 520
 const THREADS_DEFAULT = 320
-const SIDE_MIN = 280
-const SIDE_MAX = 560
-const SIDE_DEFAULT = 360
+const SIDE_MIN = 340
+const SIDE_MAX = 640
+const SIDE_DEFAULT = 440
 /** Preferred floor for the conversation column while a gutter is dragged. */
 const CENTER_MIN = 360
 const THREADS_WIDTH_KEY = 'care.conversations.threadsWidth'
@@ -1214,24 +1215,27 @@ function Composer({
   )
 }
 
-function TaskProgressPanel({
-  open,
-  onClose,
-  details,
-  timeline,
-}: {
-  open: boolean
-  onClose: () => void
-  details: TaskDetail[]
-  timeline: TimelineEvent[]
-}) {
-  if (!open) return null
+type RailPanel = 'details' | 'chat' | 'activity' | 'communication'
 
+function ContextCard({
+  title,
+  onClose,
+  children,
+  backLabel,
+  onBack,
+}: {
+  title: string
+  onClose: () => void
+  children: ReactNode
+  backLabel?: string
+  onBack?: () => void
+}) {
   return (
     <Box
       sx={{
-        width: '100%',
+        flex: 1,
         minWidth: 0,
+        minHeight: 0,
         bgcolor: soma.surfaceDefault,
         border: `1px solid ${soma.borderPanel}`,
         borderRadius: soma.radius2xl,
@@ -1239,21 +1243,24 @@ function TaskProgressPanel({
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
-        height: '100%',
-        pb: 2.5,
       }}
     >
-      <Box sx={{ px: 2 }}>
-        <Stack
-          direction="row"
-          sx={{
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            minHeight: 64,
-            py: 1.5,
-            borderBottom: `1px solid ${soma.borderSubtle}`,
-          }}
-        >
+      <Stack
+        direction="row"
+        sx={{
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          minHeight: 64,
+          px: 2.5,
+          borderBottom: `1px solid ${soma.borderSubtle}`,
+        }}
+      >
+        <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center', minWidth: 0 }}>
+          {onBack ? (
+            <IconButton aria-label={backLabel ?? 'Back'} onClick={onBack} sx={{ color: soma.iconTertiary }}>
+              <AppIcon name="chevronDown" sx={{ fontSize: 16, transform: 'rotate(90deg)' }} />
+            </IconButton>
+          ) : null}
           <Typography
             sx={{
               fontSize: 18,
@@ -1262,128 +1269,274 @@ function TaskProgressPanel({
               color: soma.textPrimary,
             }}
           >
-            Task progress
+            {title}
           </Typography>
-          <IconButton
-            aria-label="Close task progress"
-            onClick={onClose}
-            sx={{ color: soma.iconTertiary, width: 40, height: 40 }}
-          >
-            <AppIcon name="close" sx={{ fontSize: 20 }} />
-          </IconButton>
         </Stack>
+        <IconButton aria-label={`Close ${title}`} onClick={onClose} sx={{ color: soma.iconTertiary }}>
+          <AppIcon name="close" sx={{ fontSize: 20 }} />
+        </IconButton>
+      </Stack>
+      <Box sx={{ flex: 1, minHeight: 0, overflow: 'auto', px: 2.5, py: 0.5 }}>{children}</Box>
+    </Box>
+  )
+}
 
-        <Stack sx={{ pt: 1 }}>
-          {details.map((detail) => (
-            <Stack
-              key={detail.label}
-              direction="row"
-              spacing={1.5}
-              sx={{
-                alignItems: 'center',
-                py: 1,
-                gap: 1.5,
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: 14,
-                  fontWeight: 600,
-                  lineHeight: '20px',
-                  color: soma.textPrimary,
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {detail.label}
+function DetailRows({ rows }: { rows: { label: string; value: string }[] }) {
+  return (
+    <Stack>
+      {rows.map((row) => (
+        <Stack
+          key={row.label}
+          direction="row"
+          sx={{
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 2,
+            py: 1.75,
+            borderBottom: `1px solid ${soma.borderWeakest}`,
+          }}
+        >
+          <Typography sx={{ fontSize: 14, lineHeight: '20px', color: soma.textTertiary }}>
+            {row.label}
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: 14,
+              fontWeight: 600,
+              lineHeight: '20px',
+              color: soma.textPrimary,
+              textAlign: 'right',
+            }}
+          >
+            {row.value}
+          </Typography>
+        </Stack>
+      ))}
+    </Stack>
+  )
+}
+
+function ClosedChatsPanel({
+  member,
+  onClose,
+}: {
+  member: string
+  onClose: () => void
+}) {
+  const chats = closedChatsForMember(member)
+  const [active, setActive] = useState<ClosedChat | null>(null)
+
+  if (active) {
+    return (
+      <ContextCard
+        title={active.title}
+        onClose={onClose}
+        onBack={() => setActive(null)}
+        backLabel="Back to closed conversations"
+      >
+        <Typography sx={{ fontSize: 12, lineHeight: '16px', color: soma.textTertiary, pt: 1.5, pb: 2 }}>
+          {active.outcome} · Last message {active.lastMessage}
+        </Typography>
+        <Stack spacing={2} sx={{ pb: 2 }}>
+          {active.turns.map((turn) => (
+            <Stack key={`${turn.time}-${turn.from}`} spacing={0.5}>
+              <Typography sx={{ fontSize: 12, fontWeight: 600, lineHeight: '16px', color: soma.textSecondary }}>
+                {turn.from}
               </Typography>
-              <Typography
+              <Box
                 sx={{
-                  flex: 1,
-                  fontSize: 14,
-                  lineHeight: '20px',
-                  color: soma.textPrimary,
-                  textAlign: 'right',
+                  alignSelf: 'flex-start',
+                  maxWidth: '100%',
+                  px: 1.5,
+                  py: 1.25,
+                  borderRadius: soma.radiusXl,
+                  bgcolor: soma.surfaceSubtle,
                 }}
               >
-                {detail.value}
+                <Typography sx={{ fontSize: 14, lineHeight: '20px', color: soma.textPrimary }}>
+                  {turn.body}
+                </Typography>
+              </Box>
+              <Typography sx={{ fontSize: 12, lineHeight: '16px', color: soma.textTertiary }}>
+                {turn.time}
               </Typography>
             </Stack>
           ))}
         </Stack>
+      </ContextCard>
+    )
+  }
 
-        <Stack sx={{ px: 2, pt: 2 }}>
-          {timeline.map((event, index) => {
-            const isLast = index === timeline.length - 1
-            return (
-              <Stack
-                key={event.id}
-                direction="row"
-                spacing={1.5}
-                sx={{ alignItems: 'flex-start' }}
+  const months: { month: string; items: ClosedChat[] }[] = []
+  for (const chat of chats) {
+    const group = months.find((entry) => entry.month === chat.month)
+    if (group) group.items.push(chat)
+    else months.push({ month: chat.month, items: [chat] })
+  }
+
+  return (
+    <ContextCard title="Closed conversations" onClose={onClose}>
+      {chats.length === 0 ? (
+        <Typography sx={{ fontSize: 14, lineHeight: '20px', color: soma.textTertiary, py: 3 }}>
+          No closed conversations for {member}.
+        </Typography>
+      ) : (
+        months.map((group) => (
+          <Stack key={group.month} spacing={0} sx={{ pt: 2 }}>
+            <Typography sx={{ fontSize: 12, fontWeight: 600, lineHeight: '16px', color: soma.textTertiary, pb: 0.5 }}>
+              {group.month}
+            </Typography>
+            {group.items.map((chat) => (
+              <Box
+                key={chat.id}
+                component="button"
+                type="button"
+                onClick={() => setActive(chat)}
+                sx={{
+                  display: 'block',
+                  width: '100%',
+                  textAlign: 'left',
+                  border: 0,
+                  borderBottom: `1px solid ${soma.borderWeakest}`,
+                  bgcolor: 'transparent',
+                  cursor: 'pointer',
+                  px: 0,
+                  py: 1.5,
+                  fontFamily: 'inherit',
+                  '&:hover': { bgcolor: soma.surfaceSubtle },
+                }}
               >
-                <Stack
-                  sx={{
-                    width: 10,
-                    alignItems: 'center',
-                    pt: 0.75,
-                    alignSelf: 'stretch',
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: 10,
-                      height: 10,
-                      borderRadius: '50%',
-                      bgcolor: event.active
-                        ? soma.actionPrimary
-                        : soma.borderSubtle,
-                      flexShrink: 0,
-                    }}
-                  />
-                  {!isLast ? (
-                    <Box
-                      sx={{
-                        width: 1,
-                        flex: 1,
-                        bgcolor: soma.borderSubtle,
-                        mt: 0.5,
-                      }}
-                    />
-                  ) : null}
-                </Stack>
-                <Stack spacing={0.25} sx={{ flex: 1, pb: isLast ? 0 : 2 }}>
-                  <Typography
-                    sx={{
-                      fontSize: 12,
-                      lineHeight: '18px',
-                      color: soma.textPrimary,
-                    }}
-                  >
-                    {event.title}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontSize: 12,
-                      lineHeight: '16px',
-                      color: soma.textSecondary,
-                    }}
-                  >
-                    {event.detail}
-                  </Typography>
-                </Stack>
+                <Typography sx={{ fontSize: 14, fontWeight: 600, lineHeight: '20px', color: soma.textPrimary }}>
+                  {chat.title}
+                </Typography>
+                <Typography sx={{ fontSize: 12, lineHeight: '16px', color: soma.textSecondary, mt: 0.25 }}>
+                  {chat.outcome}
+                </Typography>
+                <Typography sx={{ fontSize: 12, lineHeight: '16px', color: soma.textTertiary, mt: 0.25 }}>
+                  Last message {chat.lastMessage}
+                </Typography>
+              </Box>
+            ))}
+          </Stack>
+        ))
+      )}
+    </ContextCard>
+  )
+}
+
+function MemberToolRail({
+  panel,
+  member,
+  status,
+  updated,
+  timeline,
+  onSelect,
+  onClose,
+}: {
+  panel: RailPanel | null
+  member: string
+  status: string
+  updated: string
+  timeline: TimelineEvent[]
+  onSelect: (next: RailPanel) => void
+  onClose: () => void
+}) {
+  const items: { id: RailPanel; label: string; icon: 'info' | 'chat' | 'chart' | 'mail' }[] = [
+    { id: 'details', label: 'Details', icon: 'info' },
+    { id: 'chat', label: 'Team chat', icon: 'chat' },
+    { id: 'activity', label: 'Activity', icon: 'chart' },
+    { id: 'communication', label: 'Closed conversations', icon: 'mail' },
+  ]
+
+  return (
+    <Stack direction="row" spacing={1.5} sx={{ alignItems: 'stretch', minWidth: 0, minHeight: 0, flex: 1 }}>
+      {panel ? (
+        <Box sx={{ flex: 1, minWidth: 0, minHeight: 0, display: 'flex' }}>
+          {panel === 'details' ? (
+            <ContextCard title="Details" onClose={onClose}>
+              <DetailRows
+                rows={[
+                  { label: 'Quarterback', value: MEMBER_QUARTERBACK[member] ?? 'Jordan Reyes' },
+                  { label: 'Member', value: member },
+                  { label: 'Status', value: status },
+                  { label: 'Updated', value: updated },
+                ]}
+              />
+            </ContextCard>
+          ) : null}
+          {panel === 'chat' ? (
+            <ContextCard title="Team chat" onClose={onClose}>
+              <Typography sx={{ fontSize: 14, lineHeight: '20px', color: soma.textTertiary, py: 2 }}>
+                No separate team thread on this conversation.
+              </Typography>
+            </ContextCard>
+          ) : null}
+          {panel === 'activity' ? (
+            <ContextCard title="Activity" onClose={onClose}>
+              <Stack spacing={2} sx={{ py: 2 }}>
+                {timeline.map((event) => (
+                  <Stack key={event.id} spacing={0.25}>
+                    <Typography sx={{ fontSize: 14, fontWeight: 600, lineHeight: '20px', color: soma.textPrimary }}>
+                      {event.title}
+                    </Typography>
+                    <Typography sx={{ fontSize: 12, lineHeight: '16px', color: soma.textSecondary }}>
+                      {event.detail}
+                    </Typography>
+                  </Stack>
+                ))}
               </Stack>
-            )
-          })}
-        </Stack>
-      </Box>
-    </Box>
+            </ContextCard>
+          ) : null}
+          {panel === 'communication' ? (
+            <ClosedChatsPanel key={member} member={member} onClose={onClose} />
+          ) : null}
+        </Box>
+      ) : null}
+      <Stack
+        component="nav"
+        aria-label="Member tools"
+        spacing={0.5}
+        sx={{
+          flex: '0 0 auto',
+          alignSelf: 'flex-start',
+          p: 0.75,
+          bgcolor: soma.surfaceDefault,
+          border: `1px solid ${soma.borderPanel}`,
+          borderRadius: '28px',
+          boxShadow: panelShadow,
+        }}
+      >
+        {items.map((item) => {
+          const selected = panel === item.id
+          return (
+            <IconButton
+              key={item.id}
+              aria-label={item.label}
+              aria-pressed={selected}
+              onClick={() => onSelect(item.id)}
+              sx={{
+                width: 40,
+                height: 40,
+                color: selected ? soma.actionGhostSelectedText : soma.iconTertiary,
+                bgcolor: selected ? soma.surfaceBrandSubtle : 'transparent',
+                '&:hover': {
+                  bgcolor: selected ? soma.surfaceBrandSubtle : soma.surfaceSubtle,
+                },
+              }}
+            >
+              <AppIcon name={item.icon} sx={{ fontSize: 20 }} />
+            </IconButton>
+          )
+        })}
+      </Stack>
+    </Stack>
   )
 }
 
 export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps) {
   const [scope, setScope] = useState<ScopeFilter>('assigned')
   const [selectedId, setSelectedId] = useState('denied-claim')
-  const [taskOpen, setTaskOpen] = useState(true)
+  const [railPanel, setRailPanel] = useState<RailPanel | null>('details')
   const [threadTab, setThreadTab] = useState<'conversation' | 'task'>(
     'conversation',
   )
@@ -1414,10 +1567,6 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
   const visibleMessages = useMemo(
     () => (isDeniedClaimDemo ? getMessagesThroughStep(demoStep) : []),
     [demoStep, isDeniedClaimDemo],
-  )
-  const taskDetails = useMemo(
-    () => getTaskDetailsForDemo(isDeniedClaimDemo && demoComplete),
-    [demoComplete, isDeniedClaimDemo],
   )
   const timeline = useMemo(
     () => getTimelineForDemo(isDeniedClaimDemo && demoComplete),
@@ -1491,7 +1640,7 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
     function fitPanels() {
       const total = layoutRef.current?.clientWidth ?? 0
       if (!total || !window.matchMedia('(min-width:900px)').matches) return
-      const showSide = taskOpen && window.matchMedia('(min-width:1200px)').matches
+      const showSide = railPanel != null && window.matchMedia('(min-width:1200px)').matches
       const gutters = (showSide ? 2 : 1) * PANEL_GUTTER
       const available = Math.max(0, total - gutters - CENTER_MIN)
       let nextThreads = threadsWidthRef.current
@@ -1516,7 +1665,7 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
     fitPanels()
     window.addEventListener('resize', fitPanels)
     return () => window.removeEventListener('resize', fitPanels)
-  }, [taskOpen])
+  }, [railPanel])
 
   useEffect(() => {
     if (!dragging) return
@@ -1531,7 +1680,7 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
   }, [dragging])
 
   function sidePanelVisible() {
-    return taskOpen && window.matchMedia('(min-width:1200px)').matches
+    return railPanel != null && window.matchMedia('(min-width:1200px)').matches
   }
 
   function applyDrag(clientX: number) {
@@ -1869,7 +2018,7 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
                   type="button"
                   onClick={() => {
                     setThreadTab(tab.id)
-                    if (tab.id === 'task') setTaskOpen(true)
+                    if (tab.id === 'task') setRailPanel('activity')
                   }}
                   sx={{
                     position: 'relative',
@@ -2000,36 +2149,47 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
           <Composer onAction={onPrototypeAction} />
         </Box>
 
-        {taskOpen ? (
-          <PanelResizeHandle
-            label="Resize task progress panel"
-            value={sideWidth}
-            min={SIDE_MIN}
-            max={SIDE_MAX}
-            active={dragging === 'side'}
-            visibleFrom="lg"
-            onPointerDown={(event) => beginResize('side', event)}
-            onPointerMove={moveResize}
-            onPointerUp={endResize}
-            onKeyDown={(event) => nudgeResize('side', event)}
-            onDoubleClick={() => setSideWidth(SIDE_DEFAULT)}
-          />
-        ) : null}
+        <PanelResizeHandle
+          label="Resize member panel"
+          value={sideWidth}
+          min={SIDE_MIN}
+          max={SIDE_MAX}
+          active={dragging === 'side'}
+          visibleFrom="lg"
+          onPointerDown={(event) => beginResize('side', event)}
+          onPointerMove={moveResize}
+          onPointerUp={endResize}
+          onKeyDown={(event) => nudgeResize('side', event)}
+          onDoubleClick={() => setSideWidth(SIDE_DEFAULT)}
+        />
 
         <Box
           sx={{
-            display: taskOpen ? { xs: 'none', lg: 'flex' } : 'none',
-            width: { lg: sideWidth },
+            display: { xs: 'none', lg: 'flex' },
+            width: { lg: railPanel ? sideWidth : 'auto' },
             flex: '0 0 auto',
             minWidth: 0,
             minHeight: 0,
           }}
         >
-          <TaskProgressPanel
-            open={taskOpen}
-            onClose={() => setTaskOpen(false)}
-            details={taskDetails}
-            timeline={timeline}
+          <MemberToolRail
+            panel={railPanel}
+            member={selectedThread?.member ?? 'Riley Smith'}
+            status={selectedThread?.status ?? 'In progress'}
+            updated={selectedThread?.time ?? 'Today'}
+            timeline={
+              isDeniedClaimDemo
+                ? timeline
+                : [
+                    {
+                      id: 'open-status',
+                      title: selectedThread?.title ?? 'Conversation',
+                      detail: `${selectedThread?.status ?? 'In progress'} · ${selectedThread?.time ?? ''}`,
+                    },
+                  ]
+            }
+            onSelect={setRailPanel}
+            onClose={() => setRailPanel(null)}
           />
         </Box>
       </Box>

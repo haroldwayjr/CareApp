@@ -15,6 +15,23 @@ export type ThreadItem = {
   selected?: boolean
 }
 
+export type ClosedChatTurn = {
+  from: string
+  time: string
+  body: string
+}
+
+/** An ended conversation kept on the member, not in the open queue. */
+export type ClosedChat = {
+  id: string
+  member: string
+  title: string
+  month: string
+  lastMessage: string
+  outcome: string
+  turns: ClosedChatTurn[]
+}
+
 export type ThreadTeam = {
   id: string
   name: string
@@ -170,6 +187,202 @@ export const THREAD_TEAMS: ThreadTeam[] = [
     threads: [],
   },
 ]
+
+/** Quarterback shown on the member Details rail. */
+export const MEMBER_QUARTERBACK: Record<string, string> = {
+  'Riley Smith': 'Jordan Reyes',
+  'Ana Ruiz': 'Jordan Reyes',
+  'Marcus Lee': 'Jordan Reyes',
+  'Dee Park': 'Jordan Reyes',
+  'Sam Ito': 'Jordan Reyes',
+}
+
+export const CLOSED_CHATS: ClosedChat[] = [
+  {
+    id: 'riley-referral',
+    member: 'Riley Smith',
+    title: 'Specialist referral — Dr. Patel',
+    month: 'Oct 2026',
+    lastMessage: 'Oct 21, 2026',
+    outcome: 'Resolved — no follow-up',
+    turns: [
+      {
+        from: 'Riley Smith',
+        time: '2:14 PM',
+        body: 'My PCP referred me to Dr. Patel for cardiology. Can you confirm the referral is on file?',
+      },
+      {
+        from: 'Jordan Reyes',
+        time: '2:16 PM',
+        body: 'Referral to Dr. Anika Patel is in network and active through Jan 2027. You are good to schedule.',
+      },
+    ],
+  },
+  {
+    id: 'riley-pharmacy',
+    member: 'Riley Smith',
+    title: 'Pharmacy refill follow-up',
+    month: 'Oct 2026',
+    lastMessage: 'Oct 12, 2026',
+    outcome: 'Member to follow up',
+    turns: [
+      {
+        from: 'Riley Smith',
+        time: '4:48 PM',
+        body: 'The pharmacy said my lisinopril refill was denied. Can you see what is blocking it?',
+      },
+      {
+        from: 'Jordan Reyes',
+        time: '4:51 PM',
+        body: 'The 90-day supply needs a prior authorization. I can start that, or you can fill 30 days today.',
+      },
+    ],
+  },
+  {
+    id: 'riley-benefits',
+    member: 'Riley Smith',
+    title: 'Benefits inquiry — CalPERS PPO',
+    month: 'Oct 2026',
+    lastMessage: 'Oct 3, 2026',
+    outcome: 'Resolved — no follow-up',
+    turns: [
+      {
+        from: 'Riley Smith',
+        time: '11:20 AM',
+        body: 'Do specialist visits on my CalPERS PPO need a referral? I am booking dermatology.',
+      },
+      {
+        from: 'Jordan Reyes',
+        time: '11:23 AM',
+        body: 'Most specialists need a PCP referral. Dermatology for a new concern does. Preventive screening does not.',
+      },
+    ],
+  },
+  {
+    id: 'ana-oon',
+    member: 'Ana Ruiz',
+    title: 'Out-of-network explanation',
+    month: 'Aug 2026',
+    lastMessage: 'Aug 14, 2026',
+    outcome: 'Resolved — no follow-up',
+    turns: [
+      {
+        from: 'Ana Ruiz',
+        time: '9:40 AM',
+        body: 'Why was the imaging bill processed as out of network?',
+      },
+      {
+        from: 'Jordan Reyes',
+        time: '9:52 AM',
+        body: 'The facility was out of network for that date. I sent the EOB breakdown and the in-network locations nearby.',
+      },
+    ],
+  },
+  {
+    id: 'marcus-pa',
+    member: 'Marcus Lee',
+    title: 'Prior authorization question',
+    month: 'Sep 2026',
+    lastMessage: 'Sep 16, 2026',
+    outcome: 'Resolved — no follow-up',
+    turns: [
+      {
+        from: 'Marcus Lee',
+        time: '3:30 PM',
+        body: 'Did the plan approve the prior authorization for the specialist visit?',
+      },
+      {
+        from: 'Jordan Reyes',
+        time: '3:41 PM',
+        body: 'Yes. The authorization is on file through the visit date. Nothing else is needed from you.',
+      },
+    ],
+  },
+  {
+    id: 'marcus-claims',
+    member: 'Marcus Lee',
+    title: 'Claims status check',
+    month: 'Sep 2026',
+    lastMessage: 'Sep 8, 2026',
+    outcome: 'Resolved — no follow-up',
+    turns: [
+      {
+        from: 'Marcus Lee',
+        time: '1:05 PM',
+        body: 'Can you tell me where my June claim stands?',
+      },
+      {
+        from: 'Jordan Reyes',
+        time: '1:12 PM',
+        body: 'That claim was paid. I walked through the EOB and what posted to your deductible.',
+      },
+    ],
+  },
+  {
+    id: 'marcus-chat-support',
+    member: 'Marcus Lee',
+    title: 'Chat support',
+    month: 'May 2026',
+    lastMessage: 'May 3, 2026',
+    outcome: "Closed at member's request",
+    turns: [
+      {
+        from: 'Marcus Lee',
+        time: '10:02 AM',
+        body: 'I need to stop this chat. I will call the plan myself.',
+      },
+      {
+        from: 'Jordan Reyes',
+        time: '10:15 AM',
+        body: 'Understood. I closed the chat with no resolution, at your request. The messages stay on your record.',
+      },
+    ],
+  },
+  {
+    id: 'dee-enrollment',
+    member: 'Dee Park',
+    title: 'Open enrollment plan comparison',
+    month: 'Sep 2026',
+    lastMessage: 'Sep 24, 2026',
+    outcome: 'Resolved — no follow-up',
+    turns: [
+      {
+        from: 'Dee Park',
+        time: '9:05 AM',
+        body: 'Can you compare the PPO and HMO for my family before open enrollment?',
+      },
+      {
+        from: 'Jordan Reyes',
+        time: '9:08 AM',
+        body: 'The PPO keeps out-of-network coverage. The HMO lowers the premium and requires a PCP referral. I sent the side-by-side.',
+      },
+    ],
+  },
+  {
+    id: 'sam-ccm',
+    member: 'Sam Ito',
+    title: 'CCM enrollment',
+    month: 'Jun 2026',
+    lastMessage: 'Jun 10, 2026',
+    outcome: 'Resolved — no follow-up',
+    turns: [
+      {
+        from: 'Sam Ito',
+        time: '8:22 AM',
+        body: 'Am I enrolled in chronic care management yet?',
+      },
+      {
+        from: 'Jordan Reyes',
+        time: '8:40 AM',
+        body: 'Yes. Enrollment posted on June 10 and a care manager is assigned.',
+      },
+    ],
+  },
+]
+
+export function closedChatsForMember(member: string): ClosedChat[] {
+  return CLOSED_CHATS.filter((chat) => chat.member === member)
+}
 
 export const ACTIVITY_ITEMS: ActivityItem[] = [
   {

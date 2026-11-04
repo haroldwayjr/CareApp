@@ -48,12 +48,15 @@ export type TimeSelectOption = {
   label: string
 }
 
+/** Member Messages–style Claims highlight card (visual parity with mx-m4). */
 export type StatusCardData = {
+  chip: string
   title: string
-  badge: string
-  owner: string
-  nextStep: string
-  due: string
+  ownerName: string
+  ownerRole: string
+  description: string
+  expectedUpdateLabel: string
+  expectedUpdateValue: string
 }
 
 export type ChatMessage = {
@@ -70,7 +73,7 @@ export type ChatMessage = {
   statusCard?: StatusCardData
 }
 
-export type DemoInteraction = 'continue' | 'choices' | 'timeSelect' | 'done'
+export type DemoInteraction = 'choices' | 'timeSelect' | 'done'
 
 export type DemoStep = {
   id: number
@@ -185,87 +188,156 @@ export const PROCEED_CHOICES: ProceedChoice[] = [
   { id: 'investigate', label: 'Investigate' },
 ]
 
-export const INVESTIGATE_TIME_OPTIONS: TimeSelectOption[] = [
-  { value: '1-day', label: '1 day' },
-  { value: '3-days', label: '3 days' },
-  { value: '1-week', label: '1 week' },
-]
+export const INVESTIGATE_TIME_OPTIONS: TimeSelectOption[] = Array.from(
+  { length: 10 },
+  (_, i) => {
+    const days = i + 1
+    return {
+      value: `${days}-day${days === 1 ? '' : 's'}`,
+      label: `${days} day${days === 1 ? '' : 's'}`,
+    }
+  },
+)
 
 export const CLAIMS_STATUS_CARD: StatusCardData = {
-  title: 'Claims task in progress',
-  badge: 'In progress',
-  owner: 'Marcus Bennett',
-  nextStep: 'Investigate denied claim',
-  due: 'Due in 3 days',
+  chip: 'Claims',
+  title: 'Claim for Lymphatic Specialist',
+  ownerName: 'Marcus Bennett',
+  ownerRole: 'Claims Specialist',
+  description:
+    'We are investigating ways to resubmit this claim on your behalf.',
+  expectedUpdateLabel: 'Expected update',
+  expectedUpdateValue: 'Thu 11/5/26',
 }
 
-/** Guided click-through beats for the Denied claim thread. */
+/**
+ * Guided click-through for the Denied claim thread.
+ * Step 0 lands with the member lymphatic transcript already visible;
+ * the first action is Dot’s staff-only proceed choices.
+ */
 export const DEMO_STEPS: DemoStep[] = [
   {
     id: 0,
-    interaction: 'continue',
+    interaction: 'choices',
     messages: [
       {
-        id: 'sys-join',
+        id: 'dot-intro',
         side: 'agent',
-        name: 'System',
-        body: 'Marcus Bennett (Claims Specialist) joined the conversation',
-        time: '9:20 AM',
-        kind: 'system',
-      },
-      {
-        id: 'm0',
-        side: 'specialist',
-        name: 'Marcus Bennett',
-        role: 'Claims Specialist',
-        body: 'Hi Riley — I’m Marcus, and I’ve picked up your denied claim. To get this moving, can you tell me which visit this is about and roughly when it happened?',
-        time: '9:22 AM',
-        avatar: 'marcus',
+        name: 'Dot',
+        body: "Hello! I'm Dot. I'm here to help you navigate your healthcare and answer any questions along the way. What can I help you with today?",
+        time: 'Friday · 8:42 PM',
+        avatar: 'dot',
         kind: 'text',
       },
-    ],
-  },
-  {
-    id: 1,
-    interaction: 'continue',
-    messages: [
       {
-        id: 'm1',
-        side: 'specialist',
-        name: 'Marcus Bennett',
-        role: 'Claims Specialist',
-        body: 'Thanks. One more — was Dr. Kim the referring doctor, and do you still have the referral or denial letter handy?',
-        time: '9:23 AM',
-        avatar: 'marcus',
-        kind: 'text',
-      },
-    ],
-  },
-  {
-    id: 2,
-    interaction: 'continue',
-    messages: [
-      {
-        id: 'm2',
+        id: 'member-denial',
         side: 'member',
         name: 'Riley Smith',
-        body: 'Yeah — cardiology visit in September. Dr. Kim referred me, and I still have the denial letter from the plan.',
-        time: '9:24 AM',
+        body: "I just got a denial notice in the mail for a claim for a lymphatic specialist. I'd like to follow up.",
+        time: 'Friday · 8:43 PM',
         avatar: 'riley',
         kind: 'text',
       },
-    ],
-  },
-  {
-    id: 3,
-    interaction: 'choices',
-    messages: [
+      {
+        id: 'dot-handoff',
+        side: 'agent',
+        name: 'Dot',
+        body: "I'll connect you with a claims specialist. It's Friday night, so they're offline until Monday. You can expect an update on Monday.",
+        time: 'Friday · 8:43 PM',
+        avatar: 'dot',
+        kind: 'text',
+      },
+      {
+        id: 'caption-monday',
+        side: 'agent',
+        name: 'System',
+        body: 'Monday',
+        time: '',
+        kind: 'system',
+      },
+      {
+        id: 'marcus-intro',
+        side: 'specialist',
+        name: 'Marcus Bennett',
+        role: 'Claims Specialist',
+        body: "Hi, I'm Marcus Bennett, a claims specialist. I've been assigned to your lymphatic specialist claim.",
+        time: '9:12 AM',
+        avatar: 'marcus',
+        kind: 'text',
+      },
+      {
+        id: 'marcus-ask',
+        side: 'specialist',
+        name: 'Marcus Bennett',
+        role: 'Claims Specialist',
+        body: "Can you share a bit more about the denial notice? I'll investigate it and look for a way to resubmit the claim.",
+        time: '9:12 AM',
+        avatar: 'marcus',
+        kind: 'text',
+      },
+      {
+        id: 'member-details',
+        side: 'member',
+        name: 'Riley Smith',
+        body: "I have Anthem and I was told the provider was in network, but turns out they weren't. I submitted the out of network claim in June and just got the denial.",
+        time: '9:15 AM',
+        avatar: 'riley',
+        kind: 'text',
+      },
+      {
+        id: 'marcus-investigate-msg',
+        side: 'specialist',
+        name: 'Marcus Bennett',
+        role: 'Claims Specialist',
+        body: 'That sounds frustrating. I will need some time to reach out to your insurance and investigate this denial. I will keep you updated on each step along the way. Is there anything else I can help with today?',
+        time: '9:16 AM',
+        avatar: 'marcus',
+        kind: 'text',
+      },
+      {
+        id: 'member-how-update',
+        side: 'member',
+        name: 'Riley Smith',
+        body: "No, that's it. How will I know if there's an update?",
+        time: '9:17 AM',
+        avatar: 'riley',
+        kind: 'text',
+      },
+      {
+        id: 'marcus-prefs',
+        side: 'specialist',
+        name: 'Marcus Bennett',
+        role: 'Claims Specialist',
+        body: "Great question. You can monitor this request at the top of your Messages tab, and you'll get an email and/or SMS based on your communication preferences.",
+        time: '9:18 AM',
+        avatar: 'marcus',
+        kind: 'text',
+      },
+      {
+        id: 'member-thanks',
+        side: 'member',
+        name: 'Riley Smith',
+        body: "Thanks, that's all.",
+        time: '9:18 AM',
+        avatar: 'riley',
+        kind: 'text',
+      },
+      {
+        id: 'marcus-close',
+        side: 'specialist',
+        name: 'Marcus Bennett',
+        role: 'Claims Specialist',
+        body: "Thank you, I'll reach out with an update.",
+        time: '9:19 AM',
+        avatar: 'marcus',
+        kind: 'text',
+      },
       {
         id: 'dot-proceed',
         side: 'agent',
         name: 'Dot',
-        body: 'Riley confirmed the September cardiology visit and referral from Dr. Kim. How do you want to proceed, Marcus?',
-        time: '9:25 AM',
+        body: 'Riley shared an Anthem out-of-network denial for a lymphatic specialist claim (submitted in June). How do you want to proceed?',
+        time: '9:20 AM',
         avatar: 'dot',
         kind: 'choices',
         choices: PROCEED_CHOICES,
@@ -273,7 +345,7 @@ export const DEMO_STEPS: DemoStep[] = [
     ],
   },
   {
-    id: 4,
+    id: 1,
     interaction: 'timeSelect',
     messages: [
       {
@@ -282,7 +354,7 @@ export const DEMO_STEPS: DemoStep[] = [
         name: 'Marcus Bennett',
         role: 'Claims Specialist',
         body: 'Investigate',
-        time: '9:26 AM',
+        time: '9:21 AM',
         avatar: 'marcus',
         kind: 'text',
       },
@@ -291,7 +363,7 @@ export const DEMO_STEPS: DemoStep[] = [
         side: 'agent',
         name: 'Dot',
         body: 'Got it — I’ll park this as Investigate. How much time do you need before the next update?',
-        time: '9:26 AM',
+        time: '9:21 AM',
         avatar: 'dot',
         kind: 'timeSelect',
         timeOptions: INVESTIGATE_TIME_OPTIONS,
@@ -299,7 +371,7 @@ export const DEMO_STEPS: DemoStep[] = [
     ],
   },
   {
-    id: 5,
+    id: 2,
     interaction: 'done',
     messages: [
       {
@@ -308,7 +380,7 @@ export const DEMO_STEPS: DemoStep[] = [
         name: 'Marcus Bennett',
         role: 'Claims Specialist',
         body: '3 days',
-        time: '9:27 AM',
+        time: '9:22 AM',
         avatar: 'marcus',
         kind: 'text',
       },
@@ -316,8 +388,8 @@ export const DEMO_STEPS: DemoStep[] = [
         id: 'dot-confirm',
         side: 'agent',
         name: 'Dot',
-        body: 'Locked in. I’ve marked the claims task as Investigate with a 3-day follow-up.',
-        time: '9:27 AM',
+        body: 'Locked in. I’ve marked the lymphatic specialist claim as Investigate with a follow-up by Thu 11/5/26. Here’s the same status card the member sees in Messages.',
+        time: '9:22 AM',
         avatar: 'dot',
         kind: 'text',
       },
@@ -326,7 +398,7 @@ export const DEMO_STEPS: DemoStep[] = [
         side: 'agent',
         name: 'Dot',
         body: '',
-        time: '9:27 AM',
+        time: '9:22 AM',
         avatar: 'dot',
         kind: 'statusCard',
         statusCard: CLAIMS_STATUS_CARD,
@@ -337,8 +409,11 @@ export const DEMO_STEPS: DemoStep[] = [
 
 export const TASK_DETAILS: TaskDetail[] = [
   { label: 'Task owner', value: 'Marcus Bennett' },
-  { label: 'Next step', value: 'Resubmit with referral code' },
-  { label: 'Expected update', value: 'Wed · 12:00 PM' },
+  {
+    label: 'Next step',
+    value: 'Investigate ways to resubmit lymphatic claim',
+  },
+  { label: 'Expected update', value: 'Thu 11/5/26' },
   { label: 'Watcher', value: 'Jordan Reyes · view only' },
 ]
 
@@ -351,7 +426,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
   {
     id: 't2',
     title: 'In progress · Marcus Bennett',
-    detail: 'Tue 10:05 AM · referral record received; resubmitting claim',
+    detail: 'Mon 9:19 AM · member confirmed OON Anthem denial; investigating resubmit',
     active: true,
   },
 ]
@@ -370,8 +445,11 @@ export function getTaskDetailsForDemo(complete: boolean): TaskDetail[] {
   if (!complete) return TASK_DETAILS
   return [
     { label: 'Task owner', value: 'Marcus Bennett' },
-    { label: 'Next step', value: 'Investigate denied claim' },
-    { label: 'Expected update', value: 'Due in 3 days' },
+    {
+      label: 'Next step',
+      value: 'Investigate ways to resubmit lymphatic claim',
+    },
+    { label: 'Expected update', value: 'Thu 11/5/26' },
     { label: 'Watcher', value: 'Jordan Reyes · view only' },
   ]
 }
@@ -387,12 +465,12 @@ export function getTimelineForDemo(complete: boolean): TimelineEvent[] {
     {
       id: 't2',
       title: 'In progress · Marcus Bennett',
-      detail: 'Tue 10:05 AM · referral record received; resubmitting claim',
+      detail: 'Mon 9:19 AM · member confirmed OON Anthem denial; investigating resubmit',
     },
     {
       id: 't3',
       title: 'Investigate started · Marcus Bennett',
-      detail: 'Today · follow-up in 3 days',
+      detail: 'Today · expected update Thu 11/5/26',
       active: true,
     },
   ]

@@ -1,4 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+  type RefObject,
+} from 'react'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -31,7 +38,7 @@ import {
   somaMenuItemSx,
   somaMenuPaperSlotProps,
 } from './SomaField'
-import avatarMarcus from '../assets/figma/messaging/avatar-marcus.png'
+import avatarMarcus from '../assets/figma/messaging/marcus-bennett.jpg'
 import avatarRiley from '../assets/figma/messaging/avatar-riley.png'
 import logoDot from '../assets/figma/logo-dot.svg'
 
@@ -42,13 +49,16 @@ const soma = {
   textTertiary: '#475467',
   textBrand: '#002380',
   textWarning: '#75600A',
+  textWarningStrong: '#9A6700',
   textOnBrand: '#FFFFFF',
   surfaceDefault: '#FFFFFF',
   surfaceSubtle: '#F3F5F8',
   surfaceBrandSoft: '#F2F5FF',
   surfaceBrandSubtle: '#E0EAFF',
   surfaceSuccessSoft: '#E8F8EC',
+  surfaceWarningWeak: '#FDF2E9',
   borderSubtle: '#D0D5DD',
+  borderWeakest: '#E4E7EC',
   borderPanel: '#E3E7EB',
   actionPrimary: '#002380',
   actionPrimaryDisabled: 'rgba(0, 35, 128, 0.2)',
@@ -62,6 +72,7 @@ const soma = {
   radiusXl: '12px',
   radius2xl: '16px',
   radius3xl: '20px',
+  radius4xl: '24px',
   radiusFull: '9999px',
 } as const
 
@@ -348,24 +359,165 @@ function TeamGroup({
   )
 }
 
-function StatusCard({ card }: { card: StatusCardData }) {
+function StaffOnlyCard({
+  title,
+  body,
+  time,
+  children,
+  cardRef,
+}: {
+  title: string
+  body: string
+  time: string
+  children?: ReactNode
+  cardRef?: RefObject<HTMLDivElement | null>
+}) {
   return (
-    <Box
-      sx={{
-        width: '100%',
-        maxWidth: 420,
-        border: `1px solid ${soma.borderSubtle}`,
-        borderRadius: soma.radiusMd,
-        bgcolor: soma.surfaceBrandSoft,
-        p: 2,
-      }}
+    <Stack
+      ref={cardRef}
+      direction="row"
+      spacing={1}
+      role="region"
+      aria-label={`${title} — not visible to member`}
+      sx={{ alignItems: 'flex-start', width: '100%' }}
     >
-      <Stack spacing={1.5}>
+      <Box
+        component="img"
+        src={logoDot}
+        alt=""
+        sx={{ width: 20, height: 20, flexShrink: 0, mt: 0.25 }}
+      />
+      <Stack spacing={1} sx={{ flex: 1, minWidth: 0, maxWidth: 520 }}>
         <Stack
           direction="row"
           spacing={1}
-          sx={{ alignItems: 'center', justifyContent: 'space-between' }}
+          sx={{ alignItems: 'center', flexWrap: 'wrap', rowGap: 0.5 }}
         >
+          <Typography
+            sx={{
+              fontSize: 12,
+              lineHeight: '16px',
+              color: soma.textSecondary,
+            }}
+          >
+            {title}
+          </Typography>
+          <Typography
+            component="span"
+            sx={{
+              px: 1,
+              py: 0.25,
+              borderRadius: soma.radiusSm,
+              bgcolor: soma.surfaceBrandSoft,
+              border: `1px solid ${soma.borderSubtle}`,
+              color: soma.textBrand,
+              fontSize: 11,
+              fontWeight: 600,
+              lineHeight: '16px',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Not visible to member
+          </Typography>
+        </Stack>
+
+        <Box
+          sx={{
+            width: '100%',
+            display: 'flex',
+            border: `1px solid ${soma.borderSubtle}`,
+            borderRadius: soma.radiusMd,
+            bgcolor: soma.surfaceDefault,
+            overflow: 'hidden',
+            boxShadow: panelShadow,
+          }}
+        >
+          <Box
+            aria-hidden
+            sx={{
+              width: 4,
+              flexShrink: 0,
+              bgcolor: soma.actionPrimary,
+            }}
+          />
+          <Box sx={{ flex: 1, minWidth: 0 }}>
+            <Stack spacing={1} sx={{ px: 2, py: 1.5 }}>
+              <Typography
+                sx={{
+                  fontSize: 14,
+                  lineHeight: '20px',
+                  color: soma.textPrimary,
+                }}
+              >
+                {body}
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: 12,
+                  lineHeight: '16px',
+                  color: soma.textTertiary,
+                }}
+              >
+                {time}
+              </Typography>
+            </Stack>
+            {children}
+          </Box>
+        </Box>
+      </Stack>
+    </Stack>
+  )
+}
+
+/** Matches member Messages Claims highlight card (mx-m4 HighlightInProgressCard). */
+function StatusCard({ card }: { card: StatusCardData }) {
+  return (
+    <Box
+      component="article"
+      sx={{
+        width: '100%',
+        maxWidth: 360,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 1.5,
+        border: `1px solid ${soma.borderWeakest}`,
+        borderRadius: soma.radius4xl,
+        bgcolor: soma.surfaceDefault,
+        p: 1.5,
+      }}
+    >
+      <Box
+        sx={{
+          alignSelf: 'flex-start',
+          px: 1,
+          py: 0.25,
+          borderRadius: soma.radiusFull,
+          bgcolor: soma.surfaceWarningWeak,
+          color: soma.textWarningStrong,
+          fontSize: 12,
+          fontWeight: 600,
+          lineHeight: '16px',
+        }}
+      >
+        {card.chip}
+      </Box>
+      <Typography
+        sx={{
+          fontSize: 16,
+          fontWeight: 600,
+          lineHeight: '24px',
+          color: soma.textPrimary,
+        }}
+      >
+        {card.title}
+      </Typography>
+      <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+        <Avatar
+          src={avatarMarcus}
+          alt=""
+          sx={{ width: 28, height: 28 }}
+        />
+        <Box sx={{ minWidth: 0, flex: 1 }}>
           <Typography
             sx={{
               fontSize: 14,
@@ -374,53 +526,54 @@ function StatusCard({ card }: { card: StatusCardData }) {
               color: soma.textPrimary,
             }}
           >
-            {card.title}
+            {card.ownerName}
           </Typography>
-          <Box
+          <Typography
             sx={{
-              px: 1,
-              py: 0.25,
-              borderRadius: soma.radiusSm,
-              bgcolor: soma.surfaceSuccessSoft,
-              color: soma.success,
-              fontSize: 11,
+              fontSize: 14,
               fontWeight: 500,
-              lineHeight: '16px',
+              lineHeight: '20px',
+              color: soma.textPrimary,
             }}
           >
-            {card.badge}
-          </Box>
-        </Stack>
-        <Stack spacing={0.75}>
-          <DetailRow label="Owner" value={card.owner} />
-          <DetailRow label="Next step" value={card.nextStep} />
-          <DetailRow label="Follow-up" value={card.due} />
-        </Stack>
+            {card.ownerRole}
+          </Typography>
+        </Box>
       </Stack>
-    </Box>
-  )
-}
-
-function DetailRow({ label, value }: { label: string; value: string }) {
-  return (
-    <Stack direction="row" spacing={1} sx={{ justifyContent: 'space-between' }}>
-      <Typography
-        sx={{ fontSize: 12, lineHeight: '16px', color: soma.textTertiary }}
-      >
-        {label}
-      </Typography>
       <Typography
         sx={{
-          fontSize: 12,
+          fontSize: 14,
           fontWeight: 500,
-          lineHeight: '16px',
-          color: soma.textPrimary,
-          textAlign: 'right',
+          lineHeight: '20px',
+          color: soma.textTertiary,
+          mt: 0.5,
         }}
       >
-        {value}
+        {card.description}
       </Typography>
-    </Stack>
+      <Box sx={{ mt: 'auto', width: '100%' }}>
+        <Typography
+          sx={{
+            fontSize: 14,
+            fontWeight: 600,
+            lineHeight: '20px',
+            color: soma.textPrimary,
+          }}
+        >
+          {card.expectedUpdateLabel}
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: 14,
+            fontWeight: 500,
+            lineHeight: '20px',
+            color: soma.textPrimary,
+          }}
+        >
+          {card.expectedUpdateValue}
+        </Typography>
+      </Box>
+    </Box>
   )
 }
 
@@ -431,6 +584,7 @@ function ChatBubble({
   selectedTime,
   onChoice,
   onTimeSelect,
+  staffCardRef,
 }: {
   message: ChatMessage
   choiceDisabled?: boolean
@@ -438,17 +592,20 @@ function ChatBubble({
   selectedTime?: string
   onChoice?: (id: ProceedChoiceId) => void
   onTimeSelect?: (value: string) => void
+  staffCardRef?: RefObject<HTMLDivElement | null>
 }) {
   const kind = message.kind ?? 'text'
 
   if (kind === 'system') {
     return (
       <Stack spacing={0.5} sx={{ textAlign: 'center', width: '100%' }}>
-        <Typography
-          sx={{ fontSize: 12, lineHeight: '16px', color: soma.textTertiary }}
-        >
-          {message.time}
-        </Typography>
+        {message.time ? (
+          <Typography
+            sx={{ fontSize: 12, lineHeight: '16px', color: soma.textTertiary }}
+          >
+            {message.time}
+          </Typography>
+        ) : null}
         <Typography
           sx={{ fontSize: 12, lineHeight: '16px', color: soma.textTertiary }}
         >
@@ -480,6 +637,139 @@ function ChatBubble({
           <StatusCard card={message.statusCard} />
         </Stack>
       </Stack>
+    )
+  }
+
+  if (kind === 'choices' && message.choices) {
+    return (
+      <StaffOnlyCard
+        time={message.time}
+        title="Dot"
+        body={message.body}
+        cardRef={staffCardRef}
+      >
+        <Box
+          component="ul"
+          sx={{
+            listStyle: 'none',
+            m: 0,
+            p: 0,
+            borderTop: `1px solid ${soma.borderSubtle}`,
+          }}
+        >
+          {message.choices.map((choice, index) => (
+            <Box
+              key={choice.id}
+              component="li"
+              sx={{
+                borderBottom:
+                  index < message.choices!.length - 1
+                    ? `1px solid ${soma.borderSubtle}`
+                    : 0,
+              }}
+            >
+              <Box
+                component="button"
+                type="button"
+                disabled={choiceDisabled}
+                onClick={() => onChoice?.(choice.id)}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  width: '100%',
+                  border: 0,
+                  bgcolor: 'transparent',
+                  textAlign: 'left',
+                  cursor: choiceDisabled ? 'default' : 'pointer',
+                  fontFamily: 'inherit',
+                  px: 2,
+                  py: 1.25,
+                  opacity: choiceDisabled ? 0.55 : 1,
+                  '&:hover': choiceDisabled
+                    ? undefined
+                    : { bgcolor: soma.surfaceSubtle },
+                  '&:disabled': { color: soma.textTertiary },
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: 14,
+                    fontWeight: 500,
+                    lineHeight: '20px',
+                    color: soma.textPrimary,
+                  }}
+                >
+                  {choice.label}
+                </Typography>
+                <AppIcon
+                  name="chevronDown"
+                  sx={{
+                    fontSize: 12,
+                    color: soma.iconTertiary,
+                    transform: 'rotate(-90deg)',
+                  }}
+                />
+              </Box>
+            </Box>
+          ))}
+        </Box>
+      </StaffOnlyCard>
+    )
+  }
+
+  if (kind === 'timeSelect' && message.timeOptions) {
+    return (
+      <StaffOnlyCard
+        time={message.time}
+        title="Dot"
+        body={message.body}
+        cardRef={staffCardRef}
+      >
+        <Box sx={{ px: 2, pb: 2 }}>
+          <Select
+            size="small"
+            displayEmpty
+            fullWidth
+            value={selectedTime ?? ''}
+            disabled={timeDisabled}
+            onChange={(event: SelectChangeEvent) =>
+              onTimeSelect?.(event.target.value)
+            }
+            renderValue={(value) =>
+              value
+                ? (message.timeOptions?.find((opt) => opt.value === value)
+                    ?.label ?? value)
+                : 'Select time needed'
+            }
+            inputProps={{ 'aria-label': 'Investigation time needed' }}
+            MenuProps={{
+              disableScrollLock: true,
+              slotProps: {
+                paper: somaMenuPaperSlotProps,
+                list: { dense: true, sx: { py: 0 } },
+              },
+            }}
+            sx={{
+              fontSize: 14,
+              borderRadius: soma.radiusSm,
+              bgcolor: soma.surfaceDefault,
+              '& .MuiSelect-select': { py: 1 },
+            }}
+          >
+            {message.timeOptions.map((option) => (
+              <MenuItem
+                key={option.value}
+                value={option.value}
+                disableGutters
+                sx={somaMenuItemSx}
+              >
+                {option.label}
+              </MenuItem>
+            ))}
+          </Select>
+        </Box>
+      </StaffOnlyCard>
     )
   }
 
@@ -603,80 +893,6 @@ function ChatBubble({
               </Typography>
             </Box>
           )}
-
-          {kind === 'choices' && message.choices ? (
-            <Stack
-              direction="row"
-              useFlexGap
-              sx={{ flexWrap: 'wrap', gap: 1, pt: 0.5 }}
-            >
-              {message.choices.map((choice) => (
-                <Button
-                  key={choice.id}
-                  variant="outlined"
-                  color="primary"
-                  size="small"
-                  disabled={choiceDisabled}
-                  onClick={() => onChoice?.(choice.id)}
-                  sx={{
-                    borderRadius: soma.radiusFull,
-                    px: 1.5,
-                    py: 0.75,
-                    fontSize: 13,
-                    fontWeight: 500,
-                    textTransform: 'none',
-                    minHeight: 32,
-                  }}
-                >
-                  {choice.label}
-                </Button>
-              ))}
-            </Stack>
-          ) : null}
-
-          {kind === 'timeSelect' && message.timeOptions ? (
-            <Select
-              size="small"
-              displayEmpty
-              value={selectedTime ?? ''}
-              disabled={timeDisabled}
-              onChange={(event: SelectChangeEvent) =>
-                onTimeSelect?.(event.target.value)
-              }
-              renderValue={(value) =>
-                value
-                  ? (message.timeOptions?.find((opt) => opt.value === value)
-                      ?.label ?? value)
-                  : 'Select time needed'
-              }
-              inputProps={{ 'aria-label': 'Investigation time needed' }}
-              MenuProps={{
-                disableScrollLock: true,
-                slotProps: {
-                  paper: somaMenuPaperSlotProps,
-                  list: { dense: true, sx: { py: 0 } },
-                },
-              }}
-              sx={{
-                minWidth: 180,
-                fontSize: 14,
-                borderRadius: soma.radiusSm,
-                bgcolor: soma.surfaceDefault,
-                '& .MuiSelect-select': { py: 1 },
-              }}
-            >
-              {message.timeOptions.map((option) => (
-                <MenuItem
-                  key={option.value}
-                  value={option.value}
-                  disableGutters
-                  sx={somaMenuItemSx}
-                >
-                  {option.label}
-                </MenuItem>
-              ))}
-            </Select>
-          ) : null}
 
           <Typography
             sx={{
@@ -967,6 +1183,7 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
   const [demoStep, setDemoStep] = useState(0)
   const [selectedTime, setSelectedTime] = useState('')
   const threadEndRef = useRef<HTMLDivElement | null>(null)
+  const staffCardRef = useRef<HTMLDivElement | null>(null)
 
   const isDeniedClaimDemo = selectedId === 'denied-claim'
   const interaction = getDemoInteraction(demoStep)
@@ -993,8 +1210,14 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
   }, [selectedId])
 
   useEffect(() => {
-    threadEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
-  }, [demoStep, visibleMessages.length])
+    // Keep Dot's staff card in the thread flow; bring it into view without
+    // hiding the conversation above (avoid block:end on a tall card).
+    const target =
+      interaction === 'choices' || interaction === 'timeSelect'
+        ? staffCardRef.current
+        : threadEndRef.current
+    target?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+  }, [demoStep, interaction, visibleMessages.length])
 
   function advanceDemo() {
     setDemoStep((current) => Math.min(current + 1, DEMO_STEPS.length - 1))
@@ -1302,7 +1525,7 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
           </Stack>
 
           <Stack
-            spacing={3}
+            spacing={2}
             sx={{ flex: 1, minHeight: 0, overflow: 'auto', pr: 0.5 }}
           >
             {ACTIVITY_ITEMS.map((item) => (
@@ -1373,6 +1596,11 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
                   selectedTime={selectedTime}
                   onChoice={handleChoice}
                   onTimeSelect={handleTimeSelect}
+                  staffCardRef={
+                    message.kind === 'choices' || message.kind === 'timeSelect'
+                      ? staffCardRef
+                      : undefined
+                  }
                 />
               ))
             ) : (
@@ -1389,22 +1617,6 @@ export function ConversationsPage({ onPrototypeAction }: ConversationsPageProps)
             )}
             <div ref={threadEndRef} />
           </Stack>
-
-          {isDeniedClaimDemo && interaction === 'continue' ? (
-            <Stack
-              direction="row"
-              sx={{ justifyContent: 'flex-end', pb: 0.5 }}
-            >
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={advanceDemo}
-                sx={{ minHeight: 40, px: 2 }}
-              >
-                Continue
-              </Button>
-            </Stack>
-          ) : null}
 
           <Composer onAction={onPrototypeAction} />
         </Box>

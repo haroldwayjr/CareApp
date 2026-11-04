@@ -1,0 +1,146 @@
+[
+  {
+    "file": "apply_00.js",
+    "len": 27885,
+    "batch": "apply_00",
+    "icons": 25
+  },
+  {
+    "file": "apply_01.js",
+    "len": 37445,
+    "batch": "apply_01",
+    "icons": 25
+  },
+  {
+    "file": "apply_02.js",
+    "len": 41457,
+    "batch": "apply_02",
+    "icons": 25
+  },
+  {
+    "file": "apply_03.js",
+    "len": 46405,
+    "batch": "apply_03",
+    "icons": 25
+  },
+  {
+    "file": "apply_04.js",
+    "len": 44901,
+    "batch": "apply_04",
+    "icons": 25
+  },
+  {
+    "file": "apply_05_h0.js",
+    "len": 32673,
+    "batch": "apply_05",
+    "icons": 13
+  },
+  {
+    "file": "apply_05_h1.js",
+    "len": 30053,
+    "batch": "apply_05",
+    "icons": 12
+  },
+  {
+    "file": "apply_06_h0.js",
+    "len": 31889,
+    "batch": "apply_06",
+    "icons": 13
+  },
+  {
+    "file": "apply_06_h1.js",
+    "len": 23313,
+    "batch": "apply_06",
+    "icons": 12
+  },
+  {
+    "file": "apply_07.js",
+    "len": 42213,
+    "batch": "apply_07",
+    "icons": 25
+  },
+  {
+    "file": "apply_08_h0.js",
+    "len": 27157,
+    "batch": "apply_08",
+    "icons": 13
+  },
+  {
+    "file": "apply_08_h1.js",
+    "len": 29265,
+    "batch": "apply_08",
+    "icons": 12
+  },
+  {
+    "file": "apply_09_h0.js",
+    "len": 40181,
+    "batch": "apply_09",
+    "icons": 13
+  },
+  {
+    "file": "apply_09_h1.js",
+    "len": 21789,
+    "batch": "apply_09",
+    "icons": 12
+  },
+  {
+    "file": "apply_10.js",
+    "len": 47517,
+    "batch": "apply_10",
+    "icons": 25
+  },
+  {
+    "file": "apply_11.js",
+    "len": 43753,
+    "batch": "apply_11",
+    "icons": 25
+  },
+  {
+    "file": "apply_12_h0.js",
+    "len": 29173,
+    "batch": "apply_12",
+    "icons": 13
+  },
+  {
+    "file": "apply_12_h1.js",
+    "len": 24869,
+    "batch": "apply_12",
+    "icons": 12
+  },
+  {
+    "file": "apply_13_h0.js",
+    "len": 26441,
+    "batch": "apply_13",
+    "icons": 13
+  },
+  {
+    "file": "apply_13_h1.js",
+    "len": 26729,
+    "batch": "apply_13",
+    "icons": 12
+  },
+  {
+    "file": "apply_14_h0.js",
+    "len": 28297,
+    "batch": "apply_14",
+    "icons": 13
+  },
+  {
+    "file": "apply_14_h1.js",
+    "len": 30993,
+    "batch": "apply_14",
+    "icons": 12
+  },
+  {
+    "file": "apply_15_h0.js",
+    "len": 29601,
+    "batch": "apply_15",
+    "icons": 10
+  },
+  {
+    "file": "apply_15_h1.js",
+    "len": 22881,
+    "batch": "apply_15",
+    "icons": 10
+  }
+]

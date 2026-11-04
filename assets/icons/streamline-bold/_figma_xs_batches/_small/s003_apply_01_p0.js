@@ -1,0 +1,67 @@
+
+const page = figma.root.children.find(p => /Icons/i.test(p.name));
+await figma.setCurrentPageAsync(page);
+
+const collections = await figma.variables.getLocalVariableCollectionsAsync();
+let iconDefault = null;
+for (const coll of collections) {
+  for (const id of coll.variableIds) {
+    const v = await figma.variables.getVariableByIdAsync(id);
+    if (v && v.name === 'icon/default') iconDefault = v;
+  }
+}
+
+function bindFills(root) {
+  const stack = [root];
+  while (stack.length) {
+    const n = stack.pop();
+    if ('constraints' in n) n.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    if (n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION' || n.type === 'ELLIPSE' || n.type === 'STAR' || n.type === 'POLYGON') {
+      const paint = figma.variables.setBoundVariableForPaint(
+        { type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', iconDefault);
+      n.fills = [paint];
+      n.strokes = [];
+    }
+    if ('children' in n) for (const c of n.children) stack.push(c);
+  }
+}
+
+function applyBoldXs(set, svg) {
+  const xs = set.children.find(c => c.name === 'Size=xs');
+  const md = set.children.find(c => c.name === 'Size=md');
+  if (!xs) return { ok: false, reason: 'no-xs' };
+  const was = xs.visible;
+  xs.visible = true;
+  for (const c of [...xs.children]) c.remove();
+  const node = figma.createNodeFromSvg(svg);
+  node.name = set.name.split('/').pop();
+  node.resize(16, 16);
+  node.x = 0; node.y = 0;
+  node.clipsContent = false;
+  if ('constraints' in node) node.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+  xs.appendChild(node);
+  try { xs.resizeWithoutConstraints(16, 16); } catch (_) { try { xs.resize(16, 16); } catch (__) {} }
+  bindFills(node);
+  xs.clipsContent = false;
+  xs.visible = false; // keep catalog md-only
+  if (md) md.visible = true;
+  try { set.resizeWithoutConstraints(24, 24); } catch (_) {}
+  set.clipsContent = true;
+  return { ok: true };
+}
+
+const BATCH = [{"setName":"icon/navigation/home.alt","name":"home-alt","category":"navigation","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"House-Alternate--Streamline-Ultimate\">\n  <desc>\n    House Alternate Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path d=\"m23.61 8.71 -11 -8.5a1 1 0 0 0 -1.22 0l-11 8.5A1 1 0 0 0 0 9.5V23a1 1 0 0 0 1 1h22a1 1 0 0 0 1 -1V9.5a1 1 0 0 0 -0.39 -0.79ZM22 21.5a0.5 0.5 0 0 1 -0.5 0.5h-19a0.5 0.5 0 0 1 -0.5 -0.5V10.24a0.51 0.51 0 0 1 0.19 -0.4l9.5 -7.34a0.51 0.51 0 0 1 0.62 0l9.5 7.34a0.51 0.51 0 0 1 0.19 0.4Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n</svg>"},{"setName":"icon/navigation/compass","name":"compass","category":"navigation","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Compass--Streamline-Ultimate\">\n  <desc>\n    Compass Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M12 0a12 12 0 1 0 12 12A12 12 0 0 0 12 0Zm3.29 7.29 2 -2a1 1 0 1 1 1.42 1.42l-2 2a1 1 0 0 1 -1.42 0 1 1 0 0 1 0 -1.42Zm-10 -2a1 1 0 0 1 1.42 0l2 2a1 1 0 0 1 0 1.42 1 1 0 0 1 -1.42 0l-2 -2a1 1 0 0 1 0 -1.42Zm3.42 11.42 -2 2a1 1 0 0 1 -1.42 0 1 1 0 0 1 0 -1.42l2 -2a1 1 0 0 1 1.42 1.42Zm10 2a1 1 0 0 1 -1.42 0l-2 -2a1 1 0 0 1 1.42 -1.42l2 2a1 1 0 0 1 0 1.42Zm3.52 -6.36L14.6 13.7a0.73 0.73 0 0 0 -0.51 0.51l-1.75 8a0.35 0.35 0 0 1 -0.35 0.27 0.37 0.37 0 0 1 -0.35 -0.27l-1.75 -8a0.72 0.72 0 0 0 -0.5 -0.51L2 12.35a0.36 0.36 0 0 1 0 -0.7l7.53 -1.4a0.54 0.54 0 0 0 0.47 -0.41l1.67 -8.07A0.37 0.37 0 0 1 12 1.5a0.35 0.35 0 0 1 0.35 0.27L14 9.84a0.54 0.54 0 0 0 0.42 0.41l7.79 1.4a0.37 0.37 0 0 1 0 0.7Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M10.5 12a1.5 1.5 0 1 0 3 0 1.5 1.5 0 1 0 -3 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/navigation/map","name":"map","category":"navigation","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Map-Marks--Streamline-Ultimate\">\n  <desc>\n    Map Marks Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path fill=\"#000000\" fill-rule=\"evenodd\" d=\"M8.78317 10.7968c0.93209 -0.99248 3.57303 -4.00452 3.57303 -6.14489 0 -1.03002 -0.4092 -2.01786 -1.1375 -2.7462C10.4903 1.17737 9.5025 0.768188 8.47247 0.768188c-1.03003 0 -2.01787 0.409182 -2.74621 1.137522 -0.72834 0.72834 -1.13751 1.71618 -1.13751 2.7462 0 2.14037 2.64093 5.1783 3.57302 6.14489 0.0396 0.0429 0.08765 0.0771 0.14112 0.1005 0.05347 0.0235 0.11121 0.0355 0.16958 0.0355 0.05837 0 0.11611 -0.012 0.16958 -0.0355 0.05347 -0.0234 0.10152 -0.0576 0.14112 -0.1005ZM7.1779 4.65191c0 -0.25604 0.07592 -0.50633 0.21817 -0.71922 0.14225 -0.2129 0.34444 -0.37882 0.58099 -0.47681 0.23655 -0.09798 0.49685 -0.12362 0.74797 -0.07367 0.25112 0.04996 0.48179 0.17325 0.66284 0.3543 0.18105 0.18105 0.30435 0.41172 0.3543 0.66284 0.04995 0.25113 0.02432 0.51142 -0.07367 0.74798 -0.09798 0.23655 -0.26391 0.43873 -0.4768 0.58098 -0.21289 0.14225 -0.46319 0.21818 -0.71923 0.21818 -0.34334 0 -0.67262 -0.13639 -0.9154 -0.37917s-0.37917 -0.57206 -0.37917 -0.91541ZM19.3841 19.2725c0.9321 -0.9925 3.573 -4.0045 3.573 -6.1449 0 -1.03 -0.4091 -2.0178 -1.1375 -2.7462 -0.7283 -0.72833 -1.7161 -1.1375 -2.7462 -1.1375 -1.03 0 -2.0178 0.40917 -2.7462 1.1375 -0.7283 0.7284 -1.1375 1.7162 -1.1375 2.7462 0 2.1404 2.6409 5.1783 3.573 6.1449 0.0396 0.0429 0.0877 0.0771 0.1411 0.1006 0.0535 0.0234 0.1113 0.0354 0.1696 0.0354 0.0584 0 0.1161 -0.012 0.1696 -0.0354 0.0535 -0.0235 0.1015 -0.0577 0.1411 -0.1006Zm-1.6053 -6.1449c0 -0.256 0.076 -0.5063 0.2182 -0.7192 0.1423 -0.2129 0.3445 -0.3788 0.581 -0.4768 0.2366 -0.098 0.4969 -0.1236 0.748 -0.0737 0.2511 0.05 0.4818 0.1733 0.6628 0.3543 0.1811 0.1811 0.3044 0.4117 0.3543 0.6629 0.05 0.2511 0.0243 0.5114 -0.0736 0.7479 -0.098 0.2366 -0.264 0.4388 -0.4768 0.581 -0.2129 0.1423 -0.4632 0.2182 -0.7193 0.2182 -0.3433 0 -0.6726 -0.1364 -0.9154 -0.3792 -0.2428 -0.2428 -0.3792 -0.572 -0.3792 -0.9154Zm-7.89938 -1.3069c0.49248 -0.5246 1.44308 -1.5889 2.28098 -2.82363 0.4201 -0.61901 0.8318 -1.3099 1.1427 -2.02014 0.305 -0.69674 0.5531 -1.50191 0.5531 -2.32504 0 -0.67959 -0.1285 -1.34592 -0.372 -1.96653l3.3867 1.02058c0.0885 0.02684 0.1836 0.0283 0.2728 0.00372l0.0012 -0.00034 4.0289 -1.09998c0.2159 -0.05895 0.4422 -0.06888 0.6624 -0.02903s0.4287 0.12846 0.6102 0.25934c0.1815 0.13088 0.3314 0.30071 0.4388 0.49705 0.1073 0.19633 0.1694 0.4142 0.1816 0.63764l0.3205 5.93216c-0.1538 -0.20598 -0.3231 -0.40185 -0.507 -0.58577 -1.0097 -1.00965 -2.379 -1.57686 -3.8069 -1.57686 -1.4278 0 -2.7972 0.56721 -3.8068 1.57686 -1.0097 1.00967 -1.5769 2.37897 -1.5769 3.80687 0 0.8226 0.2478 1.6289 0.5523 2.327 0.3106 0.7119 0.7221 1.4051 1.1424 2.0263 0.8353 1.2344 1.7843 2.2987 2.2911 2.8251 0.1772 0.1876 0.3903 0.3376 0.6268 0.4411 0.2432 0.1065 0.5057 0.1614 0.7711 0.1614 0.2655 0 0.528 -0.0549 0.7711 -0.1614 0.2405 -0.1052 0.4569 -0.2587 0.6359 -0.4507 0.4924 -0.5246 1.4431 -1.5889 2.281 -2.8236 0.3373 -0.4971 0.6693 -1.0406 0.948 -1.6032l0.2455 4.5451c0.0187 0.3479 -0.0842 0.6915 -0.2911 0.9718 -0.2069 0.2802 -0.505 0.4797 -0.8429 0.5642l-4.9466 1.2359c-0.2494 0.0626 -0.5108 0.0601 -0.759 -0.0075l-4.9852 -1.359c-0.0861 -0.0235 -0.1769 -0.0235 -0.263 0l-4.985 1.359c-0.24817 0.0675 -0.50977 0.0701 -0.75923 0.0075l-4.94452 -1.2359c-0.339035 -0.085 -0.638114 -0.2858 -0.844885 -0.5676 -0.20651 -0.2815 -0.3083781 -0.6262 -0.2880784 -0.9746l0.0000778 -0.0013L0.938328 3.96955c0.012232 -0.22344 0.074312 -0.44152 0.181662 -0.63785 0.10736 -0.19634 0.25728 -0.36617 0.43879 -0.49705 0.1815 -0.13088 0.38999 -0.21949 0.61018 -0.25934 0.22015 -0.03984 0.44643 -0.02994 0.66225 0.02899l0.59809 0.1632c-0.22312 0.5971 -0.34055 1.23469 -0.34055 1.88439 0 0.82259 0.24781 1.62892 0.55235 2.32698 0.31057 0.71189 0.722 1.40514 1.14233 2.02628 0.83533 1.23445 1.78428 2.29875 2.29112 2.82515 0.17717 0.1876 0.39034 0.3376 0.62684 0.4411 0.24312 0.1065 0.50565 0.1614 0.77108 0.1614 0.26543 0 0.52796 -0.0549 0.77108 -0.1614 0.24053 -0.1053 0.45692 -0.2587 0.63587 -0.4507Z\" clip-rule=\"evenodd\" stroke-width=\"1\"></path>\n</svg>"}];
+let ok = 0, missing = 0, failed = 0;
+const miss = [], fail = [];
+for (const item of BATCH) {
+  const set = page.findOne(n => n.type === 'COMPONENT_SET' && n.name === item.setName);
+  if (!set) { missing++; if (miss.length < 5) miss.push(item.setName); continue; }
+  try {
+    const r = applyBoldXs(set, item.svg);
+    if (r.ok) ok++; else { failed++; fail.push({ name: item.setName, r }); }
+  } catch (e) {
+    failed++;
+    if (fail.length < 5) fail.push({ name: item.setName, err: String(e) });
+  }
+}
+return { ok, missing, failed, miss, fail };

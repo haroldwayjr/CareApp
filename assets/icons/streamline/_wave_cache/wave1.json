@@ -1,0 +1,1274 @@
+{
+  "gallery": {
+    "category": "media",
+    "query": "Picture",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vdby2aENc3WipfPf",
+        "name": "Picture Double Shapes",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v82a2aENc3WipztL",
+        "name": "Picture Landscape",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v8Za2aENc3WipSaf",
+        "name": "Picture Double Landscape",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mlvFqU4OcuuqiOTR",
+        "name": "Nft Profile Picture",
+        "categorySlug": "users",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vZB12aENc3iJ4g0Y",
+        "name": "Picture Polaroid Landscape",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vs8H2aENc3iJ4dXz",
+        "name": "Picture Stack Human",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vwZ32aENc3Wip3uc",
+        "name": "Picture Polaroid",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vmvq2aENc3Wip4ey",
+        "name": "Picture Flower",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vgkd2aENc3Wipj8n",
+        "name": "Picture Double",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vchu2aEDeGEi8uHa",
+        "name": "Print Picture",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "crop": {
+    "category": "media",
+    "query": "Crop",
+    "results": [
+      {
+        "hash": "ico_8euGUSDTQomT89nZ",
+        "name": "Pathfinder Crop",
+        "categorySlug": "design",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_MiuXyWmy2zhb9GZF",
+        "name": "Crop Rotate",
+        "categorySlug": "design",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_gdbsMpiyJugqDNYb",
+        "name": "Photo Crop Rotate",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_vqhpCshW2Y1ilA1f",
+        "name": "Crop Info Biotech 1",
+        "categorySlug": "nature-farming",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_WJBjbWpaImhu3z2H",
+        "name": "Crop Info Biotech 2",
+        "categorySlug": "nature-farming",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_iZQlqRaBl6N2MiQT",
+        "name": "Crop Monitoring Biotech",
+        "categorySlug": "nature-farming",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vwNxeLj4pQqmIJis",
+        "name": "Agriculture Machine Plow 4",
+        "categorySlug": "nature-farming",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v8rs2aEdzpNc3Zpn",
+        "name": "Artboard Expand",
+        "categorySlug": "design",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vQCEeLj4pQJ4vOOo",
+        "name": "Farming Farmer Crops",
+        "categorySlug": "nature-farming",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v8R5eLj4pQJ4vT5s",
+        "name": "Farming Grow Crops",
+        "categorySlug": "nature-farming",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "rotate": {
+    "category": "media",
+    "query": "Rotate",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vyFb2aENc3M5ppoq",
+        "name": "Rotate",
+        "categorySlug": "design",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vZ1xeLjM5pYBG8zx",
+        "name": "Phone Rotate 1",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v9FweLjM5pYBGswz",
+        "name": "Phone Rotate",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_MiuXyWmy2zhb9GZF",
+        "name": "Crop Rotate",
+        "categorySlug": "design",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vN582aENc3M5poKt",
+        "name": "Rotate Forward",
+        "categorySlug": "design",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vdUK2aENc3K1iu5N",
+        "name": "Rotate Horizontal",
+        "categorySlug": "design",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_gdbsMpiyJugqDNYb",
+        "name": "Photo Crop Rotate",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vJmA2aENc3M5p4j6",
+        "name": "Rotate Angle",
+        "categorySlug": "design",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vyQe2aE232jHWkq2",
+        "name": "Common File Rotate",
+        "categorySlug": "files-folders",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vwe62aE2322aE62M",
+        "name": "Single Neutral Rotate",
+        "categorySlug": "users",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "flip": {
+    "category": "media",
+    "query": "Flip",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vsG82aENc3K1iliS",
+        "name": "Flip Right",
+        "categorySlug": "design",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vtYO2aEJttBPuLm2",
+        "name": "Flip Vertical Down",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_hx0h8wAkz8oMp5FH",
+        "name": "Card Flip",
+        "categorySlug": "entertainment-events-hobbies",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vLnY2aEdzphNE95A",
+        "name": "Notes Flip",
+        "categorySlug": "content",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vnhU2aEdzp3zi5tt",
+        "name": "Book Flip Page",
+        "categorySlug": "content",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vMYO2aENc3K1icGO",
+        "name": "Flip Left",
+        "categorySlug": "design",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vx3u2aEdzphNE9V7",
+        "name": "Notes Flip 1",
+        "categorySlug": "content",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v6mc2aEJttBPulpK",
+        "name": "Flip Vertical Up",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vzGG2aEdzpPop3gr",
+        "name": "Notes Text Flip",
+        "categorySlug": "content",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vSSO2aEJttSFbEto",
+        "name": "Gesture Flip Right",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "brightness": {
+    "category": "media",
+    "query": "Brightness",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vwOP2aEDeG7yVjYq",
+        "name": "Brightness",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vVy92aEDeG7yVQsU",
+        "name": "Brightness 1",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_4cfOZCxTU6JHG5h7",
+        "name": "Photo Adjust Brightness",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vjTT2aENc3WGymtl",
+        "name": "Light Mode Brightness",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4ver62aEDeG7yV3zx",
+        "name": "Settings Brightness",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vgEW2aENc3af7UbV",
+        "name": "Video Edit Brightness 1",
+        "categorySlug": "video-movies-tv",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4viJQ2aENc3af7y2a",
+        "name": "Video Edit Brightness",
+        "categorySlug": "video-movies-tv",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v2XC2aEJttDeGq06",
+        "name": "Smart Watch Circle Brightness",
+        "categorySlug": "computers-devices-electronics",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vTBb2aENc3eLjegE",
+        "name": "Light Mode Sunny",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vn3B2aEJttaf795A",
+        "name": "Smart Watch Square Brightness",
+        "categorySlug": "computers-devices-electronics",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "contrast": {
+    "category": "media",
+    "query": "Contrast",
+    "results": [
+      {
+        "hash": "ico_JJ1htjPkwXClt96D",
+        "name": "Contrast Horizontal Slider Adjustment",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_cm5B14MkCjDMblJ1",
+        "name": "Photo Fade",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v45WeLjK1i4pQOJV",
+        "name": "Mood Moody",
+        "categorySlug": "social-medias-rewards-rating",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_4cfOZCxTU6JHG5h7",
+        "name": "Photo Adjust Brightness",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_q0JOrFnmpPE8pU0Z",
+        "name": "Photo Vignette 1",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vfvo2aENc3WGyCPd",
+        "name": "Light Mode Bright Dark 1",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_ZngKQ6MHWLjfVsFr",
+        "name": "Byte Logo",
+        "categorySlug": "logos",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_46xSkyt0wpXAiHsi",
+        "name": "Shadow Text",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_BqV5GC3gYF8UlqFd",
+        "name": "Photo Histogram 1",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_7wsQlP0Nhe9UnQDq",
+        "name": "Photo Histogram 2",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "record": {
+    "category": "media",
+    "query": "Record",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vZFZ2aENc3af7iPd",
+        "name": "Controls Record",
+        "categorySlug": "video-movies-tv",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vUxz2aENc3htdQEQ",
+        "name": "Controls Camera Record",
+        "categorySlug": "video-movies-tv",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vOwJ2aENc3g0Yqje",
+        "name": "Vinyl Record",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vlYg2aEJttJ4v3Lk",
+        "name": "Button Record",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vSjN2aENc3g0Y7gT",
+        "name": "Vinyl Record Player",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vKd02aEJttJ4vzNT",
+        "name": "Button Record 1",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_H2BMRH5KqyWZzVFk",
+        "name": "Phone Record",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_guBIY77ctVEP7L37",
+        "name": "Eavesdrop Record",
+        "categorySlug": "crime-war-protection",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vKYJ2aENc3g0YIlT",
+        "name": "Vinyl Record Album",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v8ny2aENc3af7BPu",
+        "name": "Controls Movie Record",
+        "categorySlug": "video-movies-tv",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "cast": {
+    "category": "media",
+    "query": "Cast",
+    "results": [
+      {
+        "hash": "ico_T0uo2VMl0WJmoITG",
+        "name": "Phone Cast",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_A8fPT3qSeuSu3fZB",
+        "name": "Google Cast Logo",
+        "categorySlug": "logos",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_cx6Gsp1Ys2VpdOV9",
+        "name": "Cast To Devices Tv",
+        "categorySlug": "technology",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_sC9ZH7jLBZEIp6tA",
+        "name": "Cast To Devices Phone",
+        "categorySlug": "technology",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vB9feLj08UWipbuH",
+        "name": "Modern Weapon Die Cast",
+        "categorySlug": "crime-war-protection",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_dvhn9z7Nf4DmGVG2",
+        "name": "Pocket Casts Logo",
+        "categorySlug": "logos",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vM6deLj9ULZOsnyT",
+        "name": "Bandage Leg",
+        "categorySlug": "health-beauty",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_J8cRAfKWoFgT85CU",
+        "name": "Avatar Judo Athlete Man",
+        "categorySlug": "avatars",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v5wVeLj9ULZOsuuS",
+        "name": "Bandage Leg Hanging",
+        "categorySlug": "health-beauty",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vn48eLj9ULZOsIji",
+        "name": "Bandage Leg Hanging Hospital",
+        "categorySlug": "health-beauty",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "airplay": {
+    "category": "media",
+    "query": "Airplay",
+    "results": [
+      {
+        "hash": "ico_Ej6EU29aTvC68mf5",
+        "name": "Sharing Screen Media",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_RgV0xQI0C2dp65uI",
+        "name": "Shareplay Disabled Slash",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "equalizer": {
+    "category": "media",
+    "query": "Equalizer",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vw4D2aENc3PvJOgf",
+        "name": "Equalizer",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vRY92aENc3PvJSWz",
+        "name": "Equalizer 1",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v7WR2aENc3PvJqED",
+        "name": "Equalizer Stereo Play",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vvaP2aENc3PvJIDy",
+        "name": "Equalizer Stereo",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vSJy2aENc3PvJFkx",
+        "name": "Equalizer Stereo 1",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vZ7c2aENc3rjtaVp",
+        "name": "Audio File Equalizer",
+        "categorySlug": "files-folders",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_SaGooPTVGKWaixcs",
+        "name": "Ai Generate Voice Spark 1",
+        "categorySlug": "artificial-intelligence",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_evgABsv5FEGk0tKd",
+        "name": "Slider Vertical Alternative",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_zVicYydFNAzR7ViI",
+        "name": "Circuit Breaker 2",
+        "categorySlug": "computers-devices-electronics",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_PTqIC3quL5PKPW0b",
+        "name": "Bar Step",
+        "categorySlug": "family-babies-kids",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "playlist": {
+    "category": "media",
+    "query": "Playlist",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vgS22aENc33zi79G",
+        "name": "Playlist",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vWRs2aENc33ziSaf",
+        "name": "Playlist Album",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_w3VtBziUq5R5aar3",
+        "name": "Playlist Play",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vUJz2aENc33zirFk",
+        "name": "Playlist Add",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vzmh2aENc33zijAr",
+        "name": "Playlist Heart",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vCLi2aENc3fSZbmo",
+        "name": "Playlist Songs 1",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vcSU2aENc3y7qmoc",
+        "name": "Playlist Menu",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vdat2aENc33zi5aQ",
+        "name": "Playlist Edit",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v5zz2aENc3fSZaDU",
+        "name": "Playlist Sync",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vBxx2aENc33zi3co",
+        "name": "Playlist Clock",
+        "categorySlug": "music-audio",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "mail": {
+    "category": "comms",
+    "query": "Email",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4v2N7eLjM5pP2WiPd",
+        "name": "Read Email Letter",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vO5reLjM5pgWacZO",
+        "name": "Send Email Fly",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v9W9eLjM5p8ueaSz",
+        "name": "Email Action Home",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vdT9eLjM5pgWaz3X",
+        "name": "Send Email 2",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vSKjeLjM5p8uefXH",
+        "name": "Email Action Heart",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vafMeLjM5pwvSZm6",
+        "name": "Email Action Search 1",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vNmoeLjM5p8ue4ey",
+        "name": "Email Action Image",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vKvkeLjM5pgWa92h",
+        "name": "Send Email 1",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4veJteLjM5p8ueMh6",
+        "name": "Email Action Receive",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vEbAeLjM5pBPu8tU",
+        "name": "Email Action Unread",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "message": {
+    "category": "comms",
+    "query": "Chat",
+    "results": [
+      {
+        "hash": "ico_fCYgm8aBeo7F3iKW",
+        "name": "Online Video Chat",
+        "categorySlug": "health-beauty",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_Q5dZsCRx4vkO2WY2",
+        "name": "Love Bubble Chat 2",
+        "categorySlug": "romance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vqfheLjM5pLXcfls",
+        "name": "Conversation Chat 1",
+        "categorySlug": "messages-chat-smileys",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_jm1jIlaTFtJPiP2g",
+        "name": "Crypto Chat Mobile Phone",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v7aQeLjM5pQ3yjAu",
+        "name": "Multiple Chat",
+        "categorySlug": "users",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v0qSeLjM5pLXcQG5",
+        "name": "Conversation Chat",
+        "categorySlug": "messages-chat-smileys",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_lyLFvVzC8YOhxjzr",
+        "name": "Mute Chat 1",
+        "categorySlug": "messages-chat-smileys",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vPOAeLjK1ijHWIEZ",
+        "name": "Like Chat",
+        "categorySlug": "social-medias-rewards-rating",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vNZOeLjM5pLXcy6B",
+        "name": "Conversation Chat 2",
+        "categorySlug": "messages-chat-smileys",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_NghiUt5427HdvoSE",
+        "name": "Chat Consultation Phone",
+        "categorySlug": "health-beauty",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "phone": {
+    "category": "comms",
+    "query": "Phone",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vwaleLjM5pwAZf6y",
+        "name": "Phone",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_4N5n4XkIZRC8FOKO",
+        "name": "Phone Write",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vSoweLjM5pOrjei2",
+        "name": "Phone Hand Hold",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v9FweLjM5pYBGswz",
+        "name": "Phone Rotate",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vK4HeLjM5pwAZaWN",
+        "name": "Phone Dial",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v8omeLjM5pwAZkPx",
+        "name": "Phone Book",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v8k6eLjM5pPvJWeH",
+        "name": "Phone Actions Smile",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vqZgeLjM5pgnsBzP",
+        "name": "Phone Action Question",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v80ieLjM5pwAZuKw",
+        "name": "Phone Circle",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vRpieLjM5pOrjgaB",
+        "name": "Mobile Phone Blackberry 2",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "phone-off": {
+    "category": "comms",
+    "query": "Phone Off",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vPAXeLjM5pwAZ9Ya",
+        "name": "Phone Off",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vsUIeLjM5pQzINEX",
+        "name": "Phone Actions Off",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v7HheLjM5pHO2rur",
+        "name": "Phone Action Disable",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vhdbeLjM5pPvJzON",
+        "name": "Phone Actions Remove",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vbFueLjM5p7yVg7p",
+        "name": "Forbidden Phone Off",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_DkWoKBJnycOVtYaq",
+        "name": "Public Domain Content Sign",
+        "categorySlug": "content",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_6HqZVNAtILOADBDe",
+        "name": "Male Stablization",
+        "categorySlug": "pets-animals",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vwaleLjM5pwAZf6y",
+        "name": "Phone",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v80ieLjM5pwAZuKw",
+        "name": "Phone Circle",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vPbweLjM5pQzI4j6",
+        "name": "Phone Actions Receive 1",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "send": {
+    "category": "comms",
+    "query": "Send Email",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vdT9eLjM5pgWaz3X",
+        "name": "Send Email 2",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vKvkeLjM5pgWa92h",
+        "name": "Send Email 1",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vRSFeLjM5pgWa5ke",
+        "name": "Send Email",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vO5reLjM5pgWacZO",
+        "name": "Send Email Fly",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vfnBeLjM5pgWaaRX",
+        "name": "Send Email Monitor",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vsRKeLjM5pwvSJjm",
+        "name": "Email Action Send 2",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vfFUeLjM5pBPunEO",
+        "name": "Email Action Upload",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vYCueLjM5pgWaOfx",
+        "name": "Send Email Envelope",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vNzFeLjM5pwvSzhY",
+        "name": "Email Action Send 1",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v72GeLjM5pBPu4iM",
+        "name": "Email Action Upload 1",
+        "categorySlug": "emails",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "calendar": {
+    "category": "comms",
+    "query": "Calendar",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vdUd2aEDeGy7qvcY",
+        "name": "Calendar 3",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vj9N2aEDeGy7qmTs",
+        "name": "Calendar 1",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vcKo2aEDeGy7qkS8",
+        "name": "Calendar 2",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vv3O2aEDeGy7qKxe",
+        "name": "Calendar",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vOD62aEDeGhNEztL",
+        "name": "Calendar Lock",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vrNb2aEDeGfvjbzb",
+        "name": "Calendar Shield",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vqbn2aEDeGfSZIMW",
+        "name": "Calendar Download",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vHEx2aEDeGhNE09T",
+        "name": "Calendar Remove",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v2eW2aEDeGfvjd5V",
+        "name": "Calendar Search 1",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vt832aEDeGfSZJuT",
+        "name": "Calendar Check 1",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "clock": {
+    "category": "comms",
+    "query": "Time",
+    "results": [
+      {
+        "hash": "ico_ko9C2kiLV6F8Fpte",
+        "name": "Time Play Time 1",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_gp38JHBBmATyat9X",
+        "name": "Time Exercise Time 2",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_KGCWawpaEtPwS29b",
+        "name": "Time Food Time 2",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_aMORiix2gEis6s5v",
+        "name": "Time Coffee Time 2",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_UOxd14Q45uhVqlV4",
+        "name": "Time Study Time 1",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_W3OUeko3L04NDmeK",
+        "name": "Time Exercise Time 3",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_FwZJ1gFYNPjmTfKj",
+        "name": "Time Food Time 1",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_FgcsRGK87saCvM0L",
+        "name": "Time Exercise Time 1",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_i71VBmx2nHZ7xRt8",
+        "name": "Time Rest Time 2",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_ldBTLhP6Q7afe05Y",
+        "name": "Time Study Time 3",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "user": {
+    "category": "comms",
+    "query": "User",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vV6u2aEaf7J4vDHd",
+        "name": "Cash User",
+        "categorySlug": "business-products",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vjpo2aEhtdWGyPo1",
+        "name": "Programming User 1",
+        "categorySlug": "programing-apps-websites",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vifg2aEDeGeix3W1",
+        "name": "Alert User",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_zotJ2fsjY1kV8Wp9",
+        "name": "User Homeless Poverty 1",
+        "categorySlug": "users",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_vzZlzSR01sIMUADN",
+        "name": "User Story",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vAjm2aEDeGEi8d5V",
+        "name": "User Signal",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vQvc2aEJttgnseSE",
+        "name": "Settings User",
+        "categorySlug": "artificial-intelligence",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vTYM2aEaf7wAZDUF",
+        "name": "User Idea",
+        "categorySlug": "work-office-companies",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vMKn2aEhtdeixPh1",
+        "name": "App Window User",
+        "categorySlug": "programing-apps-websites",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_NjIREr1iMOYPxkcj",
+        "name": "User Mobility",
+        "categorySlug": "transportation",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "users": {
+    "category": "comms",
+    "query": "Users",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vtg6eLjM5pQ3yDxv",
+        "name": "Multiple Users 1",
+        "categorySlug": "users",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vvez2aE232SyUxhG",
+        "name": "Multiple Users 1",
+        "categorySlug": "users",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v8mVeLjM5pQ3yqxu",
+        "name": "Multiple Users 2",
+        "categorySlug": "users",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vmGB2aEhtdDeGfN1",
+        "name": "Monitor Users",
+        "categorySlug": "internet-networks-servers",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_pyik6mUJBBXDApUe",
+        "name": "Cargo Bike Users 2",
+        "categorySlug": "transportation",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vCBweLjM5p4pQbvO",
+        "name": "Multiple Users Wifi",
+        "categorySlug": "users",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_4jxAFiPYP3S9Yrl5",
+        "name": "Car Users",
+        "categorySlug": "transportation",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vScz2aEhtdjUArur",
+        "name": "Network Users",
+        "categorySlug": "internet-networks-servers",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v0Y8eLjM5pQ3yyVr",
+        "name": "Multiple Users 3",
+        "categorySlug": "users",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_bdvVK6BV3egtFTZ0",
+        "name": "Electric Bike Users Connect 2",
+        "categorySlug": "transportation",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  }
+}

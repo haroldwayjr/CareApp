@@ -1,0 +1,327 @@
+[
+  {
+    "name": "open",
+    "category": "actions",
+    "query": "Open"
+  },
+  {
+    "name": "submit",
+    "category": "actions",
+    "query": "Submit"
+  },
+  {
+    "name": "erase",
+    "category": "actions",
+    "query": "Erase"
+  },
+  {
+    "name": "find",
+    "category": "actions",
+    "query": "Find"
+  },
+  {
+    "name": "browse",
+    "category": "actions",
+    "query": "Browse"
+  },
+  {
+    "name": "draft",
+    "category": "actions",
+    "query": "Draft"
+  },
+  {
+    "name": "info",
+    "category": "status",
+    "query": "Information"
+  },
+  {
+    "name": "help",
+    "category": "status",
+    "query": "Question"
+  },
+  {
+    "name": "unlock",
+    "category": "status",
+    "query": "Lock Unlock"
+  },
+  {
+    "name": "star-filled",
+    "category": "status",
+    "query": "Rating Star"
+  },
+  {
+    "name": "shield-off",
+    "category": "status",
+    "query": "Shield"
+  },
+  {
+    "name": "offline",
+    "category": "status",
+    "query": "Offline"
+  },
+  {
+    "name": "notification",
+    "category": "status",
+    "query": "Notification"
+  },
+  {
+    "name": "play",
+    "category": "media",
+    "query": "Button Play"
+  },
+  {
+    "name": "skip-back",
+    "category": "media",
+    "query": "Button Previous"
+  },
+  {
+    "name": "video",
+    "category": "media",
+    "query": "Video"
+  },
+  {
+    "name": "headphones",
+    "category": "media",
+    "query": "Headphones"
+  },
+  {
+    "name": "reply",
+    "category": "comms",
+    "query": "Reply"
+  },
+  {
+    "name": "clipboard",
+    "category": "files",
+    "query": "Clipboard"
+  },
+  {
+    "name": "file-pdf",
+    "category": "files",
+    "query": "PDF"
+  },
+  {
+    "name": "folder-add",
+    "category": "files",
+    "query": "Folder Add"
+  },
+  {
+    "name": "paperclip",
+    "category": "files",
+    "query": "Paperclip"
+  },
+  {
+    "name": "cloud-upload",
+    "category": "files",
+    "query": "Cloud Upload"
+  },
+  {
+    "name": "hard-drive",
+    "category": "files",
+    "query": "Hard Drive"
+  },
+  {
+    "name": "policy",
+    "category": "files",
+    "query": "Policy"
+  },
+  {
+    "name": "guide",
+    "category": "files",
+    "query": "Guide"
+  },
+  {
+    "name": "article",
+    "category": "files",
+    "query": "Article"
+  },
+  {
+    "name": "newspaper",
+    "category": "files",
+    "query": "Newspaper"
+  },
+  {
+    "name": "resume",
+    "category": "files",
+    "query": "Resume"
+  },
+  {
+    "name": "envelope",
+    "category": "files",
+    "query": "Envelope"
+  },
+  {
+    "name": "box-alt",
+    "category": "files",
+    "query": "Box"
+  },
+  {
+    "name": "binder",
+    "category": "files",
+    "query": "Binder"
+  },
+  {
+    "name": "cart",
+    "category": "commerce",
+    "query": "Shopping Cart"
+  },
+  {
+    "name": "receipt",
+    "category": "commerce",
+    "query": "Receipt"
+  },
+  {
+    "name": "qr-code",
+    "category": "commerce",
+    "query": "QR Code"
+  },
+  {
+    "name": "store",
+    "category": "commerce",
+    "query": "Store"
+  },
+  {
+    "name": "ct-scan",
+    "category": "health",
+    "query": "CT Scan"
+  },
+  {
+    "name": "caregiver",
+    "category": "health",
+    "query": "Caregiver"
+  },
+  {
+    "name": "pregnancy",
+    "category": "health",
+    "query": "Pregnancy"
+  },
+  {
+    "name": "support-group",
+    "category": "health",
+    "query": "Support Group"
+  },
+  {
+    "name": "defibrillator",
+    "category": "health",
+    "query": "Defibrillator"
+  },
+  {
+    "name": "insulin",
+    "category": "health",
+    "query": "Insulin"
+  },
+  {
+    "name": "cardiology",
+    "category": "health",
+    "query": "Cardiology"
+  },
+  {
+    "name": "oncology",
+    "category": "health",
+    "query": "Oncology"
+  },
+  {
+    "name": "battery-charging",
+    "category": "misc",
+    "query": "Battery Charging"
+  },
+  {
+    "name": "light-mode",
+    "category": "misc",
+    "query": "Light Mode"
+  },
+  {
+    "name": "keyboard",
+    "category": "misc",
+    "query": "Keyboard"
+  },
+  {
+    "name": "tablet",
+    "category": "misc",
+    "query": "Tablet"
+  },
+  {
+    "name": "scanner",
+    "category": "misc",
+    "query": "Scanner"
+  },
+  {
+    "name": "bug",
+    "category": "misc",
+    "query": "Bug"
+  },
+  {
+    "name": "key",
+    "category": "misc",
+    "query": "Key"
+  },
+  {
+    "name": "barcode-scan",
+    "category": "misc",
+    "query": "Barcode Scan"
+  },
+  {
+    "name": "timer",
+    "category": "misc",
+    "query": "Timer"
+  },
+  {
+    "name": "recent",
+    "category": "misc",
+    "query": "Time Past"
+  },
+  {
+    "name": "cloud-sun",
+    "category": "misc",
+    "query": "Cloud Sun"
+  },
+  {
+    "name": "temperature",
+    "category": "misc",
+    "query": "Temperature"
+  },
+  {
+    "name": "car",
+    "category": "misc",
+    "query": "Car"
+  },
+  {
+    "name": "parking",
+    "category": "misc",
+    "query": "Parking"
+  },
+  {
+    "name": "factory",
+    "category": "misc",
+    "query": "Factory"
+  },
+  {
+    "name": "briefcase",
+    "category": "misc",
+    "query": "Briefcase"
+  },
+  {
+    "name": "trophy",
+    "category": "misc",
+    "query": "Trophy"
+  },
+  {
+    "name": "cake",
+    "category": "misc",
+    "query": "Cake"
+  },
+  {
+    "name": "recycle",
+    "category": "misc",
+    "query": "Recycle"
+  },
+  {
+    "name": "atom",
+    "category": "misc",
+    "query": "Atom"
+  },
+  {
+    "name": "robot",
+    "category": "misc",
+    "query": "Robot"
+  }
+]

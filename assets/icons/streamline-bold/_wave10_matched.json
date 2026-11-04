@@ -1,0 +1,107 @@
+[
+  {
+    "name": "map-pin",
+    "hash": "ico_mRu4pQJ4vvpm2aE7yVwvSMdM",
+    "streamlineName": "Pin Location",
+    "path": "misc/map-pin.svg",
+    "score": 252.4
+  },
+  {
+    "name": "globe",
+    "hash": "ico_mRu4pQJ4vrVP2aE7yVhtdLCF",
+    "streamlineName": "Earth 1",
+    "path": "misc/globe.svg",
+    "score": 252.65
+  },
+  {
+    "name": "wifi",
+    "hash": "ico_mRu4pQJ4ve3M2aEeLj08UxBA",
+    "streamlineName": "Wifi",
+    "path": "misc/wifi.svg",
+    "score": 239.8
+  },
+  {
+    "name": "battery",
+    "hash": "ico_ZsHKmgksFwaX6nlD",
+    "streamlineName": "Battery Slash No",
+    "path": "misc/battery.svg",
+    "score": 315.2
+  },
+  {
+    "name": "sun",
+    "hash": "ico_mRu4pQJ4vlNZ2aESFbQ3ySWz",
+    "streamlineName": "Uv Sun",
+    "path": "misc/sun.svg",
+    "score": 252.7
+  },
+  {
+    "name": "moon",
+    "hash": "ico_eaAeR86dA9eOqhlr",
+    "streamlineName": "Astrology Moon",
+    "path": "misc/moon.svg",
+    "score": 252.3
+  },
+  {
+    "name": "grid",
+    "hash": "ico_mRu4pQJ4vHfT2aEbmodzpwNp",
+    "streamlineName": "Layout",
+    "path": "misc/grid.svg",
+    "score": 289.7
+  },
+  {
+    "name": "list",
+    "hash": "ico_mRu4pQJ4vlzO2aEbmoDeGlLl",
+    "streamlineName": "List Add",
+    "path": "misc/list.svg",
+    "score": 302.6
+  },
+  {
+    "name": "layout",
+    "hash": "ico_mRu4pQJ4vHK22aEbmo08U0OY",
+    "streamlineName": "Layout Dashboard",
+    "path": "misc/layout.svg",
+    "score": 302.2
+  },
+  {
+    "name": "zoom-in",
+    "hash": "ico_mRu4pQJ4vOry2aEbmoy7qvcY",
+    "streamlineName": "Zoom In",
+    "path": "misc/zoom-in.svg",
+    "score": 302.65
+  },
+  {
+    "name": "zoom-out",
+    "hash": "ico_mRu4pQJ4vQww2aEbmofSZPop",
+    "streamlineName": "Zoom Out",
+    "path": "misc/zoom-out.svg",
+    "score": 302.6
+  },
+  {
+    "name": "wifi-off",
+    "hash": "ico_mRu4pQJ4vvN72aEeLjJ4vuTD",
+    "streamlineName": "Wifi Off",
+    "path": "misc/wifi-off.svg",
+    "score": 252.6
+  },
+  {
+    "name": "bluetooth",
+    "hash": "ico_mRu4pQJ4vzgi2aE8uewAZM5p",
+    "streamlineName": "Bluetooth",
+    "path": "misc/bluetooth.svg",
+    "score": 289.55
+  },
+  {
+    "name": "battery-low",
+    "hash": "ico_mRu4pQJ4vKmf2aE8ueg0Y1Sg",
+    "streamlineName": "Charging Battery Low 1",
+    "path": "misc/battery-low.svg",
+    "score": 327.9
+  },
+  {
+    "name": "battery-full",
+    "hash": "ico_Rq5vOIz8tVwnsqhL",
+    "streamlineName": "Battery Full",
+    "path": "misc/battery-full.svg",
+    "score": 252.4
+  }
+]

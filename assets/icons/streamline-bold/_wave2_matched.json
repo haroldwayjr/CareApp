@@ -1,0 +1,154 @@
+[
+  {
+    "name": "mail",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vzpT2aE8ueK1iXC6",
+    "streamlineName": "Email Action Home",
+    "score": 265.15,
+    "path": "comms/mail.svg"
+  },
+  {
+    "name": "message",
+    "category": "comms",
+    "hash": "ico_cPyHL4mnaErec5xy",
+    "streamlineName": "Chat Consultation Phone",
+    "score": 314.85,
+    "path": "comms/message.svg"
+  },
+  {
+    "name": "phone",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vYVt2aE8uejHWdsA",
+    "streamlineName": "Phone",
+    "score": 289.75,
+    "path": "comms/phone.svg"
+  },
+  {
+    "name": "phone-off",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vq1r2aE8uejHW9Zr",
+    "streamlineName": "Phone Off",
+    "score": 302.55,
+    "path": "comms/phone-off.svg"
+  },
+  {
+    "name": "calendar",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vNFM2aEbmo7yVb04",
+    "streamlineName": "Calendar",
+    "score": 289.6,
+    "path": "comms/calendar.svg"
+  },
+  {
+    "name": "clock",
+    "category": "comms",
+    "hash": "ico_Ny6vY8s3FsYIl1Y6",
+    "streamlineName": "Time Play Time 1",
+    "score": 328.2,
+    "path": "comms/clock.svg"
+  },
+  {
+    "name": "user",
+    "category": "comms",
+    "hash": "ico_RIcMHERKhuBqujBg",
+    "streamlineName": "User Story",
+    "score": 302.5,
+    "path": "comms/user.svg"
+  },
+  {
+    "name": "users",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vkHn2aE7QUjUASaf",
+    "streamlineName": "Multiple Users 1",
+    "score": 315.2,
+    "path": "comms/users.svg"
+  },
+  {
+    "name": "user-add",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vlUX2aE8ue2aEvlV",
+    "streamlineName": "Phone Action Add User",
+    "score": 327.95,
+    "path": "comms/user-add.svg"
+  },
+  {
+    "name": "user-remove",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4v1g52aE8ue7QUmjs",
+    "streamlineName": "Phone Action Remove User",
+    "score": 327.8,
+    "path": "comms/user-remove.svg"
+  },
+  {
+    "name": "user-check",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vsw22aE8ue7yVVMd",
+    "streamlineName": "Messages People User Check",
+    "score": 327.7,
+    "path": "comms/user-check.svg"
+  },
+  {
+    "name": "inbox",
+    "category": "comms",
+    "hash": "ico_uuBnSEyamMLCfDxo",
+    "streamlineName": "Inbox Tray Notification Badge",
+    "score": 277.55,
+    "path": "comms/inbox.svg"
+  },
+  {
+    "name": "reply-all",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vwHm2aE8ue4pQzUT",
+    "streamlineName": "Email Action Reply All",
+    "score": 277.9,
+    "path": "comms/reply-all.svg"
+  },
+  {
+    "name": "chat",
+    "category": "comms",
+    "hash": "ico_puGLDoLpChAafVMh",
+    "streamlineName": "Messages Bubble",
+    "score": 302.25,
+    "path": "comms/chat.svg"
+  },
+  {
+    "name": "comment",
+    "category": "comms",
+    "hash": "ico_6KBkeKIMUDOcKRw5",
+    "streamlineName": "Comment Box",
+    "score": 302.45,
+    "path": "comms/comment.svg"
+  },
+  {
+    "name": "video-call",
+    "category": "comms",
+    "hash": "ico_FXEkn175XtTQi1yo",
+    "streamlineName": "Video Call",
+    "score": 252.5,
+    "path": "comms/video-call.svg"
+  },
+  {
+    "name": "contacts",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vCwq2aEP2WvhjfN1",
+    "streamlineName": "Book Address",
+    "score": 302.4,
+    "path": "comms/contacts.svg"
+  },
+  {
+    "name": "group",
+    "category": "comms",
+    "hash": "ico_0Mxibpa78rpBaHWk",
+    "streamlineName": "Group",
+    "score": 239.75,
+    "path": "comms/group.svg"
+  },
+  {
+    "name": "team",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vRxl2aEeLjEi8HFz",
+    "streamlineName": "Team Idea",
+    "score": 252.55,
+    "path": "comms/team.svg"
+  }
+]

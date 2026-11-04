@@ -1,0 +1,614 @@
+[
+  {
+    "i": 0,
+    "batch": "apply_11",
+    "setName": "icon/media/image",
+    "bytes": 3985
+  },
+  {
+    "i": 1,
+    "batch": "apply_11",
+    "setName": "icon/files/notes",
+    "bytes": 3735
+  },
+  {
+    "i": 2,
+    "batch": "apply_11",
+    "setName": "icon/files/server",
+    "bytes": 3663
+  },
+  {
+    "i": 3,
+    "batch": "apply_11",
+    "setName": "icon/files/agreement",
+    "bytes": 3788
+  },
+  {
+    "i": 4,
+    "batch": "apply_11",
+    "setName": "icon/files/manual",
+    "bytes": 3253
+  },
+  {
+    "i": 5,
+    "batch": "apply_11",
+    "setName": "icon/files/magazine",
+    "bytes": 3392
+  },
+  {
+    "i": 6,
+    "batch": "apply_11",
+    "setName": "icon/files/letter",
+    "bytes": 3721
+  },
+  {
+    "i": 7,
+    "batch": "apply_11",
+    "setName": "icon/files/parcel",
+    "bytes": 4599
+  },
+  {
+    "i": 8,
+    "batch": "apply_11",
+    "setName": "icon/files/folder.star",
+    "bytes": 3408
+  },
+  {
+    "i": 9,
+    "batch": "apply_12",
+    "setName": "icon/health/counseling",
+    "bytes": 3788
+  },
+  {
+    "i": 10,
+    "batch": "apply_12",
+    "setName": "icon/health/cancer",
+    "bytes": 7072
+  },
+  {
+    "i": 11,
+    "batch": "apply_12",
+    "setName": "icon/health/neurology",
+    "bytes": 6727
+  },
+  {
+    "i": 12,
+    "batch": "apply_12",
+    "setName": "icon/misc/language",
+    "bytes": 3604
+  },
+  {
+    "i": 13,
+    "batch": "apply_12",
+    "setName": "icon/misc/laptop",
+    "bytes": 3193
+  },
+  {
+    "i": 14,
+    "batch": "apply_12",
+    "setName": "icon/misc/printer.alt",
+    "bytes": 3530
+  },
+  {
+    "i": 15,
+    "batch": "apply_12",
+    "setName": "icon/misc/terminal",
+    "bytes": 3042
+  },
+  {
+    "i": 16,
+    "batch": "apply_12",
+    "setName": "icon/actions/draft",
+    "bytes": 3006
+  },
+  {
+    "i": 17,
+    "batch": "apply_12",
+    "setName": "icon/status/info",
+    "bytes": 2863
+  },
+  {
+    "i": 18,
+    "batch": "apply_12",
+    "setName": "icon/status/help",
+    "bytes": 2792
+  },
+  {
+    "i": 19,
+    "batch": "apply_12",
+    "setName": "icon/status/unlock",
+    "bytes": 2868
+  },
+  {
+    "i": 20,
+    "batch": "apply_12",
+    "setName": "icon/status/star.filled",
+    "bytes": 2908
+  },
+  {
+    "i": 21,
+    "batch": "apply_12",
+    "setName": "icon/status/notification",
+    "bytes": 3188
+  },
+  {
+    "i": 22,
+    "batch": "apply_12",
+    "setName": "icon/media/play",
+    "bytes": 3583
+  },
+  {
+    "i": 23,
+    "batch": "apply_12",
+    "setName": "icon/media/skip.back",
+    "bytes": 2799
+  },
+  {
+    "i": 24,
+    "batch": "apply_12",
+    "setName": "icon/media/video",
+    "bytes": 2808
+  },
+  {
+    "i": 25,
+    "batch": "apply_12",
+    "setName": "icon/media/headphones",
+    "bytes": 2978
+  },
+  {
+    "i": 26,
+    "batch": "apply_12",
+    "setName": "icon/files/clipboard",
+    "bytes": 3452
+  },
+  {
+    "i": 27,
+    "batch": "apply_12",
+    "setName": "icon/files/file.pdf",
+    "bytes": 3682
+  },
+  {
+    "i": 28,
+    "batch": "apply_12",
+    "setName": "icon/files/folder.add",
+    "bytes": 3228
+  },
+  {
+    "i": 29,
+    "batch": "apply_12",
+    "setName": "icon/files/cloud.upload",
+    "bytes": 3392
+  },
+  {
+    "i": 30,
+    "batch": "apply_12",
+    "setName": "icon/files/hard.drive",
+    "bytes": 3074
+  },
+  {
+    "i": 31,
+    "batch": "apply_12",
+    "setName": "icon/files/policy",
+    "bytes": 6030
+  },
+  {
+    "i": 32,
+    "batch": "apply_12",
+    "setName": "icon/files/guide",
+    "bytes": 4159
+  },
+  {
+    "i": 33,
+    "batch": "apply_13",
+    "setName": "icon/files/resume",
+    "bytes": 3473
+  },
+  {
+    "i": 34,
+    "batch": "apply_13",
+    "setName": "icon/files/envelope",
+    "bytes": 3191
+  },
+  {
+    "i": 35,
+    "batch": "apply_13",
+    "setName": "icon/misc/camera.off",
+    "bytes": 3178
+  },
+  {
+    "i": 36,
+    "batch": "apply_13",
+    "setName": "icon/misc/alarm",
+    "bytes": 3311
+  },
+  {
+    "i": 37,
+    "batch": "apply_13",
+    "setName": "icon/misc/schedule",
+    "bytes": 4996
+  },
+  {
+    "i": 38,
+    "batch": "apply_13",
+    "setName": "icon/misc/rain",
+    "bytes": 3214
+  },
+  {
+    "i": 39,
+    "batch": "apply_13",
+    "setName": "icon/misc/umbrella",
+    "bytes": 3634
+  },
+  {
+    "i": 40,
+    "batch": "apply_13",
+    "setName": "icon/misc/bus",
+    "bytes": 3482
+  },
+  {
+    "i": 41,
+    "batch": "apply_13",
+    "setName": "icon/misc/gas",
+    "bytes": 3502
+  },
+  {
+    "i": 42,
+    "batch": "apply_13",
+    "setName": "icon/misc/school",
+    "bytes": 3094
+  },
+  {
+    "i": 43,
+    "batch": "apply_13",
+    "setName": "icon/misc/id.card",
+    "bytes": 3875
+  },
+  {
+    "i": 44,
+    "batch": "apply_13",
+    "setName": "icon/misc/medal",
+    "bytes": 3571
+  },
+  {
+    "i": 45,
+    "batch": "apply_13",
+    "setName": "icon/misc/balloon",
+    "bytes": 3868
+  },
+  {
+    "i": 46,
+    "batch": "apply_13",
+    "setName": "icon/misc/ecology",
+    "bytes": 3010
+  },
+  {
+    "i": 47,
+    "batch": "apply_13",
+    "setName": "icon/misc/rocket",
+    "bytes": 3845
+  },
+  {
+    "i": 48,
+    "batch": "apply_13",
+    "setName": "icon/misc/snow",
+    "bytes": 4940
+  },
+  {
+    "i": 49,
+    "batch": "apply_13",
+    "setName": "icon/misc/coffee",
+    "bytes": 3338
+  },
+  {
+    "i": 50,
+    "batch": "apply_13",
+    "setName": "icon/misc/train",
+    "bytes": 3393
+  },
+  {
+    "i": 51,
+    "batch": "apply_13",
+    "setName": "icon/misc/building",
+    "bytes": 3428
+  },
+  {
+    "i": 52,
+    "batch": "apply_13",
+    "setName": "icon/misc/book",
+    "bytes": 3066
+  },
+  {
+    "i": 53,
+    "batch": "apply_13",
+    "setName": "icon/misc/passport",
+    "bytes": 4374
+  },
+  {
+    "i": 54,
+    "batch": "apply_13",
+    "setName": "icon/misc/award",
+    "bytes": 3307
+  },
+  {
+    "i": 55,
+    "batch": "apply_13",
+    "setName": "icon/misc/fire",
+    "bytes": 2987
+  },
+  {
+    "i": 56,
+    "batch": "apply_13",
+    "setName": "icon/misc/water",
+    "bytes": 3530
+  },
+  {
+    "i": 57,
+    "batch": "apply_13",
+    "setName": "icon/misc/planet",
+    "bytes": 5011
+  },
+  {
+    "i": 58,
+    "batch": "apply_14",
+    "setName": "icon/misc/tool",
+    "bytes": 3937
+  },
+  {
+    "i": 59,
+    "batch": "apply_14",
+    "setName": "icon/misc/qr.scan",
+    "bytes": 4285
+  },
+  {
+    "i": 60,
+    "batch": "apply_14",
+    "setName": "icon/misc/flash.off",
+    "bytes": 3125
+  },
+  {
+    "i": 61,
+    "batch": "apply_14",
+    "setName": "icon/misc/history",
+    "bytes": 3720
+  },
+  {
+    "i": 62,
+    "batch": "apply_14",
+    "setName": "icon/misc/weather",
+    "bytes": 4806
+  },
+  {
+    "i": 63,
+    "batch": "apply_14",
+    "setName": "icon/misc/wind",
+    "bytes": 3443
+  },
+  {
+    "i": 64,
+    "batch": "apply_14",
+    "setName": "icon/misc/food",
+    "bytes": 3413
+  },
+  {
+    "i": 65,
+    "batch": "apply_14",
+    "setName": "icon/misc/bike",
+    "bytes": 4468
+  },
+  {
+    "i": 66,
+    "batch": "apply_14",
+    "setName": "icon/misc/office",
+    "bytes": 4036
+  },
+  {
+    "i": 67,
+    "batch": "apply_14",
+    "setName": "icon/misc/graduation",
+    "bytes": 3219
+  },
+  {
+    "i": 68,
+    "batch": "apply_14",
+    "setName": "icon/misc/ticket",
+    "bytes": 3351
+  },
+  {
+    "i": 69,
+    "batch": "apply_14",
+    "setName": "icon/misc/droplet",
+    "bytes": 2867
+  },
+  {
+    "i": 70,
+    "batch": "apply_14",
+    "setName": "icon/misc/satellite",
+    "bytes": 3025
+  },
+  {
+    "i": 71,
+    "batch": "apply_14",
+    "setName": "icon/files/box.alt",
+    "bytes": 3849
+  },
+  {
+    "i": 72,
+    "batch": "apply_14",
+    "setName": "icon/commerce/cart",
+    "bytes": 3179
+  },
+  {
+    "i": 73,
+    "batch": "apply_14",
+    "setName": "icon/commerce/receipt",
+    "bytes": 3384
+  },
+  {
+    "i": 74,
+    "batch": "apply_14",
+    "setName": "icon/commerce/qr.code",
+    "bytes": 5232
+  },
+  {
+    "i": 75,
+    "batch": "apply_14",
+    "setName": "icon/commerce/store",
+    "bytes": 4971
+  },
+  {
+    "i": 76,
+    "batch": "apply_14",
+    "setName": "icon/health/pregnancy",
+    "bytes": 3792
+  },
+  {
+    "i": 77,
+    "batch": "apply_14",
+    "setName": "icon/misc/battery.charging",
+    "bytes": 4296
+  },
+  {
+    "i": 78,
+    "batch": "apply_14",
+    "setName": "icon/misc/light.mode",
+    "bytes": 3776
+  },
+  {
+    "i": 79,
+    "batch": "apply_14",
+    "setName": "icon/misc/keyboard",
+    "bytes": 3511
+  },
+  {
+    "i": 80,
+    "batch": "apply_14",
+    "setName": "icon/misc/tablet",
+    "bytes": 3960
+  },
+  {
+    "i": 81,
+    "batch": "apply_14",
+    "setName": "icon/misc/scanner",
+    "bytes": 3560
+  },
+  {
+    "i": 82,
+    "batch": "apply_14",
+    "setName": "icon/misc/bug",
+    "bytes": 3904
+  },
+  {
+    "i": 83,
+    "batch": "apply_15",
+    "setName": "icon/misc/key",
+    "bytes": 3462
+  },
+  {
+    "i": 84,
+    "batch": "apply_15",
+    "setName": "icon/misc/barcode.scan",
+    "bytes": 4114
+  },
+  {
+    "i": 85,
+    "batch": "apply_15",
+    "setName": "icon/misc/timer",
+    "bytes": 3014
+  },
+  {
+    "i": 86,
+    "batch": "apply_15",
+    "setName": "icon/misc/cloud.sun",
+    "bytes": 4277
+  },
+  {
+    "i": 87,
+    "batch": "apply_15",
+    "setName": "icon/misc/temperature",
+    "bytes": 3378
+  },
+  {
+    "i": 88,
+    "batch": "apply_15",
+    "setName": "icon/misc/car",
+    "bytes": 6790
+  },
+  {
+    "i": 89,
+    "batch": "apply_15",
+    "setName": "icon/misc/parking",
+    "bytes": 3736
+  },
+  {
+    "i": 90,
+    "batch": "apply_15",
+    "setName": "icon/misc/factory",
+    "bytes": 3660
+  },
+  {
+    "i": 91,
+    "batch": "apply_15",
+    "setName": "icon/misc/briefcase",
+    "bytes": 3215
+  },
+  {
+    "i": 92,
+    "batch": "apply_15",
+    "setName": "icon/misc/trophy",
+    "bytes": 6278
+  },
+  {
+    "i": 93,
+    "batch": "apply_15",
+    "setName": "icon/misc/cake",
+    "bytes": 3451
+  },
+  {
+    "i": 94,
+    "batch": "apply_15",
+    "setName": "icon/misc/recycle",
+    "bytes": 4438
+  },
+  {
+    "i": 95,
+    "batch": "apply_15",
+    "setName": "icon/misc/atom",
+    "bytes": 3199
+  },
+  {
+    "i": 96,
+    "batch": "apply_15",
+    "setName": "icon/misc/robot",
+    "bytes": 3797
+  },
+  {
+    "i": 97,
+    "batch": "apply_15",
+    "setName": "icon/status/shield.off",
+    "bytes": 3029
+  },
+  {
+    "i": 98,
+    "batch": "apply_15",
+    "setName": "icon/status/critical",
+    "bytes": 2838
+  },
+  {
+    "i": 99,
+    "batch": "apply_15",
+    "setName": "icon/health/emergency",
+    "bytes": 3855
+  },
+  {
+    "i": 100,
+    "batch": "apply_15",
+    "setName": "icon/misc/leaf",
+    "bytes": 3928
+  },
+  {
+    "i": 101,
+    "batch": "apply_15",
+    "setName": "icon/health/911",
+    "bytes": 5568
+  }
+]

@@ -1,0 +1,194 @@
+[
+  {
+    "name": "warning",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vbtc2aEbmoinpxeA",
+    "streamlineName": "Alert Circle",
+    "path": "status/warning.svg",
+    "score": 302.4
+  },
+  {
+    "name": "bell",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vt2V2aEbmoPvJqV4",
+    "streamlineName": "Alarm Bell",
+    "path": "status/bell.svg",
+    "score": 302.5
+  },
+  {
+    "name": "eye",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vk882aEbmon8OaVp",
+    "streamlineName": "View 1",
+    "path": "status/eye.svg",
+    "score": 302.7
+  },
+  {
+    "name": "flag",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4v40s2aEwvSSFbUKg",
+    "streamlineName": "Flag 1",
+    "path": "status/flag.svg",
+    "score": 252.7
+  },
+  {
+    "name": "badge",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vHqr2aEbmojUACJS",
+    "streamlineName": "Check Badge",
+    "path": "status/badge.svg",
+    "score": 302.45
+  },
+  {
+    "name": "error",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vHa82aEbmosjszPL",
+    "streamlineName": "Remove Circle",
+    "path": "status/error.svg",
+    "score": 302.35
+  },
+  {
+    "name": "bell-off",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vsHY2aEbmoPvJib6",
+    "streamlineName": "Alarm Bell Off 1",
+    "path": "status/bell-off.svg",
+    "score": 328.2
+  },
+  {
+    "name": "eye-off",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vYYp2aEbmo3ziiz8",
+    "streamlineName": "View Off",
+    "path": "status/eye-off.svg",
+    "score": 302.6
+  },
+  {
+    "name": "shield",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4v0Ww2aEbmo2aEOUi",
+    "streamlineName": "Lock Shield",
+    "path": "status/shield.svg",
+    "score": 302.45
+  },
+  {
+    "name": "pending",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vHEe2aEbmowAZYc9",
+    "streamlineName": "Hourglass",
+    "path": "status/pending.svg",
+    "score": 289.55
+  },
+  {
+    "name": "blocked",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4v2QA2aEWGyn8Oaf7",
+    "streamlineName": "Tags Block",
+    "path": "status/blocked.svg",
+    "score": 302.5
+  },
+  {
+    "name": "success",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4v6WD2aEbmojUATyj",
+    "streamlineName": "Check Circle",
+    "path": "status/success.svg",
+    "score": 302.4
+  },
+  {
+    "name": "lock",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4v0CV2aEbmoWGykz5",
+    "streamlineName": "Lock",
+    "path": "status/lock.svg",
+    "score": 289.8
+  },
+  {
+    "name": "star",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4v5RG2aEwvSgWaXzP",
+    "streamlineName": "Rating Star",
+    "path": "status/star.svg",
+    "score": 252.45
+  },
+  {
+    "name": "shield-check",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vSHg2aEbmosjs9MS",
+    "streamlineName": "Check Shield",
+    "path": "status/shield-check.svg",
+    "score": 302.4
+  },
+  {
+    "name": "loading",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vEZ72aEWGyWipmG5",
+    "streamlineName": "Loading",
+    "path": "status/loading.svg",
+    "score": 289.65
+  },
+  {
+    "name": "info",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vdI82aEbmo8ue7QU",
+    "streamlineName": "Information Circle",
+    "path": "status/info.svg",
+    "score": 302.1
+  },
+  {
+    "name": "help",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vhNX2aEbmo8ue92o",
+    "streamlineName": "Question Circle",
+    "path": "status/help.svg",
+    "score": 302.25
+  },
+  {
+    "name": "unlock",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4v0xz2aEbmo2aES2z",
+    "streamlineName": "Lock Unlock",
+    "path": "status/unlock.svg",
+    "score": 302.45
+  },
+  {
+    "name": "star-filled",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vDhm2aEwvSgWayLr",
+    "streamlineName": "Rating Star 1",
+    "path": "status/star-filled.svg",
+    "score": 265.35
+  },
+  {
+    "name": "notification",
+    "category": "status",
+    "hash": "ico_TEnCrDpwvFiqZwOP",
+    "streamlineName": "Alert Notification",
+    "path": "status/notification.svg",
+    "score": 302.1
+  },
+  {
+    "name": "shield-off",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4v0ph2aEbmosjs5RT",
+    "streamlineName": "Remove Shield",
+    "path": "status/shield-off.svg",
+    "score": 302.35
+  },
+  {
+    "name": "critical",
+    "category": "status",
+    "hash": "ico_mRu4pQJ4vwco2aEWGyxihELQ",
+    "streamlineName": "Flash 1",
+    "path": "status/critical.svg",
+    "score": 302.65
+  },
+  {
+    "name": "online",
+    "category": "status",
+    "hash": "ico_ZZkFcxekP3kXBpqX",
+    "streamlineName": "Online Video Chat",
+    "path": "status/online.svg",
+    "score": 315.15
+  }
+]

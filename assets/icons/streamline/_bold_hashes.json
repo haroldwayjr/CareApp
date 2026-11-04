@@ -1,0 +1,3164 @@
+[
+  {
+    "name": "911",
+    "category": "health",
+    "streamline_name": "Safety 911",
+    "file": "health/911.svg",
+    "hash": "ico_mRu4pQJ4vioR2aEBPuJ4vSRv",
+    "matchedName": "Safety 911"
+  },
+  {
+    "name": "accessibility",
+    "category": "misc",
+    "streamline_name": "Tools Reality Accessibility",
+    "file": "misc/accessibility.svg",
+    "hash": "ico_4U2pbPZmtc2tz5Ty",
+    "matchedName": "Tools Reality Accessibility"
+  },
+  {
+    "name": "add",
+    "category": "actions",
+    "streamline_name": "Add",
+    "file": "actions/add.svg",
+    "hash": "ico_mRu4pQJ4vruG2aEWGyJ4vztL",
+    "matchedName": "Add"
+  },
+  {
+    "name": "agreement",
+    "category": "files",
+    "streamline_name": "Workflow Agreement",
+    "file": "files/agreement.svg",
+    "hash": "ico_eq1AXQnivrBrCktH",
+    "matchedName": "Workflow Agreement"
+  },
+  {
+    "name": "airplane",
+    "category": "misc",
+    "streamline_name": "Airplane Mode",
+    "file": "misc/airplane.svg",
+    "hash": "ico_mRu4pQJ4vH8A2aEeLjJ4vvhi",
+    "matchedName": "Airplane Mode"
+  },
+  {
+    "name": "alarm",
+    "category": "misc",
+    "streamline_name": "Alarm Clock",
+    "file": "misc/alarm.svg",
+    "hash": "ico_mRu4pQJ4vaNn2aEbmo7yVRqO",
+    "matchedName": "Alarm Clock 1"
+  },
+  {
+    "name": "ambulance",
+    "category": "health",
+    "streamline_name": "Ambulance Car",
+    "file": "health/ambulance.svg",
+    "hash": "ico_mRu4pQJ4vUzX2aESFbjHWaRX",
+    "matchedName": "Ambulance Car"
+  },
+  {
+    "name": "appointment",
+    "category": "health",
+    "streamline_name": "Waiting Room Appointment Medical Appointment 2",
+    "file": "health/appointment.svg",
+    "hash": "ico_Lv2eRW2IhmvvJs49",
+    "matchedName": "Waiting Room Appointment Medical Appointment 2"
+  },
+  {
+    "name": "archive",
+    "category": "actions",
+    "streamline_name": "Archive",
+    "file": "actions/archive.svg",
+    "hash": "ico_mRu4pQJ4vWfW2aEP2WT2Fiz8",
+    "matchedName": "Archive"
+  },
+  {
+    "name": "arrow-down",
+    "category": "navigation",
+    "streamline_name": "Arrow Down",
+    "file": "navigation/arrow-down.svg",
+    "hash": "ico_MDzhrttDMTSnz1xM",
+    "matchedName": "Arrow Down"
+  },
+  {
+    "name": "arrow-left",
+    "category": "navigation",
+    "streamline_name": "Arrow Left",
+    "file": "navigation/arrow-left.svg",
+    "hash": "ico_Qf6cwFVfzzPhrWdl",
+    "matchedName": "Arrow Left"
+  },
+  {
+    "name": "arrow-right",
+    "category": "navigation",
+    "streamline_name": "Arrow Right",
+    "file": "navigation/arrow-right.svg",
+    "hash": "ico_yKZAi5nkiM7VHQUS",
+    "matchedName": "Arrow Right"
+  },
+  {
+    "name": "arrow-up",
+    "category": "navigation",
+    "streamline_name": "Arrow Up",
+    "file": "navigation/arrow-up.svg",
+    "hash": "ico_k1M6ElXlvuBOQzAP",
+    "matchedName": "Arrow Up"
+  },
+  {
+    "name": "atom",
+    "category": "misc",
+    "streamline_name": "Science Atom Positive Negative",
+    "file": "misc/atom.svg",
+    "hash": "ico_mRu4pQJ4vVt72aESFb3ziFMl",
+    "matchedName": "Science Atom Positive Negative"
+  },
+  {
+    "name": "attach",
+    "category": "actions",
+    "streamline_name": "Attachment",
+    "file": "actions/attach.svg",
+    "hash": "ico_mRu4pQJ4veIe2aEbmofSZOFk",
+    "matchedName": "Attachment"
+  },
+  {
+    "name": "attachment",
+    "category": "files",
+    "streamline_name": "Attachment 1",
+    "file": "files/attachment.svg",
+    "hash": "ico_mRu4pQJ4vzta2aEbmofSZy5q",
+    "matchedName": "Attachment 1"
+  },
+  {
+    "name": "award",
+    "category": "misc",
+    "streamline_name": "Award Star",
+    "file": "misc/award.svg",
+    "hash": "ico_mRu4pQJ4vekL2aEwvSinpitv",
+    "matchedName": "Award Star"
+  },
+  {
+    "name": "back",
+    "category": "navigation",
+    "streamline_name": "Arrow Circle Left",
+    "file": "navigation/back.svg",
+    "hash": "ico_GS3koyDjktm4fZZn",
+    "matchedName": "Arrow Circle Left"
+  },
+  {
+    "name": "badge",
+    "category": "status",
+    "streamline_name": "Check Badge",
+    "file": "status/badge.svg",
+    "hash": "ico_mRu4pQJ4vHqr2aEbmojUACJS",
+    "matchedName": "Check Badge"
+  },
+  {
+    "name": "bag",
+    "category": "commerce",
+    "streamline_name": "Shopping Bag",
+    "file": "commerce/bag.svg",
+    "hash": "ico_dU9UgoPTyUaqUO1o",
+    "matchedName": "Shopping Bag"
+  },
+  {
+    "name": "balloon",
+    "category": "misc",
+    "streamline_name": "Balloon Party",
+    "file": "misc/balloon.svg",
+    "hash": "ico_3Iw05vssq21PHiqx",
+    "matchedName": "Balloon Party"
+  },
+  {
+    "name": "bandage",
+    "category": "health",
+    "streamline_name": "Bandage",
+    "file": "health/bandage.svg",
+    "hash": "ico_mRu4pQJ4vQ9t2aESFbZOsIv2",
+    "matchedName": "Bandage"
+  },
+  {
+    "name": "bank",
+    "category": "commerce",
+    "streamline_name": "Blood Bank",
+    "file": "commerce/bank.svg",
+    "hash": "ico_Gv5P1VGfOVoWF8I1",
+    "matchedName": "Blood Bank"
+  },
+  {
+    "name": "barcode",
+    "category": "commerce",
+    "streamline_name": "Barcode",
+    "file": "commerce/barcode.svg",
+    "hash": "ico_mRu4pQJ4vXtQ2aEgWafSZPdR",
+    "matchedName": "Barcode"
+  },
+  {
+    "name": "barcode-scan",
+    "category": "misc",
+    "streamline_name": "Barcode Scan",
+    "file": "misc/barcode-scan.svg",
+    "hash": "ico_mRu4pQJ4vJLR2aEgWafSZuKw",
+    "matchedName": "Barcode Scan"
+  },
+  {
+    "name": "battery",
+    "category": "misc",
+    "streamline_name": "Battery Slash No",
+    "file": "misc/battery.svg",
+    "hash": "ico_ZsHKmgksFwaX6nlD",
+    "matchedName": "Battery Slash No"
+  },
+  {
+    "name": "battery-charging",
+    "category": "misc",
+    "streamline_name": "Battery Charging 2",
+    "file": "misc/battery-charging.svg",
+    "hash": "ico_mRu4pQJ4vPsA2aE8ueSFbRGX",
+    "matchedName": "Charging Battery Two Bars"
+  },
+  {
+    "name": "battery-full",
+    "category": "misc",
+    "streamline_name": "Battery Full",
+    "file": "misc/battery-full.svg",
+    "hash": "ico_Rq5vOIz8tVwnsqhL",
+    "matchedName": "Battery Full"
+  },
+  {
+    "name": "battery-low",
+    "category": "misc",
+    "streamline_name": "Charging Battery Low 1",
+    "file": "misc/battery-low.svg",
+    "hash": "ico_mRu4pQJ4vKmf2aE8ueg0Y1Sg",
+    "matchedName": "Charging Battery Low 1"
+  },
+  {
+    "name": "bed",
+    "category": "health",
+    "streamline_name": "Hospital Bedroom",
+    "file": "health/bed.svg",
+    "hash": "ico_mRu4pQJ4vodF2aESFbjHWeET",
+    "matchedName": "Hospital Bedroom"
+  },
+  {
+    "name": "bell",
+    "category": "status",
+    "streamline_name": "Alarm Bell",
+    "file": "status/bell.svg",
+    "hash": "ico_mRu4pQJ4vt2V2aEbmoPvJqV4",
+    "matchedName": "Alarm Bell"
+  },
+  {
+    "name": "bell-off",
+    "category": "status",
+    "streamline_name": "Alarm Bell Off 1",
+    "file": "status/bell-off.svg",
+    "hash": "ico_mRu4pQJ4vsHY2aEbmoPvJib6",
+    "matchedName": "Alarm Bell Off 1"
+  },
+  {
+    "name": "bike",
+    "category": "misc",
+    "streamline_name": "Bicycle",
+    "file": "misc/bike.svg",
+    "hash": "ico_mRu4pQJ4vgP02aEPvJQzIkAl",
+    "matchedName": "Bicycle"
+  },
+  {
+    "name": "blocked",
+    "category": "status",
+    "streamline_name": "Tags Block",
+    "file": "status/blocked.svg",
+    "hash": "ico_mRu4pQJ4v2QA2aEWGyn8Oaf7",
+    "matchedName": "Tags Block"
+  },
+  {
+    "name": "blog",
+    "category": "files",
+    "streamline_name": "Blog Blogger Logo",
+    "file": "files/blog.svg",
+    "hash": "ico_qpRMB2OEQGsBulB6",
+    "matchedName": "Blogger Logo"
+  },
+  {
+    "name": "blood",
+    "category": "health",
+    "streamline_name": "Blood Types 1",
+    "file": "health/blood.svg",
+    "hash": "ico_ZMlOUJ9zqgCkiuG4",
+    "matchedName": "Blood Types 1"
+  },
+  {
+    "name": "blood-pressure",
+    "category": "health",
+    "streamline_name": "Blood Pressure Cuff",
+    "file": "health/blood-pressure.svg",
+    "hash": "ico_WY7BU2S4IMcqfe70",
+    "matchedName": "Blood Pressure Cuff"
+  },
+  {
+    "name": "bluetooth",
+    "category": "misc",
+    "streamline_name": "Bluetooth",
+    "file": "misc/bluetooth.svg",
+    "hash": "ico_mRu4pQJ4vzgi2aE8uewAZM5p",
+    "matchedName": "Bluetooth"
+  },
+  {
+    "name": "book",
+    "category": "misc",
+    "streamline_name": "Book Pin",
+    "file": "misc/book.svg",
+    "hash": "ico_mRu4pQJ4vqZY2aEP2WZOsuHa",
+    "matchedName": "Book Pin"
+  },
+  {
+    "name": "bookmark",
+    "category": "files",
+    "streamline_name": "Bookmark 3",
+    "file": "files/bookmark.svg",
+    "hash": "ico_Zx4K1f9GALJ4MtTt",
+    "matchedName": "Bookmark 3"
+  },
+  {
+    "name": "box-alt",
+    "category": "files",
+    "streamline_name": "Text Box 2",
+    "file": "files/box-alt.svg",
+    "hash": "ico_hoYtBy6bnn12E1D5",
+    "matchedName": "Text Box 2"
+  },
+  {
+    "name": "brain",
+    "category": "health",
+    "streamline_name": "Brain",
+    "file": "health/brain.svg",
+    "hash": "ico_mRu4pQJ4vl8s2aEWGyfSZs6O",
+    "matchedName": "Brain"
+  },
+  {
+    "name": "breadcrumb",
+    "category": "navigation",
+    "streamline_name": "Hierarchy",
+    "file": "navigation/breadcrumb.svg",
+    "hash": "ico_mRu4pQJ4vWNb2aE2aEeixgaB",
+    "matchedName": "Hierarchy"
+  },
+  {
+    "name": "briefcase",
+    "category": "misc",
+    "streamline_name": "Briefcase",
+    "file": "misc/briefcase.svg",
+    "hash": "ico_mRu4pQJ4vWHs2aEeLjwAZtMU",
+    "matchedName": "Briefcase"
+  },
+  {
+    "name": "brightness",
+    "category": "media",
+    "streamline_name": "Brightness",
+    "file": "media/brightness.svg",
+    "hash": "ico_mRu4pQJ4vzPc2aEbmo6nlXG3",
+    "matchedName": "Brightness"
+  },
+  {
+    "name": "browse",
+    "category": "actions",
+    "streamline_name": "E Commerce Apparel Browse",
+    "file": "actions/browse.svg",
+    "hash": "ico_mRu4pQJ4vfjv2aEgWaYBGfPf",
+    "matchedName": "E Commerce Apparel Browse"
+  },
+  {
+    "name": "bug",
+    "category": "misc",
+    "streamline_name": "Catch Bug",
+    "file": "misc/bug.svg",
+    "hash": "ico_5MkkzaLCzW1hlWRJ",
+    "matchedName": "Catch Bug"
+  },
+  {
+    "name": "building",
+    "category": "misc",
+    "streamline_name": "Building",
+    "file": "misc/building.svg",
+    "hash": "ico_mRu4pQJ4vth92aEOrjM5pCo8",
+    "matchedName": "Building"
+  },
+  {
+    "name": "bus",
+    "category": "misc",
+    "streamline_name": "Bus",
+    "file": "misc/bus.svg",
+    "hash": "ico_mRu4pQJ4vrI02aEPvJn8OsVZ",
+    "matchedName": "Bus"
+  },
+  {
+    "name": "cabinet",
+    "category": "files",
+    "streamline_name": "Bathroom Mirror Cabinet",
+    "file": "files/cabinet.svg",
+    "hash": "ico_mRu4pQJ4vDRh2aEwvSfvjQ4o",
+    "matchedName": "Bathroom Mirror Cabinet"
+  },
+  {
+    "name": "cake",
+    "category": "misc",
+    "streamline_name": "Cake Flour",
+    "file": "misc/cake.svg",
+    "hash": "ico_mRu4pQJ4v6EI2aEBPuWGyKlc",
+    "matchedName": "Cake Flour"
+  },
+  {
+    "name": "calendar",
+    "category": "comms",
+    "streamline_name": "Calendar",
+    "file": "comms/calendar.svg",
+    "hash": "ico_mRu4pQJ4vNFM2aEbmo7yVb04",
+    "matchedName": "Calendar"
+  },
+  {
+    "name": "camera",
+    "category": "media",
+    "streamline_name": "Camera",
+    "file": "media/camera.svg",
+    "hash": "ico_mRu4pQJ4vv7c2aEP2Wn8OBsm",
+    "matchedName": "Camera"
+  },
+  {
+    "name": "camera-off",
+    "category": "misc",
+    "streamline_name": "Controls Camera Off",
+    "file": "misc/camera-off.svg",
+    "hash": "ico_mRu4pQJ4vXbk2aE6nleixSz2",
+    "matchedName": "Controls Camera Off"
+  },
+  {
+    "name": "cancel",
+    "category": "actions",
+    "streamline_name": "Lock Cancel Slash",
+    "file": "actions/cancel.svg",
+    "hash": "ico_moD6bh3PtGXXIvKY",
+    "matchedName": "Lock Cancel Slash"
+  },
+  {
+    "name": "cancer",
+    "category": "health",
+    "streamline_name": "Cancer Cell 2",
+    "file": "health/cancer.svg",
+    "hash": "ico_ui5aRTHYeHILe7Pk",
+    "matchedName": "Cancer Cell 2"
+  },
+  {
+    "name": "car",
+    "category": "misc",
+    "streamline_name": "Car",
+    "file": "misc/car.svg",
+    "hash": "ico_mRu4pQJ4v1AG2aEPvJOrjaSz",
+    "matchedName": "Car"
+  },
+  {
+    "name": "cart",
+    "category": "commerce",
+    "streamline_name": "Shopping Cart",
+    "file": "commerce/cart.svg",
+    "hash": "ico_mRu4pQJ4vMiC2aEgWasjsZEI",
+    "matchedName": "Shopping Cart"
+  },
+  {
+    "name": "cast",
+    "category": "media",
+    "streamline_name": "Phone Cast",
+    "file": "media/cast.svg",
+    "hash": "ico_FeaxRxlnptrsKw08",
+    "matchedName": "Phone Cast"
+  },
+  {
+    "name": "chart-bar",
+    "category": "commerce",
+    "streamline_name": "Analytics Bars",
+    "file": "commerce/chart-bar.svg",
+    "hash": "ico_mRu4pQJ4vEeq2aEeLjfSZCPM",
+    "matchedName": "Analytics Bars"
+  },
+  {
+    "name": "chart-line",
+    "category": "commerce",
+    "streamline_name": "Analytics Graph",
+    "file": "commerce/chart-line.svg",
+    "hash": "ico_mRu4pQJ4vWvQ2aEeLjfSZ0EG",
+    "matchedName": "Analytics Graph"
+  },
+  {
+    "name": "chat",
+    "category": "comms",
+    "streamline_name": "Messages Bubble",
+    "file": "comms/chat.svg",
+    "hash": "ico_puGLDoLpChAafVMh",
+    "matchedName": "Messages Bubble"
+  },
+  {
+    "name": "check",
+    "category": "actions",
+    "streamline_name": "Check 1",
+    "file": "actions/check.svg",
+    "hash": "ico_mRu4pQJ4v7lc2aE7QU8ueFMl",
+    "matchedName": "Multiple Actions Check 1"
+  },
+  {
+    "name": "chevron-down",
+    "category": "navigation",
+    "streamline_name": "Arrow Down 1",
+    "file": "navigation/chevron-down.svg",
+    "hash": "ico_qdGBEKXHKnDEVjkF",
+    "matchedName": "Arrow Down 1"
+  },
+  {
+    "name": "chevron-left",
+    "category": "navigation",
+    "streamline_name": "Arrow Left 1",
+    "file": "navigation/chevron-left.svg",
+    "hash": "ico_eA8GWYvR5WBSJkJY",
+    "matchedName": "Arrow Left 1"
+  },
+  {
+    "name": "chevron-right",
+    "category": "navigation",
+    "streamline_name": "Arrow Right 1",
+    "file": "navigation/chevron-right.svg",
+    "hash": "ico_O4DC394JKvQGULe7",
+    "matchedName": "Arrow Right 1"
+  },
+  {
+    "name": "chevron-up",
+    "category": "navigation",
+    "streamline_name": "Arrow Up 1",
+    "file": "navigation/chevron-up.svg",
+    "hash": "ico_R4kAJl7jA3nhceik",
+    "matchedName": "Arrow Up 1"
+  },
+  {
+    "name": "clear",
+    "category": "actions",
+    "streamline_name": "Alert Clear Notification",
+    "file": "actions/clear.svg",
+    "hash": "ico_OwZU9J2Y0R41Pmu8",
+    "matchedName": "Alert Clear Notification"
+  },
+  {
+    "name": "clipboard",
+    "category": "files",
+    "streamline_name": "Insert Row From Clipboard",
+    "file": "files/clipboard.svg",
+    "hash": "ico_WH3NnGZlIdpbePYk",
+    "matchedName": "Insert Row From Clipboard"
+  },
+  {
+    "name": "clipboard-health",
+    "category": "health",
+    "streamline_name": "Medical Data Clipboard Cross",
+    "file": "health/clipboard-health.svg",
+    "hash": "ico_lsqC7vfJB0jLbP25",
+    "matchedName": "Medical Data Clipboard Cross"
+  },
+  {
+    "name": "clock",
+    "category": "comms",
+    "streamline_name": "Time Play Time 1",
+    "file": "comms/clock.svg",
+    "hash": "ico_Ny6vY8s3FsYIl1Y6",
+    "matchedName": "Time Play Time 1"
+  },
+  {
+    "name": "close",
+    "category": "navigation",
+    "streamline_name": "Remove",
+    "file": "navigation/close.svg",
+    "hash": "ico_mRu4pQJ4vcPV2aEWGyZOsKzF",
+    "matchedName": "Remove"
+  },
+  {
+    "name": "close-alt",
+    "category": "actions",
+    "streamline_name": "Close",
+    "file": "actions/close-alt.svg",
+    "hash": "ico_mRu4pQJ4vOnx2aEbmosjsGBB",
+    "matchedName": "Close"
+  },
+  {
+    "name": "cloud",
+    "category": "files",
+    "streamline_name": "Cloud",
+    "file": "files/cloud.svg",
+    "hash": "ico_mRu4pQJ4vyFV2aEeLjinp05e",
+    "matchedName": "Cloud"
+  },
+  {
+    "name": "cloud-download",
+    "category": "files",
+    "streamline_name": "Cloud Download",
+    "file": "files/cloud-download.svg",
+    "hash": "ico_mRu4pQJ4vJLr2aEeLj8uexW8",
+    "matchedName": "Cloud Download"
+  },
+  {
+    "name": "cloud-sun",
+    "category": "misc",
+    "streamline_name": "Weather Cloud Sun Wind",
+    "file": "misc/cloud-sun.svg",
+    "hash": "ico_mRu4pQJ4vERq2aEg0Y3ziRdv",
+    "matchedName": "Weather Cloud Sun Wind"
+  },
+  {
+    "name": "cloud-upload",
+    "category": "files",
+    "streamline_name": "Cloud Upload",
+    "file": "files/cloud-upload.svg",
+    "hash": "ico_mRu4pQJ4vm6X2aEeLjBPua1C",
+    "matchedName": "Cloud Upload"
+  },
+  {
+    "name": "code",
+    "category": "misc",
+    "streamline_name": "Folder Code",
+    "file": "misc/code.svg",
+    "hash": "ico_mRu4pQJ4vSeI2aE6nlhtdqV5",
+    "matchedName": "Folder Code"
+  },
+  {
+    "name": "coffee",
+    "category": "misc",
+    "streamline_name": "Coffee Jar",
+    "file": "misc/coffee.svg",
+    "hash": "ico_mRu4pQJ4vddl2aEBPun8OZjK",
+    "matchedName": "Coffee Jar"
+  },
+  {
+    "name": "coins",
+    "category": "commerce",
+    "streamline_name": "Accounting Coins",
+    "file": "commerce/coins.svg",
+    "hash": "ico_mRu4pQJ4vJMt2aEgWa49r9Ov",
+    "matchedName": "Accounting Coins"
+  },
+  {
+    "name": "comment",
+    "category": "comms",
+    "streamline_name": "Comment Box",
+    "file": "comms/comment.svg",
+    "hash": "ico_6KBkeKIMUDOcKRw5",
+    "matchedName": "Comment Box"
+  },
+  {
+    "name": "compass",
+    "category": "navigation",
+    "streamline_name": "Compass",
+    "file": "navigation/compass.svg",
+    "hash": "ico_mRu4pQJ4vUFW2aE7yV7QUVsB",
+    "matchedName": "Compass"
+  },
+  {
+    "name": "contacts",
+    "category": "comms",
+    "streamline_name": "Book Address",
+    "file": "comms/contacts.svg",
+    "hash": "ico_mRu4pQJ4vCwq2aEP2WvhjfN1",
+    "matchedName": "Book Address"
+  },
+  {
+    "name": "contract",
+    "category": "files",
+    "streamline_name": "Business Contract Give",
+    "file": "files/contract.svg",
+    "hash": "ico_mRu4pQJ4v2kh2aEeLjSFbyQj",
+    "matchedName": "Business Contract Give"
+  },
+  {
+    "name": "contrast",
+    "category": "media",
+    "streamline_name": "Contrast Horizontal Slider Adjustment",
+    "file": "media/contrast.svg",
+    "hash": "ico_DZ7j78pecQ3QTKBT",
+    "matchedName": "Contrast Horizontal Slider Adjustment"
+  },
+  {
+    "name": "copy",
+    "category": "actions",
+    "streamline_name": "Copy 1",
+    "file": "actions/copy.svg",
+    "hash": "ico_0ykF0Kh1cgtYtsoM",
+    "matchedName": "Copy 1"
+  },
+  {
+    "name": "counseling",
+    "category": "health",
+    "streamline_name": "Counseling 3",
+    "file": "health/counseling.svg",
+    "hash": "ico_qtB8IkR6thLVep5i",
+    "matchedName": "Counseling 3"
+  },
+  {
+    "name": "coupon",
+    "category": "commerce",
+    "streamline_name": "Coupon Cut",
+    "file": "commerce/coupon.svg",
+    "hash": "ico_mRu4pQJ4vj3b2aEgWay7qVOn",
+    "matchedName": "Coupon Cut"
+  },
+  {
+    "name": "create",
+    "category": "actions",
+    "streamline_name": "Create Chart",
+    "file": "actions/create.svg",
+    "hash": "ico_8L3kJu2tCPK8dpRO",
+    "matchedName": "Create Chart"
+  },
+  {
+    "name": "credit-card",
+    "category": "commerce",
+    "streamline_name": "Credit Card",
+    "file": "commerce/credit-card.svg",
+    "hash": "ico_mRu4pQJ4vnc92aEgWaSFbTrw",
+    "matchedName": "Credit Card 1"
+  },
+  {
+    "name": "crisis",
+    "category": "health",
+    "streamline_name": "Emergency Call",
+    "file": "health/crisis.svg",
+    "hash": "ico_PYk00iSXpWQLfqHn",
+    "matchedName": "Emergency Call"
+  },
+  {
+    "name": "critical",
+    "category": "status",
+    "streamline_name": "Flash 1",
+    "file": "status/critical.svg",
+    "hash": "ico_mRu4pQJ4vwco2aEWGyxihELQ",
+    "matchedName": "Flash 1"
+  },
+  {
+    "name": "crop",
+    "category": "media",
+    "streamline_name": "Crop Rotate",
+    "file": "media/crop.svg",
+    "hash": "ico_r5dR9LLVueUupNf2",
+    "matchedName": "Crop Rotate"
+  },
+  {
+    "name": "cut",
+    "category": "actions",
+    "streamline_name": "Scissors",
+    "file": "actions/cut.svg",
+    "hash": "ico_mRu4pQJ4v9Vx2aEbmofvjjUZ",
+    "matchedName": "Scissors"
+  },
+  {
+    "name": "database",
+    "category": "files",
+    "streamline_name": "Database",
+    "file": "files/database.svg",
+    "hash": "ico_mRu4pQJ4v7ew2aE2aEn8O0JK",
+    "matchedName": "Database"
+  },
+  {
+    "name": "delete",
+    "category": "actions",
+    "streamline_name": "Delete",
+    "file": "actions/delete.svg",
+    "hash": "ico_mRu4pQJ4vtpo2aEbmon8OWGy",
+    "matchedName": "Delete"
+  },
+  {
+    "name": "desktop",
+    "category": "misc",
+    "streamline_name": "Desktop Computer",
+    "file": "misc/desktop.svg",
+    "hash": "ico_mRu4pQJ4vHtF2aE2aEJ4vC6A",
+    "matchedName": "Desktop Computer"
+  },
+  {
+    "name": "discount",
+    "category": "commerce",
+    "streamline_name": "Discount",
+    "file": "commerce/discount.svg",
+    "hash": "ico_mRu4pQJ4v3At2aEgWay7qZF8",
+    "matchedName": "Discount"
+  },
+  {
+    "name": "dna",
+    "category": "health",
+    "streamline_name": "Dna",
+    "file": "health/dna.svg",
+    "hash": "ico_mRu4pQJ4v4ef2aEWGyfSZbSr",
+    "matchedName": "Dna"
+  },
+  {
+    "name": "doctor",
+    "category": "health",
+    "streamline_name": "Doctor Desktop",
+    "file": "health/doctor.svg",
+    "hash": "ico_p11M1cEvuVZJL1gs",
+    "matchedName": "Doctor Desktop"
+  },
+  {
+    "name": "document",
+    "category": "files",
+    "streamline_name": "Document",
+    "file": "files/document.svg",
+    "hash": "ico_zHUPENbT63v14cbm",
+    "matchedName": "Document"
+  },
+  {
+    "name": "dollar",
+    "category": "commerce",
+    "streamline_name": "Receipt Dollar",
+    "file": "commerce/dollar.svg",
+    "hash": "ico_mRu4pQJ4vnxq2aEgWa3zizYT",
+    "matchedName": "Receipt Dollar"
+  },
+  {
+    "name": "dosage",
+    "category": "health",
+    "streamline_name": "Medicine Dosage",
+    "file": "health/dosage.svg",
+    "hash": "ico_eyKg7VH3xtQgrDcv",
+    "matchedName": "Medicine Dosage"
+  },
+  {
+    "name": "download",
+    "category": "actions",
+    "streamline_name": "Download Bottom",
+    "file": "actions/download.svg",
+    "hash": "ico_khos38PktkwJcCKK",
+    "matchedName": "Download Bottom",
+    "bold_hash": "ico_VsUXi9dutwJWTUzv"
+  },
+  {
+    "name": "draft",
+    "category": "actions",
+    "streamline_name": "Workflow Request Draft",
+    "file": "actions/draft.svg",
+    "hash": "ico_3AGpJasrtHvhcnfw",
+    "matchedName": "Workflow Request Draft"
+  },
+  {
+    "name": "drag",
+    "category": "navigation",
+    "streamline_name": "Move Up",
+    "file": "navigation/drag.svg",
+    "hash": "ico_mRu4pQJ4vthE2aEWGyQzIz3X",
+    "matchedName": "Move Up"
+  },
+  {
+    "name": "drawer",
+    "category": "files",
+    "streamline_name": "Drawer Open",
+    "file": "files/drawer.svg",
+    "hash": "ico_mRu4pQJ4vvDg2aE8ueM5peET",
+    "matchedName": "Drawer Open"
+  },
+  {
+    "name": "droplet",
+    "category": "misc",
+    "streamline_name": "Drop Shape",
+    "file": "misc/droplet.svg",
+    "hash": "ico_9mnoSjQ6L8iXZOpc",
+    "matchedName": "Drop Shape"
+  },
+  {
+    "name": "duplicate",
+    "category": "actions",
+    "streamline_name": "Duplicate",
+    "file": "actions/duplicate.svg",
+    "hash": "ico_7oaSxYVUINxu7by9",
+    "matchedName": "Duplicate"
+  },
+  {
+    "name": "ear",
+    "category": "health",
+    "streamline_name": "Earpods Ear",
+    "file": "health/ear.svg",
+    "hash": "ico_mRu4pQJ4vf4Q2aE6nlT2Fubg",
+    "matchedName": "Earpods Ear"
+  },
+  {
+    "name": "ecology",
+    "category": "misc",
+    "streamline_name": "Ecology Leaf",
+    "file": "misc/ecology.svg",
+    "hash": "ico_DanYwcW5lC6ZiCJU",
+    "matchedName": "Ecology Leaf"
+  },
+  {
+    "name": "edit",
+    "category": "actions",
+    "streamline_name": "Pencil",
+    "file": "actions/edit.svg",
+    "hash": "ico_mRu4pQJ4vRcA2aEbmoHO2TZB",
+    "matchedName": "Pencil"
+  },
+  {
+    "name": "edit-alt",
+    "category": "actions",
+    "streamline_name": "Edit Pdf",
+    "file": "actions/edit-alt.svg",
+    "hash": "ico_0egBCT7qaedNcjOi",
+    "matchedName": "Edit Pdf"
+  },
+  {
+    "name": "emergency",
+    "category": "health",
+    "streamline_name": "Hospital Emergency Department",
+    "file": "health/emergency.svg",
+    "hash": "ico_mRCdDBhFvidAnXNv",
+    "matchedName": "Hospital Emergency Department"
+  },
+  {
+    "name": "empty-trash",
+    "category": "actions",
+    "streamline_name": "Bin 2",
+    "file": "actions/empty-trash.svg",
+    "hash": "ico_mRu4pQJ4vCHE2aEbmogns9Ya",
+    "matchedName": "Bin 2"
+  },
+  {
+    "name": "envelope",
+    "category": "files",
+    "streamline_name": "Envelope",
+    "file": "files/envelope.svg",
+    "hash": "ico_mRu4pQJ4vY6Y2aEinp232w58",
+    "matchedName": "Envelope"
+  },
+  {
+    "name": "equalizer",
+    "category": "media",
+    "streamline_name": "Equalizer",
+    "file": "media/equalizer.svg",
+    "hash": "ico_mRu4pQJ4vj8r2aE6nlqmIxih",
+    "matchedName": "Equalizer 1"
+  },
+  {
+    "name": "erase",
+    "category": "actions",
+    "streamline_name": "Eraser",
+    "file": "actions/erase.svg",
+    "hash": "ico_mRu4pQJ4vWt92aEbmoitsccE",
+    "matchedName": "Eraser"
+  },
+  {
+    "name": "error",
+    "category": "status",
+    "streamline_name": "Remove Circle",
+    "file": "status/error.svg",
+    "hash": "ico_mRu4pQJ4vHa82aEbmosjszPL",
+    "matchedName": "Remove Circle"
+  },
+  {
+    "name": "exit-fullscreen",
+    "category": "navigation",
+    "streamline_name": "Shrink",
+    "file": "navigation/exit-fullscreen.svg",
+    "hash": "ico_mRu4pQJ4vax82aEWGyBPuJsN",
+    "matchedName": "Shrink"
+  },
+  {
+    "name": "explore",
+    "category": "actions",
+    "streamline_name": "Space Explore",
+    "file": "actions/explore.svg",
+    "hash": "ico_mRu4pQJ4veOm2aESFbPop3ip",
+    "matchedName": "Space Explore"
+  },
+  {
+    "name": "export",
+    "category": "actions",
+    "streamline_name": "Export File",
+    "file": "actions/export.svg",
+    "hash": "ico_c7xHQ1hFcqINmSu4",
+    "matchedName": "Export File"
+  },
+  {
+    "name": "external-link",
+    "category": "navigation",
+    "streamline_name": "Expand",
+    "file": "navigation/external-link.svg",
+    "hash": "ico_mRu4pQJ4vTcM2aEWGywvSy2a",
+    "matchedName": "Expand"
+  },
+  {
+    "name": "eye",
+    "category": "status",
+    "streamline_name": "View 1",
+    "file": "status/eye.svg",
+    "hash": "ico_mRu4pQJ4vk882aEbmon8OaVp",
+    "matchedName": "View 1"
+  },
+  {
+    "name": "eye-health",
+    "category": "health",
+    "streamline_name": "Eye Drop",
+    "file": "health/eye-health.svg",
+    "hash": "ico_NfsTJknBoAen8nku",
+    "matchedName": "Eye Drop"
+  },
+  {
+    "name": "eye-off",
+    "category": "status",
+    "streamline_name": "View Off",
+    "file": "status/eye-off.svg",
+    "hash": "ico_mRu4pQJ4vYYp2aEbmo3ziiz8",
+    "matchedName": "View Off"
+  },
+  {
+    "name": "face-id",
+    "category": "misc",
+    "streamline_name": "Face Id",
+    "file": "misc/face-id.svg",
+    "hash": "ico_mRu4pQJ4vOM02aEbmoT2F9UL",
+    "matchedName": "Face Id"
+  },
+  {
+    "name": "factory",
+    "category": "misc",
+    "streamline_name": "Factory Belt",
+    "file": "misc/factory.svg",
+    "hash": "ico_pFsqjLrET9u4vlqX",
+    "matchedName": "Factory Belt"
+  },
+  {
+    "name": "family-care",
+    "category": "health",
+    "streamline_name": "Family Home",
+    "file": "health/family-care.svg",
+    "hash": "ico_mRu4pQJ4vI1q2aEQzI08UnIy",
+    "matchedName": "Family Home"
+  },
+  {
+    "name": "faq",
+    "category": "files",
+    "streamline_name": "Contact Us Faq",
+    "file": "files/faq.svg",
+    "hash": "ico_AcJm338tHyUbnVW3",
+    "matchedName": "Contact Us Faq"
+  },
+  {
+    "name": "file",
+    "category": "files",
+    "streamline_name": "Common File Book",
+    "file": "files/file.svg",
+    "hash": "ico_mRu4pQJ4vPrV2aE6nlfvjl02",
+    "matchedName": "Common File Book"
+  },
+  {
+    "name": "file-code",
+    "category": "files",
+    "streamline_name": "Common File Dash",
+    "file": "files/file-code.svg",
+    "hash": "ico_mRu4pQJ4v1No2aE6nlfvjyQj",
+    "matchedName": "Common File Dash"
+  },
+  {
+    "name": "file-image",
+    "category": "files",
+    "streamline_name": "Common File Horizontal Image",
+    "file": "files/file-image.svg",
+    "hash": "ico_mRu4pQJ4v4ts2aE6nlrjtqED",
+    "matchedName": "Common File Horizontal Image"
+  },
+  {
+    "name": "file-pdf",
+    "category": "files",
+    "streamline_name": "Pdf Reader",
+    "file": "files/file-pdf.svg",
+    "hash": "ico_gySPnLXKYBp064qP",
+    "matchedName": "Pdf Reader"
+  },
+  {
+    "name": "file-text",
+    "category": "files",
+    "streamline_name": "Common File Text",
+    "file": "files/file-text.svg",
+    "hash": "ico_mRu4pQJ4vutn2aE6nljUAQ1c",
+    "matchedName": "Common File Text"
+  },
+  {
+    "name": "file-zip",
+    "category": "files",
+    "streamline_name": "Zip File",
+    "file": "files/file-zip.svg",
+    "hash": "ico_mRu4pQJ4viwG2aE6nlNc3NDy",
+    "matchedName": "Zip File"
+  },
+  {
+    "name": "film",
+    "category": "media",
+    "streamline_name": "Movie Star",
+    "file": "media/film.svg",
+    "hash": "ico_mRu4pQJ4vVJo2aEPvJ9ULDTM",
+    "matchedName": "Movie Star"
+  },
+  {
+    "name": "filter",
+    "category": "navigation",
+    "streamline_name": "Filter",
+    "file": "navigation/filter.svg",
+    "hash": "ico_mRu4pQJ4vzHS2aEbmo8uey5q",
+    "matchedName": "Filter"
+  },
+  {
+    "name": "find",
+    "category": "actions",
+    "streamline_name": "Monitor Find",
+    "file": "actions/find.svg",
+    "hash": "ico_mRu4pQJ4vReA2aE2aEqmIVg1",
+    "matchedName": "Monitor Find"
+  },
+  {
+    "name": "fingerprint",
+    "category": "misc",
+    "streamline_name": "Fingerprint Add",
+    "file": "misc/fingerprint.svg",
+    "hash": "ico_IY7CXyxwvti0u1D8",
+    "matchedName": "Fingerprint Add"
+  },
+  {
+    "name": "fire",
+    "category": "misc",
+    "streamline_name": "House Fire",
+    "file": "misc/fire.svg",
+    "hash": "ico_mRu4pQJ4vGxc2aE7yVNc3BHz",
+    "matchedName": "House Fire"
+  },
+  {
+    "name": "first-aid",
+    "category": "health",
+    "streamline_name": "Hospital First Aid",
+    "file": "health/first-aid.svg",
+    "hash": "ico_mRu4pQJ4vlwE2aESFb9ULT2h",
+    "matchedName": "Hospital First Aid"
+  },
+  {
+    "name": "fitness",
+    "category": "health",
+    "streamline_name": "Fitness Weights",
+    "file": "health/fitness.svg",
+    "hash": "ico_mRu4pQJ4vuPN2aEQzI6nlalf",
+    "matchedName": "Fitness Weights"
+  },
+  {
+    "name": "flag",
+    "category": "status",
+    "streamline_name": "Flag 1",
+    "file": "status/flag.svg",
+    "hash": "ico_mRu4pQJ4v40s2aEwvSSFbUKg",
+    "matchedName": "Flag 1"
+  },
+  {
+    "name": "flag-alt",
+    "category": "actions",
+    "streamline_name": "Flag",
+    "file": "actions/flag-alt.svg",
+    "hash": "ico_mRu4pQJ4vMrx2aEwvSSFbUgm",
+    "matchedName": "Flag"
+  },
+  {
+    "name": "flash",
+    "category": "misc",
+    "streamline_name": "Flash",
+    "file": "misc/flash.svg",
+    "hash": "ico_mRu4pQJ4vOkJ2aEWGyxihA15",
+    "matchedName": "Flash"
+  },
+  {
+    "name": "flash-off",
+    "category": "misc",
+    "streamline_name": "Flash Off",
+    "file": "misc/flash-off.svg",
+    "hash": "ico_mRu4pQJ4vvtE2aEWGyxih0Ij",
+    "matchedName": "Flash Off"
+  },
+  {
+    "name": "flip",
+    "category": "media",
+    "streamline_name": "Flip Vertical Up",
+    "file": "media/flip.svg",
+    "hash": "ico_mRu4pQJ4vD202aEWGySFbgLv",
+    "matchedName": "Flip Vertical Up"
+  },
+  {
+    "name": "folder",
+    "category": "files",
+    "streamline_name": "Folder",
+    "file": "files/folder.svg",
+    "hash": "ico_mRu4pQJ4vp912aE6nlJttAy2",
+    "matchedName": "Folder"
+  },
+  {
+    "name": "folder-add",
+    "category": "files",
+    "streamline_name": "Folder Add",
+    "file": "files/folder-add.svg",
+    "hash": "ico_mRu4pQJ4vopP2aE6nlJttjwr",
+    "matchedName": "Folder Add"
+  },
+  {
+    "name": "folder-shared",
+    "category": "files",
+    "streamline_name": "Folder Shared",
+    "file": "files/folder-shared.svg",
+    "hash": "ico_t86Ir0eRijWYnkfX",
+    "matchedName": "Folder Shared"
+  },
+  {
+    "name": "folder-star",
+    "category": "files",
+    "streamline_name": "Folder Star",
+    "file": "files/folder-star.svg",
+    "hash": "ico_mRu4pQJ4vbzZ2aE6nlNc3hJM",
+    "matchedName": "Folder Star"
+  },
+  {
+    "name": "food",
+    "category": "misc",
+    "streamline_name": "Food Delivery Bag",
+    "file": "misc/food.svg",
+    "hash": "ico_zf8PzBFwhBoiPpPc",
+    "matchedName": "Food Delivery Bag"
+  },
+  {
+    "name": "forward",
+    "category": "navigation",
+    "streamline_name": "Arrow Circle Right",
+    "file": "navigation/forward.svg",
+    "hash": "ico_s9oTaLJ4PbfI42fg",
+    "matchedName": "Arrow Circle Right"
+  },
+  {
+    "name": "forward-alt",
+    "category": "actions",
+    "streamline_name": "Button Fast Forward",
+    "file": "actions/forward-alt.svg",
+    "hash": "ico_mRu4pQJ4vrXG2aEWGy9ULS5p",
+    "matchedName": "Button Fast Forward"
+  },
+  {
+    "name": "forward-mail",
+    "category": "comms",
+    "streamline_name": "Go Forward 30 Control",
+    "file": "comms/forward-mail.svg",
+    "hash": "ico_A2HvTrvdKQij6X3x",
+    "matchedName": "Go Forward 15 Control"
+  },
+  {
+    "name": "fullscreen",
+    "category": "navigation",
+    "streamline_name": "Expand Full",
+    "file": "navigation/fullscreen.svg",
+    "hash": "ico_mRu4pQJ4vRI12aEWGyBPuxJe",
+    "matchedName": "Expand Full"
+  },
+  {
+    "name": "gallery",
+    "category": "media",
+    "streamline_name": "Print Picture",
+    "file": "media/gallery.svg",
+    "hash": "ico_mRu4pQJ4vhMb2aEbmofvjSJ4",
+    "matchedName": "Print Picture"
+  },
+  {
+    "name": "gas",
+    "category": "misc",
+    "streamline_name": "Gas Station",
+    "file": "misc/gas.svg",
+    "hash": "ico_RlrF36Y9Au9GE89l",
+    "matchedName": "Gas Station"
+  },
+  {
+    "name": "gift",
+    "category": "commerce",
+    "streamline_name": "Gift Box",
+    "file": "commerce/gift.svg",
+    "hash": "ico_mRu4pQJ4vXPd2aEwvSBPu7JV",
+    "matchedName": "Gift Box"
+  },
+  {
+    "name": "glasses",
+    "category": "health",
+    "streamline_name": "Glasses",
+    "file": "health/glasses.svg",
+    "hash": "ico_mRu4pQJ4v9v72aEwAZqmIqED",
+    "matchedName": "Glasses"
+  },
+  {
+    "name": "globe",
+    "category": "misc",
+    "streamline_name": "Earth 1",
+    "file": "misc/globe.svg",
+    "hash": "ico_mRu4pQJ4vrVP2aE7yVhtdLCF",
+    "matchedName": "Earth 1"
+  },
+  {
+    "name": "graduation",
+    "category": "misc",
+    "streamline_name": "Graduation Hat",
+    "file": "misc/graduation.svg",
+    "hash": "ico_wx0sV4qvLAlsXHiV",
+    "matchedName": "Graduation Hat"
+  },
+  {
+    "name": "grid",
+    "category": "misc",
+    "streamline_name": "Layout",
+    "file": "misc/grid.svg",
+    "hash": "ico_mRu4pQJ4vHfT2aEbmodzpwNp",
+    "matchedName": "Layout"
+  },
+  {
+    "name": "group",
+    "category": "comms",
+    "streamline_name": "Group",
+    "file": "comms/group.svg",
+    "hash": "ico_0Mxibpa78rpBaHWk",
+    "matchedName": "Group"
+  },
+  {
+    "name": "guide",
+    "category": "files",
+    "streamline_name": "Drug Guide Book",
+    "file": "files/guide.svg",
+    "hash": "ico_E73t5zeX0IcNJHl5",
+    "matchedName": "Drug Guide Book"
+  },
+  {
+    "name": "hammer",
+    "category": "misc",
+    "streamline_name": "Hammer",
+    "file": "misc/hammer.svg",
+    "hash": "ico_mRu4pQJ4vfpP2aEbmoP2WnIy",
+    "matchedName": "Hammer"
+  },
+  {
+    "name": "hand-wash",
+    "category": "health",
+    "streamline_name": "Laundry Hand Wash",
+    "file": "health/hand-wash.svg",
+    "hash": "ico_mRu4pQJ4v3Up2aEBPuQ3yoEz",
+    "matchedName": "Laundry Hand Wash"
+  },
+  {
+    "name": "hard-drive",
+    "category": "files",
+    "streamline_name": "Hard Drive",
+    "file": "files/hard-drive.svg",
+    "hash": "ico_mRu4pQJ4v1rU2aE2aEWGynnb",
+    "matchedName": "Hard Drive"
+  },
+  {
+    "name": "headphones",
+    "category": "media",
+    "streamline_name": "Headphones",
+    "file": "media/headphones.svg",
+    "hash": "ico_mRu4pQJ4vhP82aE6nlWipIF9",
+    "matchedName": "Headphones"
+  },
+  {
+    "name": "hearing-aid",
+    "category": "health",
+    "streamline_name": "Hearing Aid",
+    "file": "health/hearing-aid.svg",
+    "hash": "ico_VPP4tYO2D6Wn6S4h",
+    "matchedName": "Hearing Aid"
+  },
+  {
+    "name": "heart",
+    "category": "health",
+    "streamline_name": "Heart Approve 1",
+    "file": "health/heart.svg",
+    "hash": "ico_6K5fj7KvSHFDSDVz",
+    "matchedName": "Heart Approve 1"
+  },
+  {
+    "name": "help",
+    "category": "status",
+    "streamline_name": "Question Circle",
+    "file": "status/help.svg",
+    "hash": "ico_mRu4pQJ4vhNX2aEbmo8ue92o",
+    "matchedName": "Question Circle"
+  },
+  {
+    "name": "hipaa",
+    "category": "health",
+    "streamline_name": "Firewall Privacy Shield",
+    "file": "health/hipaa.svg",
+    "hash": "ico_6pF1L9F4e3YBHcPX",
+    "matchedName": "Firewall Privacy Shield"
+  },
+  {
+    "name": "history",
+    "category": "misc",
+    "streamline_name": "History Fan",
+    "file": "misc/history.svg",
+    "hash": "ico_mRu4pQJ4vN8r2aESFbsjshRi",
+    "matchedName": "History Fan"
+  },
+  {
+    "name": "home",
+    "category": "navigation",
+    "streamline_name": "House 1",
+    "file": "navigation/home.svg",
+    "hash": "ico_mRu4pQJ4vOOa2aEbmojHWgsU",
+    "matchedName": "House 4"
+  },
+  {
+    "name": "home-alt",
+    "category": "navigation",
+    "streamline_name": "House",
+    "file": "navigation/home-alt.svg",
+    "hash": "ico_mRu4pQJ4v6OE2aEbmojHWrCh",
+    "matchedName": "House"
+  },
+  {
+    "name": "hospital",
+    "category": "health",
+    "streamline_name": "Hospital Pin",
+    "file": "health/hospital.svg",
+    "hash": "ico_lSJOYsuEqjpoyTw0",
+    "matchedName": "Hospital Pin"
+  },
+  {
+    "name": "id-card",
+    "category": "misc",
+    "streamline_name": "Single Man Id Card",
+    "file": "misc/id-card.svg",
+    "hash": "ico_mRu4pQJ4vVCW2aE7QUhtd0FZ",
+    "matchedName": "Single Man Id Card"
+  },
+  {
+    "name": "image",
+    "category": "media",
+    "streamline_name": "Image File Sync",
+    "file": "media/image.svg",
+    "hash": "ico_mRu4pQJ4v6Tw2aE6nl4pQ42Q",
+    "matchedName": "Image File Sync"
+  },
+  {
+    "name": "import",
+    "category": "actions",
+    "streamline_name": "Import File",
+    "file": "actions/import.svg",
+    "hash": "ico_RY4lldvooU0Tgc5m",
+    "matchedName": "Import File"
+  },
+  {
+    "name": "inbox",
+    "category": "comms",
+    "streamline_name": "Inbox Tray Notification Badge",
+    "file": "comms/inbox.svg",
+    "hash": "ico_uuBnSEyamMLCfDxo",
+    "matchedName": "Inbox Tray Notification Badge"
+  },
+  {
+    "name": "info",
+    "category": "status",
+    "streamline_name": "Information Circle",
+    "file": "status/info.svg",
+    "hash": "ico_mRu4pQJ4vdI82aEbmo8ue7QU",
+    "matchedName": "Information Circle"
+  },
+  {
+    "name": "inhaler",
+    "category": "health",
+    "streamline_name": "Inhaler",
+    "file": "health/inhaler.svg",
+    "hash": "ico_CunsiGj30gJLcFVT",
+    "matchedName": "Inhaler"
+  },
+  {
+    "name": "insurance",
+    "category": "health",
+    "streamline_name": "Insurance Hand",
+    "file": "health/insurance.svg",
+    "hash": "ico_mRu4pQJ4vYje2aESFb08UO1B",
+    "matchedName": "Insurance Hand"
+  },
+  {
+    "name": "invoice",
+    "category": "commerce",
+    "streamline_name": "Accounting Invoice",
+    "file": "commerce/invoice.svg",
+    "hash": "ico_mRu4pQJ4vnVV2aEgWa49rqxu",
+    "matchedName": "Accounting Invoice"
+  },
+  {
+    "name": "key",
+    "category": "misc",
+    "streamline_name": "Key Lock",
+    "file": "misc/key.svg",
+    "hash": "ico_mRu4pQJ4vWGP2aEbmoWGyeFO",
+    "matchedName": "Key Lock"
+  },
+  {
+    "name": "keyboard",
+    "category": "misc",
+    "streamline_name": "Keyboard",
+    "file": "misc/keyboard.svg",
+    "hash": "ico_mRu4pQJ4vb7k2aE2aEgWa3gZ",
+    "matchedName": "Keyboard"
+  },
+  {
+    "name": "lab",
+    "category": "health",
+    "streamline_name": "Laboratory Sample",
+    "file": "health/lab.svg",
+    "hash": "ico_mRu4pQJ4vhi72aESFbeLjsHW",
+    "matchedName": "Laboratory Sample"
+  },
+  {
+    "name": "language",
+    "category": "misc",
+    "streamline_name": "Language Barrier Confused",
+    "file": "misc/language.svg",
+    "hash": "ico_hIObmInL7ULdJC0e",
+    "matchedName": "Language Barrier Confused"
+  },
+  {
+    "name": "laptop",
+    "category": "misc",
+    "streamline_name": "Laptop",
+    "file": "misc/laptop.svg",
+    "hash": "ico_mRu4pQJ4vEmY2aE2aEiJ4sp6",
+    "matchedName": "Laptop"
+  },
+  {
+    "name": "layers",
+    "category": "navigation",
+    "streamline_name": "Layers",
+    "file": "navigation/layers.svg",
+    "hash": "ico_mRu4pQJ4vDlx2aEP2WwvSZm6",
+    "matchedName": "Layers"
+  },
+  {
+    "name": "layout",
+    "category": "misc",
+    "streamline_name": "Layout Dashboard",
+    "file": "misc/layout.svg",
+    "hash": "ico_mRu4pQJ4vHK22aEbmo08U0OY",
+    "matchedName": "Layout Dashboard"
+  },
+  {
+    "name": "leaf",
+    "category": "misc",
+    "streamline_name": "Vegetable Basil Leaf",
+    "file": "misc/leaf.svg",
+    "hash": "ico_eeyk8ZtVXCRL4hss",
+    "matchedName": "Vegetable Basil Leaf"
+  },
+  {
+    "name": "letter",
+    "category": "files",
+    "streamline_name": "Letter Balloon",
+    "file": "files/letter.svg",
+    "hash": "ico_WAQUTC9YOX6td8go",
+    "matchedName": "Letter Balloon"
+  },
+  {
+    "name": "light-mode",
+    "category": "misc",
+    "streamline_name": "Light Mode Bw",
+    "file": "misc/light-mode.svg",
+    "hash": "ico_mRu4pQJ4v5gO2aEP2WLXcxUy",
+    "matchedName": "Light Mode Bw"
+  },
+  {
+    "name": "link",
+    "category": "actions",
+    "streamline_name": "Hyperlink",
+    "file": "actions/link.svg",
+    "hash": "ico_mRu4pQJ4vtOW2aEbmofSZM8j",
+    "matchedName": "Hyperlink"
+  },
+  {
+    "name": "list",
+    "category": "misc",
+    "streamline_name": "List Add",
+    "file": "misc/list.svg",
+    "hash": "ico_mRu4pQJ4vlzO2aEbmoDeGlLl",
+    "matchedName": "List Add"
+  },
+  {
+    "name": "loading",
+    "category": "status",
+    "streamline_name": "Loading",
+    "file": "status/loading.svg",
+    "hash": "ico_mRu4pQJ4vEZ72aEWGyWipmG5",
+    "matchedName": "Loading"
+  },
+  {
+    "name": "locate",
+    "category": "actions",
+    "streamline_name": "Earth Locate",
+    "file": "actions/locate.svg",
+    "hash": "ico_mRu4pQJ4vBv32aE7yVaf7h1s",
+    "matchedName": "Earth Locate"
+  },
+  {
+    "name": "lock",
+    "category": "status",
+    "streamline_name": "Lock",
+    "file": "status/lock.svg",
+    "hash": "ico_mRu4pQJ4v0CV2aEbmoWGykz5",
+    "matchedName": "Lock"
+  },
+  {
+    "name": "login",
+    "category": "actions",
+    "streamline_name": "Login",
+    "file": "actions/login.svg",
+    "hash": "ico_mRu4pQJ4vIOs2aEbmoJ4vq06",
+    "matchedName": "Login"
+  },
+  {
+    "name": "logout",
+    "category": "actions",
+    "streamline_name": "Logout",
+    "file": "actions/logout.svg",
+    "hash": "ico_mRu4pQJ4vunX2aEbmoZOs3ip",
+    "matchedName": "Logout"
+  },
+  {
+    "name": "lungs",
+    "category": "health",
+    "streamline_name": "Medical Nanobot Lungs",
+    "file": "health/lungs.svg",
+    "hash": "ico_mRu4pQJ4vdw92aESFbgWaSWz",
+    "matchedName": "Medical Nanobot Lungs"
+  },
+  {
+    "name": "magazine",
+    "category": "files",
+    "streamline_name": "Shopping Magazine Advertising",
+    "file": "files/magazine.svg",
+    "hash": "ico_UrddYIrZtVvzmmr1",
+    "matchedName": "Shopping Magazine Advertising"
+  },
+  {
+    "name": "mail",
+    "category": "comms",
+    "streamline_name": "Email Action Home",
+    "file": "comms/mail.svg",
+    "hash": "ico_mRu4pQJ4vzpT2aE8ueK1iXC6",
+    "matchedName": "Email Action Home"
+  },
+  {
+    "name": "manual",
+    "category": "files",
+    "streamline_name": "Manual Book Content Sign",
+    "file": "files/manual.svg",
+    "hash": "ico_HWFwuJTt9Q6nwgcs",
+    "matchedName": "Manual Book Content Sign"
+  },
+  {
+    "name": "map",
+    "category": "navigation",
+    "streamline_name": "Map Marks",
+    "file": "navigation/map.svg",
+    "hash": "ico_zkkZNSrjXSdetKZk",
+    "matchedName": "Map Marks"
+  },
+  {
+    "name": "map-pin",
+    "category": "misc",
+    "streamline_name": "Pin Location",
+    "file": "misc/map-pin.svg",
+    "hash": "ico_mRu4pQJ4vvpm2aE7yVwvSMdM",
+    "matchedName": "Pin Location"
+  },
+  {
+    "name": "mask",
+    "category": "health",
+    "streamline_name": "Mask Circle",
+    "file": "health/mask.svg",
+    "hash": "ico_mRu4pQJ4vjQS2aEP2WPop0EG",
+    "matchedName": "Mask Circle"
+  },
+  {
+    "name": "medal",
+    "category": "misc",
+    "streamline_name": "Award Medal",
+    "file": "misc/medal.svg",
+    "hash": "ico_mRu4pQJ4vqC82aEwvS7QU5ES",
+    "matchedName": "Award Medal"
+  },
+  {
+    "name": "medical-cross",
+    "category": "health",
+    "streamline_name": "Medical Cross",
+    "file": "health/medical-cross.svg",
+    "hash": "ico_0xaKd6KaSGQEYrKh",
+    "matchedName": "Medical Cross"
+  },
+  {
+    "name": "meditation",
+    "category": "health",
+    "streamline_name": "Yoga Meditation Pose2",
+    "file": "health/meditation.svg",
+    "hash": "ico_ORP7nZgzIooYH97A",
+    "matchedName": "Yoga Meditation Pose2"
+  },
+  {
+    "name": "meeting",
+    "category": "comms",
+    "streamline_name": "Meeting Remote",
+    "file": "comms/meeting.svg",
+    "hash": "ico_mRu4pQJ4vKEW2aEeLjJttS12",
+    "matchedName": "Meeting Remote"
+  },
+  {
+    "name": "mental-health",
+    "category": "health",
+    "streamline_name": "Mental Health 2",
+    "file": "health/mental-health.svg",
+    "hash": "ico_gd3WUZN69c37hRUV",
+    "matchedName": "Mental Health 2"
+  },
+  {
+    "name": "mental-wellness",
+    "category": "health",
+    "streamline_name": "Mindfulness 2",
+    "file": "health/mental-wellness.svg",
+    "hash": "ico_3LCRy1UwrA2LNzJJ",
+    "matchedName": "Mindfulness 2"
+  },
+  {
+    "name": "menu",
+    "category": "navigation",
+    "streamline_name": "Navigation Menu",
+    "file": "navigation/menu.svg",
+    "hash": "ico_mRu4pQJ4vK6M2aEbmovhjYq5",
+    "matchedName": "Navigation Menu"
+  },
+  {
+    "name": "merge",
+    "category": "navigation",
+    "streamline_name": "Merge",
+    "file": "navigation/merge.svg",
+    "hash": "ico_8NndYOSkO1dwRZor",
+    "matchedName": "Merge"
+  },
+  {
+    "name": "message",
+    "category": "comms",
+    "streamline_name": "Chat Consultation Phone",
+    "file": "comms/message.svg",
+    "hash": "ico_cPyHL4mnaErec5xy",
+    "matchedName": "Chat Consultation Phone"
+  },
+  {
+    "name": "mic",
+    "category": "media",
+    "streamline_name": "Microphone",
+    "file": "media/mic.svg",
+    "hash": "ico_mRu4pQJ4vQWF2aE6nlT2Fb4v",
+    "matchedName": "Microphone"
+  },
+  {
+    "name": "mic-off",
+    "category": "media",
+    "streamline_name": "Microphone Off",
+    "file": "media/mic-off.svg",
+    "hash": "ico_mRu4pQJ4vQVm2aE6nl49rkWX",
+    "matchedName": "Microphone Off"
+  },
+  {
+    "name": "microscope",
+    "category": "health",
+    "streamline_name": "Microscope 1",
+    "file": "health/microscope.svg",
+    "hash": "ico_gOnEcczeV3tT4O9J",
+    "matchedName": "Microscope 1"
+  },
+  {
+    "name": "moon",
+    "category": "misc",
+    "streamline_name": "Astrology Moon",
+    "file": "misc/moon.svg",
+    "hash": "ico_eaAeR86dA9eOqhlr",
+    "matchedName": "Astrology Moon"
+  },
+  {
+    "name": "more-horizontal",
+    "category": "navigation",
+    "streamline_name": "Navigation Menu Horizontal",
+    "file": "navigation/more-horizontal.svg",
+    "hash": "ico_mRu4pQJ4vkgn2aEbmoJ4v232",
+    "matchedName": "Navigation Menu Horizontal"
+  },
+  {
+    "name": "more-vertical",
+    "category": "navigation",
+    "streamline_name": "Navigation Menu Vertical",
+    "file": "navigation/more-vertical.svg",
+    "hash": "ico_mRu4pQJ4vNFt2aEbmoJ4vSdl",
+    "matchedName": "Navigation Menu Vertical"
+  },
+  {
+    "name": "mouse",
+    "category": "misc",
+    "streamline_name": "Mouse",
+    "file": "misc/mouse.svg",
+    "hash": "ico_mRu4pQJ4vznM2aE2aEgWat2C",
+    "matchedName": "Mouse"
+  },
+  {
+    "name": "move",
+    "category": "actions",
+    "streamline_name": "Move Down",
+    "file": "actions/move.svg",
+    "hash": "ico_mRu4pQJ4vzgK2aEWGySFbYYL",
+    "matchedName": "Move Down"
+  },
+  {
+    "name": "mri",
+    "category": "health",
+    "streamline_name": "Radiology Scan Mri",
+    "file": "health/mri.svg",
+    "hash": "ico_mRu4pQJ4vpcq2aESFbiJ4Nei",
+    "matchedName": "Radiology Scan Mri"
+  },
+  {
+    "name": "music",
+    "category": "media",
+    "streamline_name": "Music Note",
+    "file": "media/music.svg",
+    "hash": "ico_mRu4pQJ4vLYd2aE6nl9ULi2S",
+    "matchedName": "Music Note"
+  },
+  {
+    "name": "navigation-pointer",
+    "category": "navigation",
+    "streamline_name": "Navigation Up 2",
+    "file": "navigation/navigation-pointer.svg",
+    "hash": "ico_mRu4pQJ4v1Os2aEWGy6nllo1",
+    "matchedName": "Navigation Up 2"
+  },
+  {
+    "name": "neurology",
+    "category": "health",
+    "streamline_name": "Brain Neurology",
+    "file": "health/neurology.svg",
+    "hash": "ico_AblRGU9Iy0xug1vg",
+    "matchedName": "Brain Neurology"
+  },
+  {
+    "name": "new",
+    "category": "actions",
+    "streamline_name": "New Spreadsheet",
+    "file": "actions/new.svg",
+    "hash": "ico_nRGTbKZh6GxCWZFt",
+    "matchedName": "New Spreadsheet"
+  },
+  {
+    "name": "newspaper",
+    "category": "files",
+    "streamline_name": "Newspaper",
+    "file": "files/newspaper.svg",
+    "hash": "ico_mRu4pQJ4voEh2aEP2W49r6nl",
+    "matchedName": "Newspaper"
+  },
+  {
+    "name": "notes",
+    "category": "files",
+    "streamline_name": "Notes Book Text",
+    "file": "files/notes.svg",
+    "hash": "ico_SP50yOnDu4pm9rND",
+    "matchedName": "Notes Book Text"
+  },
+  {
+    "name": "notes-add",
+    "category": "files",
+    "streamline_name": "Notes Add",
+    "file": "files/notes-add.svg",
+    "hash": "ico_XpyWlCRxCx1OoWMh",
+    "matchedName": "Notes Add"
+  },
+  {
+    "name": "notification",
+    "category": "status",
+    "streamline_name": "Alert Notification",
+    "file": "status/notification.svg",
+    "hash": "ico_TEnCrDpwvFiqZwOP",
+    "matchedName": "Alert Notification"
+  },
+  {
+    "name": "nurse",
+    "category": "health",
+    "streamline_name": "Nurse With Cap Cloth",
+    "file": "health/nurse.svg",
+    "hash": "ico_PDATDIvcjDLeHlSp",
+    "matchedName": "Nurse With Cap Cloth"
+  },
+  {
+    "name": "office",
+    "category": "misc",
+    "streamline_name": "Office File Text Alternate",
+    "file": "misc/office.svg",
+    "hash": "ico_mRu4pQJ4vIfv2aEgWavhjlo1",
+    "matchedName": "Office File Text"
+  },
+  {
+    "name": "online",
+    "category": "status",
+    "streamline_name": "Online Video Chat",
+    "file": "status/online.svg",
+    "hash": "ico_ZZkFcxekP3kXBpqX",
+    "matchedName": "Online Video Chat"
+  },
+  {
+    "name": "open",
+    "category": "actions",
+    "streamline_name": "Open Eyes",
+    "file": "actions/open.svg",
+    "hash": "ico_wVDZznuczwXS9k5v",
+    "matchedName": "Open Eyes"
+  },
+  {
+    "name": "orthopedics",
+    "category": "health",
+    "streamline_name": "Medical Specialty Broken Bone",
+    "file": "health/orthopedics.svg",
+    "hash": "ico_mRu4pQJ4vdrL2aESFbbmokz5",
+    "matchedName": "Medical Specialty Broken Bone"
+  },
+  {
+    "name": "otc",
+    "category": "health",
+    "streamline_name": "Medicine Liquid Cup",
+    "file": "health/otc.svg",
+    "hash": "ico_ufFL75TDaBUZhmcL",
+    "matchedName": "Medicine Liquid Cup"
+  },
+  {
+    "name": "oxygen",
+    "category": "health",
+    "streamline_name": "Oxygen",
+    "file": "health/oxygen.svg",
+    "hash": "ico_xqmRjKnnR7BpPCqH",
+    "matchedName": "Oxygen"
+  },
+  {
+    "name": "package-alt",
+    "category": "files",
+    "streamline_name": "Package Dimension",
+    "file": "files/package-alt.svg",
+    "hash": "ico_wsUeoF4ugB4ky0Pp",
+    "matchedName": "Package Dimension"
+  },
+  {
+    "name": "panel-bottom",
+    "category": "navigation",
+    "streamline_name": "Layout 9",
+    "file": "navigation/panel-bottom.svg",
+    "hash": "ico_6kTJV0iy9Rrmw6Vu",
+    "matchedName": "Layout 9"
+  },
+  {
+    "name": "panel-left",
+    "category": "navigation",
+    "streamline_name": "Sidebar Expand",
+    "file": "navigation/panel-left.svg",
+    "hash": "ico_XL5D49HNXzl1JJtL",
+    "matchedName": "Sidebar Expand"
+  },
+  {
+    "name": "panel-right",
+    "category": "navigation",
+    "streamline_name": "Sidebar Collapes",
+    "file": "navigation/panel-right.svg",
+    "hash": "ico_CESF4t6WmE0QN31y",
+    "matchedName": "Sidebar Collapes"
+  },
+  {
+    "name": "panel-top",
+    "category": "navigation",
+    "streamline_name": "Layout 5",
+    "file": "navigation/panel-top.svg",
+    "hash": "ico_mRu4pQJ4v4ai2aEbmodzpj4G",
+    "matchedName": "Layout 1"
+  },
+  {
+    "name": "parcel",
+    "category": "files",
+    "streamline_name": "Lightweight Parcel",
+    "file": "files/parcel.svg",
+    "hash": "ico_dshyffvaPdeeE4yV",
+    "matchedName": "Lightweight Parcel"
+  },
+  {
+    "name": "parking",
+    "category": "misc",
+    "streamline_name": "Parking P",
+    "file": "misc/parking.svg",
+    "hash": "ico_mRu4pQJ4va0N2aEPvJfvjYrt",
+    "matchedName": "Parking P"
+  },
+  {
+    "name": "passport",
+    "category": "misc",
+    "streamline_name": "Passport",
+    "file": "misc/passport.svg",
+    "hash": "ico_mRu4pQJ4vBTq2aEwvS7yVmtl",
+    "matchedName": "Passport"
+  },
+  {
+    "name": "paste",
+    "category": "actions",
+    "streamline_name": "Insurance Document Clipboard",
+    "file": "actions/paste.svg",
+    "hash": "ico_032KNWV5pHylncp1",
+    "matchedName": "Insurance Document Clipboard"
+  },
+  {
+    "name": "patient",
+    "category": "health",
+    "streamline_name": "Patient Care",
+    "file": "health/patient.svg",
+    "hash": "ico_X6nKQq5rpDyRd72Z",
+    "matchedName": "Patient Care"
+  },
+  {
+    "name": "pause",
+    "category": "media",
+    "streamline_name": "Button Pause",
+    "file": "media/pause.svg",
+    "hash": "ico_mRu4pQJ4vj0z2aEWGyjHWowo",
+    "matchedName": "Button Pause"
+  },
+  {
+    "name": "payment",
+    "category": "commerce",
+    "streamline_name": "Self Payment",
+    "file": "commerce/payment.svg",
+    "hash": "ico_mRu4pQJ4vGvH2aEgWaPvJEM1",
+    "matchedName": "Self Payment"
+  },
+  {
+    "name": "pediatric",
+    "category": "health",
+    "streamline_name": "Baby",
+    "file": "health/pediatric.svg",
+    "hash": "ico_mRu4pQJ4vMx32aEQzIvhjJtt",
+    "matchedName": "Baby"
+  },
+  {
+    "name": "pending",
+    "category": "status",
+    "streamline_name": "Hourglass",
+    "file": "status/pending.svg",
+    "hash": "ico_mRu4pQJ4vHEe2aEbmowAZYc9",
+    "matchedName": "Hourglass"
+  },
+  {
+    "name": "pharmacy",
+    "category": "health",
+    "streamline_name": "Pharmacy",
+    "file": "health/pharmacy.svg",
+    "hash": "ico_pMZjYAq9fmDIsgBe",
+    "matchedName": "Pharmacy"
+  },
+  {
+    "name": "pharmacy-alt",
+    "category": "health",
+    "streamline_name": "Pharmacy Shop",
+    "file": "health/pharmacy-alt.svg",
+    "hash": "ico_6x2U9q1yQ0TvZTVp",
+    "matchedName": "Pharmacy Shop"
+  },
+  {
+    "name": "phone",
+    "category": "comms",
+    "streamline_name": "Phone",
+    "file": "comms/phone.svg",
+    "hash": "ico_mRu4pQJ4vYVt2aE8uejHWdsA",
+    "matchedName": "Phone"
+  },
+  {
+    "name": "phone-off",
+    "category": "comms",
+    "streamline_name": "Phone Off",
+    "file": "comms/phone-off.svg",
+    "hash": "ico_mRu4pQJ4vq1r2aE8uejHW9Zr",
+    "matchedName": "Phone Off"
+  },
+  {
+    "name": "piggy-bank",
+    "category": "commerce",
+    "streamline_name": "Saving Piggy Bank",
+    "file": "commerce/piggy-bank.svg",
+    "hash": "ico_mRu4pQJ4v9He2aEgWagWaZoI",
+    "matchedName": "Saving Piggy Bank"
+  },
+  {
+    "name": "pill",
+    "category": "health",
+    "streamline_name": "Pill",
+    "file": "health/pill.svg",
+    "hash": "ico_mRu4pQJ4v6RL2aESFbZOsOdT",
+    "matchedName": "Pill"
+  },
+  {
+    "name": "pin",
+    "category": "actions",
+    "streamline_name": "Pin",
+    "file": "actions/pin.svg",
+    "hash": "ico_mRu4pQJ4vq0J2aEbmoPop19B",
+    "matchedName": "Pin"
+  },
+  {
+    "name": "planet",
+    "category": "misc",
+    "streamline_name": "Astronomy Planet",
+    "file": "misc/planet.svg",
+    "hash": "ico_mRu4pQJ4vlIx2aESFbfvjb8N",
+    "matchedName": "Astronomy Planet"
+  },
+  {
+    "name": "play",
+    "category": "media",
+    "streamline_name": "Button Play",
+    "file": "media/play.svg",
+    "hash": "ico_mRu4pQJ4vNaG2aEWGyjHWkz5",
+    "matchedName": "Button Play"
+  },
+  {
+    "name": "playlist",
+    "category": "media",
+    "streamline_name": "Playlist",
+    "file": "media/playlist.svg",
+    "hash": "ico_mRu4pQJ4vKrV2aE6nlgWa693",
+    "matchedName": "Playlist"
+  },
+  {
+    "name": "policy",
+    "category": "files",
+    "streamline_name": "Ai Policy Script",
+    "file": "files/policy.svg",
+    "hash": "ico_YtzwoFibviRrGcHh",
+    "matchedName": "Ai Policy Script"
+  },
+  {
+    "name": "portfolio",
+    "category": "files",
+    "streamline_name": "Portfolio Project User",
+    "file": "files/portfolio.svg",
+    "hash": "ico_LKHPVlfYLnkULMuE",
+    "matchedName": "Portfolio Project User"
+  },
+  {
+    "name": "postcard",
+    "category": "files",
+    "streamline_name": "Envelope Postcard",
+    "file": "files/postcard.svg",
+    "hash": "ico_mRu4pQJ4vHDH2aEinp2323J7",
+    "matchedName": "Envelope Postcard"
+  },
+  {
+    "name": "power",
+    "category": "actions",
+    "streamline_name": "Power Button",
+    "file": "actions/power.svg",
+    "hash": "ico_mRu4pQJ4vF0l2aEWGyPvJFs8",
+    "matchedName": "Power Button"
+  },
+  {
+    "name": "pregnancy",
+    "category": "health",
+    "streamline_name": "Pregnancy Vgr",
+    "file": "health/pregnancy.svg",
+    "hash": "ico_mRu4pQJ4vDj12aESFb6nl33w",
+    "matchedName": "Pregnancy Vgr"
+  },
+  {
+    "name": "prescription",
+    "category": "health",
+    "streamline_name": "Prescription Px",
+    "file": "health/prescription.svg",
+    "hash": "ico_Q5UTKK6B3Ybg2LUE",
+    "matchedName": "Prescription Px"
+  },
+  {
+    "name": "presentation",
+    "category": "comms",
+    "streamline_name": "Presentation",
+    "file": "comms/presentation.svg",
+    "hash": "ico_mRu4pQJ4vGpu2aEeLjEi8ZjK",
+    "matchedName": "Presentation"
+  },
+  {
+    "name": "press",
+    "category": "files",
+    "streamline_name": "Force Touch Press",
+    "file": "files/press.svg",
+    "hash": "ico_mRu4pQJ4vHBO2aE8ueWGyZOs",
+    "matchedName": "Force Touch Press"
+  },
+  {
+    "name": "print",
+    "category": "actions",
+    "streamline_name": "Printer",
+    "file": "actions/print.svg",
+    "hash": "ico_mRu4pQJ4v48F2aE2aE7QURc2",
+    "matchedName": "Printer"
+  },
+  {
+    "name": "printer-alt",
+    "category": "misc",
+    "streamline_name": "Printer View",
+    "file": "misc/printer-alt.svg",
+    "hash": "ico_mRu4pQJ4vTQx2aEbmoDeGOOo",
+    "matchedName": "Printer View"
+  },
+  {
+    "name": "projector",
+    "category": "misc",
+    "streamline_name": "Video Projector",
+    "file": "misc/projector.svg",
+    "hash": "ico_mRu4pQJ4vP8T2aEWGyhNEbzb",
+    "matchedName": "Video Projector"
+  },
+  {
+    "name": "prosthetic",
+    "category": "health",
+    "streamline_name": "Prosthetic Leg 1",
+    "file": "health/prosthetic.svg",
+    "hash": "ico_weTvixyNPlsDfwIY",
+    "matchedName": "Prosthetic Leg 1"
+  },
+  {
+    "name": "pulse",
+    "category": "health",
+    "streamline_name": "Hypertension Pulse",
+    "file": "health/pulse.svg",
+    "hash": "ico_AkQkKixWcER6U86X",
+    "matchedName": "Hypertension Pulse"
+  },
+  {
+    "name": "qr-code",
+    "category": "commerce",
+    "streamline_name": "Qr Code",
+    "file": "commerce/qr-code.svg",
+    "hash": "ico_mRu4pQJ4vxkY2aEgWafSZkAl",
+    "matchedName": "Qr Code"
+  },
+  {
+    "name": "qr-scan",
+    "category": "misc",
+    "streamline_name": "Iris Scan",
+    "file": "misc/qr-scan.svg",
+    "hash": "ico_mRu4pQJ4vcN12aEbmoxihT2F",
+    "matchedName": "Iris Scan"
+  },
+  {
+    "name": "quote-reply",
+    "category": "actions",
+    "streamline_name": "Quote",
+    "file": "actions/quote-reply.svg",
+    "hash": "ico_ozYOD6ipuZkmWZH1",
+    "matchedName": "Quote"
+  },
+  {
+    "name": "radiology",
+    "category": "health",
+    "streamline_name": "Radiology Scan",
+    "file": "health/radiology.svg",
+    "hash": "ico_mRu4pQJ4vDkU2aESFbWipcV2",
+    "matchedName": "Radiology Scan"
+  },
+  {
+    "name": "rain",
+    "category": "misc",
+    "streamline_name": "Rain Umbrella",
+    "file": "misc/rain.svg",
+    "hash": "ico_mRu4pQJ4vKdX2aEg0Ydzpfsi",
+    "matchedName": "Rain Umbrella"
+  },
+  {
+    "name": "receipt",
+    "category": "commerce",
+    "streamline_name": "Receipt",
+    "file": "commerce/receipt.svg",
+    "hash": "ico_mRu4pQJ4vHAJ2aEgWa3zi6rJ",
+    "matchedName": "Receipt"
+  },
+  {
+    "name": "record",
+    "category": "media",
+    "streamline_name": "Phone Record",
+    "file": "media/record.svg",
+    "hash": "ico_qFHnZGT234Gokah6",
+    "matchedName": "Phone Record"
+  },
+  {
+    "name": "recycle",
+    "category": "misc",
+    "streamline_name": "Plastic Bag Recycle",
+    "file": "misc/recycle.svg",
+    "hash": "ico_7b1eU7lDTEvY4UZW",
+    "matchedName": "Plastic Bag Recycle"
+  },
+  {
+    "name": "redo",
+    "category": "actions",
+    "streamline_name": "Redo",
+    "file": "actions/redo.svg",
+    "hash": "ico_mRu4pQJ4vWKm2aEbmoDeGegE",
+    "matchedName": "Redo"
+  },
+  {
+    "name": "refresh",
+    "category": "actions",
+    "streamline_name": "Button Refresh Arrow",
+    "file": "actions/refresh.svg",
+    "hash": "ico_mRu4pQJ4vHOH2aEWGy08Ubmo",
+    "matchedName": "Button Refresh Arrow"
+  },
+  {
+    "name": "remind",
+    "category": "actions",
+    "streamline_name": "Reminder Hand Sign",
+    "file": "actions/remind.svg",
+    "hash": "ico_13frY18BB5QqYfo1",
+    "matchedName": "Reminder Hand Sign"
+  },
+  {
+    "name": "reply",
+    "category": "comms",
+    "streamline_name": "Reply Time Clock",
+    "file": "comms/reply.svg",
+    "hash": "ico_SSeQuuIlHoYTIWOy",
+    "matchedName": "Reply Time Clock"
+  },
+  {
+    "name": "reply-all",
+    "category": "comms",
+    "streamline_name": "Email Action Reply All",
+    "file": "comms/reply-all.svg",
+    "hash": "ico_mRu4pQJ4vwHm2aE8ue4pQzUT",
+    "matchedName": "Email Action Reply All"
+  },
+  {
+    "name": "reply-alt",
+    "category": "actions",
+    "streamline_name": "Reply To Message",
+    "file": "actions/reply-alt.svg",
+    "hash": "ico_GRo0QcAqsz807KJw",
+    "matchedName": "Reply To Message"
+  },
+  {
+    "name": "resize",
+    "category": "navigation",
+    "streamline_name": "Expand 8",
+    "file": "navigation/resize.svg",
+    "hash": "ico_mRu4pQJ4vdYE2aEWGyBPufxr",
+    "matchedName": "Expand 8"
+  },
+  {
+    "name": "restore",
+    "category": "actions",
+    "streamline_name": "Archive Restore",
+    "file": "actions/restore.svg",
+    "hash": "ico_YpcRMXrqpyGYIUsy",
+    "matchedName": "Archive Restore"
+  },
+  {
+    "name": "resume",
+    "category": "files",
+    "streamline_name": "Recruiting Resume Document",
+    "file": "files/resume.svg",
+    "hash": "ico_Wova0mUK456FNoyl",
+    "matchedName": "Recruiting Resume Document"
+  },
+  {
+    "name": "robot",
+    "category": "misc",
+    "streamline_name": "Robot",
+    "file": "misc/robot.svg",
+    "hash": "ico_mRu4pQJ4vMxs2aEWGyfSZTrw",
+    "matchedName": "Robot"
+  },
+  {
+    "name": "rocket",
+    "category": "misc",
+    "streamline_name": "Rocket Attack",
+    "file": "misc/rocket.svg",
+    "hash": "ico_sSaBPXPMDGaO8LEm",
+    "matchedName": "Rocket Attack"
+  },
+  {
+    "name": "rotate",
+    "category": "media",
+    "streamline_name": "Rotate",
+    "file": "media/rotate.svg",
+    "hash": "ico_mRu4pQJ4v0im2aEP2WPvJkWX",
+    "matchedName": "Rotate"
+  },
+  {
+    "name": "route",
+    "category": "navigation",
+    "streamline_name": "Journey Trip Route",
+    "file": "navigation/route.svg",
+    "hash": "ico_lvs4Sr6wqW4mwqLN",
+    "matchedName": "Journey Trip Route"
+  },
+  {
+    "name": "satellite",
+    "category": "misc",
+    "streamline_name": "Satellite",
+    "file": "misc/satellite.svg",
+    "hash": "ico_mRu4pQJ4vkoQ2aEbmohNE1nr",
+    "matchedName": "Satellite"
+  },
+  {
+    "name": "save",
+    "category": "actions",
+    "streamline_name": "Floppy Disk",
+    "file": "actions/save.svg",
+    "hash": "ico_mRu4pQJ4vwOo2aE2aE2aEW93",
+    "matchedName": "Floppy Disk"
+  },
+  {
+    "name": "scanner",
+    "category": "misc",
+    "streamline_name": "Scanner",
+    "file": "misc/scanner.svg",
+    "hash": "ico_mRu4pQJ4vVyd2aE2aE7QU0Ij",
+    "matchedName": "Scanner"
+  },
+  {
+    "name": "schedule",
+    "category": "misc",
+    "streamline_name": "Scheduled Phone Call Calendar 2",
+    "file": "misc/schedule.svg",
+    "hash": "ico_8HkC3cg2qUh62QZs",
+    "matchedName": "Scheduled Phone Call Calendar 2"
+  },
+  {
+    "name": "school",
+    "category": "misc",
+    "streamline_name": "School Bell",
+    "file": "misc/school.svg",
+    "hash": "ico_mRu4pQJ4v6bx2aESFbBPupnJ",
+    "matchedName": "School Bell"
+  },
+  {
+    "name": "scroll",
+    "category": "navigation",
+    "streamline_name": "Scroll Vertical",
+    "file": "navigation/scroll.svg",
+    "hash": "ico_mRu4pQJ4vz1j2aEWGy2aE66M",
+    "matchedName": "Scroll Vertical"
+  },
+  {
+    "name": "search",
+    "category": "navigation",
+    "streamline_name": "Search",
+    "file": "navigation/search.svg",
+    "hash": "ico_mRu4pQJ4vFrC2aEbmo3zibQP",
+    "matchedName": "Search"
+  },
+  {
+    "name": "search-alt",
+    "category": "actions",
+    "streamline_name": "Search 1",
+    "file": "actions/search-alt.svg",
+    "hash": "ico_mRu4pQJ4vypL2aEbmo3zi7yx",
+    "matchedName": "Search 1"
+  },
+  {
+    "name": "select",
+    "category": "actions",
+    "streamline_name": "Select 3d",
+    "file": "actions/select.svg",
+    "hash": "ico_xEkJPhjNK40jZDdz",
+    "matchedName": "Select 3d"
+  },
+  {
+    "name": "select-all",
+    "category": "actions",
+    "streamline_name": "Select All",
+    "file": "actions/select-all.svg",
+    "hash": "ico_DKJsoKUjK26fSYre",
+    "matchedName": "Select All"
+  },
+  {
+    "name": "send",
+    "category": "comms",
+    "streamline_name": "Send Email 2",
+    "file": "comms/send.svg",
+    "hash": "ico_mRu4pQJ4vQmq2aEinpaf7KJ9",
+    "matchedName": "Send Email 2"
+  },
+  {
+    "name": "send-alt",
+    "category": "actions",
+    "streamline_name": "Send Email",
+    "file": "actions/send-alt.svg",
+    "hash": "ico_mRu4pQJ4vLZo2aEinpaf7nFg",
+    "matchedName": "Send Email"
+  },
+  {
+    "name": "server",
+    "category": "files",
+    "streamline_name": "Server",
+    "file": "files/server.svg",
+    "hash": "ico_mRu4pQJ4vF2Q2aEeLj49rlLl",
+    "matchedName": "Server"
+  },
+  {
+    "name": "settings",
+    "category": "navigation",
+    "streamline_name": "Cog",
+    "file": "navigation/settings.svg",
+    "hash": "ico_mRu4pQJ4v7Cl2aEbmoeLjVMd",
+    "matchedName": "Cog"
+  },
+  {
+    "name": "share",
+    "category": "actions",
+    "streamline_name": "Share",
+    "file": "actions/share.svg",
+    "hash": "ico_mRu4pQJ4vORO2aEbmohNEAtl",
+    "matchedName": "Share"
+  },
+  {
+    "name": "share-alt",
+    "category": "actions",
+    "streamline_name": "Share 3",
+    "file": "actions/share-alt.svg",
+    "hash": "ico_mRu4pQJ4vCML2aEbmofvjvZ5",
+    "matchedName": "Share 3"
+  },
+  {
+    "name": "shelf",
+    "category": "files",
+    "streamline_name": "Shelf Tv",
+    "file": "files/shelf.svg",
+    "hash": "ico_mRu4pQJ4vm042aEBPurjtbQP",
+    "matchedName": "Shelf Tv"
+  },
+  {
+    "name": "shield",
+    "category": "status",
+    "streamline_name": "Lock Shield",
+    "file": "status/shield.svg",
+    "hash": "ico_mRu4pQJ4v0Ww2aEbmo2aEOUi",
+    "matchedName": "Lock Shield"
+  },
+  {
+    "name": "shield-check",
+    "category": "status",
+    "streamline_name": "Shield Check",
+    "file": "status/shield-check.svg",
+    "hash": "ico_mRu4pQJ4vDlM2aE2aE7yV65n",
+    "matchedName": "Shield Check"
+  },
+  {
+    "name": "shield-off",
+    "category": "status",
+    "streamline_name": "Remove Shield",
+    "file": "status/shield-off.svg",
+    "hash": "ico_mRu4pQJ4v0ph2aEbmosjs5RT",
+    "matchedName": "Remove Shield"
+  },
+  {
+    "name": "sidebar",
+    "category": "navigation",
+    "streamline_name": "Layout 2",
+    "file": "navigation/sidebar.svg",
+    "hash": "ico_mRu4pQJ4vQnU2aEbmodzpQ4o",
+    "matchedName": "Layout 2"
+  },
+  {
+    "name": "sign-language",
+    "category": "health",
+    "streamline_name": "Sign Language Love",
+    "file": "health/sign-language.svg",
+    "hash": "ico_LgOPPg6OHjYT7ooh",
+    "matchedName": "Sign Language Love"
+  },
+  {
+    "name": "signal",
+    "category": "misc",
+    "streamline_name": "Signal Wave",
+    "file": "misc/signal.svg",
+    "hash": "ico_WVJj48wVj01Ljb7L",
+    "matchedName": "Signal Wave"
+  },
+  {
+    "name": "skip-back",
+    "category": "media",
+    "streamline_name": "Button Previous",
+    "file": "media/skip-back.svg",
+    "hash": "ico_mRu4pQJ4vKDW2aEWGyjHWxxf",
+    "matchedName": "Button Previous"
+  },
+  {
+    "name": "skip-forward",
+    "category": "media",
+    "streamline_name": "Button Next",
+    "file": "media/skip-forward.svg",
+    "hash": "ico_mRu4pQJ4vgIj2aEWGyjHW0Ij",
+    "matchedName": "Button Next"
+  },
+  {
+    "name": "sleep",
+    "category": "health",
+    "streamline_name": "Sleep Zzz",
+    "file": "health/sleep.svg",
+    "hash": "ico_OJcciQ6ZHeubdTLU",
+    "matchedName": "Sleep Zzz"
+  },
+  {
+    "name": "smartphone",
+    "category": "misc",
+    "streamline_name": "Smartphone Pay Dollar 2",
+    "file": "misc/smartphone.svg",
+    "hash": "ico_wcruqWKeiqlhlRWs",
+    "matchedName": "Smartphone Pay Dollar 2"
+  },
+  {
+    "name": "snooze",
+    "category": "actions",
+    "streamline_name": "Snooze Return Repeat",
+    "file": "actions/snooze.svg",
+    "hash": "ico_Pv87nRusdAFKGNJp",
+    "matchedName": "Snooze Return Repeat"
+  },
+  {
+    "name": "snow",
+    "category": "misc",
+    "streamline_name": "Weather Snow",
+    "file": "misc/snow.svg",
+    "hash": "ico_mRu4pQJ4vUYi2aEg0Yaf7DlA",
+    "matchedName": "Weather Snow"
+  },
+  {
+    "name": "sort",
+    "category": "actions",
+    "streamline_name": "Sort Size Ascending Order Up",
+    "file": "actions/sort.svg",
+    "hash": "ico_gYyJDjLMAu7UV4oa",
+    "matchedName": "Sort Size Ascending Order Up"
+  },
+  {
+    "name": "sort-asc",
+    "category": "actions",
+    "streamline_name": "Ascending Sort 1",
+    "file": "actions/sort-asc.svg",
+    "hash": "ico_b2RWsfdA1itUmLFj",
+    "matchedName": "Ascending Sort 1"
+  },
+  {
+    "name": "sort-desc",
+    "category": "actions",
+    "streamline_name": "Descending Sort 1",
+    "file": "actions/sort-desc.svg",
+    "hash": "ico_MtRhAIGxjumgrI84",
+    "matchedName": "Descending Sort 1"
+  },
+  {
+    "name": "split",
+    "category": "navigation",
+    "streamline_name": "Split Subset Spreadsheet 2",
+    "file": "navigation/split.svg",
+    "hash": "ico_RzhjIlPrywKFxwM2",
+    "matchedName": "Split Subset Spreadsheet 2"
+  },
+  {
+    "name": "star",
+    "category": "status",
+    "streamline_name": "Star Half",
+    "file": "status/star.svg",
+    "hash": "ico_4dZ3KnZcNaqRn5zw",
+    "matchedName": "Star Half"
+  },
+  {
+    "name": "star-add",
+    "category": "actions",
+    "streamline_name": "Rating Star Add",
+    "file": "actions/star-add.svg",
+    "hash": "ico_mRu4pQJ4vQFQ2aEwvSgWaeFQ",
+    "matchedName": "Rating Star Add"
+  },
+  {
+    "name": "star-filled",
+    "category": "status",
+    "streamline_name": "Rating Star",
+    "file": "status/star-filled.svg",
+    "hash": "ico_mRu4pQJ4v5RG2aEwvSgWaXzP",
+    "matchedName": "Rating Star"
+  },
+  {
+    "name": "stethoscope",
+    "category": "health",
+    "streamline_name": "Stethoscope Website",
+    "file": "health/stethoscope.svg",
+    "hash": "ico_aRjQE1CVBIO77huC",
+    "matchedName": "Stethoscope Website"
+  },
+  {
+    "name": "stop",
+    "category": "media",
+    "streamline_name": "Button Stop",
+    "file": "media/stop.svg",
+    "hash": "ico_mRu4pQJ4vs8s2aEWGy08Uh1s",
+    "matchedName": "Button Stop"
+  },
+  {
+    "name": "stopwatch",
+    "category": "misc",
+    "streamline_name": "Stopwatch",
+    "file": "misc/stopwatch.svg",
+    "hash": "ico_mRu4pQJ4vEbO2aEbmog0Yn8O",
+    "matchedName": "Stopwatch"
+  },
+  {
+    "name": "store",
+    "category": "commerce",
+    "streamline_name": "Cannabis Store",
+    "file": "commerce/store.svg",
+    "hash": "ico_bLFBHPx8uiRN0Q3X",
+    "matchedName": "Cannabis Store"
+  },
+  {
+    "name": "success",
+    "category": "status",
+    "streamline_name": "Check Circle",
+    "file": "status/success.svg",
+    "hash": "ico_mRu4pQJ4v6WD2aEbmojUATyj",
+    "matchedName": "Check Circle"
+  },
+  {
+    "name": "sun",
+    "category": "misc",
+    "streamline_name": "Uv Sun",
+    "file": "misc/sun.svg",
+    "hash": "ico_mRu4pQJ4vlNZ2aESFbQ3ySWz",
+    "matchedName": "Uv Sun"
+  },
+  {
+    "name": "surgery",
+    "category": "health",
+    "streamline_name": "Surgery Liposuction",
+    "file": "health/surgery.svg",
+    "hash": "ico_NvIkqREuXVx8U10Y",
+    "matchedName": "Surgery Liposuction"
+  },
+  {
+    "name": "swap",
+    "category": "actions",
+    "streamline_name": "Folder Exchange",
+    "file": "actions/swap.svg",
+    "hash": "ico_mRu4pQJ4vaTV2aE6nlaf7vZ5",
+    "matchedName": "Folder Exchange"
+  },
+  {
+    "name": "symptoms",
+    "category": "health",
+    "streamline_name": "Symptoms Fever",
+    "file": "health/symptoms.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "sync",
+    "category": "actions",
+    "streamline_name": "Synchronize Arrow 2",
+    "file": "actions/sync.svg",
+    "hash": "ico_mRu4pQJ4vdHY2aEWGyqmIZmj",
+    "matchedName": "Synchronize Arrow 2"
+  },
+  {
+    "name": "syringe",
+    "category": "health",
+    "streamline_name": "Medical Instrument Syringe",
+    "file": "health/syringe.svg",
+    "hash": "ico_mRu4pQJ4vQSY2aESFbqmItw9",
+    "matchedName": "Medical Instrument Syringe"
+  },
+  {
+    "name": "tablet",
+    "category": "misc",
+    "streamline_name": "Tablet",
+    "file": "misc/tablet.svg",
+    "hash": "ico_mRu4pQJ4vl6H2aE2aE49r92h",
+    "matchedName": "Tablet"
+  },
+  {
+    "name": "tag",
+    "category": "files",
+    "streamline_name": "Tag New",
+    "file": "files/tag.svg",
+    "hash": "ico_mRu4pQJ4vFNO2aEgWahNEnz3",
+    "matchedName": "Tag New"
+  },
+  {
+    "name": "team",
+    "category": "comms",
+    "streamline_name": "Team Idea",
+    "file": "comms/team.svg",
+    "hash": "ico_mRu4pQJ4vRxl2aEeLjEi8HFz",
+    "matchedName": "Team Idea"
+  },
+  {
+    "name": "temperature",
+    "category": "misc",
+    "streamline_name": "Temperature Up",
+    "file": "misc/temperature.svg",
+    "hash": "ico_mRu4pQJ4vtZM2aESFbK1ivf1",
+    "matchedName": "Temperature Up"
+  },
+  {
+    "name": "terminal",
+    "category": "misc",
+    "streamline_name": "Terminal",
+    "file": "misc/terminal.svg",
+    "hash": "ico_QK3Rp6MryQn8UcSB",
+    "matchedName": "Terminal"
+  },
+  {
+    "name": "thermometer",
+    "category": "health",
+    "streamline_name": "Temperature Thermometer",
+    "file": "health/thermometer.svg",
+    "hash": "ico_mRu4pQJ4vMoc2aESFbM5pXtb",
+    "matchedName": "Temperature Thermometer"
+  },
+  {
+    "name": "ticket",
+    "category": "misc",
+    "streamline_name": "Ticket",
+    "file": "misc/ticket.svg",
+    "hash": "ico_mRu4pQJ4v8mw2aEPvJQ3yybj",
+    "matchedName": "Ticket"
+  },
+  {
+    "name": "timer",
+    "category": "misc",
+    "streamline_name": "Timer",
+    "file": "misc/timer.svg",
+    "hash": "ico_mRu4pQJ4vp0A2aEP2WNc3UQe",
+    "matchedName": "Timer"
+  },
+  {
+    "name": "tool",
+    "category": "misc",
+    "streamline_name": "Tools Keys",
+    "file": "misc/tool.svg",
+    "hash": "ico_mRu4pQJ4vHoh2aEwAZWGybvO",
+    "matchedName": "Tools Keys"
+  },
+  {
+    "name": "tooth",
+    "category": "health",
+    "streamline_name": "Tooth 2",
+    "file": "health/tooth.svg",
+    "hash": "ico_y0fB1E71TEZanYCe",
+    "matchedName": "Tooth 2"
+  },
+  {
+    "name": "train",
+    "category": "misc",
+    "streamline_name": "Train Location",
+    "file": "misc/train.svg",
+    "hash": "ico_wRrOCEYyHseUQL4B",
+    "matchedName": "Train Location"
+  },
+  {
+    "name": "translate",
+    "category": "misc",
+    "streamline_name": "Translate",
+    "file": "misc/translate.svg",
+    "hash": "ico_mRu4pQJ4vH9z2aEbmoDeGfbn",
+    "matchedName": "Translate"
+  },
+  {
+    "name": "trash",
+    "category": "actions",
+    "streamline_name": "Bin",
+    "file": "actions/trash.svg",
+    "hash": "ico_mRu4pQJ4vYle2aEbmognsMRy",
+    "matchedName": "Bin"
+  },
+  {
+    "name": "trophy",
+    "category": "misc",
+    "streamline_name": "Seo Trophy",
+    "file": "misc/trophy.svg",
+    "hash": "ico_mRu4pQJ4vTvd2aEeLjgnsarj",
+    "matchedName": "Seo Trophy"
+  },
+  {
+    "name": "ultrasound",
+    "category": "health",
+    "streamline_name": "Ultrasound Scan",
+    "file": "health/ultrasound.svg",
+    "hash": "ico_tZ4VJSqJS9N6ZunY",
+    "matchedName": "Ultrasound Scan"
+  },
+  {
+    "name": "umbrella",
+    "category": "misc",
+    "streamline_name": "Umbrella Circle",
+    "file": "misc/umbrella.svg",
+    "hash": "ico_4kmxNK6EvHtp225k",
+    "matchedName": "Umbrella Circle"
+  },
+  {
+    "name": "undo",
+    "category": "actions",
+    "streamline_name": "Undo",
+    "file": "actions/undo.svg",
+    "hash": "ico_mRu4pQJ4vafx2aEbmoDeGdIV",
+    "matchedName": "Undo"
+  },
+  {
+    "name": "unlock",
+    "category": "status",
+    "streamline_name": "Lock Unlock",
+    "file": "status/unlock.svg",
+    "hash": "ico_mRu4pQJ4v0xz2aEbmo2aES2z",
+    "matchedName": "Lock Unlock"
+  },
+  {
+    "name": "upload",
+    "category": "actions",
+    "streamline_name": "Upload Bottom",
+    "file": "actions/upload.svg",
+    "hash": "ico_hK9fVfIXdnfbbn3e",
+    "matchedName": "Upload Bottom",
+    "bold_hash": "ico_PuuE4qW84OlEhiV0"
+  },
+  {
+    "name": "usb",
+    "category": "files",
+    "streamline_name": "Usb Port",
+    "file": "files/usb.svg",
+    "hash": "ico_mRu4pQJ4vygp2aE2aEP2WOfx",
+    "matchedName": "Usb Port"
+  },
+  {
+    "name": "user",
+    "category": "comms",
+    "streamline_name": "User Story",
+    "file": "comms/user.svg",
+    "hash": "ico_RIcMHERKhuBqujBg",
+    "matchedName": "User Story"
+  },
+  {
+    "name": "user-add",
+    "category": "comms",
+    "streamline_name": "Phone Action Add User",
+    "file": "comms/user-add.svg",
+    "hash": "ico_mRu4pQJ4vlUX2aE8ue2aEvlV",
+    "matchedName": "Phone Action Add User"
+  },
+  {
+    "name": "user-check",
+    "category": "comms",
+    "streamline_name": "Messages People User Check",
+    "file": "comms/user-check.svg",
+    "hash": "ico_mRu4pQJ4vsw22aE8ue7yVVMd",
+    "matchedName": "Messages People User Check"
+  },
+  {
+    "name": "user-remove",
+    "category": "comms",
+    "streamline_name": "Phone Action Remove User",
+    "file": "comms/user-remove.svg",
+    "hash": "ico_mRu4pQJ4v1g52aE8ue7QUmjs",
+    "matchedName": "Phone Action Remove User"
+  },
+  {
+    "name": "users",
+    "category": "comms",
+    "streamline_name": "Multiple Users 1",
+    "file": "comms/users.svg",
+    "hash": "ico_mRu4pQJ4vkHn2aE7QUjUASaf",
+    "matchedName": "Multiple Users 1"
+  },
+  {
+    "name": "vaccine",
+    "category": "health",
+    "streamline_name": "Vaccine Bottle 1",
+    "file": "health/vaccine.svg",
+    "hash": "ico_SgrIqfknU3CCJ3ah",
+    "matchedName": "Vaccine Bottle 1"
+  },
+  {
+    "name": "video",
+    "category": "media",
+    "streamline_name": "Video Player",
+    "file": "media/video.svg",
+    "hash": "ico_mRu4pQJ4v7k52aE6nl7yVyBV",
+    "matchedName": "Video Player"
+  },
+  {
+    "name": "video-call",
+    "category": "comms",
+    "streamline_name": "Video Call",
+    "file": "comms/video-call.svg",
+    "hash": "ico_FXEkn175XtTQi1yo",
+    "matchedName": "Video Call"
+  },
+  {
+    "name": "virus",
+    "category": "health",
+    "streamline_name": "Medical Specialty Virus",
+    "file": "health/virus.svg",
+    "hash": "ico_YQ5h3o1m2mQN8dK0",
+    "matchedName": "Medical Specialty Virus"
+  },
+  {
+    "name": "volume",
+    "category": "media",
+    "streamline_name": "Volume",
+    "file": "media/volume.svg",
+    "hash": "ico_mRu4pQJ4vHu62aEbmoinpGBB",
+    "matchedName": "Volume"
+  },
+  {
+    "name": "volume-off",
+    "category": "media",
+    "streamline_name": "Volume Control Off",
+    "file": "media/volume-off.svg",
+    "hash": "ico_mRu4pQJ4vEHs2aE6nl7QUdGw",
+    "matchedName": "Volume Control Off"
+  },
+  {
+    "name": "waiting-room",
+    "category": "health",
+    "streamline_name": "Waiting Room Lamp",
+    "file": "health/waiting-room.svg",
+    "hash": "ico_mRu4pQJ4voDu2aEwvS232TZe",
+    "matchedName": "Waiting Room Lamp"
+  },
+  {
+    "name": "wallet",
+    "category": "commerce",
+    "streamline_name": "Wallet Sensor Tag Radiowaves",
+    "file": "commerce/wallet.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "warning",
+    "category": "status",
+    "streamline_name": "Alert Circle",
+    "file": "status/warning.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "watch",
+    "category": "misc",
+    "streamline_name": "Watch Time",
+    "file": "misc/watch.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "water",
+    "category": "misc",
+    "streamline_name": "Water Straw",
+    "file": "misc/water.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "weather",
+    "category": "misc",
+    "streamline_name": "Weather Rain",
+    "file": "misc/weather.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "weight-scale",
+    "category": "health",
+    "streamline_name": "Diet Scale",
+    "file": "health/weight-scale.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "wheelchair",
+    "category": "health",
+    "streamline_name": "Wheelchair Way",
+    "file": "health/wheelchair.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "wifi",
+    "category": "misc",
+    "streamline_name": "Wifi",
+    "file": "misc/wifi.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "wifi-off",
+    "category": "misc",
+    "streamline_name": "Wifi Off",
+    "file": "misc/wifi-off.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "wiki",
+    "category": "files",
+    "streamline_name": "Wikipedia Logo",
+    "file": "files/wiki.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "wind",
+    "category": "misc",
+    "streamline_name": "Wind West",
+    "file": "misc/wind.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "wrench",
+    "category": "misc",
+    "streamline_name": "Wrench",
+    "file": "misc/wrench.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "zoom-in",
+    "category": "misc",
+    "streamline_name": "Zoom In",
+    "file": "misc/zoom-in.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "zoom-out",
+    "category": "misc",
+    "streamline_name": "Zoom Out",
+    "file": "misc/zoom-out.svg",
+    "hash": null,
+    "matchedName": null
+  },
+  {
+    "name": "check-circle",
+    "category": "actions",
+    "streamline_name": "Check Circle",
+    "file": "actions/check-circle.svg",
+    "hash": "ico_mRu4pQJ4v6WD2aEbmojUATyj",
+    "matchedName": "Check Circle"
+  }
+]

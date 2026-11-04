@@ -1,0 +1,170 @@
+[
+  {
+    "name": "blood",
+    "category": "health",
+    "hash": "ico_ZMlOUJ9zqgCkiuG4",
+    "streamlineName": "Blood Types 1",
+    "score": 315.35,
+    "path": "health/blood.svg"
+  },
+  {
+    "name": "pulse",
+    "category": "health",
+    "hash": "ico_AkQkKixWcER6U86X",
+    "streamlineName": "Hypertension Pulse",
+    "score": 302.1,
+    "path": "health/pulse.svg"
+  },
+  {
+    "name": "lungs",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4vdw92aESFbgWaSWz",
+    "streamlineName": "Medical Nanobot Lungs",
+    "score": 314.95,
+    "path": "health/lungs.svg"
+  },
+  {
+    "name": "brain",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4vl8s2aEWGyfSZs6O",
+    "streamlineName": "Brain",
+    "score": 239.75,
+    "path": "health/brain.svg"
+  },
+  {
+    "name": "tooth",
+    "category": "health",
+    "hash": "ico_y0fB1E71TEZanYCe",
+    "streamlineName": "Tooth 2",
+    "score": 302.65,
+    "path": "health/tooth.svg"
+  },
+  {
+    "name": "eye-health",
+    "category": "health",
+    "hash": "ico_NfsTJknBoAen8nku",
+    "streamlineName": "Eye Drop",
+    "score": 302.6,
+    "path": "health/eye-health.svg"
+  },
+  {
+    "name": "ear",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4vf4Q2aE6nlT2Fubg",
+    "streamlineName": "Earpods Ear",
+    "score": 252.45,
+    "path": "health/ear.svg"
+  },
+  {
+    "name": "wheelchair",
+    "category": "health",
+    "hash": "ico_TvJjGJAGzQA7Qn61",
+    "streamlineName": "Wheelchair Way",
+    "score": 252.3,
+    "path": "health/wheelchair.svg"
+  },
+  {
+    "name": "prescription",
+    "category": "health",
+    "hash": "ico_Q5UTKK6B3Ybg2LUE",
+    "streamlineName": "Prescription Px",
+    "score": 302.25,
+    "path": "health/prescription.svg"
+  },
+  {
+    "name": "pharmacy",
+    "category": "health",
+    "hash": "ico_pMZjYAq9fmDIsgBe",
+    "streamlineName": "Pharmacy",
+    "score": 289.6,
+    "path": "health/pharmacy.svg"
+  },
+  {
+    "name": "vaccine",
+    "category": "health",
+    "hash": "ico_SgrIqfknU3CCJ3ah",
+    "streamlineName": "Vaccine Bottle 1",
+    "score": 315.2,
+    "path": "health/vaccine.svg"
+  },
+  {
+    "name": "virus",
+    "category": "health",
+    "hash": "ico_YQ5h3o1m2mQN8dK0",
+    "streamlineName": "Medical Specialty Virus",
+    "score": 314.85,
+    "path": "health/virus.svg"
+  },
+  {
+    "name": "mask",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4vjQS2aEP2WPop0EG",
+    "streamlineName": "Mask Circle",
+    "score": 252.45,
+    "path": "health/mask.svg"
+  },
+  {
+    "name": "hand-wash",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4v3Up2aEBPuQ3yoEz",
+    "streamlineName": "Laundry Hand Wash",
+    "score": 265.15,
+    "path": "health/hand-wash.svg"
+  },
+  {
+    "name": "clipboard-health",
+    "category": "health",
+    "hash": "ico_lsqC7vfJB0jLbP25",
+    "streamlineName": "Medical Data Clipboard Cross",
+    "score": 327.6,
+    "path": "health/clipboard-health.svg"
+  },
+  {
+    "name": "patient",
+    "category": "health",
+    "hash": "ico_X6nKQq5rpDyRd72Z",
+    "streamlineName": "Patient Care",
+    "score": 302.4,
+    "path": "health/patient.svg"
+  },
+  {
+    "name": "nurse",
+    "category": "health",
+    "hash": "ico_PDATDIvcjDLeHlSp",
+    "streamlineName": "Nurse With Cap Cloth",
+    "score": 328.0,
+    "path": "health/nurse.svg"
+  },
+  {
+    "name": "doctor",
+    "category": "health",
+    "hash": "ico_p11M1cEvuVZJL1gs",
+    "streamlineName": "Doctor Desktop",
+    "score": 302.3,
+    "path": "health/doctor.svg"
+  },
+  {
+    "name": "appointment",
+    "category": "health",
+    "hash": "ico_Lv2eRW2IhmvvJs49",
+    "streamlineName": "Waiting Room Appointment Medical Appointment 2",
+    "score": 352.7,
+    "path": "health/appointment.svg"
+  },
+  {
+    "name": "lab",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4vhi72aESFbeLjsHW",
+    "streamlineName": "Laboratory Sample",
+    "score": 302.15,
+    "path": "health/lab.svg"
+  },
+  {
+    "name": "microscope",
+    "category": "health",
+    "hash": "ico_gOnEcczeV3tT4O9J",
+    "streamlineName": "Microscope 1",
+    "score": 302.4,
+    "path": "health/microscope.svg"
+  }
+]

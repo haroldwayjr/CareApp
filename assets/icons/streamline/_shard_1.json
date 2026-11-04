@@ -1,0 +1,567 @@
+[
+  {
+    "name": "gallery",
+    "category": "media",
+    "query": "Picture"
+  },
+  {
+    "name": "crop",
+    "category": "media",
+    "query": "Crop"
+  },
+  {
+    "name": "rotate",
+    "category": "media",
+    "query": "Rotate"
+  },
+  {
+    "name": "flip",
+    "category": "media",
+    "query": "Flip"
+  },
+  {
+    "name": "brightness",
+    "category": "media",
+    "query": "Brightness"
+  },
+  {
+    "name": "contrast",
+    "category": "media",
+    "query": "Contrast"
+  },
+  {
+    "name": "record",
+    "category": "media",
+    "query": "Record"
+  },
+  {
+    "name": "cast",
+    "category": "media",
+    "query": "Cast"
+  },
+  {
+    "name": "airplay",
+    "category": "media",
+    "query": "Airplay"
+  },
+  {
+    "name": "equalizer",
+    "category": "media",
+    "query": "Equalizer"
+  },
+  {
+    "name": "playlist",
+    "category": "media",
+    "query": "Playlist"
+  },
+  {
+    "name": "mail",
+    "category": "comms",
+    "query": "Email"
+  },
+  {
+    "name": "message",
+    "category": "comms",
+    "query": "Chat"
+  },
+  {
+    "name": "phone",
+    "category": "comms",
+    "query": "Phone"
+  },
+  {
+    "name": "phone-off",
+    "category": "comms",
+    "query": "Phone Off"
+  },
+  {
+    "name": "send",
+    "category": "comms",
+    "query": "Send Email"
+  },
+  {
+    "name": "calendar",
+    "category": "comms",
+    "query": "Calendar"
+  },
+  {
+    "name": "clock",
+    "category": "comms",
+    "query": "Time"
+  },
+  {
+    "name": "user",
+    "category": "comms",
+    "query": "User"
+  },
+  {
+    "name": "users",
+    "category": "comms",
+    "query": "Users"
+  },
+  {
+    "name": "user-add",
+    "category": "comms",
+    "query": "User Add"
+  },
+  {
+    "name": "user-remove",
+    "category": "comms",
+    "query": "User Remove"
+  },
+  {
+    "name": "user-check",
+    "category": "comms",
+    "query": "User Check"
+  },
+  {
+    "name": "inbox",
+    "category": "comms",
+    "query": "Inbox"
+  },
+  {
+    "name": "outbox",
+    "category": "comms",
+    "query": "Outbox"
+  },
+  {
+    "name": "reply",
+    "category": "comms",
+    "query": "Reply"
+  },
+  {
+    "name": "reply-all",
+    "category": "comms",
+    "query": "Reply All"
+  },
+  {
+    "name": "forward-mail",
+    "category": "comms",
+    "query": "Forward"
+  },
+  {
+    "name": "chat",
+    "category": "comms",
+    "query": "Messages Bubble"
+  },
+  {
+    "name": "comment",
+    "category": "comms",
+    "query": "Comment"
+  },
+  {
+    "name": "mention",
+    "category": "comms",
+    "query": "Mention"
+  },
+  {
+    "name": "video-call",
+    "category": "comms",
+    "query": "Video Call"
+  },
+  {
+    "name": "voicemail",
+    "category": "comms",
+    "query": "Voicemail"
+  },
+  {
+    "name": "contacts",
+    "category": "comms",
+    "query": "Address Book"
+  },
+  {
+    "name": "group",
+    "category": "comms",
+    "query": "Group"
+  },
+  {
+    "name": "team",
+    "category": "comms",
+    "query": "Team"
+  },
+  {
+    "name": "presentation",
+    "category": "comms",
+    "query": "Presentation"
+  },
+  {
+    "name": "meeting",
+    "category": "comms",
+    "query": "Meeting"
+  },
+  {
+    "name": "file",
+    "category": "files",
+    "query": "Common File"
+  },
+  {
+    "name": "file-text",
+    "category": "files",
+    "query": "Common File Text"
+  },
+  {
+    "name": "folder",
+    "category": "files",
+    "query": "Folder"
+  },
+  {
+    "name": "folder-open",
+    "category": "files",
+    "query": "Folder Open"
+  },
+  {
+    "name": "clipboard",
+    "category": "files",
+    "query": "Clipboard"
+  },
+  {
+    "name": "bookmark",
+    "category": "files",
+    "query": "Bookmark"
+  },
+  {
+    "name": "tag",
+    "category": "files",
+    "query": "Tag"
+  },
+  {
+    "name": "attachment",
+    "category": "files",
+    "query": "Attachment"
+  },
+  {
+    "name": "file-pdf",
+    "category": "files",
+    "query": "PDF"
+  },
+  {
+    "name": "file-image",
+    "category": "files",
+    "query": "Common File Image"
+  },
+  {
+    "name": "file-code",
+    "category": "files",
+    "query": "Common File Code"
+  },
+  {
+    "name": "file-zip",
+    "category": "files",
+    "query": "Zip"
+  },
+  {
+    "name": "folder-add",
+    "category": "files",
+    "query": "Folder Add"
+  },
+  {
+    "name": "folder-delete",
+    "category": "files",
+    "query": "Folder Delete"
+  },
+  {
+    "name": "document",
+    "category": "files",
+    "query": "Document"
+  },
+  {
+    "name": "notes",
+    "category": "files",
+    "query": "Notes"
+  },
+  {
+    "name": "paperclip",
+    "category": "files",
+    "query": "Paperclip"
+  },
+  {
+    "name": "drawer",
+    "category": "files",
+    "query": "Drawer"
+  },
+  {
+    "name": "cabinet",
+    "category": "files",
+    "query": "Cabinet"
+  },
+  {
+    "name": "cloud",
+    "category": "files",
+    "query": "Cloud"
+  },
+  {
+    "name": "cloud-upload",
+    "category": "files",
+    "query": "Cloud Upload"
+  },
+  {
+    "name": "cloud-download",
+    "category": "files",
+    "query": "Cloud Download"
+  },
+  {
+    "name": "database",
+    "category": "files",
+    "query": "Database"
+  },
+  {
+    "name": "server",
+    "category": "files",
+    "query": "Server"
+  },
+  {
+    "name": "hard-drive",
+    "category": "files",
+    "query": "Hard Drive"
+  },
+  {
+    "name": "usb",
+    "category": "files",
+    "query": "USB"
+  },
+  {
+    "name": "contract",
+    "category": "files",
+    "query": "Contract"
+  },
+  {
+    "name": "agreement",
+    "category": "files",
+    "query": "Agreement"
+  },
+  {
+    "name": "policy",
+    "category": "files",
+    "query": "Policy"
+  },
+  {
+    "name": "terms",
+    "category": "files",
+    "query": "Terms"
+  },
+  {
+    "name": "license",
+    "category": "files",
+    "query": "License"
+  },
+  {
+    "name": "manual",
+    "category": "files",
+    "query": "Manual"
+  },
+  {
+    "name": "guide",
+    "category": "files",
+    "query": "Guide"
+  },
+  {
+    "name": "faq",
+    "category": "files",
+    "query": "FAQ"
+  },
+  {
+    "name": "knowledge-base",
+    "category": "files",
+    "query": "Knowledge Base"
+  },
+  {
+    "name": "wiki",
+    "category": "files",
+    "query": "Wiki"
+  },
+  {
+    "name": "article",
+    "category": "files",
+    "query": "Article"
+  },
+  {
+    "name": "blog",
+    "category": "files",
+    "query": "Blog"
+  },
+  {
+    "name": "newsletter",
+    "category": "files",
+    "query": "Newsletter"
+  },
+  {
+    "name": "magazine",
+    "category": "files",
+    "query": "Magazine"
+  },
+  {
+    "name": "newspaper",
+    "category": "files",
+    "query": "Newspaper"
+  },
+  {
+    "name": "press",
+    "category": "files",
+    "query": "Press"
+  },
+  {
+    "name": "media-kit",
+    "category": "files",
+    "query": "Media Kit"
+  },
+  {
+    "name": "portfolio",
+    "category": "files",
+    "query": "Portfolio"
+  },
+  {
+    "name": "resume",
+    "category": "files",
+    "query": "Resume"
+  },
+  {
+    "name": "cv",
+    "category": "files",
+    "query": "CV"
+  },
+  {
+    "name": "cover-letter",
+    "category": "files",
+    "query": "Cover Letter"
+  },
+  {
+    "name": "letter",
+    "category": "files",
+    "query": "Letter"
+  },
+  {
+    "name": "envelope",
+    "category": "files",
+    "query": "Envelope"
+  },
+  {
+    "name": "postcard",
+    "category": "files",
+    "query": "Postcard"
+  },
+  {
+    "name": "package-alt",
+    "category": "files",
+    "query": "Package"
+  },
+  {
+    "name": "parcel",
+    "category": "files",
+    "query": "Parcel"
+  },
+  {
+    "name": "box-alt",
+    "category": "files",
+    "query": "Box"
+  },
+  {
+    "name": "crate",
+    "category": "files",
+    "query": "Crate"
+  },
+  {
+    "name": "pallet",
+    "category": "files",
+    "query": "Pallet"
+  },
+  {
+    "name": "shelf",
+    "category": "files",
+    "query": "Shelf"
+  },
+  {
+    "name": "binder",
+    "category": "files",
+    "query": "Binder"
+  },
+  {
+    "name": "folder-shared",
+    "category": "files",
+    "query": "Folder Shared"
+  },
+  {
+    "name": "folder-locked",
+    "category": "files",
+    "query": "Folder Locked"
+  },
+  {
+    "name": "folder-star",
+    "category": "files",
+    "query": "Folder Star"
+  },
+  {
+    "name": "cart",
+    "category": "commerce",
+    "query": "Shopping Cart"
+  },
+  {
+    "name": "credit-card",
+    "category": "commerce",
+    "query": "Credit Card"
+  },
+  {
+    "name": "dollar",
+    "category": "commerce",
+    "query": "Dollar"
+  },
+  {
+    "name": "gift",
+    "category": "commerce",
+    "query": "Gift"
+  },
+  {
+    "name": "receipt",
+    "category": "commerce",
+    "query": "Receipt"
+  },
+  {
+    "name": "wallet",
+    "category": "commerce",
+    "query": "Wallet"
+  },
+  {
+    "name": "bag",
+    "category": "commerce",
+    "query": "Shopping Bag"
+  },
+  {
+    "name": "barcode",
+    "category": "commerce",
+    "query": "Barcode"
+  },
+  {
+    "name": "qr-code",
+    "category": "commerce",
+    "query": "QR Code"
+  },
+  {
+    "name": "coupon",
+    "category": "commerce",
+    "query": "Coupon"
+  },
+  {
+    "name": "discount",
+    "category": "commerce",
+    "query": "Discount"
+  },
+  {
+    "name": "price-tag",
+    "category": "commerce",
+    "query": "Price Tag"
+  },
+  {
+    "name": "store",
+    "category": "commerce",
+    "query": "Store"
+  },
+  {
+    "name": "payment",
+    "category": "commerce",
+    "query": "Payment"
+  },
+  {
+    "name": "invoice",
+    "category": "commerce",
+    "query": "Invoice"
+  }
+]

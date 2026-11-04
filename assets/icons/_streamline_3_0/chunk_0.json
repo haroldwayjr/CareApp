@@ -1,0 +1,695 @@
+[
+  {
+    "name": "911",
+    "category": "health",
+    "file": "health/911.svg",
+    "query": "Safety 911",
+    "figma": "icon/health/911"
+  },
+  {
+    "name": "accessibility",
+    "category": "misc",
+    "file": "misc/accessibility.svg",
+    "query": "Tools Reality Accessibility",
+    "figma": "icon/misc/accessibility"
+  },
+  {
+    "name": "add",
+    "category": "actions",
+    "file": "actions/add.svg",
+    "query": "Add",
+    "figma": "icon/actions/add"
+  },
+  {
+    "name": "agreement",
+    "category": "files",
+    "file": "files/agreement.svg",
+    "query": "Workflow Agreement",
+    "figma": "icon/files/agreement"
+  },
+  {
+    "name": "airplane",
+    "category": "misc",
+    "file": "misc/airplane.svg",
+    "query": "Airplane Mode",
+    "figma": "icon/misc/airplane"
+  },
+  {
+    "name": "alarm",
+    "category": "misc",
+    "file": "misc/alarm.svg",
+    "query": "Alarm Clock",
+    "figma": "icon/misc/alarm"
+  },
+  {
+    "name": "ambulance",
+    "category": "health",
+    "file": "health/ambulance.svg",
+    "query": "Ambulance Car",
+    "figma": "icon/health/ambulance"
+  },
+  {
+    "name": "appointment",
+    "category": "health",
+    "file": "health/appointment.svg",
+    "query": "Waiting Room Appointment Medical Appointment 2",
+    "figma": "icon/health/appointment"
+  },
+  {
+    "name": "archive",
+    "category": "actions",
+    "file": "actions/archive.svg",
+    "query": "Archive",
+    "figma": "icon/actions/archive"
+  },
+  {
+    "name": "arrow-down",
+    "category": "navigation",
+    "file": "navigation/arrow-down.svg",
+    "query": "Arrow Down",
+    "figma": "icon/navigation/arrow.down"
+  },
+  {
+    "name": "arrow-left",
+    "category": "navigation",
+    "file": "navigation/arrow-left.svg",
+    "query": "Arrow Left",
+    "figma": "icon/navigation/arrow.left"
+  },
+  {
+    "name": "arrow-right",
+    "category": "navigation",
+    "file": "navigation/arrow-right.svg",
+    "query": "Arrow Right",
+    "figma": "icon/navigation/arrow.right"
+  },
+  {
+    "name": "arrow-up",
+    "category": "navigation",
+    "file": "navigation/arrow-up.svg",
+    "query": "Arrow Up",
+    "figma": "icon/navigation/arrow.up"
+  },
+  {
+    "name": "atom",
+    "category": "misc",
+    "file": "misc/atom.svg",
+    "query": "Science Atom Positive Negative",
+    "figma": "icon/misc/atom"
+  },
+  {
+    "name": "attach",
+    "category": "actions",
+    "file": "actions/attach.svg",
+    "query": "Attachment",
+    "figma": "icon/actions/attach"
+  },
+  {
+    "name": "attachment",
+    "category": "files",
+    "file": "files/attachment.svg",
+    "query": "Attachment 1",
+    "figma": "icon/files/attachment"
+  },
+  {
+    "name": "award",
+    "category": "misc",
+    "file": "misc/award.svg",
+    "query": "Award Star",
+    "figma": "icon/misc/award"
+  },
+  {
+    "name": "back",
+    "category": "navigation",
+    "file": "navigation/back.svg",
+    "query": "Arrow Circle Left",
+    "figma": "icon/navigation/back"
+  },
+  {
+    "name": "badge",
+    "category": "status",
+    "file": "status/badge.svg",
+    "query": "Check Badge",
+    "figma": "icon/status/badge"
+  },
+  {
+    "name": "bag",
+    "category": "commerce",
+    "file": "commerce/bag.svg",
+    "query": "Shopping Bag",
+    "figma": "icon/commerce/bag"
+  },
+  {
+    "name": "balloon",
+    "category": "misc",
+    "file": "misc/balloon.svg",
+    "query": "Balloon Party",
+    "figma": "icon/misc/balloon"
+  },
+  {
+    "name": "bandage",
+    "category": "health",
+    "file": "health/bandage.svg",
+    "query": "Bandage",
+    "figma": "icon/health/bandage"
+  },
+  {
+    "name": "bank",
+    "category": "commerce",
+    "file": "commerce/bank.svg",
+    "query": "Blood Bank",
+    "figma": "icon/commerce/bank"
+  },
+  {
+    "name": "barcode",
+    "category": "commerce",
+    "file": "commerce/barcode.svg",
+    "query": "Barcode",
+    "figma": "icon/commerce/barcode"
+  },
+  {
+    "name": "barcode-scan",
+    "category": "misc",
+    "file": "misc/barcode-scan.svg",
+    "query": "Barcode Scan",
+    "figma": "icon/misc/barcode.scan"
+  },
+  {
+    "name": "battery",
+    "category": "misc",
+    "file": "misc/battery.svg",
+    "query": "Battery Slash No",
+    "figma": "icon/misc/battery"
+  },
+  {
+    "name": "battery-charging",
+    "category": "misc",
+    "file": "misc/battery-charging.svg",
+    "query": "Battery Charging 2",
+    "figma": "icon/misc/battery.charging"
+  },
+  {
+    "name": "battery-full",
+    "category": "misc",
+    "file": "misc/battery-full.svg",
+    "query": "Battery Full",
+    "figma": "icon/misc/battery.full"
+  },
+  {
+    "name": "battery-low",
+    "category": "misc",
+    "file": "misc/battery-low.svg",
+    "query": "Charging Battery Low 1",
+    "figma": "icon/misc/battery.low"
+  },
+  {
+    "name": "bed",
+    "category": "health",
+    "file": "health/bed.svg",
+    "query": "Hospital Bedroom",
+    "figma": "icon/health/bed"
+  },
+  {
+    "name": "bell",
+    "category": "status",
+    "file": "status/bell.svg",
+    "query": "Alarm Bell",
+    "figma": "icon/status/bell"
+  },
+  {
+    "name": "bell-off",
+    "category": "status",
+    "file": "status/bell-off.svg",
+    "query": "Alarm Bell Off 1",
+    "figma": "icon/status/bell.off"
+  },
+  {
+    "name": "bike",
+    "category": "misc",
+    "file": "misc/bike.svg",
+    "query": "Bicycle",
+    "figma": "icon/misc/bike"
+  },
+  {
+    "name": "blocked",
+    "category": "status",
+    "file": "status/blocked.svg",
+    "query": "Tags Block",
+    "figma": "icon/status/blocked"
+  },
+  {
+    "name": "blog",
+    "category": "files",
+    "file": "files/blog.svg",
+    "query": "Blog Blogger Logo",
+    "figma": "icon/files/blog"
+  },
+  {
+    "name": "blood",
+    "category": "health",
+    "file": "health/blood.svg",
+    "query": "Blood Types 1",
+    "figma": "icon/health/blood"
+  },
+  {
+    "name": "blood-pressure",
+    "category": "health",
+    "file": "health/blood-pressure.svg",
+    "query": "Blood Pressure Cuff",
+    "figma": "icon/health/blood.pressure"
+  },
+  {
+    "name": "bluetooth",
+    "category": "misc",
+    "file": "misc/bluetooth.svg",
+    "query": "Bluetooth",
+    "figma": "icon/misc/bluetooth"
+  },
+  {
+    "name": "book",
+    "category": "misc",
+    "file": "misc/book.svg",
+    "query": "Book Pin",
+    "figma": "icon/misc/book"
+  },
+  {
+    "name": "bookmark",
+    "category": "files",
+    "file": "files/bookmark.svg",
+    "query": "Bookmark 3",
+    "figma": "icon/files/bookmark"
+  },
+  {
+    "name": "box-alt",
+    "category": "files",
+    "file": "files/box-alt.svg",
+    "query": "Text Box 2",
+    "figma": "icon/files/box.alt"
+  },
+  {
+    "name": "brain",
+    "category": "health",
+    "file": "health/brain.svg",
+    "query": "Brain",
+    "figma": "icon/health/brain"
+  },
+  {
+    "name": "breadcrumb",
+    "category": "navigation",
+    "file": "navigation/breadcrumb.svg",
+    "query": "Hierarchy",
+    "figma": "icon/navigation/breadcrumb"
+  },
+  {
+    "name": "briefcase",
+    "category": "misc",
+    "file": "misc/briefcase.svg",
+    "query": "Briefcase",
+    "figma": "icon/misc/briefcase"
+  },
+  {
+    "name": "brightness",
+    "category": "media",
+    "file": "media/brightness.svg",
+    "query": "Brightness",
+    "figma": "icon/media/brightness"
+  },
+  {
+    "name": "browse",
+    "category": "actions",
+    "file": "actions/browse.svg",
+    "query": "E Commerce Apparel Browse",
+    "figma": "icon/actions/browse"
+  },
+  {
+    "name": "bug",
+    "category": "misc",
+    "file": "misc/bug.svg",
+    "query": "Catch Bug",
+    "figma": "icon/misc/bug"
+  },
+  {
+    "name": "building",
+    "category": "misc",
+    "file": "misc/building.svg",
+    "query": "Building",
+    "figma": "icon/misc/building"
+  },
+  {
+    "name": "bus",
+    "category": "misc",
+    "file": "misc/bus.svg",
+    "query": "Bus",
+    "figma": "icon/misc/bus"
+  },
+  {
+    "name": "cabinet",
+    "category": "files",
+    "file": "files/cabinet.svg",
+    "query": "Bathroom Mirror Cabinet",
+    "figma": "icon/files/cabinet"
+  },
+  {
+    "name": "cake",
+    "category": "misc",
+    "file": "misc/cake.svg",
+    "query": "Cake Flour",
+    "figma": "icon/misc/cake"
+  },
+  {
+    "name": "calendar",
+    "category": "comms",
+    "file": "comms/calendar.svg",
+    "query": "Calendar",
+    "figma": "icon/comms/calendar"
+  },
+  {
+    "name": "camera",
+    "category": "media",
+    "file": "media/camera.svg",
+    "query": "Camera",
+    "figma": "icon/media/camera"
+  },
+  {
+    "name": "camera-off",
+    "category": "misc",
+    "file": "misc/camera-off.svg",
+    "query": "Controls Camera Off",
+    "figma": "icon/misc/camera.off"
+  },
+  {
+    "name": "cancel",
+    "category": "actions",
+    "file": "actions/cancel.svg",
+    "query": "Lock Cancel Slash",
+    "figma": "icon/actions/cancel"
+  },
+  {
+    "name": "cancer",
+    "category": "health",
+    "file": "health/cancer.svg",
+    "query": "Cancer Cell 2",
+    "figma": "icon/health/cancer"
+  },
+  {
+    "name": "car",
+    "category": "misc",
+    "file": "misc/car.svg",
+    "query": "Car",
+    "figma": "icon/misc/car"
+  },
+  {
+    "name": "cart",
+    "category": "commerce",
+    "file": "commerce/cart.svg",
+    "query": "Shopping Cart",
+    "figma": "icon/commerce/cart"
+  },
+  {
+    "name": "cast",
+    "category": "media",
+    "file": "media/cast.svg",
+    "query": "Phone Cast",
+    "figma": "icon/media/cast"
+  },
+  {
+    "name": "chart-bar",
+    "category": "commerce",
+    "file": "commerce/chart-bar.svg",
+    "query": "Analytics Bars",
+    "figma": "icon/commerce/chart.bar"
+  },
+  {
+    "name": "chart-line",
+    "category": "commerce",
+    "file": "commerce/chart-line.svg",
+    "query": "Analytics Graph",
+    "figma": "icon/commerce/chart.line"
+  },
+  {
+    "name": "chat",
+    "category": "comms",
+    "file": "comms/chat.svg",
+    "query": "Messages Bubble",
+    "figma": "icon/comms/chat"
+  },
+  {
+    "name": "check",
+    "category": "actions",
+    "file": "actions/check.svg",
+    "query": "Check 1",
+    "figma": "icon/actions/check"
+  },
+  {
+    "name": "chevron-down",
+    "category": "navigation",
+    "file": "navigation/chevron-down.svg",
+    "query": "Arrow Down 1",
+    "figma": "icon/navigation/chevron.down"
+  },
+  {
+    "name": "chevron-left",
+    "category": "navigation",
+    "file": "navigation/chevron-left.svg",
+    "query": "Arrow Left 1",
+    "figma": "icon/navigation/chevron.left"
+  },
+  {
+    "name": "chevron-right",
+    "category": "navigation",
+    "file": "navigation/chevron-right.svg",
+    "query": "Arrow Right 1",
+    "figma": "icon/navigation/chevron.right"
+  },
+  {
+    "name": "chevron-up",
+    "category": "navigation",
+    "file": "navigation/chevron-up.svg",
+    "query": "Arrow Up 1",
+    "figma": "icon/navigation/chevron.up"
+  },
+  {
+    "name": "clear",
+    "category": "actions",
+    "file": "actions/clear.svg",
+    "query": "Alert Clear Notification",
+    "figma": "icon/actions/clear"
+  },
+  {
+    "name": "clipboard",
+    "category": "files",
+    "file": "files/clipboard.svg",
+    "query": "Insert Row From Clipboard",
+    "figma": "icon/files/clipboard"
+  },
+  {
+    "name": "clipboard-health",
+    "category": "health",
+    "file": "health/clipboard-health.svg",
+    "query": "Medical Data Clipboard Cross",
+    "figma": "icon/health/clipboard.health"
+  },
+  {
+    "name": "clock",
+    "category": "comms",
+    "file": "comms/clock.svg",
+    "query": "Time Play Time 1",
+    "figma": "icon/comms/clock"
+  },
+  {
+    "name": "close",
+    "category": "navigation",
+    "file": "navigation/close.svg",
+    "query": "Remove",
+    "figma": "icon/navigation/close"
+  },
+  {
+    "name": "close-alt",
+    "category": "actions",
+    "file": "actions/close-alt.svg",
+    "query": "Close",
+    "figma": "icon/actions/close.alt"
+  },
+  {
+    "name": "cloud",
+    "category": "files",
+    "file": "files/cloud.svg",
+    "query": "Cloud",
+    "figma": "icon/files/cloud"
+  },
+  {
+    "name": "cloud-download",
+    "category": "files",
+    "file": "files/cloud-download.svg",
+    "query": "Cloud Download",
+    "figma": "icon/files/cloud.download"
+  },
+  {
+    "name": "cloud-sun",
+    "category": "misc",
+    "file": "misc/cloud-sun.svg",
+    "query": "Weather Cloud Sun Wind",
+    "figma": "icon/misc/cloud.sun"
+  },
+  {
+    "name": "cloud-upload",
+    "category": "files",
+    "file": "files/cloud-upload.svg",
+    "query": "Cloud Upload",
+    "figma": "icon/files/cloud.upload"
+  },
+  {
+    "name": "code",
+    "category": "misc",
+    "file": "misc/code.svg",
+    "query": "Folder Code",
+    "figma": "icon/misc/code"
+  },
+  {
+    "name": "coffee",
+    "category": "misc",
+    "file": "misc/coffee.svg",
+    "query": "Coffee Jar",
+    "figma": "icon/misc/coffee"
+  },
+  {
+    "name": "coins",
+    "category": "commerce",
+    "file": "commerce/coins.svg",
+    "query": "Accounting Coins",
+    "figma": "icon/commerce/coins"
+  },
+  {
+    "name": "comment",
+    "category": "comms",
+    "file": "comms/comment.svg",
+    "query": "Comment Box",
+    "figma": "icon/comms/comment"
+  },
+  {
+    "name": "compass",
+    "category": "navigation",
+    "file": "navigation/compass.svg",
+    "query": "Compass",
+    "figma": "icon/navigation/compass"
+  },
+  {
+    "name": "contacts",
+    "category": "comms",
+    "file": "comms/contacts.svg",
+    "query": "Book Address",
+    "figma": "icon/comms/contacts"
+  },
+  {
+    "name": "contract",
+    "category": "files",
+    "file": "files/contract.svg",
+    "query": "Business Contract Give",
+    "figma": "icon/files/contract"
+  },
+  {
+    "name": "contrast",
+    "category": "media",
+    "file": "media/contrast.svg",
+    "query": "Contrast Horizontal Slider Adjustment",
+    "figma": "icon/media/contrast"
+  },
+  {
+    "name": "copy",
+    "category": "actions",
+    "file": "actions/copy.svg",
+    "query": "Copy 1",
+    "figma": "icon/actions/copy"
+  },
+  {
+    "name": "counseling",
+    "category": "health",
+    "file": "health/counseling.svg",
+    "query": "Counseling 3",
+    "figma": "icon/health/counseling"
+  },
+  {
+    "name": "coupon",
+    "category": "commerce",
+    "file": "commerce/coupon.svg",
+    "query": "Coupon Cut",
+    "figma": "icon/commerce/coupon"
+  },
+  {
+    "name": "create",
+    "category": "actions",
+    "file": "actions/create.svg",
+    "query": "Create Chart",
+    "figma": "icon/actions/create"
+  },
+  {
+    "name": "credit-card",
+    "category": "commerce",
+    "file": "commerce/credit-card.svg",
+    "query": "Credit Card",
+    "figma": "icon/commerce/credit.card"
+  },
+  {
+    "name": "crisis",
+    "category": "health",
+    "file": "health/crisis.svg",
+    "query": "Emergency Call",
+    "figma": "icon/health/crisis"
+  },
+  {
+    "name": "critical",
+    "category": "status",
+    "file": "status/critical.svg",
+    "query": "Flash 1",
+    "figma": "icon/status/critical"
+  },
+  {
+    "name": "crop",
+    "category": "media",
+    "file": "media/crop.svg",
+    "query": "Crop Rotate",
+    "figma": "icon/media/crop"
+  },
+  {
+    "name": "cut",
+    "category": "actions",
+    "file": "actions/cut.svg",
+    "query": "Scissors",
+    "figma": "icon/actions/cut"
+  },
+  {
+    "name": "database",
+    "category": "files",
+    "file": "files/database.svg",
+    "query": "Database",
+    "figma": "icon/files/database"
+  },
+  {
+    "name": "delete",
+    "category": "actions",
+    "file": "actions/delete.svg",
+    "query": "Delete",
+    "figma": "icon/actions/delete"
+  },
+  {
+    "name": "desktop",
+    "category": "misc",
+    "file": "misc/desktop.svg",
+    "query": "Desktop Computer",
+    "figma": "icon/misc/desktop"
+  },
+  {
+    "name": "discount",
+    "category": "commerce",
+    "file": "commerce/discount.svg",
+    "query": "Discount",
+    "figma": "icon/commerce/discount"
+  },
+  {
+    "name": "dna",
+    "category": "health",
+    "file": "health/dna.svg",
+    "query": "Dna",
+    "figma": "icon/health/dna"
+  }
+]

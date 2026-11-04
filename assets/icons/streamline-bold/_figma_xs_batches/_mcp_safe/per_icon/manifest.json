@@ -1,0 +1,487 @@
+[
+  {
+    "batch": "apply_01",
+    "file": "apply_01_g00.js",
+    "icons": 3,
+    "names": [
+      "icon/navigation/home.alt",
+      "icon/navigation/compass",
+      "icon/navigation/map"
+    ],
+    "len": 12186
+  },
+  {
+    "batch": "apply_01",
+    "file": "apply_01_g01.js",
+    "icons": 3,
+    "names": [
+      "icon/navigation/route",
+      "icon/navigation/navigation.pointer",
+      "icon/navigation/layers"
+    ],
+    "len": 8341
+  },
+  {
+    "batch": "apply_01",
+    "file": "apply_01_g02.js",
+    "icons": 3,
+    "names": [
+      "icon/navigation/panel.left",
+      "icon/navigation/panel.right",
+      "icon/navigation/merge"
+    ],
+    "len": 6252
+  },
+  {
+    "batch": "apply_01",
+    "file": "apply_01_g03.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/add",
+      "icon/actions/edit",
+      "icon/actions/delete"
+    ],
+    "len": 5613
+  },
+  {
+    "batch": "apply_01",
+    "file": "apply_01_g04.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/save",
+      "icon/actions/copy",
+      "icon/actions/download"
+    ],
+    "len": 7390
+  },
+  {
+    "batch": "apply_01",
+    "file": "apply_01_g05.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/upload",
+      "icon/actions/share",
+      "icon/actions/refresh"
+    ],
+    "len": 7037
+  },
+  {
+    "batch": "apply_01",
+    "file": "apply_01_g06.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/check",
+      "icon/navigation/split",
+      "icon/navigation/resize"
+    ],
+    "len": 9705
+  },
+  {
+    "batch": "apply_01",
+    "file": "apply_01_g07.js",
+    "icons": 3,
+    "names": [
+      "icon/navigation/panel.top",
+      "icon/navigation/panel.bottom",
+      "icon/actions/undo"
+    ],
+    "len": 6762
+  },
+  {
+    "batch": "apply_01",
+    "file": "apply_01_g08.js",
+    "icons": 1,
+    "names": [
+      "icon/actions/redo"
+    ],
+    "len": 4605
+  },
+  {
+    "batch": "apply_02",
+    "file": "apply_02_g00.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/print",
+      "icon/actions/link",
+      "icon/actions/cut"
+    ],
+    "len": 8774
+  },
+  {
+    "batch": "apply_02",
+    "file": "apply_02_g01.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/paste",
+      "icon/actions/duplicate",
+      "icon/actions/archive"
+    ],
+    "len": 8057
+  },
+  {
+    "batch": "apply_02",
+    "file": "apply_02_g02.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/restore",
+      "icon/actions/trash",
+      "icon/actions/empty.trash"
+    ],
+    "len": 7301
+  },
+  {
+    "batch": "apply_02",
+    "file": "apply_02_g03.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/select",
+      "icon/actions/select.all",
+      "icon/actions/swap"
+    ],
+    "len": 13412
+  },
+  {
+    "batch": "apply_02",
+    "file": "apply_02_g04.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/sort",
+      "icon/actions/sort.asc",
+      "icon/actions/sort.desc"
+    ],
+    "len": 8227
+  },
+  {
+    "batch": "apply_02",
+    "file": "apply_02_g05.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/pin",
+      "icon/actions/attach",
+      "icon/actions/import"
+    ],
+    "len": 7450
+  },
+  {
+    "batch": "apply_02",
+    "file": "apply_02_g06.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/export",
+      "icon/actions/power",
+      "icon/actions/logout"
+    ],
+    "len": 7151
+  },
+  {
+    "batch": "apply_02",
+    "file": "apply_02_g07.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/login",
+      "icon/actions/flag.alt",
+      "icon/actions/star.add"
+    ],
+    "len": 7248
+  },
+  {
+    "batch": "apply_02",
+    "file": "apply_02_g08.js",
+    "icons": 1,
+    "names": [
+      "icon/actions/send.alt"
+    ],
+    "len": 4524
+  },
+  {
+    "batch": "apply_03",
+    "file": "apply_03_g00.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/forward.alt",
+      "icon/actions/reply.alt",
+      "icon/actions/quote.reply"
+    ],
+    "len": 7406
+  },
+  {
+    "batch": "apply_03",
+    "file": "apply_03_g01.js",
+    "icons": 3,
+    "names": [
+      "icon/actions/edit.alt",
+      "icon/actions/create",
+      "icon/actions/new"
+    ],
+    "len": 11571
+  },
+  {
+    "batch": "apply_03",
+    "file": "apply_03_g02.js",
+    "icons": 3,
+    "names": [
+      "icon/media/gallery",
+      "icon/media/crop",
+      "icon/media/rotate"
+    ],
+    "len": 8045
+  },
+  {
+    "batch": "apply_03",
+    "file": "apply_03_g03.js",
+    "icons": 3,
+    "names": [
+      "icon/media/flip",
+      "icon/media/brightness",
+      "icon/media/contrast"
+    ],
+    "len": 10053
+  },
+  {
+    "batch": "apply_03",
+    "file": "apply_03_g04.js",
+    "icons": 3,
+    "names": [
+      "icon/media/record",
+      "icon/media/cast",
+      "icon/media/equalizer"
+    ],
+    "len": 7503
+  },
+  {
+    "batch": "apply_03",
+    "file": "apply_03_g05.js",
+    "icons": 3,
+    "names": [
+      "icon/media/playlist",
+      "icon/comms/mail",
+      "icon/comms/message"
+    ],
+    "len": 8644
+  },
+  {
+    "batch": "apply_03",
+    "file": "apply_03_g06.js",
+    "icons": 3,
+    "names": [
+      "icon/comms/phone",
+      "icon/comms/phone.off",
+      "icon/comms/calendar"
+    ],
+    "len": 7078
+  },
+  {
+    "batch": "apply_03",
+    "file": "apply_03_g07.js",
+    "icons": 3,
+    "names": [
+      "icon/comms/clock",
+      "icon/comms/user",
+      "icon/comms/users"
+    ],
+    "len": 12101
+  },
+  {
+    "batch": "apply_03",
+    "file": "apply_03_g08.js",
+    "icons": 1,
+    "names": [
+      "icon/comms/user.add"
+    ],
+    "len": 5006
+  },
+  {
+    "batch": "apply_04",
+    "file": "apply_04_g00.js",
+    "icons": 3,
+    "names": [
+      "icon/comms/user.remove",
+      "icon/comms/user.check",
+      "icon/comms/inbox"
+    ],
+    "len": 7940
+  },
+  {
+    "batch": "apply_04",
+    "file": "apply_04_g01.js",
+    "icons": 3,
+    "names": [
+      "icon/comms/reply.all",
+      "icon/comms/chat",
+      "icon/comms/comment"
+    ],
+    "len": 7572
+  },
+  {
+    "batch": "apply_04",
+    "file": "apply_04_g02.js",
+    "icons": 3,
+    "names": [
+      "icon/comms/video.call",
+      "icon/comms/contacts",
+      "icon/comms/group"
+    ],
+    "len": 7568
+  },
+  {
+    "batch": "apply_04",
+    "file": "apply_04_g03.js",
+    "icons": 3,
+    "names": [
+      "icon/comms/team",
+      "icon/comms/presentation",
+      "icon/comms/meeting"
+    ],
+    "len": 11534
+  },
+  {
+    "batch": "apply_04",
+    "file": "apply_04_g04.js",
+    "icons": 3,
+    "names": [
+      "icon/files/file",
+      "icon/files/file.text",
+      "icon/commerce/bank"
+    ],
+    "len": 8762
+  },
+  {
+    "batch": "apply_04",
+    "file": "apply_04_g05.js",
+    "icons": 3,
+    "names": [
+      "icon/commerce/piggy.bank",
+      "icon/commerce/coins",
+      "icon/commerce/chart.line"
+    ],
+    "len": 10672
+  },
+  {
+    "batch": "apply_04",
+    "file": "apply_04_g06.js",
+    "icons": 3,
+    "names": [
+      "icon/commerce/chart.bar",
+      "icon/health/heart",
+      "icon/health/stethoscope"
+    ],
+    "len": 9057
+  },
+  {
+    "batch": "apply_04",
+    "file": "apply_04_g07.js",
+    "icons": 3,
+    "names": [
+      "icon/health/pill",
+      "icon/health/first.aid",
+      "icon/health/thermometer"
+    ],
+    "len": 7325
+  },
+  {
+    "batch": "apply_04",
+    "file": "apply_04_g08.js",
+    "icons": 1,
+    "names": [
+      "icon/health/syringe"
+    ],
+    "len": 5374
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_g00.js",
+    "icons": 3,
+    "names": [
+      "icon/health/hospital",
+      "icon/health/ambulance",
+      "icon/health/medical.cross"
+    ],
+    "len": 8345
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_g01.js",
+    "icons": 3,
+    "names": [
+      "icon/health/bandage",
+      "icon/health/dna",
+      "icon/health/blood"
+    ],
+    "len": 10680
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_g02.js",
+    "icons": 3,
+    "names": [
+      "icon/health/pulse",
+      "icon/health/lungs",
+      "icon/health/brain"
+    ],
+    "len": 12704
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_g03.js",
+    "icons": 3,
+    "names": [
+      "icon/health/tooth",
+      "icon/health/eye.health",
+      "icon/health/ear"
+    ],
+    "len": 11806
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_g04.js",
+    "icons": 3,
+    "names": [
+      "icon/health/wheelchair",
+      "icon/health/prescription",
+      "icon/health/pharmacy"
+    ],
+    "len": 8855
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_g05.js",
+    "icons": 3,
+    "names": [
+      "icon/health/vaccine",
+      "icon/health/virus",
+      "icon/health/mask"
+    ],
+    "len": 10607
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_g06.js",
+    "icons": 3,
+    "names": [
+      "icon/health/hand.wash",
+      "icon/health/clipboard.health",
+      "icon/health/patient"
+    ],
+    "len": 10138
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_g07.js",
+    "icons": 3,
+    "names": [
+      "icon/health/nurse",
+      "icon/health/doctor",
+      "icon/health/appointment"
+    ],
+    "len": 12251
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_g08.js",
+    "icons": 1,
+    "names": [
+      "icon/health/lab"
+    ],
+    "len": 5932
+  }
+]

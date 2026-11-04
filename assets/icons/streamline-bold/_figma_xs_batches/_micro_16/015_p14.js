@@ -1,0 +1,8 @@
+const page = figma.root.children.find(p => /Icons/i.test(p.name));
+await figma.setCurrentPageAsync(page);
+await figma.loadFontAsync({ family: "Inter", style: "Regular" });
+const t = page.findOne(n => n.type === 'TEXT' && n.name === "__reapply_payload_16");
+if (!t) return { error: "missing-payload" };
+const add = "MjgyMjMgMC44Mzg4IDAuMzAwODEgMC4yMTI1IDAuNTg2ODcgMC41OTggMC43NjU2MiAxLjEzNjggMC4xNzc1MiAwLjUzNTMgMC4yMjQ0NCAxLjE1MTUgMC4xMjU5OCAxLjczOTIgLTAuMDk4OTQgMC41ODk2IC0wLjMzMTY2IDEuMDc5IC0wLjYyMzA1IDEuNDA0MyAtMC4yODUyMiAwLjMxODEgLTAuNTg4ODEgMC40NDI4IC0wLjg1MDU4IDAuNDQ1MyAtMC41MzY5NSAtMC4xMDI4IC0xLjAzNTU3IC0wLjM2MjcgLTEuNDI3NzQgLTAuNzU0OUM0LjI4OTk0IDIyLjY3ODYgNCAyMS45NzkzIDQgMjEuMjVWNWMwIC0wLjQxNDIxIC0wLjMzNTc5IC0wLjc1IC0wLjc1IC0wLjc1cy0wLjc1IDAuMzM1NzkgLTAuNzUgMC43NXYzLjM3NUgwLjc1Yy0wLjQxNDIxNCAwIC0wLjc1";
+t.characters = t.characters + add;
+return { part: 14, addLen: add.length, len: t.characters.length, expect: 7500 };

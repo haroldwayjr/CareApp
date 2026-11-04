@@ -1,0 +1,346 @@
+[
+  {
+    "name": "bookmark",
+    "category": "files",
+    "hash": "ico_Zx4K1f9GALJ4MtTt",
+    "streamlineName": "Bookmark 3",
+    "path": "files/bookmark.svg",
+    "score": 302.5
+  },
+  {
+    "name": "cloud-download",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vJLr2aEeLj8uexW8",
+    "streamlineName": "Cloud Download",
+    "path": "files/cloud-download.svg",
+    "score": 252.3
+  },
+  {
+    "name": "usb",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vygp2aE2aEP2WOfx",
+    "streamlineName": "Usb Port",
+    "path": "files/usb.svg",
+    "score": 302.6
+  },
+  {
+    "name": "postcard",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vHDH2aEinp2323J7",
+    "streamlineName": "Envelope Postcard",
+    "path": "files/postcard.svg",
+    "score": 252.15
+  },
+  {
+    "name": "folder-shared",
+    "category": "files",
+    "hash": "ico_t86Ir0eRijWYnkfX",
+    "streamlineName": "Folder Shared",
+    "path": "files/folder-shared.svg",
+    "score": 302.35
+  },
+  {
+    "name": "folder",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vp912aE6nlJttAy2",
+    "streamlineName": "Folder",
+    "path": "files/folder.svg",
+    "score": 289.7
+  },
+  {
+    "name": "tag",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vFNO2aEgWahNEnz3",
+    "streamlineName": "Tag New",
+    "path": "files/tag.svg",
+    "score": 302.65
+  },
+  {
+    "name": "document",
+    "category": "files",
+    "hash": "ico_zHUPENbT63v14cbm",
+    "streamlineName": "Document",
+    "path": "files/document.svg",
+    "score": 239.6
+  },
+  {
+    "name": "database",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4v7ew2aE2aEn8O0JK",
+    "streamlineName": "Database",
+    "path": "files/database.svg",
+    "score": 239.6
+  },
+  {
+    "name": "attachment",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vzta2aEbmofSZy5q",
+    "streamlineName": "Attachment 1",
+    "path": "files/attachment.svg",
+    "score": 302.4
+  },
+  {
+    "name": "cloud",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vyFV2aEeLjinp05e",
+    "streamlineName": "Cloud",
+    "path": "files/cloud.svg",
+    "score": 239.75
+  },
+  {
+    "name": "server",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vF2Q2aEeLj49rlLl",
+    "streamlineName": "Server",
+    "path": "files/server.svg",
+    "score": 239.7
+  },
+  {
+    "name": "folder-star",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vbzZ2aE6nlNc3hJM",
+    "streamlineName": "Folder Star",
+    "path": "files/folder-star.svg",
+    "score": 302.45
+  },
+  {
+    "name": "clipboard",
+    "category": "files",
+    "hash": "ico_WH3NnGZlIdpbePYk",
+    "streamlineName": "Insert Row From Clipboard",
+    "path": "files/clipboard.svg",
+    "score": 327.75
+  },
+  {
+    "name": "folder-add",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vopP2aE6nlJttjwr",
+    "streamlineName": "Folder Add",
+    "path": "files/folder-add.svg",
+    "score": 302.5
+  },
+  {
+    "name": "cloud-upload",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vm6X2aEeLjBPua1C",
+    "streamlineName": "Cloud Upload",
+    "path": "files/cloud-upload.svg",
+    "score": 252.4
+  },
+  {
+    "name": "hard-drive",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4v1rU2aE2aEWGynnb",
+    "streamlineName": "Hard Drive",
+    "path": "files/hard-drive.svg",
+    "score": 302.5
+  },
+  {
+    "name": "newspaper",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4voEh2aEP2W49r6nl",
+    "streamlineName": "Newspaper",
+    "path": "files/newspaper.svg",
+    "score": 289.55
+  },
+  {
+    "name": "resume",
+    "category": "files",
+    "hash": "ico_Wova0mUK456FNoyl",
+    "streamlineName": "Recruiting Resume Document",
+    "path": "files/resume.svg",
+    "score": 264.7
+  },
+  {
+    "name": "envelope",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vY6Y2aEinp232w58",
+    "streamlineName": "Envelope",
+    "path": "files/envelope.svg",
+    "score": 239.6
+  },
+  {
+    "name": "file-zip",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4viwG2aE6nlNc3NDy",
+    "streamlineName": "Zip File",
+    "path": "files/file-zip.svg",
+    "score": 302.6
+  },
+  {
+    "name": "file-pdf",
+    "category": "files",
+    "hash": "ico_gySPnLXKYBp064qP",
+    "streamlineName": "Pdf Reader",
+    "path": "files/file-pdf.svg",
+    "score": 302.5
+  },
+  {
+    "name": "drawer",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vvDg2aE8ueM5peET",
+    "streamlineName": "Drawer Open",
+    "path": "files/drawer.svg",
+    "score": 252.45
+  },
+  {
+    "name": "file-image",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4v4ts2aE6nlrjtqED",
+    "streamlineName": "Common File Horizontal Image",
+    "path": "files/file-image.svg",
+    "score": 327.6
+  },
+  {
+    "name": "package-alt",
+    "category": "files",
+    "hash": "ico_wsUeoF4ugB4ky0Pp",
+    "streamlineName": "Package Dimension",
+    "path": "files/package-alt.svg",
+    "score": 252.15
+  },
+  {
+    "name": "notes",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vyyT2aEP2WqmIQpG",
+    "streamlineName": "Notes Add",
+    "path": "files/notes.svg",
+    "score": 302.55
+  },
+  {
+    "name": "file-code",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4v1No2aE6nlfvjyQj",
+    "streamlineName": "Common File Dash",
+    "path": "files/file-code.svg",
+    "score": 315.2
+  },
+  {
+    "name": "faq",
+    "category": "files",
+    "hash": "ico_AcJm338tHyUbnVW3",
+    "streamlineName": "Contact Us Faq",
+    "path": "files/faq.svg",
+    "score": 265.3
+  },
+  {
+    "name": "press",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vHBO2aE8ueWGyZOs",
+    "streamlineName": "Force Touch Press",
+    "path": "files/press.svg",
+    "score": 315.15
+  },
+  {
+    "name": "agreement",
+    "category": "files",
+    "hash": "ico_eq1AXQnivrBrCktH",
+    "streamlineName": "Workflow Agreement",
+    "path": "files/agreement.svg",
+    "score": 252.1
+  },
+  {
+    "name": "wiki",
+    "category": "files",
+    "hash": "ico_JoL4kSHJekJDOfVu",
+    "streamlineName": "Wikipedia Logo",
+    "path": "files/wiki.svg",
+    "score": 252.3
+  },
+  {
+    "name": "parcel",
+    "category": "files",
+    "hash": "ico_dshyffvaPdeeE4yV",
+    "streamlineName": "Lightweight Parcel",
+    "path": "files/parcel.svg",
+    "score": 252.1
+  },
+  {
+    "name": "box-alt",
+    "category": "files",
+    "hash": "ico_hoYtBy6bnn12E1D5",
+    "streamlineName": "Text Box 2",
+    "path": "files/box-alt.svg",
+    "score": 315.5
+  },
+  {
+    "name": "manual",
+    "category": "files",
+    "hash": "ico_HWFwuJTt9Q6nwgcs",
+    "streamlineName": "Manual Book Content Sign",
+    "path": "files/manual.svg",
+    "score": 327.8
+  },
+  {
+    "name": "contract",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4v2kh2aEeLjSFbyQj",
+    "streamlineName": "Business Contract Give",
+    "path": "files/contract.svg",
+    "score": 264.9
+  },
+  {
+    "name": "cabinet",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vDRh2aEwvSfvjQ4o",
+    "streamlineName": "Bathroom Mirror Cabinet",
+    "path": "files/cabinet.svg",
+    "score": 264.85
+  },
+  {
+    "name": "magazine",
+    "category": "files",
+    "hash": "ico_UrddYIrZtVvzmmr1",
+    "streamlineName": "Shopping Magazine Advertising",
+    "path": "files/magazine.svg",
+    "score": 264.55
+  },
+  {
+    "name": "portfolio",
+    "category": "files",
+    "hash": "ico_LKHPVlfYLnkULMuE",
+    "streamlineName": "Portfolio Project User",
+    "path": "files/portfolio.svg",
+    "score": 264.9
+  },
+  {
+    "name": "letter",
+    "category": "files",
+    "hash": "ico_WAQUTC9YOX6td8go",
+    "streamlineName": "Letter Balloon",
+    "path": "files/letter.svg",
+    "score": 252.3
+  },
+  {
+    "name": "shelf",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vm042aEBPurjtbQP",
+    "streamlineName": "Shelf Tv",
+    "path": "files/shelf.svg",
+    "score": 252.6
+  },
+  {
+    "name": "guide",
+    "category": "files",
+    "hash": "ico_E73t5zeX0IcNJHl5",
+    "streamlineName": "Drug Guide Book",
+    "path": "files/guide.svg",
+    "score": 315.25
+  },
+  {
+    "name": "blog",
+    "category": "files",
+    "hash": "ico_qpRMB2OEQGsBulB6",
+    "streamlineName": "Blogger Logo",
+    "path": "files/blog.svg",
+    "score": 252.4
+  },
+  {
+    "name": "policy",
+    "category": "files",
+    "hash": "ico_YtzwoFibviRrGcHh",
+    "streamlineName": "Ai Policy Script",
+    "path": "files/policy.svg",
+    "score": 265.2
+  }
+]

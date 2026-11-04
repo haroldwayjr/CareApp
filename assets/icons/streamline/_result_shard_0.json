@@ -1,0 +1,922 @@
+{
+  "resolved": {
+    "undo": {
+      "name": "undo",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vNNl2aEDeGNc3jYq",
+      "streamlineName": "Undo",
+      "setSlug": "streamline-regular",
+      "score": 289.8,
+      "query": "Undo"
+    },
+    "redo": {
+      "name": "redo",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vbxf2aEDeGdzpYc9",
+      "streamlineName": "Redo",
+      "setSlug": "streamline-regular",
+      "score": 289.8,
+      "query": "Redo"
+    },
+    "print": {
+      "name": "print",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vLw82aEhtdiJ40Tt",
+      "streamlineName": "Printer",
+      "setSlug": "streamline-regular",
+      "score": 289.65,
+      "query": "Printer"
+    },
+    "link": {
+      "name": "link",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vjsz2aEDeGsjst2C",
+      "streamlineName": "Hyperlink",
+      "setSlug": "streamline-regular",
+      "score": 289.55,
+      "query": "Hyperlink"
+    },
+    "cut": {
+      "name": "cut",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vktn2aEDeGEi8ywi",
+      "streamlineName": "Scissors",
+      "setSlug": "streamline-regular",
+      "score": 109.6,
+      "query": "Scissor"
+    },
+    "paste": {
+      "name": "paste",
+      "category": "actions",
+      "hash": "ico_tkPsaJO76AYQ5iCL",
+      "streamlineName": "Insurance Document Clipboard",
+      "setSlug": "streamline-regular",
+      "score": 104.6,
+      "query": "Clipboard"
+    },
+    "duplicate": {
+      "name": "duplicate",
+      "category": "actions",
+      "hash": "ico_FrjyZPgwfnBDMhKv",
+      "streamlineName": "Duplicate",
+      "setSlug": "streamline-regular",
+      "score": 289.55,
+      "query": "Duplicate"
+    },
+    "archive": {
+      "name": "archive",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vrrd2aEdzpPopCxf",
+      "streamlineName": "Archive",
+      "setSlug": "streamline-regular",
+      "score": 289.65,
+      "query": "Archive"
+    },
+    "restore": {
+      "name": "restore",
+      "category": "actions",
+      "hash": "ico_BhXW8afmsmZyzGCC",
+      "streamlineName": "Archive Restore",
+      "setSlug": "streamline-regular",
+      "score": 117.25,
+      "query": "Restore"
+    },
+    "trash": {
+      "name": "trash",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vtWt2aEDeGPopLVG",
+      "streamlineName": "Bin",
+      "setSlug": "streamline-regular",
+      "score": 289.85,
+      "query": "Bin"
+    },
+    "empty-trash": {
+      "name": "empty-trash",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vqll2aEhtdSyUgfv",
+      "streamlineName": "Bin",
+      "setSlug": "streamline-regular",
+      "score": 239.85,
+      "query": "Bin"
+    },
+    "select": {
+      "name": "select",
+      "category": "actions",
+      "hash": "ico_Bt5rJggaJrUUZdCc",
+      "streamlineName": "Select 3d",
+      "setSlug": "streamline-regular",
+      "score": 117.55,
+      "query": "Select"
+    },
+    "select-all": {
+      "name": "select-all",
+      "category": "actions",
+      "hash": "ico_VCHeaZv2mtIy4Q40",
+      "streamlineName": "Select All",
+      "setSlug": "streamline-regular",
+      "score": 252.5,
+      "query": "Select All"
+    },
+    "move": {
+      "name": "move",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4viYZ2aEJttg0Y3zx",
+      "streamlineName": "Move Up",
+      "setSlug": "streamline-regular",
+      "score": 167.65,
+      "query": "Move"
+    },
+    "swap": {
+      "name": "swap",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vCUy2aE232ZOs2hr",
+      "streamlineName": "Folder Exchange",
+      "setSlug": "streamline-regular",
+      "score": 117.25,
+      "query": "Exchange"
+    },
+    "sort": {
+      "name": "sort",
+      "category": "actions",
+      "hash": "ico_xVHERgWKt9n7JBYG",
+      "streamlineName": "Sort Size Ascending Order Up",
+      "setSlug": "streamline-regular",
+      "score": 130.6,
+      "query": "Sort"
+    },
+    "sort-asc": {
+      "name": "sort-asc",
+      "category": "actions",
+      "hash": "ico_2rDhMiauEWg6cTHn",
+      "streamlineName": "Ascending Sort 1",
+      "setSlug": "streamline-regular",
+      "score": 90.2,
+      "query": "Sort Ascending"
+    },
+    "sort-desc": {
+      "name": "sort-desc",
+      "category": "actions",
+      "hash": "ico_MIhSXZAGdRLfxPhu",
+      "streamlineName": "Descending Sort 1",
+      "setSlug": "streamline-regular",
+      "score": 90.15,
+      "query": "Sort Descending"
+    },
+    "pin": {
+      "name": "pin",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vJQD2aEDeGLXcDeG",
+      "streamlineName": "Pin",
+      "setSlug": "streamline-regular",
+      "score": 289.85,
+      "query": "Pin"
+    },
+    "attach": {
+      "name": "attach",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vh4O2aEDeGsjsMTP",
+      "streamlineName": "Attachment",
+      "setSlug": "streamline-regular",
+      "score": 289.5,
+      "query": "Attachment"
+    },
+    "import": {
+      "name": "import",
+      "category": "actions",
+      "hash": "ico_5FPaVLoPbJBoSPF9",
+      "streamlineName": "Import File",
+      "setSlug": "streamline-regular",
+      "score": 167.45,
+      "query": "Import"
+    },
+    "export": {
+      "name": "export",
+      "category": "actions",
+      "hash": "ico_g7at7nLe5gzZc28T",
+      "streamlineName": "Export File",
+      "setSlug": "streamline-regular",
+      "score": 167.45,
+      "query": "Export"
+    },
+    "sync": {
+      "name": "sync",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vbrm2aEJttiJ4Sz2",
+      "streamlineName": "Synchronize Arrows",
+      "setSlug": "streamline-regular",
+      "score": 167.1,
+      "query": "Synchronize"
+    },
+    "power": {
+      "name": "power",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vuC42aEJttg0YSRv",
+      "streamlineName": "Power Button",
+      "setSlug": "streamline-regular",
+      "score": 167.4,
+      "query": "Power"
+    },
+    "logout": {
+      "name": "logout",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vZTq2aEDeG6nljk1",
+      "streamlineName": "Logout",
+      "setSlug": "streamline-regular",
+      "score": 289.7,
+      "query": "Logout"
+    },
+    "login": {
+      "name": "login",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vwq22aEDeGP2Woe5",
+      "streamlineName": "Login",
+      "setSlug": "streamline-regular",
+      "score": 289.75,
+      "query": "Login"
+    },
+    "flag-alt": {
+      "name": "flag-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vEEYeLjK1ibmohOa",
+      "streamlineName": "Flag",
+      "setSlug": "streamline-regular",
+      "score": 239.8,
+      "query": "Flag"
+    },
+    "star-add": {
+      "name": "star-add",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vRxkeLjK1iJ4v5lt",
+      "streamlineName": "Rating Star Add",
+      "setSlug": "streamline-regular",
+      "score": 80.25,
+      "query": "Star Add"
+    },
+    "share-alt": {
+      "name": "share-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vIO72aEDeGitsVtJ",
+      "streamlineName": "Share",
+      "setSlug": "streamline-regular",
+      "score": 289.75,
+      "query": "Share"
+    },
+    "send-alt": {
+      "name": "send-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vRSFeLjM5pgWa5ke",
+      "streamlineName": "Send Email",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Send"
+    },
+    "forward-alt": {
+      "name": "forward-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vx6A2aEJttvhjGto",
+      "streamlineName": "Button Fast Forward",
+      "setSlug": "streamline-regular",
+      "score": 105.05,
+      "query": "Forward"
+    },
+    "reply-alt": {
+      "name": "reply-alt",
+      "category": "actions",
+      "hash": "ico_AoThTg2gbKWwhTtu",
+      "streamlineName": "Reply To Message",
+      "setSlug": "streamline-regular",
+      "score": 155.2,
+      "query": "Reply"
+    },
+    "quote-reply": {
+      "name": "quote-reply",
+      "category": "actions",
+      "hash": "ico_XoeC67ZtUtP6je5U",
+      "streamlineName": "Quote",
+      "setSlug": "streamline-regular",
+      "score": 289.75,
+      "query": "Quote"
+    },
+    "edit-alt": {
+      "name": "edit-alt",
+      "category": "actions",
+      "hash": "ico_QPbJ6XICcKl9f3Hy",
+      "streamlineName": "Edit Pdf",
+      "setSlug": "streamline-regular",
+      "score": 167.6,
+      "query": "Edit"
+    },
+    "create": {
+      "name": "create",
+      "category": "actions",
+      "hash": "ico_5FJT2uXH67JamfkB",
+      "streamlineName": "Create Chart",
+      "setSlug": "streamline-regular",
+      "score": 167.4,
+      "query": "Create"
+    },
+    "new": {
+      "name": "new",
+      "category": "actions",
+      "hash": "ico_sBE0S5B7RbNbxK0z",
+      "streamlineName": "New Spreadsheet",
+      "setSlug": "streamline-regular",
+      "score": 167.25,
+      "query": "New"
+    },
+    "search-alt": {
+      "name": "search-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4viw02aEDeGjUAwYE",
+      "streamlineName": "Search",
+      "setSlug": "streamline-regular",
+      "score": 289.7,
+      "query": "Search"
+    },
+    "flag": {
+      "name": "flag",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vinHeLjK1ibmoeET",
+      "streamlineName": "Flag 1",
+      "setSlug": "streamline-regular",
+      "score": 117.7,
+      "query": "Flag"
+    },
+    "open": {
+      "name": "open",
+      "category": "actions",
+      "hash": "ico_qwEWFmlH0LmfMzM9",
+      "streamlineName": "Open Eyes",
+      "setSlug": "streamline-regular",
+      "score": 167.55,
+      "query": "Open"
+    },
+    "close-alt": {
+      "name": "close-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vLmT2aEDeGJttv3X",
+      "streamlineName": "Close",
+      "setSlug": "streamline-regular",
+      "score": 289.75,
+      "query": "Close"
+    },
+    "cancel": {
+      "name": "cancel",
+      "category": "actions",
+      "hash": "ico_BCC29BC1XWUpisMf",
+      "streamlineName": "Lock Cancel Slash",
+      "setSlug": "streamline-regular",
+      "score": 105.15,
+      "query": "Cancel"
+    },
+    "clear": {
+      "name": "clear",
+      "category": "actions",
+      "hash": "ico_baOtbTZyCm3whuUn",
+      "streamlineName": "Alert Clear Notification",
+      "setSlug": "streamline-regular",
+      "score": 104.8,
+      "query": "Clear"
+    },
+    "erase": {
+      "name": "erase",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vEpc2aEDeGhtd1I2",
+      "streamlineName": "Eraser",
+      "setSlug": "streamline-regular",
+      "score": 109.7,
+      "query": "Erase"
+    },
+    "find": {
+      "name": "find",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vMqZ2aEhtdK1itMU",
+      "streamlineName": "Monitor Find",
+      "setSlug": "streamline-regular",
+      "score": 117.4,
+      "query": "Find"
+    },
+    "locate": {
+      "name": "locate",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vt9IeLjvhj2aEEkd",
+      "streamlineName": "Earth Locate",
+      "setSlug": "streamline-regular",
+      "score": 67.4,
+      "query": "Locate"
+    },
+    "discover": {
+      "name": "discover",
+      "category": "actions",
+      "hash": "ico_HVMs28I3sIaH6Vua",
+      "streamlineName": "Discover Pay",
+      "setSlug": "streamline-regular",
+      "score": 117.4,
+      "query": "Discover"
+    },
+    "explore": {
+      "name": "explore",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vSzoeLj9ULgns92o",
+      "streamlineName": "Space Explore",
+      "setSlug": "streamline-regular",
+      "score": 67.35,
+      "query": "Explore"
+    },
+    "browse": {
+      "name": "browse",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4v8bn2aEdzpZOsNDy",
+      "streamlineName": "E Commerce Apparel Browse",
+      "setSlug": "streamline-regular",
+      "score": 92.75,
+      "query": "Browse"
+    },
+    "draft": {
+      "name": "draft",
+      "category": "actions",
+      "hash": "ico_ngC8Ii6gf6miN8da",
+      "streamlineName": "Workflow Request Draft",
+      "setSlug": "streamline-regular",
+      "score": 104.9,
+      "query": "Draft"
+    },
+    "remind": {
+      "name": "remind",
+      "category": "actions",
+      "hash": "ico_HGrQnrI87CO98LaP",
+      "streamlineName": "Reminder Hand Sign",
+      "setSlug": "streamline-regular",
+      "score": 105.1,
+      "query": "Reminder"
+    },
+    "snooze": {
+      "name": "snooze",
+      "category": "actions",
+      "hash": "ico_AY426BMLBDeAJgRn",
+      "streamlineName": "Snooze Return Repeat",
+      "setSlug": "streamline-regular",
+      "score": 155.0,
+      "query": "Snooze"
+    },
+    "info": {
+      "name": "info",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vbCd2aEDeGeixb8N",
+      "streamlineName": "Information Circle",
+      "setSlug": "streamline-regular",
+      "score": 167.1,
+      "query": "Information"
+    },
+    "warning": {
+      "name": "warning",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4v3np2aEDeGeixfzl",
+      "streamlineName": "Alert Circle",
+      "setSlug": "streamline-regular",
+      "score": 167.4,
+      "query": "Alert"
+    },
+    "error": {
+      "name": "error",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vtal2aEDeGJttARZ",
+      "streamlineName": "Remove Circle",
+      "setSlug": "streamline-regular",
+      "score": 302.35,
+      "query": "Remove Circle"
+    },
+    "success": {
+      "name": "success",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vAUF2aEDeGDeG9Ya",
+      "streamlineName": "Check Circle",
+      "setSlug": "streamline-regular",
+      "score": 302.4,
+      "query": "Check Circle"
+    },
+    "help": {
+      "name": "help",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4v49b2aEDeGeix5lt",
+      "streamlineName": "Question Circle",
+      "setSlug": "streamline-regular",
+      "score": 167.25,
+      "query": "Question"
+    },
+    "bell": {
+      "name": "bell",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vIlB2aEDeG3ziL8i",
+      "streamlineName": "Alarm Bell",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Bell"
+    },
+    "bell-off": {
+      "name": "bell-off",
+      "category": "status",
+      "hash": "ico_aGGWktxmPJWkzNWQ",
+      "streamlineName": "Alarm Bell Off 1",
+      "setSlug": "streamline-regular",
+      "score": 118.2,
+      "query": "Bell Off"
+    },
+    "lock": {
+      "name": "lock",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vyWP2aEDeGg0YWWa",
+      "streamlineName": "Lock",
+      "setSlug": "streamline-regular",
+      "score": 289.8,
+      "query": "Lock"
+    },
+    "unlock": {
+      "name": "unlock",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4v6lO2aEDeGSFbatI",
+      "streamlineName": "Lock Unlock",
+      "setSlug": "streamline-regular",
+      "score": 302.45,
+      "query": "Lock Unlock"
+    },
+    "eye": {
+      "name": "eye",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4voYS2aEDeGjUA3gZ",
+      "streamlineName": "View 1",
+      "setSlug": "streamline-regular",
+      "score": 167.7,
+      "query": "View"
+    },
+    "eye-off": {
+      "name": "eye-off",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vbXl2aEDeGjUAbRt",
+      "streamlineName": "View Off",
+      "setSlug": "streamline-regular",
+      "score": 302.6,
+      "query": "View Off"
+    },
+    "star": {
+      "name": "star",
+      "category": "status",
+      "hash": "ico_WWMza7lZFYB6uhmT",
+      "streamlineName": "Star Half",
+      "setSlug": "streamline-regular",
+      "score": 117.55,
+      "query": "Star"
+    },
+    "star-filled": {
+      "name": "star-filled",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vypOeLjK1iJ4vaWN",
+      "streamlineName": "Rating Star",
+      "setSlug": "streamline-regular",
+      "score": 252.45,
+      "query": "Rating Star"
+    },
+    "shield": {
+      "name": "shield",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vfCT2aEDeGSFbPvM",
+      "streamlineName": "Lock Shield",
+      "setSlug": "streamline-regular",
+      "score": 117.45,
+      "query": "Shield"
+    },
+    "shield-check": {
+      "name": "shield-check",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vArt2aEhtdP2WwqY",
+      "streamlineName": "Shield Check",
+      "setSlug": "streamline-regular",
+      "score": 252.4,
+      "query": "Shield Check"
+    },
+    "shield-off": {
+      "name": "shield-off",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vdiU2aEhtdP2W3vI",
+      "streamlineName": "Shield Lock",
+      "setSlug": "streamline-regular",
+      "score": 117.45,
+      "query": "Shield"
+    },
+    "pending": {
+      "name": "pending",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vm1F2aEDeGYBGlpK",
+      "streamlineName": "Hourglass",
+      "setSlug": "streamline-regular",
+      "score": 289.55,
+      "query": "Hourglass"
+    },
+    "loading": {
+      "name": "loading",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4v6C92aEJttxih3qz",
+      "streamlineName": "Loading",
+      "setSlug": "streamline-regular",
+      "score": 289.65,
+      "query": "Loading"
+    },
+    "online": {
+      "name": "online",
+      "category": "status",
+      "hash": "ico_fCYgm8aBeo7F3iKW",
+      "streamlineName": "Online Video Chat",
+      "setSlug": "streamline-regular",
+      "score": 155.15,
+      "query": "Online"
+    },
+    "blocked": {
+      "name": "blocked",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vcUn2aEJttYBGQsU",
+      "streamlineName": "Tags Block",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Block"
+    },
+    "notification": {
+      "name": "notification",
+      "category": "status",
+      "hash": "ico_8l8KASqA3plHF5XT",
+      "streamlineName": "Alert Notification",
+      "setSlug": "streamline-regular",
+      "score": 117.1,
+      "query": "Notification"
+    },
+    "badge": {
+      "name": "badge",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vJM52aEDeGDeGBrC",
+      "streamlineName": "Check Badge",
+      "setSlug": "streamline-regular",
+      "score": 117.45,
+      "query": "Badge"
+    },
+    "critical": {
+      "name": "critical",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4v4Z72aEJttT2FGNT",
+      "streamlineName": "Flash",
+      "setSlug": "streamline-regular",
+      "score": 289.75,
+      "query": "Flash"
+    },
+    "play": {
+      "name": "play",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4v0Z32aEJttJ4vbRt",
+      "streamlineName": "Button Play",
+      "setSlug": "streamline-regular",
+      "score": 302.45,
+      "query": "Button Play"
+    },
+    "pause": {
+      "name": "pause",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vpZ12aEJttJ4vJuT",
+      "streamlineName": "Button Pause",
+      "setSlug": "streamline-regular",
+      "score": 302.4,
+      "query": "Button Pause"
+    },
+    "stop": {
+      "name": "stop",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vsDZ2aEJttZOsyOn",
+      "streamlineName": "Button Stop",
+      "setSlug": "streamline-regular",
+      "score": 302.45,
+      "query": "Button Stop"
+    },
+    "skip-forward": {
+      "name": "skip-forward",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4v9sl2aEJttJ4v0Ij",
+      "streamlineName": "Button Next",
+      "setSlug": "streamline-regular",
+      "score": 302.45,
+      "query": "Button Next"
+    },
+    "skip-back": {
+      "name": "skip-back",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vmRF2aEJttJ4vkS8",
+      "streamlineName": "Button Previous",
+      "setSlug": "streamline-regular",
+      "score": 302.25,
+      "query": "Button Previous"
+    },
+    "volume": {
+      "name": "volume",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vLEo2aEDeGOrjWeH",
+      "streamlineName": "Volume",
+      "setSlug": "streamline-regular",
+      "score": 289.7,
+      "query": "Volume"
+    },
+    "volume-off": {
+      "name": "volume-off",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vjsk2aENc3hNEYf3",
+      "streamlineName": "Volume Control Off",
+      "setSlug": "streamline-regular",
+      "score": 40.1,
+      "query": "Volume Off"
+    },
+    "image": {
+      "name": "image",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vNZh2aENc3wvSLwy",
+      "streamlineName": "Image File Sync",
+      "setSlug": "streamline-regular",
+      "score": 155.25,
+      "query": "Image"
+    },
+    "video": {
+      "name": "video",
+      "category": "media",
+      "hash": "ico_nnzVDdNV9XoXWg2m",
+      "streamlineName": "Video Call",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Video"
+    },
+    "camera": {
+      "name": "camera",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4v1RD2aENc3sjs0EG",
+      "streamlineName": "Camera",
+      "setSlug": "streamline-regular",
+      "score": 239.7,
+      "query": "Camera"
+    },
+    "mic": {
+      "name": "mic",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4v1e02aENc3SyUaOa",
+      "streamlineName": "Microphone",
+      "setSlug": "streamline-regular",
+      "score": 239.5,
+      "query": "Microphone"
+    },
+    "mic-off": {
+      "name": "mic-off",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vNDO2aENc3SyUbfh",
+      "streamlineName": "Microphone Off",
+      "setSlug": "streamline-regular",
+      "score": 252.3,
+      "query": "Microphone Off"
+    },
+    "headphones": {
+      "name": "headphones",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vFP32aENc37yVk8U",
+      "streamlineName": "Headphones",
+      "setSlug": "streamline-regular",
+      "score": 239.5,
+      "query": "Headphones"
+    },
+    "music": {
+      "name": "music",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vmHQ2aENc3BPuei2",
+      "streamlineName": "Music Note",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Music"
+    },
+    "film": {
+      "name": "film",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vbzoeLjjHWNc3RGX",
+      "streamlineName": "Movie Star",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Movie"
+    }
+  },
+  "notFound": [
+    "unlink",
+    "deselect",
+    "unpin",
+    "detach",
+    "prioritize",
+    "bookmark-add",
+    "bookmark-remove",
+    "star-remove",
+    "heart-add",
+    "heart-remove",
+    "priority",
+    "confirm",
+    "submit",
+    "apply",
+    "reset",
+    "replace",
+    "find-replace",
+    "preview",
+    "publish",
+    "unpublish",
+    "schedule-send",
+    "verified",
+    "offline",
+    "unavailable"
+  ],
+  "usedHashes": {
+    "ico_mRu4pQJ4vNNl2aEDeGNc3jYq": "undo",
+    "ico_mRu4pQJ4vbxf2aEDeGdzpYc9": "redo",
+    "ico_mRu4pQJ4vLw82aEhtdiJ40Tt": "print",
+    "ico_mRu4pQJ4vjsz2aEDeGsjst2C": "link",
+    "ico_mRu4pQJ4vktn2aEDeGEi8ywi": "cut",
+    "ico_tkPsaJO76AYQ5iCL": "paste",
+    "ico_FrjyZPgwfnBDMhKv": "duplicate",
+    "ico_mRu4pQJ4vrrd2aEdzpPopCxf": "archive",
+    "ico_BhXW8afmsmZyzGCC": "restore",
+    "ico_mRu4pQJ4vtWt2aEDeGPopLVG": "trash",
+    "ico_mRu4pQJ4vqll2aEhtdSyUgfv": "empty-trash",
+    "ico_Bt5rJggaJrUUZdCc": "select",
+    "ico_VCHeaZv2mtIy4Q40": "select-all",
+    "ico_mRu4pQJ4viYZ2aEJttg0Y3zx": "move",
+    "ico_mRu4pQJ4vCUy2aE232ZOs2hr": "swap",
+    "ico_xVHERgWKt9n7JBYG": "sort",
+    "ico_2rDhMiauEWg6cTHn": "sort-asc",
+    "ico_MIhSXZAGdRLfxPhu": "sort-desc",
+    "ico_mRu4pQJ4vJQD2aEDeGLXcDeG": "pin",
+    "ico_mRu4pQJ4vh4O2aEDeGsjsMTP": "attach",
+    "ico_5FPaVLoPbJBoSPF9": "import",
+    "ico_g7at7nLe5gzZc28T": "export",
+    "ico_mRu4pQJ4vbrm2aEJttiJ4Sz2": "sync",
+    "ico_mRu4pQJ4vuC42aEJttg0YSRv": "power",
+    "ico_mRu4pQJ4vZTq2aEDeG6nljk1": "logout",
+    "ico_mRu4pQJ4vwq22aEDeGP2Woe5": "login",
+    "ico_mRu4pQJ4vEEYeLjK1ibmohOa": "flag-alt",
+    "ico_mRu4pQJ4vRxkeLjK1iJ4v5lt": "star-add",
+    "ico_mRu4pQJ4vIO72aEDeGitsVtJ": "share-alt",
+    "ico_mRu4pQJ4vRSFeLjM5pgWa5ke": "send-alt",
+    "ico_mRu4pQJ4vx6A2aEJttvhjGto": "forward-alt",
+    "ico_AoThTg2gbKWwhTtu": "reply-alt",
+    "ico_XoeC67ZtUtP6je5U": "quote-reply",
+    "ico_QPbJ6XICcKl9f3Hy": "edit-alt",
+    "ico_5FJT2uXH67JamfkB": "create",
+    "ico_sBE0S5B7RbNbxK0z": "new",
+    "ico_mRu4pQJ4viw02aEDeGjUAwYE": "search-alt",
+    "ico_mRu4pQJ4vinHeLjK1ibmoeET": "flag",
+    "ico_qwEWFmlH0LmfMzM9": "open",
+    "ico_mRu4pQJ4vLmT2aEDeGJttv3X": "close-alt",
+    "ico_BCC29BC1XWUpisMf": "cancel",
+    "ico_baOtbTZyCm3whuUn": "clear",
+    "ico_mRu4pQJ4vEpc2aEDeGhtd1I2": "erase",
+    "ico_mRu4pQJ4vMqZ2aEhtdK1itMU": "find",
+    "ico_mRu4pQJ4vt9IeLjvhj2aEEkd": "locate",
+    "ico_HVMs28I3sIaH6Vua": "discover",
+    "ico_mRu4pQJ4vSzoeLj9ULgns92o": "explore",
+    "ico_mRu4pQJ4v8bn2aEdzpZOsNDy": "browse",
+    "ico_ngC8Ii6gf6miN8da": "draft",
+    "ico_HGrQnrI87CO98LaP": "remind",
+    "ico_AY426BMLBDeAJgRn": "snooze",
+    "ico_mRu4pQJ4vbCd2aEDeGeixb8N": "info",
+    "ico_mRu4pQJ4v3np2aEDeGeixfzl": "warning",
+    "ico_mRu4pQJ4vtal2aEDeGJttARZ": "error",
+    "ico_mRu4pQJ4vAUF2aEDeGDeG9Ya": "success",
+    "ico_mRu4pQJ4v49b2aEDeGeix5lt": "help",
+    "ico_mRu4pQJ4vIlB2aEDeG3ziL8i": "bell",
+    "ico_aGGWktxmPJWkzNWQ": "bell-off",
+    "ico_mRu4pQJ4vyWP2aEDeGg0YWWa": "lock",
+    "ico_mRu4pQJ4v6lO2aEDeGSFbatI": "unlock",
+    "ico_mRu4pQJ4voYS2aEDeGjUA3gZ": "eye",
+    "ico_mRu4pQJ4vbXl2aEDeGjUAbRt": "eye-off",
+    "ico_WWMza7lZFYB6uhmT": "star",
+    "ico_mRu4pQJ4vypOeLjK1iJ4vaWN": "star-filled",
+    "ico_mRu4pQJ4vfCT2aEDeGSFbPvM": "shield",
+    "ico_mRu4pQJ4vArt2aEhtdP2WwqY": "shield-check",
+    "ico_mRu4pQJ4vdiU2aEhtdP2W3vI": "shield-off",
+    "ico_mRu4pQJ4vm1F2aEDeGYBGlpK": "pending",
+    "ico_mRu4pQJ4v6C92aEJttxih3qz": "loading",
+    "ico_fCYgm8aBeo7F3iKW": "online",
+    "ico_mRu4pQJ4vcUn2aEJttYBGQsU": "blocked",
+    "ico_8l8KASqA3plHF5XT": "notification",
+    "ico_mRu4pQJ4vJM52aEDeGDeGBrC": "badge",
+    "ico_mRu4pQJ4v4Z72aEJttT2FGNT": "critical",
+    "ico_mRu4pQJ4v0Z32aEJttJ4vbRt": "play",
+    "ico_mRu4pQJ4vpZ12aEJttJ4vJuT": "pause",
+    "ico_mRu4pQJ4vsDZ2aEJttZOsyOn": "stop",
+    "ico_mRu4pQJ4v9sl2aEJttJ4v0Ij": "skip-forward",
+    "ico_mRu4pQJ4vmRF2aEJttJ4vkS8": "skip-back",
+    "ico_mRu4pQJ4vLEo2aEDeGOrjWeH": "volume",
+    "ico_mRu4pQJ4vjsk2aENc3hNEYf3": "volume-off",
+    "ico_mRu4pQJ4vNZh2aENc3wvSLwy": "image",
+    "ico_nnzVDdNV9XoXWg2m": "video",
+    "ico_mRu4pQJ4v1RD2aENc3sjs0EG": "camera",
+    "ico_mRu4pQJ4v1e02aENc3SyUaOa": "mic",
+    "ico_mRu4pQJ4vNDO2aENc3SyUbfh": "mic-off",
+    "ico_mRu4pQJ4vFP32aENc37yVk8U": "headphones",
+    "ico_mRu4pQJ4vmHQ2aENc3BPuei2": "music",
+    "ico_mRu4pQJ4vbzoeLjjHWNc3RGX": "film"
+  }
+}

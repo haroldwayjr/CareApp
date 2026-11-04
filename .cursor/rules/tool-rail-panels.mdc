@@ -1,0 +1,15 @@
+---
+description: New tool-rail tabs/panels must reuse existing prototype components and styles
+globs: prototypes/tool-rail-panels/**/*
+alwaysApply: false
+---
+
+# Tool-rail panels prototype
+
+When adding or extending tool-rail tabs/panels in `prototypes/tool-rail-panels/`:
+
+- Reuse existing rail, panel shell, header/back/close, tabs, selects, field controls, pinned edit bar, and Task list patterns — do not invent parallel component skins
+- Match visual tokens already in `styles.css` (`.inline-field-control`, `.select-wrap`, `.panel-edit-bar`, `.button-primary` / `.button-secondary`, etc.)
+- Wire new panels through `data-panel`, `templates`, `openPanel` / `collapsePanel`, and `bindPanelActions` (or a dedicated bind helper) like Member / Insurance / Eligibility
+- Prefer dirty-gated `.panel-edit-bar` above `.task-list-accordion` for save/cancel chrome, same as member accordion edit
+- Add only layout-specific CSS for the new panel; never fork button, select, or edit-bar styles

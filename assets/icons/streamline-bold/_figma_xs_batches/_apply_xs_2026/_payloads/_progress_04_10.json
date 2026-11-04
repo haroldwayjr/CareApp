@@ -1,0 +1,11 @@
+{
+  "method": "append_part00_then_remainder",
+  "04": {
+    "part00": "done_all_12_keys",
+    "remainder": {
+      "c04_0_5": "done"
+    },
+    "exec": "pending"
+  },
+  "note": "part00 stored 800 chars per key; remainder finishes each key"
+}

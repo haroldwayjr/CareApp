@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Key-Lock--Streamline-Streamline-3.0">
+  <desc>
+    Key Lock Streamline Icon: https://streamlinehq.com
+  </desc>
+  <defs></defs>
+  <title>key-lock</title>
+  <path d="M0.75 20.25a3 3 0 1 0 6 0 3 3 0 1 0 -6 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m6.75 20.25 7.5 0 0 2.25" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m11.25 20.25 0 1.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M6.75 15v-3.75a1.5 1.5 0 0 1 1.5 -1.5h13.5a1.5 1.5 0 0 1 1.5 1.5v10.5a1.5 1.5 0 0 1 -1.5 1.5h-4.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M9.75 9.75V6a5.25 5.25 0 0 1 10.5 0v3.75" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m15 14.25 0 3" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>

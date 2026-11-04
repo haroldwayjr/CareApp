@@ -1,0 +1,60 @@
+
+const page = figma.root.children.find(p => /Icons/i.test(p.name));
+await figma.setCurrentPageAsync(page);
+const collections = await figma.variables.getLocalVariableCollectionsAsync();
+let iconDefault = null;
+for (const coll of collections) {
+  for (const id of coll.variableIds) {
+    const v = await figma.variables.getVariableByIdAsync(id);
+    if (v && v.name === 'icon/default') iconDefault = v;
+  }
+}
+function bindFills(root) {
+  const stack = [root];
+  while (stack.length) {
+    const n = stack.pop();
+    if ('constraints' in n) n.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    if (n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION' || n.type === 'ELLIPSE' || n.type === 'STAR' || n.type === 'POLYGON') {
+      const paint = figma.variables.setBoundVariableForPaint(
+        { type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', iconDefault);
+      n.fills = [paint];
+      n.strokes = [];
+    }
+    if ('clipsContent' in n && n.type === 'FRAME') n.clipsContent = false;
+    if ('children' in n) for (const c of n.children) stack.push(c);
+  }
+}
+function applyBoldXs(set, svg) {
+  const xs = set.children.find(c => c.name === 'Size=xs');
+  const md = set.children.find(c => c.name === 'Size=md');
+  if (!xs) return { ok: false, reason: 'no-xs' };
+  xs.visible = true;
+  for (const c of [...xs.children]) c.remove();
+  const node = figma.createNodeFromSvg(svg);
+  node.name = set.name.split('/').pop();
+  node.resize(16, 16);
+  node.x = 0; node.y = 0;
+  node.clipsContent = false;
+  if ('constraints' in node) node.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+  xs.appendChild(node);
+  try { xs.resizeWithoutConstraints(16, 16); } catch (_) { try { xs.resize(16, 16); } catch(__){} }
+  bindFills(node);
+  xs.clipsContent = false;
+  xs.visible = false;
+  if (md) md.visible = true;
+  try { set.resizeWithoutConstraints(24, 24); } catch (_) {}
+  set.clipsContent = true;
+  return { ok: true };
+}
+const BATCH = [{"setName": "icon/status/critical", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Flash-1--Streamline-Ultimate\">\n  <desc>\n    Flash 1 Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path d=\"M20.44 9.27A0.48 0.48 0 0 0 20 9h-7.38L14.49 0.61A0.51 0.51 0 0 0 14.2 0a0.5 0.5 0 0 0 -0.61 0.17l-10 14a0.49 0.49 0 0 0 0 0.52A0.49 0.49 0 0 0 4 15h7.38l-1.87 8.39a0.51 0.51 0 0 0 0.29 0.61 0.52 0.52 0 0 0 0.61 -0.17l10 -14a0.49 0.49 0 0 0 0.03 -0.56\" fill=\"#000000\" stroke-width=\"1\"></path>\n</svg>"}, {"setName": "icon/health/emergency", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Hospital-Emergency-Department--Streamline-Ultimate\">\n  <desc>\n    Hospital Emergency Department Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M5 19.75a0.5 0.5 0 0 0 0.5 0.5h13a0.5 0.5 0 0 0 0.5 -0.5v-7a7 7 0 0 0 -14 0Zm8.25 -9.5v2h2a0.5 0.5 0 0 1 0.5 0.5v1.5a0.5 0.5 0 0 1 -0.5 0.5h-2v2a0.5 0.5 0 0 1 -0.5 0.5h-1.5a0.5 0.5 0 0 1 -0.5 -0.5v-2h-2a0.5 0.5 0 0 1 -0.5 -0.5v-1.5a0.5 0.5 0 0 1 0.5 -0.5h2v-2a0.5 0.5 0 0 1 0.5 -0.5h1.5a0.5 0.5 0 0 1 0.5 0.5\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M12 4.25a0.75 0.75 0 0 0 0.75 -0.75V1.25a0.75 0.75 0 0 0 -1.5 0V3.5a0.76 0.76 0 0 0 0.75 0.75\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M18.37 6.89a0.74 0.74 0 0 0 0.53 -0.22l1.59 -1.59a0.75 0.75 0 0 0 0 -1.06 0.74 0.74 0 0 0 -1.06 0l-1.59 1.59a0.74 0.74 0 0 0 0 1.06 0.71 0.71 0 0 0 0.53 0.22\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M23.25 11.75H21a0.75 0.75 0 0 0 0 1.5h2.25a0.75 0.75 0 0 0 0 -1.5\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M5.1 6.67a0.74 0.74 0 0 0 0.53 0.22 0.71 0.71 0 0 0 0.53 -0.22 0.74 0.74 0 0 0 0 -1.06L4.57 4a0.74 0.74 0 0 0 -1.06 0 0.75 0.75 0 0 0 0 1.06Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M3.75 12.5a0.76 0.76 0 0 0 -0.75 -0.75H0.75a0.75 0.75 0 0 0 0 1.5H3a0.75 0.75 0 0 0 0.75 -0.75\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M21 21.75H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0 -2\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"}, {"setName": "icon/misc/leaf", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Vegetable-Basil-Leaf--Streamline-Ultimate\">\n  <desc>\n    Vegetable Basil Leaf Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M12.65 18.32a4.87 4.87 0 0 1 -0.36 -0.59 5.18 5.18 0 0 1 -0.29 -3.52c0 -0.07 -0.11 -0.14 -0.16 -0.22l-0.58 0c-0.63 0.56 -1.26 1.07 -1.87 1.52a14.6 14.6 0 0 0 -0.71 3.23 0.74 0.74 0 0 1 -0.75 0.73 0.75 0.75 0 0 1 -0.74 -0.76 10.63 10.63 0 0 1 0.3 -2 13.61 13.61 0 0 1 -3.09 1.32 0.75 0.75 0 0 1 -0.93 -0.52 0.74 0.74 0 0 1 0.52 -0.92 15.13 15.13 0 0 0 5.22 -2.86 5.58 5.58 0 0 1 -2.74 -1.53 5.29 5.29 0 0 1 -0.55 -0.7 6.27 6.27 0 0 0 -2.41 1.58C-1 17.65 0.34 23.18 0.69 23.53A6 6 0 0 0 3.4 24a10.71 10.71 0 0 0 7.66 -3.24 6.32 6.32 0 0 0 1.59 -2.44\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M10.59 12.51c-0.08 -0.74 -0.12 -1.46 -0.13 -2.15a14.89 14.89 0 0 0 -2.21 -2.45 0.75 0.75 0 0 1 0.9 -1.2 10.09 10.09 0 0 1 1.41 1.38 13.7 13.7 0 0 1 0.73 -3.28 0.75 0.75 0 1 1 1.41 0.5 16.16 16.16 0 0 0 -0.61 7.14 5.63 5.63 0 0 0 0.59 -0.14 5 5 0 0 1 2.49 -2.2 5.85 5.85 0 0 0 0.4 -2.06c0.13 -5.43 -4 -8 -4.4 -8 -0.43 0 -4.65 2.4 -4.79 7.82 -0.07 2.78 1.46 4.47 4.21 4.64\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M18.5 11.54a4.84 4.84 0 0 0 -1.5 -0.27 3.33 3.33 0 0 0 -3 1.83 9.64 9.64 0 0 1 3.54 1.59 0.75 0.75 0 0 1 0.15 1.05 0.77 0.77 0 0 1 -0.6 0.3 0.74 0.74 0 0 1 -0.45 -0.15 8.42 8.42 0 0 0 -3.18 -1.38A3.54 3.54 0 0 0 16 19a8.89 8.89 0 0 0 2.85 0.47c2.72 0 4.63 -1.32 4.87 -2 0.33 -0.99 -1.06 -4.54 -5.22 -5.93\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"}, {"setName": "icon/health/911", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Safety-911--Streamline-Ultimate\">\n  <desc>\n    Safety 911 Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path fill=\"#000000\" d=\"M3.14764 4.86035c0.20606 0 0.41022 0.04029 0.60059 0.11914 0.19044 0.07892 0.36405 0.19501 0.50977 0.34082l2.77246 2.77246c0.14581 0.14572 0.2619 0.31933 0.34082 0.50977 0.07885 0.19036 0.11914 0.39454 0.11914 0.60058 -0.00002 0.20609 -0.04025 0.41021 -0.11914 0.60059 -0.07891 0.19041 -0.19504 0.36309 -0.34082 0.50879 -0.29408 0.2942 -0.4589 0.6934 -0.45899 1.1094 0 0.4159 0.16501 0.8151 0.45899 1.1093l4.43844 4.4376c0.2942 0.2941 0.6934 0.4599 1.1094 0.4599 0.4161 0 0.8151 -0.1658 1.1094 -0.4599 0.1457 -0.1459 0.3193 -0.261 0.5097 -0.3399 0.1904 -0.0788 0.3946 -0.1201 0.6006 -0.1201 0.2061 0 0.4103 0.0412 0.6006 0.1201s0.3632 0.1942 0.5088 0.3399l2.7754 2.7744c0.2941 0.2942 0.459 0.6933 0.459 1.1093 0 0.4161 -0.1649 0.8152 -0.459 1.1094l-0.6582 0.6592c-0.7574 0.7575 -1.7506 1.2337 -2.8154 1.3506 -1.0651 0.1168 -2.1383 -0.1334 -3.042 -0.709l-0.0108 -0.0059C7.65794 20.218 3.78404 16.3446 0.744324 11.8467l-0.007813 -0.0108c-0.575469 -0.9038 -0.8249609 -1.97688 -0.7080076 -3.04195C0.145475 7.72884 0.622129 6.73494 1.38007 5.97754l0.6582 -0.65723c0.1457 -0.14578 0.31837 -0.26191 0.50879 -0.34082 0.19038 -0.07889 0.3945 -0.11912 0.60058 -0.11914M11.4064 0.00195312C12.708 0.00203492 13.7598 1.06042 13.7599 2.36035v3.21582c-0.0002 1.2997 -1.0512 2.35707 -2.3525 2.35742 -0.9787 0 -1.97274 -0.6142 -2.31054 -1.57226 -0.13754 -0.39063 0.0674 -0.81939 0.45801 -0.95703 0.39039 -0.13729 0.81823 0.06779 0.95603 0.458 0.1025 0.29077 0.4794 0.57129 0.8965 0.57129 0.4685 -0.00035 0.8523 -0.38182 0.8525 -0.85742v-0.75293c-0.2645 0.1033 -0.5521 0.16209 -0.8535 0.16211 -1.3014 -0.00026 -2.35249 -1.05751 -2.35251 -2.35742v-0.26758C9.05403 1.06054 10.105 0.00221366 11.4064 0.00195312m5.2627 0c0.4141 0.00008859 0.7499 0.33595288 0.75 0.74999988V6.43359h0.8535c0.4141 0.0001 0.7498 0.33602 0.75 0.75 0 0.41416 -0.3358 0.74991 -0.75 0.75h-3.206c-0.4142 0 -0.75 -0.33578 -0.75 -0.75 0.0002 -0.41404 0.3359 -0.75 0.75 -0.75h0.8525V3.08008c-0.1033 0.01827 -0.2097 0.03026 -0.3183 0.03027h-0.5342c-0.4141 0 -0.7498 -0.33599 -0.75 -0.75 0.0001 -0.4141 0.3359 -0.75 0.75 -0.75h0.5342c0.152 -0.00008 0.2824 -0.10915 0.3125 -0.25683l0.0058 -0.06543V0.751953c0.0002 -0.413941 0.3361 -0.74973977 0.75 -0.74999988m4.9766 0c0.414 0.00008859 0.7499 0.33595288 0.75 0.74999988V6.43359h0.8535c0.414 0.0001 0.7498 0.33602 0.75 0.75 0 0.41416 -0.3359 0.74991 -0.75 0.75h-3.206c-0.4143 0 -0.75 -0.33578 -0.75 -0.75 0.0002 -0.41404 0.3359 -0.75 0.75 -0.75h0.8525V3.08008c-0.1034 0.01827 -0.2097 0.03026 -0.3184 0.03027h-0.5341c-0.4141 0 -0.7498 -0.33599 -0.75 -0.75 0.0001 -0.4141 0.3358 -0.75 0.75 -0.75h0.5341c0.1521 -0.00008 0.2824 -0.10915 0.3125 -0.25683l0.0059 -0.06543V0.751953c0.0001 -0.413941 0.3361 -0.74973977 0.75 -0.74999988M11.4064 1.50195c-0.4686 0.00026 -0.8524 0.38268 -0.8525 0.8584v0.26758c0 0.47582 0.3838 0.85716 0.8525 0.85742 0.4396 -0.00008 0.8048 -0.33536 0.8487 -0.76953l0.0048 -0.08789v-0.26758l-0.0048 -0.08887c-0.0442 -0.43382 -0.4093 -0.76945 -0.8487 -0.76953\" stroke-width=\"1\"></path>\n</svg>"}, {"setName": "icon/actions/check.circle", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Check-Circle-1--Streamline-Ultimate\">\n  <desc>\n    Check Circle 1 Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path d=\"M12 0a12 12 0 1 0 12 12A12 12 0 0 0 12 0Zm6.93 8.2 -6.85 9.29a1 1 0 0 1 -1.43 0.19l-4.89 -3.91a1 1 0 0 1 -0.15 -1.41A1 1 0 0 1 7 12.21l4.08 3.26L17.32 7a1 1 0 0 1 1.39 -0.21 1 1 0 0 1 0.22 1.41Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n</svg>"}];
+
+let ok=0, missing=0, failed=0; const miss=[], fail=[];
+for (const item of BATCH) {
+  const set = page.findOne(n => n.type === 'COMPONENT_SET' && n.name === item.setName);
+  if (!set) { missing++; if (miss.length<8) miss.push(item.setName); continue; }
+  try {
+    const r = applyBoldXs(set, item.svg);
+    if (r.ok) ok++; else { failed++; fail.push({name:item.setName,r}); }
+  } catch(e) { failed++; if (fail.length<8) fail.push({name:item.setName,err:String(e)}); }
+}
+return { ok, missing, failed, miss, fail };

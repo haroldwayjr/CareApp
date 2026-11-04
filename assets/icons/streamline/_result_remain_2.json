@@ -1,0 +1,568 @@
+{
+  "resolved": {
+    "share-alt": {
+      "name": "share-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vVsi2aEDeGEi8xW8",
+      "streamlineName": "Share 3",
+      "setSlug": "streamline-regular",
+      "score": 167.65,
+      "query": "Share"
+    },
+    "clear": {
+      "name": "clear",
+      "category": "actions",
+      "hash": "ico_baOtbTZyCm3whuUn",
+      "streamlineName": "Alert Clear Notification",
+      "setSlug": "streamline-regular",
+      "score": 104.8,
+      "query": "Clear"
+    },
+    "search-alt": {
+      "name": "search-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vFp92aEDeGjUAiDQ",
+      "streamlineName": "Search 1",
+      "setSlug": "streamline-regular",
+      "score": 167.6,
+      "query": "Search"
+    },
+    "explore": {
+      "name": "explore",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vSzoeLj9ULgns92o",
+      "streamlineName": "Space Explore",
+      "setSlug": "streamline-regular",
+      "score": 67.35,
+      "query": "Explore"
+    },
+    "snooze": {
+      "name": "snooze",
+      "category": "actions",
+      "hash": "ico_AY426BMLBDeAJgRn",
+      "streamlineName": "Snooze Return Repeat",
+      "setSlug": "streamline-regular",
+      "score": 155.0,
+      "query": "Snooze"
+    },
+    "success": {
+      "name": "success",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vAUF2aEDeGDeG9Ya",
+      "streamlineName": "Check Circle",
+      "setSlug": "streamline-regular",
+      "score": 302.4,
+      "query": "Check Circle"
+    },
+    "lock": {
+      "name": "lock",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vyWP2aEDeGg0YWWa",
+      "streamlineName": "Lock",
+      "setSlug": "streamline-regular",
+      "score": 289.8,
+      "query": "Lock"
+    },
+    "star": {
+      "name": "star",
+      "category": "status",
+      "hash": "ico_WWMza7lZFYB6uhmT",
+      "streamlineName": "Star Half",
+      "setSlug": "streamline-regular",
+      "score": 117.55,
+      "query": "Star"
+    },
+    "shield-check": {
+      "name": "shield-check",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vArt2aEhtdP2WwqY",
+      "streamlineName": "Shield Check",
+      "setSlug": "streamline-regular",
+      "score": 252.4,
+      "query": "Shield Check"
+    },
+    "loading": {
+      "name": "loading",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4v6C92aEJttxih3qz",
+      "streamlineName": "Loading",
+      "setSlug": "streamline-regular",
+      "score": 289.65,
+      "query": "Loading"
+    },
+    "critical": {
+      "name": "critical",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4v4Z72aEJttT2FGNT",
+      "streamlineName": "Flash",
+      "setSlug": "streamline-regular",
+      "score": 289.75,
+      "query": "Flash"
+    },
+    "skip-forward": {
+      "name": "skip-forward",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4v9sl2aEJttJ4v0Ij",
+      "streamlineName": "Button Next",
+      "setSlug": "streamline-regular",
+      "score": 302.45,
+      "query": "Button Next"
+    },
+    "image": {
+      "name": "image",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vNZh2aENc3wvSLwy",
+      "streamlineName": "Image File Sync",
+      "setSlug": "streamline-regular",
+      "score": 155.25,
+      "query": "Image"
+    },
+    "mic-off": {
+      "name": "mic-off",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vNDO2aENc3SyUbfh",
+      "streamlineName": "Microphone Off",
+      "setSlug": "streamline-regular",
+      "score": 252.3,
+      "query": "Microphone Off"
+    },
+    "send": {
+      "name": "send",
+      "category": "comms",
+      "hash": "ico_mRu4pQJ4vdT9eLjM5pgWaz3X",
+      "streamlineName": "Send Email 2",
+      "setSlug": "streamline-regular",
+      "score": 130.4,
+      "query": "Send Email"
+    },
+    "attachment": {
+      "name": "attachment",
+      "category": "files",
+      "hash": "ico_mRu4pQJ4vYn12aEDeGsjsDR0",
+      "streamlineName": "Attachment 1",
+      "setSlug": "streamline-regular",
+      "score": 167.4,
+      "query": "Attachment"
+    },
+    "file-zip": {
+      "name": "file-zip",
+      "category": "files",
+      "hash": "ico_mRu4pQJ4vSMp2aE232iJ4lmq",
+      "streamlineName": "Zip File",
+      "setSlug": "streamline-regular",
+      "score": 167.6,
+      "query": "Zip"
+    },
+    "notes": {
+      "name": "notes",
+      "category": "files",
+      "hash": "ico_mRu4pQJ4v0z22aEdzpfSZvZ5",
+      "streamlineName": "Notes Add",
+      "setSlug": "streamline-regular",
+      "score": 167.55,
+      "query": "Notes"
+    },
+    "cloud": {
+      "name": "cloud",
+      "category": "files",
+      "hash": "ico_mRu4pQJ4vzez2aEaf74pQDeG",
+      "streamlineName": "Cloud",
+      "setSlug": "streamline-regular",
+      "score": 239.75,
+      "query": "Cloud"
+    },
+    "server": {
+      "name": "server",
+      "category": "files",
+      "hash": "ico_mRu4pQJ4vi2V2aEhtdJttDl0",
+      "streamlineName": "Server",
+      "setSlug": "streamline-regular",
+      "score": 239.7,
+      "query": "Server"
+    },
+    "agreement": {
+      "name": "agreement",
+      "category": "files",
+      "hash": "ico_Brv9g3nidH3cUoSi",
+      "streamlineName": "Workflow Agreement",
+      "setSlug": "streamline-regular",
+      "score": 67.1,
+      "query": "Agreement"
+    },
+    "manual": {
+      "name": "manual",
+      "category": "files",
+      "hash": "ico_8BAsDzsrf7PM1MZW",
+      "streamlineName": "Manual Book Content Sign",
+      "setSlug": "streamline-regular",
+      "score": 142.8,
+      "query": "Manual"
+    },
+    "wiki": {
+      "name": "wiki",
+      "category": "files",
+      "hash": "ico_mRu4pQJ4vBSKeLjJ4v8ueUKg",
+      "streamlineName": "Wikipedia Logo",
+      "setSlug": "streamline-regular",
+      "score": 57.3,
+      "query": "Wiki"
+    },
+    "magazine": {
+      "name": "magazine",
+      "category": "files",
+      "hash": "ico_b329AuMkgPnykblm",
+      "streamlineName": "Shopping Magazine Advertising",
+      "setSlug": "streamline-regular",
+      "score": 54.55,
+      "query": "Magazine"
+    },
+    "portfolio": {
+      "name": "portfolio",
+      "category": "files",
+      "hash": "ico_yhs9tReplNzeACNn",
+      "streamlineName": "Portfolio Project User",
+      "setSlug": "streamline-regular",
+      "score": 104.9,
+      "query": "Portfolio"
+    },
+    "letter": {
+      "name": "letter",
+      "category": "files",
+      "hash": "ico_MfxV5zPLtjWoEWtP",
+      "streamlineName": "Letter Balloon",
+      "setSlug": "streamline-regular",
+      "score": 117.3,
+      "query": "Letter"
+    },
+    "parcel": {
+      "name": "parcel",
+      "category": "files",
+      "hash": "ico_K7ETC1QpORWiZwIn",
+      "streamlineName": "Lightweight Parcel",
+      "setSlug": "streamline-regular",
+      "score": 67.1,
+      "query": "Parcel"
+    },
+    "shelf": {
+      "name": "shelf",
+      "category": "files",
+      "hash": "ico_mRu4pQJ4vTK5eLjQ3yinpcZO",
+      "streamlineName": "Shelf Tv",
+      "setSlug": "streamline-regular",
+      "score": 117.6,
+      "query": "Shelf"
+    },
+    "folder-star": {
+      "name": "folder-star",
+      "category": "files",
+      "hash": "ico_mRu4pQJ4vnCf2aE232WipSJ4",
+      "streamlineName": "Folder Star",
+      "setSlug": "streamline-regular",
+      "score": 302.45,
+      "query": "Folder Star"
+    },
+    "gift": {
+      "name": "gift",
+      "category": "commerce",
+      "hash": "ico_mRu4pQJ4vANWeLjK1i49rlb7",
+      "streamlineName": "Gift Box",
+      "setSlug": "streamline-regular",
+      "score": 117.6,
+      "query": "Gift"
+    },
+    "barcode": {
+      "name": "barcode",
+      "category": "commerce",
+      "hash": "ico_mRu4pQJ4veuQ2aEdzpgWaQlb",
+      "streamlineName": "Barcode",
+      "setSlug": "streamline-regular",
+      "score": 289.65,
+      "query": "Barcode"
+    },
+    "mri": {
+      "name": "mri",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vWzweLj9ULWipucM",
+      "streamlineName": "Radiology Scan Mri",
+      "setSlug": "streamline-regular",
+      "score": 105.1,
+      "query": "MRI"
+    },
+    "prosthetic": {
+      "name": "prosthetic",
+      "category": "health",
+      "hash": "ico_kkS2SfMf2hjF3ihL",
+      "streamlineName": "Prosthetic Leg 1",
+      "setSlug": "streamline-regular",
+      "score": 105.2,
+      "query": "Prosthetic"
+    },
+    "counseling": {
+      "name": "counseling",
+      "category": "health",
+      "hash": "ico_QQybWYQmmj4flAqi",
+      "streamlineName": "Counseling 3",
+      "setSlug": "streamline-regular",
+      "score": 167.4,
+      "query": "Counseling"
+    },
+    "911": {
+      "name": "911",
+      "category": "health",
+      "hash": "ico_sedTvcgIqSBl6URn",
+      "streamlineName": "Emergency Call",
+      "setSlug": "streamline-regular",
+      "score": 302.3,
+      "query": "Emergency Call"
+    },
+    "cancer": {
+      "name": "cancer",
+      "category": "health",
+      "hash": "ico_rhiZRPqbgiUYgBbY",
+      "streamlineName": "Cancer Cell 2",
+      "setSlug": "streamline-regular",
+      "score": 155.35,
+      "query": "Cancer"
+    },
+    "neurology": {
+      "name": "neurology",
+      "category": "health",
+      "hash": "ico_zUTdHlqvofyjcdK0",
+      "streamlineName": "Brain Neurology",
+      "setSlug": "streamline-regular",
+      "score": 117.25,
+      "query": "Neurology"
+    },
+    "language": {
+      "name": "language",
+      "category": "misc",
+      "hash": "ico_a9ZgAVjuETfDT6LZ",
+      "streamlineName": "Language Barrier Confused",
+      "setSlug": "streamline-regular",
+      "score": 154.75,
+      "query": "Language"
+    },
+    "laptop": {
+      "name": "laptop",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vHK22aEhtdQ3y208",
+      "streamlineName": "Laptop",
+      "setSlug": "streamline-regular",
+      "score": 289.7,
+      "query": "Laptop"
+    },
+    "printer-alt": {
+      "name": "printer-alt",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vpk22aEDeGdzpEM1",
+      "streamlineName": "Printer View",
+      "setSlug": "streamline-regular",
+      "score": 167.4,
+      "query": "Printer"
+    },
+    "terminal": {
+      "name": "terminal",
+      "category": "misc",
+      "hash": "ico_X9OwiAQAfsrEvPYE",
+      "streamlineName": "Terminal",
+      "setSlug": "streamline-regular",
+      "score": 239.6,
+      "query": "Terminal"
+    },
+    "tool": {
+      "name": "tool",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vUw6eLjQ3yjUAx2W",
+      "streamlineName": "Tools Keys",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Tools"
+    },
+    "qr-scan": {
+      "name": "qr-scan",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vgVH2aEDeG8uecqY",
+      "streamlineName": "Iris Scan",
+      "setSlug": "streamline-regular",
+      "score": 117.55,
+      "query": "Scan"
+    },
+    "flash-off": {
+      "name": "flash-off",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vMcF2aEJtt49rylB",
+      "streamlineName": "Flash Off",
+      "setSlug": "streamline-regular",
+      "score": 302.55,
+      "query": "Flash Off"
+    },
+    "history": {
+      "name": "history",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vV6OeLj9ULy7qY5t",
+      "streamlineName": "History Fan",
+      "setSlug": "streamline-regular",
+      "score": 117.45,
+      "query": "History"
+    },
+    "weather": {
+      "name": "weather",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vXVleLj4pQdzpi1D",
+      "streamlineName": "Weather Rain",
+      "setSlug": "streamline-regular",
+      "score": 117.4,
+      "query": "Weather"
+    },
+    "wind": {
+      "name": "wind",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vTnBeLj9ULQ3yR5q",
+      "streamlineName": "Wind West",
+      "setSlug": "streamline-regular",
+      "score": 117.55,
+      "query": "Wind"
+    },
+    "food": {
+      "name": "food",
+      "category": "misc",
+      "hash": "ico_hVlPXWflk1dDElGL",
+      "streamlineName": "Food Delivery Bag",
+      "setSlug": "streamline-regular",
+      "score": 105.15,
+      "query": "Food"
+    },
+    "bike": {
+      "name": "bike",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vVRdeLj08UinpbRt",
+      "streamlineName": "Bicycle",
+      "setSlug": "streamline-regular",
+      "score": 239.65,
+      "query": "Bicycle"
+    },
+    "office": {
+      "name": "office",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vPkC2aEaf7y7qNc3",
+      "streamlineName": "Office File Text Alternate",
+      "setSlug": "streamline-regular",
+      "score": 142.7,
+      "query": "Office"
+    },
+    "graduation": {
+      "name": "graduation",
+      "category": "misc",
+      "hash": "ico_iyciOjqz1No3E9hs",
+      "streamlineName": "Graduation Hat",
+      "setSlug": "streamline-regular",
+      "score": 117.3,
+      "query": "Graduation"
+    },
+    "ticket": {
+      "name": "ticket",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vgZ1eLjK1iHO2rFk",
+      "streamlineName": "Ticket",
+      "setSlug": "streamline-regular",
+      "score": 239.7,
+      "query": "Ticket"
+    },
+    "leaf": {
+      "name": "leaf",
+      "category": "misc",
+      "hash": "ico_u4FWVrLqtaWiU7cY",
+      "streamlineName": "Ecology Leaf",
+      "setSlug": "streamline-regular",
+      "score": 67.4,
+      "query": "Leaf"
+    },
+    "droplet": {
+      "name": "droplet",
+      "category": "misc",
+      "hash": "ico_HbSeRHNCsQgHpubc",
+      "streamlineName": "Drop Shape",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Drop"
+    },
+    "satellite": {
+      "name": "satellite",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vMXe2aEDeGitsdim",
+      "streamlineName": "Satellite",
+      "setSlug": "streamline-regular",
+      "score": 289.55,
+      "query": "Satellite"
+    }
+  },
+  "notFound": [
+    "confirm",
+    "unpublish",
+    "unavailable",
+    "folder-open",
+    "price-tag",
+    "geriatric",
+    "glucose",
+    "anesthesia",
+    "dark-mode",
+    "gift-alt"
+  ],
+  "usedHashes": {
+    "ico_mRu4pQJ4vVsi2aEDeGEi8xW8": "share-alt",
+    "ico_baOtbTZyCm3whuUn": "clear",
+    "ico_mRu4pQJ4vFp92aEDeGjUAiDQ": "search-alt",
+    "ico_mRu4pQJ4vSzoeLj9ULgns92o": "explore",
+    "ico_AY426BMLBDeAJgRn": "snooze",
+    "ico_mRu4pQJ4vAUF2aEDeGDeG9Ya": "success",
+    "ico_mRu4pQJ4vyWP2aEDeGg0YWWa": "lock",
+    "ico_WWMza7lZFYB6uhmT": "star",
+    "ico_mRu4pQJ4vArt2aEhtdP2WwqY": "shield-check",
+    "ico_mRu4pQJ4v6C92aEJttxih3qz": "loading",
+    "ico_mRu4pQJ4v4Z72aEJttT2FGNT": "critical",
+    "ico_mRu4pQJ4v9sl2aEJttJ4v0Ij": "skip-forward",
+    "ico_mRu4pQJ4vNZh2aENc3wvSLwy": "image",
+    "ico_mRu4pQJ4vNDO2aENc3SyUbfh": "mic-off",
+    "ico_mRu4pQJ4vdT9eLjM5pgWaz3X": "send",
+    "ico_mRu4pQJ4vYn12aEDeGsjsDR0": "attachment",
+    "ico_mRu4pQJ4vSMp2aE232iJ4lmq": "file-zip",
+    "ico_mRu4pQJ4v0z22aEdzpfSZvZ5": "notes",
+    "ico_mRu4pQJ4vzez2aEaf74pQDeG": "cloud",
+    "ico_mRu4pQJ4vi2V2aEhtdJttDl0": "server",
+    "ico_Brv9g3nidH3cUoSi": "agreement",
+    "ico_8BAsDzsrf7PM1MZW": "manual",
+    "ico_mRu4pQJ4vBSKeLjJ4v8ueUKg": "wiki",
+    "ico_b329AuMkgPnykblm": "magazine",
+    "ico_yhs9tReplNzeACNn": "portfolio",
+    "ico_MfxV5zPLtjWoEWtP": "letter",
+    "ico_K7ETC1QpORWiZwIn": "parcel",
+    "ico_mRu4pQJ4vTK5eLjQ3yinpcZO": "shelf",
+    "ico_mRu4pQJ4vnCf2aE232WipSJ4": "folder-star",
+    "ico_mRu4pQJ4vANWeLjK1i49rlb7": "gift",
+    "ico_mRu4pQJ4veuQ2aEdzpgWaQlb": "barcode",
+    "ico_mRu4pQJ4vWzweLj9ULWipucM": "mri",
+    "ico_kkS2SfMf2hjF3ihL": "prosthetic",
+    "ico_QQybWYQmmj4flAqi": "counseling",
+    "ico_sedTvcgIqSBl6URn": "911",
+    "ico_rhiZRPqbgiUYgBbY": "cancer",
+    "ico_zUTdHlqvofyjcdK0": "neurology",
+    "ico_a9ZgAVjuETfDT6LZ": "language",
+    "ico_mRu4pQJ4vHK22aEhtdQ3y208": "laptop",
+    "ico_mRu4pQJ4vpk22aEDeGdzpEM1": "printer-alt",
+    "ico_X9OwiAQAfsrEvPYE": "terminal",
+    "ico_mRu4pQJ4vUw6eLjQ3yjUAx2W": "tool",
+    "ico_mRu4pQJ4vgVH2aEDeG8uecqY": "qr-scan",
+    "ico_mRu4pQJ4vMcF2aEJtt49rylB": "flash-off",
+    "ico_mRu4pQJ4vV6OeLj9ULy7qY5t": "history",
+    "ico_mRu4pQJ4vXVleLj4pQdzpi1D": "weather",
+    "ico_mRu4pQJ4vTnBeLj9ULQ3yR5q": "wind",
+    "ico_hVlPXWflk1dDElGL": "food",
+    "ico_mRu4pQJ4vVRdeLj08UinpbRt": "bike",
+    "ico_mRu4pQJ4vPkC2aEaf7y7qNc3": "office",
+    "ico_iyciOjqz1No3E9hs": "graduation",
+    "ico_mRu4pQJ4vgZ1eLjK1iHO2rFk": "ticket",
+    "ico_u4FWVrLqtaWiU7cY": "leaf",
+    "ico_HbSeRHNCsQgHpubc": "droplet",
+    "ico_mRu4pQJ4vMXe2aEDeGitsdim": "satellite"
+  }
+}

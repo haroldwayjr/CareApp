@@ -1,0 +1,60 @@
+{
+  "completed": [
+    12,
+    13,
+    14,
+    15
+  ],
+  "partial": {
+    "batch": 16,
+    "payload": "__reapply_payload_16",
+    "len": 7500,
+    "b64_len": 40860,
+    "next_micro_part": 15,
+    "next_file": "_micro_16/016_p15.js",
+    "method": "500-char micros; verify expect after each; truncate+retry on mismatch"
+  },
+  "remaining_batches": [
+    16,
+    17,
+    18,
+    19
+  ],
+  "results_file": "_reapply_12_19_results.jsonl",
+  "results": [
+    {
+      "batch": 12,
+      "ok": 20,
+      "missing": 0,
+      "failed": 0,
+      "miss": [],
+      "fail": []
+    },
+    {
+      "batch": 13,
+      "ok": 20,
+      "missing": 0,
+      "failed": 0,
+      "miss": [],
+      "fail": []
+    },
+    {
+      "batch": 14,
+      "ok": 20,
+      "missing": 0,
+      "failed": 0,
+      "miss": [],
+      "fail": []
+    },
+    {
+      "batch": 15,
+      "ok": 20,
+      "missing": 0,
+      "failed": 0,
+      "miss": [],
+      "fail": []
+    }
+  ],
+  "fileKey": "hB1NzwMnZt2ALeR0OslaWi",
+  "howto": "For each remaining batch N: run _micro_N/00_create.js (or reuse payload), then 001_p0.js.. sequentially via use_figma with skillNames resource:figma-use, then zz_eval.js. Prefer copying add= strings from Shell-printed exact values, not Read (Read can display-corrupt)."
+}

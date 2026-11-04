@@ -1,0 +1,2366 @@
+[
+  {
+    "name": "911",
+    "category": "health",
+    "placedOnNodeId": "49:3",
+    "componentId": "49:167"
+  },
+  {
+    "name": "accessibility",
+    "category": "misc",
+    "placedOnNodeId": "49:155",
+    "componentId": "49:172"
+  },
+  {
+    "name": "add",
+    "category": "actions",
+    "placedOnNodeId": "49:159",
+    "componentId": "49:177"
+  },
+  {
+    "name": "agreement",
+    "category": "files",
+    "placedOnNodeId": "49:178",
+    "componentId": "49:644"
+  },
+  {
+    "name": "airplane",
+    "category": "misc",
+    "placedOnNodeId": "49:428",
+    "componentId": "49:649"
+  },
+  {
+    "name": "alarm",
+    "category": "misc",
+    "placedOnNodeId": "49:417",
+    "componentId": "49:651"
+  },
+  {
+    "name": "ambulance",
+    "category": "health",
+    "placedOnNodeId": "49:434",
+    "componentId": "49:653"
+  },
+  {
+    "name": "appointment",
+    "category": "health",
+    "placedOnNodeId": "49:447",
+    "componentId": "49:655"
+  },
+  {
+    "name": "archive",
+    "category": "actions",
+    "placedOnNodeId": "49:453",
+    "componentId": "49:657"
+  },
+  {
+    "name": "arrow-down",
+    "category": "navigation",
+    "placedOnNodeId": "49:458",
+    "componentId": "49:659"
+  },
+  {
+    "name": "arrow-left",
+    "category": "navigation",
+    "placedOnNodeId": "49:425",
+    "componentId": "49:664"
+  },
+  {
+    "name": "arrow-right",
+    "category": "navigation",
+    "placedOnNodeId": "49:463",
+    "componentId": "49:666"
+  },
+  {
+    "name": "arrow-up",
+    "category": "navigation",
+    "placedOnNodeId": "49:472",
+    "componentId": "49:668"
+  },
+  {
+    "name": "atom",
+    "category": "misc",
+    "placedOnNodeId": "49:468",
+    "componentId": "49:670"
+  },
+  {
+    "name": "attach",
+    "category": "actions",
+    "placedOnNodeId": "49:461",
+    "componentId": "49:672"
+  },
+  {
+    "name": "attachment",
+    "category": "files",
+    "placedOnNodeId": "49:466",
+    "componentId": "49:674"
+  },
+  {
+    "name": "award",
+    "category": "misc",
+    "placedOnNodeId": "49:475",
+    "componentId": "49:676"
+  },
+  {
+    "name": "back",
+    "category": "navigation",
+    "placedOnNodeId": "49:478",
+    "componentId": "49:678"
+  },
+  {
+    "name": "badge",
+    "category": "status",
+    "placedOnNodeId": "49:481",
+    "componentId": "49:680"
+  },
+  {
+    "name": "bag",
+    "category": "commerce",
+    "placedOnNodeId": "49:525",
+    "componentId": "49:685"
+  },
+  {
+    "name": "balloon",
+    "category": "misc",
+    "placedOnNodeId": "49:518",
+    "componentId": "49:690"
+  },
+  {
+    "name": "bandage",
+    "category": "health",
+    "placedOnNodeId": "49:505",
+    "componentId": "49:692"
+  },
+  {
+    "name": "bank",
+    "category": "commerce",
+    "placedOnNodeId": "49:495",
+    "componentId": "49:694"
+  },
+  {
+    "name": "barcode",
+    "category": "commerce",
+    "placedOnNodeId": "49:538",
+    "componentId": "49:696"
+  },
+  {
+    "name": "barcode-scan",
+    "category": "misc",
+    "placedOnNodeId": "49:484",
+    "componentId": "49:698"
+  },
+  {
+    "name": "battery",
+    "category": "misc",
+    "placedOnNodeId": "49:503",
+    "componentId": "49:700"
+  },
+  {
+    "name": "battery-charging",
+    "category": "misc",
+    "placedOnNodeId": "49:528",
+    "componentId": "49:702"
+  },
+  {
+    "name": "battery-full",
+    "category": "misc",
+    "placedOnNodeId": "49:547",
+    "componentId": "49:704"
+  },
+  {
+    "name": "battery-low",
+    "category": "misc",
+    "placedOnNodeId": "49:555",
+    "componentId": "49:736"
+  },
+  {
+    "name": "bed",
+    "category": "health",
+    "placedOnNodeId": "49:581",
+    "componentId": "49:742"
+  },
+  {
+    "name": "bell",
+    "category": "status",
+    "placedOnNodeId": "49:552",
+    "componentId": "49:708"
+  },
+  {
+    "name": "bell-off",
+    "category": "status",
+    "placedOnNodeId": "49:575",
+    "componentId": "49:740"
+  },
+  {
+    "name": "bike",
+    "category": "misc",
+    "placedOnNodeId": "49:565",
+    "componentId": "49:706"
+  },
+  {
+    "name": "blocked",
+    "category": "status",
+    "placedOnNodeId": "49:559",
+    "componentId": "49:710"
+  },
+  {
+    "name": "blog",
+    "category": "files",
+    "placedOnNodeId": "49:571",
+    "componentId": "49:738"
+  },
+  {
+    "name": "blood",
+    "category": "health",
+    "placedOnNodeId": "49:594",
+    "componentId": "49:746"
+  },
+  {
+    "name": "blood-pressure",
+    "category": "health",
+    "placedOnNodeId": "49:620",
+    "componentId": "49:752"
+  },
+  {
+    "name": "bluetooth",
+    "category": "misc",
+    "placedOnNodeId": "49:628",
+    "componentId": "49:728"
+  },
+  {
+    "name": "book",
+    "category": "misc",
+    "placedOnNodeId": "49:588",
+    "componentId": "49:744"
+  },
+  {
+    "name": "bookmark",
+    "category": "files",
+    "placedOnNodeId": "49:611",
+    "componentId": "49:750"
+  },
+  {
+    "name": "box-alt",
+    "category": "files",
+    "placedOnNodeId": "49:634",
+    "componentId": "49:754"
+  },
+  {
+    "name": "brain",
+    "category": "health",
+    "placedOnNodeId": "49:600",
+    "componentId": "49:748"
+  },
+  {
+    "name": "breadcrumb",
+    "category": "navigation",
+    "placedOnNodeId": "49:613",
+    "componentId": "49:722"
+  },
+  {
+    "name": "briefcase",
+    "category": "misc",
+    "placedOnNodeId": "49:755",
+    "componentId": "49:1069"
+  },
+  {
+    "name": "brightness",
+    "category": "media",
+    "placedOnNodeId": "49:793",
+    "componentId": "49:1071"
+  },
+  {
+    "name": "browse",
+    "category": "actions",
+    "placedOnNodeId": "49:784",
+    "componentId": "49:1076"
+  },
+  {
+    "name": "bug",
+    "category": "misc",
+    "placedOnNodeId": "49:803",
+    "componentId": "49:1078"
+  },
+  {
+    "name": "building",
+    "category": "misc",
+    "placedOnNodeId": "49:772",
+    "componentId": "49:1080"
+  },
+  {
+    "name": "bus",
+    "category": "misc",
+    "placedOnNodeId": "49:762",
+    "componentId": "49:1082"
+  },
+  {
+    "name": "cabinet",
+    "category": "files",
+    "placedOnNodeId": "49:812",
+    "componentId": "49:1084"
+  },
+  {
+    "name": "cake",
+    "category": "misc",
+    "placedOnNodeId": "49:807",
+    "componentId": "49:1086"
+  },
+  {
+    "name": "calendar",
+    "category": "comms",
+    "placedOnNodeId": "49:832",
+    "componentId": "49:1088"
+  },
+  {
+    "name": "camera",
+    "category": "media",
+    "placedOnNodeId": "49:826",
+    "componentId": "49:1093"
+  },
+  {
+    "name": "camera-off",
+    "category": "misc",
+    "placedOnNodeId": "49:821",
+    "componentId": "49:1095"
+  },
+  {
+    "name": "cancel",
+    "category": "actions",
+    "placedOnNodeId": "49:866",
+    "componentId": "49:1097"
+  },
+  {
+    "name": "cancer",
+    "category": "health",
+    "placedOnNodeId": "49:837",
+    "componentId": "49:1099"
+  },
+  {
+    "name": "car",
+    "category": "misc",
+    "placedOnNodeId": "49:857",
+    "componentId": "49:1101"
+  },
+  {
+    "name": "cart",
+    "category": "commerce",
+    "placedOnNodeId": "49:871",
+    "componentId": "49:1103"
+  },
+  {
+    "name": "cast",
+    "category": "media",
+    "placedOnNodeId": "49:881",
+    "componentId": "49:1105"
+  },
+  {
+    "name": "chart-bar",
+    "category": "commerce",
+    "placedOnNodeId": "49:909",
+    "componentId": "49:1107"
+  },
+  {
+    "name": "chart-line",
+    "category": "commerce",
+    "placedOnNodeId": "49:889",
+    "componentId": "49:1109"
+  },
+  {
+    "name": "chat",
+    "category": "comms",
+    "placedOnNodeId": "49:903",
+    "componentId": "49:1111"
+  },
+  {
+    "name": "check",
+    "category": "actions",
+    "placedOnNodeId": "49:916",
+    "componentId": "49:1113"
+  },
+  {
+    "name": "chevron-down",
+    "category": "navigation",
+    "placedOnNodeId": "49:907",
+    "componentId": "49:1115"
+  },
+  {
+    "name": "chevron-left",
+    "category": "navigation",
+    "placedOnNodeId": "49:914",
+    "componentId": "49:1117"
+  },
+  {
+    "name": "chevron-right",
+    "category": "navigation",
+    "placedOnNodeId": "49:887",
+    "componentId": "49:1119"
+  },
+  {
+    "name": "chevron-up",
+    "category": "navigation",
+    "placedOnNodeId": "49:905",
+    "componentId": "49:1121"
+  },
+  {
+    "name": "clear",
+    "category": "actions",
+    "placedOnNodeId": "49:938",
+    "componentId": "49:1123"
+  },
+  {
+    "name": "clipboard",
+    "category": "files",
+    "placedOnNodeId": "49:919",
+    "componentId": "49:1125"
+  },
+  {
+    "name": "clipboard-health",
+    "category": "health",
+    "placedOnNodeId": "49:926",
+    "componentId": "49:1127"
+  },
+  {
+    "name": "clock",
+    "category": "comms",
+    "placedOnNodeId": "49:949",
+    "componentId": "49:1129"
+  },
+  {
+    "name": "close",
+    "category": "navigation",
+    "placedOnNodeId": "49:946",
+    "componentId": "49:1131"
+  },
+  {
+    "name": "close-alt",
+    "category": "actions",
+    "placedOnNodeId": "49:956",
+    "componentId": "49:1133"
+  },
+  {
+    "name": "cloud",
+    "category": "files",
+    "placedOnNodeId": "49:924",
+    "componentId": "49:1135"
+  },
+  {
+    "name": "cloud-download",
+    "category": "files",
+    "placedOnNodeId": "49:934",
+    "componentId": "49:1137"
+  },
+  {
+    "name": "cloud-sun",
+    "category": "misc",
+    "placedOnNodeId": "49:973",
+    "componentId": "49:1139"
+  },
+  {
+    "name": "cloud-upload",
+    "category": "files",
+    "placedOnNodeId": "49:969",
+    "componentId": "49:1141"
+  },
+  {
+    "name": "code",
+    "category": "misc",
+    "placedOnNodeId": "49:965",
+    "componentId": "49:1143"
+  },
+  {
+    "name": "coffee",
+    "category": "misc",
+    "placedOnNodeId": "49:984",
+    "componentId": "49:1145"
+  },
+  {
+    "name": "coins",
+    "category": "commerce",
+    "placedOnNodeId": "49:998",
+    "componentId": "49:1147"
+  },
+  {
+    "name": "comment",
+    "category": "comms",
+    "placedOnNodeId": "49:991",
+    "componentId": "49:1149"
+  },
+  {
+    "name": "compass",
+    "category": "navigation",
+    "placedOnNodeId": "49:1006",
+    "componentId": "49:1151"
+  },
+  {
+    "name": "contacts",
+    "category": "comms",
+    "placedOnNodeId": "49:959",
+    "componentId": "49:1153"
+  },
+  {
+    "name": "contract",
+    "category": "files",
+    "placedOnNodeId": "49:1011",
+    "componentId": "49:1155"
+  },
+  {
+    "name": "contrast",
+    "category": "media",
+    "placedOnNodeId": "49:1017",
+    "componentId": "49:1157"
+  },
+  {
+    "name": "copy",
+    "category": "actions",
+    "placedOnNodeId": "49:1049",
+    "componentId": "49:1159"
+  },
+  {
+    "name": "counseling",
+    "category": "health",
+    "placedOnNodeId": "49:1024",
+    "componentId": "49:1161"
+  },
+  {
+    "name": "coupon",
+    "category": "commerce",
+    "placedOnNodeId": "49:1038",
+    "componentId": "49:1163"
+  },
+  {
+    "name": "create",
+    "category": "actions",
+    "placedOnNodeId": "49:1052",
+    "componentId": "49:1165"
+  },
+  {
+    "name": "credit-card",
+    "category": "commerce",
+    "placedOnNodeId": "49:1031",
+    "componentId": "49:1167"
+  },
+  {
+    "name": "crisis",
+    "category": "health",
+    "placedOnNodeId": "49:1046",
+    "componentId": "49:1169"
+  },
+  {
+    "name": "critical",
+    "category": "status",
+    "placedOnNodeId": "49:1066",
+    "componentId": "49:1171"
+  },
+  {
+    "name": "crop",
+    "category": "media",
+    "placedOnNodeId": "49:1057",
+    "componentId": "49:1173"
+  },
+  {
+    "name": "eye-health",
+    "category": "health",
+    "placedOnNodeId": "49:1379",
+    "componentId": "49:1527"
+  },
+  {
+    "name": "eye-off",
+    "category": "status",
+    "placedOnNodeId": "49:1433",
+    "componentId": "49:1541"
+  },
+  {
+    "name": "face-id",
+    "category": "misc",
+    "placedOnNodeId": "49:1391",
+    "componentId": "49:1531"
+  },
+  {
+    "name": "factory",
+    "category": "misc",
+    "placedOnNodeId": "49:1400",
+    "componentId": "49:1533"
+  },
+  {
+    "name": "family-care",
+    "category": "health",
+    "placedOnNodeId": "49:1427",
+    "componentId": "49:1539"
+  },
+  {
+    "name": "faq",
+    "category": "files",
+    "placedOnNodeId": "49:1383",
+    "componentId": "49:1529"
+  },
+  {
+    "name": "file",
+    "category": "files",
+    "placedOnNodeId": "49:1424",
+    "componentId": "49:1537"
+  },
+  {
+    "name": "file-code",
+    "category": "files",
+    "placedOnNodeId": "49:1411",
+    "componentId": "49:1535"
+  },
+  {
+    "name": "fingerprint",
+    "category": "misc",
+    "placedOnNodeId": "49:1474",
+    "componentId": "49:1555"
+  },
+  {
+    "name": "fire",
+    "category": "misc",
+    "placedOnNodeId": "49:1494",
+    "componentId": "49:1559"
+  },
+  {
+    "name": "cut",
+    "category": "actions",
+    "placedOnNodeId": "49:1225",
+    "componentId": "50:3"
+  },
+  {
+    "name": "database",
+    "category": "files",
+    "placedOnNodeId": "49:1205",
+    "componentId": "50:5"
+  },
+  {
+    "name": "delete",
+    "category": "actions",
+    "placedOnNodeId": "49:1230",
+    "componentId": "50:7"
+  },
+  {
+    "name": "desktop",
+    "category": "misc",
+    "placedOnNodeId": "49:1198",
+    "componentId": "50:9"
+  },
+  {
+    "name": "discount",
+    "category": "commerce",
+    "placedOnNodeId": "49:1174",
+    "componentId": "50:11"
+  },
+  {
+    "name": "discover",
+    "category": "actions",
+    "placedOnNodeId": "49:1189",
+    "componentId": "50:13"
+  },
+  {
+    "name": "dna",
+    "category": "health",
+    "placedOnNodeId": "49:1216",
+    "componentId": "50:15"
+  },
+  {
+    "name": "doctor",
+    "category": "health",
+    "placedOnNodeId": "49:1179",
+    "componentId": "50:17"
+  },
+  {
+    "name": "document",
+    "category": "files",
+    "placedOnNodeId": "49:1233",
+    "componentId": "50:19"
+  },
+  {
+    "name": "dollar",
+    "category": "commerce",
+    "placedOnNodeId": "49:1235",
+    "componentId": "50:21"
+  },
+  {
+    "name": "dosage",
+    "category": "health",
+    "placedOnNodeId": "49:1266",
+    "componentId": "50:23"
+  },
+  {
+    "name": "download",
+    "category": "actions",
+    "placedOnNodeId": "49:1252",
+    "componentId": "50:25"
+  },
+  {
+    "name": "draft",
+    "category": "actions",
+    "placedOnNodeId": "49:1255",
+    "componentId": "50:27"
+  },
+  {
+    "name": "drag",
+    "category": "navigation",
+    "placedOnNodeId": "49:1246",
+    "componentId": "50:29"
+  },
+  {
+    "name": "drawer",
+    "category": "files",
+    "placedOnNodeId": "49:1250",
+    "componentId": "50:31"
+  },
+  {
+    "name": "droplet",
+    "category": "misc",
+    "placedOnNodeId": "49:1272",
+    "componentId": "50:33"
+  },
+  {
+    "name": "duplicate",
+    "category": "actions",
+    "placedOnNodeId": "49:1274",
+    "componentId": "50:35"
+  },
+  {
+    "name": "ear",
+    "category": "health",
+    "placedOnNodeId": "49:1281",
+    "componentId": "50:37"
+  },
+  {
+    "name": "ecology",
+    "category": "misc",
+    "placedOnNodeId": "49:1316",
+    "componentId": "49:1509"
+  },
+  {
+    "name": "edit",
+    "category": "actions",
+    "placedOnNodeId": "49:1277",
+    "componentId": "50:39"
+  },
+  {
+    "name": "edit-alt",
+    "category": "actions",
+    "placedOnNodeId": "49:1296",
+    "componentId": "49:1503"
+  },
+  {
+    "name": "emergency",
+    "category": "health",
+    "placedOnNodeId": "49:1302",
+    "componentId": "49:1505"
+  },
+  {
+    "name": "empty-trash",
+    "category": "actions",
+    "placedOnNodeId": "49:1288",
+    "componentId": "50:41"
+  },
+  {
+    "name": "envelope",
+    "category": "files",
+    "placedOnNodeId": "49:1311",
+    "componentId": "49:1507"
+  },
+  {
+    "name": "equalizer",
+    "category": "media",
+    "placedOnNodeId": "49:1351",
+    "componentId": "49:1521"
+  },
+  {
+    "name": "erase",
+    "category": "actions",
+    "placedOnNodeId": "49:1333",
+    "componentId": "49:1515"
+  },
+  {
+    "name": "error",
+    "category": "status",
+    "placedOnNodeId": "49:1347",
+    "componentId": "49:1519"
+  },
+  {
+    "name": "exit-fullscreen",
+    "category": "navigation",
+    "placedOnNodeId": "49:1320",
+    "componentId": "49:1511"
+  },
+  {
+    "name": "explore",
+    "category": "actions",
+    "placedOnNodeId": "49:1368",
+    "componentId": "49:1525"
+  },
+  {
+    "name": "export",
+    "category": "actions",
+    "placedOnNodeId": "49:1364",
+    "componentId": "49:1523"
+  },
+  {
+    "name": "external-link",
+    "category": "navigation",
+    "placedOnNodeId": "49:1341",
+    "componentId": "49:1517"
+  },
+  {
+    "name": "eye",
+    "category": "status",
+    "placedOnNodeId": "49:1330",
+    "componentId": "49:1513"
+  },
+  {
+    "name": "file-image",
+    "category": "files",
+    "placedOnNodeId": "49:1447",
+    "componentId": "49:1547"
+  },
+  {
+    "name": "file-pdf",
+    "category": "files",
+    "placedOnNodeId": "49:1451",
+    "componentId": "49:1549"
+  },
+  {
+    "name": "file-text",
+    "category": "files",
+    "placedOnNodeId": "49:1486",
+    "componentId": "49:1557"
+  },
+  {
+    "name": "file-zip",
+    "category": "files",
+    "placedOnNodeId": "49:1457",
+    "componentId": "49:1551"
+  },
+  {
+    "name": "film",
+    "category": "media",
+    "placedOnNodeId": "49:1443",
+    "componentId": "49:1545"
+  },
+  {
+    "name": "filter",
+    "category": "navigation",
+    "placedOnNodeId": "49:1440",
+    "componentId": "49:1543"
+  },
+  {
+    "name": "find",
+    "category": "actions",
+    "placedOnNodeId": "49:1467",
+    "componentId": "49:1553"
+  },
+  {
+    "name": "first-aid",
+    "category": "health",
+    "placedOnNodeId": "49:1497",
+    "componentId": "49:1561"
+  },
+  {
+    "name": "fitness",
+    "category": "health",
+    "placedOnNodeId": "50:431",
+    "componentId": "51:3"
+  },
+  {
+    "name": "flag",
+    "category": "status",
+    "placedOnNodeId": "50:464",
+    "componentId": "51:5"
+  },
+  {
+    "name": "flag-alt",
+    "category": "actions",
+    "placedOnNodeId": "50:458",
+    "componentId": "51:7"
+  },
+  {
+    "name": "flash",
+    "category": "misc",
+    "placedOnNodeId": "50:42",
+    "componentId": "51:9"
+  },
+  {
+    "name": "flash-off",
+    "category": "misc",
+    "placedOnNodeId": "50:452",
+    "componentId": "51:11"
+  },
+  {
+    "name": "flip",
+    "category": "media",
+    "placedOnNodeId": "50:439",
+    "componentId": "51:13"
+  },
+  {
+    "name": "folder",
+    "category": "files",
+    "placedOnNodeId": "50:423",
+    "componentId": "51:15"
+  },
+  {
+    "name": "folder-add",
+    "category": "files",
+    "placedOnNodeId": "50:425",
+    "componentId": "51:17"
+  },
+  {
+    "name": "folder-shared",
+    "category": "files",
+    "placedOnNodeId": "50:485",
+    "componentId": "51:19"
+  },
+  {
+    "name": "folder-star",
+    "category": "files",
+    "placedOnNodeId": "50:473",
+    "componentId": "51:21"
+  },
+  {
+    "name": "food",
+    "category": "misc",
+    "placedOnNodeId": "50:492",
+    "componentId": "51:23"
+  },
+  {
+    "name": "forward",
+    "category": "navigation",
+    "placedOnNodeId": "50:489",
+    "componentId": "51:25"
+  },
+  {
+    "name": "forward-alt",
+    "category": "actions",
+    "placedOnNodeId": "50:482",
+    "componentId": "51:27"
+  },
+  {
+    "name": "forward-mail",
+    "category": "comms",
+    "placedOnNodeId": "50:477",
+    "componentId": "51:29"
+  },
+  {
+    "name": "fullscreen",
+    "category": "navigation",
+    "placedOnNodeId": "50:467",
+    "componentId": "51:31"
+  },
+  {
+    "name": "gallery",
+    "category": "media",
+    "placedOnNodeId": "50:498",
+    "componentId": "51:33"
+  },
+  {
+    "name": "gas",
+    "category": "misc",
+    "placedOnNodeId": "50:504",
+    "componentId": "51:35"
+  },
+  {
+    "name": "gift",
+    "category": "commerce",
+    "placedOnNodeId": "50:540",
+    "componentId": "51:37"
+  },
+  {
+    "name": "glasses",
+    "category": "health",
+    "placedOnNodeId": "50:514",
+    "componentId": "51:39"
+  },
+  {
+    "name": "globe",
+    "category": "misc",
+    "placedOnNodeId": "50:526",
+    "componentId": "51:41"
+  },
+  {
+    "name": "graduation",
+    "category": "misc",
+    "placedOnNodeId": "50:532",
+    "componentId": "51:43"
+  },
+  {
+    "name": "grid",
+    "category": "misc",
+    "placedOnNodeId": "50:510",
+    "componentId": "51:45"
+  },
+  {
+    "name": "group",
+    "category": "comms",
+    "placedOnNodeId": "50:537",
+    "componentId": "51:47"
+  },
+  {
+    "name": "guide",
+    "category": "files",
+    "placedOnNodeId": "50:520",
+    "componentId": "51:49"
+  },
+  {
+    "name": "hammer",
+    "category": "misc",
+    "placedOnNodeId": "50:585",
+    "componentId": "51:51"
+  },
+  {
+    "name": "hand-wash",
+    "category": "health",
+    "placedOnNodeId": "50:568",
+    "componentId": "51:53"
+  },
+  {
+    "name": "hard-drive",
+    "category": "files",
+    "placedOnNodeId": "50:577",
+    "componentId": "51:55"
+  },
+  {
+    "name": "headphones",
+    "category": "media",
+    "placedOnNodeId": "50:548",
+    "componentId": "51:57"
+  },
+  {
+    "name": "hearing-aid",
+    "category": "health",
+    "placedOnNodeId": "50:555",
+    "componentId": "51:59"
+  },
+  {
+    "name": "heart",
+    "category": "health",
+    "placedOnNodeId": "50:552",
+    "componentId": "51:61"
+  },
+  {
+    "name": "help",
+    "category": "status",
+    "placedOnNodeId": "50:563",
+    "componentId": "51:63"
+  },
+  {
+    "name": "hipaa",
+    "category": "health",
+    "placedOnNodeId": "50:571",
+    "componentId": "51:65"
+  },
+  {
+    "name": "history",
+    "category": "misc",
+    "placedOnNodeId": "50:588",
+    "componentId": "51:67"
+  },
+  {
+    "name": "home",
+    "category": "navigation",
+    "placedOnNodeId": "50:601",
+    "componentId": "51:69"
+  },
+  {
+    "name": "home-alt",
+    "category": "navigation",
+    "placedOnNodeId": "50:596",
+    "componentId": "51:71"
+  },
+  {
+    "name": "hospital",
+    "category": "health",
+    "placedOnNodeId": "50:598",
+    "componentId": "51:73"
+  },
+  {
+    "name": "id-card",
+    "category": "misc",
+    "placedOnNodeId": "50:604",
+    "componentId": "51:75"
+  },
+  {
+    "name": "image",
+    "category": "media",
+    "placedOnNodeId": "50:615",
+    "componentId": "51:77"
+  },
+  {
+    "name": "import",
+    "category": "actions",
+    "placedOnNodeId": "50:624",
+    "componentId": "51:79"
+  },
+  {
+    "name": "inbox",
+    "category": "comms",
+    "placedOnNodeId": "50:610",
+    "componentId": "51:81"
+  },
+  {
+    "name": "info",
+    "category": "status",
+    "placedOnNodeId": "50:634",
+    "componentId": "51:83"
+  },
+  {
+    "name": "inhaler",
+    "category": "health",
+    "placedOnNodeId": "50:628",
+    "componentId": "51:85"
+  },
+  {
+    "name": "insurance",
+    "category": "health",
+    "placedOnNodeId": "50:678",
+    "componentId": "51:87"
+  },
+  {
+    "name": "invoice",
+    "category": "commerce",
+    "placedOnNodeId": "50:658",
+    "componentId": "51:89"
+  },
+  {
+    "name": "key",
+    "category": "misc",
+    "placedOnNodeId": "50:640",
+    "componentId": "51:91"
+  },
+  {
+    "name": "keyboard",
+    "category": "misc",
+    "placedOnNodeId": "50:647",
+    "componentId": "51:93"
+  },
+  {
+    "name": "lab",
+    "category": "health",
+    "placedOnNodeId": "50:683",
+    "componentId": "51:95"
+  },
+  {
+    "name": "language",
+    "category": "misc",
+    "placedOnNodeId": "50:666",
+    "componentId": "51:97"
+  },
+  {
+    "name": "laptop",
+    "category": "misc",
+    "placedOnNodeId": "50:695",
+    "componentId": "51:99"
+  },
+  {
+    "name": "layers",
+    "category": "navigation",
+    "placedOnNodeId": "50:699",
+    "componentId": "51:101"
+  },
+  {
+    "name": "layout",
+    "category": "misc",
+    "placedOnNodeId": "52:200",
+    "componentId": "52:482"
+  },
+  {
+    "name": "leaf",
+    "category": "misc",
+    "placedOnNodeId": "52:169",
+    "componentId": "52:484"
+  },
+  {
+    "name": "letter",
+    "category": "files",
+    "placedOnNodeId": "52:205",
+    "componentId": "52:486"
+  },
+  {
+    "name": "light-mode",
+    "category": "misc",
+    "placedOnNodeId": "52:163",
+    "componentId": "52:488"
+  },
+  {
+    "name": "link",
+    "category": "actions",
+    "placedOnNodeId": "52:196",
+    "componentId": "52:490"
+  },
+  {
+    "name": "list",
+    "category": "misc",
+    "placedOnNodeId": "52:2",
+    "componentId": "52:492"
+  },
+  {
+    "name": "loading",
+    "category": "status",
+    "placedOnNodeId": "52:179",
+    "componentId": "52:494"
+  },
+  {
+    "name": "locate",
+    "category": "actions",
+    "placedOnNodeId": "52:188",
+    "componentId": "52:496"
+  },
+  {
+    "name": "lock",
+    "category": "status",
+    "placedOnNodeId": "52:232",
+    "componentId": "52:498"
+  },
+  {
+    "name": "login",
+    "category": "actions",
+    "placedOnNodeId": "52:265",
+    "componentId": "52:500"
+  },
+  {
+    "name": "logout",
+    "category": "actions",
+    "placedOnNodeId": "52:253",
+    "componentId": "52:502"
+  },
+  {
+    "name": "lungs",
+    "category": "health",
+    "placedOnNodeId": "52:222",
+    "componentId": "52:504"
+  },
+  {
+    "name": "magazine",
+    "category": "files",
+    "placedOnNodeId": "52:241",
+    "componentId": "52:506"
+  },
+  {
+    "name": "mail",
+    "category": "comms",
+    "placedOnNodeId": "52:215",
+    "componentId": "52:508"
+  },
+  {
+    "name": "manual",
+    "category": "files",
+    "placedOnNodeId": "52:246",
+    "componentId": "52:510"
+  },
+  {
+    "name": "map",
+    "category": "navigation",
+    "placedOnNodeId": "52:257",
+    "componentId": "52:512"
+  },
+  {
+    "name": "map-pin",
+    "category": "misc",
+    "placedOnNodeId": "52:269",
+    "componentId": "52:514"
+  },
+  {
+    "name": "mask",
+    "category": "health",
+    "placedOnNodeId": "52:286",
+    "componentId": "52:516"
+  },
+  {
+    "name": "medal",
+    "category": "misc",
+    "placedOnNodeId": "52:306",
+    "componentId": "52:518"
+  },
+  {
+    "name": "medical-cross",
+    "category": "health",
+    "placedOnNodeId": "52:280",
+    "componentId": "52:520"
+  },
+  {
+    "name": "meditation",
+    "category": "health",
+    "placedOnNodeId": "52:289",
+    "componentId": "52:522"
+  },
+  {
+    "name": "meeting",
+    "category": "comms",
+    "placedOnNodeId": "52:296",
+    "componentId": "52:524"
+  },
+  {
+    "name": "mental-health",
+    "category": "health",
+    "placedOnNodeId": "52:282",
+    "componentId": "52:526"
+  },
+  {
+    "name": "mental-wellness",
+    "category": "health",
+    "placedOnNodeId": "52:272",
+    "componentId": "52:528"
+  },
+  {
+    "name": "menu",
+    "category": "navigation",
+    "placedOnNodeId": "52:345",
+    "componentId": "52:530"
+  },
+  {
+    "name": "merge",
+    "category": "navigation",
+    "placedOnNodeId": "52:349",
+    "componentId": "52:532"
+  },
+  {
+    "name": "message",
+    "category": "comms",
+    "placedOnNodeId": "52:335",
+    "componentId": "52:534"
+  },
+  {
+    "name": "mic",
+    "category": "media",
+    "placedOnNodeId": "52:340",
+    "componentId": "52:536"
+  },
+  {
+    "name": "mic-off",
+    "category": "media",
+    "placedOnNodeId": "52:313",
+    "componentId": "52:538"
+  },
+  {
+    "name": "microscope",
+    "category": "health",
+    "placedOnNodeId": "52:327",
+    "componentId": "52:540"
+  },
+  {
+    "name": "moon",
+    "category": "misc",
+    "placedOnNodeId": "52:325",
+    "componentId": "52:542"
+  },
+  {
+    "name": "more-horizontal",
+    "category": "navigation",
+    "placedOnNodeId": "52:321",
+    "componentId": "52:544"
+  },
+  {
+    "name": "more-vertical",
+    "category": "navigation",
+    "placedOnNodeId": "52:381",
+    "componentId": "52:546"
+  },
+  {
+    "name": "mouse",
+    "category": "misc",
+    "placedOnNodeId": "52:351",
+    "componentId": "52:548"
+  },
+  {
+    "name": "move",
+    "category": "actions",
+    "placedOnNodeId": "52:377",
+    "componentId": "52:550"
+  },
+  {
+    "name": "mri",
+    "category": "health",
+    "placedOnNodeId": "52:385",
+    "componentId": "52:552"
+  },
+  {
+    "name": "music",
+    "category": "media",
+    "placedOnNodeId": "52:355",
+    "componentId": "52:554"
+  },
+  {
+    "name": "navigation-pointer",
+    "category": "navigation",
+    "placedOnNodeId": "52:359",
+    "componentId": "52:556"
+  },
+  {
+    "name": "neurology",
+    "category": "health",
+    "placedOnNodeId": "52:364",
+    "componentId": "52:558"
+  },
+  {
+    "name": "new",
+    "category": "actions",
+    "placedOnNodeId": "52:396",
+    "componentId": "52:560"
+  },
+  {
+    "name": "newspaper",
+    "category": "files",
+    "placedOnNodeId": "52:411",
+    "componentId": "52:562"
+  },
+  {
+    "name": "notes",
+    "category": "files",
+    "placedOnNodeId": "52:429",
+    "componentId": "52:564"
+  },
+  {
+    "name": "notification",
+    "category": "status",
+    "placedOnNodeId": "52:404",
+    "componentId": "52:566"
+  },
+  {
+    "name": "nurse",
+    "category": "health",
+    "placedOnNodeId": "52:452",
+    "componentId": "52:568"
+  },
+  {
+    "name": "office",
+    "category": "misc",
+    "placedOnNodeId": "52:420",
+    "componentId": "52:570"
+  },
+  {
+    "name": "online",
+    "category": "status",
+    "placedOnNodeId": "52:446",
+    "componentId": "52:572"
+  },
+  {
+    "name": "open",
+    "category": "actions",
+    "placedOnNodeId": "52:464",
+    "componentId": "52:574"
+  },
+  {
+    "name": "orthopedics",
+    "category": "health",
+    "placedOnNodeId": "52:437",
+    "componentId": "52:576"
+  },
+  {
+    "name": "otc",
+    "category": "health",
+    "placedOnNodeId": "52:471",
+    "componentId": "52:578"
+  },
+  {
+    "name": "oxygen",
+    "category": "health",
+    "placedOnNodeId": "52:477",
+    "componentId": "52:580"
+  },
+  {
+    "name": "package-alt",
+    "category": "files",
+    "placedOnNodeId": "52:839",
+    "componentId": "52:1171"
+  },
+  {
+    "name": "panel-bottom",
+    "category": "navigation",
+    "placedOnNodeId": "52:830",
+    "componentId": "52:1173"
+  },
+  {
+    "name": "panel-left",
+    "category": "navigation",
+    "placedOnNodeId": "52:848",
+    "componentId": "52:1175"
+  },
+  {
+    "name": "panel-right",
+    "category": "navigation",
+    "placedOnNodeId": "52:817",
+    "componentId": "52:1177"
+  },
+  {
+    "name": "panel-top",
+    "category": "navigation",
+    "placedOnNodeId": "52:834",
+    "componentId": "52:1179"
+  },
+  {
+    "name": "parcel",
+    "category": "files",
+    "placedOnNodeId": "52:581",
+    "componentId": "52:1181"
+  },
+  {
+    "name": "parking",
+    "category": "misc",
+    "placedOnNodeId": "52:821",
+    "componentId": "52:1183"
+  },
+  {
+    "name": "passport",
+    "category": "misc",
+    "placedOnNodeId": "52:852",
+    "componentId": "52:1185"
+  },
+  {
+    "name": "paste",
+    "category": "actions",
+    "placedOnNodeId": "52:859",
+    "componentId": "52:1187"
+  },
+  {
+    "name": "patient",
+    "category": "health",
+    "placedOnNodeId": "52:884",
+    "componentId": "52:1189"
+  },
+  {
+    "name": "pause",
+    "category": "media",
+    "placedOnNodeId": "52:868",
+    "componentId": "52:1191"
+  },
+  {
+    "name": "payment",
+    "category": "commerce",
+    "placedOnNodeId": "52:872",
+    "componentId": "52:1193"
+  },
+  {
+    "name": "pediatric",
+    "category": "health",
+    "placedOnNodeId": "52:897",
+    "componentId": "52:1195"
+  },
+  {
+    "name": "pending",
+    "category": "status",
+    "placedOnNodeId": "52:892",
+    "componentId": "52:1197"
+  },
+  {
+    "name": "pharmacy",
+    "category": "health",
+    "placedOnNodeId": "52:904",
+    "componentId": "52:1199"
+  },
+  {
+    "name": "pharmacy-alt",
+    "category": "health",
+    "placedOnNodeId": "52:908",
+    "componentId": "52:1201"
+  },
+  {
+    "name": "phone",
+    "category": "comms",
+    "placedOnNodeId": "52:928",
+    "componentId": "52:1203"
+  },
+  {
+    "name": "phone-off",
+    "category": "comms",
+    "placedOnNodeId": "52:917",
+    "componentId": "52:1205"
+  },
+  {
+    "name": "piggy-bank",
+    "category": "commerce",
+    "placedOnNodeId": "52:970",
+    "componentId": "52:1207"
+  },
+  {
+    "name": "pill",
+    "category": "health",
+    "placedOnNodeId": "52:930",
+    "componentId": "52:1209"
+  },
+  {
+    "name": "pin",
+    "category": "actions",
+    "placedOnNodeId": "52:967",
+    "componentId": "52:1211"
+  },
+  {
+    "name": "planet",
+    "category": "misc",
+    "placedOnNodeId": "52:934",
+    "componentId": "52:1213"
+  },
+  {
+    "name": "play",
+    "category": "media",
+    "placedOnNodeId": "52:914",
+    "componentId": "52:1215"
+  },
+  {
+    "name": "playlist",
+    "category": "media",
+    "placedOnNodeId": "52:921",
+    "componentId": "52:1217"
+  },
+  {
+    "name": "policy",
+    "category": "files",
+    "placedOnNodeId": "52:1008",
+    "componentId": "52:1219"
+  },
+  {
+    "name": "portfolio",
+    "category": "files",
+    "placedOnNodeId": "52:988",
+    "componentId": "52:1221"
+  },
+  {
+    "name": "postcard",
+    "category": "files",
+    "placedOnNodeId": "52:1017",
+    "componentId": "52:1223"
+  },
+  {
+    "name": "power",
+    "category": "actions",
+    "placedOnNodeId": "52:1005",
+    "componentId": "52:1225"
+  },
+  {
+    "name": "pregnancy",
+    "category": "health",
+    "placedOnNodeId": "52:998",
+    "componentId": "52:1227"
+  },
+  {
+    "name": "prescription",
+    "category": "health",
+    "placedOnNodeId": "52:993",
+    "componentId": "52:1229"
+  },
+  {
+    "name": "presentation",
+    "category": "comms",
+    "placedOnNodeId": "52:980",
+    "componentId": "52:1231"
+  },
+  {
+    "name": "press",
+    "category": "files",
+    "placedOnNodeId": "52:976",
+    "componentId": "52:1233"
+  },
+  {
+    "name": "print",
+    "category": "actions",
+    "placedOnNodeId": "52:1060",
+    "componentId": "52:1235"
+  },
+  {
+    "name": "printer-alt",
+    "category": "misc",
+    "placedOnNodeId": "52:1025",
+    "componentId": "52:1237"
+  },
+  {
+    "name": "projector",
+    "category": "misc",
+    "placedOnNodeId": "52:1089",
+    "componentId": "52:1239"
+  },
+  {
+    "name": "prosthetic",
+    "category": "health",
+    "placedOnNodeId": "52:1084",
+    "componentId": "52:1241"
+  },
+  {
+    "name": "pulse",
+    "category": "health",
+    "placedOnNodeId": "52:1068",
+    "componentId": "52:1243"
+  },
+  {
+    "name": "qr-code",
+    "category": "commerce",
+    "placedOnNodeId": "52:1039",
+    "componentId": "52:1245"
+  },
+  {
+    "name": "qr-scan",
+    "category": "misc",
+    "placedOnNodeId": "52:1075",
+    "componentId": "52:1247"
+  },
+  {
+    "name": "quote-reply",
+    "category": "actions",
+    "placedOnNodeId": "52:1032",
+    "componentId": "52:1249"
+  },
+  {
+    "name": "radiology",
+    "category": "health",
+    "placedOnNodeId": "52:1129",
+    "componentId": "52:1251"
+  },
+  {
+    "name": "rain",
+    "category": "misc",
+    "placedOnNodeId": "52:1111",
+    "componentId": "52:1253"
+  },
+  {
+    "name": "receipt",
+    "category": "commerce",
+    "placedOnNodeId": "52:1138",
+    "componentId": "52:1255"
+  },
+  {
+    "name": "record",
+    "category": "media",
+    "placedOnNodeId": "52:1124",
+    "componentId": "52:1257"
+  },
+  {
+    "name": "recycle",
+    "category": "misc",
+    "placedOnNodeId": "52:1146",
+    "componentId": "52:1259"
+  },
+  {
+    "name": "redo",
+    "category": "actions",
+    "placedOnNodeId": "52:1135",
+    "componentId": "52:1261"
+  },
+  {
+    "name": "refresh",
+    "category": "actions",
+    "placedOnNodeId": "52:1156",
+    "componentId": "52:1263"
+  },
+  {
+    "name": "remind",
+    "category": "actions",
+    "placedOnNodeId": "52:1115",
+    "componentId": "52:1265"
+  },
+  {
+    "name": "reply",
+    "category": "comms",
+    "placedOnNodeId": "52:1162",
+    "componentId": "52:1267"
+  },
+  {
+    "name": "reply-all",
+    "category": "comms",
+    "placedOnNodeId": "52:1166",
+    "componentId": "52:1269"
+  },
+  {
+    "name": "reply-alt",
+    "category": "actions",
+    "placedOnNodeId": "54:159",
+    "componentId": "54:465"
+  },
+  {
+    "name": "resize",
+    "category": "navigation",
+    "placedOnNodeId": "54:2",
+    "componentId": "54:467"
+  },
+  {
+    "name": "restore",
+    "category": "actions",
+    "placedOnNodeId": "54:154",
+    "componentId": "54:469"
+  },
+  {
+    "name": "resume",
+    "category": "files",
+    "placedOnNodeId": "54:168",
+    "componentId": "54:471"
+  },
+  {
+    "name": "robot",
+    "category": "misc",
+    "placedOnNodeId": "54:193",
+    "componentId": "54:473"
+  },
+  {
+    "name": "rocket",
+    "category": "misc",
+    "placedOnNodeId": "54:187",
+    "componentId": "54:475"
+  },
+  {
+    "name": "rotate",
+    "category": "media",
+    "placedOnNodeId": "54:182",
+    "componentId": "54:477"
+  },
+  {
+    "name": "route",
+    "category": "navigation",
+    "placedOnNodeId": "54:175",
+    "componentId": "54:479"
+  },
+  {
+    "name": "satellite",
+    "category": "misc",
+    "placedOnNodeId": "54:223",
+    "componentId": "54:481"
+  },
+  {
+    "name": "save",
+    "category": "actions",
+    "placedOnNodeId": "54:216",
+    "componentId": "54:483"
+  },
+  {
+    "name": "scanner",
+    "category": "misc",
+    "placedOnNodeId": "54:211",
+    "componentId": "54:485"
+  },
+  {
+    "name": "schedule",
+    "category": "misc",
+    "placedOnNodeId": "54:232",
+    "componentId": "54:487"
+  },
+  {
+    "name": "school",
+    "category": "misc",
+    "placedOnNodeId": "54:201",
+    "componentId": "54:489"
+  },
+  {
+    "name": "scroll",
+    "category": "navigation",
+    "placedOnNodeId": "54:228",
+    "componentId": "54:491"
+  },
+  {
+    "name": "search",
+    "category": "navigation",
+    "placedOnNodeId": "54:208",
+    "componentId": "54:493"
+  },
+  {
+    "name": "search-alt",
+    "category": "actions",
+    "placedOnNodeId": "54:238",
+    "componentId": "54:495"
+  },
+  {
+    "name": "select",
+    "category": "actions",
+    "placedOnNodeId": "54:245",
+    "componentId": "54:497"
+  },
+  {
+    "name": "select-all",
+    "category": "actions",
+    "placedOnNodeId": "54:290",
+    "componentId": "54:499"
+  },
+  {
+    "name": "send",
+    "category": "comms",
+    "placedOnNodeId": "54:296",
+    "componentId": "54:501"
+  },
+  {
+    "name": "send-alt",
+    "category": "actions",
+    "placedOnNodeId": "54:241",
+    "componentId": "54:503"
+  },
+  {
+    "name": "server",
+    "category": "files",
+    "placedOnNodeId": "54:263",
+    "componentId": "54:505"
+  },
+  {
+    "name": "settings",
+    "category": "navigation",
+    "placedOnNodeId": "54:299",
+    "componentId": "54:507"
+  },
+  {
+    "name": "share",
+    "category": "actions",
+    "placedOnNodeId": "54:281",
+    "componentId": "54:509"
+  },
+  {
+    "name": "share-alt",
+    "category": "actions",
+    "placedOnNodeId": "54:287",
+    "componentId": "54:511"
+  },
+  {
+    "name": "shelf",
+    "category": "files",
+    "placedOnNodeId": "54:326",
+    "componentId": "54:513"
+  },
+  {
+    "name": "shield",
+    "category": "status",
+    "placedOnNodeId": "54:320",
+    "componentId": "54:515"
+  },
+  {
+    "name": "shield-check",
+    "category": "status",
+    "placedOnNodeId": "54:311",
+    "componentId": "54:517"
+  },
+  {
+    "name": "shield-off",
+    "category": "status",
+    "placedOnNodeId": "54:331",
+    "componentId": "54:519"
+  },
+  {
+    "name": "sidebar",
+    "category": "navigation",
+    "placedOnNodeId": "54:306",
+    "componentId": "54:521"
+  },
+  {
+    "name": "sign-language",
+    "category": "health",
+    "placedOnNodeId": "54:335",
+    "componentId": "54:523"
+  },
+  {
+    "name": "signal",
+    "category": "misc",
+    "placedOnNodeId": "54:315",
+    "componentId": "54:525"
+  },
+  {
+    "name": "skip-back",
+    "category": "media",
+    "placedOnNodeId": "54:302",
+    "componentId": "54:527"
+  },
+  {
+    "name": "skip-forward",
+    "category": "media",
+    "placedOnNodeId": "54:383",
+    "componentId": "54:529"
+  },
+  {
+    "name": "sleep",
+    "category": "health",
+    "placedOnNodeId": "54:359",
+    "componentId": "54:531"
+  },
+  {
+    "name": "smartphone",
+    "category": "misc",
+    "placedOnNodeId": "54:352",
+    "componentId": "54:533"
+  },
+  {
+    "name": "snooze",
+    "category": "actions",
+    "placedOnNodeId": "54:342",
+    "componentId": "54:535"
+  },
+  {
+    "name": "snow",
+    "category": "misc",
+    "placedOnNodeId": "54:363",
+    "componentId": "54:537"
+  },
+  {
+    "name": "sort",
+    "category": "actions",
+    "placedOnNodeId": "54:387",
+    "componentId": "54:539"
+  },
+  {
+    "name": "sort-asc",
+    "category": "actions",
+    "placedOnNodeId": "54:392",
+    "componentId": "54:541"
+  },
+  {
+    "name": "sort-desc",
+    "category": "actions",
+    "placedOnNodeId": "54:348",
+    "componentId": "54:543"
+  },
+  {
+    "name": "split",
+    "category": "navigation",
+    "placedOnNodeId": "54:396",
+    "componentId": "54:545"
+  },
+  {
+    "name": "star",
+    "category": "status",
+    "placedOnNodeId": "54:412",
+    "componentId": "54:547"
+  },
+  {
+    "name": "star-add",
+    "category": "actions",
+    "placedOnNodeId": "54:443",
+    "componentId": "54:549"
+  },
+  {
+    "name": "star-filled",
+    "category": "status",
+    "placedOnNodeId": "54:420",
+    "componentId": "54:551"
+  },
+  {
+    "name": "stethoscope",
+    "category": "health",
+    "placedOnNodeId": "54:433",
+    "componentId": "54:553"
+  },
+  {
+    "name": "stop",
+    "category": "media",
+    "placedOnNodeId": "54:448",
+    "componentId": "54:555"
+  },
+  {
+    "name": "stopwatch",
+    "category": "misc",
+    "placedOnNodeId": "54:422",
+    "componentId": "54:557"
+  },
+  {
+    "name": "store",
+    "category": "commerce",
+    "placedOnNodeId": "54:429",
+    "componentId": "54:559"
+  },
+  {
+    "name": "success",
+    "category": "status",
+    "placedOnNodeId": "54:451",
+    "componentId": "54:561"
+  },
+  {
+    "name": "sun",
+    "category": "misc",
+    "placedOnNodeId": "54:454",
+    "componentId": "54:563"
+  },
+  {
+    "name": "surgery",
+    "category": "health",
+    "placedOnNodeId": "56:207",
+    "componentId": "56:530"
+  },
+  {
+    "name": "swap",
+    "category": "actions",
+    "placedOnNodeId": "56:153",
+    "componentId": "56:532"
+  },
+  {
+    "name": "symptoms",
+    "category": "health",
+    "placedOnNodeId": "56:161",
+    "componentId": "56:534"
+  },
+  {
+    "name": "sync",
+    "category": "actions",
+    "placedOnNodeId": "56:2",
+    "componentId": "56:536"
+  },
+  {
+    "name": "syringe",
+    "category": "health",
+    "placedOnNodeId": "56:176",
+    "componentId": "56:538"
+  },
+  {
+    "name": "tablet",
+    "category": "misc",
+    "placedOnNodeId": "56:170",
+    "componentId": "56:540"
+  },
+  {
+    "name": "tag",
+    "category": "files",
+    "placedOnNodeId": "56:200",
+    "componentId": "56:542"
+  },
+  {
+    "name": "team",
+    "category": "comms",
+    "placedOnNodeId": "56:185",
+    "componentId": "56:544"
+  },
+  {
+    "name": "temperature",
+    "category": "misc",
+    "placedOnNodeId": "56:222",
+    "componentId": "56:546"
+  },
+  {
+    "name": "terminal",
+    "category": "misc",
+    "placedOnNodeId": "56:230",
+    "componentId": "56:548"
+  },
+  {
+    "name": "thermometer",
+    "category": "health",
+    "placedOnNodeId": "56:261",
+    "componentId": "56:550"
+  },
+  {
+    "name": "ticket",
+    "category": "misc",
+    "placedOnNodeId": "56:245",
+    "componentId": "56:552"
+  },
+  {
+    "name": "timer",
+    "category": "misc",
+    "placedOnNodeId": "56:256",
+    "componentId": "56:554"
+  },
+  {
+    "name": "tool",
+    "category": "misc",
+    "placedOnNodeId": "56:234",
+    "componentId": "56:556"
+  },
+  {
+    "name": "tooth",
+    "category": "health",
+    "placedOnNodeId": "56:242",
+    "componentId": "56:558"
+  },
+  {
+    "name": "train",
+    "category": "misc",
+    "placedOnNodeId": "56:265",
+    "componentId": "56:560"
+  },
+  {
+    "name": "translate",
+    "category": "misc",
+    "placedOnNodeId": "56:275",
+    "componentId": "56:562"
+  },
+  {
+    "name": "trash",
+    "category": "actions",
+    "placedOnNodeId": "56:292",
+    "componentId": "56:564"
+  },
+  {
+    "name": "trophy",
+    "category": "misc",
+    "placedOnNodeId": "56:308",
+    "componentId": "56:566"
+  },
+  {
+    "name": "ultrasound",
+    "category": "health",
+    "placedOnNodeId": "56:320",
+    "componentId": "56:568"
+  },
+  {
+    "name": "umbrella",
+    "category": "misc",
+    "placedOnNodeId": "56:328",
+    "componentId": "56:570"
+  },
+  {
+    "name": "undo",
+    "category": "actions",
+    "placedOnNodeId": "56:333",
+    "componentId": "56:572"
+  },
+  {
+    "name": "unlock",
+    "category": "status",
+    "placedOnNodeId": "56:304",
+    "componentId": "56:574"
+  },
+  {
+    "name": "upload",
+    "category": "actions",
+    "placedOnNodeId": "56:298",
+    "componentId": "56:576"
+  },
+  {
+    "name": "usb",
+    "category": "files",
+    "placedOnNodeId": "56:343",
+    "componentId": "56:578"
+  },
+  {
+    "name": "user",
+    "category": "comms",
+    "placedOnNodeId": "56:352",
+    "componentId": "56:580"
+  },
+  {
+    "name": "user-add",
+    "category": "comms",
+    "placedOnNodeId": "56:363",
+    "componentId": "56:582"
+  },
+  {
+    "name": "user-check",
+    "category": "comms",
+    "placedOnNodeId": "56:336",
+    "componentId": "56:584"
+  },
+  {
+    "name": "user-remove",
+    "category": "comms",
+    "placedOnNodeId": "56:357",
+    "componentId": "56:586"
+  },
+  {
+    "name": "users",
+    "category": "comms",
+    "placedOnNodeId": "56:382",
+    "componentId": "56:588"
+  },
+  {
+    "name": "vaccine",
+    "category": "health",
+    "placedOnNodeId": "56:370",
+    "componentId": "56:590"
+  },
+  {
+    "name": "video",
+    "category": "media",
+    "placedOnNodeId": "56:340",
+    "componentId": "56:592"
+  },
+  {
+    "name": "video-call",
+    "category": "comms",
+    "placedOnNodeId": "56:397",
+    "componentId": "56:594"
+  },
+  {
+    "name": "virus",
+    "category": "health",
+    "placedOnNodeId": "56:438",
+    "componentId": "56:596"
+  },
+  {
+    "name": "volume",
+    "category": "media",
+    "placedOnNodeId": "56:410",
+    "componentId": "56:598"
+  },
+  {
+    "name": "volume-off",
+    "category": "media",
+    "placedOnNodeId": "56:405",
+    "componentId": "56:600"
+  },
+  {
+    "name": "waiting-room",
+    "category": "health",
+    "placedOnNodeId": "56:424",
+    "componentId": "56:602"
+  },
+  {
+    "name": "wallet",
+    "category": "commerce",
+    "placedOnNodeId": "56:430",
+    "componentId": "56:604"
+  },
+  {
+    "name": "warning",
+    "category": "status",
+    "placedOnNodeId": "56:392",
+    "componentId": "56:606"
+  },
+  {
+    "name": "watch",
+    "category": "misc",
+    "placedOnNodeId": "56:419",
+    "componentId": "56:608"
+  },
+  {
+    "name": "water",
+    "category": "misc",
+    "placedOnNodeId": "56:458",
+    "componentId": "56:610"
+  },
+  {
+    "name": "weather",
+    "category": "misc",
+    "placedOnNodeId": "56:483",
+    "componentId": "56:612"
+  },
+  {
+    "name": "weight-scale",
+    "category": "health",
+    "placedOnNodeId": "56:470",
+    "componentId": "56:614"
+  },
+  {
+    "name": "wheelchair",
+    "category": "health",
+    "placedOnNodeId": "56:513",
+    "componentId": "56:616"
+  },
+  {
+    "name": "wifi",
+    "category": "misc",
+    "placedOnNodeId": "56:508",
+    "componentId": "56:618"
+  },
+  {
+    "name": "wifi-off",
+    "category": "misc",
+    "placedOnNodeId": "56:462",
+    "componentId": "56:620"
+  },
+  {
+    "name": "wiki",
+    "category": "files",
+    "placedOnNodeId": "56:501",
+    "componentId": "56:622"
+  },
+  {
+    "name": "wind",
+    "category": "misc",
+    "placedOnNodeId": "56:478",
+    "componentId": "56:624"
+  },
+  {
+    "name": "wrench",
+    "category": "misc",
+    "placedOnNodeId": "56:522",
+    "componentId": "56:626"
+  },
+  {
+    "name": "zoom-in",
+    "category": "misc",
+    "placedOnNodeId": "56:524",
+    "componentId": "56:628"
+  },
+  {
+    "name": "zoom-out",
+    "category": "misc",
+    "placedOnNodeId": "56:518",
+    "componentId": "56:630"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "batch": "apply_01",
+    "file": "apply_01_h0.js",
+    "icons": 12,
+    "len": 15360
+  },
+  {
+    "batch": "apply_01",
+    "file": "apply_01_h1.js",
+    "icons": 13,
+    "len": 15062
+  },
+  {
+    "batch": "apply_02",
+    "file": "apply_02_h0.js",
+    "icons": 10,
+    "len": 14879
+  },
+  {
+    "batch": "apply_02",
+    "file": "apply_02_h1.js",
+    "icons": 12,
+    "len": 15839
+  },
+  {
+    "batch": "apply_02",
+    "file": "apply_02_h2.js",
+    "icons": 3,
+    "len": 5194
+  },
+  {
+    "batch": "apply_03",
+    "file": "apply_03_h0.js",
+    "icons": 9,
+    "len": 14066
+  },
+  {
+    "batch": "apply_03",
+    "file": "apply_03_h1.js",
+    "icons": 12,
+    "len": 15991
+  },
+  {
+    "batch": "apply_03",
+    "file": "apply_03_h2.js",
+    "icons": 4,
+    "len": 9564
+  },
+  {
+    "batch": "apply_04",
+    "file": "apply_04_h0.js",
+    "icons": 11,
+    "len": 15378
+  },
+  {
+    "batch": "apply_04",
+    "file": "apply_04_h1.js",
+    "icons": 9,
+    "len": 15323
+  },
+  {
+    "batch": "apply_04",
+    "file": "apply_04_h2.js",
+    "icons": 5,
+    "len": 7793
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_h0.js",
+    "icons": 8,
+    "len": 15198
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_h1.js",
+    "icons": 7,
+    "len": 14264
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_h2.js",
+    "icons": 8,
+    "len": 15465
+  },
+  {
+    "batch": "apply_05",
+    "file": "apply_05_h3.js",
+    "icons": 2,
+    "len": 6992
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "name": "hearing-aid",
+    "hash": "ico_VPP4tYO2D6Wn6S4h",
+    "streamlineName": "Hearing Aid",
+    "path": "health/hearing-aid.svg",
+    "score": 302.45
+  },
+  {
+    "name": "oxygen",
+    "hash": "ico_CjWazrJMWqTyZ3y5",
+    "streamlineName": "Oxygen Tank O2 1",
+    "path": "health/oxygen.svg",
+    "score": 328.2
+  },
+  {
+    "name": "radiology",
+    "hash": "ico_mRu4pQJ4vDkU2aESFbWipcV2",
+    "streamlineName": "Radiology Scan",
+    "path": "health/radiology.svg",
+    "score": 302.3
+  },
+  {
+    "name": "mri",
+    "hash": "ico_mRu4pQJ4vpcq2aESFbiJ4Nei",
+    "streamlineName": "Radiology Scan Mri",
+    "path": "health/mri.svg",
+    "score": 315.1
+  },
+  {
+    "name": "glasses",
+    "hash": "ico_mRu4pQJ4v9v72aEwAZqmIqED",
+    "streamlineName": "Glasses",
+    "path": "health/glasses.svg",
+    "score": 239.65
+  },
+  {
+    "name": "inhaler",
+    "hash": "ico_CunsiGj30gJLcFVT",
+    "streamlineName": "Inhaler",
+    "path": "health/inhaler.svg",
+    "score": 289.65
+  },
+  {
+    "name": "neurology",
+    "hash": "ico_AblRGU9Iy0xug1vg",
+    "streamlineName": "Brain Neurology",
+    "path": "health/neurology.svg",
+    "score": 302.25
+  },
+  {
+    "name": "prosthetic",
+    "hash": "ico_weTvixyNPlsDfwIY",
+    "streamlineName": "Prosthetic Leg 1",
+    "path": "health/prosthetic.svg",
+    "score": 265.2
+  },
+  {
+    "name": "cancer",
+    "hash": "ico_ui5aRTHYeHILe7Pk",
+    "streamlineName": "Cancer Cell 2",
+    "path": "health/cancer.svg",
+    "score": 315.35
+  },
+  {
+    "name": "emergency",
+    "hash": "ico_mRCdDBhFvidAnXNv",
+    "streamlineName": "Hospital Emergency Department",
+    "path": "health/emergency.svg",
+    "score": 314.55
+  },
+  {
+    "name": "911",
+    "hash": "ico_mRu4pQJ4vioR2aEBPuJ4vSRv",
+    "streamlineName": "Safety 911",
+    "path": "health/911.svg",
+    "score": 252.5
+  },
+  {
+    "name": "family-care",
+    "hash": "ico_mRu4pQJ4vI1q2aEQzI08UnIy",
+    "streamlineName": "Family Home",
+    "path": "health/family-care.svg",
+    "score": 252.45
+  },
+  {
+    "name": "mental-wellness",
+    "hash": "ico_3LCRy1UwrA2LNzJJ",
+    "streamlineName": "Mindfulness 2",
+    "path": "health/mental-wellness.svg",
+    "score": 302.35
+  },
+  {
+    "name": "crisis",
+    "hash": "ico_PYk00iSXpWQLfqHn",
+    "streamlineName": "Emergency Call",
+    "path": "health/crisis.svg",
+    "score": 302.3
+  },
+  {
+    "name": "pediatric",
+    "hash": "ico_mRu4pQJ4vMx32aEQzIvhjJtt",
+    "streamlineName": "Baby",
+    "path": "health/pediatric.svg",
+    "score": 239.8
+  },
+  {
+    "name": "meditation",
+    "hash": "ico_ORP7nZgzIooYH97A",
+    "streamlineName": "Yoga Meditation Pose2",
+    "path": "health/meditation.svg",
+    "score": 264.95
+  },
+  {
+    "name": "orthopedics",
+    "hash": "ico_mRu4pQJ4vdrL2aESFbbmokz5",
+    "streamlineName": "Medical Specialty Broken Bone",
+    "path": "health/orthopedics.svg",
+    "score": 327.55
+  },
+  {
+    "name": "surgery",
+    "hash": "ico_NvIkqREuXVx8U10Y",
+    "streamlineName": "Surgery Liposuction",
+    "path": "health/surgery.svg",
+    "score": 302.05
+  },
+  {
+    "name": "counseling",
+    "hash": "ico_qtB8IkR6thLVep5i",
+    "streamlineName": "Counseling 3",
+    "path": "health/counseling.svg",
+    "score": 302.4
+  },
+  {
+    "name": "pregnancy",
+    "hash": "ico_mRu4pQJ4vDj12aESFb6nl33w",
+    "streamlineName": "Pregnancy Vgr",
+    "path": "health/pregnancy.svg",
+    "score": 302.1
+  }
+]

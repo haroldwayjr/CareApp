@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="List-Add--Streamline-Streamline-3.0">
+  <desc>
+    List Add Streamline Icon: https://streamlinehq.com
+  </desc>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M17.25 23.123a6 6 0 1 0 0 -12 6 6 0 0 0 0 12Z" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M17.25 14.123v6" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M14.25 17.123h6" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M5.25 2.123h15" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.123h15" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.123h3" stroke-width="1.5"></path>
+  <path stroke="#0F1828" d="M1.125 8.498a0.375 0.375 0 0 1 0 -0.75" stroke-width="1.5"></path>
+  <path stroke="#0F1828" d="M1.125 8.498a0.375 0.375 0 0 0 0 -0.75" stroke-width="1.5"></path>
+  <path stroke="#0F1828" d="M1.125 14.498a0.375 0.375 0 1 1 0 -0.75" stroke-width="1.5"></path>
+  <path stroke="#0F1828" d="M1.125 14.498a0.375 0.375 0 1 0 0 -0.75" stroke-width="1.5"></path>
+  <g>
+    <path stroke="#0F1828" d="M1.125 2.498a0.375 0.375 0 0 1 0 -0.75" stroke-width="1.5"></path>
+    <path stroke="#0F1828" d="M1.125 2.498a0.375 0.375 0 0 0 0 -0.75" stroke-width="1.5"></path>
+  </g>
+</svg>

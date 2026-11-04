@@ -1,0 +1,567 @@
+[
+  {
+    "name": "bank",
+    "category": "commerce",
+    "query": "Bank"
+  },
+  {
+    "name": "piggy-bank",
+    "category": "commerce",
+    "query": "Piggy Bank"
+  },
+  {
+    "name": "coins",
+    "category": "commerce",
+    "query": "Coins"
+  },
+  {
+    "name": "chart-line",
+    "category": "commerce",
+    "query": "Analytics Graph"
+  },
+  {
+    "name": "chart-bar",
+    "category": "commerce",
+    "query": "Analytics Bars"
+  },
+  {
+    "name": "chart-pie",
+    "category": "commerce",
+    "query": "Pie Chart"
+  },
+  {
+    "name": "trending-up",
+    "category": "commerce",
+    "query": "Graph Ascending"
+  },
+  {
+    "name": "trending-down",
+    "category": "commerce",
+    "query": "Graph Descending"
+  },
+  {
+    "name": "heart",
+    "category": "health",
+    "query": "Heart"
+  },
+  {
+    "name": "activity",
+    "category": "health",
+    "query": "Monitor Heartbeat"
+  },
+  {
+    "name": "stethoscope",
+    "category": "health",
+    "query": "Stethoscope"
+  },
+  {
+    "name": "pill",
+    "category": "health",
+    "query": "Pill"
+  },
+  {
+    "name": "first-aid",
+    "category": "health",
+    "query": "First Aid"
+  },
+  {
+    "name": "thermometer",
+    "category": "health",
+    "query": "Thermometer"
+  },
+  {
+    "name": "syringe",
+    "category": "health",
+    "query": "Syringe"
+  },
+  {
+    "name": "hospital",
+    "category": "health",
+    "query": "Hospital"
+  },
+  {
+    "name": "ambulance",
+    "category": "health",
+    "query": "Ambulance"
+  },
+  {
+    "name": "medical-cross",
+    "category": "health",
+    "query": "Medical Cross"
+  },
+  {
+    "name": "bandage",
+    "category": "health",
+    "query": "Bandage"
+  },
+  {
+    "name": "dna",
+    "category": "health",
+    "query": "DNA"
+  },
+  {
+    "name": "blood",
+    "category": "health",
+    "query": "Blood"
+  },
+  {
+    "name": "pulse",
+    "category": "health",
+    "query": "Pulse"
+  },
+  {
+    "name": "lungs",
+    "category": "health",
+    "query": "Lungs"
+  },
+  {
+    "name": "brain",
+    "category": "health",
+    "query": "Brain"
+  },
+  {
+    "name": "tooth",
+    "category": "health",
+    "query": "Tooth"
+  },
+  {
+    "name": "eye-health",
+    "category": "health",
+    "query": "Eye"
+  },
+  {
+    "name": "ear",
+    "category": "health",
+    "query": "Ear"
+  },
+  {
+    "name": "wheelchair",
+    "category": "health",
+    "query": "Wheelchair"
+  },
+  {
+    "name": "crutches",
+    "category": "health",
+    "query": "Crutches"
+  },
+  {
+    "name": "prescription",
+    "category": "health",
+    "query": "Prescription"
+  },
+  {
+    "name": "pharmacy",
+    "category": "health",
+    "query": "Pharmacy"
+  },
+  {
+    "name": "vaccine",
+    "category": "health",
+    "query": "Vaccine"
+  },
+  {
+    "name": "virus",
+    "category": "health",
+    "query": "Virus"
+  },
+  {
+    "name": "mask",
+    "category": "health",
+    "query": "Mask"
+  },
+  {
+    "name": "hand-wash",
+    "category": "health",
+    "query": "Hand Wash"
+  },
+  {
+    "name": "clipboard-health",
+    "category": "health",
+    "query": "Medical Clipboard"
+  },
+  {
+    "name": "patient",
+    "category": "health",
+    "query": "Patient"
+  },
+  {
+    "name": "nurse",
+    "category": "health",
+    "query": "Nurse"
+  },
+  {
+    "name": "doctor",
+    "category": "health",
+    "query": "Doctor"
+  },
+  {
+    "name": "appointment",
+    "category": "health",
+    "query": "Medical Appointment"
+  },
+  {
+    "name": "lab",
+    "category": "health",
+    "query": "Laboratory"
+  },
+  {
+    "name": "microscope",
+    "category": "health",
+    "query": "Microscope"
+  },
+  {
+    "name": "xray",
+    "category": "health",
+    "query": "X Ray"
+  },
+  {
+    "name": "ultrasound",
+    "category": "health",
+    "query": "Ultrasound"
+  },
+  {
+    "name": "blood-pressure",
+    "category": "health",
+    "query": "Blood Pressure"
+  },
+  {
+    "name": "weight-scale",
+    "category": "health",
+    "query": "Scale"
+  },
+  {
+    "name": "fitness",
+    "category": "health",
+    "query": "Fitness"
+  },
+  {
+    "name": "mental-health",
+    "category": "health",
+    "query": "Mental Health"
+  },
+  {
+    "name": "therapy",
+    "category": "health",
+    "query": "Therapy"
+  },
+  {
+    "name": "care-plan",
+    "category": "health",
+    "query": "Care Plan"
+  },
+  {
+    "name": "care-team",
+    "category": "health",
+    "query": "Care Team"
+  },
+  {
+    "name": "clinical-notes",
+    "category": "health",
+    "query": "Clinical Notes"
+  },
+  {
+    "name": "diagnosis",
+    "category": "health",
+    "query": "Diagnosis"
+  },
+  {
+    "name": "symptoms",
+    "category": "health",
+    "query": "Symptoms"
+  },
+  {
+    "name": "vitals",
+    "category": "health",
+    "query": "Vitals"
+  },
+  {
+    "name": "allergy",
+    "category": "health",
+    "query": "Allergy"
+  },
+  {
+    "name": "immunization",
+    "category": "health",
+    "query": "Immunization"
+  },
+  {
+    "name": "lab-result",
+    "category": "health",
+    "query": "Lab Result"
+  },
+  {
+    "name": "referral",
+    "category": "health",
+    "query": "Referral"
+  },
+  {
+    "name": "prior-auth",
+    "category": "health",
+    "query": "Authorization"
+  },
+  {
+    "name": "insurance",
+    "category": "health",
+    "query": "Insurance"
+  },
+  {
+    "name": "eligibility",
+    "category": "health",
+    "query": "Eligibility"
+  },
+  {
+    "name": "claims",
+    "category": "health",
+    "query": "Claims"
+  },
+  {
+    "name": "billing",
+    "category": "health",
+    "query": "Medical Billing"
+  },
+  {
+    "name": "telehealth",
+    "category": "health",
+    "query": "Telemedicine"
+  },
+  {
+    "name": "virtual-visit",
+    "category": "health",
+    "query": "Virtual Visit"
+  },
+  {
+    "name": "care-gap",
+    "category": "health",
+    "query": "Gap"
+  },
+  {
+    "name": "risk",
+    "category": "health",
+    "query": "Risk"
+  },
+  {
+    "name": "wellness",
+    "category": "health",
+    "query": "Wellness"
+  },
+  {
+    "name": "nutrition",
+    "category": "health",
+    "query": "Nutrition"
+  },
+  {
+    "name": "sleep",
+    "category": "health",
+    "query": "Sleep"
+  },
+  {
+    "name": "steps",
+    "category": "health",
+    "query": "Steps"
+  },
+  {
+    "name": "medication",
+    "category": "health",
+    "query": "Medication"
+  },
+  {
+    "name": "dosage",
+    "category": "health",
+    "query": "Dosage"
+  },
+  {
+    "name": "refill",
+    "category": "health",
+    "query": "Refill"
+  },
+  {
+    "name": "pharmacy-alt",
+    "category": "health",
+    "query": "Pharmacy"
+  },
+  {
+    "name": "rx",
+    "category": "health",
+    "query": "RX"
+  },
+  {
+    "name": "otc",
+    "category": "health",
+    "query": "Medicine"
+  },
+  {
+    "name": "iv",
+    "category": "health",
+    "query": "IV Bag"
+  },
+  {
+    "name": "ecg",
+    "category": "health",
+    "query": "ECG"
+  },
+  {
+    "name": "mri",
+    "category": "health",
+    "query": "MRI"
+  },
+  {
+    "name": "ct-scan",
+    "category": "health",
+    "query": "CT Scan"
+  },
+  {
+    "name": "hearing-aid",
+    "category": "health",
+    "query": "Hearing Aid"
+  },
+  {
+    "name": "glasses",
+    "category": "health",
+    "query": "Glasses"
+  },
+  {
+    "name": "prosthetic",
+    "category": "health",
+    "query": "Prosthetic"
+  },
+  {
+    "name": "caregiver",
+    "category": "health",
+    "query": "Caregiver"
+  },
+  {
+    "name": "family-care",
+    "category": "health",
+    "query": "Family"
+  },
+  {
+    "name": "pediatric",
+    "category": "health",
+    "query": "Baby"
+  },
+  {
+    "name": "geriatric",
+    "category": "health",
+    "query": "Elderly"
+  },
+  {
+    "name": "pregnancy",
+    "category": "health",
+    "query": "Pregnancy"
+  },
+  {
+    "name": "mental-wellness",
+    "category": "health",
+    "query": "Mindfulness"
+  },
+  {
+    "name": "meditation",
+    "category": "health",
+    "query": "Meditation"
+  },
+  {
+    "name": "counseling",
+    "category": "health",
+    "query": "Counseling"
+  },
+  {
+    "name": "support-group",
+    "category": "health",
+    "query": "Support Group"
+  },
+  {
+    "name": "crisis",
+    "category": "health",
+    "query": "Emergency"
+  },
+  {
+    "name": "emergency",
+    "category": "health",
+    "query": "Emergency"
+  },
+  {
+    "name": "911",
+    "category": "health",
+    "query": "Emergency Call"
+  },
+  {
+    "name": "defibrillator",
+    "category": "health",
+    "query": "Defibrillator"
+  },
+  {
+    "name": "oxygen",
+    "category": "health",
+    "query": "Oxygen"
+  },
+  {
+    "name": "inhaler",
+    "category": "health",
+    "query": "Inhaler"
+  },
+  {
+    "name": "glucose",
+    "category": "health",
+    "query": "Glucose"
+  },
+  {
+    "name": "insulin",
+    "category": "health",
+    "query": "Insulin"
+  },
+  {
+    "name": "diabetes",
+    "category": "health",
+    "query": "Diabetes"
+  },
+  {
+    "name": "asthma",
+    "category": "health",
+    "query": "Asthma"
+  },
+  {
+    "name": "cancer",
+    "category": "health",
+    "query": "Cancer"
+  },
+  {
+    "name": "cardiology",
+    "category": "health",
+    "query": "Cardiology"
+  },
+  {
+    "name": "dermatology",
+    "category": "health",
+    "query": "Dermatology"
+  },
+  {
+    "name": "orthopedics",
+    "category": "health",
+    "query": "Bone"
+  },
+  {
+    "name": "neurology",
+    "category": "health",
+    "query": "Neurology"
+  },
+  {
+    "name": "oncology",
+    "category": "health",
+    "query": "Oncology"
+  },
+  {
+    "name": "radiology",
+    "category": "health",
+    "query": "Radiology"
+  },
+  {
+    "name": "surgery",
+    "category": "health",
+    "query": "Surgery"
+  },
+  {
+    "name": "anesthesia",
+    "category": "health",
+    "query": "Anesthesia"
+  }
+]

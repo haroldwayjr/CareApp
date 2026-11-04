@@ -1,0 +1,50 @@
+[
+  {
+    "file": "s003_apply_01_p0.js",
+    "len": 8562,
+    "icons": 3,
+    "batch": "apply_01"
+  },
+  {
+    "file": "s004_apply_01_p1.js",
+    "len": 8747,
+    "icons": 8,
+    "batch": "apply_01"
+  },
+  {
+    "file": "s005_apply_01_p2.js",
+    "len": 8545,
+    "icons": 8,
+    "batch": "apply_01"
+  },
+  {
+    "file": "s006_apply_01_p3.js",
+    "len": 8582,
+    "icons": 5,
+    "batch": "apply_01"
+  },
+  {
+    "file": "s007_apply_01_p4.js",
+    "len": 3228,
+    "icons": 1,
+    "batch": "apply_01"
+  },
+  {
+    "file": "s008_apply_02_p0.js",
+    "len": 8665,
+    "icons": 5,
+    "batch": "apply_02"
+  },
+  {
+    "file": "s009_apply_02_p1.js",
+    "len": 8615,
+    "icons": 5,
+    "batch": "apply_02"
+  },
+  {
+    "file": "s010_apply_02_p2.js",
+    "len": 8650,
+    "icons": 4,
+    "batch": "apply_02"
+  }
+]

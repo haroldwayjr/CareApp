@@ -1,0 +1,10 @@
+<svg id="Temperature-Thermometer--Streamline-Streamline-3.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <desc>
+    Temperature Thermometer Streamline Icon: https://streamlinehq.com
+  </desc>
+  <defs></defs>
+  <title>temperature-thermometer</title>
+  <path d="M15 15.418V3.75a3 3 0 0 0 -6 0v11.668a4.5 4.5 0 1 0 6 0Z" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m12 5.25 0 12" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M10.5 18.75a1.5 1.5 0 1 0 3 0 1.5 1.5 0 1 0 -3 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>

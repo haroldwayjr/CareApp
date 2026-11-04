@@ -1,0 +1,67 @@
+
+const page = figma.root.children.find(p => /Icons/i.test(p.name));
+await figma.setCurrentPageAsync(page);
+
+const collections = await figma.variables.getLocalVariableCollectionsAsync();
+let iconDefault = null;
+for (const coll of collections) {
+  for (const id of coll.variableIds) {
+    const v = await figma.variables.getVariableByIdAsync(id);
+    if (v && v.name === 'icon/default') iconDefault = v;
+  }
+}
+
+function bindFills(root) {
+  const stack = [root];
+  while (stack.length) {
+    const n = stack.pop();
+    if ('constraints' in n) n.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    if (n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION' || n.type === 'ELLIPSE' || n.type === 'STAR' || n.type === 'POLYGON') {
+      const paint = figma.variables.setBoundVariableForPaint(
+        { type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', iconDefault);
+      n.fills = [paint];
+      n.strokes = [];
+    }
+    if ('children' in n) for (const c of n.children) stack.push(c);
+  }
+}
+
+function applyBoldXs(set, svg) {
+  const xs = set.children.find(c => c.name === 'Size=xs');
+  const md = set.children.find(c => c.name === 'Size=md');
+  if (!xs) return { ok: false, reason: 'no-xs' };
+  const was = xs.visible;
+  xs.visible = true;
+  for (const c of [...xs.children]) c.remove();
+  const node = figma.createNodeFromSvg(svg);
+  node.name = set.name.split('/').pop();
+  node.resize(16, 16);
+  node.x = 0; node.y = 0;
+  node.clipsContent = false;
+  if ('constraints' in node) node.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+  xs.appendChild(node);
+  try { xs.resizeWithoutConstraints(16, 16); } catch (_) { try { xs.resize(16, 16); } catch (__) {} }
+  bindFills(node);
+  xs.clipsContent = false;
+  xs.visible = false; // keep catalog md-only
+  if (md) md.visible = true;
+  try { set.resizeWithoutConstraints(24, 24); } catch (_) {}
+  set.clipsContent = true;
+  return { ok: true };
+}
+
+const BATCH = [{"setName":"icon/health/waiting.room","name":"waiting-room","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Waiting-Room-Lamp--Streamline-Ultimate\">\n  <desc>\n    Waiting Room Lamp Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M5 7.5a2.5 2.5 0 1 0 5 0 2.5 2.5 0 1 0 -5 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M13.24 17h-2.89a0.5 0.5 0 0 1 -0.5 -0.46c0 -0.05 -0.37 -3.31 -0.37 -3.31a1.5 1.5 0 0 0 -3 0.54l0.35 3.09A3.52 3.52 0 0 0 10.35 20h2.89a1.5 1.5 0 0 1 1.49 1.38l0.27 2.17a0.52 0.52 0 0 0 0.5 0.45h2a0.5 0.5 0 0 0 0.37 -0.17 0.52 0.52 0 0 0 0.13 -0.38l-0.24 -2.32A4.52 4.52 0 0 0 13.24 17\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M12.5 21.5H8.75a3.52 3.52 0 0 1 -3.43 -2.76l-0.68 -4a1.5 1.5 0 0 0 -1.48 -1.24H1.5a0.5 0.5 0 0 0 -0.5 0.5v9.5a0.5 0.5 0 0 0 0.5 0.5h11.19a0.48 0.48 0 0 0 0.37 -0.17 0.47 0.47 0 0 0 0.12 -0.39l-0.18 -1.5a0.51 0.51 0 0 0 -0.5 -0.44\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M20 3.14V1a1 1 0 0 0 -2 0v2.14A4 4 0 0 0 15 7v0.5a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1V7a4 4 0 0 0 -3 -3.86\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/health/bed","name":"bed","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Hospital-Bedroom--Streamline-Ultimate\">\n  <desc>\n    Hospital Bedroom Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M3.5 15.25a2.5 2.5 0 1 0 5 0 2.5 2.5 0 1 0 -5 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M23 14.75a1 1 0 0 0 -1 1V19a0.25 0.25 0 0 1 -0.25 0.25H2.25A0.25 0.25 0 0 1 2 19v-5.75a1 1 0 0 0 -2 0V23a1 1 0 0 0 2 0v-0.5a0.25 0.25 0 0 1 0.25 -0.25h19.5a0.25 0.25 0 0 1 0.25 0.25v0.5a1 1 0 0 0 2 0v-7.25a1 1 0 0 0 -1 -1\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M10 14.75v2.5a0.5 0.5 0 0 0 0.5 0.5H20a0.5 0.5 0 0 0 0.5 -0.5v-1a2.5 2.5 0 0 0 -2.5 -2.5h-7a1 1 0 0 0 -1 1\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M7.75 6.75h2.5a0.25 0.25 0 0 1 0.25 0.25v2.5a0.5 0.5 0 0 0 0.5 0.5h2.5a0.5 0.5 0 0 0 0.5 -0.5V7a0.25 0.25 0 0 1 0.25 -0.25h2.5a0.5 0.5 0 0 0 0.5 -0.5v-2.5a0.5 0.5 0 0 0 -0.5 -0.5h-2.5A0.25 0.25 0 0 1 14 3V0.5a0.5 0.5 0 0 0 -0.5 -0.5H11a0.5 0.5 0 0 0 -0.5 0.5V3a0.25 0.25 0 0 1 -0.25 0.25h-2.5a0.5 0.5 0 0 0 -0.5 0.5v2.5a0.5 0.5 0 0 0 0.5 0.5\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/health/sign.language","name":"sign-language","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Sign-Language-Love--Streamline-Ultimate\">\n  <desc>\n    Sign Language Love Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path fill=\"#000000\" d=\"m6.06686 12.856 4.17294 -4.14506v-0.69268c-0.0106 -0.80213 0.1402 -1.59802 0.4431 -2.34124 0.1962 -0.48153 0.4537 -0.93448 0.7651 -1.3483 -0.1481 -0.20773 -0.3138 -0.40337 -0.4956 -0.58467l-0.4427 -0.43809c-0.3486 -0.35159 -0.79987 -0.58613 -1.29024 -0.67061 -0.49036 -0.08448 -0.99515 -0.01465 -1.44332 0.19966l1.39445 1.39094c0.05086 0.05033 0.09121 0.1101 0.11874 0.17587s0.0417 0.13626 0.0417 0.20745 -0.01417 0.14169 -0.0417 0.20746 -0.06787 0.12553 -0.11874 0.17587 -0.11126 0.09027 -0.17772 0.11752c-0.06646 0.02724 -0.13769 0.04126 -0.20963 0.04126s-0.14317 -0.01402 -0.20963 -0.04126c-0.06646 -0.02725 -0.12685 -0.06718 -0.17771 -0.11752L5.89475 2.57216c-0.12641 -0.12518 -0.27651 -0.22448 -0.44172 -0.29223 -0.1652 -0.06775 -0.34228 -0.10262 -0.52111 -0.10262s-0.3559 0.03487 -0.52111 0.10262 -0.31531 0.16705 -0.44172 0.29223L0.648985 6.90925c-0.126489 0.1251 -0.22683 0.27364 -0.295289 0.43714C0.285236 7.50988 0.25 7.68512 0.25 7.86209c0 0.17698 0.035236 0.35222 0.103696 0.51571 0.06846 0.1635 0.1688 0.31204 0.295289 0.43714L2.99519 11.1587c0.67204 0.6781 1.49975 1.1854 2.41261 1.4786z\" stroke-width=\"1\"></path>\n  <path fill=\"#000000\" d=\"m16.7107 14.2398 1.8814 -0.6243c0.9129 -0.2932 1.7406 -0.8005 2.4126 -1.4786l2.3462 -2.34375c0.1265 -0.1251 0.2269 -0.27364 0.2953 -0.43714 0.0685 -0.16349 0.1037 -0.33873 0.1037 -0.51571 0 -0.17697 -0.0352 -0.35221 -0.1037 -0.5157 -0.0684 -0.1635 -0.1688 -0.31204 -0.2953 -0.43714l-3.3201 -4.33709c-0.1264 -0.12518 -0.2765 -0.22448 -0.4417 -0.29223s-0.3423 -0.10262 -0.5211 -0.10262 -0.3559 0.03487 -0.5211 0.10262 -0.3153 0.16705 -0.4417 0.29223L15.604 5.97081c-0.0508 0.05034 -0.1112 0.09027 -0.1777 0.11752 -0.0665 0.02724 -0.1377 0.04126 -0.2096 0.04126 -0.072 0 -0.1432 -0.01402 -0.2097 -0.04126 -0.0664 -0.02725 -0.1268 -0.06718 -0.1777 -0.11752 -0.0508 -0.05034 -0.0912 -0.1101 -0.1187 -0.17587s-0.0417 -0.13626 -0.0417 -0.20746c0 -0.07119 0.0142 -0.14168 0.0417 -0.20745s0.0679 -0.12553 0.1187 -0.17587l1.3945 -1.39094c-0.4482 -0.21431 -0.953 -0.28414 -1.4433 -0.19966 -0.4904 0.08448 -0.9417 0.31902 -1.2903 0.67061l-0.4427 0.43809c-0.4331 0.43179 -0.7746 0.94487 -1.0046 1.5091 -0.2299 0.56423 -0.3437 1.16824 -0.3345 1.77657V9.3222L5.14575 15.841 3.8606 17.0799l5.11002 4.7428z\" stroke-width=\"1\"></path>\n  <path fill=\"#000000\" d=\"m13.5046 19.4369 3.9913 -3.9102 1.5114 -0.5015 1.8042 1.795 -4.9691 4.9395z\" stroke-width=\"1\"></path>\n</svg>"},{"setName":"icon/health/hipaa","name":"hipaa","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\">\n  <path fill=\"#000000\" d=\"M12.0059 0.00195312C15.1007 -0.0258205 18.1707 0.534368 21.0527 1.65234l0.5743 0.23145 0.0039 0.00098c0.4047 0.1718 0.7508 0.45895 0.9941 0.82519 0.2432 0.36615 0.3735 0.7958 0.375 1.23535V11.459c-0.0305 2.6171 -0.865 5.1617 -2.3896 7.289 -1.5227 2.1246 -3.6606 3.7301 -6.125 4.6006l0.0009 0.001 -1.0937 0.4033 -0.002 0.001c-0.8977 0.3296 -1.8835 0.3296 -2.7812 0l-0.002 -0.001 -1.09373 -0.4033v-0.001c-2.46406 -0.8706 -4.60154 -2.4763 -6.12402 -4.6006C1.86502 16.6207 1.03049 14.0761 1 11.459V3.94531l0.00684 -0.16406c0.02928 -0.38173 0.15533 -0.75086 0.36816 -1.07129 0.24329 -0.36624 0.58941 -0.65339 0.99414 -0.82519l0.00391 -0.00098C5.41956 0.612221 8.69216 -0.028514 11.9932 0.000976562c0.0022 -0.000021589 0.0045 0.000997288 0.0068 0.000976558 0.0023 0.00002073 0.0046 -0.000998147 0.0068 -0.000976558zM8.53711 11.0576c-0.28024 -0.116 -0.60291 -0.0514 -0.81738 0.1631l-2.5 2.5c-0.2929 0.2929 -0.29289 0.7677 0 1.0605l2.5 2.5c0.21448 0.2145 0.53714 0.2792 0.81738 0.1631 0.28025 -0.1161 0.46289 -0.39 0.46289 -0.6933v-1.75h9.25c0.4142 0 0.75 -0.3358 0.75 -0.75s-0.3358 -0.75 -0.75 -0.75H9v-1.75c0 -0.3034 -0.18264 -0.5773 -0.46289 -0.6934m7.74319 -6.3369c-0.2145 -0.21447 -0.5372 -0.27912 -0.8174 -0.16308 -0.2803 0.11608 -0.4629 0.39001 -0.4629 0.69336v1.75H5.75c-0.41421 0 -0.75 0.33579 -0.75 0.75s0.33579 0.75 0.75 0.75H15V10.251c0 0.3033 0.1826 0.5772 0.4629 0.6933 0.2802 0.1161 0.6029 0.0514 0.8174 -0.1631l2.5 -2.49995c0.2929 -0.29289 0.2929 -0.76765 0 -1.06055z\" stroke-width=\"1\"></path>\n</svg>"},{"setName":"icon/misc/map.pin","name":"map-pin","category":"misc","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Pin-Location--Streamline-Ultimate\">\n  <desc>\n    Pin Location Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M12 18.5a0.51 0.51 0 0 0 0.31 -0.11c0.3 -0.24 7.19 -5.83 7.19 -9.89a7.5 7.5 0 0 0 -15 0c0 4.06 6.89 9.65 7.19 9.89a0.51 0.51 0 0 0 0.31 0.11m0 -13A2.5 2.5 0 1 1 9.5 8 2.5 2.5 0 0 1 12 5.5\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M2.5 21.5A1.5 1.5 0 0 0 4 23h16a1.5 1.5 0 0 0 0 -3H4a1.5 1.5 0 0 0 -1.5 1.5\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/misc/globe","name":"globe","category":"misc","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Earth-1--Streamline-Ultimate\">\n  <desc>\n    Earth 1 Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path d=\"M24 12a12 12 0 1 0 -12 12h0.12A11.89 11.89 0 0 0 24 12.12zm-2 0a9.94 9.94 0 0 1 -0.36 2.63 0.49 0.49 0 0 1 -0.26 0.32 0.51 0.51 0 0 1 -0.38 0.05 3.47 3.47 0 0 1 -1.52 -1.27l-2.22 -3.33a2.5 2.5 0 0 0 -2.08 -1.11h-0.43a2.75 2.75 0 0 1 0 -5.5h2.77a0.48 0.48 0 0 1 0.29 0.09A10 10 0 0 1 22 12M2.18 10.16a0.49 0.49 0 0 1 0.49 -0.41H7a3.44 3.44 0 0 1 2.47 1l1.13 1.15a3.5 3.5 0 0 1 0.14 4.8l-1.36 1.53a2.49 2.49 0 0 0 -0.63 1.66v0.83a0.49 0.49 0 0 1 -0.23 0.42 0.52 0.52 0 0 1 -0.47 0A10 10 0 0 1 2 12a9.26 9.26 0 0 1 0.18 -1.84\" fill=\"#000000\" stroke-width=\"1\"></path>\n</svg>"}];
+let ok = 0, missing = 0, failed = 0;
+const miss = [], fail = [];
+for (const item of BATCH) {
+  const set = page.findOne(n => n.type === 'COMPONENT_SET' && n.name === item.setName);
+  if (!set) { missing++; if (miss.length < 5) miss.push(item.setName); continue; }
+  try {
+    const r = applyBoldXs(set, item.svg);
+    if (r.ok) ok++; else { failed++; fail.push({ name: item.setName, r }); }
+  } catch (e) {
+    failed++;
+    if (fail.length < 5) fail.push({ name: item.setName, err: String(e) });
+  }
+}
+return { ok, missing, failed, miss, fail };

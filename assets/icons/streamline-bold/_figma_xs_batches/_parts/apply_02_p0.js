@@ -1,0 +1,67 @@
+
+const page = figma.root.children.find(p => /Icons/i.test(p.name));
+await figma.setCurrentPageAsync(page);
+
+const collections = await figma.variables.getLocalVariableCollectionsAsync();
+let iconDefault = null;
+for (const coll of collections) {
+  for (const id of coll.variableIds) {
+    const v = await figma.variables.getVariableByIdAsync(id);
+    if (v && v.name === 'icon/default') iconDefault = v;
+  }
+}
+
+function bindFills(root) {
+  const stack = [root];
+  while (stack.length) {
+    const n = stack.pop();
+    if ('constraints' in n) n.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    if (n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION' || n.type === 'ELLIPSE' || n.type === 'STAR' || n.type === 'POLYGON') {
+      const paint = figma.variables.setBoundVariableForPaint(
+        { type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', iconDefault);
+      n.fills = [paint];
+      n.strokes = [];
+    }
+    if ('children' in n) for (const c of n.children) stack.push(c);
+  }
+}
+
+function applyBoldXs(set, svg) {
+  const xs = set.children.find(c => c.name === 'Size=xs');
+  const md = set.children.find(c => c.name === 'Size=md');
+  if (!xs) return { ok: false, reason: 'no-xs' };
+  const was = xs.visible;
+  xs.visible = true;
+  for (const c of [...xs.children]) c.remove();
+  const node = figma.createNodeFromSvg(svg);
+  node.name = set.name.split('/').pop();
+  node.resize(16, 16);
+  node.x = 0; node.y = 0;
+  node.clipsContent = false;
+  if ('constraints' in node) node.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+  xs.appendChild(node);
+  try { xs.resizeWithoutConstraints(16, 16); } catch (_) { try { xs.resize(16, 16); } catch (__) {} }
+  bindFills(node);
+  xs.clipsContent = false;
+  xs.visible = false; // keep catalog md-only
+  if (md) md.visible = true;
+  try { set.resizeWithoutConstraints(24, 24); } catch (_) {}
+  set.clipsContent = true;
+  return { ok: true };
+}
+
+const BATCH = [{"setName":"icon/actions/print","name":"print","category":"actions","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Printer--Streamline-Ultimate\">\n  <desc>\n    Printer Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M15 18.61a0.48 0.48 0 0 1 -0.49 0.49h-3.7a0.49 0.49 0 1 1 0 -1h3.7a0.48 0.48 0 0 1 0.49 0.51Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M15.29 20.57a0.49 0.49 0 0 1 -0.49 0.49H8.71a0.49 0.49 0 0 1 0 -1h6.09a0.49 0.49 0 0 1 0.49 0.51Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M22.29 11.51a1 1 0 0 0 -1 -1H2.69a1 1 0 0 0 -1 1v5.88a1 1 0 0 0 1 1h2.92l-1.18 4.7a0.75 0.75 0 0 0 0.13 0.63 0.74 0.74 0 0 0 0.58 0.28h13.23a0.74 0.74 0 0 0 0.58 -0.28 0.71 0.71 0 0 0 0.13 -0.63l-1.18 -4.72h3.41a1 1 0 0 0 1 -1Zm-15.58 11a0.51 0.51 0 0 1 -0.39 -0.19 0.48 0.48 0 0 1 -0.08 -0.42l1.34 -5.39a0.5 0.5 0 0 1 0.48 -0.37h7.39a0.5 0.5 0 0 1 0.48 0.37l1.34 5.39a0.48 0.48 0 0 1 -0.08 0.42 0.51 0.51 0 0 1 -0.39 0.19Zm12.64 -8.82a0.74 0.74 0 1 1 0.73 -0.73 0.74 0.74 0 0 1 -0.73 0.75Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M20.26 6.25a1 1 0 0 0 -0.91 -0.62h-2.21V2.69a0.73 0.73 0 0 0 -0.21 -0.52L15 0.22a0.74 0.74 0 0 0 -0.55 -0.22H7.59a0.73 0.73 0 0 0 -0.73 0.73v4.9H4.65a1 1 0 0 0 -0.91 0.62L2.52 9.3a0.2 0.2 0 0 0 0 0.17 0.19 0.19 0 0 0 0.15 0.08h18.64a0.19 0.19 0 0 0 0.15 -0.08 0.2 0.2 0 0 0 0 -0.17ZM8.33 2a0.49 0.49 0 0 1 0.49 -0.49h5.12a0.5 0.5 0 0 1 0.35 0.14l1.24 1.24a0.52 0.52 0 0 1 0.14 0.35v3.13a0.49 0.49 0 0 1 -0.49 0.49H8.82a0.49 0.49 0 0 1 -0.49 -0.49Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/actions/link","name":"link","category":"actions","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Hyperlink--Streamline-Ultimate\">\n  <desc>\n    Hyperlink Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M10.23 14.34a1 1 0 0 0 -1.31 0.54 1 1 0 0 1 -0.21 0.33 1 1 0 0 1 -0.71 0.29H4a2 2 0 0 1 -2 -2v-3a2 2 0 0 1 2 -2h4a1 1 0 0 1 0.71 0.29 1 1 0 0 1 0.21 0.33 1 1 0 0 0 1.85 -0.77 2.9 2.9 0 0 0 -0.65 -1A3 3 0 0 0 8 6.5H4a4 4 0 0 0 -4 4v3a4 4 0 0 0 4 4h4a3 3 0 0 0 2.12 -0.88 3 3 0 0 0 0.65 -1 1 1 0 0 0 -0.54 -1.28Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M6 12a1 1 0 0 0 1 1h11a1 1 0 0 0 0 -2H7a1 1 0 0 0 -1 1Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M20 6.5h-4a3 3 0 0 0 -2.12 0.88 2.9 2.9 0 0 0 -0.65 1 1 1 0 1 0 1.85 0.77 1 1 0 0 1 0.21 -0.33A1 1 0 0 1 16 8.5h4a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-4a1 1 0 0 1 -0.71 -0.29 1 1 0 0 1 -0.21 -0.33 1 1 0 1 0 -1.85 0.77 3 3 0 0 0 0.65 1 3 3 0 0 0 2.12 0.85h4a4 4 0 0 0 4 -4v-3a4 4 0 0 0 -4 -4Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/actions/cut","name":"cut","category":"actions","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Scissors--Streamline-Ultimate\">\n  <desc>\n    Scissors Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path d=\"M20.75 14.12a4 4 0 0 0 -3.43 0.72 11.73 11.73 0 0 0 -1.12 -2.72 0.26 0.26 0 0 1 0 -0.24 11.73 11.73 0 0 0 1.12 -2.72 4 4 0 0 0 3.43 0.71A4 4 0 0 0 19.51 2a4.06 4.06 0 0 0 -3.76 4 10 10 0 0 1 -1 4.28 0.25 0.25 0 0 1 -0.41 0A11.47 11.47 0 0 0 5.75 6.5c-1.06 0 -4.29 0.34 -5.3 1.1a0.5 0.5 0 0 0 0.16 0.88l11.63 3.28a0.25 0.25 0 0 1 0 0.48L0.61 15.52a0.5 0.5 0 0 0 -0.16 0.88c1 0.76 4.24 1.1 5.3 1.1a11.47 11.47 0 0 0 8.59 -3.86 0.25 0.25 0 0 1 0.41 0 10 10 0 0 1 1 4.28 4.06 4.06 0 0 0 3.76 4 4 4 0 0 0 1.24 -7.87Zm-1 5.88a2 2 0 1 1 2 -2 2 2 0 0 1 -2 2Zm0 -16a2 2 0 1 1 -2 2 2 2 0 0 1 2 -2Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n</svg>"},{"setName":"icon/actions/paste","name":"paste","category":"actions","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Copy-Paste--Streamline-Ultimate\">\n  <desc>\n    Copy Paste Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M13.4 4.73a0.24 0.24 0 0 0 0.2 0.26 1.09 1.09 0 0 1 0.82 1.11v1.4a1.24 1.24 0 0 0 1.25 1.24 1.23 1.23 0 0 0 1.24 -1.24V4a1.5 1.5 0 0 0 -1.49 -1.5h-1.73a0.29 0.29 0 0 0 -0.18 0.07 0.26 0.26 0 0 0 -0.07 0.18c0 0.45 0 1.47 -0.04 1.98\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M9 21.26A1.23 1.23 0 0 0 7.71 20H3.48a1.07 1.07 0 0 1 -1 -1.14V6.1A1.08 1.08 0 0 1 3.33 5a0.25 0.25 0 0 0 0.2 -0.26l0 -2a0.25 0.25 0 0 0 -0.25 -0.25H1.5A1.5 1.5 0 0 0 0 4v17a1.5 1.5 0 0 0 1.49 1.5h6.22A1.24 1.24 0 0 0 9 21.26\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M11.94 4.47v-2a0.5 0.5 0 0 0 -0.5 -0.49h-0.76a0.26 0.26 0 0 1 -0.25 -0.22 2 2 0 0 0 -3.95 0 0.25 0.25 0 0 1 -0.25 0.24h-0.76a0.49 0.49 0 0 0 -0.47 0.48v2a0.49 0.49 0 0 0 0.49 0.5h6a0.5 0.5 0 0 0 0.45 -0.51\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M19 17.27h-4a0.75 0.75 0 0 0 0 1.5h4a0.75 0.75 0 0 0 0 -1.5\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M14.29 14.54a0.76 0.76 0 0 0 0.75 0.75h2.49a0.75 0.75 0 0 0 0 -1.5H15a0.76 0.76 0 0 0 -0.71 0.75\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M23.5 13.46a2 2 0 0 0 -0.58 -1.41l-1.41 -1.4a2 2 0 0 0 -1.41 -0.59h-7.61a2 2 0 0 0 -2 2V22a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2Zm-11 -0.4a1 1 0 0 1 1 -1h6.19a1 1 0 0 1 0.71 0.29l0.82 0.82a1 1 0 0 1 0.29 0.7V21a1 1 0 0 1 -1 1h-7a1 1 0 0 1 -1 -1Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/actions/duplicate","name":"duplicate","category":"actions","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Duplicate--Streamline-Ultimate\">\n  <desc>\n    Duplicate Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path fill=\"#000000\" fill-rule=\"evenodd\" d=\"M0 2C0 0.895429 0.895431 0 2 0h14c1.1046 0 2 0.895432 2 2v1.5c0 0.55228 -0.4477 1 -1 1s-1 -0.44772 -1 -1V2L2 2v14h1.5c0.55228 0 1 0.4477 1 1s-0.44772 1 -1 1H2c-1.10457 0 -2 -0.8954 -2 -2V2Z\" clip-rule=\"evenodd\" stroke-width=\"1\"></path>\n  <path fill=\"#000000\" fill-rule=\"evenodd\" d=\"M8 6c-1.10457 0 -2 0.89543 -2 2v14c0 1.1046 0.89543 2 2 2h14c1.1046 0 2 -0.8954 2 -2V8c0 -1.10457 -0.8954 -2 -2 -2H8Z\" clip-rule=\"evenodd\" stroke-width=\"1\"></path>\n</svg>"},{"setName":"icon/actions/archive","name":"archive","category":"actions","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Archive--Streamline-Ultimate\">\n  <desc>\n    Archive Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M21.5 2.5h-19a2 2 0 0 0 -2 2v3a1 1 0 0 0 1 1h21a1 1 0 0 0 1 -1v-3a2 2 0 0 0 -2 -2Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M21.5 10h-19a1 1 0 0 0 -1 1v8.5a2 2 0 0 0 2 2h17a2 2 0 0 0 2 -2V11a1 1 0 0 0 -1 -1Zm-6.25 3.5A1.25 1.25 0 0 1 14 14.75h-4a1.25 1.25 0 0 1 0 -2.5h4a1.25 1.25 0 0 1 1.25 1.25Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/actions/restore","name":"restore","category":"actions","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Archive-Restore--Streamline-Ultimate\">\n  <desc>\n    Archive Restore Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path fill=\"#000000\" fill-rule=\"evenodd\" d=\"M1.5 1h21c0.8 0 1.5 0.7 1.5 1.5v2.75a1 1 0 0 1 -1 1H1a1 1 0 0 1 -1 -1V2.5C0 1.7 0.7 1 1.5 1Zm0.7 7a0.75 0.75 0 0 0 -0.75 0.75v10.5C1.45 21.364 3.086 23 5.2 23h13.6c2.114 0 3.75 -1.636 3.75 -3.75V8.75A0.75 0.75 0 0 0 21.8 8H2.2Zm9.4 3.25c0.1 -0.1 0.2 -0.2 0.4 -0.2s0.3 0.1 0.4 0.2l3.3 3.8c0.1 0.2 0.2 0.4 0.1 0.6 -0.1 0.2 -0.3 0.3 -0.5 0.3H13v3.1c0 0.6 -0.4 1 -1 1s-1 -0.4 -1 -1v-3.1H8.7c-0.2 0 -0.4 -0.1 -0.5 -0.3 -0.1 -0.2 0 -0.4 0.1 -0.6l3.3 -3.8Z\" clip-rule=\"evenodd\" stroke-width=\"1\"></path>\n</svg>"},{"setName":"icon/actions/trash","name":"trash","category":"actions","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Bin--Streamline-Ultimate\">\n  <desc>\n    Bin Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M19.5 7.5h-15A0.5 0.5 0 0 0 4 8v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2V8a0.5 0.5 0 0 0 -0.5 -0.5Zm-9.25 13a0.75 0.75 0 0 1 -1.5 0v-9a0.75 0.75 0 0 1 1.5 0Zm5 0a0.75 0.75 0 0 1 -1.5 0v-9a0.75 0.75 0 0 1 1.5 0Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M22 4h-4.75a0.25 0.25 0 0 1 -0.25 -0.25V2.5A2.5 2.5 0 0 0 14.5 0h-5A2.5 2.5 0 0 0 7 2.5v1.25a0.25 0.25 0 0 1 -0.25 0.25H2a1 1 0 0 0 0 2h20a1 1 0 0 0 0 -2ZM9 3.75V2.5a0.5 0.5 0 0 1 0.5 -0.5h5a0.5 0.5 0 0 1 0.5 0.5v1.25a0.25 0.25 0 0 1 -0.25 0.25h-5.5A0.25 0.25 0 0 1 9 3.75Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/actions/empty.trash","name":"empty-trash","category":"actions","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Bin-1--Streamline-Ultimate\">\n  <desc>\n    Bin 1 Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M19.45 7.5H4.55a0.5 0.5 0 0 0 -0.5 0.54l1.28 14.14a2 2 0 0 0 2 1.82h9.34a2 2 0 0 0 2 -1.82L20 8a0.5 0.5 0 0 0 -0.5 -0.54Zm-9.2 13a0.75 0.75 0 0 1 -1.5 0v-9a0.75 0.75 0 0 1 1.5 0Zm5 0a0.75 0.75 0 0 1 -1.5 0v-9a0.75 0.75 0 0 1 1.5 0Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M22 4h-4.75a0.25 0.25 0 0 1 -0.25 -0.25V2.5A2.5 2.5 0 0 0 14.5 0h-5A2.5 2.5 0 0 0 7 2.5v1.25a0.25 0.25 0 0 1 -0.25 0.25H2a1 1 0 0 0 0 2h20a1 1 0 0 0 0 -2ZM9 3.75V2.5a0.5 0.5 0 0 1 0.5 -0.5h5a0.5 0.5 0 0 1 0.5 0.5v1.25a0.25 0.25 0 0 1 -0.25 0.25h-5.5A0.25 0.25 0 0 1 9 3.75Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"}];
+let ok = 0, missing = 0, failed = 0;
+const miss = [], fail = [];
+for (const item of BATCH) {
+  const set = page.findOne(n => n.type === 'COMPONENT_SET' && n.name === item.setName);
+  if (!set) { missing++; if (miss.length < 5) miss.push(item.setName); continue; }
+  try {
+    const r = applyBoldXs(set, item.svg);
+    if (r.ok) ok++; else { failed++; fail.push({ name: item.setName, r }); }
+  } catch (e) {
+    failed++;
+    if (fail.length < 5) fail.push({ name: item.setName, err: String(e) });
+  }
+}
+return { ok, missing, failed, miss, fail, batch: 'apply_02_p0' };

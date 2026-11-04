@@ -1,0 +1,14 @@
+[
+  {"key":"nothing-yet","label":"Empty / nothing yet","hash":"ico_9DDec4Y5GLUVCEc9","streamline":"Office Desk"},
+  {"key":"no-results","label":"No search or filter results","hash":"ico_5ryyprkE3UclNBuK","streamline":"Searching"},
+  {"key":"all-caught-up","label":"All caught up","hash":"ico_PtSwbevok5F4TrZ1","streamline":"Success"},
+  {"key":"generic-error","label":"Generic error","hash":"ico_hZaJ4OZooPFVL19O","streamline":"We Got A Problem"},
+  {"key":"page-not-found","label":"Page not found","hash":"ico_Ai4A5mrcJ9wdN5lv","streamline":"Interface Testing"},
+  {"key":"access-denied","label":"Access denied","hash":"ico_5k30U35YB21V6mvm","streamline":"Protect Privacy"},
+  {"key":"offline","label":"Offline / connectivity lost","hash":"ico_JQtsfbranFeAItXh","streamline":"Work From Home"},
+  {"key":"first-run","label":"First-run / onboarding","hash":"ico_VhitMqjNyfNREkAg","streamline":"Welcome"},
+  {"key":"no-documents","label":"No documents / attachments","hash":"ico_83tQaGad1Rj6dMi6","streamline":"Newsletter"},
+  {"key":"session-expired","label":"Session expired","hash":"ico_gbmYcdGIVnfOjmYe","streamline":"Loading"},
+  {"key":"maintenance","label":"Scheduled maintenance","hash":"ico_9jOTr452W5BQsTAy","streamline":"Page Under Construction"},
+  {"key":"no-notifications","label":"No notifications","hash":"ico_4BDcMpkfW9gEUHrQ","streamline":"Social Media Discussion"}
+]

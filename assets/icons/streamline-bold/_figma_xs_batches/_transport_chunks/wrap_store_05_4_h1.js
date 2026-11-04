@@ -1,0 +1,3 @@
+const prev=figma.root.getSharedPluginData('careapp','r05_4');
+figma.root.setSharedPluginData('careapp','r05_4',prev+"PONENT_SET' && n.name === item.setName);\n  if (!set) { missing++; if (miss.length<8) miss.push(item.setName); continue; }\n  try {\n    const r = applyBoldXs(set, item.svg);\n    if (r.ok) ok++; else { failed++; fail.push({name:item.setName,r}); }\n  } catch(e) { failed++; if (fail.length<8) fail.push({name:item.setName,err:String(e)}); }\n}\nreturn { ok, missing, failed, miss, fail };\n");
+return {stored:'r05_4_h1',prevLen:prev.length,added:383,total:figma.root.getSharedPluginData('careapp','r05_4').length};

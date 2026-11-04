@@ -1,0 +1,32 @@
+---
+description: Soma Soft Badge shape — always 6px radius, never pills
+alwaysApply: true
+---
+
+# Soma Soft Badges
+
+Soft badges (Recommended, status chips, tippable member badges, etc.) are **rounded rectangles**, not pills.
+
+## Shape (required)
+
+- Corner radius: **6px** exactly (`border-radius: 6px` or `var(--radius-sm)` when that token is 6px)
+- Never use `border-radius: 9999px`, `var(--radius-full)`, or fully pill/capsule ends on soft badges
+- Applies in Figma, prototypes, and product UI
+
+```
+✅ Soft badge — 6px corners, light fill + subtle border, icon + label
+❌ Soft badge as a pill with semicircle ends
+```
+
+## Placement (list / table rows)
+
+When a soft badge sits in a benefit list row:
+
+- Place **Recommended** in the **Last Activity** column (right-aligned), not inline after the name — same right edge as activity timestamps / em dashes
+- Name column is name-only and ellipsizes; empty space grows between name and the activity/badge column
+- When a row has last-activity text, show that instead of the badge; when Recommended (no activity), show badge then an em dash; when neither, show an em dash alone
+- Recommended flag: Streamline Ultimate **Bold** filled flag (~11px), not a thin line icon
+
+## Popovers
+
+Hover tips that show the same status must reuse the **same** soft badge component/styles (6px radius, same colors), not a separate pill variant.

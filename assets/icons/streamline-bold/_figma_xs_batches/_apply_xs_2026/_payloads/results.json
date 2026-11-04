@@ -1,0 +1,34 @@
+{
+  "01": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "miss": [],
+    "fail": [],
+    "names_miss_fail": []
+  },
+  "02": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "miss": [],
+    "fail": [],
+    "names_miss_fail": []
+  },
+  "03": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "miss": [],
+    "fail": [],
+    "names_miss_fail": []
+  },
+  "04": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "miss": [],
+    "fail": [],
+    "names_miss_fail": []
+  }
+}

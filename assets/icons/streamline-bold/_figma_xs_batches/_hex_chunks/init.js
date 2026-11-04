@@ -1,0 +1,1 @@
+globalThis.__APPLY_HEX = ''; return { ready: true };

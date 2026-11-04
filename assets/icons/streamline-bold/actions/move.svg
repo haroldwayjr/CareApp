@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Move-Down--Streamline-Streamline-3.0">
+  <desc>
+    Move Down Streamline Icon: https://streamlinehq.com
+  </desc>
+  <g>
+    <path d="M12.5 11.5a1.25 1.25 0 0 0 -1.25 1.25v5.75a0.25 0.25 0 0 1 -0.25 0.25H8.5a0.49 0.49 0 0 0 -0.46 0.31 0.48 0.48 0 0 0 0.11 0.54l4 4a0.47 0.47 0 0 0 0.35 0.15 0.49 0.49 0 0 0 0.35 -0.15l4 -4a0.48 0.48 0 0 0 0.11 -0.54 0.5 0.5 0 0 0 -0.46 -0.31H14a0.25 0.25 0 0 1 -0.25 -0.25v-5.75a1.25 1.25 0 0 0 -1.25 -1.25Z" fill="#0F1828" stroke-width="1"></path>
+    <path d="M2 0.25h20s2 0 2 2v4.5s0 2 -2 2H2s-2 0 -2 -2v-4.5s0 -2 2 -2" fill="#0F1828" stroke-width="1"></path>
+  </g>
+</svg>

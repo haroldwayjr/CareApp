@@ -1,0 +1,347 @@
+[
+  {
+    "name": "move",
+    "category": "actions",
+    "query": "Move"
+  },
+  {
+    "name": "close-alt",
+    "category": "actions",
+    "query": "Close"
+  },
+  {
+    "name": "apply",
+    "category": "actions",
+    "query": "Apply"
+  },
+  {
+    "name": "replace",
+    "category": "actions",
+    "query": "Replace"
+  },
+  {
+    "name": "locate",
+    "category": "actions",
+    "query": "Locate"
+  },
+  {
+    "name": "preview",
+    "category": "actions",
+    "query": "Preview"
+  },
+  {
+    "name": "schedule-send",
+    "category": "actions",
+    "query": "Schedule Send"
+  },
+  {
+    "name": "warning",
+    "category": "status",
+    "query": "Alert"
+  },
+  {
+    "name": "bell",
+    "category": "status",
+    "query": "Bell"
+  },
+  {
+    "name": "eye",
+    "category": "status",
+    "query": "View"
+  },
+  {
+    "name": "flag",
+    "category": "status",
+    "query": "Flag"
+  },
+  {
+    "name": "verified",
+    "category": "status",
+    "query": "Verified"
+  },
+  {
+    "name": "online",
+    "category": "status",
+    "query": "Online"
+  },
+  {
+    "name": "badge",
+    "category": "status",
+    "query": "Badge"
+  },
+  {
+    "name": "pause",
+    "category": "media",
+    "query": "Button Pause"
+  },
+  {
+    "name": "volume",
+    "category": "media",
+    "query": "Volume"
+  },
+  {
+    "name": "camera",
+    "category": "media",
+    "query": "Camera"
+  },
+  {
+    "name": "music",
+    "category": "media",
+    "query": "Music"
+  },
+  {
+    "name": "forward-mail",
+    "category": "comms",
+    "query": "Forward"
+  },
+  {
+    "name": "bookmark",
+    "category": "files",
+    "query": "Bookmark"
+  },
+  {
+    "name": "file-image",
+    "category": "files",
+    "query": "Common File Image"
+  },
+  {
+    "name": "folder-delete",
+    "category": "files",
+    "query": "Folder Delete"
+  },
+  {
+    "name": "drawer",
+    "category": "files",
+    "query": "Drawer"
+  },
+  {
+    "name": "cloud-download",
+    "category": "files",
+    "query": "Cloud Download"
+  },
+  {
+    "name": "usb",
+    "category": "files",
+    "query": "USB"
+  },
+  {
+    "name": "terms",
+    "category": "files",
+    "query": "Terms"
+  },
+  {
+    "name": "faq",
+    "category": "files",
+    "query": "FAQ"
+  },
+  {
+    "name": "blog",
+    "category": "files",
+    "query": "Blog"
+  },
+  {
+    "name": "press",
+    "category": "files",
+    "query": "Press"
+  },
+  {
+    "name": "cv",
+    "category": "files",
+    "query": "CV"
+  },
+  {
+    "name": "postcard",
+    "category": "files",
+    "query": "Postcard"
+  },
+  {
+    "name": "crate",
+    "category": "files",
+    "query": "Crate"
+  },
+  {
+    "name": "folder-shared",
+    "category": "files",
+    "query": "Folder Shared"
+  },
+  {
+    "name": "credit-card",
+    "category": "commerce",
+    "query": "Credit Card"
+  },
+  {
+    "name": "wallet",
+    "category": "commerce",
+    "query": "Wallet"
+  },
+  {
+    "name": "coupon",
+    "category": "commerce",
+    "query": "Coupon"
+  },
+  {
+    "name": "payment",
+    "category": "commerce",
+    "query": "Payment"
+  },
+  {
+    "name": "hearing-aid",
+    "category": "health",
+    "query": "Hearing Aid"
+  },
+  {
+    "name": "family-care",
+    "category": "health",
+    "query": "Family"
+  },
+  {
+    "name": "mental-wellness",
+    "category": "health",
+    "query": "Mindfulness"
+  },
+  {
+    "name": "crisis",
+    "category": "health",
+    "query": "Emergency"
+  },
+  {
+    "name": "oxygen",
+    "category": "health",
+    "query": "Oxygen"
+  },
+  {
+    "name": "diabetes",
+    "category": "health",
+    "query": "Diabetes"
+  },
+  {
+    "name": "dermatology",
+    "category": "health",
+    "query": "Dermatology"
+  },
+  {
+    "name": "radiology",
+    "category": "health",
+    "query": "Radiology"
+  },
+  {
+    "name": "signal",
+    "category": "misc",
+    "query": "Signal"
+  },
+  {
+    "name": "accessibility",
+    "category": "misc",
+    "query": "Accessibility"
+  },
+  {
+    "name": "mouse",
+    "category": "misc",
+    "query": "Mouse"
+  },
+  {
+    "name": "smartphone",
+    "category": "misc",
+    "query": "Smartphone"
+  },
+  {
+    "name": "projector",
+    "category": "misc",
+    "query": "Projector"
+  },
+  {
+    "name": "wrench",
+    "category": "misc",
+    "query": "Wrench"
+  },
+  {
+    "name": "fingerprint",
+    "category": "misc",
+    "query": "Fingerprint"
+  },
+  {
+    "name": "camera-off",
+    "category": "misc",
+    "query": "Camera Off"
+  },
+  {
+    "name": "alarm",
+    "category": "misc",
+    "query": "Alarm"
+  },
+  {
+    "name": "schedule",
+    "category": "misc",
+    "query": "Schedule"
+  },
+  {
+    "name": "rain",
+    "category": "misc",
+    "query": "Rain"
+  },
+  {
+    "name": "umbrella",
+    "category": "misc",
+    "query": "Umbrella"
+  },
+  {
+    "name": "bus",
+    "category": "misc",
+    "query": "Bus"
+  },
+  {
+    "name": "gas",
+    "category": "misc",
+    "query": "Gas Station"
+  },
+  {
+    "name": "school",
+    "category": "misc",
+    "query": "School"
+  },
+  {
+    "name": "id-card",
+    "category": "misc",
+    "query": "Id Card"
+  },
+  {
+    "name": "medal",
+    "category": "misc",
+    "query": "Medal"
+  },
+  {
+    "name": "balloon",
+    "category": "misc",
+    "query": "Balloon"
+  },
+  {
+    "name": "ecology",
+    "category": "misc",
+    "query": "Ecology"
+  },
+  {
+    "name": "rocket",
+    "category": "misc",
+    "query": "Rocket"
+  },
+  {
+    "name": "sync",
+    "category": "actions",
+    "query": "Synchronize"
+  },
+  {
+    "name": "share-alt",
+    "category": "actions",
+    "query": "Share"
+  },
+  {
+    "name": "send",
+    "category": "comms",
+    "query": "Send Email"
+  },
+  {
+    "name": "reply",
+    "category": "comms",
+    "query": "Reply"
+  }
+]

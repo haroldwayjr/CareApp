@@ -1,0 +1,56 @@
+{
+  "11": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "verified": true
+  },
+  "12": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "verified": true
+  },
+  "13": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "via": "groups"
+  },
+  "14": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "via": "full"
+  },
+  "15": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "verified": true
+  },
+  "16": {
+    "ok": 4,
+    "missing": 0,
+    "failed": 0,
+    "partial": [
+      "g00"
+    ],
+    "pending": [
+      "g01",
+      "g02",
+      "g03",
+      "g04"
+    ]
+  },
+  "17": {
+    "pending": true
+  },
+  "18": {
+    "partial": 3,
+    "pending": true
+  },
+  "19": {
+    "pending": true
+  }
+}

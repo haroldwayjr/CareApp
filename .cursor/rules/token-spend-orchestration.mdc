@@ -1,0 +1,23 @@
+---
+description: Prefer top-tier orchestration and cheaper models for execution to control token spend
+alwaysApply: true
+---
+
+# Token spend — orchestrate high, execute cheap
+
+Use a **top-tier model for orchestration** (plan, decide, review, synthesize). Use **efficient smaller models for execution** via the Task tool. Do not burn the expensive parent on long mechanical work a cheaper subagent can do.
+
+## Model routing (when available)
+
+| Work | Prefer |
+|---|---|
+| Orchestration, ambiguous design calls, final synthesis | Parent / top-tier (`inherit` only when the subtask itself needs that judgment) |
+| Fast mechanical edit, boilerplate, search-and-edit, shell | `composer-2.5-fast` |
+| Medium exploration / multi-file implementation | `cursor-grok-4.6-medium` or `gpt-5.6-sol-medium` |
+
+## How to run it
+
+- Orchestrator owns: intent, acceptance criteria, prioritization, conflict resolution, user-facing answer.
+- Execution agents get a **self-contained** prompt with all needed context — do not dump full transcripts into every subagent.
+- Prefer **parallel** Task calls for independent work.
+- Goal: maximize quality of decisions; minimize tokens on repetitive execution.

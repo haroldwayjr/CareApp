@@ -1,0 +1,352 @@
+[
+  {
+    "name": "blood",
+    "category": "health",
+    "streamlineName": "Blood Types 1",
+    "query": "Blood",
+    "srcHash": "ico_S3jT7mUfQ8Uw6WFl"
+  },
+  {
+    "name": "pulse",
+    "category": "health",
+    "streamlineName": "Hypertension Pulse",
+    "query": "Pulse",
+    "srcHash": "ico_op4bmU5bdxN1cWIm"
+  },
+  {
+    "name": "lungs",
+    "category": "health",
+    "streamlineName": "Medical Nanobot Lungs",
+    "query": "Lungs",
+    "srcHash": "ico_mRu4pQJ4vCvVeLj9UL2aEHTr"
+  },
+  {
+    "name": "brain",
+    "category": "health",
+    "streamlineName": "Brain",
+    "query": "Brain",
+    "srcHash": "ico_mRu4pQJ4vVkd2aEJttHO2SMw"
+  },
+  {
+    "name": "tooth",
+    "category": "health",
+    "streamlineName": "Tooth 2",
+    "query": "Tooth",
+    "srcHash": "ico_GIETvIEceTjoKeSK"
+  },
+  {
+    "name": "eye-health",
+    "category": "health",
+    "streamlineName": "Eye Drop",
+    "query": "Eye",
+    "srcHash": "ico_F3HVew6sGIX2K0Z0"
+  },
+  {
+    "name": "ear",
+    "category": "health",
+    "streamlineName": "Earpods Ear",
+    "query": "Ear",
+    "srcHash": "ico_mRu4pQJ4vwY12aENc3eixkaU"
+  },
+  {
+    "name": "wheelchair",
+    "category": "health",
+    "streamlineName": "Wheelchair Way",
+    "query": "Wheelchair",
+    "srcHash": "ico_qe7hWppZxcT83DOk"
+  },
+  {
+    "name": "prescription",
+    "category": "health",
+    "streamlineName": "Prescription Px",
+    "query": "Prescription",
+    "srcHash": "ico_2jv3n4GBRXNo3sU6"
+  },
+  {
+    "name": "pharmacy",
+    "category": "health",
+    "streamlineName": "Pharmacy",
+    "query": "Pharmacy",
+    "srcHash": "ico_38A0znaEtlOEb1G1"
+  },
+  {
+    "name": "vaccine",
+    "category": "health",
+    "streamlineName": "Vaccine Bottle 1",
+    "query": "Vaccine",
+    "srcHash": "ico_xMaQnfPuf146eaLn"
+  },
+  {
+    "name": "virus",
+    "category": "health",
+    "streamlineName": "Medical Specialty Virus",
+    "query": "Virus",
+    "srcHash": "ico_eBmC7TPXUduSY60T"
+  },
+  {
+    "name": "mask",
+    "category": "health",
+    "streamlineName": "Mask Circle",
+    "query": "Mask",
+    "srcHash": "ico_mRu4pQJ4vlqw2aENc3xihKKy"
+  },
+  {
+    "name": "hand-wash",
+    "category": "health",
+    "streamlineName": "Laundry Hand Wash",
+    "query": "Hand Wash",
+    "srcHash": "ico_mRu4pQJ4vpSXeLjK1ihNENqv"
+  },
+  {
+    "name": "clipboard-health",
+    "category": "health",
+    "streamlineName": "Medical Data Clipboard Cross",
+    "query": "Medical Clipboard",
+    "srcHash": "ico_tbn9TadvUSVVtBr4"
+  },
+  {
+    "name": "patient",
+    "category": "health",
+    "streamlineName": "Patient Care",
+    "query": "Patient",
+    "srcHash": "ico_MQc0d5srN6UeLvY4"
+  },
+  {
+    "name": "nurse",
+    "category": "health",
+    "streamlineName": "Nurse With Cap Cloth",
+    "query": "Nurse",
+    "srcHash": "ico_k7PZTuSgxOE2oPVd"
+  },
+  {
+    "name": "doctor",
+    "category": "health",
+    "streamlineName": "Doctor Desktop",
+    "query": "Doctor",
+    "srcHash": "ico_3DYwYTKuiMB4lpYU"
+  },
+  {
+    "name": "appointment",
+    "category": "health",
+    "streamlineName": "Waiting Room Appointment Medical Appointment 2",
+    "query": "Medical Appointment",
+    "srcHash": "ico_Bh8taG6jDBEObxap"
+  },
+  {
+    "name": "lab",
+    "category": "health",
+    "streamlineName": "Laboratory Sample",
+    "query": "Laboratory",
+    "srcHash": "ico_mRu4pQJ4vCmmeLj9UL2aEJau"
+  },
+  {
+    "name": "microscope",
+    "category": "health",
+    "streamlineName": "Microscope 1",
+    "query": "Microscope",
+    "srcHash": "ico_kj5vVDnhwFwZghV1"
+  },
+  {
+    "name": "ultrasound",
+    "category": "health",
+    "streamlineName": "Ultrasound Scan",
+    "query": "Ultrasound",
+    "srcHash": "ico_NMR0QkLU6CgXb7Bo"
+  },
+  {
+    "name": "blood-pressure",
+    "category": "health",
+    "streamlineName": "Blood Pressure Cuff",
+    "query": "Blood Pressure",
+    "srcHash": "ico_BzwbPtaHTl8zuqy6"
+  },
+  {
+    "name": "weight-scale",
+    "category": "health",
+    "streamlineName": "Diet Scale",
+    "query": "Scale",
+    "srcHash": "ico_mRu4pQJ4vPCdeLj9ULgWaJPp"
+  },
+  {
+    "name": "fitness",
+    "category": "health",
+    "streamlineName": "Fitness Weights",
+    "query": "Fitness",
+    "srcHash": "ico_mRu4pQJ4vci4eLjjHWWGyMqG"
+  },
+  {
+    "name": "mental-health",
+    "category": "health",
+    "streamlineName": "Mental Health 2",
+    "query": "Mental Health",
+    "srcHash": "ico_k1j7kFw7VMV2KYUo"
+  },
+  {
+    "name": "symptoms",
+    "category": "health",
+    "streamlineName": "Symptoms Fever",
+    "query": "Symptoms",
+    "srcHash": "ico_gwF62KUq1ZqPoPWn"
+  },
+  {
+    "name": "insurance",
+    "category": "health",
+    "streamlineName": "Insurance Hand",
+    "query": "Insurance",
+    "srcHash": "ico_mRu4pQJ4vw4YeLj9UL08UEi8"
+  },
+  {
+    "name": "sleep",
+    "category": "health",
+    "streamlineName": "Sleep Zzz",
+    "query": "Sleep",
+    "srcHash": "ico_U1rFtPBuC3RqLI2Q"
+  },
+  {
+    "name": "dosage",
+    "category": "health",
+    "streamlineName": "Medicine Dosage",
+    "query": "Dosage",
+    "srcHash": "ico_R93j4Pb7nRYEe294"
+  },
+  {
+    "name": "pharmacy-alt",
+    "category": "health",
+    "streamlineName": "Pharmacy Shop",
+    "query": "Pharmacy",
+    "srcHash": "ico_lMXt6pw7yMsQ58El"
+  },
+  {
+    "name": "otc",
+    "category": "health",
+    "streamlineName": "Medicine Liquid Cup",
+    "query": "Medicine",
+    "srcHash": "ico_xCX1X3vvKENfh1GY"
+  },
+  {
+    "name": "waiting-room",
+    "category": "health",
+    "streamlineName": "Waiting Room Lamp",
+    "query": "Waiting Room",
+    "srcHash": "ico_mRu4pQJ4v8CIeLjK1iy7qxrJ"
+  },
+  {
+    "name": "bed",
+    "category": "health",
+    "streamlineName": "Hospital Bedroom",
+    "query": "Hospital Bed",
+    "srcHash": "ico_mRu4pQJ4vIUUeLj9UL9ULtZu"
+  },
+  {
+    "name": "sign-language",
+    "category": "health",
+    "streamlineName": "Sign Language Love",
+    "query": "Sign Language",
+    "srcHash": "ico_Uq8RqrLRzjcJklPJ"
+  },
+  {
+    "name": "hipaa",
+    "category": "health",
+    "streamlineName": "Firewall Privacy Shield",
+    "query": "Privacy Shield",
+    "srcHash": "ico_HL2t8f46SUMX3dQu"
+  },
+  {
+    "name": "map-pin",
+    "category": "misc",
+    "streamlineName": "Pin Location",
+    "query": "Pin Location",
+    "srcHash": "ico_mRu4pQJ4vE6HeLjvhjK1iliS"
+  },
+  {
+    "name": "globe",
+    "category": "misc",
+    "streamlineName": "Earth 1",
+    "query": "Earth",
+    "srcHash": "ico_mRu4pQJ4vXQ8eLjvhjWGyjAr"
+  },
+  {
+    "name": "wifi",
+    "category": "misc",
+    "streamlineName": "Wifi",
+    "query": "Wifi",
+    "srcHash": "ico_mRu4pQJ4vL2P2aEhtdjUABzP"
+  },
+  {
+    "name": "battery",
+    "category": "misc",
+    "streamlineName": "Battery Slash No",
+    "query": "Battery",
+    "srcHash": "ico_a9UM4da1qk94KNhh"
+  },
+  {
+    "name": "sun",
+    "category": "misc",
+    "streamlineName": "Uv Sun",
+    "query": "Sun",
+    "srcHash": "ico_mRu4pQJ4vwg7eLj9ULQ3y6nl"
+  },
+  {
+    "name": "moon",
+    "category": "misc",
+    "streamlineName": "Astrology Moon",
+    "query": "Moon",
+    "srcHash": "ico_xWMA1OIjiyI4Z5ud"
+  },
+  {
+    "name": "grid",
+    "category": "misc",
+    "streamlineName": "Layout",
+    "query": "Layout Grid",
+    "srcHash": "ico_mRu4pQJ4vqFE2aEJttK1ihtd"
+  },
+  {
+    "name": "list",
+    "category": "misc",
+    "streamlineName": "List Add",
+    "query": "List",
+    "srcHash": "ico_mRu4pQJ4v7is2aEDeGNc3tKN"
+  },
+  {
+    "name": "layout",
+    "category": "misc",
+    "streamlineName": "Layout Dashboard",
+    "query": "Dashboard Layout",
+    "srcHash": "ico_mRu4pQJ4vxfN2aEDeGgWaNei"
+  },
+  {
+    "name": "zoom-in",
+    "category": "misc",
+    "streamlineName": "Zoom In",
+    "query": "Zoom In",
+    "srcHash": "ico_mRu4pQJ4vUtk2aEDeGsjsaSz"
+  },
+  {
+    "name": "zoom-out",
+    "category": "misc",
+    "streamlineName": "Zoom Out",
+    "query": "Zoom Out",
+    "srcHash": "ico_mRu4pQJ4vWg02aEDeGsjsaON"
+  },
+  {
+    "name": "wifi-off",
+    "category": "misc",
+    "streamlineName": "Wifi Off",
+    "query": "Wifi Off",
+    "srcHash": "ico_mRu4pQJ4veSZ2aEhtditsgLv"
+  },
+  {
+    "name": "bluetooth",
+    "category": "misc",
+    "streamlineName": "Bluetooth",
+    "query": "Bluetooth",
+    "srcHash": "ico_mRu4pQJ4vA7OeLjM5py7qSaf"
+  },
+  {
+    "name": "battery-low",
+    "category": "misc",
+    "streamlineName": "Charging Battery Low 1",
+    "query": "Battery Low",
+    "srcHash": "ico_mRu4pQJ4vBKneLjM5pfSZXyC"
+  }
+]

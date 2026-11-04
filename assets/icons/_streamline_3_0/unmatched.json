@@ -1,0 +1,1473 @@
+[
+  {
+    "name": "accessibility",
+    "category": "misc",
+    "file": "misc/accessibility.svg",
+    "query": "Tools Reality Accessibility",
+    "figma": "icon/misc/accessibility",
+    "regularHash": null,
+    "regularName": [
+      "Professional Tool Basecamp",
+      "Professional Tool Dropbox",
+      "Professional Tool Evernote"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Professional Tool Basecamp",
+      "Professional Tool Dropbox",
+      "Professional Tool Evernote"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "agreement",
+    "category": "files",
+    "file": "files/agreement.svg",
+    "query": "Workflow Agreement",
+    "figma": "icon/files/agreement",
+    "regularHash": null,
+    "regularName": [
+      "Human Resources Workflow",
+      "Help Question Network",
+      "Layout Dashboard"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Human Resources Workflow",
+      "Help Question Network",
+      "Layout Dashboard"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "appointment",
+    "category": "health",
+    "file": "health/appointment.svg",
+    "query": "Waiting Room Appointment Medical Appointment 2",
+    "figma": "icon/health/appointment",
+    "regularHash": null,
+    "regularName": [
+      "Medical Room Wait",
+      "Medical Room Clock Woman",
+      "Medical Room Clock Man"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Medical Room Wait",
+      "Medical Room Clock Woman",
+      "Medical Room Clock Man"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "bank",
+    "category": "commerce",
+    "file": "commerce/bank.svg",
+    "query": "Blood Bank",
+    "figma": "icon/commerce/bank",
+    "regularHash": null,
+    "regularName": [
+      "Blood Drop",
+      "Blood Drop Elements",
+      "Blood Drop Search"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Blood Drop",
+      "Blood Drop Elements",
+      "Blood Drop Search"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "battery",
+    "category": "misc",
+    "file": "misc/battery.svg",
+    "query": "Battery Slash No",
+    "figma": "icon/misc/battery",
+    "regularHash": null,
+    "regularName": [
+      "Charging Battery Cable 1",
+      "Charging Battery Almost Full",
+      "Charging Battery Eco"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Charging Battery Cable 1",
+      "Charging Battery Almost Full",
+      "Charging Battery Almost Full 1"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "battery-charging",
+    "category": "misc",
+    "file": "misc/battery-charging.svg",
+    "query": "Battery Charging 2",
+    "figma": "icon/misc/battery.charging",
+    "regularHash": null,
+    "regularName": [
+      "Charging Battery Cable 1",
+      "Charging Battery Almost Full",
+      "Charging Battery Eco"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Charging Battery Two Bars",
+      "Charging Battery Cable 1",
+      "Charging Battery Almost Full"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "blood-pressure",
+    "category": "health",
+    "file": "health/blood-pressure.svg",
+    "query": "Blood Pressure Cuff",
+    "figma": "icon/health/blood.pressure",
+    "regularHash": null,
+    "regularName": [
+      "Blood Drop",
+      "Blood Drop Elements",
+      "Blood Drop Search"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Blood Drop",
+      "Blood Drop Elements",
+      "Blood Drop Search"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "box-alt",
+    "category": "files",
+    "file": "files/box-alt.svg",
+    "query": "Text Box 2",
+    "figma": "icon/files/box.alt",
+    "regularHash": null,
+    "regularName": [
+      "Text Input Area",
+      "Warehouse Package Box",
+      "3d Box Corner"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Text Input Area",
+      "Warehouse Package Box",
+      "3d Box Corner"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "cancer",
+    "category": "health",
+    "file": "health/cancer.svg",
+    "query": "Cancer Cell 2",
+    "figma": "icon/health/cancer",
+    "regularHash": null,
+    "regularName": [
+      "Cell Border Bottom",
+      "Cell Border Center",
+      "Cell Border Frame"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Cell Border Bottom",
+      "Cell Border Center",
+      "Cell Border Frame"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "cast",
+    "category": "media",
+    "file": "media/cast.svg",
+    "query": "Phone Cast",
+    "figma": "icon/media/cast",
+    "regularHash": null,
+    "regularName": [
+      "Phone Actions Call",
+      "Phone Actions Call 1",
+      "Phone Ring"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Phone Actions Call",
+      "Phone Actions Call 1",
+      "Phone Ring"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "clipboard",
+    "category": "files",
+    "file": "files/clipboard.svg",
+    "query": "Insert Row From Clipboard",
+    "figma": "icon/files/clipboard",
+    "regularHash": null,
+    "regularName": [
+      "Insert Image Bottom",
+      "Insert Image Top",
+      "Crime Cut"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Insert Image Bottom",
+      "Insert Image Top",
+      "Crime Cut"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "clipboard-health",
+    "category": "health",
+    "file": "health/clipboard-health.svg",
+    "query": "Medical Data Clipboard Cross",
+    "figma": "icon/health/clipboard.health",
+    "regularHash": null,
+    "regularName": [
+      "Medical App Laptop",
+      "Medical App Laptop 1",
+      "Medical Condition Cough"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Medical App Laptop",
+      "Medical App Laptop 1",
+      "Medical Condition Cough"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "comment",
+    "category": "comms",
+    "file": "comms/comment.svg",
+    "query": "Comment Box",
+    "figma": "icon/comms/comment",
+    "regularHash": null,
+    "regularName": [
+      "Warehouse Package Box",
+      "3d Box Corner",
+      "3d Box Expand Corners"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Warehouse Package Box",
+      "3d Box Corner",
+      "3d Box Expand Corners"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "contrast",
+    "category": "media",
+    "file": "media/contrast.svg",
+    "query": "Contrast Horizontal Slider Adjustment",
+    "figma": "icon/media/contrast",
+    "regularHash": null,
+    "regularName": [
+      "Ui Phone Slider Horizontal",
+      "Setting Slider Horizontal",
+      "Settings Slider Desktop Horizontal"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Ui Phone Slider Horizontal",
+      "Setting Slider Horizontal",
+      "Ui Phone Slider Horizontal Alternate"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "counseling",
+    "category": "health",
+    "file": "health/counseling.svg",
+    "query": "Counseling 3",
+    "figma": "icon/health/counseling",
+    "regularHash": null,
+    "regularName": [
+      "Dog Leash",
+      "Style Three Pin Direction Arrow",
+      "Style Three Pin Arrow All Direction"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Dog Leash",
+      "Style Three Pin Direction Arrow",
+      "Style Three Pin Arrow All Direction"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "crisis",
+    "category": "health",
+    "file": "health/crisis.svg",
+    "query": "Emergency Call",
+    "figma": "icon/health/crisis",
+    "regularHash": null,
+    "regularName": [
+      "Phone Actions Call",
+      "Phone Actions Call 1",
+      "Phone Incoming Call"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Phone Actions Call",
+      "Phone Actions Call 1",
+      "Phone Incoming Call"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "crop",
+    "category": "media",
+    "file": "media/crop.svg",
+    "query": "Crop Rotate",
+    "figma": "icon/media/crop",
+    "regularHash": null,
+    "regularName": [
+      "Rotate",
+      "Rotate Angle",
+      "Rotate Back"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Rotate",
+      "Rotate Alternate",
+      "Rotate Angle"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "dosage",
+    "category": "health",
+    "file": "health/dosage.svg",
+    "query": "Medicine Dosage",
+    "figma": "icon/health/dosage",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "droplet",
+    "category": "misc",
+    "file": "misc/droplet.svg",
+    "query": "Drop Shape",
+    "figma": "icon/misc/droplet",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "duplicate",
+    "category": "actions",
+    "file": "actions/duplicate.svg",
+    "query": "Duplicate",
+    "figma": "icon/actions/duplicate",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "emergency",
+    "category": "health",
+    "file": "health/emergency.svg",
+    "query": "Hospital Emergency Department",
+    "figma": "icon/health/emergency",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "export",
+    "category": "actions",
+    "file": "actions/export.svg",
+    "query": "Export File",
+    "figma": "icon/actions/export",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "eye-health",
+    "category": "health",
+    "file": "health/eye-health.svg",
+    "query": "Eye Drop",
+    "figma": "icon/health/eye.health",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "factory",
+    "category": "misc",
+    "file": "misc/factory.svg",
+    "query": "Factory Belt",
+    "figma": "icon/misc/factory",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "file-pdf",
+    "category": "files",
+    "file": "files/file-pdf.svg",
+    "query": "Pdf Reader",
+    "figma": "icon/files/file.pdf",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "fingerprint",
+    "category": "misc",
+    "file": "misc/fingerprint.svg",
+    "query": "Fingerprint Add",
+    "figma": "icon/misc/fingerprint",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "food",
+    "category": "misc",
+    "file": "misc/food.svg",
+    "query": "Food Delivery Bag",
+    "figma": "icon/misc/food",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "forward-mail",
+    "category": "comms",
+    "file": "comms/forward-mail.svg",
+    "query": "Go Forward 30 Control",
+    "figma": "icon/comms/forward.mail",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "gas",
+    "category": "misc",
+    "file": "misc/gas.svg",
+    "query": "Gas Station",
+    "figma": "icon/misc/gas",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "graduation",
+    "category": "misc",
+    "file": "misc/graduation.svg",
+    "query": "Graduation Hat",
+    "figma": "icon/misc/graduation",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "group",
+    "category": "comms",
+    "file": "comms/group.svg",
+    "query": "Group",
+    "figma": "icon/comms/group",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "guide",
+    "category": "files",
+    "file": "files/guide.svg",
+    "query": "Drug Guide Book",
+    "figma": "icon/files/guide",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "hearing-aid",
+    "category": "health",
+    "file": "health/hearing-aid.svg",
+    "query": "Hearing Aid",
+    "figma": "icon/health/hearing.aid",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "hipaa",
+    "category": "health",
+    "file": "health/hipaa.svg",
+    "query": "Firewall Privacy Shield",
+    "figma": "icon/health/hipaa",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "import",
+    "category": "actions",
+    "file": "actions/import.svg",
+    "query": "Import File",
+    "figma": "icon/actions/import",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "inbox",
+    "category": "comms",
+    "file": "comms/inbox.svg",
+    "query": "Inbox Tray Notification Badge",
+    "figma": "icon/comms/inbox",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "inhaler",
+    "category": "health",
+    "file": "health/inhaler.svg",
+    "query": "Inhaler",
+    "figma": "icon/health/inhaler",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "manual",
+    "category": "files",
+    "file": "files/manual.svg",
+    "query": "Manual Book Content Sign",
+    "figma": "icon/files/manual",
+    "regularHash": null,
+    "regularName": [
+      "Content Pen",
+      "Content Pen 1",
+      "Content Pen 2"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Content Pen",
+      "Content Pen 1",
+      "Content Pen 2"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "meditation",
+    "category": "health",
+    "file": "health/meditation.svg",
+    "query": "Yoga Meditation Pose2",
+    "figma": "icon/health/meditation",
+    "regularHash": null,
+    "regularName": [
+      "Yoga Arm Stretch",
+      "Yoga Arms Stretch",
+      "Yoga Back Stretch"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Yoga Arm Stretch",
+      "Yoga Arms Stretch",
+      "Yoga Back Stretch"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "mental-health",
+    "category": "health",
+    "file": "health/mental-health.svg",
+    "query": "Mental Health 2",
+    "figma": "icon/health/mental.health",
+    "regularHash": null,
+    "regularName": [
+      "Diet Health",
+      "Graph Stats",
+      "Pstyle Two In Cart"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Diet Health",
+      "Graph Stats",
+      "Graph Stats Square Alternate"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "mental-wellness",
+    "category": "health",
+    "file": "health/mental-wellness.svg",
+    "query": "Mindfulness 2",
+    "figma": "icon/health/mental.wellness",
+    "regularHash": null,
+    "regularName": [
+      "Pstyle Two In Cart",
+      "Style Two Pin Add",
+      "Style Two Pin Bolt"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Pstyle Two In Cart",
+      "Style Two Pin Add",
+      "Style Two Pin Bolt"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "merge",
+    "category": "navigation",
+    "file": "navigation/merge.svg",
+    "query": "Merge",
+    "figma": "icon/navigation/merge",
+    "regularHash": null,
+    "regularName": [
+      "Phone Actions Merge",
+      "Diagram Merge Down",
+      "Pathfinder Merge"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Diagram Merge Down",
+      "Pathfinder Merge",
+      "Phone Actions Merge"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "microscope",
+    "category": "health",
+    "file": "health/microscope.svg",
+    "query": "Microscope 1",
+    "figma": "icon/health/microscope",
+    "regularHash": null,
+    "regularName": [
+      "Style One Pin",
+      "Style One Pin Bolt",
+      "Style One Pin Book"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Style One Pin",
+      "Style One Pin Bolt",
+      "Style One Pin Book"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "moon",
+    "category": "misc",
+    "file": "misc/moon.svg",
+    "query": "Astrology Moon",
+    "figma": "icon/misc/moon",
+    "regularHash": null,
+    "regularName": [
+      "Astrology Aquarius",
+      "Astrology Aries",
+      "Astrology Aries 1"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Astrology Aquarius",
+      "Astrology Aries",
+      "Astrology Aries 1"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "new",
+    "category": "actions",
+    "file": "actions/new.svg",
+    "query": "New Spreadsheet",
+    "figma": "icon/actions/new",
+    "regularHash": null,
+    "regularName": [
+      "Tag New",
+      "Tag New Circle",
+      "Family Add New Member"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Tag New",
+      "Tag New Circle",
+      "Family Add New Member"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "notification",
+    "category": "status",
+    "file": "status/notification.svg",
+    "query": "Alert Notification",
+    "figma": "icon/status/notification",
+    "regularHash": null,
+    "regularName": [
+      "Alert Circle",
+      "Alarm Bell",
+      "Alarm Clock"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Alarm Bell",
+      "Alarm Bell 1",
+      "Alarm Clock 1"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "open",
+    "category": "actions",
+    "file": "actions/open.svg",
+    "query": "Open Eyes",
+    "figma": "icon/actions/open",
+    "regularHash": null,
+    "regularName": [
+      "Book Open",
+      "Book Open 1",
+      "Book Open 2"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Book Open",
+      "Book Open 1",
+      "Book Open 2"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "otc",
+    "category": "health",
+    "file": "health/otc.svg",
+    "query": "Medicine Liquid Cup",
+    "figma": "icon/health/otc",
+    "regularHash": null,
+    "regularName": [
+      "Coffee Cup",
+      "Dating Cup",
+      "Tea Cup"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Coffee Cup",
+      "Dating Cup",
+      "Tea Cup"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "oxygen",
+    "category": "health",
+    "file": "health/oxygen.svg",
+    "query": "Oxygen",
+    "figma": "icon/health/oxygen",
+    "regularHash": null,
+    "regularName": [
+      "Diving Oxygen",
+      "Diving Oxygen Tank"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Diving Oxygen",
+      "Diving Oxygen Tank"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "package-alt",
+    "category": "files",
+    "file": "files/package-alt.svg",
+    "query": "Package Dimension",
+    "figma": "icon/files/package.alt",
+    "regularHash": null,
+    "regularName": [
+      "Warehouse Package Box",
+      "Real Estate Dimensions Block",
+      "Real Estate Dimensions Building"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Warehouse Package Box",
+      "Real Estate Dimensions Block",
+      "Real Estate Dimensions Building"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "panel-bottom",
+    "category": "navigation",
+    "file": "navigation/panel-bottom.svg",
+    "query": "Layout 9",
+    "figma": "icon/navigation/panel.bottom",
+    "regularHash": null,
+    "regularName": [
+      "Layout",
+      "Layout 1",
+      "Layout 2"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Layout",
+      "Layout 1",
+      "Layout 2"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "parcel",
+    "category": "files",
+    "file": "files/parcel.svg",
+    "query": "Lightweight Parcel",
+    "figma": "icon/files/parcel",
+    "regularHash": null,
+    "regularName": [
+      "Shipment Packages",
+      "Share Location Hand",
+      "Share Location Hand 1"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Shipment Package",
+      "Shipment Packages",
+      "Share Location Hand"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "paste",
+    "category": "actions",
+    "file": "actions/paste.svg",
+    "query": "Insurance Document Clipboard",
+    "figma": "icon/actions/paste",
+    "regularHash": null,
+    "regularName": [
+      "Car Insurance Hands",
+      "Real Estate Insurance Building",
+      "Real Estate Insurance House"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Car Insurance Hands",
+      "Real Estate Insurance Building",
+      "Real Estate Insurance Building 1"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "patient",
+    "category": "health",
+    "file": "health/patient.svg",
+    "query": "Patient Care",
+    "figma": "icon/health/patient",
+    "regularHash": null,
+    "regularName": [
+      "Medical File",
+      "Baby Care Body",
+      "Baby Care Bottle"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Baby Care Body",
+      "Baby Care Bottle",
+      "Baby Care Bib"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "pharmacy",
+    "category": "health",
+    "file": "health/pharmacy.svg",
+    "query": "Pharmacy",
+    "figma": "icon/health/pharmacy",
+    "regularHash": null,
+    "regularName": [],
+    "boldHash": null,
+    "boldName": [],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "pharmacy-alt",
+    "category": "health",
+    "file": "health/pharmacy-alt.svg",
+    "query": "Pharmacy Shop",
+    "figma": "icon/health/pharmacy.alt",
+    "regularHash": null,
+    "regularName": [
+      "Shop",
+      "Shop 1",
+      "Shop Arrow"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Shop",
+      "Shop 1",
+      "Shop Assistant"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "policy",
+    "category": "files",
+    "file": "files/policy.svg",
+    "query": "Ai Policy Script",
+    "figma": "icon/files/policy",
+    "regularHash": null,
+    "regularName": [
+      "Insurance Hand",
+      "Insurance Hands",
+      "Car Insurance Hands"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Insurance Hand",
+      "Insurance Hands",
+      "Car Insurance Hands"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "prescription",
+    "category": "health",
+    "file": "health/prescription.svg",
+    "query": "Prescription Px",
+    "figma": "icon/health/prescription",
+    "regularHash": null,
+    "regularName": [
+      "Social 500px"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Social 500px"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "prosthetic",
+    "category": "health",
+    "file": "health/prosthetic.svg",
+    "query": "Prosthetic Leg 1",
+    "figma": "icon/health/prosthetic",
+    "regularHash": null,
+    "regularName": [
+      "Technology Prosthetic Leg",
+      "Bandage Leg Hanging",
+      "Bandage Leg"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Technology Prosthetic Leg",
+      "Bandage Leg Hanging",
+      "Bandage Leg"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "pulse",
+    "category": "health",
+    "file": "health/pulse.svg",
+    "query": "Hypertension Pulse",
+    "figma": "icon/health/pulse",
+    "regularHash": null,
+    "regularName": [
+      "Graph Stats Circle",
+      "Monitor Heart Beat",
+      "Social Music Beats Studio"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Graph Stats Circle",
+      "Graph Stats Square Alternate",
+      "Monitor Heart Beat"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "remind",
+    "category": "actions",
+    "file": "actions/remind.svg",
+    "query": "Reminder Hand Sign",
+    "figma": "icon/actions/remind",
+    "regularHash": null,
+    "regularName": [
+      "Business Contract Handshake Sign",
+      "Sign Badge Circle",
+      "Road Sign 66"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Business Contract Handshake Sign",
+      "Sign Badge Circle",
+      "Sign Badge Rectangular"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "restore",
+    "category": "actions",
+    "file": "actions/restore.svg",
+    "query": "Archive Restore",
+    "figma": "icon/actions/restore",
+    "regularHash": null,
+    "regularName": [
+      "Archive",
+      "Archive Books",
+      "Archive Drawer"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Archive",
+      "Archive Books",
+      "Archive Drawer"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "resume",
+    "category": "files",
+    "file": "files/resume.svg",
+    "query": "Recruiting Resume Document",
+    "figma": "icon/files/resume",
+    "regularHash": null,
+    "regularName": [
+      "Job Choose Cadidate 1",
+      "Job Choose Candidate",
+      "Job Search"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Job Choose Cadidate 1",
+      "Job Choose Candidate",
+      "Job Search"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "sign-language",
+    "category": "health",
+    "file": "health/sign-language.svg",
+    "query": "Sign Language Love",
+    "figma": "icon/health/sign.language",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Love Gift Diamond",
+      "Love Gift Diamond 1",
+      "Love Gift Flowers"
+    ],
+    "boldTop3": [
+      "Love Gift Diamond",
+      "Love Gift Diamond 1",
+      "Love Gift Flowers"
+    ]
+  },
+  {
+    "name": "sleep",
+    "category": "health",
+    "file": "health/sleep.svg",
+    "query": "Sleep Zzz",
+    "figma": "icon/health/sleep",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Deer Sleep",
+      "Alarm Bell Sleep",
+      "Camping Tent Sleep"
+    ],
+    "boldTop3": [
+      "Deer Sleep",
+      "Alarm Bell Sleep",
+      "Alarm Bell Sleep 1"
+    ]
+  },
+  {
+    "name": "snooze",
+    "category": "actions",
+    "file": "actions/snooze.svg",
+    "query": "Snooze Return Repeat",
+    "figma": "icon/actions/snooze",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Playlist Repeat",
+      "Keyboard Return",
+      "Keyboard Return 1"
+    ],
+    "boldTop3": [
+      "Playlist Repeat",
+      "Keyboard Return",
+      "Keyboard Return 1"
+    ]
+  },
+  {
+    "name": "sort",
+    "category": "actions",
+    "file": "actions/sort.svg",
+    "query": "Sort Size Ascending Order Up",
+    "figma": "icon/actions/sort",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Single Man Actions Up Down",
+      "Monitor Heart Rate Up",
+      "Font Size"
+    ],
+    "boldTop3": [
+      "Single Man Actions Up Down",
+      "Single Neutral Actions Up Down",
+      "Single Neutral Actions Up Down"
+    ]
+  },
+  {
+    "name": "sort-asc",
+    "category": "actions",
+    "file": "actions/sort-asc.svg",
+    "query": "Ascending Sort 1",
+    "figma": "icon/actions/sort.asc",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Diagram Curve Rise",
+      "Diagram Steady Rise",
+      "Diagram Curve Rise Dash"
+    ],
+    "boldTop3": [
+      "Diagram Curve Rise",
+      "Diagram Steady Rise",
+      "Diagram Curve Rise Dash"
+    ]
+  },
+  {
+    "name": "sort-desc",
+    "category": "actions",
+    "file": "actions/sort-desc.svg",
+    "query": "Descending Sort 1",
+    "figma": "icon/actions/sort.desc",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Check 1",
+      "Check 2",
+      "Checklist"
+    ],
+    "boldTop3": [
+      "Check",
+      "Check 1",
+      "Check 2"
+    ]
+  },
+  {
+    "name": "split",
+    "category": "navigation",
+    "file": "navigation/split.svg",
+    "query": "Split Subset Spreadsheet 2",
+    "figma": "icon/navigation/split",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Phone Actions Split",
+      "Phone Actions Split 1",
+      "Cable Split"
+    ],
+    "boldTop3": [
+      "Phone Actions Split",
+      "Phone Actions Split 1",
+      "Cable Split"
+    ]
+  },
+  {
+    "name": "symptoms",
+    "category": "health",
+    "file": "health/symptoms.svg",
+    "query": "Symptoms Fever",
+    "figma": "icon/health/symptoms",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Smiley Fever",
+      "Sound",
+      "User Question"
+    ],
+    "boldTop3": [
+      "Smiley Fever",
+      "Smiley Fever Alternate",
+      "Sound"
+    ]
+  },
+  {
+    "name": "terminal",
+    "category": "misc",
+    "file": "misc/terminal.svg",
+    "query": "Terminal",
+    "figma": "icon/misc/terminal",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Athletics Pole Vault",
+      "Paragraph Indent Last Line",
+      "Road Sign Deadend"
+    ],
+    "boldTop3": [
+      "Athletics Pole Vault",
+      "Paragraph Indent Last Line",
+      "Road Sign Deadend"
+    ]
+  },
+  {
+    "name": "train",
+    "category": "misc",
+    "file": "misc/train.svg",
+    "query": "Train Location",
+    "figma": "icon/misc/train",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Share Location Hand",
+      "Share Location Hand 1",
+      "Sync Location Refresh"
+    ],
+    "boldTop3": [
+      "Share Location Hand",
+      "Share Location Hand 2",
+      "Sync Location Refresh"
+    ]
+  },
+  {
+    "name": "ultrasound",
+    "category": "health",
+    "file": "health/ultrasound.svg",
+    "query": "Ultrasound Scan",
+    "figma": "icon/health/ultrasound",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Pregnancy Ultrasound Baby",
+      "Iris Scan 1",
+      "Iris Scan 2"
+    ],
+    "boldTop3": [
+      "Pregnancy Ultrasound Baby",
+      "Iris Scan 1",
+      "Iris Scan 2"
+    ]
+  },
+  {
+    "name": "umbrella",
+    "category": "misc",
+    "file": "misc/umbrella.svg",
+    "query": "Umbrella Circle",
+    "figma": "icon/misc/umbrella",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Insurance Umbrella Heart",
+      "Accessories Umbrella",
+      "Accessories Umbrella 1"
+    ],
+    "boldTop3": [
+      "Insurance Umbrella Heart",
+      "Accessories Umbrella",
+      "Accessories Umbrella 1"
+    ]
+  },
+  {
+    "name": "vaccine",
+    "category": "health",
+    "file": "health/vaccine.svg",
+    "query": "Vaccine Bottle 1",
+    "figma": "icon/health/vaccine",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Decoration Bottle",
+      "Decoration Bottle 1",
+      "Recycling Bottle"
+    ],
+    "boldTop3": [
+      "Decoration Bottle",
+      "Decoration Bottle 1",
+      "Recycling Bottle"
+    ]
+  },
+  {
+    "name": "virus",
+    "category": "health",
+    "file": "health/virus.svg",
+    "query": "Medical Specialty Virus",
+    "figma": "icon/health/virus",
+    "regularHash": null,
+    "regularName": null,
+    "boldHash": null,
+    "boldName": null,
+    "exactRegular": false,
+    "exactBold": false,
+    "regularTop3": [
+      "Medical Specialty Back",
+      "Medical Specialty Breathing",
+      "Medical Specialty Ear"
+    ],
+    "boldTop3": [
+      "Medical Specialty Back",
+      "Medical Specialty Breathing",
+      "Medical Specialty Ear"
+    ]
+  }
+]

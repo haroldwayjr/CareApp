@@ -1,0 +1,67 @@
+
+const page = figma.root.children.find(p => /Icons/i.test(p.name));
+await figma.setCurrentPageAsync(page);
+
+const collections = await figma.variables.getLocalVariableCollectionsAsync();
+let iconDefault = null;
+for (const coll of collections) {
+  for (const id of coll.variableIds) {
+    const v = await figma.variables.getVariableByIdAsync(id);
+    if (v && v.name === 'icon/default') iconDefault = v;
+  }
+}
+
+function bindFills(root) {
+  const stack = [root];
+  while (stack.length) {
+    const n = stack.pop();
+    if ('constraints' in n) n.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    if (n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION' || n.type === 'ELLIPSE' || n.type === 'STAR' || n.type === 'POLYGON') {
+      const paint = figma.variables.setBoundVariableForPaint(
+        { type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', iconDefault);
+      n.fills = [paint];
+      n.strokes = [];
+    }
+    if ('children' in n) for (const c of n.children) stack.push(c);
+  }
+}
+
+function applyBoldXs(set, svg) {
+  const xs = set.children.find(c => c.name === 'Size=xs');
+  const md = set.children.find(c => c.name === 'Size=md');
+  if (!xs) return { ok: false, reason: 'no-xs' };
+  const was = xs.visible;
+  xs.visible = true;
+  for (const c of [...xs.children]) c.remove();
+  const node = figma.createNodeFromSvg(svg);
+  node.name = set.name.split('/').pop();
+  node.resize(16, 16);
+  node.x = 0; node.y = 0;
+  node.clipsContent = false;
+  if ('constraints' in node) node.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+  xs.appendChild(node);
+  try { xs.resizeWithoutConstraints(16, 16); } catch (_) { try { xs.resize(16, 16); } catch (__) {} }
+  bindFills(node);
+  xs.clipsContent = false;
+  xs.visible = false; // keep catalog md-only
+  if (md) md.visible = true;
+  try { set.resizeWithoutConstraints(24, 24); } catch (_) {}
+  set.clipsContent = true;
+  return { ok: true };
+}
+
+const BATCH = [{"setName":"icon/health/eye.health","name":"eye-health","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Eye-Drop--Streamline-Ultimate\">\n  <desc>\n    Eye Drop Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path fill=\"#000000\" fill-rule=\"evenodd\" d=\"M8.54351 8.28716c0 -1.47018 -2.05554 -4.58134 -2.93041 -5.83892 -0.19084 -0.27433 -0.58671 -0.27769 -0.78186 -0.00641 -0.90164 1.25339 -3.03351 4.37265 -3.03351 5.84533 0 0.89455 0.35536 1.75244 0.9879 2.38504 0.63254 0.6325 1.49044 0.9879 2.38499 0.9879s1.75245 -0.3554 2.38499 -0.9879c0.63254 -0.6326 0.9879 -1.49049 0.9879 -2.38504m-7.2548 5.49824c0.3624 -0.4006 0.81192 -0.8616 1.33227 -1.3456 0.76086 0.4671 1.6422 0.7203 2.54964 0.7203 1.29237 0 2.53181 -0.5134 3.44565 -1.4273 0.91385 -0.9138 1.42723 -2.15326 1.42723 -3.44563 0 -0.06326 -0.002 -0.12675 -0.0058 -0.19036 0.6447 -0.14789 1.3013 -0.23115 1.9624 -0.23115 3.0419 0 5.9896 1.76278 8.1091 3.47294 1.0745 0.8671 1.9707 1.7487 2.6023 2.4468 0.3152 0.3484 0.5707 0.658 0.752 0.9031 0.0896 0.1211 0.1692 0.2374 0.2301 0.3415 0.03 0.0512 0.0632 0.1125 0.091 0.1783 0.0184 0.0434 0.0755 0.1793 0.0755 0.3511s-0.0571 0.3077 -0.0755 0.3511c-0.0278 0.0658 -0.061 0.1271 -0.091 0.1783 -0.0609 0.1041 -0.1405 0.2204 -0.2301 0.3415 -0.1813 0.2451 -0.4368 0.5547 -0.752 0.9031 -0.6316 0.6981 -1.5278 1.5797 -2.6023 2.4468 -2.1195 1.7101 -5.0672 3.4729 -8.1091 3.4729 -3.04185 0 -5.98961 -1.7628 -8.10907 -3.4729 -1.07455 -0.8671 -1.97075 -1.7487 -2.60232 -2.4468 -0.315191 -0.3484 -0.570674 -0.658 -0.751976 -0.9031 -0.089594 -0.1211 -0.169246 -0.2374 -0.230143 -0.3415 -0.030003 -0.0512 -0.063135 -0.1125 -0.091002 -0.1783 -0.018367 -0.0434 -0.075452 -0.1793 -0.075452 -0.3511s0.057085 -0.3077 0.075452 -0.3511c0.027867 -0.0658 0.060999 -0.1271 0.091002 -0.1783 0.060897 -0.1041 0.140549 -0.2204 0.230143 -0.3415 0.181302 -0.2451 0.436785 -0.5547 0.751976 -0.9031m14.16699 1.7741c0 1.9087 -1.5474 3.4561 -3.4561 3.4561 -1.9088 0 -3.45614 -1.5474 -3.45614 -3.4561 0 -1.9088 1.54734 -3.4561 3.45614 -3.4561 1.9087 0 3.4561 1.5473 3.4561 3.4561\" clip-rule=\"evenodd\" stroke-width=\"1\"></path>\n</svg>"},{"setName":"icon/health/ear","name":"ear","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Earpods-Ear--Streamline-Ultimate\">\n  <desc>\n    Earpods Ear Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M16.14 17.63a1 1 0 0 0 -1.09 0.9 3.62 3.62 0 0 1 -5.66 2.66 3.78 3.78 0 0 1 -1.57 -2.9 5.4 5.4 0 0 0 -2.71 -4.47 6.26 6.26 0 0 1 2.4 -11.63 6 6 0 0 1 4.72 1.66 1 1 0 0 0 1.39 -1.44A8 8 0 0 0 7.32 0.19a8.27 8.27 0 0 0 -3.21 15.36 3.43 3.43 0 0 1 1.72 2.93 5.62 5.62 0 0 0 11.17 0.25 1 1 0 0 0 -0.86 -1.1\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M4 7a1 1 0 1 0 1.92 0.55A2.78 2.78 0 0 1 9 5.56a1 1 0 1 0 0.29 -2A4.78 4.78 0 0 0 4 7\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M23.41 13.11 16.34 6a3.71 3.71 0 0 0 -3 -1 5.17 5.17 0 0 0 -3.15 1.55 5.19 5.19 0 0 0 -1.51 3 1.51 1.51 0 0 0 0.43 1.26l2.51 2.51a1.51 1.51 0 0 0 1.26 0.43 5.19 5.19 0 0 0 3 -1.51l0.16 -0.16a0.51 0.51 0 0 1 0.72 0l3.9 3.9a2 2 0 0 0 2.82 -2.83ZM12.5 8.5a1 1 0 1 1 -1 1 1 1 0 0 1 1 -1\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/health/wheelchair","name":"wheelchair","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Wheelchair-Way--Streamline-Ultimate\">\n  <desc>\n    Wheelchair Way Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M23.81 15.54a0.5 0.5 0 0 0 -0.49 0L8.82 23a0.5 0.5 0 0 0 -0.26 0.56 0.51 0.51 0 0 0 0.49 0.39h14.5a0.51 0.51 0 0 0 0.5 -0.5V16a0.5 0.5 0 0 0 -0.24 -0.46\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M10.73 18.85a1 1 0 0 0 -1.39 -0.26 4.5 4.5 0 0 1 -5.44 -7.16A1 1 0 0 0 2.61 9.9a6.5 6.5 0 0 0 7.85 10.34 1 1 0 0 0 0.27 -1.39\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M4.43 3.28a2.75 2.75 0 1 0 5.5 0 2.75 2.75 0 1 0 -5.5 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M6.4 7.39a1.2 1.2 0 0 0 -0.56 0.53 1.55 1.55 0 0 0 -0.24 0.83v4.47a2.63 2.63 0 0 0 2.63 2.63h2.14a0.53 0.53 0 0 1 0.41 0.19l1.48 1.84a1.55 1.55 0 0 0 1.23 0.59 1.57 1.57 0 0 0 1.23 -2.56l-1.47 -1.84a3.7 3.7 0 0 0 -2.87 -1.38H8.75v-2.42l2.44 0.52a1.24 1.24 0 0 0 0.27 0 1.31 1.31 0 0 0 0.28 -2.6 21.68 21.68 0 0 0 -4.56 -1.02 1.48 1.48 0 0 0 -0.78 0.22\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/health/prescription","name":"prescription","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Prescription-Px--Streamline-Ultimate\">\n  <desc>\n    Prescription Px Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path fill=\"#000000\" fill-rule=\"evenodd\" d=\"M4.33765 2.13673v7.54028l3.70888 0.01416c0.05956 -0.00511 0.11949 -0.00488 0.17901 0.00068l1.24989 0.00477c2.08217 0 3.77017 -1.68794 3.77017 -3.77013s-1.688 -3.77013 -3.77017 -3.77013zm0 9.54027 3.39071 0.013 6.34064 6.3407 -4.22069 4.2207c-0.38924 0.3892 -0.38923 1.0203 0.00001 1.4096 0.38928 0.3892 1.02038 0.3892 1.40958 -0.0001l4.2206 -4.2206 4.2208 4.2208c0.3893 0.3893 1.0204 0.3893 1.4096 0 0.3893 -0.3892 0.3893 -1.0203 0 -1.4095l-4.2208 -4.2209 4.2215 -4.2216c0.3892 -0.3892 0.3892 -1.0203 -0.0001 -1.4096 -0.3892 -0.3892 -1.0203 -0.3892 -1.4095 0l-4.2215 4.2216 -5.0095 -5.0097c2.7133 -0.4709 4.7766 -2.83694 4.7766 -5.68491 0 -3.18676 -2.5834 -5.770134 -5.77017 -5.770134L3.83803 0.134827c-0.5193 0 -0.94615 0.395837 -0.99528 0.902243 -0.00337 0.02884 -0.0051 0.05818 -0.0051 0.08793v18.097c0 0.4142 0.33578 0.75 0.75 0.75 0.41421 0 0.75 -0.3358 0.75 -0.75z\" clip-rule=\"evenodd\" stroke-width=\"1\"></path>\n</svg>"}];
+let ok = 0, missing = 0, failed = 0;
+const miss = [], fail = [];
+for (const item of BATCH) {
+  const set = page.findOne(n => n.type === 'COMPONENT_SET' && n.name === item.setName);
+  if (!set) { missing++; if (miss.length < 5) miss.push(item.setName); continue; }
+  try {
+    const r = applyBoldXs(set, item.svg);
+    if (r.ok) ok++; else { failed++; fail.push({ name: item.setName, r }); }
+  } catch (e) {
+    failed++;
+    if (fail.length < 5) fail.push({ name: item.setName, err: String(e) });
+  }
+}
+return { ok, missing, failed, miss, fail };

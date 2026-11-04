@@ -1,0 +1,2372 @@
+{
+  "icon/actions/add": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/add.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 424
+  },
+  "icon/actions/archive": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/archive.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 746
+  },
+  "icon/actions/attach": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/attach.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 439
+  },
+  "icon/actions/browse": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/browse.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1186
+  },
+  "icon/actions/cancel": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/cancel.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1095
+  },
+  "icon/actions/check.circle": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/check-circle.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 516
+  },
+  "icon/actions/check": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/check.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 352
+  },
+  "icon/actions/clear": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/clear.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1440
+  },
+  "icon/actions/close.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/close-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 445
+  },
+  "icon/actions/copy": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/copy.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 818
+  },
+  "icon/actions/create": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/create.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1113
+  },
+  "icon/actions/cut": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/cut.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 888
+  },
+  "icon/actions/delete": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/delete.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 486
+  },
+  "icon/actions/discover": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/discover.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1817
+  },
+  "icon/actions/download": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/download.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 491
+  },
+  "icon/actions/draft": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/draft.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1965
+  },
+  "icon/actions/duplicate": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/duplicate.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 602
+  },
+  "icon/actions/edit.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/edit-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1329
+  },
+  "icon/actions/edit": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/edit.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 681
+  },
+  "icon/actions/empty.trash": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/empty-trash.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1213
+  },
+  "icon/actions/erase": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/erase.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1218
+  },
+  "icon/actions/explore": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/explore.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1764
+  },
+  "icon/actions/export": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/export.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 939
+  },
+  "icon/actions/find": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/find.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1139
+  },
+  "icon/actions/flag.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/flag-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 856
+  },
+  "icon/actions/forward.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/forward-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 708
+  },
+  "icon/actions/import": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/import.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 940
+  },
+  "icon/actions/link": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/link.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 723
+  },
+  "icon/actions/locate": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/locate.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2423
+  },
+  "icon/actions/login": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/login.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 612
+  },
+  "icon/actions/logout": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/logout.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 610
+  },
+  "icon/actions/move": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/move.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 604
+  },
+  "icon/actions/new": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/new.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1410
+  },
+  "icon/actions/open": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/open.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1245
+  },
+  "icon/actions/paste": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/paste.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2103
+  },
+  "icon/actions/pin": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/pin.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 643
+  },
+  "icon/actions/power": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/power.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 450
+  },
+  "icon/actions/print": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/print.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1483
+  },
+  "icon/actions/quote.reply": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/quote-reply.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 871
+  },
+  "icon/actions/redo": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/redo.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 458
+  },
+  "icon/actions/refresh": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/refresh.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 954
+  },
+  "icon/actions/remind": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/remind.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1700
+  },
+  "icon/actions/reply.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/reply-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2065
+  },
+  "icon/actions/restore": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/restore.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 907
+  },
+  "icon/actions/save": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/save.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1217
+  },
+  "icon/actions/search.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/search-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 548
+  },
+  "icon/actions/select.all": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/select-all.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1343
+  },
+  "icon/actions/select": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/select.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 3152
+  },
+  "icon/actions/send.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/send-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 751
+  },
+  "icon/actions/share.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/share-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 587
+  },
+  "icon/actions/share": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/share.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 946
+  },
+  "icon/actions/snooze": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/snooze.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1083
+  },
+  "icon/actions/sort.asc": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/sort-asc.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 626
+  },
+  "icon/actions/sort.desc": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/sort-desc.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 628
+  },
+  "icon/actions/sort": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/sort.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 714
+  },
+  "icon/actions/star.add": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/star-add.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 949
+  },
+  "icon/actions/swap": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/swap.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1674
+  },
+  "icon/actions/sync": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/sync.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 660
+  },
+  "icon/actions/trash": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/trash.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1208
+  },
+  "icon/actions/undo": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/undo.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 457
+  },
+  "icon/actions/upload": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/actions/upload.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 859
+  },
+  "icon/commerce/bag": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/bag.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1233
+  },
+  "icon/commerce/bank": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/bank.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1360
+  },
+  "icon/commerce/barcode": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/barcode.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1199
+  },
+  "icon/commerce/cart": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/cart.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1862
+  },
+  "icon/commerce/chart.bar": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/chart-bar.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 902
+  },
+  "icon/commerce/chart.line": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/chart-line.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2130
+  },
+  "icon/commerce/coins": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/coins.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1316
+  },
+  "icon/commerce/coupon": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/coupon.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1196
+  },
+  "icon/commerce/credit.card": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/credit-card.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1181
+  },
+  "icon/commerce/discount": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/discount.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 812
+  },
+  "icon/commerce/dollar": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/dollar.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1493
+  },
+  "icon/commerce/gift": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/gift.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1357
+  },
+  "icon/commerce/invoice": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/invoice.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1895
+  },
+  "icon/commerce/payment": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/payment.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2223
+  },
+  "icon/commerce/piggy.bank": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/piggy-bank.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1570
+  },
+  "icon/commerce/qr.code": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/qr-code.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2915
+  },
+  "icon/commerce/receipt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/receipt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1142
+  },
+  "icon/commerce/store": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/store.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1031
+  },
+  "icon/commerce/wallet": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/commerce/wallet.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1614
+  },
+  "icon/comms/calendar": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/calendar.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 793
+  },
+  "icon/comms/chat": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/chat.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 401
+  },
+  "icon/comms/clock": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/clock.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1165
+  },
+  "icon/comms/comment": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/comment.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1184
+  },
+  "icon/comms/contacts": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/contacts.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 983
+  },
+  "icon/comms/forward.mail": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/forward-mail.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1344
+  },
+  "icon/comms/group": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/group.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 517
+  },
+  "icon/comms/inbox": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/inbox.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1073
+  },
+  "icon/comms/mail": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/mail.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1057
+  },
+  "icon/comms/meeting": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/meeting.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1709
+  },
+  "icon/comms/message": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/message.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1283
+  },
+  "icon/comms/phone.off": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/phone-off.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 957
+  },
+  "icon/comms/phone": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/phone.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 639
+  },
+  "icon/comms/presentation": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/presentation.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1382
+  },
+  "icon/comms/reply.all": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/reply-all.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 684
+  },
+  "icon/comms/reply": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/reply.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 693
+  },
+  "icon/comms/send": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/send.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 562
+  },
+  "icon/comms/team": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/team.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2307
+  },
+  "icon/comms/user.add": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/user-add.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1162
+  },
+  "icon/comms/user.check": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/user-check.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 824
+  },
+  "icon/comms/user.remove": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/user-remove.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1040
+  },
+  "icon/comms/user": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/user.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1515
+  },
+  "icon/comms/users": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/users.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1684
+  },
+  "icon/comms/video.call": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/comms/video-call.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1930
+  },
+  "icon/files/agreement": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/agreement.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1218
+  },
+  "icon/files/attachment": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/attachment.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 395
+  },
+  "icon/files/blog": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/blog.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 990
+  },
+  "icon/files/bookmark": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/bookmark.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 482
+  },
+  "icon/files/box.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/box-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1997
+  },
+  "icon/files/cabinet": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/cabinet.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1385
+  },
+  "icon/files/clipboard": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/clipboard.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1314
+  },
+  "icon/files/cloud.download": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/cloud-download.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 649
+  },
+  "icon/files/cloud.upload": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/cloud-upload.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 640
+  },
+  "icon/files/cloud": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/cloud.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 353
+  },
+  "icon/files/contract": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/contract.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1164
+  },
+  "icon/files/database": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/database.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1574
+  },
+  "icon/files/document": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/document.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 440
+  },
+  "icon/files/drawer": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/drawer.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 448
+  },
+  "icon/files/envelope": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/envelope.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 866
+  },
+  "icon/files/faq": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/faq.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1627
+  },
+  "icon/files/file.code": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/file-code.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1921
+  },
+  "icon/files/file.image": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/file-image.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 908
+  },
+  "icon/files/file.pdf": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/file-pdf.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1288
+  },
+  "icon/files/file.text": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/file-text.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1402
+  },
+  "icon/files/file.zip": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/file-zip.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2036
+  },
+  "icon/files/file": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/file.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 685
+  },
+  "icon/files/folder.add": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/folder-add.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1046
+  },
+  "icon/files/folder.shared": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/folder-shared.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1130
+  },
+  "icon/files/folder.star": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/folder-star.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1007
+  },
+  "icon/files/folder": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/folder.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 444
+  },
+  "icon/files/guide": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/guide.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1611
+  },
+  "icon/files/hard.drive": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/hard-drive.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1591
+  },
+  "icon/files/letter": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/letter.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2285
+  },
+  "icon/files/magazine": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/magazine.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1103
+  },
+  "icon/files/manual": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/manual.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1403
+  },
+  "icon/files/newspaper": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/newspaper.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1411
+  },
+  "icon/files/notes": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/notes.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1214
+  },
+  "icon/files/package.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/package-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1441
+  },
+  "icon/files/parcel": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/parcel.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 859
+  },
+  "icon/files/policy": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/policy.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1808
+  },
+  "icon/files/portfolio": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/portfolio.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1190
+  },
+  "icon/files/postcard": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/postcard.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1146
+  },
+  "icon/files/press": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/press.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1611
+  },
+  "icon/files/resume": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/resume.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1086
+  },
+  "icon/files/server": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/server.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 3421
+  },
+  "icon/files/shelf": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/shelf.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1030
+  },
+  "icon/files/tag": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/tag.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1182
+  },
+  "icon/files/usb": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/usb.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1354
+  },
+  "icon/files/wiki": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/files/wiki.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1009
+  },
+  "icon/health/911": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/911.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2293
+  },
+  "icon/health/ambulance": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/ambulance.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1943
+  },
+  "icon/health/appointment": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/appointment.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1635
+  },
+  "icon/health/bandage": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/bandage.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2232
+  },
+  "icon/health/bed": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/bed.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1308
+  },
+  "icon/health/blood.pressure": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/blood-pressure.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1556
+  },
+  "icon/health/blood": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/blood.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1171
+  },
+  "icon/health/brain": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/brain.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2085
+  },
+  "icon/health/cancer": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/cancer.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 4166
+  },
+  "icon/health/clipboard.health": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/clipboard-health.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1680
+  },
+  "icon/health/counseling": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/counseling.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1832
+  },
+  "icon/health/crisis": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/crisis.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1761
+  },
+  "icon/health/dna": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/dna.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1569
+  },
+  "icon/health/doctor": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/doctor.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1845
+  },
+  "icon/health/dosage": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/dosage.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1241
+  },
+  "icon/health/ear": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/ear.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2325
+  },
+  "icon/health/emergency": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/emergency.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1582
+  },
+  "icon/health/eye.health": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/eye-health.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1236
+  },
+  "icon/health/family.care": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/family-care.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1069
+  },
+  "icon/health/first.aid": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/first-aid.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 849
+  },
+  "icon/health/fitness": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/fitness.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1358
+  },
+  "icon/health/glasses": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/glasses.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 902
+  },
+  "icon/health/hand.wash": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/hand-wash.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1121
+  },
+  "icon/health/hearing.aid": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/hearing-aid.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1630
+  },
+  "icon/health/heart": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/heart.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 648
+  },
+  "icon/health/hipaa": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/hipaa.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1247
+  },
+  "icon/health/hospital": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/hospital.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 737
+  },
+  "icon/health/inhaler": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/inhaler.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1116
+  },
+  "icon/health/insurance": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/insurance.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 995
+  },
+  "icon/health/lab": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/lab.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2163
+  },
+  "icon/health/lungs": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/lungs.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1661
+  },
+  "icon/health/mask": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/mask.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 569
+  },
+  "icon/health/medical.cross": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/medical-cross.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 419
+  },
+  "icon/health/meditation": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/meditation.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1696
+  },
+  "icon/health/mental.health": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/mental-health.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1194
+  },
+  "icon/health/mental.wellness": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/mental-wellness.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1801
+  },
+  "icon/health/microscope": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/microscope.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1437
+  },
+  "icon/health/mri": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/mri.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2528
+  },
+  "icon/health/neurology": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/neurology.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 3146
+  },
+  "icon/health/nurse": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/nurse.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2116
+  },
+  "icon/health/orthopedics": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/orthopedics.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1735
+  },
+  "icon/health/otc": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/otc.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1281
+  },
+  "icon/health/oxygen": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/oxygen.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 689
+  },
+  "icon/health/patient": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/patient.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1319
+  },
+  "icon/health/pediatric": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/pediatric.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1001
+  },
+  "icon/health/pharmacy.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/pharmacy-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1927
+  },
+  "icon/health/pharmacy": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/pharmacy.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1311
+  },
+  "icon/health/pill": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/pill.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 668
+  },
+  "icon/health/pregnancy": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/pregnancy.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1379
+  },
+  "icon/health/prescription": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/prescription.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 816
+  },
+  "icon/health/prosthetic": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/prosthetic.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1218
+  },
+  "icon/health/pulse": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/pulse.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1423
+  },
+  "icon/health/radiology": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/radiology.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1067
+  },
+  "icon/health/sign.language": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/sign-language.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2319
+  },
+  "icon/health/sleep": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/sleep.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 649
+  },
+  "icon/health/stethoscope": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/stethoscope.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2553
+  },
+  "icon/health/surgery": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/surgery.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 3043
+  },
+  "icon/health/symptoms": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/symptoms.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 3098
+  },
+  "icon/health/syringe": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/syringe.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1372
+  },
+  "icon/health/thermometer": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/thermometer.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 666
+  },
+  "icon/health/tooth": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/tooth.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1828
+  },
+  "icon/health/ultrasound": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/ultrasound.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1882
+  },
+  "icon/health/vaccine": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/vaccine.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2226
+  },
+  "icon/health/virus": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/virus.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2901
+  },
+  "icon/health/waiting.room": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/waiting-room.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1255
+  },
+  "icon/health/weight.scale": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/weight-scale.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1459
+  },
+  "icon/health/wheelchair": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/health/wheelchair.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1042
+  },
+  "icon/media/brightness": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/brightness.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1417
+  },
+  "icon/media/camera": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/camera.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 999
+  },
+  "icon/media/cast": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/cast.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1303
+  },
+  "icon/media/contrast": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/contrast.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 907
+  },
+  "icon/media/crop": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/crop.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1385
+  },
+  "icon/media/equalizer": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/equalizer.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1769
+  },
+  "icon/media/film": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/film.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 863
+  },
+  "icon/media/flip": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/flip.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1924
+  },
+  "icon/media/gallery": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/gallery.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1048
+  },
+  "icon/media/headphones": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/headphones.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 831
+  },
+  "icon/media/image": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/image.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2670
+  },
+  "icon/media/mic.off": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/mic-off.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1171
+  },
+  "icon/media/mic": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/mic.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 676
+  },
+  "icon/media/music": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/music.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 661
+  },
+  "icon/media/pause": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/pause.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 626
+  },
+  "icon/media/play": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/play.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 563
+  },
+  "icon/media/playlist": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/playlist.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1232
+  },
+  "icon/media/record": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/record.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 825
+  },
+  "icon/media/rotate": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/rotate.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1076
+  },
+  "icon/media/skip.back": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/skip-back.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 733
+  },
+  "icon/media/skip.forward": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/skip-forward.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 726
+  },
+  "icon/media/stop": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/stop.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 505
+  },
+  "icon/media/video": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/video.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 665
+  },
+  "icon/media/volume.off": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/volume-off.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 718
+  },
+  "icon/media/volume": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/media/volume.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1795
+  },
+  "icon/misc/accessibility": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/accessibility.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1281
+  },
+  "icon/misc/airplane": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/airplane.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 812
+  },
+  "icon/misc/alarm": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/alarm.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1132
+  },
+  "icon/misc/atom": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/atom.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 926
+  },
+  "icon/misc/award": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/award.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 675
+  },
+  "icon/misc/balloon": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/balloon.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1536
+  },
+  "icon/misc/barcode.scan": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/barcode-scan.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1476
+  },
+  "icon/misc/battery.charging": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/battery-charging.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1824
+  },
+  "icon/misc/battery.full": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/battery-full.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 963
+  },
+  "icon/misc/battery.low": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/battery-low.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 616
+  },
+  "icon/misc/battery": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/battery.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 713
+  },
+  "icon/misc/bike": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/bike.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1454
+  },
+  "icon/misc/bluetooth": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/bluetooth.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 847
+  },
+  "icon/misc/book": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/book.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1585
+  },
+  "icon/misc/briefcase": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/briefcase.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1135
+  },
+  "icon/misc/bug": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/bug.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1491
+  },
+  "icon/misc/building": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/building.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2360
+  },
+  "icon/misc/bus": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/bus.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1554
+  },
+  "icon/misc/cake": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/cake.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1222
+  },
+  "icon/misc/camera.off": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/camera-off.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 948
+  },
+  "icon/misc/car": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/car.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 3044
+  },
+  "icon/misc/cloud.sun": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/cloud-sun.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1688
+  },
+  "icon/misc/code": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/code.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 807
+  },
+  "icon/misc/coffee": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/coffee.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1085
+  },
+  "icon/misc/desktop": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/desktop.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1252
+  },
+  "icon/misc/droplet": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/droplet.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 391
+  },
+  "icon/misc/ecology": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/ecology.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 627
+  },
+  "icon/misc/face.id": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/face-id.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1357
+  },
+  "icon/misc/factory": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/factory.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1968
+  },
+  "icon/misc/fingerprint": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/fingerprint.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2200
+  },
+  "icon/misc/fire": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/fire.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 657
+  },
+  "icon/misc/flash.off": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/flash-off.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 723
+  },
+  "icon/misc/flash": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/flash.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 494
+  },
+  "icon/misc/food": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/food.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1130
+  },
+  "icon/misc/gas": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/gas.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1222
+  },
+  "icon/misc/globe": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/globe.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 869
+  },
+  "icon/misc/graduation": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/graduation.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 902
+  },
+  "icon/misc/grid": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/grid.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 712
+  },
+  "icon/misc/hammer": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/hammer.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 879
+  },
+  "icon/misc/history": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/history.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1361
+  },
+  "icon/misc/id.card": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/id-card.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1122
+  },
+  "icon/misc/key": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/key.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1093
+  },
+  "icon/misc/keyboard": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/keyboard.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1622
+  },
+  "icon/misc/language": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/language.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2278
+  },
+  "icon/misc/laptop": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/laptop.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 672
+  },
+  "icon/misc/layout": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/layout.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1274
+  },
+  "icon/misc/leaf": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/leaf.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1783
+  },
+  "icon/misc/light.mode": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/light-mode.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1125
+  },
+  "icon/misc/list": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/list.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1882
+  },
+  "icon/misc/map.pin": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/map-pin.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 511
+  },
+  "icon/misc/medal": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/medal.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1284
+  },
+  "icon/misc/moon": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/moon.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 415
+  },
+  "icon/misc/mouse": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/mouse.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 738
+  },
+  "icon/misc/office": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/office.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1444
+  },
+  "icon/misc/parking": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/parking.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1498
+  },
+  "icon/misc/passport": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/passport.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1205
+  },
+  "icon/misc/planet": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/planet.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 3893
+  },
+  "icon/misc/printer.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/printer-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1174
+  },
+  "icon/misc/projector": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/projector.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 4061
+  },
+  "icon/misc/qr.scan": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/qr-scan.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1180
+  },
+  "icon/misc/rain": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/rain.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 740
+  },
+  "icon/misc/recycle": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/recycle.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1995
+  },
+  "icon/misc/robot": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/robot.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1264
+  },
+  "icon/misc/rocket": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/rocket.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 950
+  },
+  "icon/misc/satellite": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/satellite.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 827
+  },
+  "icon/misc/scanner": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/scanner.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 917
+  },
+  "icon/misc/schedule": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/schedule.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2487
+  },
+  "icon/misc/school": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/school.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1110
+  },
+  "icon/misc/signal": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/signal.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 942
+  },
+  "icon/misc/smartphone": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/smartphone.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1604
+  },
+  "icon/misc/snow": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/snow.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 3435
+  },
+  "icon/misc/stopwatch": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/stopwatch.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 994
+  },
+  "icon/misc/sun": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/sun.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1470
+  },
+  "icon/misc/tablet": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/tablet.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 954
+  },
+  "icon/misc/temperature": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/temperature.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1314
+  },
+  "icon/misc/terminal": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/terminal.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 733
+  },
+  "icon/misc/ticket": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/ticket.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2591
+  },
+  "icon/misc/timer": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/timer.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1039
+  },
+  "icon/misc/tool": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/tool.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1322
+  },
+  "icon/misc/train": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/train.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1983
+  },
+  "icon/misc/translate": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/translate.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2097
+  },
+  "icon/misc/trophy": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/trophy.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2899
+  },
+  "icon/misc/umbrella": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/umbrella.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1009
+  },
+  "icon/misc/watch": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/watch.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 861
+  },
+  "icon/misc/water": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/water.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 819
+  },
+  "icon/misc/weather": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/weather.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2790
+  },
+  "icon/misc/wifi.off": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/wifi-off.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1256
+  },
+  "icon/misc/wifi": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/wifi.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 769
+  },
+  "icon/misc/wind": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/wind.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 882
+  },
+  "icon/misc/wrench": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/wrench.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 554
+  },
+  "icon/misc/zoom.in": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/zoom-in.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 761
+  },
+  "icon/misc/zoom.out": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/misc/zoom-out.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 632
+  },
+  "icon/navigation/arrow.down": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/arrow-down.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 453
+  },
+  "icon/navigation/arrow.left": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/arrow-left.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 453
+  },
+  "icon/navigation/arrow.right": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/arrow-right.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 455
+  },
+  "icon/navigation/arrow.up": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/arrow-up.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 450
+  },
+  "icon/navigation/back": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/back.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 538
+  },
+  "icon/navigation/breadcrumb": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/breadcrumb.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1155
+  },
+  "icon/navigation/chevron.down": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/chevron-down.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 512
+  },
+  "icon/navigation/chevron.left": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/chevron-left.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 358
+  },
+  "icon/navigation/chevron.right": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/chevron-right.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 356
+  },
+  "icon/navigation/chevron.up": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/chevron-up.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 355
+  },
+  "icon/navigation/close": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/close.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 430
+  },
+  "icon/navigation/compass": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/compass.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 807
+  },
+  "icon/navigation/drag": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/drag.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 596
+  },
+  "icon/navigation/exit.fullscreen": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/exit-fullscreen.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1422
+  },
+  "icon/navigation/external.link": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/external-link.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 943
+  },
+  "icon/navigation/filter": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/filter.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 555
+  },
+  "icon/navigation/forward": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/forward.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 539
+  },
+  "icon/navigation/fullscreen": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/fullscreen.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 946
+  },
+  "icon/navigation/home.alt": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/home-alt.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 453
+  },
+  "icon/navigation/home": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/home.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 546
+  },
+  "icon/navigation/layers": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/layers.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 957
+  },
+  "icon/navigation/map": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/map.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 3131
+  },
+  "icon/navigation/menu": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/menu.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 588
+  },
+  "icon/navigation/merge": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/merge.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 361
+  },
+  "icon/navigation/more.horizontal": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/more-horizontal.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 745
+  },
+  "icon/navigation/more.vertical": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/more-vertical.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 744
+  },
+  "icon/navigation/navigation.pointer": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/navigation-pointer.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 733
+  },
+  "icon/navigation/panel.bottom": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/panel-bottom.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 691
+  },
+  "icon/navigation/panel.left": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/panel-left.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 625
+  },
+  "icon/navigation/panel.right": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/panel-right.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 621
+  },
+  "icon/navigation/panel.top": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/panel-top.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 804
+  },
+  "icon/navigation/resize": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/resize.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 787
+  },
+  "icon/navigation/route": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/route.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1224
+  },
+  "icon/navigation/scroll": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/scroll.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 697
+  },
+  "icon/navigation/search": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/search.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 539
+  },
+  "icon/navigation/settings": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/settings.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1073
+  },
+  "icon/navigation/sidebar": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/sidebar.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 803
+  },
+  "icon/navigation/split": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/navigation/split.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 2542
+  },
+  "icon/status/badge": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/badge.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1098
+  },
+  "icon/status/bell.off": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/bell-off.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 987
+  },
+  "icon/status/bell": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/bell.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 769
+  },
+  "icon/status/blocked": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/blocked.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1462
+  },
+  "icon/status/critical": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/critical.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 393
+  },
+  "icon/status/error": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/error.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 626
+  },
+  "icon/status/eye.off": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/eye-off.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1081
+  },
+  "icon/status/eye": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/eye.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 656
+  },
+  "icon/status/flag": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/flag.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 531
+  },
+  "icon/status/help": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/help.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1207
+  },
+  "icon/status/info": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/info.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1271
+  },
+  "icon/status/loading": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/loading.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1264
+  },
+  "icon/status/lock": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/lock.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1806
+  },
+  "icon/status/notification": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/notification.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1898
+  },
+  "icon/status/online": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/online.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1763
+  },
+  "icon/status/pending": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/pending.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 895
+  },
+  "icon/status/shield.check": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/shield-check.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 719
+  },
+  "icon/status/shield.off": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/shield-off.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 717
+  },
+  "icon/status/shield": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/shield.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1189
+  },
+  "icon/status/star.filled": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/star-filled.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 569
+  },
+  "icon/status/star": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/star.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 1727
+  },
+  "icon/status/success": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/success.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 516
+  },
+  "icon/status/unlock": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/unlock.svg",
+    "paths": 0,
+    "has_round": true,
+    "bytes": 712
+  },
+  "icon/status/warning": {
+    "path": "/Users/harold.wayjr/Projects/CareApp/assets/icons/streamline/status/warning.svg",
+    "paths": 0,
+    "has_round": false,
+    "bytes": 748
+  }
+}

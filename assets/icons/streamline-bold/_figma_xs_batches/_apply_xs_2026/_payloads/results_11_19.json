@@ -1,0 +1,11 @@
+{
+  "11": { "ok": 20, "missing": 0, "failed": 0, "miss": [], "fail": [] },
+  "12": { "ok": 20, "missing": 0, "failed": 0, "miss": [], "fail": [], "note": "g03+g04 completed this session; prior 12" },
+  "13": { "ok": 20, "missing": 0, "failed": 0, "miss": [], "fail": [], "note": "g00+g01+g02+g03+g04 via groups" },
+  "14": { "ok": 0, "missing": 0, "failed": 0, "miss": [], "fail": [], "note": "pending" },
+  "15": { "ok": 20, "missing": 0, "failed": 0, "miss": [], "fail": [] },
+  "16": { "ok": 0, "missing": 0, "failed": 0, "miss": [], "fail": [], "note": "pending" },
+  "17": { "ok": 0, "missing": 0, "failed": 0, "miss": [], "fail": [], "note": "pending" },
+  "18": { "ok": 0, "missing": 0, "failed": 0, "miss": [], "fail": [], "note": "pending" },
+  "19": { "ok": 0, "missing": 0, "failed": 0, "miss": [], "fail": [], "note": "pending" }
+}

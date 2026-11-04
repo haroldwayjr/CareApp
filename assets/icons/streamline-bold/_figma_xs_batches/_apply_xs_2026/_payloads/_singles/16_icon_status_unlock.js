@@ -1,0 +1,58 @@
+
+const page = await figma.getNodeByIdAsync('9:13081');
+await figma.setCurrentPageAsync(page);
+const colorVar = await figma.variables.getVariableByIdAsync('VariableID:34:2');
+const FILL = { r: 0.062745, g: 0.094118, b: 0.156863 };
+function paint(node) {
+  node.fills = [figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: FILL }, 'color', colorVar)];
+  node.strokes = [];
+}
+function bindFills(root) {
+  const stack = [root];
+  while (stack.length) {
+    const n = stack.pop();
+    if ('constraints' in n) n.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    if (n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION' || n.type === 'ELLIPSE' || n.type === 'STAR' || n.type === 'POLYGON') paint(n);
+    if ('clipsContent' in n && n.type === 'FRAME') n.clipsContent = false;
+    if ('children' in n) for (const c of n.children) stack.push(c);
+  }
+}
+function applyBoldXs(set, svg) {
+  const xs = set.children.find(c => c.name === 'Size=xs');
+  if (!xs) return { ok: false, reason: 'no-xs' };
+  for (const c of [...xs.children]) c.remove();
+  const node = figma.createNodeFromSvg(svg);
+  node.name = set.name.split('/').pop() + ' · bold';
+  try { node.resize(16, 16); } catch (e) {}
+  node.x = 0; node.y = 0;
+  node.clipsContent = false;
+  if ('constraints' in node) node.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+  xs.appendChild(node);
+  bindFills(node);
+  try { xs.resizeWithoutConstraints(16, 16); } catch (e) { try { xs.resize(16, 16); } catch (e2) {} }
+  xs.clipsContent = false;
+  xs.visible = true;
+  for (const v of set.children) v.visible = true;
+  set.clipsContent = true;
+  set.counterAxisAlignItems = 'MIN';
+  set.primaryAxisAlignItems = 'MIN';
+  if (set.layoutMode !== 'NONE') {
+    set.primaryAxisSizingMode = 'FIXED';
+    set.counterAxisSizingMode = 'FIXED';
+  }
+  set.resize(16, 16);
+  try { set.layoutSizingHorizontal = 'FIXED'; set.layoutSizingVertical = 'FIXED'; } catch (e) {}
+  return { ok: true };
+}
+
+const setName = "icon/status/unlock";
+const svg = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Lock-Unlock--Streamline-Ultimate\"> <path d=\"M19.5 9.5h-0.75V6.75A6.75 6.75 0 0 0 5.53 4.81a1.25 1.25 0 0 0 2.4 0.72 4.25 4.25 0 0 1 8.32 1.22V9a0.5 0.5 0 0 1 -0.5 0.5H4.5a2 2 0 0 0 -2 2V22a2 2 0 0 0 2 2h15a2 2 0 0 0 2 -2V11.5a2 2 0 0 0 -2 -2m-9.5 6a2 2 0 0 1 4 0 2 2 0 0 1 -1 1.72v2.28a1 1 0 0 1 -2 0v-2.28a2 2 0 0 1 -1 -1.72\" fill=\"#000000\" stroke-width=\"1\"></path> </svg>";
+const set = figma.currentPage.findOne(n => n.type === 'COMPONENT_SET' && n.name === setName);
+if (!set) return { ok:0, missing:1, failed:0, miss:[setName], fail:[] };
+try {
+  const r = applyBoldXs(set, svg);
+  if (r.ok) return { ok:1, missing:0, failed:0, miss:[], fail:[], name:setName };
+  return { ok:0, missing:0, failed:1, miss:[], fail:[{name:setName,r}] };
+} catch(e) {
+  return { ok:0, missing:0, failed:1, miss:[], fail:[{name:setName,err:String(e)}] };
+}

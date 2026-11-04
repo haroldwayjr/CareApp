@@ -1,0 +1,954 @@
+{
+  "ico_mRu4pQJ4vRSFeLjM5pgWa5ke": [
+    "send-alt"
+  ],
+  "ico_QPbJ6XICcKl9f3Hy": [
+    "edit-alt"
+  ],
+  "ico_5FJT2uXH67JamfkB": [
+    "create"
+  ],
+  "ico_sBE0S5B7RbNbxK0z": [
+    "new"
+  ],
+  "ico_mRu4pQJ4vchu2aEDeGEi8uHa": [
+    "gallery"
+  ],
+  "ico_MiuXyWmy2zhb9GZF": [
+    "crop"
+  ],
+  "ico_mRu4pQJ4vyFb2aENc3M5ppoq": [
+    "rotate"
+  ],
+  "ico_mRu4pQJ4v6mc2aEJttBPulpK": [
+    "flip"
+  ],
+  "ico_mRu4pQJ4vwOP2aEDeG7yVjYq": [
+    "brightness"
+  ],
+  "ico_JJ1htjPkwXClt96D": [
+    "contrast"
+  ],
+  "ico_H2BMRH5KqyWZzVFk": [
+    "record"
+  ],
+  "ico_T0uo2VMl0WJmoITG": [
+    "cast"
+  ],
+  "ico_mRu4pQJ4vw4D2aENc3PvJOgf": [
+    "equalizer"
+  ],
+  "ico_mRu4pQJ4vgS22aENc33zi79G": [
+    "playlist"
+  ],
+  "ico_mRu4pQJ4v9W9eLjM5p8ueaSz": [
+    "mail"
+  ],
+  "ico_NghiUt5427HdvoSE": [
+    "message"
+  ],
+  "ico_mRu4pQJ4vwaleLjM5pwAZf6y": [
+    "phone"
+  ],
+  "ico_mRu4pQJ4vPAXeLjM5pwAZ9Ya": [
+    "phone-off"
+  ],
+  "ico_mRu4pQJ4vv3O2aEDeGy7qKxe": [
+    "calendar"
+  ],
+  "ico_ko9C2kiLV6F8Fpte": [
+    "clock"
+  ],
+  "ico_vzZlzSR01sIMUADN": [
+    "user"
+  ],
+  "ico_mRu4pQJ4vtg6eLjM5pQ3yDxv": [
+    "users"
+  ],
+  "ico_mRu4pQJ4v7ZHeLjM5pYBGeFQ": [
+    "user-add"
+  ],
+  "ico_mRu4pQJ4v76IeLjM5pgnsVtJ": [
+    "user-remove"
+  ],
+  "ico_mRu4pQJ4vqkveLjM5pfvjx2W": [
+    "user-check"
+  ],
+  "ico_sFgnoVlTGL28Pz83": [
+    "inbox"
+  ],
+  "ico_mRu4pQJ4v0mGeLjM5pwvS9ca": [
+    "reply-all"
+  ],
+  "ico_mRu4pQJ4vwLEeLjM5pPopVzk": [
+    "chat"
+  ],
+  "ico_8mEFNR39tJLN20M5": [
+    "comment"
+  ],
+  "ico_nnzVDdNV9XoXWg2m": [
+    "video-call"
+  ],
+  "ico_mRu4pQJ4vwSH2aEdzpn8OlI7": [
+    "contacts"
+  ],
+  "ico_ys0eHfEUaMHzRj6U": [
+    "group"
+  ],
+  "ico_mRu4pQJ4vS192aEaf7BPuFMl": [
+    "team"
+  ],
+  "ico_mRu4pQJ4vXAY2aEaf7wAZZWz": [
+    "presentation"
+  ],
+  "ico_mRu4pQJ4vlQr2aEaf7SFbHFz": [
+    "meeting"
+  ],
+  "ico_mRu4pQJ4vGnx2aE232Q3yjUZ": [
+    "file"
+  ],
+  "ico_mRu4pQJ4vQOx2aE232jHWHye": [
+    "file-text"
+  ],
+  "ico_nNGIq23YeZAqbko8": [
+    "bank"
+  ],
+  "ico_mRu4pQJ4vadP2aEaf7DeGcsM": [
+    "piggy-bank"
+  ],
+  "ico_mRu4pQJ4vTim2aEaf7sjsi0E": [
+    "coins"
+  ],
+  "ico_mRu4pQJ4vtl62aEaf7P2Wegi": [
+    "chart-line"
+  ],
+  "ico_mRu4pQJ4vgn42aEaf7P2Wfxr": [
+    "chart-bar"
+  ],
+  "ico_ilCnVNxwaWZFmSvC": [
+    "heart"
+  ],
+  "ico_Dotp53IiT3eL16kJ": [
+    "stethoscope"
+  ],
+  "ico_mRu4pQJ4voiHeLj9ULJ4vYOv": [
+    "pill"
+  ],
+  "ico_mRu4pQJ4vtTZeLj9UL9ULDXx": [
+    "first-aid"
+  ],
+  "ico_mRu4pQJ4vbOVeLj9ULM5pK3B": [
+    "thermometer"
+  ],
+  "ico_mRu4pQJ4vIVZeLj9ULqmI693": [
+    "syringe"
+  ],
+  "ico_PXYO4geLZDkyVYlL": [
+    "hospital"
+  ],
+  "ico_mRu4pQJ4vSJmeLj9ULjHWFkx": [
+    "ambulance"
+  ],
+  "ico_C6IZeMMmCuwvbKdg": [
+    "medical-cross"
+  ],
+  "ico_mRu4pQJ4vp1NeLj9ULZOsgUa": [
+    "bandage"
+  ],
+  "ico_mRu4pQJ4vOPc2aEJttgnszON": [
+    "dna"
+  ],
+  "ico_S3jT7mUfQ8Uw6WFl": [
+    "blood"
+  ],
+  "ico_op4bmU5bdxN1cWIm": [
+    "pulse"
+  ],
+  "ico_mRu4pQJ4vCvVeLj9UL2aEHTr": [
+    "lungs"
+  ],
+  "ico_mRu4pQJ4vVkd2aEJttHO2SMw": [
+    "brain"
+  ],
+  "ico_GIETvIEceTjoKeSK": [
+    "tooth"
+  ],
+  "ico_F3HVew6sGIX2K0Z0": [
+    "eye-health"
+  ],
+  "ico_mRu4pQJ4vwY12aENc3eixkaU": [
+    "ear"
+  ],
+  "ico_qe7hWppZxcT83DOk": [
+    "wheelchair"
+  ],
+  "ico_2jv3n4GBRXNo3sU6": [
+    "prescription"
+  ],
+  "ico_38A0znaEtlOEb1G1": [
+    "pharmacy"
+  ],
+  "ico_xMaQnfPuf146eaLn": [
+    "vaccine"
+  ],
+  "ico_eBmC7TPXUduSY60T": [
+    "virus"
+  ],
+  "ico_mRu4pQJ4vlqw2aENc3xihKKy": [
+    "mask"
+  ],
+  "ico_mRu4pQJ4vpSXeLjK1ihNENqv": [
+    "hand-wash"
+  ],
+  "ico_tbn9TadvUSVVtBr4": [
+    "clipboard-health"
+  ],
+  "ico_MQc0d5srN6UeLvY4": [
+    "patient"
+  ],
+  "ico_k7PZTuSgxOE2oPVd": [
+    "nurse"
+  ],
+  "ico_3DYwYTKuiMB4lpYU": [
+    "doctor"
+  ],
+  "ico_Bh8taG6jDBEObxap": [
+    "appointment"
+  ],
+  "ico_mRu4pQJ4vCmmeLj9UL2aEJau": [
+    "lab"
+  ],
+  "ico_kj5vVDnhwFwZghV1": [
+    "microscope"
+  ],
+  "ico_NMR0QkLU6CgXb7Bo": [
+    "ultrasound"
+  ],
+  "ico_BzwbPtaHTl8zuqy6": [
+    "blood-pressure"
+  ],
+  "ico_mRu4pQJ4vPCdeLj9ULgWaJPp": [
+    "weight-scale"
+  ],
+  "ico_mRu4pQJ4vci4eLjjHWWGyMqG": [
+    "fitness"
+  ],
+  "ico_k1j7kFw7VMV2KYUo": [
+    "mental-health"
+  ],
+  "ico_gwF62KUq1ZqPoPWn": [
+    "symptoms"
+  ],
+  "ico_mRu4pQJ4vw4YeLj9UL08UEi8": [
+    "insurance"
+  ],
+  "ico_U1rFtPBuC3RqLI2Q": [
+    "sleep"
+  ],
+  "ico_R93j4Pb7nRYEe294": [
+    "dosage"
+  ],
+  "ico_lMXt6pw7yMsQ58El": [
+    "pharmacy-alt"
+  ],
+  "ico_xCX1X3vvKENfh1GY": [
+    "otc"
+  ],
+  "ico_mRu4pQJ4v8CIeLjK1iy7qxrJ": [
+    "waiting-room"
+  ],
+  "ico_mRu4pQJ4vIUUeLj9UL9ULtZu": [
+    "bed"
+  ],
+  "ico_Uq8RqrLRzjcJklPJ": [
+    "sign-language"
+  ],
+  "ico_HL2t8f46SUMX3dQu": [
+    "hipaa"
+  ],
+  "ico_mRu4pQJ4vE6HeLjvhjK1iliS": [
+    "map-pin"
+  ],
+  "ico_mRu4pQJ4vXQ8eLjvhjWGyjAr": [
+    "globe"
+  ],
+  "ico_mRu4pQJ4vL2P2aEhtdjUABzP": [
+    "wifi"
+  ],
+  "ico_a9UM4da1qk94KNhh": [
+    "battery"
+  ],
+  "ico_mRu4pQJ4vwg7eLj9ULQ3y6nl": [
+    "sun"
+  ],
+  "ico_xWMA1OIjiyI4Z5ud": [
+    "moon"
+  ],
+  "ico_mRu4pQJ4vqFE2aEJttK1ihtd": [
+    "grid"
+  ],
+  "ico_mRu4pQJ4v7is2aEDeGNc3tKN": [
+    "list"
+  ],
+  "ico_mRu4pQJ4vxfN2aEDeGgWaNei": [
+    "layout"
+  ],
+  "ico_mRu4pQJ4vUtk2aEDeGsjsaSz": [
+    "zoom-in"
+  ],
+  "ico_mRu4pQJ4vWg02aEDeGsjsaON": [
+    "zoom-out"
+  ],
+  "ico_mRu4pQJ4veSZ2aEhtditsgLv": [
+    "wifi-off"
+  ],
+  "ico_mRu4pQJ4vA7OeLjM5py7qSaf": [
+    "bluetooth"
+  ],
+  "ico_mRu4pQJ4vBKneLjM5pfSZXyC": [
+    "battery-low"
+  ],
+  "ico_MDocWpy6LC4r16re": [
+    "battery-full"
+  ],
+  "ico_mRu4pQJ4vZ5t2aEJttwAZWWa": [
+    "move"
+  ],
+  "ico_mRu4pQJ4vLmT2aEDeGJttv3X": [
+    "close-alt"
+  ],
+  "ico_mRu4pQJ4vt9IeLjvhj2aEEkd": [
+    "locate"
+  ],
+  "ico_qwEWFmlH0LmfMzM9": [
+    "open"
+  ],
+  "ico_mRu4pQJ4vEpc2aEDeGhtd1I2": [
+    "erase"
+  ],
+  "ico_mRu4pQJ4vMqZ2aEhtdK1itMU": [
+    "find"
+  ],
+  "ico_mRu4pQJ4v8bn2aEdzpZOsNDy": [
+    "browse"
+  ],
+  "ico_mRu4pQJ4v3np2aEDeGeixfzl": [
+    "warning"
+  ],
+  "ico_mRu4pQJ4vIlB2aEDeG3ziL8i": [
+    "bell"
+  ],
+  "ico_mRu4pQJ4voYS2aEDeGjUA3gZ": [
+    "eye"
+  ],
+  "ico_mRu4pQJ4vinHeLjK1ibmoeET": [
+    "flag"
+  ],
+  "ico_fCYgm8aBeo7F3iKW": [
+    "online"
+  ],
+  "ico_mRu4pQJ4vJM52aEDeGDeGBrC": [
+    "badge"
+  ],
+  "ico_mRu4pQJ4vpZ12aEJttJ4vJuT": [
+    "pause"
+  ],
+  "ico_mRu4pQJ4vLEo2aEDeGOrjWeH": [
+    "volume"
+  ],
+  "ico_mRu4pQJ4v1RD2aENc3sjs0EG": [
+    "camera"
+  ],
+  "ico_mRu4pQJ4vmHQ2aENc3BPuei2": [
+    "music"
+  ],
+  "ico_KI0a4eEVjwEZpgwY": [
+    "forward-mail"
+  ],
+  "ico_GiowyxOZYE16gdoL": [
+    "bookmark"
+  ],
+  "ico_mRu4pQJ4vYIx2aE2329ULaSz": [
+    "file-image"
+  ],
+  "ico_mRu4pQJ4vTOxeLjM5p7QUtw9": [
+    "drawer"
+  ],
+  "ico_mRu4pQJ4v2gH2aEaf74pQJsN": [
+    "cloud-download"
+  ],
+  "ico_mRu4pQJ4vaJB2aEhtdWipd5n": [
+    "usb"
+  ],
+  "ico_N36gal4ZK1UT7Lew": [
+    "faq"
+  ],
+  "ico_mRu4pQJ4vMKKeLjJ4vWGyFeu": [
+    "blog"
+  ],
+  "ico_mRu4pQJ4v25WeLjM5pSyUfck": [
+    "press"
+  ],
+  "ico_mRu4pQJ4vOeFeLjM5p7QUZOs": [
+    "postcard"
+  ],
+  "ico_T8eldyTXdOj3IqBi": [
+    "folder-shared"
+  ],
+  "ico_mRu4pQJ4vhAM2aEdzp4pQdXz": [
+    "credit-card"
+  ],
+  "ico_0ibX83PKdVvDDv9F": [
+    "wallet"
+  ],
+  "ico_mRu4pQJ4v1mD2aEdzpeLj5ke": [
+    "coupon"
+  ],
+  "ico_mRu4pQJ4vRWU2aEdzpjHWBeQ": [
+    "payment"
+  ],
+  "ico_mRu4pQJ4vkAz2aEJttWipyKP": [
+    "sync"
+  ],
+  "ico_mRu4pQJ4vVsi2aEDeGEi8xW8": [
+    "share-alt"
+  ],
+  "ico_mRu4pQJ4vdT9eLjM5pgWaz3X": [
+    "send"
+  ],
+  "ico_v3RcdOdmKkVqB1be": [
+    "reply"
+  ],
+  "ico_MNRVhaBUvXNjjYiO": [
+    "hearing-aid"
+  ],
+  "ico_mRu4pQJ4vQj9eLjjHWQ3ykjQ": [
+    "family-care"
+  ],
+  "ico_Xr8NAnzItZrflBD3": [
+    "mental-wellness"
+  ],
+  "ico_sedTvcgIqSBl6URn": [
+    "crisis"
+  ],
+  "ico_V5c8Qr9mNpVFK7zi": [
+    "oxygen"
+  ],
+  "ico_mRu4pQJ4vbIoeLj9ULWipaGi": [
+    "radiology"
+  ],
+  "ico_T5s2QvkjE3qPHj9W": [
+    "signal"
+  ],
+  "ico_cYcMbAhdQ2yaurYG": [
+    "accessibility"
+  ],
+  "ico_mRu4pQJ4vo4k2aEhtdqmIly0": [
+    "mouse"
+  ],
+  "ico_mRu4pQJ4vBaK2aEdzpjHW5ES": [
+    "smartphone"
+  ],
+  "ico_mRu4pQJ4vzLX2aEJttn8OXeS": [
+    "projector"
+  ],
+  "ico_mRu4pQJ4vLMG2aEDeGPvJfLJ": [
+    "wrench"
+  ],
+  "ico_8mVqr4CCNTI4mxBZ": [
+    "fingerprint"
+  ],
+  "ico_BCC29BC1XWUpisMf": [
+    "cancel"
+  ],
+  "ico_HVMs28I3sIaH6Vua": [
+    "discover"
+  ],
+  "ico_HGrQnrI87CO98LaP": [
+    "remind"
+  ],
+  "ico_mRu4pQJ4vtal2aEDeGJttARZ": [
+    "error"
+  ],
+  "ico_aGGWktxmPJWkzNWQ": [
+    "bell-off"
+  ],
+  "ico_mRu4pQJ4vbXl2aEDeGjUAbRt": [
+    "eye-off"
+  ],
+  "ico_mRu4pQJ4vfCT2aEDeGSFbPvM": [
+    "shield"
+  ],
+  "ico_mRu4pQJ4vm1F2aEDeGYBGlpK": [
+    "pending"
+  ],
+  "ico_mRu4pQJ4vcUn2aEJttYBGQsU": [
+    "blocked"
+  ],
+  "ico_mRu4pQJ4vsDZ2aEJttZOsyOn": [
+    "stop"
+  ],
+  "ico_mRu4pQJ4vjsk2aENc3hNEYf3": [
+    "volume-off"
+  ],
+  "ico_mRu4pQJ4v1e02aENc3SyUaOa": [
+    "mic"
+  ],
+  "ico_mRu4pQJ4vbzoeLjjHWNc3RGX": [
+    "film"
+  ],
+  "ico_mRu4pQJ4vvHt2aE232J4vlI7": [
+    "folder"
+  ],
+  "ico_mRu4pQJ4vjle2aEdzp6nlgUa": [
+    "tag"
+  ],
+  "ico_mRu4pQJ4vkxy2aE232Q3yZdc": [
+    "file-code"
+  ],
+  "ico_tox0UW1NPC9X4kbp": [
+    "document"
+  ],
+  "ico_mRu4pQJ4vCtweLjK1iSFbfFr": [
+    "cabinet"
+  ],
+  "ico_mRu4pQJ4vMiY2aEhtd8ueTI9": [
+    "database"
+  ],
+  "ico_mRu4pQJ4vkeF2aEaf7ZOsjwr": [
+    "contract"
+  ],
+  "ico_G17MMJPqIjTQLhwt": [
+    "package-alt"
+  ],
+  "ico_mRu4pQJ4vj4G2aEdzpeLj08U": [
+    "dollar"
+  ],
+  "ico_vcSImXOVVq2O8d0r": [
+    "bag"
+  ],
+  "ico_mRu4pQJ4v7Y82aEdzpeLjLwy": [
+    "discount"
+  ],
+  "ico_mRu4pQJ4vK8f2aEaf7sjsHmR": [
+    "invoice"
+  ],
+  "ico_mRu4pQJ4veB9eLjQ3yfSZzb7": [
+    "glasses"
+  ],
+  "ico_mRu4pQJ4v9DxeLjjHWQ3yaRX": [
+    "pediatric"
+  ],
+  "ico_ueMoGXutKoYpyRov": [
+    "meditation"
+  ],
+  "ico_eiFC8qbbkmdZnBCZ": [
+    "inhaler"
+  ],
+  "ico_mRu4pQJ4v6q2eLj9ULT2FzNT": [
+    "orthopedics"
+  ],
+  "ico_YRozLJ3RT1jf4E02": [
+    "surgery"
+  ],
+  "ico_mRu4pQJ4v12q2aEhtditsMeA": [
+    "airplane"
+  ],
+  "ico_mRu4pQJ4vx6d2aEDeGNc3Cuh": [
+    "translate"
+  ],
+  "ico_mRu4pQJ4v3CJ2aEJttNc3ei2": [
+    "desktop"
+  ],
+  "ico_mRu4pQJ4vfkX2aEDeGgns7Pi": [
+    "watch"
+  ],
+  "ico_mRu4pQJ4va8g2aE232J4vSJ4": [
+    "code"
+  ],
+  "ico_mRu4pQJ4veCi2aEDeGPvJ73d": [
+    "hammer"
+  ],
+  "ico_mRu4pQJ4vA6d2aEDeGwvSRc2": [
+    "face-id"
+  ],
+  "ico_mRu4pQJ4v4Z72aEJttT2FGNT": [
+    "flash"
+  ],
+  "ico_mRu4pQJ4vayE2aEDeGYBGLVG": [
+    "stopwatch"
+  ],
+  "ico_baOtbTZyCm3whuUn": [
+    "clear"
+  ],
+  "ico_mRu4pQJ4vFp92aEDeGjUAiDQ": [
+    "search-alt"
+  ],
+  "ico_mRu4pQJ4vSzoeLj9ULgns92o": [
+    "explore"
+  ],
+  "ico_AY426BMLBDeAJgRn": [
+    "snooze"
+  ],
+  "ico_mRu4pQJ4vAUF2aEDeGDeG9Ya": [
+    "success",
+    "check-circle"
+  ],
+  "ico_mRu4pQJ4vyWP2aEDeGg0YWWa": [
+    "lock"
+  ],
+  "ico_WWMza7lZFYB6uhmT": [
+    "star"
+  ],
+  "ico_mRu4pQJ4vArt2aEhtdP2WwqY": [
+    "shield-check"
+  ],
+  "ico_mRu4pQJ4v6C92aEJttxih3qz": [
+    "loading"
+  ],
+  "ico_mRu4pQJ4v9sl2aEJttJ4v0Ij": [
+    "skip-forward"
+  ],
+  "ico_mRu4pQJ4vNZh2aENc3wvSLwy": [
+    "image"
+  ],
+  "ico_mRu4pQJ4vNDO2aENc3SyUbfh": [
+    "mic-off"
+  ],
+  "ico_mRu4pQJ4vYn12aEDeGsjsDR0": [
+    "attachment"
+  ],
+  "ico_mRu4pQJ4vSMp2aE232iJ4lmq": [
+    "file-zip"
+  ],
+  "ico_mRu4pQJ4v0z22aEdzpfSZvZ5": [
+    "notes"
+  ],
+  "ico_mRu4pQJ4vzez2aEaf74pQDeG": [
+    "cloud"
+  ],
+  "ico_mRu4pQJ4vi2V2aEhtdJttDl0": [
+    "server"
+  ],
+  "ico_Brv9g3nidH3cUoSi": [
+    "agreement"
+  ],
+  "ico_8BAsDzsrf7PM1MZW": [
+    "manual"
+  ],
+  "ico_mRu4pQJ4vBSKeLjJ4v8ueUKg": [
+    "wiki"
+  ],
+  "ico_b329AuMkgPnykblm": [
+    "magazine"
+  ],
+  "ico_yhs9tReplNzeACNn": [
+    "portfolio"
+  ],
+  "ico_MfxV5zPLtjWoEWtP": [
+    "letter"
+  ],
+  "ico_K7ETC1QpORWiZwIn": [
+    "parcel"
+  ],
+  "ico_mRu4pQJ4vTK5eLjQ3yinpcZO": [
+    "shelf"
+  ],
+  "ico_mRu4pQJ4vnCf2aE232WipSJ4": [
+    "folder-star"
+  ],
+  "ico_mRu4pQJ4vANWeLjK1i49rlb7": [
+    "gift"
+  ],
+  "ico_mRu4pQJ4veuQ2aEdzpgWaQlb": [
+    "barcode"
+  ],
+  "ico_mRu4pQJ4vWzweLj9ULWipucM": [
+    "mri"
+  ],
+  "ico_kkS2SfMf2hjF3ihL": [
+    "prosthetic"
+  ],
+  "ico_QQybWYQmmj4flAqi": [
+    "counseling"
+  ],
+  "ico_rhiZRPqbgiUYgBbY": [
+    "cancer"
+  ],
+  "ico_zUTdHlqvofyjcdK0": [
+    "neurology"
+  ],
+  "ico_a9ZgAVjuETfDT6LZ": [
+    "language"
+  ],
+  "ico_mRu4pQJ4vHK22aEhtdQ3y208": [
+    "laptop"
+  ],
+  "ico_mRu4pQJ4vpk22aEDeGdzpEM1": [
+    "printer-alt"
+  ],
+  "ico_X9OwiAQAfsrEvPYE": [
+    "terminal"
+  ],
+  "ico_ngC8Ii6gf6miN8da": [
+    "draft"
+  ],
+  "ico_mRu4pQJ4vbCd2aEDeGeixb8N": [
+    "info"
+  ],
+  "ico_mRu4pQJ4v49b2aEDeGeix5lt": [
+    "help"
+  ],
+  "ico_mRu4pQJ4v6lO2aEDeGSFbatI": [
+    "unlock"
+  ],
+  "ico_mRu4pQJ4vypOeLjK1iJ4vaWN": [
+    "star-filled"
+  ],
+  "ico_8l8KASqA3plHF5XT": [
+    "notification"
+  ],
+  "ico_mRu4pQJ4v0Z32aEJttJ4vbRt": [
+    "play"
+  ],
+  "ico_mRu4pQJ4vmRF2aEJttJ4vkS8": [
+    "skip-back"
+  ],
+  "ico_mRu4pQJ4vhzu2aENc3DeGinp": [
+    "video"
+  ],
+  "ico_mRu4pQJ4vFP32aENc37yVk8U": [
+    "headphones"
+  ],
+  "ico_FCi7bDe0s8zwQcay": [
+    "clipboard"
+  ],
+  "ico_vhusei7Gpfs5WYBT": [
+    "file-pdf"
+  ],
+  "ico_mRu4pQJ4vJaN2aE232J4vnAi": [
+    "folder-add"
+  ],
+  "ico_mRu4pQJ4vtOk2aEaf708UEIK": [
+    "cloud-upload"
+  ],
+  "ico_mRu4pQJ4vNoj2aEhtdvhjDUF": [
+    "hard-drive"
+  ],
+  "ico_rFTa9h6LF6xnkcHH": [
+    "policy"
+  ],
+  "ico_sTeILt0JoSLQ2dW5": [
+    "guide"
+  ],
+  "ico_mRu4pQJ4vL8B2aEdzprjtd5V": [
+    "newspaper"
+  ],
+  "ico_H1iW7hKua7CWm54m": [
+    "resume"
+  ],
+  "ico_mRu4pQJ4v8OHeLjM5p6nlBzP": [
+    "envelope"
+  ],
+  "ico_mRu4pQJ4vLm02aENc3JttYOv": [
+    "camera-off"
+  ],
+  "ico_mRu4pQJ4vQhj2aEDeGy7qxQ6": [
+    "alarm"
+  ],
+  "ico_TBybvuB4vUua0cFx": [
+    "schedule"
+  ],
+  "ico_mRu4pQJ4vFlSeLj4pQNc3bvO": [
+    "rain"
+  ],
+  "ico_8mzfd6efEXxX1p9u": [
+    "umbrella"
+  ],
+  "ico_mRu4pQJ4vvcieLj08U7yVv3X": [
+    "bus"
+  ],
+  "ico_8mKP2UMCLovyRyjs": [
+    "gas"
+  ],
+  "ico_mRu4pQJ4vbYfeLj9ULwvSjv2": [
+    "school"
+  ],
+  "ico_mRu4pQJ4vnJ42aE232fSZSBo": [
+    "id-card"
+  ],
+  "ico_mRu4pQJ4viYEeLjK1iWipHx4": [
+    "medal"
+  ],
+  "ico_kT5nsGVWGF7FlHO1": [
+    "balloon"
+  ],
+  "ico_u4FWVrLqtaWiU7cY": [
+    "ecology"
+  ],
+  "ico_0IfoUv3nzOmlljXo": [
+    "rocket"
+  ],
+  "ico_mRu4pQJ4vknBeLj4pQdzpg3m": [
+    "snow"
+  ],
+  "ico_mRu4pQJ4vY3leLjQ3y2aEpQ8": [
+    "coffee"
+  ],
+  "ico_ED2zmmKuth17RU0u": [
+    "train"
+  ],
+  "ico_mRu4pQJ4v8fgeLjvhj6nlDl0": [
+    "building"
+  ],
+  "ico_mRu4pQJ4vXWS2aEdzpy7qnO8": [
+    "book"
+  ],
+  "ico_mRu4pQJ4v915eLjK1i2aERw9": [
+    "passport"
+  ],
+  "ico_mRu4pQJ4vgN6eLjK1iiJ4Ygx": [
+    "award"
+  ],
+  "ico_mRu4pQJ4vROmeLjvhjgWaqV4": [
+    "fire"
+  ],
+  "ico_mRu4pQJ4v2NgeLjQ3y49rlNw": [
+    "water"
+  ],
+  "ico_mRu4pQJ4vitseLj9ULHO2xih": [
+    "planet"
+  ],
+  "ico_mRu4pQJ4vUw6eLjQ3yjUAx2W": [
+    "tool"
+  ],
+  "ico_mRu4pQJ4vgVH2aEDeG8uecqY": [
+    "qr-scan"
+  ],
+  "ico_mRu4pQJ4vMcF2aEJtt49rylB": [
+    "flash-off"
+  ],
+  "ico_mRu4pQJ4vV6OeLj9ULy7qY5t": [
+    "history"
+  ],
+  "ico_mRu4pQJ4vXVleLj4pQdzpi1D": [
+    "weather"
+  ],
+  "ico_mRu4pQJ4vTnBeLj9ULQ3yR5q": [
+    "wind"
+  ],
+  "ico_hVlPXWflk1dDElGL": [
+    "food"
+  ],
+  "ico_mRu4pQJ4vVRdeLj08UinpbRt": [
+    "bike"
+  ],
+  "ico_mRu4pQJ4vPkC2aEaf7y7qNc3": [
+    "office"
+  ],
+  "ico_iyciOjqz1No3E9hs": [
+    "graduation"
+  ],
+  "ico_mRu4pQJ4vgZ1eLjK1iHO2rFk": [
+    "ticket"
+  ],
+  "ico_HbSeRHNCsQgHpubc": [
+    "droplet"
+  ],
+  "ico_mRu4pQJ4vMXe2aEDeGitsdim": [
+    "satellite"
+  ],
+  "ico_PpCkezvJTmS5UL7f": [
+    "box-alt"
+  ],
+  "ico_mRu4pQJ4vv012aEdzpwvSkVB": [
+    "cart"
+  ],
+  "ico_mRu4pQJ4v84u2aEdzp2aEtCj": [
+    "receipt"
+  ],
+  "ico_mRu4pQJ4v1dm2aEdzpP2Wbzb": [
+    "qr-code"
+  ],
+  "ico_NAF4FaiTthqv0KnK": [
+    "store"
+  ],
+  "ico_mRu4pQJ4vg2QeLj9ULgWaT05": [
+    "pregnancy"
+  ],
+  "ico_oAeewFxYAD0J0bsA": [
+    "battery-charging"
+  ],
+  "ico_mRu4pQJ4vvtF2aENc32aE8ue": [
+    "light-mode"
+  ],
+  "ico_mRu4pQJ4vO7y2aEhtdZOsdBC": [
+    "keyboard"
+  ],
+  "ico_mRu4pQJ4vrGt2aEhtdjHWniS": [
+    "tablet"
+  ],
+  "ico_mRu4pQJ4vDcq2aEhtdiJ4niE": [
+    "scanner"
+  ],
+  "ico_sP5QtJjzwwZXlvjT": [
+    "bug"
+  ],
+  "ico_mRu4pQJ4v6dy2aEDeGg0YdsA": [
+    "key"
+  ],
+  "ico_mRu4pQJ4vIAc2aEdzpgWaib6": [
+    "barcode-scan"
+  ],
+  "ico_mRu4pQJ4vkyE2aENc36nlgSw": [
+    "timer"
+  ],
+  "ico_mRu4pQJ4vmspeLj4pQhtd9Ov": [
+    "cloud-sun"
+  ],
+  "ico_mRu4pQJ4vhbseLj9ULK1ijk1": [
+    "temperature"
+  ],
+  "ico_mRu4pQJ4vOa5eLj08UwvSTyj": [
+    "car"
+  ],
+  "ico_mRu4pQJ4vRqbeLj08UgnsSDc": [
+    "parking"
+  ],
+  "ico_oACifJUOanFI4Rok": [
+    "factory"
+  ],
+  "ico_mRu4pQJ4vLeS2aEaf708UcsM": [
+    "briefcase"
+  ],
+  "ico_mRu4pQJ4vbRa2aEaf72aEPvm": [
+    "trophy"
+  ],
+  "ico_mRu4pQJ4vMbdeLjK1i232cV2": [
+    "cake"
+  ],
+  "ico_PNn6BBS5Ry6Wv6Y1": [
+    "recycle"
+  ],
+  "ico_RD3XJlGJzv1eqZUM": [
+    "atom"
+  ],
+  "ico_mRu4pQJ4vbJP2aEJttgnsu5N": [
+    "robot"
+  ],
+  "ico_mRu4pQJ4vWvu2aEDeGJttXyC": [
+    "shield-off"
+  ],
+  "ico_mRu4pQJ4vQVd2aEJtt49r7QU": [
+    "critical"
+  ],
+  "ico_48mVE7rBj7mzLefo": [
+    "emergency"
+  ],
+  "ico_T3Pwx5sNmYhb9UEn": [
+    "leaf"
+  ],
+  "ico_mRu4pQJ4vM3E2aEDeGDeGnO8": [
+    "check"
+  ]
+}

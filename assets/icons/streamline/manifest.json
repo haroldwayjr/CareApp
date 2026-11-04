@@ -1,0 +1,3602 @@
+[
+  {
+    "name": "911",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vzOfeLjK1iEi8Wip",
+    "streamline_name": "Safety 911",
+    "set": "Ultimate Regular",
+    "file": "health/911.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "accessibility",
+    "category": "misc",
+    "streamline_id": "ico_cYcMbAhdQ2yaurYG",
+    "streamline_name": "Tools Reality Accessibility",
+    "set": "Ultimate Regular",
+    "file": "misc/accessibility.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "add",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4v2Hr2aEJttqmIOFu",
+    "streamline_name": "Add",
+    "set": "Ultimate Regular",
+    "file": "actions/add.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "agreement",
+    "category": "files",
+    "streamline_id": "ico_Brv9g3nidH3cUoSi",
+    "streamline_name": "Workflow Agreement",
+    "set": "Ultimate Regular",
+    "file": "files/agreement.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "airplane",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4v12q2aEhtditsMeA",
+    "streamline_name": "Airplane Mode",
+    "set": "Ultimate Regular",
+    "file": "misc/airplane.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "alarm",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vQhj2aEDeGy7qxQ6",
+    "streamline_name": "Alarm Clock",
+    "set": "Ultimate Regular",
+    "file": "misc/alarm.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "ambulance",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vSJmeLj9ULjHWFkx",
+    "streamline_name": "Ambulance Car",
+    "set": "Ultimate Regular",
+    "file": "health/ambulance.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "appointment",
+    "category": "health",
+    "streamline_id": "ico_Bh8taG6jDBEObxap",
+    "streamline_name": "Waiting Room Appointment Medical Appointment 2",
+    "set": "Ultimate Regular",
+    "file": "health/appointment.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "archive",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vrrd2aEdzpPopCxf",
+    "streamline_name": "Archive",
+    "set": "Ultimate Regular",
+    "file": "actions/archive.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "arrow-bottom-left",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vJFkeLjvhjJttC9j",
+    "streamline_name": "Arrow Corner Left",
+    "set": "Ultimate Regular",
+    "file": "navigation/arrow-bottom-left.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "arrow-bottom-right",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vTqkeLjvhjhtdinp",
+    "streamline_name": "Arrow Corner Right",
+    "set": "Ultimate Regular",
+    "file": "navigation/arrow-bottom-right.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "arrow-top-left",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vJFkeLjvhjJttC9j",
+    "streamline_name": "Arrow Corner Left",
+    "set": "Ultimate Regular",
+    "file": "navigation/arrow-top-left.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "arrow-top-right",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vTqkeLjvhjhtdinp",
+    "streamline_name": "Arrow Corner Right",
+    "set": "Ultimate Regular",
+    "file": "navigation/arrow-top-right.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "arrow-down",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vbPMeLjvhjaf72Ek",
+    "streamline_name": "Arrow Down",
+    "set": "Ultimate Regular",
+    "file": "navigation/arrow-down.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "arrow-left",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4v0JEeLjvhjdzpnnb",
+    "streamline_name": "Arrow Left",
+    "set": "Ultimate Regular",
+    "file": "navigation/arrow-left.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "arrow-right",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4voQoeLjvhjNc34uf",
+    "streamline_name": "Arrow Right",
+    "set": "Ultimate Regular",
+    "file": "navigation/arrow-right.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "arrow-up",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vwyeeLjJ4v4pQfck",
+    "streamline_name": "Arrow Up",
+    "set": "Ultimate Regular",
+    "file": "navigation/arrow-up.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "atom",
+    "category": "misc",
+    "streamline_id": "ico_RD3XJlGJzv1eqZUM",
+    "streamline_name": "Science Atom Positive Negative",
+    "set": "Ultimate Regular",
+    "file": "misc/atom.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "attach",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vh4O2aEDeGsjsMTP",
+    "streamline_name": "Attachment",
+    "set": "Ultimate Regular",
+    "file": "actions/attach.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "attachment",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vYn12aEDeGsjsDR0",
+    "streamline_name": "Attachment 1",
+    "set": "Ultimate Regular",
+    "file": "files/attachment.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "award",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vgN6eLjK1iiJ4Ygx",
+    "streamline_name": "Award Star",
+    "set": "Ultimate Regular",
+    "file": "misc/award.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "back",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vKLReLjvhjJttBzP",
+    "streamline_name": "Arrow Circle Left",
+    "set": "Ultimate Regular",
+    "file": "navigation/back.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "badge",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vJM52aEDeGDeGBrC",
+    "streamline_name": "Check Badge",
+    "set": "Ultimate Regular",
+    "file": "status/badge.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "bag",
+    "category": "commerce",
+    "streamline_id": "ico_vcSImXOVVq2O8d0r",
+    "streamline_name": "Shopping Bag",
+    "set": "Ultimate Regular",
+    "file": "commerce/bag.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "balloon",
+    "category": "misc",
+    "streamline_id": "ico_kT5nsGVWGF7FlHO1",
+    "streamline_name": "Balloon Party",
+    "set": "Ultimate Regular",
+    "file": "misc/balloon.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "bandage",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vp1NeLj9ULZOsgUa",
+    "streamline_name": "Bandage",
+    "set": "Ultimate Regular",
+    "file": "health/bandage.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "bank",
+    "category": "commerce",
+    "streamline_id": "ico_nNGIq23YeZAqbko8",
+    "streamline_name": "Blood Bank",
+    "set": "Ultimate Regular",
+    "file": "commerce/bank.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "barcode",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4veuQ2aEdzpgWaQlb",
+    "streamline_name": "Barcode",
+    "set": "Ultimate Regular",
+    "file": "commerce/barcode.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "barcode-scan",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vIAc2aEdzpgWaib6",
+    "streamline_name": "Barcode Scan",
+    "set": "Ultimate Regular",
+    "file": "misc/barcode-scan.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "battery",
+    "category": "misc",
+    "streamline_id": "ico_a9UM4da1qk94KNhh",
+    "streamline_name": "Battery Slash No",
+    "set": "Ultimate Regular",
+    "file": "misc/battery.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "battery-charging",
+    "category": "misc",
+    "streamline_id": "ico_oAeewFxYAD0J0bsA",
+    "streamline_name": "Battery Charging 2",
+    "set": "Ultimate Regular",
+    "file": "misc/battery-charging.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "battery-full",
+    "category": "misc",
+    "streamline_id": "ico_MDocWpy6LC4r16re",
+    "streamline_name": "Battery Full",
+    "set": "Ultimate Regular",
+    "file": "misc/battery-full.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "battery-low",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vBKneLjM5pfSZXyC",
+    "streamline_name": "Charging Battery Low 1",
+    "set": "Ultimate Regular",
+    "file": "misc/battery-low.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "bed",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vIUUeLj9UL9ULtZu",
+    "streamline_name": "Hospital Bedroom",
+    "set": "Ultimate Regular",
+    "file": "health/bed.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "bell",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vIlB2aEDeG3ziL8i",
+    "streamline_name": "Alarm Bell",
+    "set": "Ultimate Regular",
+    "file": "status/bell.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "bell-off",
+    "category": "status",
+    "streamline_id": "ico_aGGWktxmPJWkzNWQ",
+    "streamline_name": "Alarm Bell Off 1",
+    "set": "Ultimate Regular",
+    "file": "status/bell-off.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "bike",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vVRdeLj08UinpbRt",
+    "streamline_name": "Bicycle",
+    "set": "Ultimate Regular",
+    "file": "misc/bike.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "blocked",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vcUn2aEJttYBGQsU",
+    "streamline_name": "Tags Block",
+    "set": "Ultimate Regular",
+    "file": "status/blocked.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "blog",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vMKKeLjJ4vWGyFeu",
+    "streamline_name": "Blog Blogger Logo",
+    "set": "Ultimate Regular",
+    "file": "files/blog.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "blood",
+    "category": "health",
+    "streamline_id": "ico_S3jT7mUfQ8Uw6WFl",
+    "streamline_name": "Blood Types 1",
+    "set": "Ultimate Regular",
+    "file": "health/blood.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "blood-pressure",
+    "category": "health",
+    "streamline_id": "ico_BzwbPtaHTl8zuqy6",
+    "streamline_name": "Blood Pressure Cuff",
+    "set": "Ultimate Regular",
+    "file": "health/blood-pressure.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "bluetooth",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vA7OeLjM5py7qSaf",
+    "streamline_name": "Bluetooth",
+    "set": "Ultimate Regular",
+    "file": "misc/bluetooth.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "book",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vXWS2aEdzpy7qnO8",
+    "streamline_name": "Book Pin",
+    "set": "Ultimate Regular",
+    "file": "misc/book.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "bookmark",
+    "category": "files",
+    "streamline_id": "ico_GiowyxOZYE16gdoL",
+    "streamline_name": "Bookmark 3",
+    "set": "Ultimate Regular",
+    "file": "files/bookmark.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "box-alt",
+    "category": "files",
+    "streamline_id": "ico_PpCkezvJTmS5UL7f",
+    "streamline_name": "Text Box 2",
+    "set": "Ultimate Regular",
+    "file": "files/box-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "brain",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vVkd2aEJttHO2SMw",
+    "streamline_name": "Brain",
+    "set": "Ultimate Regular",
+    "file": "health/brain.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "breadcrumb",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4v2nJ2aEJtt08U6id",
+    "streamline_name": "Hierarchy",
+    "set": "Ultimate Regular",
+    "file": "navigation/breadcrumb.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "briefcase",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vLeS2aEaf708UcsM",
+    "streamline_name": "Briefcase",
+    "set": "Ultimate Regular",
+    "file": "misc/briefcase.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "brightness",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vwOP2aEDeG7yVjYq",
+    "streamline_name": "Brightness",
+    "set": "Ultimate Regular",
+    "file": "media/brightness.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "browse",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4v8bn2aEdzpZOsNDy",
+    "streamline_name": "E Commerce Apparel Browse",
+    "set": "Ultimate Regular",
+    "file": "actions/browse.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "bug",
+    "category": "misc",
+    "streamline_id": "ico_sP5QtJjzwwZXlvjT",
+    "streamline_name": "Catch Bug",
+    "set": "Ultimate Regular",
+    "file": "misc/bug.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "building",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4v8fgeLjvhj6nlDl0",
+    "streamline_name": "Building",
+    "set": "Ultimate Regular",
+    "file": "misc/building.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "bus",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vvcieLj08U7yVv3X",
+    "streamline_name": "Bus",
+    "set": "Ultimate Regular",
+    "file": "misc/bus.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "cabinet",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vCtweLjK1iSFbfFr",
+    "streamline_name": "Bathroom Mirror Cabinet",
+    "set": "Ultimate Regular",
+    "file": "files/cabinet.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "cake",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vMbdeLjK1i232cV2",
+    "streamline_name": "Cake Flour",
+    "set": "Ultimate Regular",
+    "file": "misc/cake.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "calendar",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4vv3O2aEDeGy7qKxe",
+    "streamline_name": "Calendar",
+    "set": "Ultimate Regular",
+    "file": "comms/calendar.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "camera",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4v1RD2aENc3sjs0EG",
+    "streamline_name": "Camera",
+    "set": "Ultimate Regular",
+    "file": "media/camera.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "camera-off",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vLm02aENc3JttYOv",
+    "streamline_name": "Controls Camera Off",
+    "set": "Ultimate Regular",
+    "file": "misc/camera-off.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "cancel",
+    "category": "actions",
+    "streamline_id": "ico_BCC29BC1XWUpisMf",
+    "streamline_name": "Lock Cancel Slash",
+    "set": "Ultimate Regular",
+    "file": "actions/cancel.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "cancer",
+    "category": "health",
+    "streamline_id": "ico_rhiZRPqbgiUYgBbY",
+    "streamline_name": "Cancer Cell 2",
+    "set": "Ultimate Regular",
+    "file": "health/cancer.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "car",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vOa5eLj08UwvSTyj",
+    "streamline_name": "Car",
+    "set": "Ultimate Regular",
+    "file": "misc/car.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "cart",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4vv012aEdzpwvSkVB",
+    "streamline_name": "Shopping Cart",
+    "set": "Ultimate Regular",
+    "file": "commerce/cart.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "cast",
+    "category": "media",
+    "streamline_id": "ico_T0uo2VMl0WJmoITG",
+    "streamline_name": "Phone Cast",
+    "set": "Ultimate Regular",
+    "file": "media/cast.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "chart-bar",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4vgn42aEaf7P2Wfxr",
+    "streamline_name": "Analytics Bars",
+    "set": "Ultimate Regular",
+    "file": "commerce/chart-bar.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "chart-line",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4vtl62aEaf7P2Wegi",
+    "streamline_name": "Analytics Graph",
+    "set": "Ultimate Regular",
+    "file": "commerce/chart-line.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "chat",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4vwLEeLjM5pPopVzk",
+    "streamline_name": "Messages Bubble",
+    "set": "Ultimate Regular",
+    "file": "comms/chat.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "check",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vM3E2aEDeGDeGnO8",
+    "streamline_name": "Check 1",
+    "set": "Ultimate Regular",
+    "file": "actions/check.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "chevron-down",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vvVHeLjvhjdzphtd",
+    "streamline_name": "Arrow Down 1",
+    "set": "Ultimate Regular",
+    "file": "navigation/chevron-down.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "chevron-left",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vAqXeLjvhjdzpa9L",
+    "streamline_name": "Arrow Left 1",
+    "set": "Ultimate Regular",
+    "file": "navigation/chevron-left.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "chevron-right",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4v52TeLjvhjNc3Zm6",
+    "streamline_name": "Arrow Right 1",
+    "set": "Ultimate Regular",
+    "file": "navigation/chevron-right.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "chevron-up",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vcdBeLjJ4v4pQx70",
+    "streamline_name": "Arrow Up 1",
+    "set": "Ultimate Regular",
+    "file": "navigation/chevron-up.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "clear",
+    "category": "actions",
+    "streamline_id": "ico_baOtbTZyCm3whuUn",
+    "streamline_name": "Alert Clear Notification",
+    "set": "Ultimate Regular",
+    "file": "actions/clear.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "clipboard",
+    "category": "files",
+    "streamline_id": "ico_FCi7bDe0s8zwQcay",
+    "streamline_name": "Insert Row From Clipboard",
+    "set": "Ultimate Regular",
+    "file": "files/clipboard.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "clipboard-health",
+    "category": "health",
+    "streamline_id": "ico_tbn9TadvUSVVtBr4",
+    "streamline_name": "Medical Data Clipboard Cross",
+    "set": "Ultimate Regular",
+    "file": "health/clipboard-health.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "clock",
+    "category": "comms",
+    "streamline_id": "ico_ko9C2kiLV6F8Fpte",
+    "streamline_name": "Time Play Time 1",
+    "set": "Ultimate Regular",
+    "file": "comms/clock.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "close",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vzUQ2aEJttqmIVMd",
+    "streamline_name": "Remove",
+    "set": "Ultimate Regular",
+    "file": "navigation/close.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "close-alt",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vLmT2aEDeGJttv3X",
+    "streamline_name": "Close",
+    "set": "Ultimate Regular",
+    "file": "actions/close-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "cloud",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vzez2aEaf74pQDeG",
+    "streamline_name": "Cloud",
+    "set": "Ultimate Regular",
+    "file": "files/cloud.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "cloud-download",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4v2gH2aEaf74pQJsN",
+    "streamline_name": "Cloud Download",
+    "set": "Ultimate Regular",
+    "file": "files/cloud-download.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "cloud-sun",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vmspeLj4pQhtd9Ov",
+    "streamline_name": "Weather Cloud Sun Wind",
+    "set": "Ultimate Regular",
+    "file": "misc/cloud-sun.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "cloud-upload",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vtOk2aEaf708UEIK",
+    "streamline_name": "Cloud Upload",
+    "set": "Ultimate Regular",
+    "file": "files/cloud-upload.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "code",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4va8g2aE232J4vSJ4",
+    "streamline_name": "Folder Code",
+    "set": "Ultimate Regular",
+    "file": "misc/code.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "coffee",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vY3leLjQ3y2aEpQ8",
+    "streamline_name": "Coffee Jar",
+    "set": "Ultimate Regular",
+    "file": "misc/coffee.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "coins",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4vTim2aEaf7sjsi0E",
+    "streamline_name": "Accounting Coins",
+    "set": "Ultimate Regular",
+    "file": "commerce/coins.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "comment",
+    "category": "comms",
+    "streamline_id": "ico_8mEFNR39tJLN20M5",
+    "streamline_name": "Comment Box",
+    "set": "Ultimate Regular",
+    "file": "comms/comment.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "compass",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vojbeLj08U232yVg",
+    "streamline_name": "Compass",
+    "set": "Ultimate Regular",
+    "file": "navigation/compass.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "contacts",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4vwSH2aEdzpn8OlI7",
+    "streamline_name": "Book Address",
+    "set": "Ultimate Regular",
+    "file": "comms/contacts.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "contract",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vkeF2aEaf7ZOsjwr",
+    "streamline_name": "Business Contract Give",
+    "set": "Ultimate Regular",
+    "file": "files/contract.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "contrast",
+    "category": "media",
+    "streamline_id": "ico_JJ1htjPkwXClt96D",
+    "streamline_name": "Contrast Horizontal Slider Adjustment",
+    "set": "Ultimate Regular",
+    "file": "media/contrast.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "copy",
+    "category": "actions",
+    "streamline_id": "ico_wkceIELYKzTxHOqb",
+    "streamline_name": "Copy 1",
+    "set": "Ultimate Regular",
+    "file": "actions/copy.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "counseling",
+    "category": "health",
+    "streamline_id": "ico_QQybWYQmmj4flAqi",
+    "streamline_name": "Counseling 3",
+    "set": "Ultimate Regular",
+    "file": "health/counseling.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "coupon",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4v1mD2aEdzpeLj5ke",
+    "streamline_name": "Coupon Cut",
+    "set": "Ultimate Regular",
+    "file": "commerce/coupon.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "create",
+    "category": "actions",
+    "streamline_id": "ico_5FJT2uXH67JamfkB",
+    "streamline_name": "Create Chart",
+    "set": "Ultimate Regular",
+    "file": "actions/create.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "credit-card",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4vhAM2aEdzp4pQdXz",
+    "streamline_name": "Credit Card",
+    "set": "Ultimate Regular",
+    "file": "commerce/credit-card.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "crisis",
+    "category": "health",
+    "streamline_id": "ico_sedTvcgIqSBl6URn",
+    "streamline_name": "Emergency Call",
+    "set": "Ultimate Regular",
+    "file": "health/crisis.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "critical",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vQVd2aEJtt49r7QU",
+    "streamline_name": "Flash 1",
+    "set": "Ultimate Regular",
+    "file": "status/critical.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "crop",
+    "category": "media",
+    "streamline_id": "ico_MiuXyWmy2zhb9GZF",
+    "streamline_name": "Crop Rotate",
+    "set": "Ultimate Regular",
+    "file": "media/crop.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "cut",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vktn2aEDeGEi8ywi",
+    "streamline_name": "Scissors",
+    "set": "Ultimate Regular",
+    "file": "actions/cut.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "database",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vMiY2aEhtd8ueTI9",
+    "streamline_name": "Database",
+    "set": "Ultimate Regular",
+    "file": "files/database.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "delete",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vtIi2aEDeGrjtGuz",
+    "streamline_name": "Delete",
+    "set": "Ultimate Regular",
+    "file": "actions/delete.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "desktop",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4v3CJ2aEJttNc3ei2",
+    "streamline_name": "Desktop Computer",
+    "set": "Ultimate Regular",
+    "file": "misc/desktop.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "discount",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4v7Y82aEdzpeLjLwy",
+    "streamline_name": "Discount",
+    "set": "Ultimate Regular",
+    "file": "commerce/discount.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "dna",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vOPc2aEJttgnszON",
+    "streamline_name": "Dna",
+    "set": "Ultimate Regular",
+    "file": "health/dna.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "doctor",
+    "category": "health",
+    "streamline_id": "ico_3DYwYTKuiMB4lpYU",
+    "streamline_name": "Doctor Desktop",
+    "set": "Ultimate Regular",
+    "file": "health/doctor.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "document",
+    "category": "files",
+    "streamline_id": "ico_tox0UW1NPC9X4kbp",
+    "streamline_name": "Document",
+    "set": "Ultimate Regular",
+    "file": "files/document.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "dollar",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4vj4G2aEdzpeLj08U",
+    "streamline_name": "Receipt Dollar",
+    "set": "Ultimate Regular",
+    "file": "commerce/dollar.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "dosage",
+    "category": "health",
+    "streamline_id": "ico_R93j4Pb7nRYEe294",
+    "streamline_name": "Medicine Dosage",
+    "set": "Ultimate Regular",
+    "file": "health/dosage.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "download",
+    "category": "actions",
+    "streamline_id": "ico_khos38PktkwJcCKK",
+    "streamline_name": "Download Bottom",
+    "set": "Ultimate Regular",
+    "file": "actions/download.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "draft",
+    "category": "actions",
+    "streamline_id": "ico_ngC8Ii6gf6miN8da",
+    "streamline_name": "Workflow Request Draft",
+    "set": "Ultimate Regular",
+    "file": "actions/draft.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "drag",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4viYZ2aEJttg0Y3zx",
+    "streamline_name": "Move Up",
+    "set": "Ultimate Regular",
+    "file": "navigation/drag.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "drawer",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vTOxeLjM5p7QUtw9",
+    "streamline_name": "Drawer Open",
+    "set": "Ultimate Regular",
+    "file": "files/drawer.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "droplet",
+    "category": "misc",
+    "streamline_id": "ico_HbSeRHNCsQgHpubc",
+    "streamline_name": "Drop Shape",
+    "set": "Ultimate Regular",
+    "file": "misc/droplet.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "duplicate",
+    "category": "actions",
+    "streamline_id": "ico_FrjyZPgwfnBDMhKv",
+    "streamline_name": "Duplicate",
+    "set": "Ultimate Regular",
+    "file": "actions/duplicate.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "ear",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vwY12aENc3eixkaU",
+    "streamline_name": "Earpods Ear",
+    "set": "Ultimate Regular",
+    "file": "health/ear.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "ecology",
+    "category": "misc",
+    "streamline_id": "ico_u4FWVrLqtaWiU7cY",
+    "streamline_name": "Ecology Leaf",
+    "set": "Ultimate Regular",
+    "file": "misc/ecology.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "edit",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vB0f2aEDeGPopP3h",
+    "streamline_name": "Pencil",
+    "set": "Ultimate Regular",
+    "file": "actions/edit.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "edit-alt",
+    "category": "actions",
+    "streamline_id": "ico_2zRdqC3Cwduqnw7h",
+    "streamline_name": "Common File Text Edit",
+    "set": "Streamline Regular 3.0",
+    "file": "actions/edit-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "emergency",
+    "category": "health",
+    "streamline_id": "ico_geUVyY6x6Ec8dUvJ",
+    "streamline_name": "Hospital Emergency Department",
+    "set": "Ultimate Regular",
+    "file": "health/emergency.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "empty-trash",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vIXv2aEDeGrjtuwt",
+    "streamline_name": "Bin 2",
+    "set": "Ultimate Regular",
+    "file": "actions/empty-trash.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "envelope",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4v8OHeLjM5p6nlBzP",
+    "streamline_name": "Envelope",
+    "set": "Ultimate Regular",
+    "file": "files/envelope.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "equalizer",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vw4D2aENc3PvJOgf",
+    "streamline_name": "Equalizer",
+    "set": "Ultimate Regular",
+    "file": "media/equalizer.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "erase",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vEpc2aEDeGhtd1I2",
+    "streamline_name": "Eraser",
+    "set": "Ultimate Regular",
+    "file": "actions/erase.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "error",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vtal2aEDeGJttARZ",
+    "streamline_name": "Remove Circle",
+    "set": "Ultimate Regular",
+    "file": "status/error.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "exit-fullscreen",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vxAg2aEJtt8ueF0B",
+    "streamline_name": "Shrink",
+    "set": "Ultimate Regular",
+    "file": "navigation/exit-fullscreen.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "explore",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vSzoeLj9ULgns92o",
+    "streamline_name": "Space Explore",
+    "set": "Ultimate Regular",
+    "file": "actions/explore.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "export",
+    "category": "actions",
+    "streamline_id": "ico_g7at7nLe5gzZc28T",
+    "streamline_name": "Export File",
+    "set": "Ultimate Regular",
+    "file": "actions/export.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "external-link",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4v2vh2aEJttinpvhi",
+    "streamline_name": "Expand",
+    "set": "Ultimate Regular",
+    "file": "navigation/external-link.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "eye",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4voYS2aEDeGjUA3gZ",
+    "streamline_name": "View 1",
+    "set": "Ultimate Regular",
+    "file": "status/eye.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "eye-health",
+    "category": "health",
+    "streamline_id": "ico_F3HVew6sGIX2K0Z0",
+    "streamline_name": "Eye Drop",
+    "set": "Ultimate Regular",
+    "file": "health/eye-health.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "eye-off",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vbXl2aEDeGjUAbRt",
+    "streamline_name": "View Off",
+    "set": "Ultimate Regular",
+    "file": "status/eye-off.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "face-id",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vA6d2aEDeGwvSRc2",
+    "streamline_name": "Face Id",
+    "set": "Ultimate Regular",
+    "file": "misc/face-id.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "factory",
+    "category": "misc",
+    "streamline_id": "ico_oACifJUOanFI4Rok",
+    "streamline_name": "Factory Belt",
+    "set": "Ultimate Regular",
+    "file": "misc/factory.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "family-care",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vQj9eLjjHWQ3ykjQ",
+    "streamline_name": "Family Home",
+    "set": "Ultimate Regular",
+    "file": "health/family-care.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "faq",
+    "category": "files",
+    "streamline_id": "ico_N36gal4ZK1UT7Lew",
+    "streamline_name": "Contact Us Faq",
+    "set": "Ultimate Regular",
+    "file": "files/faq.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "file",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vGnx2aE232Q3yjUZ",
+    "streamline_name": "Common File Book",
+    "set": "Ultimate Regular",
+    "file": "files/file.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "file-code",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vkxy2aE232Q3yZdc",
+    "streamline_name": "Common File Dash",
+    "set": "Ultimate Regular",
+    "file": "files/file-code.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "file-image",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vYIx2aE2329ULaSz",
+    "streamline_name": "Common File Horizontal Image",
+    "set": "Ultimate Regular",
+    "file": "files/file-image.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "file-pdf",
+    "category": "files",
+    "streamline_id": "ico_vhusei7Gpfs5WYBT",
+    "streamline_name": "Pdf Reader",
+    "set": "Ultimate Regular",
+    "file": "files/file-pdf.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "file-text",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vQOx2aE232jHWHye",
+    "streamline_name": "Common File Text",
+    "set": "Ultimate Regular",
+    "file": "files/file-text.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "file-zip",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vSMp2aE232iJ4lmq",
+    "streamline_name": "Zip File",
+    "set": "Ultimate Regular",
+    "file": "files/file-zip.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "film",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vbzoeLjjHWNc3RGX",
+    "streamline_name": "Movie Star",
+    "set": "Ultimate Regular",
+    "file": "media/film.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "filter",
+    "category": "navigation",
+    "streamline_id": "ico_eaG9ShpNKJgO68xe",
+    "streamline_name": "Filter Sort Lines Descending",
+    "set": "Ultimate Regular",
+    "file": "navigation/filter.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "find",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vMqZ2aEhtdK1itMU",
+    "streamline_name": "Monitor Find",
+    "set": "Ultimate Regular",
+    "file": "actions/find.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "fingerprint",
+    "category": "misc",
+    "streamline_id": "ico_8mVqr4CCNTI4mxBZ",
+    "streamline_name": "Fingerprint Add",
+    "set": "Ultimate Regular",
+    "file": "misc/fingerprint.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "fire",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vROmeLjvhjgWaqV4",
+    "streamline_name": "House Fire",
+    "set": "Ultimate Regular",
+    "file": "misc/fire.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "first-aid",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vtTZeLj9UL9ULDXx",
+    "streamline_name": "Hospital First Aid",
+    "set": "Ultimate Regular",
+    "file": "health/first-aid.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "fitness",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vci4eLjjHWWGyMqG",
+    "streamline_name": "Fitness Weights",
+    "set": "Ultimate Regular",
+    "file": "health/fitness.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "flag",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vinHeLjK1ibmoeET",
+    "streamline_name": "Flag 1",
+    "set": "Ultimate Regular",
+    "file": "status/flag.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "flag-alt",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vEEYeLjK1ibmohOa",
+    "streamline_name": "Flag",
+    "set": "Ultimate Regular",
+    "file": "actions/flag-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "flash",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4v4Z72aEJttT2FGNT",
+    "streamline_name": "Flash",
+    "set": "Ultimate Regular",
+    "file": "misc/flash.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "flash-off",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vMcF2aEJtt49rylB",
+    "streamline_name": "Flash Off",
+    "set": "Ultimate Regular",
+    "file": "misc/flash-off.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "flip",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4v6mc2aEJttBPulpK",
+    "streamline_name": "Flip Vertical Up",
+    "set": "Ultimate Regular",
+    "file": "media/flip.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "folder",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vvHt2aE232J4vlI7",
+    "streamline_name": "Folder",
+    "set": "Ultimate Regular",
+    "file": "files/folder.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "folder-add",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vJaN2aE232J4vnAi",
+    "streamline_name": "Folder Add",
+    "set": "Ultimate Regular",
+    "file": "files/folder-add.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "folder-shared",
+    "category": "files",
+    "streamline_id": "ico_T8eldyTXdOj3IqBi",
+    "streamline_name": "Folder Shared",
+    "set": "Ultimate Regular",
+    "file": "files/folder-shared.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "folder-star",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vnCf2aE232WipSJ4",
+    "streamline_name": "Folder Star",
+    "set": "Ultimate Regular",
+    "file": "files/folder-star.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "food",
+    "category": "misc",
+    "streamline_id": "ico_hVlPXWflk1dDElGL",
+    "streamline_name": "Food Delivery Bag",
+    "set": "Ultimate Regular",
+    "file": "misc/food.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "forward",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vfo3eLjvhjJtt5aQ",
+    "streamline_name": "Arrow Circle Right",
+    "set": "Ultimate Regular",
+    "file": "navigation/forward.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "forward-alt",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vx6A2aEJttvhjGto",
+    "streamline_name": "Button Fast Forward",
+    "set": "Ultimate Regular",
+    "file": "actions/forward-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "forward-mail",
+    "category": "comms",
+    "streamline_id": "ico_KI0a4eEVjwEZpgwY",
+    "streamline_name": "Go Forward 30 Control",
+    "set": "Ultimate Regular",
+    "file": "comms/forward-mail.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "fullscreen",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vRwG2aEJtt8ueU9o",
+    "streamline_name": "Expand Full",
+    "set": "Ultimate Regular",
+    "file": "navigation/fullscreen.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "gallery",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vchu2aEDeGEi8uHa",
+    "streamline_name": "Print Picture",
+    "set": "Ultimate Regular",
+    "file": "media/gallery.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "gas",
+    "category": "misc",
+    "streamline_id": "ico_8mKP2UMCLovyRyjs",
+    "streamline_name": "Gas Station",
+    "set": "Ultimate Regular",
+    "file": "misc/gas.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "gift",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4vANWeLjK1i49rlb7",
+    "streamline_name": "Gift Box",
+    "set": "Ultimate Regular",
+    "file": "commerce/gift.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "glasses",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4veB9eLjQ3yfSZzb7",
+    "streamline_name": "Glasses",
+    "set": "Ultimate Regular",
+    "file": "health/glasses.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "globe",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vXQ8eLjvhjWGyjAr",
+    "streamline_name": "Earth 1",
+    "set": "Ultimate Regular",
+    "file": "misc/globe.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "graduation",
+    "category": "misc",
+    "streamline_id": "ico_iyciOjqz1No3E9hs",
+    "streamline_name": "Graduation Hat",
+    "set": "Ultimate Regular",
+    "file": "misc/graduation.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "grid",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vqFE2aEJttK1ihtd",
+    "streamline_name": "Layout",
+    "set": "Ultimate Regular",
+    "file": "misc/grid.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "group",
+    "category": "comms",
+    "streamline_id": "ico_ys0eHfEUaMHzRj6U",
+    "streamline_name": "Group",
+    "set": "Ultimate Regular",
+    "file": "comms/group.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "guide",
+    "category": "files",
+    "streamline_id": "ico_sTeILt0JoSLQ2dW5",
+    "streamline_name": "Drug Guide Book",
+    "set": "Ultimate Regular",
+    "file": "files/guide.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "hammer",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4veCi2aEDeGPvJ73d",
+    "streamline_name": "Hammer",
+    "set": "Ultimate Regular",
+    "file": "misc/hammer.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "hand-wash",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vpSXeLjK1ihNENqv",
+    "streamline_name": "Laundry Hand Wash",
+    "set": "Ultimate Regular",
+    "file": "health/hand-wash.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "hard-drive",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vNoj2aEhtdvhjDUF",
+    "streamline_name": "Hard Drive",
+    "set": "Ultimate Regular",
+    "file": "files/hard-drive.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "headphones",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vFP32aENc37yVk8U",
+    "streamline_name": "Headphones",
+    "set": "Ultimate Regular",
+    "file": "media/headphones.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "hearing-aid",
+    "category": "health",
+    "streamline_id": "ico_MNRVhaBUvXNjjYiO",
+    "streamline_name": "Hearing Aid",
+    "set": "Ultimate Regular",
+    "file": "health/hearing-aid.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "heart",
+    "category": "health",
+    "streamline_id": "ico_ilCnVNxwaWZFmSvC",
+    "streamline_name": "Heart Approve 1",
+    "set": "Ultimate Regular",
+    "file": "health/heart.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "help",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4v49b2aEDeGeix5lt",
+    "streamline_name": "Question Circle",
+    "set": "Ultimate Regular",
+    "file": "status/help.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "hipaa",
+    "category": "health",
+    "streamline_id": "ico_HL2t8f46SUMX3dQu",
+    "streamline_name": "Firewall Privacy Shield",
+    "set": "Ultimate Regular",
+    "file": "health/hipaa.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "history",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vV6OeLj9ULy7qY5t",
+    "streamline_name": "History Fan",
+    "set": "Ultimate Regular",
+    "file": "misc/history.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "home",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vgnD2aEDeG2aESuT",
+    "streamline_name": "House 1",
+    "set": "Ultimate Regular",
+    "file": "navigation/home.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "home-alt",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vruH2aEDeG2aEjDo",
+    "streamline_name": "House",
+    "set": "Ultimate Regular",
+    "file": "navigation/home-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "hospital",
+    "category": "health",
+    "streamline_id": "ico_PXYO4geLZDkyVYlL",
+    "streamline_name": "Hospital Pin",
+    "set": "Ultimate Regular",
+    "file": "health/hospital.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "id-card",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vnJ42aE232fSZSBo",
+    "streamline_name": "Single Man Id Card",
+    "set": "Ultimate Regular",
+    "file": "misc/id-card.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "image",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vNZh2aENc3wvSLwy",
+    "streamline_name": "Image File Sync",
+    "set": "Ultimate Regular",
+    "file": "media/image.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "import",
+    "category": "actions",
+    "streamline_id": "ico_5FPaVLoPbJBoSPF9",
+    "streamline_name": "Import File",
+    "set": "Ultimate Regular",
+    "file": "actions/import.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "inbox",
+    "category": "comms",
+    "streamline_id": "ico_sFgnoVlTGL28Pz83",
+    "streamline_name": "Inbox Tray Notification Badge",
+    "set": "Ultimate Regular",
+    "file": "comms/inbox.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "info",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vbCd2aEDeGeixb8N",
+    "streamline_name": "Information Circle",
+    "set": "Ultimate Regular",
+    "file": "status/info.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "inhaler",
+    "category": "health",
+    "streamline_id": "ico_eiFC8qbbkmdZnBCZ",
+    "streamline_name": "Inhaler",
+    "set": "Ultimate Regular",
+    "file": "health/inhaler.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "insurance",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vw4YeLj9UL08UEi8",
+    "streamline_name": "Insurance Hand",
+    "set": "Ultimate Regular",
+    "file": "health/insurance.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "invoice",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4vK8f2aEaf7sjsHmR",
+    "streamline_name": "Accounting Invoice",
+    "set": "Ultimate Regular",
+    "file": "commerce/invoice.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "key",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4v6dy2aEDeGg0YdsA",
+    "streamline_name": "Key Lock",
+    "set": "Ultimate Regular",
+    "file": "misc/key.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "keyboard",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vO7y2aEhtdZOsdBC",
+    "streamline_name": "Keyboard",
+    "set": "Ultimate Regular",
+    "file": "misc/keyboard.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "lab",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vCmmeLj9UL2aEJau",
+    "streamline_name": "Laboratory Sample",
+    "set": "Ultimate Regular",
+    "file": "health/lab.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "language",
+    "category": "misc",
+    "streamline_id": "ico_a9ZgAVjuETfDT6LZ",
+    "streamline_name": "Language Barrier Confused",
+    "set": "Ultimate Regular",
+    "file": "misc/language.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "laptop",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vHK22aEhtdQ3y208",
+    "streamline_name": "Laptop",
+    "set": "Ultimate Regular",
+    "file": "misc/laptop.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "layers",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vJ6n2aEdzpaf79UL",
+    "streamline_name": "Layers",
+    "set": "Ultimate Regular",
+    "file": "navigation/layers.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "layout",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vxfN2aEDeGgWaNei",
+    "streamline_name": "Layout Dashboard",
+    "set": "Ultimate Regular",
+    "file": "misc/layout.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "leaf",
+    "category": "misc",
+    "streamline_id": "ico_T3Pwx5sNmYhb9UEn",
+    "streamline_name": "Vegetable Basil Leaf",
+    "set": "Ultimate Regular",
+    "file": "misc/leaf.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "letter",
+    "category": "files",
+    "streamline_id": "ico_MfxV5zPLtjWoEWtP",
+    "streamline_name": "Letter Balloon",
+    "set": "Ultimate Regular",
+    "file": "files/letter.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "light-mode",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vvtF2aENc32aE8ue",
+    "streamline_name": "Light Mode Dark Light",
+    "set": "Ultimate Regular",
+    "file": "misc/light-mode.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "link",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vjsz2aEDeGsjst2C",
+    "streamline_name": "Hyperlink",
+    "set": "Ultimate Regular",
+    "file": "actions/link.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "list",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4v7is2aEDeGNc3tKN",
+    "streamline_name": "List Add",
+    "set": "Ultimate Regular",
+    "file": "misc/list.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "loading",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4v6C92aEJttxih3qz",
+    "streamline_name": "Loading",
+    "set": "Ultimate Regular",
+    "file": "status/loading.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "locate",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vt9IeLjvhj2aEEkd",
+    "streamline_name": "Earth Locate",
+    "set": "Ultimate Regular",
+    "file": "actions/locate.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "lock",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vyWP2aEDeGg0YWWa",
+    "streamline_name": "Lock",
+    "set": "Ultimate Regular",
+    "file": "status/lock.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "login",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vwq22aEDeGP2Woe5",
+    "streamline_name": "Login",
+    "set": "Ultimate Regular",
+    "file": "actions/login.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "logout",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vZTq2aEDeG6nljk1",
+    "streamline_name": "Logout",
+    "set": "Ultimate Regular",
+    "file": "actions/logout.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "lungs",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vCvVeLj9UL2aEHTr",
+    "streamline_name": "Medical Nanobot Lungs",
+    "set": "Ultimate Regular",
+    "file": "health/lungs.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "magazine",
+    "category": "files",
+    "streamline_id": "ico_b329AuMkgPnykblm",
+    "streamline_name": "Shopping Magazine Advertising",
+    "set": "Ultimate Regular",
+    "file": "files/magazine.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "mail",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4v9W9eLjM5p8ueaSz",
+    "streamline_name": "Email Action Home",
+    "set": "Ultimate Regular",
+    "file": "comms/mail.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "manual",
+    "category": "files",
+    "streamline_id": "ico_8BAsDzsrf7PM1MZW",
+    "streamline_name": "Manual Book Content Sign",
+    "set": "Ultimate Regular",
+    "file": "files/manual.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "map",
+    "category": "navigation",
+    "streamline_id": "ico_xj6wpCt5vzskFKOS",
+    "streamline_name": "Map Marks",
+    "set": "Ultimate Regular",
+    "file": "navigation/map.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "map-pin",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vE6HeLjvhjK1iliS",
+    "streamline_name": "Pin Location",
+    "set": "Ultimate Regular",
+    "file": "misc/map-pin.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "mask",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vlqw2aENc3xihKKy",
+    "streamline_name": "Mask Circle",
+    "set": "Ultimate Regular",
+    "file": "health/mask.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "medal",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4viYEeLjK1iWipHx4",
+    "streamline_name": "Award Medal",
+    "set": "Ultimate Regular",
+    "file": "misc/medal.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "medical-cross",
+    "category": "health",
+    "streamline_id": "ico_C6IZeMMmCuwvbKdg",
+    "streamline_name": "Medical Cross",
+    "set": "Ultimate Regular",
+    "file": "health/medical-cross.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "meditation",
+    "category": "health",
+    "streamline_id": "ico_ueMoGXutKoYpyRov",
+    "streamline_name": "Yoga Meditation Pose2",
+    "set": "Ultimate Regular",
+    "file": "health/meditation.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "meeting",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4vlQr2aEaf7SFbHFz",
+    "streamline_name": "Meeting Remote",
+    "set": "Ultimate Regular",
+    "file": "comms/meeting.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "mental-health",
+    "category": "health",
+    "streamline_id": "ico_k1j7kFw7VMV2KYUo",
+    "streamline_name": "Mental Health 2",
+    "set": "Ultimate Regular",
+    "file": "health/mental-health.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "mental-wellness",
+    "category": "health",
+    "streamline_id": "ico_Xr8NAnzItZrflBD3",
+    "streamline_name": "Mindfulness 2",
+    "set": "Ultimate Regular",
+    "file": "health/mental-wellness.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "menu",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vA2u2aEDeGgWaHY4",
+    "streamline_name": "Navigation Menu",
+    "set": "Ultimate Regular",
+    "file": "navigation/menu.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "merge",
+    "category": "navigation",
+    "streamline_id": "ico_y1GKsnF6qA7Z2EGF",
+    "streamline_name": "Merge",
+    "set": "Ultimate Regular",
+    "file": "navigation/merge.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "message",
+    "category": "comms",
+    "streamline_id": "ico_NghiUt5427HdvoSE",
+    "streamline_name": "Chat Consultation Phone",
+    "set": "Ultimate Regular",
+    "file": "comms/message.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "mic",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4v1e02aENc3SyUaOa",
+    "streamline_name": "Microphone",
+    "set": "Ultimate Regular",
+    "file": "media/mic.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "mic-off",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vNDO2aENc3SyUbfh",
+    "streamline_name": "Microphone Off",
+    "set": "Ultimate Regular",
+    "file": "media/mic-off.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "microscope",
+    "category": "health",
+    "streamline_id": "ico_kj5vVDnhwFwZghV1",
+    "streamline_name": "Microscope 1",
+    "set": "Ultimate Regular",
+    "file": "health/microscope.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "moon",
+    "category": "misc",
+    "streamline_id": "ico_xWMA1OIjiyI4Z5ud",
+    "streamline_name": "Astrology Moon",
+    "set": "Ultimate Regular",
+    "file": "misc/moon.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "more-horizontal",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vdo12aEDeGgWa0iV",
+    "streamline_name": "Navigation Menu Horizontal",
+    "set": "Ultimate Regular",
+    "file": "navigation/more-horizontal.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "more-vertical",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vUAV2aEDeGP2W33w",
+    "streamline_name": "Navigation Menu Vertical",
+    "set": "Ultimate Regular",
+    "file": "navigation/more-vertical.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "mouse",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vo4k2aEhtdqmIly0",
+    "streamline_name": "Mouse",
+    "set": "Ultimate Regular",
+    "file": "misc/mouse.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "move",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vZ5t2aEJttwAZWWa",
+    "streamline_name": "Move Down",
+    "set": "Ultimate Regular",
+    "file": "actions/move.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "mri",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vWzweLj9ULWipucM",
+    "streamline_name": "Radiology Scan Mri",
+    "set": "Ultimate Regular",
+    "file": "health/mri.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "music",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vmHQ2aENc3BPuei2",
+    "streamline_name": "Music Note",
+    "set": "Ultimate Regular",
+    "file": "media/music.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "navigation-pointer",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vaXw2aEJtt6nl7RK",
+    "streamline_name": "Navigation Up 2",
+    "set": "Ultimate Regular",
+    "file": "navigation/navigation-pointer.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "neurology",
+    "category": "health",
+    "streamline_id": "ico_zUTdHlqvofyjcdK0",
+    "streamline_name": "Brain Neurology",
+    "set": "Ultimate Regular",
+    "file": "health/neurology.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "new",
+    "category": "actions",
+    "streamline_id": "ico_sBE0S5B7RbNbxK0z",
+    "streamline_name": "New Spreadsheet",
+    "set": "Ultimate Regular",
+    "file": "actions/new.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "newspaper",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vL8B2aEdzprjtd5V",
+    "streamline_name": "Newspaper",
+    "set": "Ultimate Regular",
+    "file": "files/newspaper.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "notes",
+    "category": "files",
+    "streamline_id": "ico_R086132BMrc5aLMf",
+    "streamline_name": "Notes Book Text",
+    "set": "Ultimate Regular",
+    "file": "files/notes.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "notes-add",
+    "category": "files",
+    "streamline_id": "ico_dfH0WvEKMXvupfSL",
+    "streamline_name": "Notes Add",
+    "set": "Ultimate Regular",
+    "file": "files/notes-add.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "notification",
+    "category": "status",
+    "streamline_id": "ico_8l8KASqA3plHF5XT",
+    "streamline_name": "Alert Notification",
+    "set": "Ultimate Regular",
+    "file": "status/notification.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "nurse",
+    "category": "health",
+    "streamline_id": "ico_k7PZTuSgxOE2oPVd",
+    "streamline_name": "Nurse With Cap Cloth",
+    "set": "Ultimate Regular",
+    "file": "health/nurse.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "office",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vPkC2aEaf7y7qNc3",
+    "streamline_name": "Office File Text Alternate",
+    "set": "Ultimate Regular",
+    "file": "misc/office.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "online",
+    "category": "status",
+    "streamline_id": "ico_fCYgm8aBeo7F3iKW",
+    "streamline_name": "Online Video Chat",
+    "set": "Ultimate Regular",
+    "file": "status/online.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "open",
+    "category": "actions",
+    "streamline_id": "ico_qwEWFmlH0LmfMzM9",
+    "streamline_name": "Open Eyes",
+    "set": "Ultimate Regular",
+    "file": "actions/open.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "orthopedics",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4v6q2eLj9ULT2FzNT",
+    "streamline_name": "Medical Specialty Broken Bone",
+    "set": "Ultimate Regular",
+    "file": "health/orthopedics.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "otc",
+    "category": "health",
+    "streamline_id": "ico_xCX1X3vvKENfh1GY",
+    "streamline_name": "Medicine Liquid Cup",
+    "set": "Ultimate Regular",
+    "file": "health/otc.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "oxygen",
+    "category": "health",
+    "streamline_id": "ico_V5c8Qr9mNpVFK7zi",
+    "streamline_name": "Oxygen",
+    "set": "Ultimate Regular",
+    "file": "health/oxygen.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "package-alt",
+    "category": "files",
+    "streamline_id": "ico_G17MMJPqIjTQLhwt",
+    "streamline_name": "Package Dimension",
+    "set": "Ultimate Regular",
+    "file": "files/package-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "panel-bottom",
+    "category": "navigation",
+    "streamline_id": "ico_Cu01GxMRBhmdIApW",
+    "streamline_name": "Layout 9",
+    "set": "Ultimate Regular",
+    "file": "navigation/panel-bottom.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "panel-left",
+    "category": "navigation",
+    "streamline_id": "ico_9IKOUE7eY0g4QAOb",
+    "streamline_name": "Sidebar Expand",
+    "set": "Ultimate Regular",
+    "file": "navigation/panel-left.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "panel-right",
+    "category": "navigation",
+    "streamline_id": "ico_33DjOrOAgQsODNU8",
+    "streamline_name": "Sidebar Collapes",
+    "set": "Ultimate Regular",
+    "file": "navigation/panel-right.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "panel-top",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vEAp2aEJttK1iE3R",
+    "streamline_name": "Layout 5",
+    "set": "Ultimate Regular",
+    "file": "navigation/panel-top.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "parcel",
+    "category": "files",
+    "streamline_id": "ico_K7ETC1QpORWiZwIn",
+    "streamline_name": "Lightweight Parcel",
+    "set": "Ultimate Regular",
+    "file": "files/parcel.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "parking",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vRqbeLj08UgnsSDc",
+    "streamline_name": "Parking P",
+    "set": "Ultimate Regular",
+    "file": "misc/parking.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "passport",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4v915eLjK1i2aERw9",
+    "streamline_name": "Passport",
+    "set": "Ultimate Regular",
+    "file": "misc/passport.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "paste",
+    "category": "actions",
+    "streamline_id": "ico_tkPsaJO76AYQ5iCL",
+    "streamline_name": "Insurance Document Clipboard",
+    "set": "Ultimate Regular",
+    "file": "actions/paste.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "patient",
+    "category": "health",
+    "streamline_id": "ico_MQc0d5srN6UeLvY4",
+    "streamline_name": "Patient Care",
+    "set": "Ultimate Regular",
+    "file": "health/patient.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "pause",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vpZ12aEJttJ4vJuT",
+    "streamline_name": "Button Pause",
+    "set": "Ultimate Regular",
+    "file": "media/pause.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "payment",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4vRWU2aEdzpjHWBeQ",
+    "streamline_name": "Self Payment",
+    "set": "Ultimate Regular",
+    "file": "commerce/payment.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "pediatric",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4v9DxeLjjHWQ3yaRX",
+    "streamline_name": "Baby",
+    "set": "Ultimate Regular",
+    "file": "health/pediatric.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "pending",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vm1F2aEDeGYBGlpK",
+    "streamline_name": "Hourglass",
+    "set": "Ultimate Regular",
+    "file": "status/pending.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "pharmacy",
+    "category": "health",
+    "streamline_id": "ico_38A0znaEtlOEb1G1",
+    "streamline_name": "Pharmacy",
+    "set": "Ultimate Regular",
+    "file": "health/pharmacy.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "pharmacy-alt",
+    "category": "health",
+    "streamline_id": "ico_lMXt6pw7yMsQ58El",
+    "streamline_name": "Pharmacy Shop",
+    "set": "Ultimate Regular",
+    "file": "health/pharmacy-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "phone",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4vwaleLjM5pwAZf6y",
+    "streamline_name": "Phone",
+    "set": "Ultimate Regular",
+    "file": "comms/phone.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "phone-off",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4vPAXeLjM5pwAZ9Ya",
+    "streamline_name": "Phone Off",
+    "set": "Ultimate Regular",
+    "file": "comms/phone-off.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "piggy-bank",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4vadP2aEaf7DeGcsM",
+    "streamline_name": "Saving Piggy Bank",
+    "set": "Ultimate Regular",
+    "file": "commerce/piggy-bank.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "pill",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4voiHeLj9ULJ4vYOv",
+    "streamline_name": "Pill",
+    "set": "Ultimate Regular",
+    "file": "health/pill.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "pin",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vJQD2aEDeGLXcDeG",
+    "streamline_name": "Pin",
+    "set": "Ultimate Regular",
+    "file": "actions/pin.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "planet",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vitseLj9ULHO2xih",
+    "streamline_name": "Astronomy Planet",
+    "set": "Ultimate Regular",
+    "file": "misc/planet.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "play",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4v0Z32aEJttJ4vbRt",
+    "streamline_name": "Button Play",
+    "set": "Ultimate Regular",
+    "file": "media/play.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "playlist",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vgS22aENc33zi79G",
+    "streamline_name": "Playlist",
+    "set": "Ultimate Regular",
+    "file": "media/playlist.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "policy",
+    "category": "files",
+    "streamline_id": "ico_rFTa9h6LF6xnkcHH",
+    "streamline_name": "Ai Policy Script",
+    "set": "Ultimate Regular",
+    "file": "files/policy.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "portfolio",
+    "category": "files",
+    "streamline_id": "ico_yhs9tReplNzeACNn",
+    "streamline_name": "Portfolio Project User",
+    "set": "Ultimate Regular",
+    "file": "files/portfolio.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "postcard",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vOeFeLjM5p7QUZOs",
+    "streamline_name": "Envelope Postcard",
+    "set": "Ultimate Regular",
+    "file": "files/postcard.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "power",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vuC42aEJttg0YSRv",
+    "streamline_name": "Power Button",
+    "set": "Ultimate Regular",
+    "file": "actions/power.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "pregnancy",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vg2QeLj9ULgWaT05",
+    "streamline_name": "Pregnancy Vgr",
+    "set": "Ultimate Regular",
+    "file": "health/pregnancy.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "prescription",
+    "category": "health",
+    "streamline_id": "ico_2jv3n4GBRXNo3sU6",
+    "streamline_name": "Prescription Px",
+    "set": "Ultimate Regular",
+    "file": "health/prescription.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "presentation",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4vXAY2aEaf7wAZZWz",
+    "streamline_name": "Presentation",
+    "set": "Ultimate Regular",
+    "file": "comms/presentation.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "press",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4v25WeLjM5pSyUfck",
+    "streamline_name": "Force Touch Press",
+    "set": "Ultimate Regular",
+    "file": "files/press.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "print",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vLw82aEhtdiJ40Tt",
+    "streamline_name": "Printer",
+    "set": "Ultimate Regular",
+    "file": "actions/print.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "printer-alt",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vpk22aEDeGdzpEM1",
+    "streamline_name": "Printer View",
+    "set": "Ultimate Regular",
+    "file": "misc/printer-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "projector",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vzLX2aEJttn8OXeS",
+    "streamline_name": "Video Projector",
+    "set": "Ultimate Regular",
+    "file": "misc/projector.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "prosthetic",
+    "category": "health",
+    "streamline_id": "ico_kkS2SfMf2hjF3ihL",
+    "streamline_name": "Prosthetic Leg 1",
+    "set": "Ultimate Regular",
+    "file": "health/prosthetic.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "pulse",
+    "category": "health",
+    "streamline_id": "ico_op4bmU5bdxN1cWIm",
+    "streamline_name": "Hypertension Pulse",
+    "set": "Ultimate Regular",
+    "file": "health/pulse.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "qr-code",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4v1dm2aEdzpP2Wbzb",
+    "streamline_name": "Qr Code",
+    "set": "Ultimate Regular",
+    "file": "commerce/qr-code.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "qr-scan",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vgVH2aEDeG8uecqY",
+    "streamline_name": "Iris Scan",
+    "set": "Ultimate Regular",
+    "file": "misc/qr-scan.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "quote-reply",
+    "category": "actions",
+    "streamline_id": "ico_XoeC67ZtUtP6je5U",
+    "streamline_name": "Quote",
+    "set": "Ultimate Regular",
+    "file": "actions/quote-reply.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "radiology",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vbIoeLj9ULWipaGi",
+    "streamline_name": "Radiology Scan",
+    "set": "Ultimate Regular",
+    "file": "health/radiology.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "rain",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vFlSeLj4pQNc3bvO",
+    "streamline_name": "Rain Umbrella",
+    "set": "Ultimate Regular",
+    "file": "misc/rain.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "receipt",
+    "category": "commerce",
+    "streamline_id": "ico_mRu4pQJ4v84u2aEdzp2aEtCj",
+    "streamline_name": "Receipt",
+    "set": "Ultimate Regular",
+    "file": "commerce/receipt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "record",
+    "category": "media",
+    "streamline_id": "ico_H2BMRH5KqyWZzVFk",
+    "streamline_name": "Phone Record",
+    "set": "Ultimate Regular",
+    "file": "media/record.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "recycle",
+    "category": "misc",
+    "streamline_id": "ico_PNn6BBS5Ry6Wv6Y1",
+    "streamline_name": "Plastic Bag Recycle",
+    "set": "Ultimate Regular",
+    "file": "misc/recycle.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "redo",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vbxf2aEDeGdzpYc9",
+    "streamline_name": "Redo",
+    "set": "Ultimate Regular",
+    "file": "actions/redo.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "refresh",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vpQy2aEJttZOswAZ",
+    "streamline_name": "Button Refresh Arrow",
+    "set": "Ultimate Regular",
+    "file": "actions/refresh.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "remind",
+    "category": "actions",
+    "streamline_id": "ico_HGrQnrI87CO98LaP",
+    "streamline_name": "Reminder Hand Sign",
+    "set": "Ultimate Regular",
+    "file": "actions/remind.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "reply",
+    "category": "comms",
+    "streamline_id": "ico_v3RcdOdmKkVqB1be",
+    "streamline_name": "Reply Time Clock",
+    "set": "Ultimate Regular",
+    "file": "comms/reply.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "reply-all",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4v0mGeLjM5pwvS9ca",
+    "streamline_name": "Email Action Reply All",
+    "set": "Ultimate Regular",
+    "file": "comms/reply-all.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "reply-alt",
+    "category": "actions",
+    "streamline_id": "ico_AoThTg2gbKWwhTtu",
+    "streamline_name": "Reply To Message",
+    "set": "Ultimate Regular",
+    "file": "actions/reply-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "resize",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vTWC2aEJtt8uegfv",
+    "streamline_name": "Expand 8",
+    "set": "Ultimate Regular",
+    "file": "navigation/resize.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "restore",
+    "category": "actions",
+    "streamline_id": "ico_BhXW8afmsmZyzGCC",
+    "streamline_name": "Archive Restore",
+    "set": "Ultimate Regular",
+    "file": "actions/restore.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "resume",
+    "category": "files",
+    "streamline_id": "ico_H1iW7hKua7CWm54m",
+    "streamline_name": "Recruiting Resume Document",
+    "set": "Ultimate Regular",
+    "file": "files/resume.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "robot",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vbJP2aEJttgnsu5N",
+    "streamline_name": "Robot",
+    "set": "Ultimate Regular",
+    "file": "misc/robot.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "rocket",
+    "category": "misc",
+    "streamline_id": "ico_0IfoUv3nzOmlljXo",
+    "streamline_name": "Rocket Attack",
+    "set": "Ultimate Regular",
+    "file": "misc/rocket.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "rotate",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vyFb2aENc3M5ppoq",
+    "streamline_name": "Rotate",
+    "set": "Ultimate Regular",
+    "file": "media/rotate.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "route",
+    "category": "navigation",
+    "streamline_id": "ico_w0JAMp3tAyJOtPJb",
+    "streamline_name": "Journey Trip Route",
+    "set": "Ultimate Regular",
+    "file": "navigation/route.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "satellite",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vMXe2aEDeGitsdim",
+    "streamline_name": "Satellite",
+    "set": "Ultimate Regular",
+    "file": "misc/satellite.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "save",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4voor2aEhtdJ4vRw9",
+    "streamline_name": "Floppy Disk",
+    "set": "Ultimate Regular",
+    "file": "actions/save.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "scanner",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vDcq2aEhtdiJ4niE",
+    "streamline_name": "Scanner",
+    "set": "Ultimate Regular",
+    "file": "misc/scanner.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "schedule",
+    "category": "misc",
+    "streamline_id": "ico_TBybvuB4vUua0cFx",
+    "streamline_name": "Scheduled Phone Call Calendar 2",
+    "set": "Ultimate Regular",
+    "file": "misc/schedule.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "school",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vbYfeLj9ULwvSjv2",
+    "streamline_name": "School Bell",
+    "set": "Ultimate Regular",
+    "file": "misc/school.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "scroll",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vJCS2aEJtteLjGQL",
+    "streamline_name": "Scroll Vertical",
+    "set": "Ultimate Regular",
+    "file": "navigation/scroll.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "search",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4viw02aEDeGjUAwYE",
+    "streamline_name": "Search",
+    "set": "Ultimate Regular",
+    "file": "navigation/search.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "search-alt",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vFp92aEDeGjUAiDQ",
+    "streamline_name": "Search 1",
+    "set": "Ultimate Regular",
+    "file": "actions/search-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "select",
+    "category": "actions",
+    "streamline_id": "ico_Bt5rJggaJrUUZdCc",
+    "streamline_name": "Select 3d",
+    "set": "Ultimate Regular",
+    "file": "actions/select.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "select-all",
+    "category": "actions",
+    "streamline_id": "ico_VCHeaZv2mtIy4Q40",
+    "streamline_name": "Select All",
+    "set": "Ultimate Regular",
+    "file": "actions/select-all.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "send",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4vdT9eLjM5pgWaz3X",
+    "streamline_name": "Send Email 2",
+    "set": "Ultimate Regular",
+    "file": "comms/send.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "send-alt",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vRSFeLjM5pgWa5ke",
+    "streamline_name": "Send Email",
+    "set": "Ultimate Regular",
+    "file": "actions/send-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "server",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vi2V2aEhtdJttDl0",
+    "streamline_name": "Server",
+    "set": "Ultimate Regular",
+    "file": "files/server.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "settings",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vwfy2aEDeGQzIqV5",
+    "streamline_name": "Cog",
+    "set": "Ultimate Regular",
+    "file": "navigation/settings.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "share",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vIO72aEDeGitsVtJ",
+    "streamline_name": "Share",
+    "set": "Ultimate Regular",
+    "file": "actions/share.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "share-alt",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vVsi2aEDeGEi8xW8",
+    "streamline_name": "Share 3",
+    "set": "Ultimate Regular",
+    "file": "actions/share-alt.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "shelf",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vTK5eLjQ3yinpcZO",
+    "streamline_name": "Shelf Tv",
+    "set": "Ultimate Regular",
+    "file": "files/shelf.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "shield",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vfCT2aEDeGSFbPvM",
+    "streamline_name": "Lock Shield",
+    "set": "Ultimate Regular",
+    "file": "status/shield.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "shield-check",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vArt2aEhtdP2WwqY",
+    "streamline_name": "Shield Check",
+    "set": "Ultimate Regular",
+    "file": "status/shield-check.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "shield-off",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vWvu2aEDeGJttXyC",
+    "streamline_name": "Remove Shield",
+    "set": "Ultimate Regular",
+    "file": "status/shield-off.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "sidebar",
+    "category": "navigation",
+    "streamline_id": "ico_mRu4pQJ4vHGq2aEJttK1ifFr",
+    "streamline_name": "Layout 2",
+    "set": "Ultimate Regular",
+    "file": "navigation/sidebar.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "sign-language",
+    "category": "health",
+    "streamline_id": "ico_Uq8RqrLRzjcJklPJ",
+    "streamline_name": "Sign Language Love",
+    "set": "Ultimate Regular",
+    "file": "health/sign-language.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "signal",
+    "category": "misc",
+    "streamline_id": "ico_T5s2QvkjE3qPHj9W",
+    "streamline_name": "Signal Wave",
+    "set": "Ultimate Regular",
+    "file": "misc/signal.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "skip-back",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vmRF2aEJttJ4vkS8",
+    "streamline_name": "Button Previous",
+    "set": "Ultimate Regular",
+    "file": "media/skip-back.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "skip-forward",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4v9sl2aEJttJ4v0Ij",
+    "streamline_name": "Button Next",
+    "set": "Ultimate Regular",
+    "file": "media/skip-forward.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "sleep",
+    "category": "health",
+    "streamline_id": "ico_U1rFtPBuC3RqLI2Q",
+    "streamline_name": "Sleep Zzz",
+    "set": "Ultimate Regular",
+    "file": "health/sleep.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "smartphone",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vBaK2aEdzpjHW5ES",
+    "streamline_name": "Smartphone Pay Dollar 2",
+    "set": "Ultimate Regular",
+    "file": "misc/smartphone.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "snooze",
+    "category": "actions",
+    "streamline_id": "ico_AY426BMLBDeAJgRn",
+    "streamline_name": "Snooze Return Repeat",
+    "set": "Ultimate Regular",
+    "file": "actions/snooze.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "snow",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vknBeLj4pQdzpg3m",
+    "streamline_name": "Weather Snow",
+    "set": "Ultimate Regular",
+    "file": "misc/snow.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "sort",
+    "category": "actions",
+    "streamline_id": "ico_xVHERgWKt9n7JBYG",
+    "streamline_name": "Sort Size Ascending Order Up",
+    "set": "Ultimate Regular",
+    "file": "actions/sort.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "sort-asc",
+    "category": "actions",
+    "streamline_id": "ico_2rDhMiauEWg6cTHn",
+    "streamline_name": "Ascending Sort 1",
+    "set": "Ultimate Regular",
+    "file": "actions/sort-asc.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "sort-desc",
+    "category": "actions",
+    "streamline_id": "ico_MIhSXZAGdRLfxPhu",
+    "streamline_name": "Descending Sort 1",
+    "set": "Ultimate Regular",
+    "file": "actions/sort-desc.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "split",
+    "category": "navigation",
+    "streamline_id": "ico_gv8gYVrlmQEnYrRB",
+    "streamline_name": "Split Subset Spreadsheet 2",
+    "set": "Ultimate Regular",
+    "file": "navigation/split.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "star",
+    "category": "status",
+    "streamline_id": "ico_WWMza7lZFYB6uhmT",
+    "streamline_name": "Star Half",
+    "set": "Ultimate Regular",
+    "file": "status/star.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "star-add",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vRxkeLjK1iJ4v5lt",
+    "streamline_name": "Rating Star Add",
+    "set": "Ultimate Regular",
+    "file": "actions/star-add.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "star-filled",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vypOeLjK1iJ4vaWN",
+    "streamline_name": "Rating Star",
+    "set": "Ultimate Regular",
+    "file": "status/star-filled.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "stethoscope",
+    "category": "health",
+    "streamline_id": "ico_Dotp53IiT3eL16kJ",
+    "streamline_name": "Stethoscope Website",
+    "set": "Ultimate Regular",
+    "file": "health/stethoscope.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "stop",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vsDZ2aEJttZOsyOn",
+    "streamline_name": "Button Stop",
+    "set": "Ultimate Regular",
+    "file": "media/stop.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "stopwatch",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vayE2aEDeGYBGLVG",
+    "streamline_name": "Stopwatch",
+    "set": "Ultimate Regular",
+    "file": "misc/stopwatch.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "store",
+    "category": "commerce",
+    "streamline_id": "ico_NAF4FaiTthqv0KnK",
+    "streamline_name": "Cannabis Store",
+    "set": "Ultimate Regular",
+    "file": "commerce/store.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "success",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4vAUF2aEDeGDeG9Ya",
+    "streamline_name": "Check Circle",
+    "set": "Ultimate Regular",
+    "file": "status/success.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "sun",
+    "category": "misc",
+    "streamline_id": "ico_7BWmSJKCfLr56OoK",
+    "streamline_name": "Weather Sun",
+    "set": "Streamline Regular 3.0",
+    "file": "misc/sun.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "surgery",
+    "category": "health",
+    "streamline_id": "ico_YRozLJ3RT1jf4E02",
+    "streamline_name": "Surgery Liposuction",
+    "set": "Ultimate Regular",
+    "file": "health/surgery.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "swap",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vCUy2aE232ZOs2hr",
+    "streamline_name": "Folder Exchange",
+    "set": "Ultimate Regular",
+    "file": "actions/swap.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "symptoms",
+    "category": "health",
+    "streamline_id": "ico_gwF62KUq1ZqPoPWn",
+    "streamline_name": "Symptoms Fever",
+    "set": "Ultimate Regular",
+    "file": "health/symptoms.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "sync",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vkAz2aEJttWipyKP",
+    "streamline_name": "Synchronize Arrow 2",
+    "set": "Ultimate Regular",
+    "file": "actions/sync.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "syringe",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vIVZeLj9ULqmI693",
+    "streamline_name": "Medical Instrument Syringe",
+    "set": "Ultimate Regular",
+    "file": "health/syringe.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "tablet",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vrGt2aEhtdjHWniS",
+    "streamline_name": "Tablet",
+    "set": "Ultimate Regular",
+    "file": "misc/tablet.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "tag",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vjle2aEdzp6nlgUa",
+    "streamline_name": "Tag New",
+    "set": "Ultimate Regular",
+    "file": "files/tag.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "team",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4vS192aEaf7BPuFMl",
+    "streamline_name": "Team Idea",
+    "set": "Ultimate Regular",
+    "file": "comms/team.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "temperature",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vhbseLj9ULK1ijk1",
+    "streamline_name": "Temperature Up",
+    "set": "Ultimate Regular",
+    "file": "misc/temperature.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "terminal",
+    "category": "misc",
+    "streamline_id": "ico_X9OwiAQAfsrEvPYE",
+    "streamline_name": "Terminal",
+    "set": "Ultimate Regular",
+    "file": "misc/terminal.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "thermometer",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vbOVeLj9ULM5pK3B",
+    "streamline_name": "Temperature Thermometer",
+    "set": "Ultimate Regular",
+    "file": "health/thermometer.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "ticket",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vgZ1eLjK1iHO2rFk",
+    "streamline_name": "Ticket",
+    "set": "Ultimate Regular",
+    "file": "misc/ticket.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "timer",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vkyE2aENc36nlgSw",
+    "streamline_name": "Timer",
+    "set": "Ultimate Regular",
+    "file": "misc/timer.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "tool",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vUw6eLjQ3yjUAx2W",
+    "streamline_name": "Tools Keys",
+    "set": "Ultimate Regular",
+    "file": "misc/tool.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "tooth",
+    "category": "health",
+    "streamline_id": "ico_GIETvIEceTjoKeSK",
+    "streamline_name": "Tooth 2",
+    "set": "Ultimate Regular",
+    "file": "health/tooth.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "train",
+    "category": "misc",
+    "streamline_id": "ico_ED2zmmKuth17RU0u",
+    "streamline_name": "Train Location",
+    "set": "Ultimate Regular",
+    "file": "misc/train.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "translate",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vx6d2aEDeGNc3Cuh",
+    "streamline_name": "Translate",
+    "set": "Ultimate Regular",
+    "file": "misc/translate.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "trash",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vtWt2aEDeGPopLVG",
+    "streamline_name": "Bin",
+    "set": "Ultimate Regular",
+    "file": "actions/trash.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "trophy",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vbRa2aEaf72aEPvm",
+    "streamline_name": "Seo Trophy",
+    "set": "Ultimate Regular",
+    "file": "misc/trophy.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "ultrasound",
+    "category": "health",
+    "streamline_id": "ico_NMR0QkLU6CgXb7Bo",
+    "streamline_name": "Ultrasound Scan",
+    "set": "Ultimate Regular",
+    "file": "health/ultrasound.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "umbrella",
+    "category": "misc",
+    "streamline_id": "ico_8mzfd6efEXxX1p9u",
+    "streamline_name": "Umbrella Circle",
+    "set": "Ultimate Regular",
+    "file": "misc/umbrella.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "undo",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vNNl2aEDeGNc3jYq",
+    "streamline_name": "Undo",
+    "set": "Ultimate Regular",
+    "file": "actions/undo.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "unlock",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4v6lO2aEDeGSFbatI",
+    "streamline_name": "Lock Unlock",
+    "set": "Ultimate Regular",
+    "file": "status/unlock.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "upload",
+    "category": "actions",
+    "streamline_id": "ico_hK9fVfIXdnfbbn3e",
+    "streamline_name": "Upload Bottom",
+    "set": "Ultimate Regular",
+    "file": "actions/upload.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "usb",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vaJB2aEhtdWipd5n",
+    "streamline_name": "Usb Port",
+    "set": "Ultimate Regular",
+    "file": "files/usb.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "user",
+    "category": "comms",
+    "streamline_id": "ico_vzZlzSR01sIMUADN",
+    "streamline_name": "User Story",
+    "set": "Ultimate Regular",
+    "file": "comms/user.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "user-add",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4v7ZHeLjM5pYBGeFQ",
+    "streamline_name": "Phone Action Add User",
+    "set": "Ultimate Regular",
+    "file": "comms/user-add.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "user-check",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4vqkveLjM5pfvjx2W",
+    "streamline_name": "Messages People User Check",
+    "set": "Ultimate Regular",
+    "file": "comms/user-check.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "user-remove",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4v76IeLjM5pgnsVtJ",
+    "streamline_name": "Phone Action Remove User",
+    "set": "Ultimate Regular",
+    "file": "comms/user-remove.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "users",
+    "category": "comms",
+    "streamline_id": "ico_mRu4pQJ4vtg6eLjM5pQ3yDxv",
+    "streamline_name": "Multiple Users 1",
+    "set": "Ultimate Regular",
+    "file": "comms/users.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "vaccine",
+    "category": "health",
+    "streamline_id": "ico_xMaQnfPuf146eaLn",
+    "streamline_name": "Vaccine Bottle 1",
+    "set": "Ultimate Regular",
+    "file": "health/vaccine.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "video",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vhzu2aENc3DeGinp",
+    "streamline_name": "Video Player",
+    "set": "Ultimate Regular",
+    "file": "media/video.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "video-call",
+    "category": "comms",
+    "streamline_id": "ico_nnzVDdNV9XoXWg2m",
+    "streamline_name": "Video Call",
+    "set": "Ultimate Regular",
+    "file": "comms/video-call.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "virus",
+    "category": "health",
+    "streamline_id": "ico_eBmC7TPXUduSY60T",
+    "streamline_name": "Medical Specialty Virus",
+    "set": "Ultimate Regular",
+    "file": "health/virus.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "volume",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vLEo2aEDeGOrjWeH",
+    "streamline_name": "Volume",
+    "set": "Ultimate Regular",
+    "file": "media/volume.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "volume-off",
+    "category": "media",
+    "streamline_id": "ico_mRu4pQJ4vjsk2aENc3hNEYf3",
+    "streamline_name": "Volume Control Off",
+    "set": "Ultimate Regular",
+    "file": "media/volume-off.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "waiting-room",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4v8CIeLjK1iy7qxrJ",
+    "streamline_name": "Waiting Room Lamp",
+    "set": "Ultimate Regular",
+    "file": "health/waiting-room.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "wallet",
+    "category": "commerce",
+    "streamline_id": "ico_0ibX83PKdVvDDv9F",
+    "streamline_name": "Wallet Sensor Tag Radiowaves",
+    "set": "Ultimate Regular",
+    "file": "commerce/wallet.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "walking",
+    "category": "navigation",
+    "streamline_id": "ico_FiezImOoLv5tVJB6",
+    "streamline_name": "Figure Walk Departure",
+    "set": "Ultimate Regular",
+    "file": "navigation/walking.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "warning",
+    "category": "status",
+    "streamline_id": "ico_mRu4pQJ4v3np2aEDeGeixfzl",
+    "streamline_name": "Alert Circle",
+    "set": "Ultimate Regular",
+    "file": "status/warning.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "watch",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vfkX2aEDeGgns7Pi",
+    "streamline_name": "Watch Time",
+    "set": "Ultimate Regular",
+    "file": "misc/watch.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "water",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4v2NgeLjQ3y49rlNw",
+    "streamline_name": "Water Straw",
+    "set": "Ultimate Regular",
+    "file": "misc/water.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "weather",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vXVleLj4pQdzpi1D",
+    "streamline_name": "Weather Rain",
+    "set": "Ultimate Regular",
+    "file": "misc/weather.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "weight-scale",
+    "category": "health",
+    "streamline_id": "ico_mRu4pQJ4vPCdeLj9ULgWaJPp",
+    "streamline_name": "Diet Scale",
+    "set": "Ultimate Regular",
+    "file": "health/weight-scale.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "wheelchair",
+    "category": "health",
+    "streamline_id": "ico_qe7hWppZxcT83DOk",
+    "streamline_name": "Wheelchair Way",
+    "set": "Ultimate Regular",
+    "file": "health/wheelchair.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "wifi",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vL2P2aEhtdjUABzP",
+    "streamline_name": "Wifi",
+    "set": "Ultimate Regular",
+    "file": "misc/wifi.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "wifi-off",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4veSZ2aEhtditsgLv",
+    "streamline_name": "Wifi Off",
+    "set": "Ultimate Regular",
+    "file": "misc/wifi-off.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "wiki",
+    "category": "files",
+    "streamline_id": "ico_mRu4pQJ4vBSKeLjJ4v8ueUKg",
+    "streamline_name": "Wikipedia Logo",
+    "set": "Ultimate Regular",
+    "file": "files/wiki.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "wind",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vTnBeLj9ULQ3yR5q",
+    "streamline_name": "Wind West",
+    "set": "Ultimate Regular",
+    "file": "misc/wind.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "wrench",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vLMG2aEDeGPvJfLJ",
+    "streamline_name": "Wrench",
+    "set": "Ultimate Regular",
+    "file": "misc/wrench.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "zoom-in",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vUtk2aEDeGsjsaSz",
+    "streamline_name": "Zoom In",
+    "set": "Ultimate Regular",
+    "file": "misc/zoom-in.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "zoom-out",
+    "category": "misc",
+    "streamline_id": "ico_mRu4pQJ4vWg02aEDeGsjsaON",
+    "streamline_name": "Zoom Out",
+    "set": "Ultimate Regular",
+    "file": "misc/zoom-out.svg",
+    "license": "Streamline paid per-asset API"
+  },
+  {
+    "name": "check-circle",
+    "category": "actions",
+    "streamline_id": "ico_mRu4pQJ4vAUF2aEDeGDeG9Ya",
+    "streamline_name": "Check Circle",
+    "set": "Ultimate Regular",
+    "file": "actions/check-circle.svg",
+    "license": "Streamline paid per-asset API"
+  }
+]

@@ -1,0 +1,2366 @@
+[
+  {
+    "name": "911",
+    "category": "health",
+    "streamline_name": "Safety 911",
+    "file": "health/911.svg"
+  },
+  {
+    "name": "accessibility",
+    "category": "misc",
+    "streamline_name": "Tools Reality Accessibility",
+    "file": "misc/accessibility.svg"
+  },
+  {
+    "name": "add",
+    "category": "actions",
+    "streamline_name": "Add",
+    "file": "actions/add.svg"
+  },
+  {
+    "name": "agreement",
+    "category": "files",
+    "streamline_name": "Workflow Agreement",
+    "file": "files/agreement.svg"
+  },
+  {
+    "name": "airplane",
+    "category": "misc",
+    "streamline_name": "Airplane Mode",
+    "file": "misc/airplane.svg"
+  },
+  {
+    "name": "alarm",
+    "category": "misc",
+    "streamline_name": "Alarm Clock",
+    "file": "misc/alarm.svg"
+  },
+  {
+    "name": "ambulance",
+    "category": "health",
+    "streamline_name": "Ambulance Car",
+    "file": "health/ambulance.svg"
+  },
+  {
+    "name": "appointment",
+    "category": "health",
+    "streamline_name": "Waiting Room Appointment Medical Appointment 2",
+    "file": "health/appointment.svg"
+  },
+  {
+    "name": "archive",
+    "category": "actions",
+    "streamline_name": "Archive",
+    "file": "actions/archive.svg"
+  },
+  {
+    "name": "arrow-down",
+    "category": "navigation",
+    "streamline_name": "Arrow Down",
+    "file": "navigation/arrow-down.svg"
+  },
+  {
+    "name": "arrow-left",
+    "category": "navigation",
+    "streamline_name": "Arrow Left",
+    "file": "navigation/arrow-left.svg"
+  },
+  {
+    "name": "arrow-right",
+    "category": "navigation",
+    "streamline_name": "Arrow Right",
+    "file": "navigation/arrow-right.svg"
+  },
+  {
+    "name": "arrow-up",
+    "category": "navigation",
+    "streamline_name": "Arrow Up",
+    "file": "navigation/arrow-up.svg"
+  },
+  {
+    "name": "atom",
+    "category": "misc",
+    "streamline_name": "Science Atom Positive Negative",
+    "file": "misc/atom.svg"
+  },
+  {
+    "name": "attach",
+    "category": "actions",
+    "streamline_name": "Attachment",
+    "file": "actions/attach.svg"
+  },
+  {
+    "name": "attachment",
+    "category": "files",
+    "streamline_name": "Attachment 1",
+    "file": "files/attachment.svg"
+  },
+  {
+    "name": "award",
+    "category": "misc",
+    "streamline_name": "Award Star",
+    "file": "misc/award.svg"
+  },
+  {
+    "name": "back",
+    "category": "navigation",
+    "streamline_name": "Arrow Circle Left",
+    "file": "navigation/back.svg"
+  },
+  {
+    "name": "badge",
+    "category": "status",
+    "streamline_name": "Check Badge",
+    "file": "status/badge.svg"
+  },
+  {
+    "name": "bag",
+    "category": "commerce",
+    "streamline_name": "Shopping Bag",
+    "file": "commerce/bag.svg"
+  },
+  {
+    "name": "balloon",
+    "category": "misc",
+    "streamline_name": "Balloon Party",
+    "file": "misc/balloon.svg"
+  },
+  {
+    "name": "bandage",
+    "category": "health",
+    "streamline_name": "Bandage",
+    "file": "health/bandage.svg"
+  },
+  {
+    "name": "bank",
+    "category": "commerce",
+    "streamline_name": "Blood Bank",
+    "file": "commerce/bank.svg"
+  },
+  {
+    "name": "barcode",
+    "category": "commerce",
+    "streamline_name": "Barcode",
+    "file": "commerce/barcode.svg"
+  },
+  {
+    "name": "barcode-scan",
+    "category": "misc",
+    "streamline_name": "Barcode Scan",
+    "file": "misc/barcode-scan.svg"
+  },
+  {
+    "name": "battery",
+    "category": "misc",
+    "streamline_name": "Battery Slash No",
+    "file": "misc/battery.svg"
+  },
+  {
+    "name": "battery-charging",
+    "category": "misc",
+    "streamline_name": "Battery Charging 2",
+    "file": "misc/battery-charging.svg"
+  },
+  {
+    "name": "battery-full",
+    "category": "misc",
+    "streamline_name": "Battery Full",
+    "file": "misc/battery-full.svg"
+  },
+  {
+    "name": "battery-low",
+    "category": "misc",
+    "streamline_name": "Charging Battery Low 1",
+    "file": "misc/battery-low.svg"
+  },
+  {
+    "name": "bed",
+    "category": "health",
+    "streamline_name": "Hospital Bedroom",
+    "file": "health/bed.svg"
+  },
+  {
+    "name": "bell",
+    "category": "status",
+    "streamline_name": "Alarm Bell",
+    "file": "status/bell.svg"
+  },
+  {
+    "name": "bell-off",
+    "category": "status",
+    "streamline_name": "Alarm Bell Off 1",
+    "file": "status/bell-off.svg"
+  },
+  {
+    "name": "bike",
+    "category": "misc",
+    "streamline_name": "Bicycle",
+    "file": "misc/bike.svg"
+  },
+  {
+    "name": "blocked",
+    "category": "status",
+    "streamline_name": "Tags Block",
+    "file": "status/blocked.svg"
+  },
+  {
+    "name": "blog",
+    "category": "files",
+    "streamline_name": "Blog Blogger Logo",
+    "file": "files/blog.svg"
+  },
+  {
+    "name": "blood",
+    "category": "health",
+    "streamline_name": "Blood Types 1",
+    "file": "health/blood.svg"
+  },
+  {
+    "name": "blood-pressure",
+    "category": "health",
+    "streamline_name": "Blood Pressure Cuff",
+    "file": "health/blood-pressure.svg"
+  },
+  {
+    "name": "bluetooth",
+    "category": "misc",
+    "streamline_name": "Bluetooth",
+    "file": "misc/bluetooth.svg"
+  },
+  {
+    "name": "book",
+    "category": "misc",
+    "streamline_name": "Book Pin",
+    "file": "misc/book.svg"
+  },
+  {
+    "name": "bookmark",
+    "category": "files",
+    "streamline_name": "Bookmark 3",
+    "file": "files/bookmark.svg"
+  },
+  {
+    "name": "box-alt",
+    "category": "files",
+    "streamline_name": "Text Box 2",
+    "file": "files/box-alt.svg"
+  },
+  {
+    "name": "brain",
+    "category": "health",
+    "streamline_name": "Brain",
+    "file": "health/brain.svg"
+  },
+  {
+    "name": "breadcrumb",
+    "category": "navigation",
+    "streamline_name": "Hierarchy",
+    "file": "navigation/breadcrumb.svg"
+  },
+  {
+    "name": "briefcase",
+    "category": "misc",
+    "streamline_name": "Briefcase",
+    "file": "misc/briefcase.svg"
+  },
+  {
+    "name": "brightness",
+    "category": "media",
+    "streamline_name": "Brightness",
+    "file": "media/brightness.svg"
+  },
+  {
+    "name": "browse",
+    "category": "actions",
+    "streamline_name": "E Commerce Apparel Browse",
+    "file": "actions/browse.svg"
+  },
+  {
+    "name": "bug",
+    "category": "misc",
+    "streamline_name": "Catch Bug",
+    "file": "misc/bug.svg"
+  },
+  {
+    "name": "building",
+    "category": "misc",
+    "streamline_name": "Building",
+    "file": "misc/building.svg"
+  },
+  {
+    "name": "bus",
+    "category": "misc",
+    "streamline_name": "Bus",
+    "file": "misc/bus.svg"
+  },
+  {
+    "name": "cabinet",
+    "category": "files",
+    "streamline_name": "Bathroom Mirror Cabinet",
+    "file": "files/cabinet.svg"
+  },
+  {
+    "name": "cake",
+    "category": "misc",
+    "streamline_name": "Cake Flour",
+    "file": "misc/cake.svg"
+  },
+  {
+    "name": "calendar",
+    "category": "comms",
+    "streamline_name": "Calendar",
+    "file": "comms/calendar.svg"
+  },
+  {
+    "name": "camera",
+    "category": "media",
+    "streamline_name": "Camera",
+    "file": "media/camera.svg"
+  },
+  {
+    "name": "camera-off",
+    "category": "misc",
+    "streamline_name": "Controls Camera Off",
+    "file": "misc/camera-off.svg"
+  },
+  {
+    "name": "cancel",
+    "category": "actions",
+    "streamline_name": "Lock Cancel Slash",
+    "file": "actions/cancel.svg"
+  },
+  {
+    "name": "cancer",
+    "category": "health",
+    "streamline_name": "Cancer Cell 2",
+    "file": "health/cancer.svg"
+  },
+  {
+    "name": "car",
+    "category": "misc",
+    "streamline_name": "Car",
+    "file": "misc/car.svg"
+  },
+  {
+    "name": "cart",
+    "category": "commerce",
+    "streamline_name": "Shopping Cart",
+    "file": "commerce/cart.svg"
+  },
+  {
+    "name": "cast",
+    "category": "media",
+    "streamline_name": "Phone Cast",
+    "file": "media/cast.svg"
+  },
+  {
+    "name": "chart-bar",
+    "category": "commerce",
+    "streamline_name": "Analytics Bars",
+    "file": "commerce/chart-bar.svg"
+  },
+  {
+    "name": "chart-line",
+    "category": "commerce",
+    "streamline_name": "Analytics Graph",
+    "file": "commerce/chart-line.svg"
+  },
+  {
+    "name": "chat",
+    "category": "comms",
+    "streamline_name": "Messages Bubble",
+    "file": "comms/chat.svg"
+  },
+  {
+    "name": "check",
+    "category": "actions",
+    "streamline_name": "Check 1",
+    "file": "actions/check.svg"
+  },
+  {
+    "name": "chevron-down",
+    "category": "navigation",
+    "streamline_name": "Arrow Down 1",
+    "file": "navigation/chevron-down.svg"
+  },
+  {
+    "name": "chevron-left",
+    "category": "navigation",
+    "streamline_name": "Arrow Left 1",
+    "file": "navigation/chevron-left.svg"
+  },
+  {
+    "name": "chevron-right",
+    "category": "navigation",
+    "streamline_name": "Arrow Right 1",
+    "file": "navigation/chevron-right.svg"
+  },
+  {
+    "name": "chevron-up",
+    "category": "navigation",
+    "streamline_name": "Arrow Up 1",
+    "file": "navigation/chevron-up.svg"
+  },
+  {
+    "name": "clear",
+    "category": "actions",
+    "streamline_name": "Alert Clear Notification",
+    "file": "actions/clear.svg"
+  },
+  {
+    "name": "clipboard",
+    "category": "files",
+    "streamline_name": "Insert Row From Clipboard",
+    "file": "files/clipboard.svg"
+  },
+  {
+    "name": "clipboard-health",
+    "category": "health",
+    "streamline_name": "Medical Data Clipboard Cross",
+    "file": "health/clipboard-health.svg"
+  },
+  {
+    "name": "clock",
+    "category": "comms",
+    "streamline_name": "Time Play Time 1",
+    "file": "comms/clock.svg"
+  },
+  {
+    "name": "close",
+    "category": "navigation",
+    "streamline_name": "Remove",
+    "file": "navigation/close.svg"
+  },
+  {
+    "name": "close-alt",
+    "category": "actions",
+    "streamline_name": "Close",
+    "file": "actions/close-alt.svg"
+  },
+  {
+    "name": "cloud",
+    "category": "files",
+    "streamline_name": "Cloud",
+    "file": "files/cloud.svg"
+  },
+  {
+    "name": "cloud-download",
+    "category": "files",
+    "streamline_name": "Cloud Download",
+    "file": "files/cloud-download.svg"
+  },
+  {
+    "name": "cloud-sun",
+    "category": "misc",
+    "streamline_name": "Weather Cloud Sun Wind",
+    "file": "misc/cloud-sun.svg"
+  },
+  {
+    "name": "cloud-upload",
+    "category": "files",
+    "streamline_name": "Cloud Upload",
+    "file": "files/cloud-upload.svg"
+  },
+  {
+    "name": "code",
+    "category": "misc",
+    "streamline_name": "Folder Code",
+    "file": "misc/code.svg"
+  },
+  {
+    "name": "coffee",
+    "category": "misc",
+    "streamline_name": "Coffee Jar",
+    "file": "misc/coffee.svg"
+  },
+  {
+    "name": "coins",
+    "category": "commerce",
+    "streamline_name": "Accounting Coins",
+    "file": "commerce/coins.svg"
+  },
+  {
+    "name": "comment",
+    "category": "comms",
+    "streamline_name": "Comment Box",
+    "file": "comms/comment.svg"
+  },
+  {
+    "name": "compass",
+    "category": "navigation",
+    "streamline_name": "Compass",
+    "file": "navigation/compass.svg"
+  },
+  {
+    "name": "contacts",
+    "category": "comms",
+    "streamline_name": "Book Address",
+    "file": "comms/contacts.svg"
+  },
+  {
+    "name": "contract",
+    "category": "files",
+    "streamline_name": "Business Contract Give",
+    "file": "files/contract.svg"
+  },
+  {
+    "name": "contrast",
+    "category": "media",
+    "streamline_name": "Contrast Horizontal Slider Adjustment",
+    "file": "media/contrast.svg"
+  },
+  {
+    "name": "copy",
+    "category": "actions",
+    "streamline_name": "Copy 1",
+    "file": "actions/copy.svg"
+  },
+  {
+    "name": "counseling",
+    "category": "health",
+    "streamline_name": "Counseling 3",
+    "file": "health/counseling.svg"
+  },
+  {
+    "name": "coupon",
+    "category": "commerce",
+    "streamline_name": "Coupon Cut",
+    "file": "commerce/coupon.svg"
+  },
+  {
+    "name": "create",
+    "category": "actions",
+    "streamline_name": "Create Chart",
+    "file": "actions/create.svg"
+  },
+  {
+    "name": "credit-card",
+    "category": "commerce",
+    "streamline_name": "Credit Card",
+    "file": "commerce/credit-card.svg"
+  },
+  {
+    "name": "crisis",
+    "category": "health",
+    "streamline_name": "Emergency Call",
+    "file": "health/crisis.svg"
+  },
+  {
+    "name": "critical",
+    "category": "status",
+    "streamline_name": "Flash 1",
+    "file": "status/critical.svg"
+  },
+  {
+    "name": "crop",
+    "category": "media",
+    "streamline_name": "Crop Rotate",
+    "file": "media/crop.svg"
+  },
+  {
+    "name": "cut",
+    "category": "actions",
+    "streamline_name": "Scissors",
+    "file": "actions/cut.svg"
+  },
+  {
+    "name": "database",
+    "category": "files",
+    "streamline_name": "Database",
+    "file": "files/database.svg"
+  },
+  {
+    "name": "delete",
+    "category": "actions",
+    "streamline_name": "Delete",
+    "file": "actions/delete.svg"
+  },
+  {
+    "name": "desktop",
+    "category": "misc",
+    "streamline_name": "Desktop Computer",
+    "file": "misc/desktop.svg"
+  },
+  {
+    "name": "discount",
+    "category": "commerce",
+    "streamline_name": "Discount",
+    "file": "commerce/discount.svg"
+  },
+  {
+    "name": "dna",
+    "category": "health",
+    "streamline_name": "Dna",
+    "file": "health/dna.svg"
+  },
+  {
+    "name": "doctor",
+    "category": "health",
+    "streamline_name": "Doctor Desktop",
+    "file": "health/doctor.svg"
+  },
+  {
+    "name": "document",
+    "category": "files",
+    "streamline_name": "Document",
+    "file": "files/document.svg"
+  },
+  {
+    "name": "dollar",
+    "category": "commerce",
+    "streamline_name": "Receipt Dollar",
+    "file": "commerce/dollar.svg"
+  },
+  {
+    "name": "dosage",
+    "category": "health",
+    "streamline_name": "Medicine Dosage",
+    "file": "health/dosage.svg"
+  },
+  {
+    "name": "download",
+    "category": "actions",
+    "streamline_name": "Download Arrow",
+    "file": "actions/download.svg"
+  },
+  {
+    "name": "draft",
+    "category": "actions",
+    "streamline_name": "Workflow Request Draft",
+    "file": "actions/draft.svg"
+  },
+  {
+    "name": "drag",
+    "category": "navigation",
+    "streamline_name": "Move Up",
+    "file": "navigation/drag.svg"
+  },
+  {
+    "name": "drawer",
+    "category": "files",
+    "streamline_name": "Drawer Open",
+    "file": "files/drawer.svg"
+  },
+  {
+    "name": "droplet",
+    "category": "misc",
+    "streamline_name": "Drop Shape",
+    "file": "misc/droplet.svg"
+  },
+  {
+    "name": "duplicate",
+    "category": "actions",
+    "streamline_name": "Duplicate",
+    "file": "actions/duplicate.svg"
+  },
+  {
+    "name": "ear",
+    "category": "health",
+    "streamline_name": "Earpods Ear",
+    "file": "health/ear.svg"
+  },
+  {
+    "name": "ecology",
+    "category": "misc",
+    "streamline_name": "Ecology Leaf",
+    "file": "misc/ecology.svg"
+  },
+  {
+    "name": "edit",
+    "category": "actions",
+    "streamline_name": "Pencil",
+    "file": "actions/edit.svg"
+  },
+  {
+    "name": "edit-alt",
+    "category": "actions",
+    "streamline_name": "Edit Pdf",
+    "file": "actions/edit-alt.svg"
+  },
+  {
+    "name": "emergency",
+    "category": "health",
+    "streamline_name": "Hospital Emergency Department",
+    "file": "health/emergency.svg"
+  },
+  {
+    "name": "empty-trash",
+    "category": "actions",
+    "streamline_name": "Bin",
+    "file": "actions/empty-trash.svg"
+  },
+  {
+    "name": "envelope",
+    "category": "files",
+    "streamline_name": "Envelope",
+    "file": "files/envelope.svg"
+  },
+  {
+    "name": "equalizer",
+    "category": "media",
+    "streamline_name": "Equalizer",
+    "file": "media/equalizer.svg"
+  },
+  {
+    "name": "erase",
+    "category": "actions",
+    "streamline_name": "Eraser",
+    "file": "actions/erase.svg"
+  },
+  {
+    "name": "error",
+    "category": "status",
+    "streamline_name": "Remove Circle",
+    "file": "status/error.svg"
+  },
+  {
+    "name": "exit-fullscreen",
+    "category": "navigation",
+    "streamline_name": "Shrink",
+    "file": "navigation/exit-fullscreen.svg"
+  },
+  {
+    "name": "explore",
+    "category": "actions",
+    "streamline_name": "Space Explore",
+    "file": "actions/explore.svg"
+  },
+  {
+    "name": "export",
+    "category": "actions",
+    "streamline_name": "Export File",
+    "file": "actions/export.svg"
+  },
+  {
+    "name": "external-link",
+    "category": "navigation",
+    "streamline_name": "Expand",
+    "file": "navigation/external-link.svg"
+  },
+  {
+    "name": "eye",
+    "category": "status",
+    "streamline_name": "View 1",
+    "file": "status/eye.svg"
+  },
+  {
+    "name": "eye-health",
+    "category": "health",
+    "streamline_name": "Eye Drop",
+    "file": "health/eye-health.svg"
+  },
+  {
+    "name": "eye-off",
+    "category": "status",
+    "streamline_name": "View Off",
+    "file": "status/eye-off.svg"
+  },
+  {
+    "name": "face-id",
+    "category": "misc",
+    "streamline_name": "Face Id",
+    "file": "misc/face-id.svg"
+  },
+  {
+    "name": "factory",
+    "category": "misc",
+    "streamline_name": "Factory Belt",
+    "file": "misc/factory.svg"
+  },
+  {
+    "name": "family-care",
+    "category": "health",
+    "streamline_name": "Family Home",
+    "file": "health/family-care.svg"
+  },
+  {
+    "name": "faq",
+    "category": "files",
+    "streamline_name": "Contact Us Faq",
+    "file": "files/faq.svg"
+  },
+  {
+    "name": "file",
+    "category": "files",
+    "streamline_name": "Common File Book",
+    "file": "files/file.svg"
+  },
+  {
+    "name": "file-code",
+    "category": "files",
+    "streamline_name": "Common File Dash",
+    "file": "files/file-code.svg"
+  },
+  {
+    "name": "file-image",
+    "category": "files",
+    "streamline_name": "Common File Horizontal Image",
+    "file": "files/file-image.svg"
+  },
+  {
+    "name": "file-pdf",
+    "category": "files",
+    "streamline_name": "Pdf Reader",
+    "file": "files/file-pdf.svg"
+  },
+  {
+    "name": "file-text",
+    "category": "files",
+    "streamline_name": "Common File Text",
+    "file": "files/file-text.svg"
+  },
+  {
+    "name": "file-zip",
+    "category": "files",
+    "streamline_name": "Zip File",
+    "file": "files/file-zip.svg"
+  },
+  {
+    "name": "film",
+    "category": "media",
+    "streamline_name": "Movie Star",
+    "file": "media/film.svg"
+  },
+  {
+    "name": "filter",
+    "category": "navigation",
+    "streamline_name": "Filter",
+    "file": "navigation/filter.svg"
+  },
+  {
+    "name": "find",
+    "category": "actions",
+    "streamline_name": "Monitor Find",
+    "file": "actions/find.svg"
+  },
+  {
+    "name": "fingerprint",
+    "category": "misc",
+    "streamline_name": "Fingerprint Add",
+    "file": "misc/fingerprint.svg"
+  },
+  {
+    "name": "fire",
+    "category": "misc",
+    "streamline_name": "House Fire",
+    "file": "misc/fire.svg"
+  },
+  {
+    "name": "first-aid",
+    "category": "health",
+    "streamline_name": "Hospital First Aid",
+    "file": "health/first-aid.svg"
+  },
+  {
+    "name": "fitness",
+    "category": "health",
+    "streamline_name": "Fitness Weights",
+    "file": "health/fitness.svg"
+  },
+  {
+    "name": "flag",
+    "category": "status",
+    "streamline_name": "Flag 1",
+    "file": "status/flag.svg"
+  },
+  {
+    "name": "flag-alt",
+    "category": "actions",
+    "streamline_name": "Flag",
+    "file": "actions/flag-alt.svg"
+  },
+  {
+    "name": "flash",
+    "category": "misc",
+    "streamline_name": "Flash",
+    "file": "misc/flash.svg"
+  },
+  {
+    "name": "flash-off",
+    "category": "misc",
+    "streamline_name": "Flash Off",
+    "file": "misc/flash-off.svg"
+  },
+  {
+    "name": "flip",
+    "category": "media",
+    "streamline_name": "Flip Vertical Up",
+    "file": "media/flip.svg"
+  },
+  {
+    "name": "folder",
+    "category": "files",
+    "streamline_name": "Folder",
+    "file": "files/folder.svg"
+  },
+  {
+    "name": "folder-add",
+    "category": "files",
+    "streamline_name": "Folder Add",
+    "file": "files/folder-add.svg"
+  },
+  {
+    "name": "folder-shared",
+    "category": "files",
+    "streamline_name": "Folder Shared",
+    "file": "files/folder-shared.svg"
+  },
+  {
+    "name": "folder-star",
+    "category": "files",
+    "streamline_name": "Folder Star",
+    "file": "files/folder-star.svg"
+  },
+  {
+    "name": "food",
+    "category": "misc",
+    "streamline_name": "Food Delivery Bag",
+    "file": "misc/food.svg"
+  },
+  {
+    "name": "forward",
+    "category": "navigation",
+    "streamline_name": "Arrow Circle Right",
+    "file": "navigation/forward.svg"
+  },
+  {
+    "name": "forward-alt",
+    "category": "actions",
+    "streamline_name": "Button Fast Forward",
+    "file": "actions/forward-alt.svg"
+  },
+  {
+    "name": "forward-mail",
+    "category": "comms",
+    "streamline_name": "Go Forward 30 Control",
+    "file": "comms/forward-mail.svg"
+  },
+  {
+    "name": "fullscreen",
+    "category": "navigation",
+    "streamline_name": "Expand Full",
+    "file": "navigation/fullscreen.svg"
+  },
+  {
+    "name": "gallery",
+    "category": "media",
+    "streamline_name": "Print Picture",
+    "file": "media/gallery.svg"
+  },
+  {
+    "name": "gas",
+    "category": "misc",
+    "streamline_name": "Gas Station",
+    "file": "misc/gas.svg"
+  },
+  {
+    "name": "gift",
+    "category": "commerce",
+    "streamline_name": "Gift Box",
+    "file": "commerce/gift.svg"
+  },
+  {
+    "name": "glasses",
+    "category": "health",
+    "streamline_name": "Glasses",
+    "file": "health/glasses.svg"
+  },
+  {
+    "name": "globe",
+    "category": "misc",
+    "streamline_name": "Earth 1",
+    "file": "misc/globe.svg"
+  },
+  {
+    "name": "graduation",
+    "category": "misc",
+    "streamline_name": "Graduation Hat",
+    "file": "misc/graduation.svg"
+  },
+  {
+    "name": "grid",
+    "category": "misc",
+    "streamline_name": "Layout",
+    "file": "misc/grid.svg"
+  },
+  {
+    "name": "group",
+    "category": "comms",
+    "streamline_name": "Group",
+    "file": "comms/group.svg"
+  },
+  {
+    "name": "guide",
+    "category": "files",
+    "streamline_name": "Drug Guide Book",
+    "file": "files/guide.svg"
+  },
+  {
+    "name": "hammer",
+    "category": "misc",
+    "streamline_name": "Hammer",
+    "file": "misc/hammer.svg"
+  },
+  {
+    "name": "hand-wash",
+    "category": "health",
+    "streamline_name": "Laundry Hand Wash",
+    "file": "health/hand-wash.svg"
+  },
+  {
+    "name": "hard-drive",
+    "category": "files",
+    "streamline_name": "Hard Drive",
+    "file": "files/hard-drive.svg"
+  },
+  {
+    "name": "headphones",
+    "category": "media",
+    "streamline_name": "Headphones",
+    "file": "media/headphones.svg"
+  },
+  {
+    "name": "hearing-aid",
+    "category": "health",
+    "streamline_name": "Hearing Aid",
+    "file": "health/hearing-aid.svg"
+  },
+  {
+    "name": "heart",
+    "category": "health",
+    "streamline_name": "Heart Approve 1",
+    "file": "health/heart.svg"
+  },
+  {
+    "name": "help",
+    "category": "status",
+    "streamline_name": "Question Circle",
+    "file": "status/help.svg"
+  },
+  {
+    "name": "hipaa",
+    "category": "health",
+    "streamline_name": "Firewall Privacy Shield",
+    "file": "health/hipaa.svg"
+  },
+  {
+    "name": "history",
+    "category": "misc",
+    "streamline_name": "History Fan",
+    "file": "misc/history.svg"
+  },
+  {
+    "name": "home",
+    "category": "navigation",
+    "streamline_name": "House 1",
+    "file": "navigation/home.svg"
+  },
+  {
+    "name": "home-alt",
+    "category": "navigation",
+    "streamline_name": "House",
+    "file": "navigation/home-alt.svg"
+  },
+  {
+    "name": "hospital",
+    "category": "health",
+    "streamline_name": "Hospital Pin",
+    "file": "health/hospital.svg"
+  },
+  {
+    "name": "id-card",
+    "category": "misc",
+    "streamline_name": "Single Man Id Card",
+    "file": "misc/id-card.svg"
+  },
+  {
+    "name": "image",
+    "category": "media",
+    "streamline_name": "Image File Sync",
+    "file": "media/image.svg"
+  },
+  {
+    "name": "import",
+    "category": "actions",
+    "streamline_name": "Import File",
+    "file": "actions/import.svg"
+  },
+  {
+    "name": "inbox",
+    "category": "comms",
+    "streamline_name": "Inbox Tray Notification Badge",
+    "file": "comms/inbox.svg"
+  },
+  {
+    "name": "info",
+    "category": "status",
+    "streamline_name": "Information Circle",
+    "file": "status/info.svg"
+  },
+  {
+    "name": "inhaler",
+    "category": "health",
+    "streamline_name": "Inhaler",
+    "file": "health/inhaler.svg"
+  },
+  {
+    "name": "insurance",
+    "category": "health",
+    "streamline_name": "Insurance Hand",
+    "file": "health/insurance.svg"
+  },
+  {
+    "name": "invoice",
+    "category": "commerce",
+    "streamline_name": "Accounting Invoice",
+    "file": "commerce/invoice.svg"
+  },
+  {
+    "name": "key",
+    "category": "misc",
+    "streamline_name": "Key Lock",
+    "file": "misc/key.svg"
+  },
+  {
+    "name": "keyboard",
+    "category": "misc",
+    "streamline_name": "Keyboard",
+    "file": "misc/keyboard.svg"
+  },
+  {
+    "name": "lab",
+    "category": "health",
+    "streamline_name": "Laboratory Sample",
+    "file": "health/lab.svg"
+  },
+  {
+    "name": "language",
+    "category": "misc",
+    "streamline_name": "Language Barrier Confused",
+    "file": "misc/language.svg"
+  },
+  {
+    "name": "laptop",
+    "category": "misc",
+    "streamline_name": "Laptop",
+    "file": "misc/laptop.svg"
+  },
+  {
+    "name": "layers",
+    "category": "navigation",
+    "streamline_name": "Layers",
+    "file": "navigation/layers.svg"
+  },
+  {
+    "name": "layout",
+    "category": "misc",
+    "streamline_name": "Layout Dashboard",
+    "file": "misc/layout.svg"
+  },
+  {
+    "name": "leaf",
+    "category": "misc",
+    "streamline_name": "Vegetable Basil Leaf",
+    "file": "misc/leaf.svg"
+  },
+  {
+    "name": "letter",
+    "category": "files",
+    "streamline_name": "Letter Balloon",
+    "file": "files/letter.svg"
+  },
+  {
+    "name": "light-mode",
+    "category": "misc",
+    "streamline_name": "Light Mode Bw",
+    "file": "misc/light-mode.svg"
+  },
+  {
+    "name": "link",
+    "category": "actions",
+    "streamline_name": "Hyperlink",
+    "file": "actions/link.svg"
+  },
+  {
+    "name": "list",
+    "category": "misc",
+    "streamline_name": "List Add",
+    "file": "misc/list.svg"
+  },
+  {
+    "name": "loading",
+    "category": "status",
+    "streamline_name": "Loading",
+    "file": "status/loading.svg"
+  },
+  {
+    "name": "locate",
+    "category": "actions",
+    "streamline_name": "Earth Locate",
+    "file": "actions/locate.svg"
+  },
+  {
+    "name": "lock",
+    "category": "status",
+    "streamline_name": "Lock",
+    "file": "status/lock.svg"
+  },
+  {
+    "name": "login",
+    "category": "actions",
+    "streamline_name": "Login",
+    "file": "actions/login.svg"
+  },
+  {
+    "name": "logout",
+    "category": "actions",
+    "streamline_name": "Logout",
+    "file": "actions/logout.svg"
+  },
+  {
+    "name": "lungs",
+    "category": "health",
+    "streamline_name": "Medical Nanobot Lungs",
+    "file": "health/lungs.svg"
+  },
+  {
+    "name": "magazine",
+    "category": "files",
+    "streamline_name": "Shopping Magazine Advertising",
+    "file": "files/magazine.svg"
+  },
+  {
+    "name": "mail",
+    "category": "comms",
+    "streamline_name": "Email Action Home",
+    "file": "comms/mail.svg"
+  },
+  {
+    "name": "manual",
+    "category": "files",
+    "streamline_name": "Manual Book Content Sign",
+    "file": "files/manual.svg"
+  },
+  {
+    "name": "map",
+    "category": "navigation",
+    "streamline_name": "Map Marks",
+    "file": "navigation/map.svg"
+  },
+  {
+    "name": "map-pin",
+    "category": "misc",
+    "streamline_name": "Pin Location",
+    "file": "misc/map-pin.svg"
+  },
+  {
+    "name": "mask",
+    "category": "health",
+    "streamline_name": "Mask Circle",
+    "file": "health/mask.svg"
+  },
+  {
+    "name": "medal",
+    "category": "misc",
+    "streamline_name": "Award Medal",
+    "file": "misc/medal.svg"
+  },
+  {
+    "name": "medical-cross",
+    "category": "health",
+    "streamline_name": "Medical Cross",
+    "file": "health/medical-cross.svg"
+  },
+  {
+    "name": "meditation",
+    "category": "health",
+    "streamline_name": "Yoga Meditation Pose2",
+    "file": "health/meditation.svg"
+  },
+  {
+    "name": "meeting",
+    "category": "comms",
+    "streamline_name": "Meeting Remote",
+    "file": "comms/meeting.svg"
+  },
+  {
+    "name": "mental-health",
+    "category": "health",
+    "streamline_name": "Mental Health 2",
+    "file": "health/mental-health.svg"
+  },
+  {
+    "name": "mental-wellness",
+    "category": "health",
+    "streamline_name": "Mindfulness 2",
+    "file": "health/mental-wellness.svg"
+  },
+  {
+    "name": "menu",
+    "category": "navigation",
+    "streamline_name": "Navigation Menu",
+    "file": "navigation/menu.svg"
+  },
+  {
+    "name": "merge",
+    "category": "navigation",
+    "streamline_name": "Merge",
+    "file": "navigation/merge.svg"
+  },
+  {
+    "name": "message",
+    "category": "comms",
+    "streamline_name": "Chat Consultation Phone",
+    "file": "comms/message.svg"
+  },
+  {
+    "name": "mic",
+    "category": "media",
+    "streamline_name": "Microphone",
+    "file": "media/mic.svg"
+  },
+  {
+    "name": "mic-off",
+    "category": "media",
+    "streamline_name": "Microphone Off",
+    "file": "media/mic-off.svg"
+  },
+  {
+    "name": "microscope",
+    "category": "health",
+    "streamline_name": "Microscope 1",
+    "file": "health/microscope.svg"
+  },
+  {
+    "name": "moon",
+    "category": "misc",
+    "streamline_name": "Astrology Moon",
+    "file": "misc/moon.svg"
+  },
+  {
+    "name": "more-horizontal",
+    "category": "navigation",
+    "streamline_name": "Navigation Menu Horizontal",
+    "file": "navigation/more-horizontal.svg"
+  },
+  {
+    "name": "more-vertical",
+    "category": "navigation",
+    "streamline_name": "Navigation Menu Vertical",
+    "file": "navigation/more-vertical.svg"
+  },
+  {
+    "name": "mouse",
+    "category": "misc",
+    "streamline_name": "Mouse",
+    "file": "misc/mouse.svg"
+  },
+  {
+    "name": "move",
+    "category": "actions",
+    "streamline_name": "Move Down",
+    "file": "actions/move.svg"
+  },
+  {
+    "name": "mri",
+    "category": "health",
+    "streamline_name": "Radiology Scan Mri",
+    "file": "health/mri.svg"
+  },
+  {
+    "name": "music",
+    "category": "media",
+    "streamline_name": "Music Note",
+    "file": "media/music.svg"
+  },
+  {
+    "name": "navigation-pointer",
+    "category": "navigation",
+    "streamline_name": "Navigation Up 2",
+    "file": "navigation/navigation-pointer.svg"
+  },
+  {
+    "name": "neurology",
+    "category": "health",
+    "streamline_name": "Brain Neurology",
+    "file": "health/neurology.svg"
+  },
+  {
+    "name": "new",
+    "category": "actions",
+    "streamline_name": "New Spreadsheet",
+    "file": "actions/new.svg"
+  },
+  {
+    "name": "newspaper",
+    "category": "files",
+    "streamline_name": "Newspaper",
+    "file": "files/newspaper.svg"
+  },
+  {
+    "name": "notes",
+    "category": "files",
+    "streamline_name": "Notes Add",
+    "file": "files/notes.svg"
+  },
+  {
+    "name": "notification",
+    "category": "status",
+    "streamline_name": "Alert Notification",
+    "file": "status/notification.svg"
+  },
+  {
+    "name": "nurse",
+    "category": "health",
+    "streamline_name": "Nurse With Cap Cloth",
+    "file": "health/nurse.svg"
+  },
+  {
+    "name": "office",
+    "category": "misc",
+    "streamline_name": "Office File Text Alternate",
+    "file": "misc/office.svg"
+  },
+  {
+    "name": "online",
+    "category": "status",
+    "streamline_name": "Online Video Chat",
+    "file": "status/online.svg"
+  },
+  {
+    "name": "open",
+    "category": "actions",
+    "streamline_name": "Open Eyes",
+    "file": "actions/open.svg"
+  },
+  {
+    "name": "orthopedics",
+    "category": "health",
+    "streamline_name": "Medical Specialty Broken Bone",
+    "file": "health/orthopedics.svg"
+  },
+  {
+    "name": "otc",
+    "category": "health",
+    "streamline_name": "Medicine Liquid Cup",
+    "file": "health/otc.svg"
+  },
+  {
+    "name": "oxygen",
+    "category": "health",
+    "streamline_name": "Oxygen",
+    "file": "health/oxygen.svg"
+  },
+  {
+    "name": "package-alt",
+    "category": "files",
+    "streamline_name": "Package Dimension",
+    "file": "files/package-alt.svg"
+  },
+  {
+    "name": "panel-bottom",
+    "category": "navigation",
+    "streamline_name": "Layout 9",
+    "file": "navigation/panel-bottom.svg"
+  },
+  {
+    "name": "panel-left",
+    "category": "navigation",
+    "streamline_name": "Sidebar Expand",
+    "file": "navigation/panel-left.svg"
+  },
+  {
+    "name": "panel-right",
+    "category": "navigation",
+    "streamline_name": "Sidebar Collapes",
+    "file": "navigation/panel-right.svg"
+  },
+  {
+    "name": "panel-top",
+    "category": "navigation",
+    "streamline_name": "Layout 5",
+    "file": "navigation/panel-top.svg"
+  },
+  {
+    "name": "parcel",
+    "category": "files",
+    "streamline_name": "Lightweight Parcel",
+    "file": "files/parcel.svg"
+  },
+  {
+    "name": "parking",
+    "category": "misc",
+    "streamline_name": "Parking P",
+    "file": "misc/parking.svg"
+  },
+  {
+    "name": "passport",
+    "category": "misc",
+    "streamline_name": "Passport",
+    "file": "misc/passport.svg"
+  },
+  {
+    "name": "paste",
+    "category": "actions",
+    "streamline_name": "Insurance Document Clipboard",
+    "file": "actions/paste.svg"
+  },
+  {
+    "name": "patient",
+    "category": "health",
+    "streamline_name": "Patient Care",
+    "file": "health/patient.svg"
+  },
+  {
+    "name": "pause",
+    "category": "media",
+    "streamline_name": "Button Pause",
+    "file": "media/pause.svg"
+  },
+  {
+    "name": "payment",
+    "category": "commerce",
+    "streamline_name": "Self Payment",
+    "file": "commerce/payment.svg"
+  },
+  {
+    "name": "pediatric",
+    "category": "health",
+    "streamline_name": "Baby",
+    "file": "health/pediatric.svg"
+  },
+  {
+    "name": "pending",
+    "category": "status",
+    "streamline_name": "Hourglass",
+    "file": "status/pending.svg"
+  },
+  {
+    "name": "pharmacy",
+    "category": "health",
+    "streamline_name": "Pharmacy",
+    "file": "health/pharmacy.svg"
+  },
+  {
+    "name": "pharmacy-alt",
+    "category": "health",
+    "streamline_name": "Pharmacy Shop",
+    "file": "health/pharmacy-alt.svg"
+  },
+  {
+    "name": "phone",
+    "category": "comms",
+    "streamline_name": "Phone",
+    "file": "comms/phone.svg"
+  },
+  {
+    "name": "phone-off",
+    "category": "comms",
+    "streamline_name": "Phone Off",
+    "file": "comms/phone-off.svg"
+  },
+  {
+    "name": "piggy-bank",
+    "category": "commerce",
+    "streamline_name": "Saving Piggy Bank",
+    "file": "commerce/piggy-bank.svg"
+  },
+  {
+    "name": "pill",
+    "category": "health",
+    "streamline_name": "Pill",
+    "file": "health/pill.svg"
+  },
+  {
+    "name": "pin",
+    "category": "actions",
+    "streamline_name": "Pin",
+    "file": "actions/pin.svg"
+  },
+  {
+    "name": "planet",
+    "category": "misc",
+    "streamline_name": "Astronomy Planet",
+    "file": "misc/planet.svg"
+  },
+  {
+    "name": "play",
+    "category": "media",
+    "streamline_name": "Button Play",
+    "file": "media/play.svg"
+  },
+  {
+    "name": "playlist",
+    "category": "media",
+    "streamline_name": "Playlist",
+    "file": "media/playlist.svg"
+  },
+  {
+    "name": "policy",
+    "category": "files",
+    "streamline_name": "Ai Policy Script",
+    "file": "files/policy.svg"
+  },
+  {
+    "name": "portfolio",
+    "category": "files",
+    "streamline_name": "Portfolio Project User",
+    "file": "files/portfolio.svg"
+  },
+  {
+    "name": "postcard",
+    "category": "files",
+    "streamline_name": "Envelope Postcard",
+    "file": "files/postcard.svg"
+  },
+  {
+    "name": "power",
+    "category": "actions",
+    "streamline_name": "Power Button",
+    "file": "actions/power.svg"
+  },
+  {
+    "name": "pregnancy",
+    "category": "health",
+    "streamline_name": "Pregnancy Vgr",
+    "file": "health/pregnancy.svg"
+  },
+  {
+    "name": "prescription",
+    "category": "health",
+    "streamline_name": "Prescription Px",
+    "file": "health/prescription.svg"
+  },
+  {
+    "name": "presentation",
+    "category": "comms",
+    "streamline_name": "Presentation",
+    "file": "comms/presentation.svg"
+  },
+  {
+    "name": "press",
+    "category": "files",
+    "streamline_name": "Force Touch Press",
+    "file": "files/press.svg"
+  },
+  {
+    "name": "print",
+    "category": "actions",
+    "streamline_name": "Printer",
+    "file": "actions/print.svg"
+  },
+  {
+    "name": "printer-alt",
+    "category": "misc",
+    "streamline_name": "Printer View",
+    "file": "misc/printer-alt.svg"
+  },
+  {
+    "name": "projector",
+    "category": "misc",
+    "streamline_name": "Video Projector",
+    "file": "misc/projector.svg"
+  },
+  {
+    "name": "prosthetic",
+    "category": "health",
+    "streamline_name": "Prosthetic Leg 1",
+    "file": "health/prosthetic.svg"
+  },
+  {
+    "name": "pulse",
+    "category": "health",
+    "streamline_name": "Hypertension Pulse",
+    "file": "health/pulse.svg"
+  },
+  {
+    "name": "qr-code",
+    "category": "commerce",
+    "streamline_name": "Qr Code",
+    "file": "commerce/qr-code.svg"
+  },
+  {
+    "name": "qr-scan",
+    "category": "misc",
+    "streamline_name": "Iris Scan",
+    "file": "misc/qr-scan.svg"
+  },
+  {
+    "name": "quote-reply",
+    "category": "actions",
+    "streamline_name": "Quote",
+    "file": "actions/quote-reply.svg"
+  },
+  {
+    "name": "radiology",
+    "category": "health",
+    "streamline_name": "Radiology Scan",
+    "file": "health/radiology.svg"
+  },
+  {
+    "name": "rain",
+    "category": "misc",
+    "streamline_name": "Rain Umbrella",
+    "file": "misc/rain.svg"
+  },
+  {
+    "name": "receipt",
+    "category": "commerce",
+    "streamline_name": "Receipt",
+    "file": "commerce/receipt.svg"
+  },
+  {
+    "name": "record",
+    "category": "media",
+    "streamline_name": "Phone Record",
+    "file": "media/record.svg"
+  },
+  {
+    "name": "recycle",
+    "category": "misc",
+    "streamline_name": "Plastic Bag Recycle",
+    "file": "misc/recycle.svg"
+  },
+  {
+    "name": "redo",
+    "category": "actions",
+    "streamline_name": "Redo",
+    "file": "actions/redo.svg"
+  },
+  {
+    "name": "refresh",
+    "category": "actions",
+    "streamline_name": "Button Refresh Arrow",
+    "file": "actions/refresh.svg"
+  },
+  {
+    "name": "remind",
+    "category": "actions",
+    "streamline_name": "Reminder Hand Sign",
+    "file": "actions/remind.svg"
+  },
+  {
+    "name": "reply",
+    "category": "comms",
+    "streamline_name": "Reply Time Clock",
+    "file": "comms/reply.svg"
+  },
+  {
+    "name": "reply-all",
+    "category": "comms",
+    "streamline_name": "Email Action Reply All",
+    "file": "comms/reply-all.svg"
+  },
+  {
+    "name": "reply-alt",
+    "category": "actions",
+    "streamline_name": "Reply To Message",
+    "file": "actions/reply-alt.svg"
+  },
+  {
+    "name": "resize",
+    "category": "navigation",
+    "streamline_name": "Expand 8",
+    "file": "navigation/resize.svg"
+  },
+  {
+    "name": "restore",
+    "category": "actions",
+    "streamline_name": "Archive Restore",
+    "file": "actions/restore.svg"
+  },
+  {
+    "name": "resume",
+    "category": "files",
+    "streamline_name": "Recruiting Resume Document",
+    "file": "files/resume.svg"
+  },
+  {
+    "name": "robot",
+    "category": "misc",
+    "streamline_name": "Robot",
+    "file": "misc/robot.svg"
+  },
+  {
+    "name": "rocket",
+    "category": "misc",
+    "streamline_name": "Rocket Attack",
+    "file": "misc/rocket.svg"
+  },
+  {
+    "name": "rotate",
+    "category": "media",
+    "streamline_name": "Rotate",
+    "file": "media/rotate.svg"
+  },
+  {
+    "name": "route",
+    "category": "navigation",
+    "streamline_name": "Journey Trip Route",
+    "file": "navigation/route.svg"
+  },
+  {
+    "name": "satellite",
+    "category": "misc",
+    "streamline_name": "Satellite",
+    "file": "misc/satellite.svg"
+  },
+  {
+    "name": "save",
+    "category": "actions",
+    "streamline_name": "Floppy Disk",
+    "file": "actions/save.svg"
+  },
+  {
+    "name": "scanner",
+    "category": "misc",
+    "streamline_name": "Scanner",
+    "file": "misc/scanner.svg"
+  },
+  {
+    "name": "schedule",
+    "category": "misc",
+    "streamline_name": "Scheduled Phone Call Calendar 2",
+    "file": "misc/schedule.svg"
+  },
+  {
+    "name": "school",
+    "category": "misc",
+    "streamline_name": "School Bell",
+    "file": "misc/school.svg"
+  },
+  {
+    "name": "scroll",
+    "category": "navigation",
+    "streamline_name": "Scroll Vertical",
+    "file": "navigation/scroll.svg"
+  },
+  {
+    "name": "search",
+    "category": "navigation",
+    "streamline_name": "Search",
+    "file": "navigation/search.svg"
+  },
+  {
+    "name": "search-alt",
+    "category": "actions",
+    "streamline_name": "Search 1",
+    "file": "actions/search-alt.svg"
+  },
+  {
+    "name": "select",
+    "category": "actions",
+    "streamline_name": "Select 3d",
+    "file": "actions/select.svg"
+  },
+  {
+    "name": "select-all",
+    "category": "actions",
+    "streamline_name": "Select All",
+    "file": "actions/select-all.svg"
+  },
+  {
+    "name": "send",
+    "category": "comms",
+    "streamline_name": "Send Email 2",
+    "file": "comms/send.svg"
+  },
+  {
+    "name": "send-alt",
+    "category": "actions",
+    "streamline_name": "Send Email",
+    "file": "actions/send-alt.svg"
+  },
+  {
+    "name": "server",
+    "category": "files",
+    "streamline_name": "Server",
+    "file": "files/server.svg"
+  },
+  {
+    "name": "settings",
+    "category": "navigation",
+    "streamline_name": "Cog",
+    "file": "navigation/settings.svg"
+  },
+  {
+    "name": "share",
+    "category": "actions",
+    "streamline_name": "Share",
+    "file": "actions/share.svg"
+  },
+  {
+    "name": "share-alt",
+    "category": "actions",
+    "streamline_name": "Share 3",
+    "file": "actions/share-alt.svg"
+  },
+  {
+    "name": "shelf",
+    "category": "files",
+    "streamline_name": "Shelf Tv",
+    "file": "files/shelf.svg"
+  },
+  {
+    "name": "shield",
+    "category": "status",
+    "streamline_name": "Lock Shield",
+    "file": "status/shield.svg"
+  },
+  {
+    "name": "shield-check",
+    "category": "status",
+    "streamline_name": "Shield Check",
+    "file": "status/shield-check.svg"
+  },
+  {
+    "name": "shield-off",
+    "category": "status",
+    "streamline_name": "Remove Shield",
+    "file": "status/shield-off.svg"
+  },
+  {
+    "name": "sidebar",
+    "category": "navigation",
+    "streamline_name": "Layout 2",
+    "file": "navigation/sidebar.svg"
+  },
+  {
+    "name": "sign-language",
+    "category": "health",
+    "streamline_name": "Sign Language Love",
+    "file": "health/sign-language.svg"
+  },
+  {
+    "name": "signal",
+    "category": "misc",
+    "streamline_name": "Signal Wave",
+    "file": "misc/signal.svg"
+  },
+  {
+    "name": "skip-back",
+    "category": "media",
+    "streamline_name": "Button Previous",
+    "file": "media/skip-back.svg"
+  },
+  {
+    "name": "skip-forward",
+    "category": "media",
+    "streamline_name": "Button Next",
+    "file": "media/skip-forward.svg"
+  },
+  {
+    "name": "sleep",
+    "category": "health",
+    "streamline_name": "Sleep Zzz",
+    "file": "health/sleep.svg"
+  },
+  {
+    "name": "smartphone",
+    "category": "misc",
+    "streamline_name": "Smartphone Pay Dollar 2",
+    "file": "misc/smartphone.svg"
+  },
+  {
+    "name": "snooze",
+    "category": "actions",
+    "streamline_name": "Snooze Return Repeat",
+    "file": "actions/snooze.svg"
+  },
+  {
+    "name": "snow",
+    "category": "misc",
+    "streamline_name": "Weather Snow",
+    "file": "misc/snow.svg"
+  },
+  {
+    "name": "sort",
+    "category": "actions",
+    "streamline_name": "Sort Size Ascending Order Up",
+    "file": "actions/sort.svg"
+  },
+  {
+    "name": "sort-asc",
+    "category": "actions",
+    "streamline_name": "Ascending Sort 1",
+    "file": "actions/sort-asc.svg"
+  },
+  {
+    "name": "sort-desc",
+    "category": "actions",
+    "streamline_name": "Descending Sort 1",
+    "file": "actions/sort-desc.svg"
+  },
+  {
+    "name": "split",
+    "category": "navigation",
+    "streamline_name": "Split Subset Spreadsheet 2",
+    "file": "navigation/split.svg"
+  },
+  {
+    "name": "star",
+    "category": "status",
+    "streamline_name": "Star Half",
+    "file": "status/star.svg"
+  },
+  {
+    "name": "star-add",
+    "category": "actions",
+    "streamline_name": "Rating Star Add",
+    "file": "actions/star-add.svg"
+  },
+  {
+    "name": "star-filled",
+    "category": "status",
+    "streamline_name": "Rating Star",
+    "file": "status/star-filled.svg"
+  },
+  {
+    "name": "stethoscope",
+    "category": "health",
+    "streamline_name": "Stethoscope Website",
+    "file": "health/stethoscope.svg"
+  },
+  {
+    "name": "stop",
+    "category": "media",
+    "streamline_name": "Button Stop",
+    "file": "media/stop.svg"
+  },
+  {
+    "name": "stopwatch",
+    "category": "misc",
+    "streamline_name": "Stopwatch",
+    "file": "misc/stopwatch.svg"
+  },
+  {
+    "name": "store",
+    "category": "commerce",
+    "streamline_name": "Cannabis Store",
+    "file": "commerce/store.svg"
+  },
+  {
+    "name": "success",
+    "category": "status",
+    "streamline_name": "Check Circle",
+    "file": "status/success.svg"
+  },
+  {
+    "name": "sun",
+    "category": "misc",
+    "streamline_name": "Uv Sun",
+    "file": "misc/sun.svg"
+  },
+  {
+    "name": "surgery",
+    "category": "health",
+    "streamline_name": "Surgery Liposuction",
+    "file": "health/surgery.svg"
+  },
+  {
+    "name": "swap",
+    "category": "actions",
+    "streamline_name": "Folder Exchange",
+    "file": "actions/swap.svg"
+  },
+  {
+    "name": "symptoms",
+    "category": "health",
+    "streamline_name": "Symptoms Fever",
+    "file": "health/symptoms.svg"
+  },
+  {
+    "name": "sync",
+    "category": "actions",
+    "streamline_name": "Synchronize Arrow 2",
+    "file": "actions/sync.svg"
+  },
+  {
+    "name": "syringe",
+    "category": "health",
+    "streamline_name": "Medical Instrument Syringe",
+    "file": "health/syringe.svg"
+  },
+  {
+    "name": "tablet",
+    "category": "misc",
+    "streamline_name": "Tablet",
+    "file": "misc/tablet.svg"
+  },
+  {
+    "name": "tag",
+    "category": "files",
+    "streamline_name": "Tag New",
+    "file": "files/tag.svg"
+  },
+  {
+    "name": "team",
+    "category": "comms",
+    "streamline_name": "Team Idea",
+    "file": "comms/team.svg"
+  },
+  {
+    "name": "temperature",
+    "category": "misc",
+    "streamline_name": "Temperature Up",
+    "file": "misc/temperature.svg"
+  },
+  {
+    "name": "terminal",
+    "category": "misc",
+    "streamline_name": "Terminal",
+    "file": "misc/terminal.svg"
+  },
+  {
+    "name": "thermometer",
+    "category": "health",
+    "streamline_name": "Temperature Thermometer",
+    "file": "health/thermometer.svg"
+  },
+  {
+    "name": "ticket",
+    "category": "misc",
+    "streamline_name": "Ticket",
+    "file": "misc/ticket.svg"
+  },
+  {
+    "name": "timer",
+    "category": "misc",
+    "streamline_name": "Timer",
+    "file": "misc/timer.svg"
+  },
+  {
+    "name": "tool",
+    "category": "misc",
+    "streamline_name": "Tools Keys",
+    "file": "misc/tool.svg"
+  },
+  {
+    "name": "tooth",
+    "category": "health",
+    "streamline_name": "Tooth 2",
+    "file": "health/tooth.svg"
+  },
+  {
+    "name": "train",
+    "category": "misc",
+    "streamline_name": "Train Location",
+    "file": "misc/train.svg"
+  },
+  {
+    "name": "translate",
+    "category": "misc",
+    "streamline_name": "Translate",
+    "file": "misc/translate.svg"
+  },
+  {
+    "name": "trash",
+    "category": "actions",
+    "streamline_name": "Bin",
+    "file": "actions/trash.svg"
+  },
+  {
+    "name": "trophy",
+    "category": "misc",
+    "streamline_name": "Seo Trophy",
+    "file": "misc/trophy.svg"
+  },
+  {
+    "name": "ultrasound",
+    "category": "health",
+    "streamline_name": "Ultrasound Scan",
+    "file": "health/ultrasound.svg"
+  },
+  {
+    "name": "umbrella",
+    "category": "misc",
+    "streamline_name": "Umbrella Circle",
+    "file": "misc/umbrella.svg"
+  },
+  {
+    "name": "undo",
+    "category": "actions",
+    "streamline_name": "Undo",
+    "file": "actions/undo.svg"
+  },
+  {
+    "name": "unlock",
+    "category": "status",
+    "streamline_name": "Lock Unlock",
+    "file": "status/unlock.svg"
+  },
+  {
+    "name": "upload",
+    "category": "actions",
+    "streamline_name": "Upload Menu",
+    "file": "actions/upload.svg"
+  },
+  {
+    "name": "usb",
+    "category": "files",
+    "streamline_name": "Usb Port",
+    "file": "files/usb.svg"
+  },
+  {
+    "name": "user",
+    "category": "comms",
+    "streamline_name": "User Story",
+    "file": "comms/user.svg"
+  },
+  {
+    "name": "user-add",
+    "category": "comms",
+    "streamline_name": "Phone Action Add User",
+    "file": "comms/user-add.svg"
+  },
+  {
+    "name": "user-check",
+    "category": "comms",
+    "streamline_name": "Messages People User Check",
+    "file": "comms/user-check.svg"
+  },
+  {
+    "name": "user-remove",
+    "category": "comms",
+    "streamline_name": "Phone Action Remove User",
+    "file": "comms/user-remove.svg"
+  },
+  {
+    "name": "users",
+    "category": "comms",
+    "streamline_name": "Multiple Users 1",
+    "file": "comms/users.svg"
+  },
+  {
+    "name": "vaccine",
+    "category": "health",
+    "streamline_name": "Vaccine Bottle 1",
+    "file": "health/vaccine.svg"
+  },
+  {
+    "name": "video",
+    "category": "media",
+    "streamline_name": "Video Player",
+    "file": "media/video.svg"
+  },
+  {
+    "name": "video-call",
+    "category": "comms",
+    "streamline_name": "Video Call",
+    "file": "comms/video-call.svg"
+  },
+  {
+    "name": "virus",
+    "category": "health",
+    "streamline_name": "Medical Specialty Virus",
+    "file": "health/virus.svg"
+  },
+  {
+    "name": "volume",
+    "category": "media",
+    "streamline_name": "Volume",
+    "file": "media/volume.svg"
+  },
+  {
+    "name": "volume-off",
+    "category": "media",
+    "streamline_name": "Volume Control Off",
+    "file": "media/volume-off.svg"
+  },
+  {
+    "name": "waiting-room",
+    "category": "health",
+    "streamline_name": "Waiting Room Lamp",
+    "file": "health/waiting-room.svg"
+  },
+  {
+    "name": "wallet",
+    "category": "commerce",
+    "streamline_name": "Wallet Sensor Tag Radiowaves",
+    "file": "commerce/wallet.svg"
+  },
+  {
+    "name": "warning",
+    "category": "status",
+    "streamline_name": "Alert Circle",
+    "file": "status/warning.svg"
+  },
+  {
+    "name": "watch",
+    "category": "misc",
+    "streamline_name": "Watch Time",
+    "file": "misc/watch.svg"
+  },
+  {
+    "name": "water",
+    "category": "misc",
+    "streamline_name": "Water Straw",
+    "file": "misc/water.svg"
+  },
+  {
+    "name": "weather",
+    "category": "misc",
+    "streamline_name": "Weather Rain",
+    "file": "misc/weather.svg"
+  },
+  {
+    "name": "weight-scale",
+    "category": "health",
+    "streamline_name": "Diet Scale",
+    "file": "health/weight-scale.svg"
+  },
+  {
+    "name": "wheelchair",
+    "category": "health",
+    "streamline_name": "Wheelchair Way",
+    "file": "health/wheelchair.svg"
+  },
+  {
+    "name": "wifi",
+    "category": "misc",
+    "streamline_name": "Wifi",
+    "file": "misc/wifi.svg"
+  },
+  {
+    "name": "wifi-off",
+    "category": "misc",
+    "streamline_name": "Wifi Off",
+    "file": "misc/wifi-off.svg"
+  },
+  {
+    "name": "wiki",
+    "category": "files",
+    "streamline_name": "Wikipedia Logo",
+    "file": "files/wiki.svg"
+  },
+  {
+    "name": "wind",
+    "category": "misc",
+    "streamline_name": "Wind West",
+    "file": "misc/wind.svg"
+  },
+  {
+    "name": "wrench",
+    "category": "misc",
+    "streamline_name": "Wrench",
+    "file": "misc/wrench.svg"
+  },
+  {
+    "name": "zoom-in",
+    "category": "misc",
+    "streamline_name": "Zoom In",
+    "file": "misc/zoom-in.svg"
+  },
+  {
+    "name": "zoom-out",
+    "category": "misc",
+    "streamline_name": "Zoom Out",
+    "file": "misc/zoom-out.svg"
+  },
+  {
+    "name": "check-circle",
+    "category": "actions",
+    "streamline_name": "Check Circle",
+    "file": "actions/check-circle.svg"
+  }
+]

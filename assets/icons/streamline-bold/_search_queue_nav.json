@@ -1,0 +1,192 @@
+[
+  {
+    "name": "route",
+    "category": "navigation",
+    "queries": [
+      "Journey Trip Route",
+      "Route",
+      "route"
+    ]
+  },
+  {
+    "name": "split",
+    "category": "navigation",
+    "queries": [
+      "Split Subset Spreadsheet 2",
+      "Split Subset Spreadsheet",
+      "Split",
+      "split"
+    ]
+  },
+  {
+    "name": "paste",
+    "category": "actions",
+    "queries": [
+      "Insurance Document Clipboard",
+      "Clipboard",
+      "paste"
+    ]
+  },
+  {
+    "name": "select",
+    "category": "actions",
+    "queries": [
+      "Select 3d",
+      "Select",
+      "select"
+    ]
+  },
+  {
+    "name": "swap",
+    "category": "actions",
+    "queries": [
+      "Folder Exchange",
+      "Exchange",
+      "swap"
+    ]
+  },
+  {
+    "name": "star-add",
+    "category": "actions",
+    "queries": [
+      "Rating Star Add",
+      "Star Add",
+      "star add"
+    ]
+  },
+  {
+    "name": "send-alt",
+    "category": "actions",
+    "queries": [
+      "Send Email",
+      "Send",
+      "send alt"
+    ]
+  },
+  {
+    "name": "forward-alt",
+    "category": "actions",
+    "queries": [
+      "Button Fast Forward",
+      "Forward",
+      "forward alt"
+    ]
+  },
+  {
+    "name": "reply-alt",
+    "category": "actions",
+    "queries": [
+      "Reply To Message",
+      "Reply",
+      "reply alt"
+    ]
+  },
+  {
+    "name": "edit-alt",
+    "category": "actions",
+    "queries": [
+      "Edit Pdf",
+      "Edit",
+      "edit alt"
+    ]
+  },
+  {
+    "name": "create",
+    "category": "actions",
+    "queries": [
+      "Create Chart",
+      "Create",
+      "create"
+    ]
+  },
+  {
+    "name": "new",
+    "category": "actions",
+    "queries": [
+      "New Spreadsheet",
+      "New",
+      "new"
+    ]
+  },
+  {
+    "name": "locate",
+    "category": "actions",
+    "queries": [
+      "Earth Locate",
+      "Locate",
+      "locate"
+    ]
+  },
+  {
+    "name": "find",
+    "category": "actions",
+    "queries": [
+      "Monitor Find",
+      "Find",
+      "find"
+    ]
+  },
+  {
+    "name": "browse",
+    "category": "actions",
+    "queries": [
+      "E Commerce Apparel Browse",
+      "Browse",
+      "browse"
+    ]
+  },
+  {
+    "name": "cancel",
+    "category": "actions",
+    "queries": [
+      "Lock Cancel Slash",
+      "Cancel",
+      "cancel"
+    ]
+  },
+  {
+    "name": "discover",
+    "category": "actions",
+    "queries": [
+      "Discover Pay",
+      "Discover",
+      "discover"
+    ]
+  },
+  {
+    "name": "remind",
+    "category": "actions",
+    "queries": [
+      "Reminder Hand Sign",
+      "Reminder",
+      "remind"
+    ]
+  },
+  {
+    "name": "clear",
+    "category": "actions",
+    "queries": [
+      "Alert Clear Notification",
+      "Clear",
+      "clear"
+    ]
+  },
+  {
+    "name": "explore",
+    "category": "actions",
+    "queries": [
+      "Space Explore",
+      "Explore",
+      "explore"
+    ]
+  },
+  {
+    "name": "draft",
+    "category": "actions",
+    "queries": [
+      "Workflow Request Draft",
+      "Draft",
+      "draft"
+    ]
+  }
+]

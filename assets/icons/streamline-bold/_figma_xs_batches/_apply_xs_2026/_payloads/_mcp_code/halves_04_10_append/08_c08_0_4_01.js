@@ -1,0 +1,4 @@
+let s=figma.root.getSharedPluginData("careapp","c08_0_4")||"";
+s+="aWxsPVwiIzAwMDAwMFwiIHN0cm9rZS13aWR0aD1cIjFcIj48L3BhdGg+IDxwYXRoIGQ9XCJNMjMgMjEuNjZoLTJhMSAxIDAgMCAwIDAgMmgyYTEgMSAwIDAgMCAwIC0yWlwiIGZpbGw9XCIjMDAwMDAwXCIgc3Ryb2tlLXdpZHRoPVwiMVwiPjwvcGF0aD4gPC9nPiA8L3N2Zz4ifSx7InNldE5hbWUiOiJpY29uL2FjdGlvbnMvZXhwb3J0Iiwic3ZnIjoiPHN2ZyB4bWxucz1cImh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnXCIgZmlsbD1cIm5vbmVcIiB2aWV3Qm94PVwiMCAwIDI0IDI0XCIgaWQ9XCJFeHBvcnQtRmlsZS0tU3RyZWFt";
+figma.root.setSharedPluginData("careapp","c08_0_4",s);
+return {key:"c08_0_4", i:1, len:s.length, done:s.length===1200};

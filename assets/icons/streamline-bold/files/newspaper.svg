@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Newspaper--Streamline-Streamline-3.0">
+  <desc>
+    Newspaper Streamline Icon: https://streamlinehq.com
+  </desc>
+  <g>
+    <path d="M22 0H2a2 2 0 0 0 -2 2v20a2 2 0 0 0 2 2h20a2 2 0 0 0 2 -2V2a2 2 0 0 0 -2 -2Zm0 21.5a0.5 0.5 0 0 1 -0.5 0.5h-19a0.5 0.5 0 0 1 -0.5 -0.5v-19a0.5 0.5 0 0 1 0.5 -0.5h19a0.47 0.47 0 0 1 0.35 0.15 0.47 0.47 0 0 1 0.15 0.35Z" fill="#0F1828" stroke-width="1"></path>
+    <path d="M5.5 4h13s1.25 0 1.25 1.25v2.5S19.75 9 18.5 9h-13S4.25 9 4.25 7.75v-2.5S4.25 4 5.5 4" fill="#0F1828" stroke-width="1"></path>
+    <path d="M5 11h5.5s0.75 0 0.75 0.75v0.5s0 0.75 -0.75 0.75H5s-0.75 0 -0.75 -0.75v-0.5s0 -0.75 0.75 -0.75" fill="#0F1828" stroke-width="1"></path>
+    <path d="M5 14.5h5.5s0.75 0 0.75 0.75v0.5s0 0.75 -0.75 0.75H5s-0.75 0 -0.75 -0.75v-0.5s0 -0.75 0.75 -0.75" fill="#0F1828" stroke-width="1"></path>
+    <path d="M5 18h5.5s0.75 0 0.75 0.75v0.5s0 0.75 -0.75 0.75H5s-0.75 0 -0.75 -0.75v-0.5s0 -0.75 0.75 -0.75" fill="#0F1828" stroke-width="1"></path>
+    <path d="M13.5 18H19s0.75 0 0.75 0.75v0.5s0 0.75 -0.75 0.75h-5.5s-0.75 0 -0.75 -0.75v-0.5s0 -0.75 0.75 -0.75" fill="#0F1828" stroke-width="1"></path>
+    <path d="M13.5 11H19s0.75 0 0.75 0.75v0.5s0 0.75 -0.75 0.75h-5.5s-0.75 0 -0.75 -0.75v-0.5s0 -0.75 0.75 -0.75" fill="#0F1828" stroke-width="1"></path>
+    <path d="M13.5 14.5H19s0.75 0 0.75 0.75v0.5s0 0.75 -0.75 0.75h-5.5s-0.75 0 -0.75 -0.75v-0.5s0 -0.75 0.75 -0.75" fill="#0F1828" stroke-width="1"></path>
+  </g>
+</svg>

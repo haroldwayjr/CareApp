@@ -1,0 +1,38 @@
+{
+  "04": {
+    "batch": "04",
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "miss": [],
+    "fail": []
+  },
+  "05": {
+    "batch": "05",
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "miss": [],
+    "fail": []
+  },
+  "06": {
+    "batch": "06",
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "miss": [],
+    "fail": []
+  },
+  "07": {
+    "status": "in_progress"
+  },
+  "08": {
+    "status": "pending"
+  },
+  "09": {
+    "status": "pending"
+  },
+  "10": {
+    "status": "pending"
+  }
+}

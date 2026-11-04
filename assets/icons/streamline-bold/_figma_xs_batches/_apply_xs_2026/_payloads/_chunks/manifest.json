@@ -1,0 +1,712 @@
+[
+  {
+    "batch": "03",
+    "group": "g00",
+    "parts": 5,
+    "stores": [
+      "03_g00_store_0.js",
+      "03_g00_store_1.js",
+      "03_g00_store_2.js",
+      "03_g00_store_3.js",
+      "03_g00_store_4.js"
+    ],
+    "exec": "03_g00_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      3582,
+      1430
+    ],
+    "exec_size": 785
+  },
+  {
+    "batch": "03",
+    "group": "g01",
+    "parts": 3,
+    "stores": [
+      "03_g01_store_0.js",
+      "03_g01_store_1.js",
+      "03_g01_store_2.js"
+    ],
+    "exec": "03_g01_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      2954
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "03",
+    "group": "g02",
+    "parts": 3,
+    "stores": [
+      "03_g02_store_0.js",
+      "03_g02_store_1.js",
+      "03_g02_store_2.js"
+    ],
+    "exec": "03_g02_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      1370
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "03",
+    "group": "g03",
+    "parts": 4,
+    "stores": [
+      "03_g03_store_0.js",
+      "03_g03_store_1.js",
+      "03_g03_store_2.js",
+      "03_g03_store_3.js"
+    ],
+    "exec": "03_g03_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      341
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "03",
+    "group": "g04",
+    "parts": 3,
+    "stores": [
+      "03_g04_store_0.js",
+      "03_g04_store_1.js",
+      "03_g04_store_2.js"
+    ],
+    "exec": "03_g04_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3394
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "04",
+    "group": "g00",
+    "parts": 3,
+    "stores": [
+      "04_g00_store_0.js",
+      "04_g00_store_1.js",
+      "04_g00_store_2.js"
+    ],
+    "exec": "04_g00_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      1926
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "04",
+    "group": "g01",
+    "parts": 4,
+    "stores": [
+      "04_g01_store_0.js",
+      "04_g01_store_1.js",
+      "04_g01_store_2.js",
+      "04_g01_store_3.js"
+    ],
+    "exec": "04_g01_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      2822
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "04",
+    "group": "g02",
+    "parts": 3,
+    "stores": [
+      "04_g02_store_0.js",
+      "04_g02_store_1.js",
+      "04_g02_store_2.js"
+    ],
+    "exec": "04_g02_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      2022
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "04",
+    "group": "g03",
+    "parts": 6,
+    "stores": [
+      "04_g03_store_0.js",
+      "04_g03_store_1.js",
+      "04_g03_store_2.js",
+      "04_g03_store_3.js",
+      "04_g03_store_4.js",
+      "04_g03_store_5.js"
+    ],
+    "exec": "04_g03_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      3582,
+      3582,
+      3010
+    ],
+    "exec_size": 897
+  },
+  {
+    "batch": "04",
+    "group": "g04",
+    "parts": 2,
+    "stores": [
+      "04_g04_store_0.js",
+      "04_g04_store_1.js"
+    ],
+    "exec": "04_g04_exec.js",
+    "store_sizes": [
+      3582,
+      3146
+    ],
+    "exec_size": 449
+  },
+  {
+    "batch": "05",
+    "group": "g00",
+    "parts": 3,
+    "stores": [
+      "05_g00_store_0.js",
+      "05_g00_store_1.js",
+      "05_g00_store_2.js"
+    ],
+    "exec": "05_g00_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      1418
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "05",
+    "group": "g01",
+    "parts": 3,
+    "stores": [
+      "05_g01_store_0.js",
+      "05_g01_store_1.js",
+      "05_g01_store_2.js"
+    ],
+    "exec": "05_g01_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      1810
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "05",
+    "group": "g02",
+    "parts": 3,
+    "stores": [
+      "05_g02_store_0.js",
+      "05_g02_store_1.js",
+      "05_g02_store_2.js"
+    ],
+    "exec": "05_g02_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      2138
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "05",
+    "group": "g03",
+    "parts": 3,
+    "stores": [
+      "05_g03_store_0.js",
+      "05_g03_store_1.js",
+      "05_g03_store_2.js"
+    ],
+    "exec": "05_g03_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3238
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "05",
+    "group": "g04",
+    "parts": 3,
+    "stores": [
+      "05_g04_store_0.js",
+      "05_g04_store_1.js",
+      "05_g04_store_2.js"
+    ],
+    "exec": "05_g04_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      201
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "06",
+    "group": "g00",
+    "parts": 4,
+    "stores": [
+      "06_g00_store_0.js",
+      "06_g00_store_1.js",
+      "06_g00_store_2.js",
+      "06_g00_store_3.js"
+    ],
+    "exec": "06_g00_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      3166
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "06",
+    "group": "g01",
+    "parts": 4,
+    "stores": [
+      "06_g01_store_0.js",
+      "06_g01_store_1.js",
+      "06_g01_store_2.js",
+      "06_g01_store_3.js"
+    ],
+    "exec": "06_g01_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      417
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "06",
+    "group": "g02",
+    "parts": 4,
+    "stores": [
+      "06_g02_store_0.js",
+      "06_g02_store_1.js",
+      "06_g02_store_2.js",
+      "06_g02_store_3.js"
+    ],
+    "exec": "06_g02_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      421
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "06",
+    "group": "g03",
+    "parts": 4,
+    "stores": [
+      "06_g03_store_0.js",
+      "06_g03_store_1.js",
+      "06_g03_store_2.js",
+      "06_g03_store_3.js"
+    ],
+    "exec": "06_g03_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      653
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "06",
+    "group": "g04",
+    "parts": 4,
+    "stores": [
+      "06_g04_store_0.js",
+      "06_g04_store_1.js",
+      "06_g04_store_2.js",
+      "06_g04_store_3.js"
+    ],
+    "exec": "06_g04_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      1626
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "07",
+    "group": "g00",
+    "parts": 3,
+    "stores": [
+      "07_g00_store_0.js",
+      "07_g00_store_1.js",
+      "07_g00_store_2.js"
+    ],
+    "exec": "07_g00_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      2094
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "07",
+    "group": "g01",
+    "parts": 4,
+    "stores": [
+      "07_g01_store_0.js",
+      "07_g01_store_1.js",
+      "07_g01_store_2.js",
+      "07_g01_store_3.js"
+    ],
+    "exec": "07_g01_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      489
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "07",
+    "group": "g02",
+    "parts": 4,
+    "stores": [
+      "07_g02_store_0.js",
+      "07_g02_store_1.js",
+      "07_g02_store_2.js",
+      "07_g02_store_3.js"
+    ],
+    "exec": "07_g02_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      2146
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "07",
+    "group": "g03",
+    "parts": 4,
+    "stores": [
+      "07_g03_store_0.js",
+      "07_g03_store_1.js",
+      "07_g03_store_2.js",
+      "07_g03_store_3.js"
+    ],
+    "exec": "07_g03_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      429
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "07",
+    "group": "g04",
+    "parts": 2,
+    "stores": [
+      "07_g04_store_0.js",
+      "07_g04_store_1.js"
+    ],
+    "exec": "07_g04_exec.js",
+    "store_sizes": [
+      3582,
+      2770
+    ],
+    "exec_size": 449
+  },
+  {
+    "batch": "08",
+    "group": "g00",
+    "parts": 3,
+    "stores": [
+      "08_g00_store_0.js",
+      "08_g00_store_1.js",
+      "08_g00_store_2.js"
+    ],
+    "exec": "08_g00_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      1294
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "08",
+    "group": "g01",
+    "parts": 3,
+    "stores": [
+      "08_g01_store_0.js",
+      "08_g01_store_1.js",
+      "08_g01_store_2.js"
+    ],
+    "exec": "08_g01_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      693
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "08",
+    "group": "g02",
+    "parts": 3,
+    "stores": [
+      "08_g02_store_0.js",
+      "08_g02_store_1.js",
+      "08_g02_store_2.js"
+    ],
+    "exec": "08_g02_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3138
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "08",
+    "group": "g03",
+    "parts": 4,
+    "stores": [
+      "08_g03_store_0.js",
+      "08_g03_store_1.js",
+      "08_g03_store_2.js",
+      "08_g03_store_3.js"
+    ],
+    "exec": "08_g03_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      473
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "08",
+    "group": "g04",
+    "parts": 4,
+    "stores": [
+      "08_g04_store_0.js",
+      "08_g04_store_1.js",
+      "08_g04_store_2.js",
+      "08_g04_store_3.js"
+    ],
+    "exec": "08_g04_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      653
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "09",
+    "group": "g00",
+    "parts": 2,
+    "stores": [
+      "09_g00_store_0.js",
+      "09_g00_store_1.js"
+    ],
+    "exec": "09_g00_exec.js",
+    "store_sizes": [
+      3582,
+      3486
+    ],
+    "exec_size": 449
+  },
+  {
+    "batch": "09",
+    "group": "g01",
+    "parts": 3,
+    "stores": [
+      "09_g01_store_0.js",
+      "09_g01_store_1.js",
+      "09_g01_store_2.js"
+    ],
+    "exec": "09_g01_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      1178
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "09",
+    "group": "g02",
+    "parts": 4,
+    "stores": [
+      "09_g02_store_0.js",
+      "09_g02_store_1.js",
+      "09_g02_store_2.js",
+      "09_g02_store_3.js"
+    ],
+    "exec": "09_g02_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      337
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "09",
+    "group": "g03",
+    "parts": 3,
+    "stores": [
+      "09_g03_store_0.js",
+      "09_g03_store_1.js",
+      "09_g03_store_2.js"
+    ],
+    "exec": "09_g03_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      2282
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "09",
+    "group": "g04",
+    "parts": 3,
+    "stores": [
+      "09_g04_store_0.js",
+      "09_g04_store_1.js",
+      "09_g04_store_2.js"
+    ],
+    "exec": "09_g04_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3438
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "10",
+    "group": "g00",
+    "parts": 3,
+    "stores": [
+      "10_g00_store_0.js",
+      "10_g00_store_1.js",
+      "10_g00_store_2.js"
+    ],
+    "exec": "10_g00_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      561
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "10",
+    "group": "g01",
+    "parts": 4,
+    "stores": [
+      "10_g01_store_0.js",
+      "10_g01_store_1.js",
+      "10_g01_store_2.js",
+      "10_g01_store_3.js"
+    ],
+    "exec": "10_g01_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      3582,
+      1017
+    ],
+    "exec_size": 673
+  },
+  {
+    "batch": "10",
+    "group": "g02",
+    "parts": 3,
+    "stores": [
+      "10_g02_store_0.js",
+      "10_g02_store_1.js",
+      "10_g02_store_2.js"
+    ],
+    "exec": "10_g02_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      1446
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "10",
+    "group": "g03",
+    "parts": 3,
+    "stores": [
+      "10_g03_store_0.js",
+      "10_g03_store_1.js",
+      "10_g03_store_2.js"
+    ],
+    "exec": "10_g03_exec.js",
+    "store_sizes": [
+      3582,
+      3582,
+      2294
+    ],
+    "exec_size": 561
+  },
+  {
+    "batch": "10",
+    "group": "g04",
+    "parts": 2,
+    "stores": [
+      "10_g04_store_0.js",
+      "10_g04_store_1.js"
+    ],
+    "exec": "10_g04_exec.js",
+    "store_sizes": [
+      3582,
+      3338
+    ],
+    "exec_size": 449
+  }
+]

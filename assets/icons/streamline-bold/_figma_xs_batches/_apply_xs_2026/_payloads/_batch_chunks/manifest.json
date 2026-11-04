@@ -1,0 +1,230 @@
+[
+  {
+    "batch": "03",
+    "parts": 6,
+    "stores": [
+      {
+        "file": "03_store_0.js",
+        "size": 7577
+      },
+      {
+        "file": "03_store_1.js",
+        "size": 7577
+      },
+      {
+        "file": "03_store_2.js",
+        "size": 7577
+      },
+      {
+        "file": "03_store_3.js",
+        "size": 7577
+      },
+      {
+        "file": "03_store_4.js",
+        "size": 7577
+      },
+      {
+        "file": "03_store_5.js",
+        "size": 3717
+      }
+    ],
+    "exec": "03_exec.js",
+    "exec_size": 860
+  },
+  {
+    "batch": "04",
+    "parts": 6,
+    "stores": [
+      {
+        "file": "04_store_0.js",
+        "size": 7577
+      },
+      {
+        "file": "04_store_1.js",
+        "size": 7577
+      },
+      {
+        "file": "04_store_2.js",
+        "size": 7577
+      },
+      {
+        "file": "04_store_3.js",
+        "size": 7577
+      },
+      {
+        "file": "04_store_4.js",
+        "size": 7577
+      },
+      {
+        "file": "04_store_5.js",
+        "size": 7153
+      }
+    ],
+    "exec": "04_exec.js",
+    "exec_size": 860
+  },
+  {
+    "batch": "05",
+    "parts": 4,
+    "stores": [
+      {
+        "file": "05_store_0.js",
+        "size": 7577
+      },
+      {
+        "file": "05_store_1.js",
+        "size": 7577
+      },
+      {
+        "file": "05_store_2.js",
+        "size": 7577
+      },
+      {
+        "file": "05_store_3.js",
+        "size": 7525
+      }
+    ],
+    "exec": "05_exec.js",
+    "exec_size": 648
+  },
+  {
+    "batch": "06",
+    "parts": 6,
+    "stores": [
+      {
+        "file": "06_store_0.js",
+        "size": 7577
+      },
+      {
+        "file": "06_store_1.js",
+        "size": 7577
+      },
+      {
+        "file": "06_store_2.js",
+        "size": 7577
+      },
+      {
+        "file": "06_store_3.js",
+        "size": 7577
+      },
+      {
+        "file": "06_store_4.js",
+        "size": 7577
+      },
+      {
+        "file": "06_store_5.js",
+        "size": 7513
+      }
+    ],
+    "exec": "06_exec.js",
+    "exec_size": 860
+  },
+  {
+    "batch": "07",
+    "parts": 5,
+    "stores": [
+      {
+        "file": "07_store_0.js",
+        "size": 7577
+      },
+      {
+        "file": "07_store_1.js",
+        "size": 7577
+      },
+      {
+        "file": "07_store_2.js",
+        "size": 7577
+      },
+      {
+        "file": "07_store_3.js",
+        "size": 7577
+      },
+      {
+        "file": "07_store_4.js",
+        "size": 6157
+      }
+    ],
+    "exec": "07_exec.js",
+    "exec_size": 754
+  },
+  {
+    "batch": "08",
+    "parts": 5,
+    "stores": [
+      {
+        "file": "08_store_0.js",
+        "size": 7577
+      },
+      {
+        "file": "08_store_1.js",
+        "size": 7577
+      },
+      {
+        "file": "08_store_2.js",
+        "size": 7577
+      },
+      {
+        "file": "08_store_3.js",
+        "size": 7577
+      },
+      {
+        "file": "08_store_4.js",
+        "size": 4477
+      }
+    ],
+    "exec": "08_exec.js",
+    "exec_size": 754
+  },
+  {
+    "batch": "09",
+    "parts": 5,
+    "stores": [
+      {
+        "file": "09_store_0.js",
+        "size": 7577
+      },
+      {
+        "file": "09_store_1.js",
+        "size": 7577
+      },
+      {
+        "file": "09_store_2.js",
+        "size": 7577
+      },
+      {
+        "file": "09_store_3.js",
+        "size": 7577
+      },
+      {
+        "file": "09_store_4.js",
+        "size": 1949
+      }
+    ],
+    "exec": "09_exec.js",
+    "exec_size": 754
+  },
+  {
+    "batch": "10",
+    "parts": 4,
+    "stores": [
+      {
+        "file": "10_store_0.js",
+        "size": 7577
+      },
+      {
+        "file": "10_store_1.js",
+        "size": 7577
+      },
+      {
+        "file": "10_store_2.js",
+        "size": 7577
+      },
+      {
+        "file": "10_store_3.js",
+        "size": 7381
+      }
+    ],
+    "exec": "10_exec.js",
+    "exec_size": 648
+  }
+]

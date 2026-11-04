@@ -1,0 +1,508 @@
+[
+  {
+    "name": "accessibility",
+    "figma": "icon/misc/accessibility",
+    "file": "misc/accessibility.svg",
+    "oldQuery": "Tools Reality Accessibility",
+    "svgName": "Tools Reality Accessibility",
+    "regularTop3": [
+      "Professional Tool Basecamp",
+      "Professional Tool Dropbox",
+      "Professional Tool Evernote"
+    ],
+    "boldTop3": [
+      "Professional Tool Basecamp",
+      "Professional Tool Dropbox",
+      "Professional Tool Evernote"
+    ]
+  },
+  {
+    "name": "agreement",
+    "figma": "icon/files/agreement",
+    "file": "files/agreement.svg",
+    "oldQuery": "Workflow Agreement",
+    "svgName": "Workflow Agreement",
+    "regularTop3": [
+      "Human Resources Workflow",
+      "Help Question Network",
+      "Layout Dashboard"
+    ],
+    "boldTop3": [
+      "Human Resources Workflow",
+      "Help Question Network",
+      "Layout Dashboard"
+    ]
+  },
+  {
+    "name": "appointment",
+    "figma": "icon/health/appointment",
+    "file": "health/appointment.svg",
+    "oldQuery": "Waiting Room Appointment Medical Appointment 2",
+    "svgName": "Waiting Room Appointment Medical Appointment 2",
+    "regularTop3": [
+      "Medical Room Wait",
+      "Medical Room Clock Woman",
+      "Medical Room Clock Man"
+    ],
+    "boldTop3": [
+      "Medical Room Wait",
+      "Medical Room Clock Woman",
+      "Medical Room Clock Man"
+    ]
+  },
+  {
+    "name": "balloon",
+    "figma": "icon/misc/balloon",
+    "file": "misc/balloon.svg",
+    "oldQuery": "Balloon Party",
+    "svgName": "Balloon Party",
+    "regularTop3": [
+      "Party Balloon",
+      "Party Balloons",
+      "Party Confetti"
+    ],
+    "boldTop3": [
+      "Party Balloon",
+      "Party Balloons",
+      "Party Confetti"
+    ]
+  },
+  {
+    "name": "bank",
+    "figma": "icon/commerce/bank",
+    "file": "commerce/bank.svg",
+    "oldQuery": "Blood Bank",
+    "svgName": "Blood Bank",
+    "regularTop3": [
+      "Blood Drop",
+      "Blood Drop Elements",
+      "Blood Drop Search"
+    ],
+    "boldTop3": [
+      "Blood Drop",
+      "Blood Drop Elements",
+      "Blood Drop Search"
+    ]
+  },
+  {
+    "name": "battery",
+    "figma": "icon/misc/battery",
+    "file": "misc/battery.svg",
+    "oldQuery": "Battery Slash No",
+    "svgName": null,
+    "regularTop3": [
+      "Charging Battery Cable 1",
+      "Charging Battery Almost Full",
+      "Charging Battery Eco"
+    ],
+    "boldTop3": [
+      "Charging Battery Cable 1",
+      "Charging Battery Almost Full",
+      "Charging Battery Almost Full 1"
+    ]
+  },
+  {
+    "name": "battery-charging",
+    "figma": "icon/misc/battery.charging",
+    "file": "misc/battery-charging.svg",
+    "oldQuery": "Battery Charging 2",
+    "svgName": "Battery Charging 2",
+    "regularTop3": [
+      "Charging Battery Cable 1",
+      "Charging Battery Almost Full",
+      "Charging Battery Eco"
+    ],
+    "boldTop3": [
+      "Charging Battery Two Bars",
+      "Charging Battery Cable 1",
+      "Charging Battery Almost Full"
+    ]
+  },
+  {
+    "name": "battery-full",
+    "figma": "icon/misc/battery.full",
+    "file": "misc/battery-full.svg",
+    "oldQuery": "Battery Full",
+    "svgName": "Battery Full",
+    "regularTop3": [
+      "Charging Battery Almost Full",
+      "Charging Battery Full 1",
+      "Charging Battery Cable 1"
+    ],
+    "boldTop3": [
+      "Charging Battery Almost Full",
+      "Charging Battery Almost Full 1",
+      "Charging Battery Full"
+    ]
+  },
+  {
+    "name": "bell-off",
+    "figma": "icon/status/bell.off",
+    "file": "status/bell-off.svg",
+    "oldQuery": "Alarm Bell Off 1",
+    "svgName": "Alarm Bell Off 1",
+    "regularTop3": [
+      "Alarm Bell Off",
+      "Alarm Bell",
+      "Alarm Bell Check"
+    ],
+    "boldTop3": "Alarm Bell Off 1"
+  },
+  {
+    "name": "blog",
+    "figma": "icon/files/blog",
+    "file": "files/blog.svg",
+    "oldQuery": "Blog Blogger Logo",
+    "svgName": "Blog Blogger Logo",
+    "regularTop3": [
+      "Blog Blogger",
+      "Video Game Logo Creeper",
+      "Video Game Logo Dota2"
+    ],
+    "boldTop3": [
+      "Blog Blogger",
+      "Video Game Logo Creeper",
+      "Video Game Logo Dota2"
+    ]
+  },
+  {
+    "name": "blood",
+    "figma": "icon/health/blood",
+    "file": "health/blood.svg",
+    "oldQuery": "Blood Types 1",
+    "svgName": "Blood Types 1",
+    "regularTop3": [
+      "Blood Drop Type Negative",
+      "Blood Drop Type Positive",
+      "Blood Drop Type A"
+    ],
+    "boldTop3": [
+      "Blood Drop Type Negative",
+      "Blood Drop Type Positive",
+      "Blood Drop Type A"
+    ]
+  },
+  {
+    "name": "blood-pressure",
+    "figma": "icon/health/blood.pressure",
+    "file": "health/blood-pressure.svg",
+    "oldQuery": "Blood Pressure Cuff",
+    "svgName": null,
+    "regularTop3": [
+      "Blood Drop",
+      "Blood Drop Elements",
+      "Blood Drop Search"
+    ],
+    "boldTop3": [
+      "Blood Drop",
+      "Blood Drop Elements",
+      "Blood Drop Search"
+    ]
+  },
+  {
+    "name": "bookmark",
+    "figma": "icon/files/bookmark",
+    "file": "files/bookmark.svg",
+    "oldQuery": "Bookmark 3",
+    "svgName": "Bookmark 3",
+    "regularTop3": [
+      "Book Bookmark",
+      "Folder Bookmark",
+      "Folder Bookmark 1"
+    ],
+    "boldTop3": [
+      "Bookmarks Document Alternate",
+      "Book Bookmark",
+      "Folder Bookmark"
+    ]
+  },
+  {
+    "name": "box-alt",
+    "figma": "icon/files/box.alt",
+    "file": "files/box-alt.svg",
+    "oldQuery": "Text Box 2",
+    "svgName": "Text Box 2",
+    "regularTop3": [
+      "Text Input Area",
+      "Warehouse Package Box",
+      "3d Box Corner"
+    ],
+    "boldTop3": [
+      "Text Input Area",
+      "Warehouse Package Box",
+      "3d Box Corner"
+    ]
+  },
+  {
+    "name": "bug",
+    "figma": "icon/misc/bug",
+    "file": "misc/bug.svg",
+    "oldQuery": "Catch Bug",
+    "svgName": "Catch Bug",
+    "regularTop3": [
+      "Computer Bug",
+      "Computer Bug 1",
+      "Shield Bug"
+    ],
+    "boldTop3": [
+      "Computer Bug",
+      "Computer Bug 1",
+      "Computer Bug 2"
+    ]
+  },
+  {
+    "name": "cancel",
+    "figma": "icon/actions/cancel",
+    "file": "actions/cancel.svg",
+    "oldQuery": "Lock Cancel Slash",
+    "svgName": "Lock Cancel Slash",
+    "regularTop3": [
+      "Lock",
+      "Lock 8",
+      "Lock Shield"
+    ],
+    "boldTop3": [
+      "Lock",
+      "Lock 8",
+      "Lock Shield"
+    ]
+  },
+  {
+    "name": "cancer",
+    "figma": "icon/health/cancer",
+    "file": "health/cancer.svg",
+    "oldQuery": "Cancer Cell 2",
+    "svgName": "Cancer Cell 2",
+    "regularTop3": [
+      "Cell Border Bottom",
+      "Cell Border Center",
+      "Cell Border Frame"
+    ],
+    "boldTop3": [
+      "Cell Border Bottom",
+      "Cell Border Center",
+      "Cell Border Frame"
+    ]
+  },
+  {
+    "name": "cast",
+    "figma": "icon/media/cast",
+    "file": "media/cast.svg",
+    "oldQuery": "Phone Cast",
+    "svgName": "Phone Cast",
+    "regularTop3": [
+      "Phone Actions Call",
+      "Phone Actions Call 1",
+      "Phone Ring"
+    ],
+    "boldTop3": [
+      "Phone Actions Call",
+      "Phone Actions Call 1",
+      "Phone Ring"
+    ]
+  },
+  {
+    "name": "check",
+    "figma": "icon/actions/check",
+    "file": "actions/check.svg",
+    "oldQuery": "Check 1",
+    "svgName": "Check 1",
+    "regularTop3": [
+      "Single Neutral Actions Check 2",
+      "Check Payment Give",
+      "Check Payment Sign"
+    ],
+    "boldTop3": [
+      "Task List Check 1",
+      "Check Payment Give",
+      "Check Payment Sign"
+    ]
+  },
+  {
+    "name": "clear",
+    "figma": "icon/actions/clear",
+    "file": "actions/clear.svg",
+    "oldQuery": "Alert Clear Notification",
+    "svgName": "Alert Clear Notification",
+    "regularTop3": [
+      "Alarm Bell",
+      "Alarm Clock",
+      "Alarm Bell Check"
+    ],
+    "boldTop3": [
+      "Alarm Bell",
+      "Alarm Bell 1",
+      "Alarm Clock 1"
+    ]
+  },
+  {
+    "name": "clipboard",
+    "figma": "icon/files/clipboard",
+    "file": "files/clipboard.svg",
+    "oldQuery": "Insert Row From Clipboard",
+    "svgName": "Insert Row From Clipboard",
+    "regularTop3": [
+      "Insert Image Bottom",
+      "Insert Image Top",
+      "Crime Cut"
+    ],
+    "boldTop3": [
+      "Insert Image Bottom",
+      "Insert Image Top",
+      "Crime Cut"
+    ]
+  },
+  {
+    "name": "clipboard-health",
+    "figma": "icon/health/clipboard.health",
+    "file": "health/clipboard-health.svg",
+    "oldQuery": "Medical Data Clipboard Cross",
+    "svgName": "Medical Data Clipboard Cross",
+    "regularTop3": [
+      "Medical App Laptop",
+      "Medical App Laptop 1",
+      "Medical Condition Cough"
+    ],
+    "boldTop3": [
+      "Medical App Laptop",
+      "Medical App Laptop 1",
+      "Medical Condition Cough"
+    ]
+  },
+  {
+    "name": "clock",
+    "figma": "icon/comms/clock",
+    "file": "comms/clock.svg",
+    "oldQuery": "Time Play Time 1",
+    "svgName": "Time Play Time 1",
+    "regularTop3": [
+      "Time Clock File",
+      "Time Clock File 1",
+      "Time Clock File Add"
+    ],
+    "boldTop3": [
+      "Time Clock File",
+      "Time Clock File 1",
+      "Time Clock File Add"
+    ]
+  },
+  {
+    "name": "comment",
+    "figma": "icon/comms/comment",
+    "file": "comms/comment.svg",
+    "oldQuery": "Comment Box",
+    "svgName": "Comment Box",
+    "regularTop3": [
+      "Warehouse Package Box",
+      "3d Box Corner",
+      "3d Box Expand Corners"
+    ],
+    "boldTop3": [
+      "Warehouse Package Box",
+      "3d Box Corner",
+      "3d Box Expand Corners"
+    ]
+  },
+  {
+    "name": "contrast",
+    "figma": "icon/media/contrast",
+    "file": "media/contrast.svg",
+    "oldQuery": "Contrast Horizontal Slider Adjustment",
+    "svgName": null,
+    "regularTop3": [
+      "Ui Phone Slider Horizontal",
+      "Setting Slider Horizontal",
+      "Settings Slider Desktop Horizontal"
+    ],
+    "boldTop3": [
+      "Ui Phone Slider Horizontal",
+      "Setting Slider Horizontal",
+      "Ui Phone Slider Horizontal Alternate"
+    ]
+  },
+  {
+    "name": "copy",
+    "figma": "icon/actions/copy",
+    "file": "actions/copy.svg",
+    "oldQuery": "Copy 1",
+    "svgName": "Copy 1",
+    "regularTop3": [
+      "Copy Paste",
+      "Scissors",
+      "Scissors 2"
+    ],
+    "boldTop3": [
+      "Copy Paste",
+      "Scissors",
+      "Scissors 1"
+    ]
+  },
+  {
+    "name": "counseling",
+    "figma": "icon/health/counseling",
+    "file": "health/counseling.svg",
+    "oldQuery": "Counseling 3",
+    "svgName": "Counseling 3",
+    "regularTop3": [
+      "Dog Leash",
+      "Style Three Pin Direction Arrow",
+      "Style Three Pin Arrow All Direction"
+    ],
+    "boldTop3": [
+      "Dog Leash",
+      "Style Three Pin Direction Arrow",
+      "Style Three Pin Arrow All Direction"
+    ]
+  },
+  {
+    "name": "create",
+    "figma": "icon/actions/create",
+    "file": "actions/create.svg",
+    "oldQuery": "Create Chart",
+    "svgName": "Create Chart",
+    "regularTop3": [
+      "Project Blueprint Create",
+      "Monitor Chart",
+      "Presentation Projector Screen Pie Chart"
+    ],
+    "boldTop3": [
+      "Project Blueprint Create",
+      "Monitor Chart",
+      "Presentation Projector Screen Pie Chart"
+    ]
+  },
+  {
+    "name": "crisis",
+    "figma": "icon/health/crisis",
+    "file": "health/crisis.svg",
+    "oldQuery": "Emergency Call",
+    "svgName": "Emergency Call",
+    "regularTop3": [
+      "Phone Actions Call",
+      "Phone Actions Call 1",
+      "Phone Incoming Call"
+    ],
+    "boldTop3": [
+      "Phone Actions Call",
+      "Phone Actions Call 1",
+      "Phone Incoming Call"
+    ]
+  },
+  {
+    "name": "crop",
+    "figma": "icon/media/crop",
+    "file": "media/crop.svg",
+    "oldQuery": "Crop Rotate",
+    "svgName": "Crop Rotate",
+    "regularTop3": [
+      "Rotate",
+      "Rotate Angle",
+      "Rotate Back"
+    ],
+    "boldTop3": [
+      "Rotate",
+      "Rotate Alternate",
+      "Rotate Angle"
+    ]
+  }
+]

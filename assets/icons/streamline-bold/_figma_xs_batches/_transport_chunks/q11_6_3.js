@@ -1,0 +1,1 @@
+const prev=figma.root.getSharedPluginData('careapp','r11_6'); const s=atob('c2V0TmFtZSxlcnI6U3RyaW5nKGUpfSk7IH0KfQpyZXR1cm4geyBvaywgbWlzc2luZywgZmFpbGVkLCBtaXNzLCBmYWlsIH07Cg=='); figma.root.setSharedPluginData('careapp','r11_6',prev+s); return {stored:'r11_6_q3',prevLen:prev.length,added:s.length,total:figma.root.getSharedPluginData('careapp','r11_6').length};

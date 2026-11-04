@@ -1,0 +1,23 @@
+---
+description: Nova design system conventions for React/TS implementation in CareApp
+globs: src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Nova / CareApp React context
+
+When implementing UI in `src/`, align with Nova conventions:
+
+| Topic | Doc |
+|---|---|
+| Stack, repo layout, markdown-in/code-local | `docs/design-system/nova/quick-reference.md` |
+| Token layering, spacing taxonomy | `docs/design-system/nova/token-architecture.md` |
+| Component specs, state matrix, a11y | `docs/design-system/nova/component-spec-conventions.md` |
+| Soma visual tokens (Figma) | `docs/design-system/soma/token-rules.md` |
+
+**This repo:** MUI v9 today; target stack is Base UI + Vanilla Extract + `@nova/ui`. Canonical package: `ConsultingMD/nova-care-app` → `libs/ui`.
+
+- Semantic tokens only in styles — no hardcoded hex (when on Nova/Vanilla Extract).
+- WCAG **2.2 AA** — not 2.1.
+- Light primary `blue/800`, dark `blue/600` — `blue/700` is stale.
+- If an acceptance criterion cannot be met, stop and report — do not silently drop it.

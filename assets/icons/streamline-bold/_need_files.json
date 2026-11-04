@@ -1,0 +1,240 @@
+[
+  {
+    "name": "tool",
+    "hash": "ico_mRu4pQJ4vHoh2aEwAZWGybvO",
+    "streamlineName": "Tools Keys",
+    "path": "misc/tool.svg",
+    "score": 252.5
+  },
+  {
+    "name": "qr-scan",
+    "hash": "ico_mRu4pQJ4vcN12aEbmoxihT2F",
+    "streamlineName": "Iris Scan",
+    "path": "misc/qr-scan.svg",
+    "score": 302.55
+  },
+  {
+    "name": "flash-off",
+    "hash": "ico_mRu4pQJ4vvtE2aEWGyxih0Ij",
+    "streamlineName": "Flash Off",
+    "path": "misc/flash-off.svg",
+    "score": 302.55
+  },
+  {
+    "name": "history",
+    "hash": "ico_mRu4pQJ4vN8r2aESFbsjshRi",
+    "streamlineName": "History Fan",
+    "path": "misc/history.svg",
+    "score": 252.45
+  },
+  {
+    "name": "weather",
+    "hash": "ico_mRu4pQJ4vOLY2aEg0Yaf7uKw",
+    "streamlineName": "Weather Rain",
+    "path": "misc/weather.svg",
+    "score": 252.4
+  },
+  {
+    "name": "wind",
+    "hash": "ico_mRu4pQJ4v8T02aESFb4pQOC0",
+    "streamlineName": "Wind West",
+    "path": "misc/wind.svg",
+    "score": 252.55
+  },
+  {
+    "name": "food",
+    "hash": "ico_zf8PzBFwhBoiPpPc",
+    "streamlineName": "Food Delivery Bag",
+    "path": "misc/food.svg",
+    "score": 265.15
+  },
+  {
+    "name": "bike",
+    "hash": "ico_mRu4pQJ4vgP02aEPvJQzIkAl",
+    "streamlineName": "Bicycle",
+    "path": "misc/bike.svg",
+    "score": 239.65
+  },
+  {
+    "name": "graduation",
+    "hash": "ico_wx0sV4qvLAlsXHiV",
+    "streamlineName": "Graduation Hat",
+    "path": "misc/graduation.svg",
+    "score": 252.3
+  },
+  {
+    "name": "ticket",
+    "hash": "ico_mRu4pQJ4v8mw2aEPvJQ3yybj",
+    "streamlineName": "Ticket",
+    "path": "misc/ticket.svg",
+    "score": 239.7
+  },
+  {
+    "name": "droplet",
+    "hash": "ico_9mnoSjQ6L8iXZOpc",
+    "streamlineName": "Drop Shape",
+    "path": "misc/droplet.svg",
+    "score": 252.5
+  },
+  {
+    "name": "satellite",
+    "hash": "ico_mRu4pQJ4vkoQ2aEbmohNE1nr",
+    "streamlineName": "Satellite",
+    "path": "misc/satellite.svg",
+    "score": 289.55
+  },
+  {
+    "name": "battery-charging",
+    "hash": "ico_BennM9juWoue6rKB",
+    "streamlineName": "Battery Charging 2",
+    "path": "misc/battery-charging.svg",
+    "score": 265.1
+  },
+  {
+    "name": "office",
+    "hash": "ico_mRu4pQJ4vIfv2aEgWavhjlo1",
+    "streamlineName": "Office File Text",
+    "path": "misc/office.svg",
+    "score": 130.2
+  },
+  {
+    "name": "light-mode",
+    "hash": "ico_mRu4pQJ4v5gO2aEP2WLXcxUy",
+    "streamlineName": "Light Mode Bw",
+    "path": "misc/light-mode.svg",
+    "score": 265.35
+  },
+  {
+    "name": "keyboard",
+    "hash": "ico_mRu4pQJ4vb7k2aE2aEgWa3gZ",
+    "streamlineName": "Keyboard",
+    "path": "misc/keyboard.svg",
+    "score": 289.6
+  },
+  {
+    "name": "tablet",
+    "hash": "ico_mRu4pQJ4vl6H2aE2aE49r92h",
+    "streamlineName": "Tablet",
+    "path": "misc/tablet.svg",
+    "score": 289.7
+  },
+  {
+    "name": "scanner",
+    "hash": "ico_mRu4pQJ4vVyd2aE2aE7QU0Ij",
+    "streamlineName": "Scanner",
+    "path": "misc/scanner.svg",
+    "score": 289.65
+  },
+  {
+    "name": "bug",
+    "hash": "ico_5MkkzaLCzW1hlWRJ",
+    "streamlineName": "Catch Bug",
+    "path": "misc/bug.svg",
+    "score": 252.55
+  },
+  {
+    "name": "key",
+    "hash": "ico_mRu4pQJ4vWGP2aEbmoWGyeFO",
+    "streamlineName": "Key Lock",
+    "path": "misc/key.svg",
+    "score": 302.6
+  },
+  {
+    "name": "barcode-scan",
+    "hash": "ico_mRu4pQJ4vJLR2aEgWafSZuKw",
+    "streamlineName": "Barcode Scan",
+    "path": "misc/barcode-scan.svg",
+    "score": 302.4
+  },
+  {
+    "name": "timer",
+    "hash": "ico_mRu4pQJ4vp0A2aEP2WNc3UQe",
+    "streamlineName": "Timer",
+    "path": "misc/timer.svg",
+    "score": 239.75
+  },
+  {
+    "name": "cloud-sun",
+    "hash": "ico_mRu4pQJ4vERq2aEg0Y3ziRdv",
+    "streamlineName": "Weather Cloud Sun Wind",
+    "path": "misc/cloud-sun.svg",
+    "score": 277.9
+  },
+  {
+    "name": "temperature",
+    "hash": "ico_mRu4pQJ4vtZM2aESFbK1ivf1",
+    "streamlineName": "Temperature Up",
+    "path": "misc/temperature.svg",
+    "score": 252.3
+  },
+  {
+    "name": "car",
+    "hash": "ico_mRu4pQJ4v1AG2aEPvJOrjaSz",
+    "streamlineName": "Car",
+    "path": "misc/car.svg",
+    "score": 239.85
+  },
+  {
+    "name": "parking",
+    "hash": "ico_mRu4pQJ4va0N2aEPvJfvjYrt",
+    "streamlineName": "Parking P",
+    "path": "misc/parking.svg",
+    "score": 252.55
+  },
+  {
+    "name": "factory",
+    "hash": "ico_pFsqjLrET9u4vlqX",
+    "streamlineName": "Factory Belt",
+    "path": "misc/factory.svg",
+    "score": 252.4
+  },
+  {
+    "name": "briefcase",
+    "hash": "ico_mRu4pQJ4vWHs2aEeLjwAZtMU",
+    "streamlineName": "Briefcase",
+    "path": "misc/briefcase.svg",
+    "score": 239.55
+  },
+  {
+    "name": "trophy",
+    "hash": "ico_mRu4pQJ4vTvd2aEeLjgnsarj",
+    "streamlineName": "Seo Trophy",
+    "path": "misc/trophy.svg",
+    "score": 252.5
+  },
+  {
+    "name": "cake",
+    "hash": "ico_mRu4pQJ4v6EI2aEBPuWGyKlc",
+    "streamlineName": "Cake Flour",
+    "path": "misc/cake.svg",
+    "score": 252.5
+  },
+  {
+    "name": "recycle",
+    "hash": "ico_7b1eU7lDTEvY4UZW",
+    "streamlineName": "Plastic Bag Recycle",
+    "path": "misc/recycle.svg",
+    "score": 265.05
+  },
+  {
+    "name": "atom",
+    "hash": "ico_mRu4pQJ4vVt72aESFb3ziFMl",
+    "streamlineName": "Science Atom Positive Negative",
+    "path": "misc/atom.svg",
+    "score": 277.5
+  },
+  {
+    "name": "robot",
+    "hash": "ico_mRu4pQJ4vMxs2aEWGyfSZTrw",
+    "streamlineName": "Robot",
+    "path": "misc/robot.svg",
+    "score": 239.75
+  },
+  {
+    "name": "leaf",
+    "hash": "ico_eeyk8ZtVXCRL4hss",
+    "streamlineName": "Vegetable Basil Leaf",
+    "path": "misc/leaf.svg",
+    "score": 265.0
+  }
+]

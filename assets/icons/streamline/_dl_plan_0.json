@@ -1,0 +1,468 @@
+{
+  "items": [
+    {
+      "name": "select-all",
+      "category": "actions",
+      "hash": "ico_VCHeaZv2mtIy4Q40"
+    },
+    {
+      "name": "move",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4viYZ2aEJttg0Y3zx"
+    },
+    {
+      "name": "swap",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vCUy2aE232ZOs2hr"
+    },
+    {
+      "name": "sort",
+      "category": "actions",
+      "hash": "ico_xVHERgWKt9n7JBYG"
+    },
+    {
+      "name": "sort-asc",
+      "category": "actions",
+      "hash": "ico_2rDhMiauEWg6cTHn"
+    },
+    {
+      "name": "sort-desc",
+      "category": "actions",
+      "hash": "ico_MIhSXZAGdRLfxPhu"
+    },
+    {
+      "name": "pin",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vJQD2aEDeGLXcDeG"
+    },
+    {
+      "name": "attach",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vh4O2aEDeGsjsMTP"
+    },
+    {
+      "name": "import",
+      "category": "actions",
+      "hash": "ico_5FPaVLoPbJBoSPF9"
+    },
+    {
+      "name": "export",
+      "category": "actions",
+      "hash": "ico_g7at7nLe5gzZc28T"
+    },
+    {
+      "name": "sync",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vbrm2aEJttiJ4Sz2"
+    },
+    {
+      "name": "power",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vuC42aEJttg0YSRv"
+    },
+    {
+      "name": "logout",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vZTq2aEDeG6nljk1"
+    },
+    {
+      "name": "login",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vwq22aEDeGP2Woe5"
+    },
+    {
+      "name": "flag-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vEEYeLjK1ibmohOa"
+    },
+    {
+      "name": "star-add",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vRxkeLjK1iJ4v5lt"
+    },
+    {
+      "name": "share-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vIO72aEDeGitsVtJ"
+    },
+    {
+      "name": "send-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vRSFeLjM5pgWa5ke"
+    },
+    {
+      "name": "forward-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vx6A2aEJttvhjGto"
+    },
+    {
+      "name": "reply-alt",
+      "category": "actions",
+      "hash": "ico_AoThTg2gbKWwhTtu"
+    },
+    {
+      "name": "quote-reply",
+      "category": "actions",
+      "hash": "ico_XoeC67ZtUtP6je5U"
+    },
+    {
+      "name": "edit-alt",
+      "category": "actions",
+      "hash": "ico_QPbJ6XICcKl9f3Hy"
+    },
+    {
+      "name": "create",
+      "category": "actions",
+      "hash": "ico_5FJT2uXH67JamfkB"
+    },
+    {
+      "name": "new",
+      "category": "actions",
+      "hash": "ico_sBE0S5B7RbNbxK0z"
+    },
+    {
+      "name": "search-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4viw02aEDeGjUAwYE"
+    },
+    {
+      "name": "flag",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vinHeLjK1ibmoeET"
+    },
+    {
+      "name": "open",
+      "category": "actions",
+      "hash": "ico_qwEWFmlH0LmfMzM9"
+    },
+    {
+      "name": "close-alt",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vLmT2aEDeGJttv3X"
+    },
+    {
+      "name": "cancel",
+      "category": "actions",
+      "hash": "ico_BCC29BC1XWUpisMf"
+    },
+    {
+      "name": "clear",
+      "category": "actions",
+      "hash": "ico_baOtbTZyCm3whuUn"
+    },
+    {
+      "name": "erase",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vEpc2aEDeGhtd1I2"
+    },
+    {
+      "name": "find",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vMqZ2aEhtdK1itMU"
+    },
+    {
+      "name": "locate",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vt9IeLjvhj2aEEkd"
+    },
+    {
+      "name": "discover",
+      "category": "actions",
+      "hash": "ico_HVMs28I3sIaH6Vua"
+    },
+    {
+      "name": "explore",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4vSzoeLj9ULgns92o"
+    },
+    {
+      "name": "browse",
+      "category": "actions",
+      "hash": "ico_mRu4pQJ4v8bn2aEdzpZOsNDy"
+    },
+    {
+      "name": "draft",
+      "category": "actions",
+      "hash": "ico_ngC8Ii6gf6miN8da"
+    },
+    {
+      "name": "remind",
+      "category": "actions",
+      "hash": "ico_HGrQnrI87CO98LaP"
+    },
+    {
+      "name": "snooze",
+      "category": "actions",
+      "hash": "ico_AY426BMLBDeAJgRn"
+    },
+    {
+      "name": "info",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vbCd2aEDeGeixb8N"
+    },
+    {
+      "name": "warning",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4v3np2aEDeGeixfzl"
+    },
+    {
+      "name": "error",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vtal2aEDeGJttARZ"
+    },
+    {
+      "name": "success",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vAUF2aEDeGDeG9Ya"
+    },
+    {
+      "name": "help",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4v49b2aEDeGeix5lt"
+    },
+    {
+      "name": "bell",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vIlB2aEDeG3ziL8i"
+    },
+    {
+      "name": "bell-off",
+      "category": "status",
+      "hash": "ico_aGGWktxmPJWkzNWQ"
+    },
+    {
+      "name": "lock",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vyWP2aEDeGg0YWWa"
+    },
+    {
+      "name": "unlock",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4v6lO2aEDeGSFbatI"
+    },
+    {
+      "name": "eye",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4voYS2aEDeGjUA3gZ"
+    },
+    {
+      "name": "eye-off",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vbXl2aEDeGjUAbRt"
+    },
+    {
+      "name": "star",
+      "category": "status",
+      "hash": "ico_WWMza7lZFYB6uhmT"
+    },
+    {
+      "name": "star-filled",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vypOeLjK1iJ4vaWN"
+    },
+    {
+      "name": "shield",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vfCT2aEDeGSFbPvM"
+    },
+    {
+      "name": "shield-check",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vArt2aEhtdP2WwqY"
+    },
+    {
+      "name": "shield-off",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vdiU2aEhtdP2W3vI"
+    },
+    {
+      "name": "pending",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vm1F2aEDeGYBGlpK"
+    },
+    {
+      "name": "loading",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4v6C92aEJttxih3qz"
+    },
+    {
+      "name": "online",
+      "category": "status",
+      "hash": "ico_fCYgm8aBeo7F3iKW"
+    },
+    {
+      "name": "blocked",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vcUn2aEJttYBGQsU"
+    },
+    {
+      "name": "notification",
+      "category": "status",
+      "hash": "ico_8l8KASqA3plHF5XT"
+    },
+    {
+      "name": "badge",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4vJM52aEDeGDeGBrC"
+    },
+    {
+      "name": "critical",
+      "category": "status",
+      "hash": "ico_mRu4pQJ4v4Z72aEJttT2FGNT"
+    },
+    {
+      "name": "play",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4v0Z32aEJttJ4vbRt"
+    },
+    {
+      "name": "pause",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vpZ12aEJttJ4vJuT"
+    },
+    {
+      "name": "stop",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vsDZ2aEJttZOsyOn"
+    },
+    {
+      "name": "skip-forward",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4v9sl2aEJttJ4v0Ij"
+    },
+    {
+      "name": "skip-back",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vmRF2aEJttJ4vkS8"
+    },
+    {
+      "name": "volume",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vLEo2aEDeGOrjWeH"
+    },
+    {
+      "name": "volume-off",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vjsk2aENc3hNEYf3"
+    },
+    {
+      "name": "image",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vNZh2aENc3wvSLwy"
+    },
+    {
+      "name": "video",
+      "category": "media",
+      "hash": "ico_nnzVDdNV9XoXWg2m"
+    },
+    {
+      "name": "camera",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4v1RD2aENc3sjs0EG"
+    },
+    {
+      "name": "mic",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4v1e02aENc3SyUaOa"
+    },
+    {
+      "name": "mic-off",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vNDO2aENc3SyUbfh"
+    },
+    {
+      "name": "headphones",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vFP32aENc37yVk8U"
+    },
+    {
+      "name": "music",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vmHQ2aENc3BPuei2"
+    },
+    {
+      "name": "film",
+      "category": "media",
+      "hash": "ico_mRu4pQJ4vbzoeLjjHWNc3RGX"
+    }
+  ],
+  "hashes": [
+    "ico_VCHeaZv2mtIy4Q40",
+    "ico_mRu4pQJ4viYZ2aEJttg0Y3zx",
+    "ico_mRu4pQJ4vCUy2aE232ZOs2hr",
+    "ico_xVHERgWKt9n7JBYG",
+    "ico_2rDhMiauEWg6cTHn",
+    "ico_MIhSXZAGdRLfxPhu",
+    "ico_mRu4pQJ4vJQD2aEDeGLXcDeG",
+    "ico_mRu4pQJ4vh4O2aEDeGsjsMTP",
+    "ico_5FPaVLoPbJBoSPF9",
+    "ico_g7at7nLe5gzZc28T",
+    "ico_mRu4pQJ4vbrm2aEJttiJ4Sz2",
+    "ico_mRu4pQJ4vuC42aEJttg0YSRv",
+    "ico_mRu4pQJ4vZTq2aEDeG6nljk1",
+    "ico_mRu4pQJ4vwq22aEDeGP2Woe5",
+    "ico_mRu4pQJ4vEEYeLjK1ibmohOa",
+    "ico_mRu4pQJ4vRxkeLjK1iJ4v5lt",
+    "ico_mRu4pQJ4vIO72aEDeGitsVtJ",
+    "ico_mRu4pQJ4vRSFeLjM5pgWa5ke",
+    "ico_mRu4pQJ4vx6A2aEJttvhjGto",
+    "ico_AoThTg2gbKWwhTtu",
+    "ico_XoeC67ZtUtP6je5U",
+    "ico_QPbJ6XICcKl9f3Hy",
+    "ico_5FJT2uXH67JamfkB",
+    "ico_sBE0S5B7RbNbxK0z",
+    "ico_mRu4pQJ4viw02aEDeGjUAwYE",
+    "ico_mRu4pQJ4vinHeLjK1ibmoeET",
+    "ico_qwEWFmlH0LmfMzM9",
+    "ico_mRu4pQJ4vLmT2aEDeGJttv3X",
+    "ico_BCC29BC1XWUpisMf",
+    "ico_baOtbTZyCm3whuUn",
+    "ico_mRu4pQJ4vEpc2aEDeGhtd1I2",
+    "ico_mRu4pQJ4vMqZ2aEhtdK1itMU",
+    "ico_mRu4pQJ4vt9IeLjvhj2aEEkd",
+    "ico_HVMs28I3sIaH6Vua",
+    "ico_mRu4pQJ4vSzoeLj9ULgns92o",
+    "ico_mRu4pQJ4v8bn2aEdzpZOsNDy",
+    "ico_ngC8Ii6gf6miN8da",
+    "ico_HGrQnrI87CO98LaP",
+    "ico_AY426BMLBDeAJgRn",
+    "ico_mRu4pQJ4vbCd2aEDeGeixb8N",
+    "ico_mRu4pQJ4v3np2aEDeGeixfzl",
+    "ico_mRu4pQJ4vtal2aEDeGJttARZ",
+    "ico_mRu4pQJ4vAUF2aEDeGDeG9Ya",
+    "ico_mRu4pQJ4v49b2aEDeGeix5lt",
+    "ico_mRu4pQJ4vIlB2aEDeG3ziL8i",
+    "ico_aGGWktxmPJWkzNWQ",
+    "ico_mRu4pQJ4vyWP2aEDeGg0YWWa",
+    "ico_mRu4pQJ4v6lO2aEDeGSFbatI",
+    "ico_mRu4pQJ4voYS2aEDeGjUA3gZ",
+    "ico_mRu4pQJ4vbXl2aEDeGjUAbRt",
+    "ico_WWMza7lZFYB6uhmT",
+    "ico_mRu4pQJ4vypOeLjK1iJ4vaWN",
+    "ico_mRu4pQJ4vfCT2aEDeGSFbPvM",
+    "ico_mRu4pQJ4vArt2aEhtdP2WwqY",
+    "ico_mRu4pQJ4vdiU2aEhtdP2W3vI",
+    "ico_mRu4pQJ4vm1F2aEDeGYBGlpK",
+    "ico_mRu4pQJ4v6C92aEJttxih3qz",
+    "ico_fCYgm8aBeo7F3iKW",
+    "ico_mRu4pQJ4vcUn2aEJttYBGQsU",
+    "ico_8l8KASqA3plHF5XT",
+    "ico_mRu4pQJ4vJM52aEDeGDeGBrC",
+    "ico_mRu4pQJ4v4Z72aEJttT2FGNT",
+    "ico_mRu4pQJ4v0Z32aEJttJ4vbRt",
+    "ico_mRu4pQJ4vpZ12aEJttJ4vJuT",
+    "ico_mRu4pQJ4vsDZ2aEJttZOsyOn",
+    "ico_mRu4pQJ4v9sl2aEJttJ4v0Ij",
+    "ico_mRu4pQJ4vmRF2aEJttJ4vkS8",
+    "ico_mRu4pQJ4vLEo2aEDeGOrjWeH",
+    "ico_mRu4pQJ4vjsk2aENc3hNEYf3",
+    "ico_mRu4pQJ4vNZh2aENc3wvSLwy",
+    "ico_nnzVDdNV9XoXWg2m",
+    "ico_mRu4pQJ4v1RD2aENc3sjs0EG",
+    "ico_mRu4pQJ4v1e02aENc3SyUaOa",
+    "ico_mRu4pQJ4vNDO2aENc3SyUbfh",
+    "ico_mRu4pQJ4vFP32aENc37yVk8U",
+    "ico_mRu4pQJ4vmHQ2aENc3BPuei2",
+    "ico_mRu4pQJ4vbzoeLjjHWNc3RGX"
+  ]
+}

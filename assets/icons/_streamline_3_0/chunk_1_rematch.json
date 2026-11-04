@@ -1,0 +1,290 @@
+[
+  {
+    "name": "doctor",
+    "figma": "icon/health/doctor",
+    "file": "health/doctor.svg",
+    "oldQuery": "Doctor Desktop",
+    "svgName": "Doctor Desktop",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "document",
+    "figma": "icon/files/document",
+    "file": "files/document.svg",
+    "oldQuery": "Document",
+    "svgName": "Document",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "dosage",
+    "figma": "icon/health/dosage",
+    "file": "health/dosage.svg",
+    "oldQuery": "Medicine Dosage",
+    "svgName": "Medicine Dosage",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "draft",
+    "figma": "icon/actions/draft",
+    "file": "actions/draft.svg",
+    "oldQuery": "Workflow Request Draft",
+    "svgName": "Workflow Request Draft",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "droplet",
+    "figma": "icon/misc/droplet",
+    "file": "misc/droplet.svg",
+    "oldQuery": "Drop Shape",
+    "svgName": "Drop Shape",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "duplicate",
+    "figma": "icon/actions/duplicate",
+    "file": "actions/duplicate.svg",
+    "oldQuery": "Duplicate",
+    "svgName": "Duplicate",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "edit-alt",
+    "figma": "icon/actions/edit.alt",
+    "file": "actions/edit-alt.svg",
+    "oldQuery": "Edit Pdf",
+    "svgName": "Edit Pdf",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "emergency",
+    "figma": "icon/health/emergency",
+    "file": "health/emergency.svg",
+    "oldQuery": "Hospital Emergency Department",
+    "svgName": "Hospital Emergency Department",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "export",
+    "figma": "icon/actions/export",
+    "file": "actions/export.svg",
+    "oldQuery": "Export File",
+    "svgName": "Export File",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "eye-health",
+    "figma": "icon/health/eye.health",
+    "file": "health/eye-health.svg",
+    "oldQuery": "Eye Drop",
+    "svgName": "Eye Drop",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "factory",
+    "figma": "icon/misc/factory",
+    "file": "misc/factory.svg",
+    "oldQuery": "Factory Belt",
+    "svgName": "Factory Belt",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "faq",
+    "figma": "icon/files/faq",
+    "file": "files/faq.svg",
+    "oldQuery": "Contact Us Faq",
+    "svgName": "Contact Us Faq",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "file-pdf",
+    "figma": "icon/files/file.pdf",
+    "file": "files/file-pdf.svg",
+    "oldQuery": "Pdf Reader",
+    "svgName": "Pdf Reader",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "fingerprint",
+    "figma": "icon/misc/fingerprint",
+    "file": "misc/fingerprint.svg",
+    "oldQuery": "Fingerprint Add",
+    "svgName": null,
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "folder-shared",
+    "figma": "icon/files/folder.shared",
+    "file": "files/folder-shared.svg",
+    "oldQuery": "Folder Shared",
+    "svgName": "Folder Shared",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "food",
+    "figma": "icon/misc/food",
+    "file": "misc/food.svg",
+    "oldQuery": "Food Delivery Bag",
+    "svgName": "Food Delivery Bag",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "forward-mail",
+    "figma": "icon/comms/forward.mail",
+    "file": "comms/forward-mail.svg",
+    "oldQuery": "Go Forward 30 Control",
+    "svgName": "Go Forward 30 Control",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "gas",
+    "figma": "icon/misc/gas",
+    "file": "misc/gas.svg",
+    "oldQuery": "Gas Station",
+    "svgName": "Gas Station",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "graduation",
+    "figma": "icon/misc/graduation",
+    "file": "misc/graduation.svg",
+    "oldQuery": "Graduation Hat",
+    "svgName": "Graduation Hat",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "group",
+    "figma": "icon/comms/group",
+    "file": "comms/group.svg",
+    "oldQuery": "Group",
+    "svgName": "Group",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "guide",
+    "figma": "icon/files/guide",
+    "file": "files/guide.svg",
+    "oldQuery": "Drug Guide Book",
+    "svgName": "Drug Guide Book",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "hearing-aid",
+    "figma": "icon/health/hearing.aid",
+    "file": "health/hearing-aid.svg",
+    "oldQuery": "Hearing Aid",
+    "svgName": "Hearing Aid",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "heart",
+    "figma": "icon/health/heart",
+    "file": "health/heart.svg",
+    "oldQuery": "Heart Approve 1",
+    "svgName": "Heart Approve 1",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "hipaa",
+    "figma": "icon/health/hipaa",
+    "file": "health/hipaa.svg",
+    "oldQuery": "Firewall Privacy Shield",
+    "svgName": null,
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "home",
+    "figma": "icon/navigation/home",
+    "file": "navigation/home.svg",
+    "oldQuery": "House 1",
+    "svgName": "House 1",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "hospital",
+    "figma": "icon/health/hospital",
+    "file": "health/hospital.svg",
+    "oldQuery": "Hospital Pin",
+    "svgName": "Hospital Pin",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "import",
+    "figma": "icon/actions/import",
+    "file": "actions/import.svg",
+    "oldQuery": "Import File",
+    "svgName": "Import File",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "inbox",
+    "figma": "icon/comms/inbox",
+    "file": "comms/inbox.svg",
+    "oldQuery": "Inbox Tray Notification Badge",
+    "svgName": null,
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "inhaler",
+    "figma": "icon/health/inhaler",
+    "file": "health/inhaler.svg",
+    "oldQuery": "Inhaler",
+    "svgName": "Inhaler",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "language",
+    "figma": "icon/misc/language",
+    "file": "misc/language.svg",
+    "oldQuery": "Language Barrier Confused",
+    "svgName": "Language Barrier Confused",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "leaf",
+    "figma": "icon/misc/leaf",
+    "file": "misc/leaf.svg",
+    "oldQuery": "Vegetable Basil Leaf",
+    "svgName": "Vegetable Basil Leaf",
+    "regularTop3": null,
+    "boldTop3": null
+  },
+  {
+    "name": "letter",
+    "figma": "icon/files/letter",
+    "file": "files/letter.svg",
+    "oldQuery": "Letter Balloon",
+    "svgName": "Letter Balloon",
+    "regularTop3": null,
+    "boldTop3": null
+  }
+]

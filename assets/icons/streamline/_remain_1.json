@@ -1,0 +1,327 @@
+[
+  {
+    "name": "sync",
+    "category": "actions",
+    "query": "Synchronize"
+  },
+  {
+    "name": "cancel",
+    "category": "actions",
+    "query": "Cancel"
+  },
+  {
+    "name": "reset",
+    "category": "actions",
+    "query": "Reset"
+  },
+  {
+    "name": "find-replace",
+    "category": "actions",
+    "query": "Find Replace"
+  },
+  {
+    "name": "discover",
+    "category": "actions",
+    "query": "Discover"
+  },
+  {
+    "name": "publish",
+    "category": "actions",
+    "query": "Publish"
+  },
+  {
+    "name": "remind",
+    "category": "actions",
+    "query": "Reminder"
+  },
+  {
+    "name": "error",
+    "category": "status",
+    "query": "Remove Circle"
+  },
+  {
+    "name": "bell-off",
+    "category": "status",
+    "query": "Bell Off"
+  },
+  {
+    "name": "eye-off",
+    "category": "status",
+    "query": "View Off"
+  },
+  {
+    "name": "shield",
+    "category": "status",
+    "query": "Shield"
+  },
+  {
+    "name": "pending",
+    "category": "status",
+    "query": "Hourglass"
+  },
+  {
+    "name": "blocked",
+    "category": "status",
+    "query": "Block"
+  },
+  {
+    "name": "priority",
+    "category": "status",
+    "query": "Priority"
+  },
+  {
+    "name": "stop",
+    "category": "media",
+    "query": "Button Stop"
+  },
+  {
+    "name": "volume-off",
+    "category": "media",
+    "query": "Volume Off"
+  },
+  {
+    "name": "mic",
+    "category": "media",
+    "query": "Microphone"
+  },
+  {
+    "name": "film",
+    "category": "media",
+    "query": "Movie"
+  },
+  {
+    "name": "folder",
+    "category": "files",
+    "query": "Folder"
+  },
+  {
+    "name": "tag",
+    "category": "files",
+    "query": "Tag"
+  },
+  {
+    "name": "file-code",
+    "category": "files",
+    "query": "Common File Code"
+  },
+  {
+    "name": "document",
+    "category": "files",
+    "query": "Document"
+  },
+  {
+    "name": "cabinet",
+    "category": "files",
+    "query": "Cabinet"
+  },
+  {
+    "name": "database",
+    "category": "files",
+    "query": "Database"
+  },
+  {
+    "name": "contract",
+    "category": "files",
+    "query": "Contract"
+  },
+  {
+    "name": "license",
+    "category": "files",
+    "query": "License"
+  },
+  {
+    "name": "knowledge-base",
+    "category": "files",
+    "query": "Knowledge Base"
+  },
+  {
+    "name": "newsletter",
+    "category": "files",
+    "query": "Newsletter"
+  },
+  {
+    "name": "media-kit",
+    "category": "files",
+    "query": "Media Kit"
+  },
+  {
+    "name": "cover-letter",
+    "category": "files",
+    "query": "Cover Letter"
+  },
+  {
+    "name": "package-alt",
+    "category": "files",
+    "query": "Package"
+  },
+  {
+    "name": "pallet",
+    "category": "files",
+    "query": "Pallet"
+  },
+  {
+    "name": "folder-locked",
+    "category": "files",
+    "query": "Folder Locked"
+  },
+  {
+    "name": "dollar",
+    "category": "commerce",
+    "query": "Dollar"
+  },
+  {
+    "name": "bag",
+    "category": "commerce",
+    "query": "Shopping Bag"
+  },
+  {
+    "name": "discount",
+    "category": "commerce",
+    "query": "Discount"
+  },
+  {
+    "name": "invoice",
+    "category": "commerce",
+    "query": "Invoice"
+  },
+  {
+    "name": "glasses",
+    "category": "health",
+    "query": "Glasses"
+  },
+  {
+    "name": "pediatric",
+    "category": "health",
+    "query": "Baby"
+  },
+  {
+    "name": "meditation",
+    "category": "health",
+    "query": "Meditation"
+  },
+  {
+    "name": "emergency",
+    "category": "health",
+    "query": "Emergency"
+  },
+  {
+    "name": "inhaler",
+    "category": "health",
+    "query": "Inhaler"
+  },
+  {
+    "name": "asthma",
+    "category": "health",
+    "query": "Asthma"
+  },
+  {
+    "name": "orthopedics",
+    "category": "health",
+    "query": "Bone"
+  },
+  {
+    "name": "surgery",
+    "category": "health",
+    "query": "Surgery"
+  },
+  {
+    "name": "airplane",
+    "category": "misc",
+    "query": "Airplane Mode"
+  },
+  {
+    "name": "translate",
+    "category": "misc",
+    "query": "Translate"
+  },
+  {
+    "name": "desktop",
+    "category": "misc",
+    "query": "Desktop"
+  },
+  {
+    "name": "watch",
+    "category": "misc",
+    "query": "Watch"
+  },
+  {
+    "name": "code",
+    "category": "misc",
+    "query": "Code"
+  },
+  {
+    "name": "hammer",
+    "category": "misc",
+    "query": "Hammer"
+  },
+  {
+    "name": "face-id",
+    "category": "misc",
+    "query": "Face Id"
+  },
+  {
+    "name": "flash",
+    "category": "misc",
+    "query": "Flash"
+  },
+  {
+    "name": "stopwatch",
+    "category": "misc",
+    "query": "Stopwatch"
+  },
+  {
+    "name": "timezone",
+    "category": "misc",
+    "query": "Timezone"
+  },
+  {
+    "name": "snow",
+    "category": "misc",
+    "query": "Snow"
+  },
+  {
+    "name": "coffee",
+    "category": "misc",
+    "query": "Coffee"
+  },
+  {
+    "name": "train",
+    "category": "misc",
+    "query": "Train"
+  },
+  {
+    "name": "building",
+    "category": "misc",
+    "query": "Building"
+  },
+  {
+    "name": "book",
+    "category": "misc",
+    "query": "Book"
+  },
+  {
+    "name": "passport",
+    "category": "misc",
+    "query": "Passport"
+  },
+  {
+    "name": "award",
+    "category": "misc",
+    "query": "Award"
+  },
+  {
+    "name": "fire",
+    "category": "misc",
+    "query": "Fire"
+  },
+  {
+    "name": "water",
+    "category": "misc",
+    "query": "Water"
+  },
+  {
+    "name": "planet",
+    "category": "misc",
+    "query": "Planet"
+  }
+]

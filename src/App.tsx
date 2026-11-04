@@ -8,7 +8,8 @@ import Snackbar from '@mui/material/Snackbar'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { AppIcon } from './icons/AppIcon'
-import { AppShell } from './components/AppShell'
+import { AppShell, type NavItem } from './components/AppShell'
+import { ConversationsPage } from './components/ConversationsPage'
 import { CareResultCard } from './components/CareResultCard'
 import { CareResultCardSkeleton } from './components/CareResultCardSkeleton'
 import { FilterDrawer, type OpenFilterMenu } from './components/FilterDrawer'
@@ -46,7 +47,7 @@ import {
   type ProviderFilters,
 } from './data/mockCareResults'
 
-type View = 'home' | 'results'
+type View = 'home' | 'results' | 'conversations'
 
 /** Simulated fetch delay after Search so the skeleton can be perceived. */
 const SEARCH_LOADING_MS = 750
@@ -56,7 +57,7 @@ const PAGE_SIZE_OPTIONS = [5, 10, 25, 50] as const
 const SORT_OPTIONS = ['Best match', 'Distance', 'Quality'] as const
 
 export default function App() {
-  const [view, setView] = useState<View>('home')
+  const [view, setView] = useState<View>('conversations')
   const [formValues, setFormValues] = useState<SearchFormValues>(
     defaultSearchFormValues,
   )
@@ -135,6 +136,27 @@ export default function App() {
     setSelectedId(null)
     setOverviewId(null)
     setOverviewOpen(false)
+  }
+
+  function goConversations() {
+    if (loadingTimeoutRef.current != null) {
+      window.clearTimeout(loadingTimeoutRef.current)
+      loadingTimeoutRef.current = null
+    }
+    setResultsLoading(false)
+    setDrawerOpen(false)
+    setOpenMenu(null)
+    setOverviewOpen(false)
+    setView('conversations')
+  }
+
+  const activeNav: NavItem =
+    view === 'conversations' ? 'Conversations' : 'Search'
+
+  function handleNavClick(item: NavItem) {
+    if (item === 'Search') goHome()
+    else if (item === 'Conversations') goConversations()
+    else setToast(`Prototype only — ${item} is not connected.`)
   }
 
   const overviewProvider =
@@ -227,15 +249,21 @@ export default function App() {
       }}
     >
       <AppShell
+        activeNav={activeNav}
         onBrandClick={goHome}
         onPrototypeAction={setToast}
-        onNavClick={(item) => {
-          if (item === 'Search') goHome()
-          else setToast(`Prototype only — ${item} is not connected.`)
-        }}
+        onNavClick={handleNavClick}
       />
 
-      {view === 'home' ? (
+      {view === 'conversations' ? (
+        <Box
+          key="conversations"
+          className="enter-fade-up-delay"
+          sx={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}
+        >
+          <ConversationsPage onPrototypeAction={setToast} />
+        </Box>
+      ) : view === 'home' ? (
         <Box
           key="home"
           className="enter-fade-up-delay"

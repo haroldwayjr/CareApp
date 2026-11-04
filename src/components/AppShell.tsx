@@ -9,15 +9,25 @@ import { AppIcon } from '../icons/AppIcon'
 import logomark from '../assets/figma/logomark.svg'
 import { ProfileMenu } from './ProfileMenu'
 
-const NAV_ITEMS = ['Dashboard', 'My Work', 'Schedule', 'Search'] as const
+export const NAV_ITEMS = [
+  'Dashboard',
+  'My Work',
+  'Conversations',
+  'Schedule',
+  'Search',
+] as const
+
+export type NavItem = (typeof NAV_ITEMS)[number]
 
 type AppShellProps = {
+  activeNav?: NavItem
   onBrandClick?: () => void
-  onNavClick?: (item: (typeof NAV_ITEMS)[number]) => void
+  onNavClick?: (item: NavItem) => void
   onPrototypeAction?: (message: string) => void
 }
 
 export function AppShell({
+  activeNav = 'Search',
   onBrandClick,
   onNavClick,
   onPrototypeAction,
@@ -77,28 +87,46 @@ export function AppShell({
             spacing={0.5}
             sx={{
               alignItems: 'center',
-              display: { xs: 'none', md: 'flex' },
+              display: 'flex',
+              overflowX: 'auto',
+              maxWidth: { xs: '42vw', sm: 'none' },
             }}
           >
-            {NAV_ITEMS.map((item) => (
-              <Button
-                key={item}
-                color="inherit"
-                onClick={() => onNavClick?.(item)}
-                sx={{
-                  borderRadius: 1,
-                  px: 1,
-                  py: 0.75,
-                  color: 'text.secondary',
-                  fontWeight: 400,
-                  fontSize: 14,
-                  letterSpacing: 0,
-                  lineHeight: '24px',
-                }}
-              >
-                {item}
-              </Button>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const active = activeNav === item
+              return (
+                <Button
+                  key={item}
+                  color="inherit"
+                  onClick={() => onNavClick?.(item)}
+                  sx={{
+                    position: 'relative',
+                    borderRadius: 1,
+                    px: 1,
+                    py: 0.75,
+                    color: active ? 'primary.main' : 'text.secondary',
+                    fontWeight: active ? 600 : 400,
+                    fontSize: 14,
+                    letterSpacing: 0,
+                    lineHeight: '24px',
+                    '&::after': active
+                      ? {
+                          content: '""',
+                          position: 'absolute',
+                          left: 8,
+                          right: 8,
+                          bottom: 4,
+                          height: 2,
+                          bgcolor: 'primary.main',
+                          borderRadius: 1,
+                        }
+                      : undefined,
+                  }}
+                >
+                  {item}
+                </Button>
+              )
+            })}
           </Stack>
         </Stack>
 

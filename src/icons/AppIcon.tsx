@@ -8,6 +8,11 @@ import notificationsSvg from './streamline/notifications.svg?raw'
 import accountSvg from './streamline/account.svg?raw'
 import filterSvg from './streamline/filter.svg?raw'
 import copySvg from './streamline/copy.svg?raw'
+import addSvg from './streamline/add.svg?raw'
+import closeSvg from './streamline/close.svg?raw'
+import chevronDownSvg from './streamline/chevron-down.svg?raw'
+import sendSvg from './streamline/send.svg?raw'
+import editSparkleSvg from './streamline/edit-sparkle.svg?raw'
 
 /**
  * Icon names used by the app. Keep this list product-facing
@@ -22,6 +27,11 @@ export type AppIconName =
   | 'account'
   | 'filter'
   | 'copy'
+  | 'add'
+  | 'close'
+  | 'chevronDown'
+  | 'send'
+  | 'editSparkle'
 
 type IconComponent = ComponentType<SvgIconProps>
 
@@ -80,6 +90,11 @@ const streamlineIconMap: Record<AppIconName, IconComponent> = {
   account: streamlineIcon(accountSvg),
   filter: streamlineIcon(filterSvg),
   copy: streamlineIcon(copySvg),
+  add: streamlineStrokeIcon(addSvg),
+  close: streamlineStrokeIcon(closeSvg),
+  chevronDown: streamlineStrokeIcon(chevronDownSvg),
+  send: streamlineStrokeIcon(sendSvg),
+  editSparkle: streamlineStrokeIcon(editSparkleSvg),
 }
 
 export type AppIconProps = SvgIconProps & {

@@ -365,7 +365,12 @@ const state = {
   note: defaultNote,
   reassigning: false,
   reassigned: false,
+  alertDismissed: false,
   drafts: {},
+  taskQuotes: {},
+  flags: {},
+  reminders: {},
+  reply: null,
   panel: "details",
   asideFocus: null,
 };
@@ -495,6 +500,57 @@ function reloadList() {
   }, wait(280));
 }
 
+function glyph(name) {
+  const paths = {
+    ask: `<path d="M7.5 17.5 5.2 20v-3A6.8 6.8 0 1 1 12 18.2H7.5Z"/>`,
+    copy: `<rect x="8.5" y="8.5" width="9" height="11" rx="1.5"/><path d="M7 15.5v-9A1.5 1.5 0 0 1 8.5 5H15"/>`,
+    task: `<rect x="5" y="4.5" width="14" height="15" rx="2"/><path d="M8.5 9.5h7M8.5 13.5h7M8.5 17h4"/>`,
+    check: `<path d="m6.5 12.5 3.2 3.2 7.3-7.4"/>`,
+    reply: `<path d="M9 14 5 10l4-4"/><path d="M5 10h8a6 6 0 0 1 6 6v1"/>`,
+    more: `<path d="M6 12h.01M12 12h.01M18 12h.01"/>`,
+    unread: `<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>`,
+    flag: `<path d="M6 20V5"/><path d="M6 5h11l-2.2 3.5L17 12H6"/>`,
+    clock: `<circle cx="12" cy="12" r="7"/><path d="M12 8.5V12l2.5 2"/>`,
+  };
+  return `<svg viewBox="0 0 24 24" aria-hidden="true">${paths[name]}</svg>`;
+}
+
+function actionButton(label, attrs, icon, done) {
+  return `<button class="bubble-action${done ? " is-done" : ""}" type="button" ${attrs} aria-label="${esc(label)}">${glyph(done ? "check" : icon)}<span class="bubble-tip">${esc(label)}</span></button>`;
+}
+
+function moreItem(label, attrs, icon) {
+  return `<button class="more-item" type="button" role="menuitem" ${attrs}>${glyph(icon)}<span>${label}</span></button>`;
+}
+
+function messageMenu(item, side, person, stretch, thread) {
+  if (state.view !== "conversation") return "";
+  const hasTask = !!(thread && thread.task);
+  const saved = hasTask && (state.taskQuotes[thread.id] || []).some((quote) => quote.text === item.text && quote.time === item.time);
+  const buttons = [];
+  if (side === "in") {
+    buttons.push(stretch
+      ? actionButton("In team chat", `data-open-stretch="${esc(stretch.id)}"`, "ask")
+      : actionButton("Ask the team", `data-ask-text="${esc(item.text)}" data-ask-time="${esc(item.time)}" data-ask-who="${esc(person.name)}"`, "ask"));
+    if (hasTask) buttons.push(actionButton(saved ? "On the task" : "Add to task", "data-add-task", saved ? "check" : "task", saved));
+    buttons.push(actionButton("Reply", `data-reply data-reply-name="${esc(person.name)}"`, "reply"));
+  } else {
+    buttons.push(actionButton("Copy", "data-copy-msg", "copy"));
+  }
+  const more = side === "in"
+    ? [
+        moreItem("Copy message", "data-copy-msg", "copy"),
+        moreItem("Mark unread", "data-mark-unread", "unread"),
+        moreItem("Flag for handoff", "data-flag", "flag"),
+        ...(hasTask ? [moreItem("Remind me", "data-remind", "clock")] : []),
+      ]
+    : [
+        moreItem("Copy message", "data-copy-msg", "copy"),
+        ...(hasTask ? [moreItem("Add to task", "data-add-task", "task")] : []),
+      ];
+  return `<div class="bubble-menu" role="toolbar" aria-label="Message actions">${buttons.join("")}<span class="bubble-sep" aria-hidden="true"></span><div class="bubble-more"><button class="bubble-action" type="button" data-more aria-expanded="false" aria-label="More">${glyph("more")}<span class="bubble-tip">More</span></button><div class="more-menu" role="menu" hidden>${more.join("")}</div></div></div>`;
+}
+
 function bubble(item) {
   if (item.type === "system") {
     const detail = item.detail ? `<p class="event-detail">${esc(item.detail)}</p>` : "";
@@ -503,16 +559,17 @@ function bubble(item) {
   if (item.type === "date") return `<div class="date-row">${esc(item.label)}</div>`;
   if (item.type === "join") return `<div class="join"><time>${esc(item.time)}</time><strong>${esc(item.text)}</strong></div>`;
   const side = item.type === "out" ? "out" : "in";
-  const by = side === "out" ? `<p class="msg-by">${esc(people[item.who].name)}${item.role ? ` · ${esc(item.role)}` : ""}</p>` : "";
+  const person = people[item.who];
+  const role = side === "out" && item.role ? `<span class="role"> • ${esc(item.role)}</span>` : "";
+  const face = avatar(item.who, "sm");
+  const by = `<p class="msg-by">${side === "in" ? face : ""}<span class="msg-name">${esc(person.name)}${role}</span>${side === "out" ? face : ""}</p>`;
   const thread = threads.find((entry) => entry.id === state.selectedId);
   const stretch = side === "in" && state.view === "conversation" && thread
     ? [...ensureAside(thread).stretches].reverse().find((entry) => entry.quote && entry.quote.text === item.text && entry.quote.time === item.time)
     : null;
-  const ask = side === "in" && state.view === "conversation" && !stretch
-    ? `<button class="ask-team" type="button" data-ask-text="${esc(item.text)}" data-ask-time="${esc(item.time)}" data-ask-who="${esc(people[item.who].name)}">Ask the team</button>`
-    : "";
   const linked = stretch ? `<button class="in-aside" type="button" data-open-stretch="${esc(stretch.id)}">In team chat</button>` : "";
-  return `<div class="msg ${side}">${avatar(item.who, "sm")}<div class="msg-col">${by}<p class="bubble">${esc(item.text)}</p><time>${esc(item.time)}</time>${linked}${ask}</div></div>`;
+  const quoted = item.reply ? `<span class="bubble-reply"><span>${esc(item.reply.name)}</span><span>${esc(item.reply.text)}</span></span>` : "";
+  return `<div class="msg ${side}" data-msg-name="${esc(person.name)}" data-msg-time="${esc(item.time)}"><div class="msg-col">${messageMenu(item, side, person, stretch, thread)}${by}<div class="bubble-wrap"><p class="bubble">${quoted}${esc(item.text)}</p></div><div class="msg-meta"><time>${esc(item.time)}</time>${linked}</div></div></div>`;
 }
 
 function taskView(thread) {
@@ -521,6 +578,21 @@ function taskView(thread) {
   }
   const owner = state.reassigned ? "Casey Nguyen" : "Lee Martin · Out of office";
   const activity = [
+    ...((state.reminders[thread.id] || []).map((quote) => ({
+      title: "Reminder",
+      meta: "You · Thu, Nov 5 · 3:00 PM",
+      quote: quote.text,
+    }))),
+    ...((state.flags[thread.id] || []).map((quote) => ({
+      title: "Flagged for handoff",
+      meta: `${quote.name} · ${quote.time}`,
+      quote: quote.text,
+    }))),
+    ...((state.taskQuotes[thread.id] || []).map((quote) => ({
+      title: "Message added",
+      meta: `${quote.name} · ${quote.time}`,
+      quote: quote.text,
+    }))),
     ...(state.reassigned ? [{ title: "Reassigned to Casey Nguyen", meta: "You · Just now" }] : []),
     ...(thread.history || []),
   ];
@@ -543,7 +615,7 @@ function taskView(thread) {
     </section>
     <section>
       <p class="panel-section-label">Activity</p>
-      <div class="history-list">${activity.map((item) => `<article class="history-item"><strong>${esc(item.title)}</strong><span>${esc(item.meta)}</span></article>`).join("")}</div>
+      <div class="history-list">${activity.map((item) => `<article class="history-item"><strong>${esc(item.title)}</strong><span>${esc(item.meta)}</span>${item.quote ? `<p class="history-quote">${esc(item.quote)}</p>` : ""}</article>`).join("")}</div>
     </section>
   </div>`;
 }
@@ -630,7 +702,10 @@ function renderStage() {
 }
 
 function composerHTML() {
-  return `<form class="composer" id="composer">
+  const reply = state.reply
+    ? `<div class="reply-chip"><span class="ask-bar" aria-hidden="true"></span><span class="reply-copy"><span class="reply-name">${esc(state.reply.name)}</span><span class="reply-text">${esc(state.reply.text)}</span></span><button class="icon-button reply-clear" type="button" data-clear-reply aria-label="Remove reply">${closeIcon()}</button></div>`
+    : "";
+  return `<form class="composer" id="composer">${reply}
     <button class="icon-button" type="button" aria-label="Add" data-add>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg>
     </button>
@@ -651,10 +726,24 @@ function panelSkeleton() {
   return `<div class="panel-skel" aria-busy="true"><div class="skeleton skel-line w-40"></div><div class="skeleton skel-block"></div><div class="skeleton skel-line w-88"></div><div class="skeleton skel-line w-70"></div><div class="skeleton skel-line w-56"></div></div>`;
 }
 
+function alertHTML(tone, title, body) {
+  if (state.alertDismissed) return "";
+  const icon = tone === "success"
+    ? `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="currentColor"/><path d="m8 12.2 2.4 2.4 5.2-5.4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+    : `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="currentColor"/><path d="M12 8v5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.2" r="1" fill="#fff"/></svg>`;
+  return `<div class="alert${tone === "success" ? " success" : ""}" role="status">
+    <span class="alert-icon">${icon}</span>
+    <div class="alert-copy"><strong>${title}</strong><p>${body}</p></div>
+    <button class="alert-close" type="button" data-dismiss-alert aria-label="Dismiss">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg>
+    </button>
+  </div>`;
+}
+
 function reviewPanel() {
   const alert = state.reassigned
-    ? `<div class="alert success"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="m8.5 12.2 2.3 2.3 4.7-5"/></svg><div><strong>Casey Nguyen owns this task</strong><p>Jordan stays quarterback. Riley will still hear from you by Thursday at 3:00 PM.</p></div></div>`
-    : `<div class="alert"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 11v5"/><circle cx="12" cy="8" r="0.6" fill="currentColor" stroke="none"/></svg><div><strong>Lee Martin is out of office</strong><p>Status changed today at 8:00 AM · back Mon, Nov 9. 1 open task needs a new owner before it’s due Thu at 3:00 PM.</p></div></div>`;
+    ? alertHTML("success", "Casey Nguyen owns this task", "Jordan stays quarterback. Riley will still hear from you by Thursday at 3:00 PM.")
+    : alertHTML("warning", "Lee Martin is out of office", "Status changed today at 8:00 AM · back Mon, Nov 9. 1 open task needs a new owner before it’s due Thu at 3:00 PM.");
   const selected = OWNERS.find((item) => item.id === state.owner);
   const first = state.owner.split(" ")[0];
   return `${alert}
@@ -767,11 +856,11 @@ function teamPanel(thread) {
     </div>
     <form class="composer team-composer" id="team-composer">
       <div class="mention-menu" id="mention-menu" role="listbox" aria-label="Mention a teammate" hidden></div>
+      <button class="icon-button" type="button" aria-label="Add for the team" data-aside-tool="add">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg>
+      </button>
       <textarea rows="1" placeholder="${esc(placeholder)}" aria-label="Message the team"></textarea>
       <div class="composer-tools">
-        <button class="icon-button" type="button" aria-label="Add for the team" data-aside-tool="add">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg>
-        </button>
         <button class="send" type="submit" disabled aria-label="Send to the team">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </button>
@@ -977,6 +1066,141 @@ function sendAside(form) {
   live(mentioned ? `${mentioned.name} notified` : "Sent to the team");
 }
 
+function flashAction(button, label, keep) {
+  live(label);
+  const tip = button.querySelector(".bubble-tip");
+  if (!tip) return;
+  const previous = tip.dataset.label || tip.textContent;
+  tip.dataset.label = keep ? label : previous;
+  tip.textContent = label;
+  button.classList.add("is-done");
+  window.setTimeout(() => {
+    if (keep) return;
+    button.classList.remove("is-done");
+    tip.textContent = tip.dataset.label;
+  }, 1400);
+}
+
+function quoteFromMessage(node) {
+  const msg = node.closest(".msg");
+  return {
+    name: msg.dataset.msgName,
+    time: msg.dataset.msgTime,
+    text: msg.querySelector(".bubble").textContent,
+  };
+}
+
+function closeMoreMenus() {
+  document.querySelectorAll(".msg.is-menu-open").forEach((msg) => {
+    msg.classList.remove("is-menu-open");
+    msg.querySelector(".bubble-more")?.classList.remove("is-open");
+    const menu = msg.querySelector(".more-menu");
+    const button = msg.querySelector("[data-more]");
+    if (menu) {
+      menu.hidden = true;
+      menu.classList.remove("opens-up");
+    }
+    if (button) button.setAttribute("aria-expanded", "false");
+  });
+}
+
+function toggleMore(button) {
+  const msg = button.closest(".msg");
+  const open = button.getAttribute("aria-expanded") === "true";
+  closeMoreMenus();
+  if (open) return;
+  button.setAttribute("aria-expanded", "true");
+  button.closest(".bubble-more").classList.add("is-open");
+  msg.classList.add("is-menu-open");
+  const menu = msg.querySelector(".more-menu");
+  menu.hidden = false;
+  placeMoreMenu(menu);
+}
+
+function placeMoreMenu(menu) {
+  menu.classList.remove("opens-up");
+  const stage = document.querySelector(".stage-body");
+  const bounds = stage ? stage.getBoundingClientRect() : { top: 0, bottom: window.innerHeight };
+  const rect = menu.getBoundingClientRect();
+  if (rect.bottom <= bounds.bottom - 8) return;
+  menu.classList.add("opens-up");
+  const flipped = menu.getBoundingClientRect();
+  if (flipped.top < bounds.top + 8 && bounds.bottom - rect.bottom < bounds.top - flipped.top) {
+    menu.classList.remove("opens-up");
+  }
+}
+
+function fallbackCopy(text) {
+  const area = document.createElement("textarea");
+  area.value = text;
+  area.setAttribute("readonly", "");
+  area.style.position = "fixed";
+  area.style.left = "-999px";
+  document.body.appendChild(area);
+  area.select();
+  document.execCommand("copy");
+  area.remove();
+}
+
+function copyMessage(button) {
+  const text = button.closest(".msg").querySelector(".bubble").textContent;
+  const done = () => {
+    flashAction(button, "Copied");
+    closeMoreMenus();
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(() => {
+      fallbackCopy(text);
+      done();
+    });
+    return;
+  }
+  fallbackCopy(text);
+  done();
+}
+
+function addMessageToTask(button) {
+  const thread = threads.find((entry) => entry.id === state.selectedId);
+  if (!thread || !thread.task) return;
+  const quote = quoteFromMessage(button);
+  const list = state.taskQuotes[thread.id] || (state.taskQuotes[thread.id] = []);
+  if (!list.some((item) => item.text === quote.text && item.time === quote.time)) list.unshift(quote);
+  if (button.classList.contains("more-item")) {
+    live("Added to the task");
+    closeMoreMenus();
+    return;
+  }
+  button.innerHTML = `${glyph("check")}<span class="bubble-tip">Added to the task</span>`;
+  button.setAttribute("aria-label", "On the task");
+  flashAction(button, "Added to the task", true);
+}
+
+function replyToMessage(button) {
+  const quote = quoteFromMessage(button);
+  state.reply = { name: button.dataset.replyName || quote.name, time: quote.time, text: quote.text };
+  renderStage();
+  $("#composer textarea")?.focus();
+  live(`Replying to ${state.reply.name}`);
+}
+
+function remember(bucket, quote, label) {
+  const thread = threads.find((entry) => entry.id === state.selectedId);
+  if (!thread) return;
+  const list = state[bucket][thread.id] || (state[bucket][thread.id] = []);
+  if (!list.some((item) => item.text === quote.text && item.time === quote.time)) list.unshift(quote);
+  live(label);
+  closeMoreMenus();
+}
+
+function markUnread() {
+  const thread = threads.find((entry) => entry.id === state.selectedId);
+  if (!thread) return;
+  thread.unread = true;
+  renderList();
+  live("Marked unread");
+  closeMoreMenus();
+}
+
 function addAsideTool() {
   const thread = threads.find((item) => item.id === state.selectedId);
   if (!thread) return;
@@ -1052,12 +1276,34 @@ function closeConversation() {
   }, wait(220));
 }
 
+/** View switcher thumb — slide + resize to the checked segment. */
+function layoutScopeThumb(animate = true) {
+  const root = document.querySelector(".scope");
+  const thumb = root?.querySelector(".scope-thumb");
+  const active = root?.querySelector('[aria-checked="true"]');
+  if (!root || !thumb || !active) return;
+  const instant = !animate || reduced;
+  if (instant) thumb.classList.add("is-instant");
+  const rootRect = root.getBoundingClientRect();
+  const activeRect = active.getBoundingClientRect();
+  const borderLeft = parseFloat(getComputedStyle(root).borderLeftWidth) || 0;
+  const borderTop = parseFloat(getComputedStyle(root).borderTopWidth) || 0;
+  thumb.style.width = `${Math.round(activeRect.width)}px`;
+  thumb.style.height = `${Math.round(activeRect.height)}px`;
+  thumb.style.transform = `translate(${Math.round(activeRect.left - rootRect.left - borderLeft)}px, ${Math.round(activeRect.top - rootRect.top - borderTop)}px)`;
+  if (instant) {
+    void thumb.offsetWidth;
+    thumb.classList.remove("is-instant");
+  }
+}
+
 function setScope(scope) {
   if (state.scope === scope) return;
   state.scope = scope;
   document.querySelectorAll("[data-scope]").forEach((button) => {
     button.setAttribute("aria-checked", button.dataset.scope === scope ? "true" : "false");
   });
+  layoutScopeThumb(true);
   live(scope === "all" ? "All conversations" : scope === "assigned" ? "Assigned to you" : "Watching");
   reloadList();
 }
@@ -1116,7 +1362,8 @@ function sendMessage(form) {
   const text = field.value.trim();
   if (!text || !state.selectedId) return;
   const thread = threads.find((item) => item.id === state.selectedId);
-  const item = { type: "out", who: "you", text, time: "Just now" };
+  const item = { type: "out", who: "you", text, time: "Just now", reply: state.reply };
+  state.reply = null;
   if (state.view === "task" && thread.handoff) thread.handoff.push(item);
   else {
     state.drafts[thread.id] = state.drafts[thread.id] || [];
@@ -1137,6 +1384,7 @@ function reassign() {
   window.setTimeout(() => {
     state.reassigning = false;
     state.reassigned = true;
+    state.alertDismissed = false;
     const thread = threads.find((item) => item.id === "denied");
     thread.handoff.push({
       type: "system",
@@ -1176,6 +1424,12 @@ renderStage();
 renderPanel();
 
 document.addEventListener("click", (event) => {
+  const moreBtn = event.target.closest("[data-more]");
+  if (moreBtn) {
+    toggleMore(moreBtn);
+    return;
+  }
+  if (!event.target.closest(".more-menu")) closeMoreMenus();
   const scope = event.target.closest("[data-scope]");
   if (scope) {
     setScope(scope.dataset.scope);
@@ -1206,6 +1460,38 @@ document.addEventListener("click", (event) => {
     openAside(null, stretchLink.dataset.openStretch);
     return;
   }
+  const copyBtn = event.target.closest("[data-copy-msg]");
+  if (copyBtn) {
+    copyMessage(copyBtn);
+    return;
+  }
+  const addTask = event.target.closest("[data-add-task]");
+  if (addTask) {
+    addMessageToTask(addTask);
+    return;
+  }
+  const reply = event.target.closest("[data-reply]");
+  if (reply) {
+    replyToMessage(reply);
+    return;
+  }
+  if (event.target.closest("[data-mark-unread]")) {
+    markUnread();
+    return;
+  }
+  if (event.target.closest("[data-flag]")) {
+    remember("flags", quoteFromMessage(event.target), "Flagged for the next advocate");
+    return;
+  }
+  if (event.target.closest("[data-remind]")) {
+    remember("reminders", quoteFromMessage(event.target), "Reminder set for Thu, Nov 5 · 3:00 PM");
+    return;
+  }
+  if (event.target.closest("[data-clear-reply]")) {
+    state.reply = null;
+    renderStage();
+    return;
+  }
   const mention = event.target.closest("[data-mention]");
   if (mention) {
     insertMention(mention.dataset.mention);
@@ -1228,6 +1514,11 @@ document.addEventListener("click", (event) => {
   const view = event.target.closest("[data-view]");
   if (view) {
     setView(view.dataset.view);
+    return;
+  }
+  if (event.target.closest("[data-dismiss-alert]")) {
+    state.alertDismissed = true;
+    renderPanel();
     return;
   }
   if (event.target.closest("[data-close]")) {
@@ -1259,8 +1550,10 @@ document.addEventListener("click", (event) => {
     openMenu("alerts");
     return;
   }
-  if (event.target.closest("#header-search")) {
-    $("#thread-search").focus();
+  if (event.target.closest("#header-search, #threads-search-toggle")) {
+    const open = $("#threads-search-toggle").getAttribute("aria-expanded") === "true";
+    if (open && !$("#thread-search").value.trim()) setSearchOpen(false);
+    else setSearchOpen(true, { focus: true });
     return;
   }
   if (event.target.closest("[data-add]")) {
@@ -1281,12 +1574,27 @@ document.addEventListener("submit", (event) => {
   }
 });
 
+function setSearchOpen(open, { focus = false } = {}) {
+  const field = $("#thread-search-field");
+  $(".threads-head").classList.toggle("is-search-open", open);
+  field.toggleAttribute("inert", !open);
+  $("#threads-search-toggle").setAttribute("aria-expanded", open ? "true" : "false");
+  if (focus) requestAnimationFrame(() => $("#thread-search").focus());
+}
+
 $("#thread-search").addEventListener("input", (event) => {
   state.query = event.target.value;
   renderList();
   if (state.selectedId && !visibleThreads().some((thread) => thread.id === state.selectedId)) {
     closeConversation();
   }
+});
+
+$("#thread-search").addEventListener("blur", () => {
+  window.setTimeout(() => {
+    if (document.activeElement === $("#threads-search-toggle")) return;
+    if (!$("#thread-search").value.trim()) setSearchOpen(false);
+  }, 0);
 });
 
 $("#new-conversation").addEventListener("click", () => {
@@ -1322,10 +1630,12 @@ $("#new-conversation").addEventListener("click", () => {
     document.querySelectorAll("[data-scope]").forEach((item) => {
       item.setAttribute("aria-checked", item.dataset.scope === "assigned" ? "true" : "false");
     });
+    layoutScopeThumb(true);
     state.team = "all";
     state.status = "any";
     state.query = "";
     $("#thread-search").value = "";
+    setSearchOpen(false);
     paintChips();
     paintMenus();
     openThread(id);
@@ -1335,6 +1645,15 @@ $("#new-conversation").addEventListener("click", () => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
+    if (document.activeElement === $("#thread-search")) {
+      if (!$("#thread-search").value.trim()) setSearchOpen(false);
+      else $("#thread-search").blur();
+      return;
+    }
+    if (document.querySelector(".msg.is-menu-open")) {
+      closeMoreMenus();
+      return;
+    }
     const mentions = $("#mention-menu");
     if (mentions && !mentions.hidden) {
       mentions.hidden = true;
@@ -1425,7 +1744,11 @@ window.addEventListener("resize", () => {
   ["threads", "panel"].forEach((key) => {
     if ($("#workspace").style.getPropertyValue(RESIZE[key].prop)) setSize(key, sizeOf(key));
   });
+  layoutScopeThumb(false);
 });
+
+layoutScopeThumb(false);
+document.fonts?.ready.then(() => layoutScopeThumb(false));
 
 document.querySelectorAll(".global-nav a").forEach((link) => {
   link.addEventListener("click", (event) => event.preventDefault());

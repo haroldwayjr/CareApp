@@ -52,6 +52,7 @@
           <h1>Conversations</h1>
           <div class="page-head-row">
             <div class="scope" role="radiogroup" aria-label="Inbox">
+              <span class="scope-thumb" aria-hidden="true"></span>
               <button type="button" role="radio" aria-checked="true" data-scope="assigned">Assigned <span class="count">12</span></button>
               <button type="button" role="radio" aria-checked="false" data-scope="watching">Watching <span class="count">4</span></button>
               <button type="button" role="radio" aria-checked="false" data-scope="all">All <span class="count">48</span></button>
@@ -63,11 +64,20 @@
         <div class="workspace" id="workspace">
           <section class="card threads" aria-label="Threads">
             <div class="threads-head">
-              <h2>Threads</h2>
-              <label class="search">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.25"/><path d="M16 16.5 20 20.5"/></svg>
-                <input id="thread-search" type="search" placeholder="Search threads" autocomplete="off" />
-              </label>
+              <div class="threads-title">
+                <h2>Threads</h2>
+                <button class="icon-button" id="threads-search-toggle" type="button" aria-label="Search threads" aria-expanded="false" aria-controls="thread-search-field">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.25"/><path d="M16 16.5 20 20.5"/></svg>
+                </button>
+              </div>
+              <div class="search-slot" id="thread-search-field" inert>
+                <div class="search-clip">
+                  <label class="search">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.25"/><path d="M16 16.5 20 20.5"/></svg>
+                    <input id="thread-search" type="search" placeholder="Search threads" autocomplete="off" />
+                  </label>
+                </div>
+              </div>
               <div class="filters">
                 <div class="menu-root" data-menu-root="team">
                   <button class="filter-chip" id="chip-team" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="menu-team">

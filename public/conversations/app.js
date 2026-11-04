@@ -749,7 +749,7 @@ function teamPanel(thread) {
   const member = people[thread.person].name.split(" ")[0];
   const open = openStretchCount(aside) > 0;
   const current = activeStretch(aside, true) || activeStretch(aside, false);
-  const placeholder = current && current.quote ? "Reply about this message" : "Message the team";
+  const placeholder = current && current.quote ? "Write a reply to the team..." : "Message the team";
   const body = aside.stretches.length
     ? aside.stretches.map(stretchHTML).join("")
     : `<p class="aside-note">No team messages yet. Ask the team from a member message.</p>`;

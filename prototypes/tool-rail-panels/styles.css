@@ -112,7 +112,7 @@
   --tip-easing-enter: var(--motion-easing-emphasized);
   --tip-duration-exit: var(--motion-duration-fast);
   --tip-easing-exit: var(--motion-easing-exit);
-  --tip-delay-enter: 600ms;
+  --tip-delay-enter: 200ms;
   --tip-offset: 4px; /* parent edge → tip box (arrow sits in this gap) */
   /* Header status signals — Available · Meeting · away tier · Unavailable ring */
   --status-online: #16b04a; /* green/600 */
@@ -709,6 +709,12 @@ button.soft-badge {
   border-color: var(--border-subtle);
   background: var(--surface-subtle);
   color: var(--text-primary);
+  /* Soft Neutral labels are Regular — Medium stays on chromatic Soft only */
+  font-weight: 400;
+}
+button.soft-badge.soft-neutral,
+button.soft-badge.neutral {
+  font-weight: 400;
 }
 .soft-badge.soft-brand {
   border-color: var(--border-subtle);
@@ -972,13 +978,30 @@ html[data-color-mode="dark"] .badge-tip {
 }
 .riley-avatar { background: #e5ecfc; color: var(--brand); }
 .dot-avatar { background: var(--brand); color: var(--text-on-brand); }
-.reply-timers { display: flex; flex-shrink: 0; align-items: center; gap: 12px; }
-.reply-timers-divider { width: 1px; align-self: stretch; min-height: 28px; background: var(--border); }
-.reply-timer { display: flex; flex-direction: column; align-items: flex-end; gap: 0; text-align: right; }
-.reply-timer-label { color: var(--text-secondary); font-size: 11px; font-weight: 400; line-height: 14px; white-space: nowrap; }
-.reply-timer-value { color: var(--text-primary); font-size: 13px; font-weight: 600; line-height: 18px; font-variant-numeric: tabular-nums; }
-.reply-timer:not(.is-active) .reply-timer-value { color: var(--text-tertiary); }
-.reply-timer.is-active .reply-timer-value { color: var(--text-primary); }
+/* Chat / Response timer — Active shows who must reply next */
+.reply-timers { display: flex; flex-shrink: 0; align-items: center; gap: 16px; } /* inline/md when Closed */
+.reply-timers-divider { display: none; width: 1px; align-self: stretch; min-height: 28px; background: var(--border); }
+.reply-timers.is-closed .reply-timers-divider { display: block; }
+.reply-timer {
+  display: flex; align-items: center; gap: 8px; /* inline/sm */
+  text-align: left;
+}
+.reply-timer[hidden] { display: none !important; }
+.reply-timer-well {
+  display: grid; width: 32px; height: 32px; flex: 0 0 32px; place-items: center;
+  border-radius: var(--radius-full); background: var(--surface-subtle); color: var(--icon-default);
+}
+.reply-timers.is-closed .reply-timer-well { display: none; }
+.reply-timer-copy { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.reply-timer-clock { display: block; width: 20px; height: 20px; stroke-width: 1.5; }
+.reply-timer-label {
+  color: var(--text-secondary); font-size: 12px; font-weight: 400; line-height: 16px; /* caption */
+  white-space: nowrap;
+}
+.reply-timer-value {
+  color: var(--text-primary); font-size: 14px; font-weight: 600; line-height: 20px; /* h5 */
+  font-variant-numeric: tabular-nums;
+}
 
 .conversation {
   position: relative;
@@ -1030,7 +1053,7 @@ html[data-color-mode="dark"] .badge-tip {
 }
 .msg-sender-name {
   color: var(--text-primary);
-  font-size: 12px; font-weight: 500; line-height: 16px; /* caption */
+  font-size: 12px; font-weight: 400; line-height: 16px; /* caption */
 }
 .msg-team-meta {
   display: flex; flex-wrap: wrap; align-items: baseline; justify-content: flex-end; gap: 4px;
@@ -1172,33 +1195,37 @@ html[data-color-mode="dark"] .badge-tip {
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
 
-/* Chat / Composer / Modern — Soma master 5002:36752 */
+/* Chat / Composer — Soma master 4547:3386. Row: field + Rewrite + Send. */
 .composer {
-  display: flex; flex-direction: column; gap: 12px;
+  display: flex;
   padding: 12px 20px 16px; border-top: 0; background: var(--surface);
 }
+.composer-row {
+  display: flex; align-items: flex-end; gap: 8px; /* inline/sm, bottom-align */
+  width: 100%; min-width: 0;
+}
 .composer-field {
-  display: flex; flex-direction: column; gap: 12px; /* inset/md between message + actions */
-  min-height: 0; max-height: 168px;
-  /* Figma: pt inset/lg 16 · px/pb inset/md 12 · radius/xl 12 */
-  padding: 16px 12px 12px;
-  border: 1px solid var(--border-subtle);
+  display: flex; flex: 1 1 auto; align-items: center; min-width: 0;
+  min-height: 40px; max-height: 128px;
+  /* inset/xs top · bottom · left, inset/md right · radius/xl · border/strong */
+  padding: 4px 12px 4px 4px;
+  border: 1px solid var(--border-strong);
   border-radius: var(--radius-xl);
   background: var(--surface);
-  transition: border-color 140ms ease;
 }
-.composer-field:focus-within,
-.composer-field.is-filled {
-  border-color: var(--border-strong);
+.composer-field.is-multiline { align-items: flex-start; }
+.composer-field:focus-within {
+  outline: 2px solid var(--brand); outline-offset: 2px;
 }
-/* Message column has extra 8px left inset vs action icons */
 .composer-input-wrap {
-  display: block; flex: 1 1 auto; min-height: 20px; padding-left: 8px;
+  display: flex; flex: 1 1 auto; align-items: center; min-width: 0;
+  /* text slot inset/sm top · bottom · left */
+  padding: 8px 0 8px 8px;
 }
 .composer-input {
   display: block; width: 100%;
   min-height: 20px;
-  max-height: 100px;
+  max-height: 104px; /* field max 128 minus pads */
   padding: 0;
   border: 0; outline: none; resize: none; overflow-y: auto;
   background: transparent;
@@ -1209,50 +1236,53 @@ html[data-color-mode="dark"] .badge-tip {
   field-sizing: content;
 }
 .composer-input::placeholder {
-  color: var(--text-tertiary); /* text/tertiary #475467 */
+  color: var(--text-tertiary);
   font: 400 14px / 20px "Figtree", system-ui, sans-serif;
 }
-.composer-toolbar {
-  display: flex; flex: 0 0 auto; align-items: center; justify-content: space-between; gap: 8px;
-}
-.composer-toolbar-end { display: flex; align-items: center; gap: 8px; }
-/* IconButton size=small · tone=brand · variant=text */
+/* Attach — Button text / brand / small / iconOnly (36) */
 .composer-icon-btn {
   position: relative;
-  display: grid; width: 32px; height: 32px; padding: 0; place-items: center;
+  display: grid; width: 36px; height: 36px; padding: 0; place-items: center;
   border: 0; border-radius: var(--radius-full); background: transparent;
-  color: var(--brand); /* icon/brand */
+  color: var(--brand);
   cursor: pointer;
   overflow: visible;
+  flex: 0 0 36px;
 }
 .composer-icon-btn:hover { background: var(--action-ghost-hover); }
 .composer-icon-btn:active { background: var(--action-ghost-pressed); }
+.composer-icon-btn:disabled:hover,
+.composer-icon-btn:disabled:active { background: transparent; }
 .composer-icon-btn:focus-visible {
   outline: 2px solid var(--brand); outline-offset: 2px;
 }
 .composer-icon-btn svg { display: block; width: 20px; height: 20px; }
-/* icon/actions/add — Regular xs, optically thicker than hairline 1.5 */
 .composer-icon-btn--attach svg { width: 16px; height: 16px; }
 .composer-icon-btn--attach svg path {
   fill: none; stroke: currentColor; stroke-width: 2.25;
   stroke-linecap: round; stroke-linejoin: round;
 }
-/* icon/actions/edit.sparkle — tap target matches Send (40) */
+/* Rewrite — Button outlined / brand / medium / iconOnly */
 .composer-icon-btn--rewrite {
-  width: 40px; height: 40px;
+  width: 40px; height: 40px; flex: 0 0 40px;
+  border: 1px solid var(--brand);
+  background: var(--surface);
 }
 .composer-icon-btn--rewrite svg { width: 20px; height: 20px; }
 .composer-icon-btn--rewrite:disabled {
-  opacity: 0.4; cursor: default;
+  opacity: 1;
+  border-color: var(--action-primary-disabled);
+  background: transparent;
+  color: var(--action-primary-disabled);
+  cursor: not-allowed;
 }
 .composer-icon-btn--rewrite.is-busy {
-  opacity: 0.7; cursor: wait;
+  cursor: wait;
   animation: cleanup-pulse 900ms ease-in-out infinite;
 }
 @keyframes cleanup-pulse {
   50% { opacity: 0.45; }
 }
-/* Hover tip above rewrite / Clean up — shared tip offset */
 .composer-icon-btn .tooltip.tooltip--above {
   top: auto; right: 50%; bottom: calc(100% + var(--tip-offset)); left: auto;
   transform: translate(50%, 4px);
@@ -1275,25 +1305,20 @@ html[data-color-mode="dark"] .badge-tip {
 .composer-icon-btn:disabled:hover .tooltip.tooltip--above {
   opacity: 0; visibility: hidden;
 }
+/* Send — Button contained / brand / medium, label + leading icon */
 .composer-send {
-  --composer-send-wash: var(--action-primary-disabled);
-  display: grid; width: 40px; height: 40px; padding: 0; place-items: center;
-  border: 0; border-radius: var(--radius-full);
-  background: var(--composer-send-wash);
-  color: var(--text-on-brand); /* icon/onBrand */
-  cursor: not-allowed;
-  transition: background 140ms ease, transform 100ms ease;
+  flex: 0 0 auto;
+  gap: 8px;
+  white-space: nowrap;
 }
-.composer-send svg { display: block; width: 18px; height: 18px; }
+.composer-send svg { display: block; width: 20px; height: 20px; flex: 0 0 auto; }
 .composer-send svg path:first-child { fill: currentColor; stroke: none; }
-.composer-send .composer-send-seam { fill: none; stroke: var(--composer-send-wash); }
-.composer-send:disabled { opacity: 1; }
-.composer-send.is-active {
-  --composer-send-wash: var(--brand); /* action/primary */
-  cursor: pointer;
+.button.button-primary.composer-send .composer-send-seam { fill: none; stroke: var(--brand); }
+.button.button-primary.composer-send:hover .composer-send-seam { stroke: var(--brand-hover); }
+.button.button-primary.composer-send:disabled .composer-send-seam,
+.button.button-primary.composer-send:disabled:hover .composer-send-seam {
+  stroke: var(--action-primary-disabled);
 }
-.composer-send.is-active:hover { --composer-send-wash: var(--brand-hover); background: var(--brand-hover); }
-.composer-send.is-active:active { transform: scale(0.96); }
 .panel-resizer {
   position: relative;
   /* 8px gutter between chat card and context panel (image 2) */
@@ -4908,8 +4933,6 @@ html[data-color-mode="dark"] .modal {
     min-height: 56px;
     padding: 8px 12px;
   }
-  .reply-timer-label { display: none; }
-
   .field-grid,
   .compact-grid,
   .dep-row,
@@ -6239,7 +6262,7 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   border-top: 1px solid var(--border);
 }
 .comm-thread-composer .composer-field {
-  max-height: 140px;
+  max-height: 128px;
 }
 
 /* ——— Chat resolution ——— */

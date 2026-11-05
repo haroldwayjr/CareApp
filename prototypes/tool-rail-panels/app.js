@@ -4045,6 +4045,9 @@
     sessionEnding = false;
     sessionEnded = true;
     syncHeaderEndSession();
+    replyTimerState.mode = "closed";
+    window.clearInterval(replyTimerState.intervalId);
+    paintReplyTimers();
     showWorkPage();
     showToast("Session ended for Riley Smith", {
       dwellMs: 8000,
@@ -4052,6 +4055,9 @@
         label: "Undo",
         onClick: () => {
           sessionEnded = false;
+          replyTimerState.mode = "active";
+          paintReplyTimers();
+          startReplyTimerTick();
           showChatPage();
           syncHeaderEndSession();
           setResolutionEndLoading(false);
@@ -5212,29 +5218,31 @@
   function commThreadComposerHtml() {
     return `
       <footer class="composer comm-thread-composer">
-        <div class="composer-field" data-comm-composer-field>
-          <label class="composer-input-wrap">
-            <span class="visually-hidden">Message</span>
-            <textarea class="composer-input" data-comm-composer-input rows="1" placeholder="Describe your issue..."></textarea>
-          </label>
-          <div class="composer-toolbar">
+        <div class="composer-row">
+          <div class="composer-field" data-comm-composer-field>
             <button class="composer-icon-btn composer-icon-btn--attach" type="button" aria-label="Attach an image" tabindex="-1">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
                 <path d="M1 12h22M12 1v22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25"/>
               </svg>
             </button>
-            <div class="composer-toolbar-end">
-              <button class="composer-icon-btn composer-icon-btn--rewrite" type="button" aria-label="Clean up" tabindex="-1" disabled>
-                ${icon.sparkles}
-              </button>
-              <button class="composer-send" data-comm-composer-send type="button" disabled aria-label="Send message">
-                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                  <path d="M1.4 3.743a1.5 1.5 0 0 1 1.973-2.077l19.014 9.659a.75.75 0 0 1 0 1.337L3.373 22.334A1.5 1.5 0 0 1 1.4 20.257l5.058-8.264Z" fill="currentColor"/>
-                  <path d="M6.453 11.993h16.344" class="composer-send-seam" stroke-linecap="round" stroke-width="1.75"/>
-                </svg>
-              </button>
-            </div>
+            <label class="composer-input-wrap">
+              <span class="visually-hidden">Message</span>
+              <textarea class="composer-input" data-comm-composer-input rows="1" placeholder="Write a reply to the member..."></textarea>
+            </label>
           </div>
+          <button class="composer-icon-btn composer-icon-btn--rewrite" type="button" aria-label="Rewrite" tabindex="-1" disabled>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true" overflow="visible">
+              <path d="M22.19 1.81a3.639 3.639 0 0 0-5.17.035l-14.5 14.5L.75 23.25l6.905-1.771 14.5-14.5a3.637 3.637 0 0 0 .035-5.169Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+              <path d="m16.606 2.26 5.134 5.134" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+              <path d="m2.521 16.344 5.139 5.13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+            </svg>
+          </button>
+          <button class="button button-primary composer-send" data-comm-composer-send type="button" disabled>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path d="M1.4 3.743a1.5 1.5 0 0 1 1.973-2.077l19.014 9.659a.75.75 0 0 1 0 1.337L3.373 22.334A1.5 1.5 0 0 1 1.4 20.257l5.058-8.264Z" fill="currentColor"/>
+            </svg>
+            Send
+          </button>
         </div>
       </footer>`;
   }
@@ -5391,6 +5399,10 @@
     send.classList.toggle("is-active", hasText);
     send.setAttribute("aria-disabled", hasText ? "false" : "true");
     field?.classList.toggle("is-filled", hasText);
+    input.style.height = "auto";
+    const next = Math.min(input.scrollHeight, 104);
+    input.style.height = `${Math.max(next, 20)}px`;
+    field?.classList.toggle("is-multiline", next > 28);
   }
 
   function bindCommunicationListActions(root) {
@@ -9228,7 +9240,7 @@ Timestamp: 8/21/18 KS`;
   const composerAttachInput = document.querySelector("#composer-attach-input");
   const composerEl = document.querySelector(".composer");
   const conversationEl = document.querySelector("#conversation");
-  const COMPOSER_INPUT_MAX = 100; /* px — field grows; toolbar stays pinned */
+  const COMPOSER_INPUT_MAX = 104; /* field max 128 minus inset pads */
   let cleanupBusy = false;
   /** @type {AbortController | null} */
   let cleanupAbort = null;
@@ -9283,13 +9295,22 @@ Timestamp: 8/21/18 KS`;
     });
   };
 
-  /** Ping-pong reply clocks — only the last responder’s timer counts up. */
+  /**
+   * Chat / Response timer — Active shows who must reply next.
+   * Seed thread ends on the member, so the advocate clock is live.
+   */
   const replyTimerState = {
-    memberSec: 3,
+    memberSec: 0,
     youSec: 3,
     /** @type {'member' | 'you'} */
-    active: "member",
+    active: "you",
+    /** @type {'active' | 'closed'} */
+    mode: "active",
     intervalId: 0,
+  };
+  const replyTimerLabels = {
+    active: { member: "Member response time", you: "Your response time" },
+    closed: { member: "Member Replied", you: "You Replied" },
   };
 
   const formatReplyMmSs = (totalSec) => {
@@ -9299,13 +9320,33 @@ Timestamp: 8/21/18 KS`;
     return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
   };
 
+  const formatReplyAge = (totalSec) => {
+    const safe = Math.max(0, Math.floor(totalSec));
+    if (safe < 60) return `${safe}s`;
+    const minutes = Math.floor(safe / 60);
+    if (minutes < 60) return `${minutes}m`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours}h`;
+    return `${Math.floor(hours / 24)}d`;
+  };
+
   const paintReplyTimers = () => {
-    const memberEl = document.querySelector('[data-reply-timer="member"]');
-    const youEl = document.querySelector('[data-reply-timer="you"]');
-    if (memberEl) memberEl.textContent = formatReplyMmSs(replyTimerState.memberSec);
-    if (youEl) youEl.textContent = formatReplyMmSs(replyTimerState.youSec);
+    const root = document.querySelector(".reply-timers");
+    const closed = replyTimerState.mode === "closed";
+    root?.classList.toggle("is-closed", closed);
+    root?.setAttribute("data-reply-mode", closed ? "closed" : "active");
+    const labels = closed ? replyTimerLabels.closed : replyTimerLabels.active;
     document.querySelectorAll(".reply-timer[data-reply-side]").forEach((el) => {
-      el.classList.toggle("is-active", el.getAttribute("data-reply-side") === replyTimerState.active);
+      const side = el.getAttribute("data-reply-side");
+      const on = side === replyTimerState.active;
+      el.classList.toggle("is-active", !closed && on);
+      el.hidden = !closed && !on;
+      const label = el.querySelector(".reply-timer-label");
+      if (label && (side === "member" || side === "you")) label.textContent = labels[side];
+      const value = el.querySelector("[data-reply-timer]");
+      if (!value) return;
+      const sec = side === "member" ? replyTimerState.memberSec : replyTimerState.youSec;
+      value.textContent = closed ? formatReplyAge(sec) : formatReplyMmSs(sec);
     });
   };
 
@@ -9318,14 +9359,15 @@ Timestamp: 8/21/18 KS`;
     }, 1000);
   };
 
-  /** Reset the side that just replied and make it the counting clock; freeze the other. */
+  /** Who just spoke. The other party owes the next reply, so their clock restarts. */
   const onReplyTurn = (side) => {
+    if (replyTimerState.mode === "closed") return;
     if (side === "member") {
-      replyTimerState.memberSec = 0;
-      replyTimerState.active = "member";
-    } else {
       replyTimerState.youSec = 0;
       replyTimerState.active = "you";
+    } else {
+      replyTimerState.memberSec = 0;
+      replyTimerState.active = "member";
     }
     paintReplyTimers();
     startReplyTimerTick();
@@ -9461,6 +9503,7 @@ Timestamp: 8/21/18 KS`;
     composerInput.style.height = "auto";
     const next = Math.min(composerInput.scrollHeight, COMPOSER_INPUT_MAX);
     composerInput.style.height = `${Math.max(next, 20)}px`;
+    composerField?.classList.toggle("is-multiline", next > 28);
   };
 
   const syncComposerSend = () => {
@@ -9485,7 +9528,7 @@ Timestamp: 8/21/18 KS`;
     const draft = composerInput.value.trim();
     if (!draft) return;
     if (!globalThis.CareChatEngine?.rewriteDraft) {
-      showToast("Clean up failed to load");
+      showToast("Rewrite failed to load");
       return;
     }
 
@@ -9503,7 +9546,7 @@ Timestamp: 8/21/18 KS`;
       });
       if (cleaned && cleaned !== draft) {
         composerInput.value = cleaned;
-        showToast("Message cleaned up");
+        showToast("Message rewritten");
       } else if (cleaned) {
         composerInput.value = cleaned;
       }
@@ -9661,7 +9704,7 @@ Timestamp: 8/21/18 KS`;
   composerCleanup?.addEventListener("click", () => cleanupComposerDraft());
   syncComposerSend();
   seedChatHistoryFromDom();
-  /* Seed thread ends with member — Member Replied is the live clock */
+  /* Seed thread ends with the member — Your response time is the live clock */
   paintReplyTimers();
   startReplyTimerTick();
 

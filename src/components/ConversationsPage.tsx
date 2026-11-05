@@ -41,6 +41,8 @@ import {
 import avatarMarcus from '../assets/figma/messaging/marcus-bennett.jpg'
 import avatarRiley from '../assets/figma/messaging/avatar-riley.png'
 import logoDot from '../assets/figma/logo-dot.svg'
+import timelineDotActive from '../assets/figma/messaging/timeline-dot-active.svg'
+import timelineDotDefault from '../assets/figma/messaging/timeline-dot-default.svg'
 
 /** Soma semantic values used by this spike (see docs/design-system/soma). */
 const soma = {
@@ -1104,7 +1106,8 @@ function TaskProgressPanel({
           ))}
         </Stack>
 
-        <Stack sx={{ px: 2, pt: 2 }}>
+        {/* Task history · Timeline — Figma 121:7661 */}
+        <Stack sx={{ pt: 2 }}>
           {timeline.map((event, index) => {
             const isLast = index === timeline.length - 1
             return (
@@ -1112,44 +1115,59 @@ function TaskProgressPanel({
                 key={event.id}
                 direction="row"
                 spacing={1.5}
-                sx={{ alignItems: 'flex-start' }}
+                sx={{ alignItems: 'flex-start', width: '100%' }}
               >
                 <Stack
+                  spacing={0.5}
                   sx={{
                     width: 10,
                     alignItems: 'center',
-                    pt: 0.75,
+                    pt: '6px',
                     alignSelf: 'stretch',
+                    overflow: 'hidden',
+                    flexShrink: 0,
                   }}
                 >
                   <Box
+                    component="img"
+                    src={event.active ? timelineDotActive : timelineDotDefault}
+                    alt=""
+                    width={10}
+                    height={10}
                     sx={{
                       width: 10,
                       height: 10,
-                      borderRadius: '50%',
-                      bgcolor: event.active
-                        ? soma.actionPrimary
-                        : soma.borderSubtle,
+                      display: 'block',
                       flexShrink: 0,
                     }}
                   />
                   {!isLast ? (
                     <Box
                       sx={{
-                        width: 1,
+                        width: '1px',
                         flex: 1,
+                        minHeight: 0,
                         bgcolor: soma.borderSubtle,
-                        mt: 0.5,
                       }}
                     />
                   ) : null}
                 </Stack>
-                <Stack spacing={0.25} sx={{ flex: 1, pb: isLast ? 0 : 2 }}>
+                <Stack
+                  spacing="2px"
+                  sx={{
+                    flex: 1,
+                    minWidth: 0,
+                    pb: isLast ? 0 : 2,
+                    overflow: 'hidden',
+                  }}
+                >
                   <Typography
                     sx={{
                       fontSize: 12,
+                      fontWeight: 400,
                       lineHeight: '18px',
                       color: soma.textPrimary,
+                      width: '100%',
                     }}
                   >
                     {event.title}
@@ -1157,8 +1175,10 @@ function TaskProgressPanel({
                   <Typography
                     sx={{
                       fontSize: 12,
+                      fontWeight: 400,
                       lineHeight: '16px',
                       color: soma.textSecondary,
+                      width: '100%',
                     }}
                   >
                     {event.detail}

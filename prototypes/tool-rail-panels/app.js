@@ -3621,8 +3621,8 @@
   let sessionEnded = false;
   let sessionEnding = false;
   let resolutionEndTimer = 0;
-  /** Long enough for one spinner turn before My Work replaces the chat. */
-  const SESSION_END_MS = 800;
+  /** Two spinner turns before My Work replaces the chat. */
+  const SESSION_END_MS = 1600;
   const resolutionTip = { shown: false, done: false };
   const resolutionTipArm = { timer: 0, pauseTimer: 0, observer: null };
   let resolutionSaveTimer = 0;
@@ -3674,7 +3674,7 @@
   const RESOLUTION_STATUS_COPY = {
     saved: "Draft saved",
     saving: "Saving your note...",
-    regenerating: "Regenerating note",
+    regenerating: "Regenerating note...",
   };
 
   function resolutionStatusIcon(state) {
@@ -4107,7 +4107,6 @@
       setResolutionStatus("saved");
       syncResolutionEndButton();
       showToast("Note regenerated", {
-        hideDismiss: true,
         dwellMs: 6000,
         action: {
           label: "Undo",
@@ -8685,7 +8684,7 @@ Timestamp: 8/21/18 KS`;
       toast.append(action);
     }
 
-    if (!options.action && !options.hideDismiss) {
+    if (!options.hideDismiss) {
       const dismiss = document.createElement("button");
       dismiss.type = "button";
       dismiss.className = "toast-dismiss";

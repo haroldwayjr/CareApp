@@ -4845,7 +4845,7 @@ html[data-color-mode="dark"] .modal {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.16);
   transform: scaleX(0);
   transform-origin: left center;
   animation: toast-wash var(--toast-dwell, 8s) linear forwards;
@@ -6376,7 +6376,12 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   border-top: 1px solid var(--border);
   background: var(--surface);
 }
-.resolution-end-bar .button { min-width: 109px; height: 40px; }
+.resolution-end-bar .button {
+  flex: 0 0 auto;
+  min-width: 109px;
+  height: 40px;
+  white-space: nowrap;
+}
 @keyframes resolution-tip-in {
   from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: none; }

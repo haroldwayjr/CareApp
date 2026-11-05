@@ -3619,6 +3619,10 @@
   let resolutionOpen = false;
   let resolutionReturn = { open: true, panel: "assist" };
   let sessionEnded = false;
+  let sessionEnding = false;
+  let resolutionEndTimer = 0;
+  /** Long enough for one spinner turn before My Work replaces the chat. */
+  const SESSION_END_MS = 800;
   const resolutionTip = { shown: false, done: false };
   const resolutionTipArm = { timer: 0, pauseTimer: 0, observer: null };
   let resolutionSaveTimer = 0;
@@ -3698,8 +3702,27 @@
 
   function syncResolutionEndButton() {
     const btn = stage.querySelector("#resolution-end");
-    if (!btn) return;
+    if (!btn || sessionEnding) return;
     btn.disabled = !resolutionIsComplete();
+  }
+
+  function setResolutionEndLoading(loading) {
+    const btn = stage.querySelector("#resolution-end");
+    if (!btn) return;
+    btn.classList.toggle("is-loading", loading);
+    btn.disabled = loading || !resolutionIsComplete();
+    btn.setAttribute("aria-busy", String(loading));
+    if (loading) {
+      btn.innerHTML = `<span class="button-spinner" aria-hidden="true"></span><span>Ending...</span>`;
+    } else {
+      btn.textContent = "End Session";
+    }
+  }
+
+  function cancelPendingSessionEnd() {
+    if (!sessionEnding) return;
+    sessionEnding = false;
+    clearTimeout(resolutionEndTimer);
   }
 
   function syncResolutionSelect(id, value) {
@@ -3773,8 +3796,16 @@
     resolutionTip.done = true;
     resolutionTip.shown = true;
     teardownResolutionTipArm();
-    stage.querySelector("#resolution-tip")?.remove();
+    const tip = stage.querySelector("#resolution-tip");
     stage.querySelector("#resolution-regenerate")?.removeAttribute("aria-describedby");
+    if (!tip) return;
+    if (reduceMotion() || tip.hidden) {
+      tip.remove();
+      return;
+    }
+    tip.classList.remove("is-open", "is-settled");
+    tip.classList.add("is-leaving");
+    tip.addEventListener("animationend", () => tip.remove(), { once: true });
   }
 
   function openResolutionTip() {
@@ -3934,6 +3965,7 @@
     resolutionReturn = { open: panelOpen, panel: activePanel };
     resolutionOpen = true;
     syncHeaderEndSession();
+    if (!resolutionTip.done) resolutionTip.shown = false;
     ensureResolutionDraft();
     const wasOpen = panelOpen;
     panelOpen = true;
@@ -3957,6 +3989,7 @@
 
   function closeResolution(options = {}) {
     if (!resolutionOpen && !options.thenPanel) return;
+    cancelPendingSessionEnd();
     const returning = resolutionReturn;
     resolutionOpen = false;
     syncHeaderEndSession();
@@ -4007,9 +4040,9 @@
     button.addEventListener("click", openQueuedChat);
   });
 
-  function endChatSession() {
-    readResolutionFromDom();
-    if (!resolutionIsComplete() || sessionEnded) return;
+  function finishChatSession() {
+    if (!sessionEnding) return;
+    sessionEnding = false;
     sessionEnded = true;
     syncHeaderEndSession();
     showWorkPage();
@@ -4021,9 +4054,20 @@
           sessionEnded = false;
           showChatPage();
           syncHeaderEndSession();
+          setResolutionEndLoading(false);
+          syncResolutionEndButton();
         },
       },
     });
+  }
+
+  function endChatSession() {
+    readResolutionFromDom();
+    if (!resolutionIsComplete() || sessionEnded || sessionEnding) return;
+    sessionEnding = true;
+    setResolutionEndLoading(true);
+    clearTimeout(resolutionEndTimer);
+    resolutionEndTimer = window.setTimeout(finishChatSession, reduceMotion() ? 0 : SESSION_END_MS);
   }
 
   function regenerateResolutionNote() {
@@ -7469,6 +7513,7 @@ Timestamp: 8/21/18 KS`;
     const doCollapse = () => {
       clearTimeout(transitionTimer);
       clearTimeout(loaderTimer);
+      cancelPendingSessionEnd();
       resolutionOpen = false;
       syncHeaderEndSession();
       teardownResolutionTipArm();
@@ -7495,6 +7540,7 @@ Timestamp: 8/21/18 KS`;
 
   function render(name, options = {}) {
     if (resolutionOpen) {
+      cancelPendingSessionEnd();
       resolutionOpen = false;
       syncHeaderEndSession();
       teardownResolutionTipArm();
@@ -7527,6 +7573,7 @@ Timestamp: 8/21/18 KS`;
 
   function openPanel(name) {
     if (resolutionOpen) {
+      cancelPendingSessionEnd();
       resolutionOpen = false;
       syncHeaderEndSession();
       teardownResolutionTipArm();

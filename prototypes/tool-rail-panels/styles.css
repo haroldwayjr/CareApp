@@ -890,6 +890,17 @@ html[data-color-mode="dark"] .badge-tip {
   cursor: not-allowed;
   transform: none;
 }
+/* Loading keeps the danger fill — distinct from the pale disabled state */
+.button.button-danger.is-loading,
+.button.button-danger.is-loading:disabled,
+.button.button-danger.is-loading:disabled:hover {
+  opacity: 1;
+  border-color: #d92d20;
+  background: #d92d20;
+  color: white;
+  cursor: progress;
+  transform: none;
+}
 /* Soma Button — Variant=text (ghost), Tone=brand; hover/pressed → action/ghost/* */
 .button.button-ghost {
   border: 0; border-radius: var(--radius-full);
@@ -6302,6 +6313,7 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
 .resolution-tip.is-open { animation: resolution-tip-in var(--tip-duration-enter) var(--tip-easing-enter) both; }
 .resolution-tip.is-above.is-open { animation-name: resolution-tip-in-up; }
 .resolution-tip.is-settled { animation: none; }
+.resolution-tip.is-leaving { animation: resolution-tip-out-up var(--tip-duration-exit) var(--tip-easing-exit) both; }
 .resolution-tip::before {
   position: absolute;
   top: -6px;
@@ -6372,6 +6384,10 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
 @keyframes resolution-tip-in-up {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: none; }
+}
+@keyframes resolution-tip-out-up {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-4px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .end-session.is-available,

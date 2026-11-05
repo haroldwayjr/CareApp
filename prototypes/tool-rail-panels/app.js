@@ -9093,6 +9093,18 @@ Timestamp: 8/21/18 KS`;
     a.addEventListener("click", closeNavDrawer);
   });
 
+  document.querySelectorAll('[data-nav="work"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (sessionEnding) {
+        cancelPendingSessionEnd();
+        setResolutionEndLoading(false);
+        syncResolutionEndButton();
+      }
+      showWorkPage();
+    });
+  });
+
   document.querySelector(".wordmark")?.addEventListener("click", (event) => {
     event.preventDefault();
     resetAssistAiGlow();

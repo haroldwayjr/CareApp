@@ -922,8 +922,12 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 .msg:focus-within,
 .msg.is-menu-open { background: var(--surface-subtle); }
 .msg.out { justify-content: flex-end; }
-.msg-col { position: relative; display: flex; flex-direction: column; max-width: min(520px, 82%); min-width: 0; }
+.msg-col { position: relative; display: flex; flex-direction: column; max-width: min(680px, 100%); min-width: 0; }
 .msg.out .msg-col { align-items: flex-end; }
+.msg.in .bubble-wrap,
+.msg.in .msg-meta { margin-left: 32px; }
+.msg.out .bubble-wrap,
+.msg.out .msg-meta { margin-right: 32px; }
 .msg-by {
   display: flex;
   align-items: center;
@@ -938,14 +942,16 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 .msg-by .avatar, .msg-by .avatar-fallback { width: 24px; height: 24px; font-size: 10px; }
 .bubble {
   margin: 0;
-  padding: 12px 16px;
-  border-radius: 18px;
+  padding: 10px 14px;
+  border-radius: 2px 20px 20px 20px;
   background: var(--chat-member);
+  color: var(--text-primary);
   font-size: 14px;
+  font-weight: 400;
   line-height: 20px;
+  text-align: left;
 }
-.msg.in .bubble { border-top-left-radius: 6px; }
-.msg.out .bubble { background: var(--chat-team); border-top-right-radius: 6px; }
+.msg.out .bubble { background: var(--chat-team); border-radius: 20px 2px 20px 20px; }
 .bubble-reply {
   display: flex;
   flex-direction: column;

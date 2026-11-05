@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=status-align-1" />
+    <link rel="stylesheet" href="styles.css?v=resolution-polish-3" />
   </head>
   <body>
     <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
@@ -232,7 +232,7 @@
       </div>
     </header>
 
-    <main class="page">
+    <main class="page" id="chat-page">
       <section class="page-heading page-rise" style="--rise: 1" aria-labelledby="page-title">
         <div class="page-heading-copy">
           <div class="page-heading-lines">
@@ -464,6 +464,181 @@
       </div>
     </main>
 
+    <main class="page work-page" id="work-page" hidden>
+      <section class="work-section" aria-labelledby="incoming-title">
+        <div class="work-section-head">
+          <h1 id="incoming-title">Incoming chats</h1>
+        </div>
+        <div class="work-card">
+          <div class="work-table-wrap">
+            <table class="work-table">
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Customer</th>
+                  <th>State</th>
+                  <th>Intent</th>
+                  <th>Time waiting</th>
+                  <th><span class="visually-hidden">Open</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td>IL</td>
+                  <td>—</td>
+                  <td>58d</td>
+                  <td class="work-actions"><button class="button button-primary button-small" type="button">View chat</button></td>
+                </tr>
+                <tr>
+                  <td>Alex Rivera</td>
+                  <td>Google</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td>45d</td>
+                  <td class="work-actions"><button class="button button-primary button-small" type="button">View chat</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="work-section" aria-labelledby="tasks-title">
+        <div class="work-section-head">
+          <h2 id="tasks-title">My tasks</h2>
+          <span class="soft-badge soft-neutral"><span class="soft-badge-label">65</span></span>
+        </div>
+        <div class="work-filters">
+          <button class="work-filter" type="button">All types <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+          <button class="work-filter" type="button">All statuses <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+          <button class="work-filter" type="button">All tasks <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+          <button class="work-filter" type="button">All members <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+          <button class="button button-secondary" type="button">Clear</button>
+          <button class="button button-primary" type="button">Apply</button>
+        </div>
+        <div class="work-meta">
+          <span>65 results</span>
+          <button class="work-refresh" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 12a8 8 0 1 1-2.2-5.5"/><path d="M20 4v5h-5"/></svg>
+            Refresh List
+          </button>
+        </div>
+        <div class="work-card">
+          <div class="work-table-wrap">
+            <table class="work-table">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Task Name</th>
+                  <th>Objective</th>
+                  <th>Care Pathway</th>
+                  <th>Case Priority</th>
+                  <th>State</th>
+                  <th>Created On</th>
+                  <th>Member</th>
+                  <th>Customer</th>
+                  <th>Task Status</th>
+                  <th>Due Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Human in the Loop</td>
+                  <td>Respond to Chat</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>—</td>
+                  <td>10/07/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Human in the Loop</td>
+                  <td>Claims / Portal Research</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>—</td>
+                  <td>8/20/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>8/20/26</span></td>
+                </tr>
+                <tr>
+                  <td>Human in the Loop</td>
+                  <td>Respond to Chat</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>—</td>
+                  <td>10/07/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Human in the Loop</td>
+                  <td>Claims / Portal Research</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>—</td>
+                  <td>8/20/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>8/20/26</span></td>
+                </tr>
+                <tr>
+                  <td>Human in the Loop</td>
+                  <td>Respond to Chat</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>—</td>
+                  <td>10/07/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Human in the Loop</td>
+                  <td>Respond to Chat</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>—</td>
+                  <td>10/07/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="work-pager">
+          <div class="work-pages" aria-label="Pagination">
+            <button class="work-page-btn is-current" type="button" aria-current="page">1</button>
+            <button class="work-page-btn" type="button">2</button>
+            <button class="work-page-btn" type="button">3</button>
+            <span aria-hidden="true">…</span>
+            <button class="work-page-btn" type="button">12</button>
+          </div>
+          <div class="work-page-size">Show items <strong>12</strong></div>
+        </div>
+      </section>
+    </main>
+
     <div class="nav-drawer-layer" id="nav-drawer-layer" aria-hidden="true">
       <button class="nav-drawer-scrim" type="button" aria-label="Close menu"></button>
       <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
@@ -497,6 +672,6 @@
     </div>
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
     <script src="chat-engine.js?v=mode-trigger-1"></script>
-    <script src="app.js?v=provider-overview-1"></script>
+    <script src="app.js?v=resolution-polish-3"></script>
   </body>
 </html>

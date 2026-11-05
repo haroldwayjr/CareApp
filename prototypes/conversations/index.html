@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=empty-art" />
   </head>
   <body>
     <div class="app">
@@ -75,6 +75,9 @@
                   <label class="search">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.25"/><path d="M16 16.5 20 20.5"/></svg>
                     <input id="thread-search" type="search" placeholder="Search threads" autocomplete="off" />
+                    <button class="search-clear" id="thread-search-clear" type="button" aria-label="Clear search" hidden>
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg>
+                    </button>
                   </label>
                 </div>
               </div>
@@ -130,6 +133,6 @@
       </main>
     </div>
     <div class="sr-only" id="live" aria-live="polite"></div>
-    <script src="app.js"></script>
+    <script src="app.js?v=empty-art"></script>
   </body>
 </html>

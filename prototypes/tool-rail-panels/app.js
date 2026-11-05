@@ -1873,6 +1873,7 @@
           const value = option.dataset.value ?? "";
           hidden.value = value;
           label.textContent = value;
+          label.classList.remove("is-placeholder");
           menu.querySelectorAll("[data-value]").forEach((row) => {
             const on = row === option;
             row.classList.toggle("is-selected", on);
@@ -3571,7 +3572,7 @@
   let notesSaving = false;
   const notesExpandedIds = new Set();
 
-  function notesSelectHtml(id, fieldKey, value, options) {
+  function notesSelectHtml(id, fieldKey, value, options, placeholder = "") {
     const opts = (options || [])
       .map((opt) => {
         const selected = opt === value;
@@ -3580,10 +3581,11 @@
           </button>`;
       })
       .join("");
+    const showPlaceholder = !value && placeholder;
     return `<div class="select-wrap inline-select">
         <input type="hidden" id="${id}" data-field="${fieldKey}" value="${escapeAttr(value)}" />
         <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-controls="${id}-menu" id="${id}-trigger">
-          <span class="select-trigger-label">${escapeAttr(value)}</span>${icon.down}
+          <span class="select-trigger-label${showPlaceholder ? " is-placeholder" : ""}">${escapeAttr(showPlaceholder ? placeholder : value)}</span>${icon.down}
         </button>
         <div class="select-menu" id="${id}-menu" role="listbox" hidden>${opts}</div>
       </div>`;
@@ -3595,6 +3597,485 @@
       ? ` <button class="ins-info notes-field-tip" type="button" aria-label="About ${escapeAttr(label)}">${icon.info}<span class="ins-info-tip" role="tooltip">${escapeAttr(tip)}</span></button>`
       : "";
     return `<div class="notes-field-label">${escapeAttr(label)}${req}${tipBtn}</div>`;
+  }
+
+  /* ——— Chat resolution (end session) ——— */
+  const RESOLUTION_DISPOSITION_OPTIONS = [
+    "Plan Support - Medical",
+    "Coverage Question Resolved",
+    "Benefits Inquiry",
+    "Claim Status Check",
+    "Provider Information Request",
+    "General Inquiry",
+    "Escalation Required",
+  ];
+  const RESOLUTION_OUTCOME_OPTIONS = [
+    "Chat Resolved - no follow up needed",
+    "Review Resolved",
+    "Canceled by Member",
+    "Homework tasks in progress",
+  ];
+
+  let resolutionOpen = false;
+  let resolutionReturn = { open: true, panel: "assist" };
+  let sessionEnded = false;
+  const resolutionTip = { shown: false, done: false };
+  const resolutionTipArm = { timer: 0, pauseTimer: 0, observer: null };
+  let resolutionSaveTimer = 0;
+  let resolutionStatusTimer = 0;
+  let resolutionRegenTimer = 0;
+  let resolutionNotesTypingAt = 0;
+  const resolutionState = {
+    title: "Specialist referral — Dr. Patel",
+    disposition: "",
+    resolution: "",
+    notes: "",
+    draftIndex: 0,
+    status: "idle",
+  };
+
+  function resolutionDraftBodies() {
+    const now = new Date();
+    const date = now.toLocaleDateString("en-US", { month: "numeric", day: "numeric", year: "numeric" });
+    const time = now.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+    const tz = "MST";
+    return [
+      `Date: ${date}\nTime: ${time}\nTimezone: ${tz}\n\nIntent: Member asked about a specialist referral on the CalPERS PPO plan and asked to search by name for Dr. Patel, cardiology.\n\nNavigation: Confirmed CalPERS PPO Basic enrollment and found three in-network cardiologists near Oakland.\n\nFollow-Ups: None required if the member picks from the three options.\n\nOther: Member is waiting on the provider list before the session closes.`,
+      `Date: ${date}\nTime: ${time}\nTimezone: ${tz}\n\nIntent: Member needed help locating an in-network cardiologist (Dr. Patel) under the CalPERS PPO Basic Plan.\n\nNavigation: Verified active enrollment and matched three in-network cardiologists near Oakland. Offered to share the names in chat.\n\nFollow-Ups: Share the three provider names if the member wants them. No homework task opened.\n\nOther: Referral number was not available; search was by specialist name.`,
+      `Date: ${date}\nTime: ${time}\nTimezone: ${tz}\n\nIntent: Specialist referral question for cardiology on the CalPERS PPO plan.\n\nNavigation: Looked up Dr. Patel by name and confirmed three in-network cardiologists near Oakland.\n\nFollow-Ups: None. Member can message back after choosing a provider.\n\nOther: Session can close once the provider options are shared.`,
+    ];
+  }
+
+  function ensureResolutionDraft() {
+    if (!resolutionState.notes) resolutionState.notes = resolutionDraftBodies()[0];
+  }
+
+  function resolutionIsComplete() {
+    return [resolutionState.title, resolutionState.disposition, resolutionState.resolution, resolutionState.notes].every(
+      (value) => String(value ?? "").trim()
+    );
+  }
+
+  function readResolutionFromDom() {
+    const title = stage.querySelector("#resolution-title");
+    const notes = stage.querySelector("#resolution-notes");
+    const disposition = stage.querySelector("#resolution-disposition");
+    const outcome = stage.querySelector("#resolution-outcome");
+    if (title) resolutionState.title = title.value;
+    if (notes) resolutionState.notes = notes.value;
+    if (disposition) resolutionState.disposition = disposition.value;
+    if (outcome) resolutionState.resolution = outcome.value;
+  }
+
+  const RESOLUTION_STATUS_COPY = {
+    saved: "Draft saved",
+    saving: "Saving your note...",
+    regenerating: "Regenerating note",
+  };
+
+  function resolutionStatusIcon(state) {
+    if (state === "saved") {
+      return `<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0a8 8 0 1 0 .01 16A8 8 0 0 0 8 0Zm3.78 5.72-4.3 5.5a.75.75 0 0 1-1.12.08L3.9 8.84a.75.75 0 1 1 1.06-1.06l1.86 1.86 3.78-4.84a.75.75 0 1 1 1.18.92Z"/></svg>`;
+    }
+    if (state === "saving" || state === "regenerating") {
+      return `<span class="resolution-status-spinner" aria-hidden="true"></span>`;
+    }
+    return "";
+  }
+
+  function setResolutionStatus(state) {
+    resolutionState.status = state;
+    const el = stage.querySelector("#resolution-status");
+    if (!el) return;
+    const visible = state === "saved" || state === "saving" || state === "regenerating";
+    el.hidden = !visible;
+    el.dataset.state = state;
+    const label = el.querySelector(".resolution-status-label");
+    const iconSlot = el.querySelector(".resolution-status-icon");
+    if (label) label.textContent = RESOLUTION_STATUS_COPY[state] || "";
+    if (iconSlot) iconSlot.innerHTML = resolutionStatusIcon(state);
+  }
+
+  function syncResolutionEndButton() {
+    const btn = stage.querySelector("#resolution-end");
+    if (!btn) return;
+    btn.disabled = !resolutionIsComplete();
+  }
+
+  function syncResolutionSelect(id, value) {
+    const hidden = stage.querySelector(`#${id}`);
+    if (!hidden) return;
+    hidden.value = value;
+    const wrap = hidden.closest(".select-wrap");
+    const label = wrap?.querySelector(".select-trigger-label");
+    if (label) label.textContent = value;
+    wrap?.querySelectorAll("[data-value]").forEach((row) => {
+      const on = row.dataset.value === value;
+      row.classList.toggle("is-selected", on);
+      row.setAttribute("aria-selected", String(on));
+      const check = row.querySelector("svg");
+      if (on && !check) row.insertAdjacentHTML("beforeend", icon.check);
+      else if (!on && check) check.remove();
+    });
+  }
+
+  function applyResolutionSnapshot(snapshot) {
+    Object.assign(resolutionState, snapshot);
+    const title = stage.querySelector("#resolution-title");
+    const notes = stage.querySelector("#resolution-notes");
+    if (title) title.value = snapshot.title;
+    if (notes) notes.value = snapshot.notes;
+    syncResolutionSelect("resolution-disposition", snapshot.disposition);
+    syncResolutionSelect("resolution-outcome", snapshot.resolution);
+    syncResolutionEndButton();
+    setResolutionStatus("saved");
+  }
+
+  function scheduleResolutionSave() {
+    if (resolutionState.status === "regenerating") return;
+    clearTimeout(resolutionSaveTimer);
+    clearTimeout(resolutionStatusTimer);
+    resolutionSaveTimer = window.setTimeout(() => {
+      setResolutionStatus("saving");
+      resolutionStatusTimer = window.setTimeout(() => setResolutionStatus("saved"), 700);
+    }, 600);
+  }
+
+  function teardownResolutionTipArm() {
+    clearTimeout(resolutionTipArm.timer);
+    clearTimeout(resolutionTipArm.pauseTimer);
+    resolutionTipArm.timer = 0;
+    resolutionTipArm.pauseTimer = 0;
+    resolutionTipArm.observer?.disconnect();
+    resolutionTipArm.observer = null;
+  }
+
+  function resolutionTipHtml() {
+    if (resolutionTip.done) return "";
+    const open = resolutionTip.shown;
+    const cls = open ? "resolution-tip is-open is-settled" : "resolution-tip";
+    return `
+      <div class="${cls}" id="resolution-tip" role="dialog" aria-labelledby="resolution-tip-title"${open ? "" : " hidden"}>
+        <div class="resolution-tip-head">
+          <strong id="resolution-tip-title">Get a new draft</strong>
+          <button class="resolution-tip-close" type="button" aria-label="Dismiss tip">
+            <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3L3 11" fill="none" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <p>Replace your edits with a fresh note generated from this conversation.</p>
+      </div>`;
+  }
+
+  function dismissResolutionTip() {
+    resolutionTip.done = true;
+    resolutionTip.shown = true;
+    teardownResolutionTipArm();
+    stage.querySelector("#resolution-tip")?.remove();
+    stage.querySelector("#resolution-regenerate")?.removeAttribute("aria-describedby");
+  }
+
+  function openResolutionTip() {
+    if (resolutionTip.shown || resolutionTip.done) return;
+    const tip = stage.querySelector("#resolution-tip");
+    const btn = stage.querySelector("#resolution-regenerate");
+    const scroll = stage.querySelector(".resolution-scroll");
+    if (!tip || !btn || !scroll) return;
+    const btnRect = btn.getBoundingClientRect();
+    const scrollRect = scroll.getBoundingClientRect();
+    tip.classList.toggle("is-above", scrollRect.bottom - btnRect.bottom < 150);
+    tip.hidden = false;
+    tip.classList.add("is-open");
+    resolutionTip.shown = true;
+    btn.setAttribute("aria-describedby", "resolution-tip-title");
+    teardownResolutionTipArm();
+  }
+
+  function bindResolutionTip() {
+    const tip = stage.querySelector("#resolution-tip");
+    tip?.querySelector(".resolution-tip-close")?.addEventListener("click", dismissResolutionTip);
+    if (!tip || resolutionTip.shown || resolutionTip.done) return;
+    const btn = stage.querySelector("#resolution-regenerate");
+    const scroll = stage.querySelector(".resolution-scroll");
+    const notes = stage.querySelector("#resolution-notes");
+    if (!btn || !scroll) return;
+
+    let fullyVisible = false;
+    let focused = false;
+
+    const typingActive = () =>
+      document.activeElement === notes && Date.now() - resolutionNotesTypingAt < 800;
+
+    const cancelArm = () => {
+      clearTimeout(resolutionTipArm.timer);
+      resolutionTipArm.timer = 0;
+    };
+
+    const considerTip = () => {
+      if (resolutionTip.shown || resolutionTip.done || !btn.isConnected) return;
+      const armed = fullyVisible || focused || document.activeElement === btn;
+      if (!armed) {
+        cancelArm();
+        return;
+      }
+      if (typingActive()) {
+        cancelArm();
+        return;
+      }
+      if (resolutionTipArm.timer) return;
+      resolutionTipArm.timer = window.setTimeout(() => {
+        resolutionTipArm.timer = 0;
+        if (resolutionTip.shown || resolutionTip.done || !btn.isConnected) return;
+        const stillArmed = fullyVisible || document.activeElement === btn;
+        if (!stillArmed || typingActive()) return;
+        openResolutionTip();
+      }, 500);
+    };
+
+    resolutionTipArm.observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        fullyVisible = Boolean(entry?.isIntersecting && entry.intersectionRatio >= 1);
+        considerTip();
+      },
+      { root: scroll, threshold: 1 }
+    );
+    resolutionTipArm.observer.observe(btn);
+
+    btn.addEventListener("focus", () => {
+      focused = true;
+      considerTip();
+    });
+    btn.addEventListener("blur", () => {
+      focused = false;
+      if (!fullyVisible) cancelArm();
+    });
+
+    notes?.addEventListener("input", () => {
+      resolutionNotesTypingAt = Date.now();
+      cancelArm();
+      clearTimeout(resolutionTipArm.pauseTimer);
+      resolutionTipArm.pauseTimer = window.setTimeout(() => {
+        resolutionTipArm.pauseTimer = 0;
+        if (Date.now() - resolutionNotesTypingAt >= 800) considerTip();
+      }, 800);
+    });
+    notes?.addEventListener("blur", () => {
+      clearTimeout(resolutionTipArm.pauseTimer);
+      resolutionTipArm.pauseTimer = 0;
+      considerTip();
+    });
+  }
+
+  function resolutionTemplate() {
+    ensureResolutionDraft();
+    const status = resolutionState.status;
+    return `
+    <article class="panel-content" data-content="resolution">
+      <header class="panel-header">
+        <h2>Chat Resolution</h2>
+        <button class="icon-button panel-close" type="button" aria-label="Close Chat Resolution">${icon.close}</button>
+      </header>
+      <div class="panel-scroll resolution-scroll">
+        <div class="notes-form" data-resolution-form>
+          <div class="notes-field notes-field--compact">
+            ${notesFieldLabel("Note Title", { required: true })}
+            <input class="inline-field-control" id="resolution-title" type="text" data-field="title" value="${escapeAttr(resolutionState.title)}" required />
+          </div>
+          <div class="notes-field notes-field--compact">
+            ${notesFieldLabel("Primary Disposition", { required: true })}
+            ${notesSelectHtml("resolution-disposition", "disposition", resolutionState.disposition, RESOLUTION_DISPOSITION_OPTIONS)}
+          </div>
+          <div class="notes-field notes-field--compact">
+            ${notesFieldLabel("Resolution", { required: true })}
+            ${notesSelectHtml("resolution-outcome", "resolution", resolutionState.resolution, RESOLUTION_OUTCOME_OPTIONS)}
+          </div>
+          <div class="notes-field notes-field--body">
+            ${notesFieldLabel("Notes", { required: true })}
+            <textarea class="inline-field-control inline-field-textarea resolution-notes" id="resolution-notes" data-field="notes" rows="10" required>${escapeAttr(resolutionState.notes)}</textarea>
+          </div>
+        </div>
+        <div class="resolution-regen-row">
+          <div class="resolution-regen-anchor">
+            <button class="button button-secondary" type="button" id="resolution-regenerate">Regenerate note</button>
+            ${resolutionTipHtml()}
+          </div>
+          <p class="resolution-status" id="resolution-status" role="status" data-state="${status}"${status === "idle" ? " hidden" : ""}>
+            <span class="resolution-status-icon" aria-hidden="true">${resolutionStatusIcon(status)}</span>
+            <span class="resolution-status-label">${RESOLUTION_STATUS_COPY[status] || ""}</span>
+          </p>
+        </div>
+      </div>
+      <div class="resolution-end-bar">
+        <button class="button button-danger" type="button" id="resolution-end"${resolutionIsComplete() ? "" : " disabled"}>End Session</button>
+      </div>
+      ${taskListHtml()}
+    </article>`;
+  }
+
+  function paintResolution() {
+    teardownResolutionTipArm();
+    stage.innerHTML = resolutionTemplate();
+    if (!reduceMotion()) stage.querySelector(".panel-content")?.classList.add("is-entering");
+    bindPanelActions();
+    bindResolutionActions();
+  }
+
+  function syncHeaderEndSession() {
+    const btn = document.querySelector(".end-session");
+    if (!btn || !btn.classList.contains("is-available")) return;
+    btn.hidden = sessionEnded || resolutionOpen;
+  }
+
+  function openResolution() {
+    if (sessionEnded || resolutionOpen) return;
+    resolutionReturn = { open: panelOpen, panel: activePanel };
+    resolutionOpen = true;
+    syncHeaderEndSession();
+    ensureResolutionDraft();
+    const wasOpen = panelOpen;
+    panelOpen = true;
+    panel.classList.remove("is-collapsed");
+    panel.removeAttribute("inert");
+    panel.setAttribute("aria-hidden", "false");
+    panel.setAttribute("aria-label", "Chat Resolution panel");
+    syncSheetChrome();
+    clearTimeout(transitionTimer);
+    if (wasOpen && !reduceMotion()) {
+      stage.classList.add("is-exiting");
+      transitionTimer = window.setTimeout(() => {
+        stage.classList.remove("is-exiting");
+        paintResolution();
+      }, 115);
+    } else {
+      stage.classList.remove("is-exiting");
+      paintResolution();
+    }
+  }
+
+  function closeResolution(options = {}) {
+    if (!resolutionOpen && !options.thenPanel) return;
+    const returning = resolutionReturn;
+    resolutionOpen = false;
+    syncHeaderEndSession();
+    teardownResolutionTipArm();
+    clearTimeout(transitionTimer);
+    stage.classList.remove("is-exiting");
+    if (options.thenPanel) {
+      openPanel(options.thenPanel);
+      return;
+    }
+    if (!returning.open) {
+      panelOpen = false;
+      panel.classList.add("is-collapsed");
+      panel.setAttribute("aria-hidden", "true");
+      panel.inert = true;
+      updateRail(activePanel, false);
+      syncBreadcrumb(activePanel, false);
+      syncSheetChrome();
+      return;
+    }
+    panel.setAttribute("aria-label", `${titleFor(activePanel)} panel`);
+    render(activePanel, { skipEnter: true });
+    updateRail(activePanel, true);
+  }
+
+  function showWorkPage() {
+    document.querySelector("#chat-page")?.setAttribute("hidden", "");
+    const work = document.querySelector("#work-page");
+    work?.removeAttribute("hidden");
+    document.title = "Care App — My Work";
+  }
+
+  function showChatPage() {
+    document.querySelector("#work-page")?.setAttribute("hidden", "");
+    document.querySelector("#chat-page")?.removeAttribute("hidden");
+    document.title = "Care App — Chat with Riley Smith";
+  }
+
+  function endChatSession() {
+    readResolutionFromDom();
+    if (!resolutionIsComplete() || sessionEnded) return;
+    sessionEnded = true;
+    syncHeaderEndSession();
+    showWorkPage();
+    showToast("Session ended for Riley Smith", {
+      dwellMs: 8000,
+      action: {
+        label: "Undo",
+        onClick: () => {
+          sessionEnded = false;
+          showChatPage();
+          syncHeaderEndSession();
+        },
+      },
+    });
+  }
+
+  function regenerateResolutionNote() {
+    if (resolutionState.status === "regenerating") return;
+    readResolutionFromDom();
+    const snapshot = {
+      title: resolutionState.title,
+      disposition: resolutionState.disposition,
+      resolution: resolutionState.resolution,
+      notes: resolutionState.notes,
+      draftIndex: resolutionState.draftIndex,
+      status: "saved",
+    };
+    const drafts = resolutionDraftBodies();
+    clearTimeout(resolutionSaveTimer);
+    clearTimeout(resolutionStatusTimer);
+    clearTimeout(resolutionRegenTimer);
+    setResolutionStatus("regenerating");
+    const lock = (on) => {
+      ["#resolution-title", "#resolution-notes", "#resolution-regenerate"].forEach((sel) => {
+        const el = stage.querySelector(sel);
+        if (el) el.disabled = on;
+      });
+      stage.querySelectorAll("[data-resolution-form] .select-trigger").forEach((el) => {
+        el.disabled = on;
+      });
+    };
+    lock(true);
+    resolutionRegenTimer = window.setTimeout(() => {
+      let next = (snapshot.draftIndex + 1) % drafts.length;
+      if (drafts[next] === snapshot.notes) next = (next + 1) % drafts.length;
+      resolutionState.draftIndex = next;
+      resolutionState.notes = drafts[next];
+      const notes = stage.querySelector("#resolution-notes");
+      if (notes) notes.value = resolutionState.notes;
+      lock(false);
+      setResolutionStatus("saved");
+      syncResolutionEndButton();
+      showToast("Note regenerated", {
+        hideDismiss: true,
+        dwellMs: 6000,
+        action: {
+          label: "Undo",
+          onClick: () => applyResolutionSnapshot(snapshot),
+        },
+      });
+    }, 800);
+  }
+
+  function bindResolutionActions() {
+    bindInlineSelects();
+    const form = stage.querySelector("[data-resolution-form]");
+    const onEdit = () => {
+      readResolutionFromDom();
+      syncResolutionEndButton();
+      scheduleResolutionSave();
+    };
+    form?.querySelectorAll("input[type='text'], textarea").forEach((el) => {
+      el.addEventListener("input", onEdit);
+    });
+    form?.querySelectorAll(".select-menu [data-value]").forEach((opt) => {
+      opt.addEventListener("click", onEdit);
+    });
+    stage.querySelector("#resolution-regenerate")?.addEventListener("click", regenerateResolutionNote);
+    stage.querySelector("#resolution-end")?.addEventListener("click", endChatSession);
+    syncResolutionEndButton();
+    bindResolutionTip();
   }
 
   function notesCreateFormHtml() {
@@ -6953,6 +7434,9 @@ Timestamp: 8/21/18 KS`;
     const doCollapse = () => {
       clearTimeout(transitionTimer);
       clearTimeout(loaderTimer);
+      resolutionOpen = false;
+      syncHeaderEndSession();
+      teardownResolutionTipArm();
       panelOpen = false;
       providerSearchState.view = "results";
       providerSearchState.overviewId = null;
@@ -6975,6 +7459,11 @@ Timestamp: 8/21/18 KS`;
   }
 
   function render(name, options = {}) {
+    if (resolutionOpen) {
+      resolutionOpen = false;
+      syncHeaderEndSession();
+      teardownResolutionTipArm();
+    }
     clearTimeout(loaderTimer);
     const showLoader = options.forceLoader || (!loaded.has(name) && name !== "member");
     if (showLoader) {
@@ -7002,6 +7491,11 @@ Timestamp: 8/21/18 KS`;
   }
 
   function openPanel(name) {
+    if (resolutionOpen) {
+      resolutionOpen = false;
+      syncHeaderEndSession();
+      teardownResolutionTipArm();
+    }
     const switching = panelOpen && activePanel !== name;
     if (name === "insurance" && (!panelOpen || activePanel !== "insurance")) {
       Object.assign(insuranceState, {
@@ -7257,7 +7751,10 @@ Timestamp: 8/21/18 KS`;
   }
 
   function bindPanelActions() {
-    stage.querySelector(".panel-close")?.addEventListener("click", collapsePanel);
+    stage.querySelector(".panel-close")?.addEventListener("click", () => {
+      if (resolutionOpen) closeResolution();
+      else collapsePanel();
+    });
 
     const viewButton = stage.querySelector(".view-in-button");
     const viewMenu = stage.querySelector(".view-menu");
@@ -8057,11 +8554,22 @@ Timestamp: 8/21/18 KS`;
 
   function dismissToast(toast) {
     if (!toast || toast.classList.contains("is-leaving")) return;
+    clearTimeout(toast._dwellTimer);
     toast.classList.add("is-leaving");
-    toast.addEventListener("animationend", () => toast.remove(), { once: true });
+    const remove = () => toast.remove();
+    if (reduceMotion()) {
+      remove();
+      return;
+    }
+    const onEnd = (event) => {
+      if (event.target !== toast) return;
+      toast.removeEventListener("animationend", onEnd);
+      remove();
+    };
+    toast.addEventListener("animationend", onEnd);
   }
 
-  function showToast(message) {
+  function showToast(message, options = {}) {
     const toast = document.createElement("div");
     toast.className = "toast";
     toast.setAttribute("role", "status");
@@ -8069,29 +8577,95 @@ Timestamp: 8/21/18 KS`;
     const label = document.createElement("span");
     label.className = "toast-message";
     label.textContent = message;
+    toast.append(label);
 
-    const dismiss = document.createElement("button");
-    dismiss.type = "button";
-    dismiss.className = "toast-dismiss";
-    dismiss.setAttribute("aria-label", "Dismiss");
-    dismiss.innerHTML = `
-      <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">
-        <path d="M3 3l8 8M11 3L3 11" fill="none" stroke-linecap="round"/>
-      </svg>
-    `;
-    dismiss.addEventListener("click", () => dismissToast(toast));
+    const dwellMs = options.dwellMs ?? 5000;
 
-    toast.append(label, dismiss);
+    if (options.action) {
+      const action = document.createElement("button");
+      action.type = "button";
+      action.className = "toast-action";
+      if (!reduceMotion()) {
+        const wash = document.createElement("span");
+        wash.className = "toast-action-wash";
+        wash.setAttribute("aria-hidden", "true");
+        action.append(wash);
+        action.style.setProperty("--toast-dwell", `${dwellMs}ms`);
+      }
+      const actionLabel = document.createElement("span");
+      actionLabel.className = "toast-action-label";
+      actionLabel.textContent = options.action.label;
+      action.append(actionLabel);
+      action.addEventListener("click", () => {
+        options.action.onClick?.();
+        dismissToast(toast);
+      });
+      toast.append(action);
+    }
+
+    if (!options.action && !options.hideDismiss) {
+      const dismiss = document.createElement("button");
+      dismiss.type = "button";
+      dismiss.className = "toast-dismiss";
+      dismiss.setAttribute("aria-label", "Dismiss");
+      dismiss.innerHTML = `
+        <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+          <path d="M3 3l8 8M11 3L3 11" fill="none" stroke-linecap="round"/>
+        </svg>
+      `;
+      dismiss.addEventListener("click", () => dismissToast(toast));
+      toast.append(dismiss);
+    }
+
     toasts.append(toast);
 
-    const dwellMs = 5000;
-    window.setTimeout(() => dismissToast(toast), dwellMs);
+    let remaining = dwellMs;
+    let running = false;
+    let holds = 0;
+    const startDwell = () => {
+      if (running || toast.classList.contains("is-leaving")) return;
+      running = true;
+      toast._dwellStamp = performance.now();
+      toast._dwellTimer = window.setTimeout(() => dismissToast(toast), remaining);
+    };
+    const pauseDwell = () => {
+      if (!running) return;
+      running = false;
+      remaining -= performance.now() - toast._dwellStamp;
+      clearTimeout(toast._dwellTimer);
+      if (remaining < 0) remaining = 0;
+    };
+    const hold = () => {
+      holds += 1;
+      if (holds === 1) {
+        pauseDwell();
+        toast.classList.add("is-held");
+      }
+    };
+    const release = () => {
+      holds = Math.max(0, holds - 1);
+      if (holds === 0) {
+        toast.classList.remove("is-held");
+        startDwell();
+      }
+    };
+    toast.addEventListener("mouseenter", hold);
+    toast.addEventListener("mouseleave", release);
+    toast.addEventListener("focusin", hold);
+    toast.addEventListener("focusout", (event) => {
+      if (!toast.contains(event.relatedTarget)) release();
+    });
+    startDwell();
   }
 
   railButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const name = button.dataset.panel;
       const go = () => {
+        if (resolutionOpen) {
+          closeResolution({ thenPanel: name });
+          return;
+        }
         if (panelOpen && activePanel === name) collapsePanel();
         else openPanel(name);
       };
@@ -8724,6 +9298,7 @@ Timestamp: 8/21/18 KS`;
     time.textContent = formatClock();
     conversationEl.append(article);
     scrollConversationToEnd();
+    revealEndSessionCta();
     return article;
   };
 
@@ -8797,6 +9372,7 @@ Timestamp: 8/21/18 KS`;
     }
     markOutboundMessagesRead();
     scrollConversationToEnd();
+    revealEndSessionCta();
   };
 
   const syncComposerHeight = () => {
@@ -9014,6 +9590,34 @@ Timestamp: 8/21/18 KS`;
   syncSheetChrome();
   requestAnimationFrame(() => syncRailIndicator({ animate: false }));
 
+  function sessionIsEndable() {
+    if (!conversationEl) return false;
+    const nodes = [...conversationEl.children];
+    const start = nodes.findIndex(
+      (el) => el.classList?.contains("msg-system") && /joined the conversation/i.test(el.textContent || "")
+    );
+    if (start < 0) return false;
+    let member = false;
+    let team = false;
+    for (const el of nodes.slice(start + 1)) {
+      if (el.classList.contains("msg-group--member") && !el.classList.contains("is-pending")) member = true;
+      if (el.classList.contains("msg-group--team")) team = true;
+    }
+    return member && team;
+  }
+
+  function revealEndSessionCta() {
+    const btn = document.querySelector(".end-session");
+    if (!btn || btn.classList.contains("is-available") || sessionEnded) return;
+    if (!sessionIsEndable()) return;
+    if (resolutionOpen) return;
+    btn.hidden = false;
+    void btn.offsetWidth;
+    btn.classList.add("is-available");
+  }
+
+  document.querySelector(".end-session")?.addEventListener("click", () => openResolution());
+
   /** Staggered ease-up on first paint; skipped when prefers-reduced-motion. */
   function runPageEntrance() {
     const root = document.documentElement;
@@ -9021,6 +9625,7 @@ Timestamp: 8/21/18 KS`;
     if (reduceMotion()) {
       root.classList.remove("is-page-boot");
       root.classList.add("is-page-settled");
+      revealEndSessionCta();
       return;
     }
     let settled = false;
@@ -9029,6 +9634,7 @@ Timestamp: 8/21/18 KS`;
       settled = true;
       root.classList.add("is-page-settled");
       root.classList.remove("is-page-ready");
+      revealEndSessionCta();
     };
     requestAnimationFrame(() => {
       root.classList.add("is-page-ready");

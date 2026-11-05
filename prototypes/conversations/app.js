@@ -42,9 +42,9 @@ const FILTERS = {
 };
 
 const OWNERS = [
-  { id: "Casey Nguyen", meta: "Available · 2 open tasks · Claims Advocacy" },
-  { id: "Jordan Reyes", meta: "Quarterback · 4 open tasks" },
-  { id: "Morgan Diaz", meta: "Covering Lee · through Mon, Nov 9" },
+  { id: "Casey Nguyen", person: "casey", meta: "Available · 2 open tasks · Claims Advocacy" },
+  { id: "Jordan Reyes", person: "jordan", meta: "Quarterback · 4 open tasks" },
+  { id: "Morgan Diaz", person: "morgan", meta: "Covering Lee · through Mon, Nov 9" },
 ];
 
 const STATUS_LABEL = {
@@ -56,7 +56,7 @@ const STATUS_LABEL = {
 const people = {
   riley: { name: "Riley Smith", photo: RILEY },
   lila: { name: "Lila George", photo: LILA },
-  jordan: { name: "Jordan Reyes", initials: "JR", av: "#dfe6fb", fg: "#24356e" },
+  jordan: { name: "Jordan Reyes", photo: "assets/jordan-reyes.jpg" },
   lee: { name: "Lee Martin", initials: "LM", av: "#efe4d6", fg: "#6a4b28" },
   ana: { name: "Ana Ruiz", initials: "AR", av: "#fde7ef", fg: "#7a3050" },
   marcus: { name: "Marcus Lee", initials: "ML", av: "#e5f3ea", fg: "#1d5a38" },
@@ -65,7 +65,8 @@ const people = {
   priya: { name: "Priya Shah", initials: "PS", av: "#fff1e0", fg: "#8a4b12" },
   omar: { name: "Omar Hassan", initials: "OH", av: "#e8eefc", fg: "#24356e" },
   nina: { name: "Nina Cole", initials: "NC", av: "#fde8e4", fg: "#8a2e24" },
-  casey: { name: "Casey Nguyen", initials: "CN", av: "#e7eefc", fg: "#1e3a8a" },
+  casey: { name: "Casey Nguyen", photo: "assets/casey-nguyen.jpg" },
+  morgan: { name: "Morgan Diaz", photo: "assets/morgan-diaz.jpg" },
   you: { name: "You", initials: "A", av: "#eceff3", fg: "#344054" },
 };
 
@@ -523,32 +524,43 @@ function moreItem(label, attrs, icon) {
   return `<button class="more-item" type="button" role="menuitem" ${attrs}>${glyph(icon)}<span>${label}</span></button>`;
 }
 
+/** Five slots total. More takes one, so it appears only past this count. */
+const TRAY_MAX = 5;
+
 function messageMenu(item, side, person, stretch, thread) {
   if (state.view !== "conversation") return "";
   const hasTask = !!(thread && thread.task);
   const saved = hasTask && (state.taskQuotes[thread.id] || []).some((quote) => quote.text === item.text && quote.time === item.time);
-  const buttons = [];
-  if (side === "in") {
-    buttons.push(stretch
-      ? actionButton("In team chat", `data-open-stretch="${esc(stretch.id)}"`, "ask")
-      : actionButton("Ask the team", `data-ask-text="${esc(item.text)}" data-ask-time="${esc(item.time)}" data-ask-who="${esc(person.name)}"`, "ask"));
-    if (hasTask) buttons.push(actionButton(saved ? "On the task" : "Add to task", "data-add-task", saved ? "check" : "task", saved));
-    buttons.push(actionButton("Reply", `data-reply data-reply-name="${esc(person.name)}"`, "reply"));
-  } else {
-    buttons.push(actionButton("Copy", "data-copy-msg", "copy"));
-  }
-  const more = side === "in"
+  const taskAction = {
+    label: saved ? "On the task" : "Add to task",
+    attrs: "data-add-task",
+    icon: saved ? "check" : "task",
+    done: saved,
+  };
+  const actions = side === "in"
     ? [
-        moreItem("Copy message", "data-copy-msg", "copy"),
-        moreItem("Mark unread", "data-mark-unread", "unread"),
-        moreItem("Flag for handoff", "data-flag", "flag"),
-        ...(hasTask ? [moreItem("Remind me", "data-remind", "clock")] : []),
+        stretch
+          ? { label: "In team chat", attrs: `data-open-stretch="${esc(stretch.id)}"`, icon: "ask" }
+          : { label: "Ask the team", attrs: `data-ask-text="${esc(item.text)}" data-ask-time="${esc(item.time)}" data-ask-who="${esc(person.name)}"`, icon: "ask" },
+        { label: "Reply", attrs: `data-reply data-reply-name="${esc(person.name)}"`, icon: "reply" },
+        ...(hasTask ? [taskAction] : []),
+        { label: "Copy", attrs: "data-copy-msg", icon: "copy" },
+        { label: "Flag for handoff", attrs: "data-flag", icon: "flag" },
+        { label: "Mark unread", attrs: "data-mark-unread", icon: "unread" },
+        ...(hasTask ? [{ label: "Remind me", attrs: "data-remind", icon: "clock" }] : []),
       ]
     : [
-        moreItem("Copy message", "data-copy-msg", "copy"),
-        ...(hasTask ? [moreItem("Add to task", "data-add-task", "task")] : []),
+        { label: "Copy", attrs: "data-copy-msg", icon: "copy" },
+        ...(hasTask ? [taskAction] : []),
       ];
-  return `<div class="bubble-menu" role="toolbar" aria-label="Message actions">${buttons.join("")}<span class="bubble-sep" aria-hidden="true"></span><div class="bubble-more"><button class="bubble-action" type="button" data-more aria-expanded="false" aria-label="More">${glyph("more")}<span class="bubble-tip">More</span></button><div class="more-menu" role="menu" hidden>${more.join("")}</div></div></div>`;
+  const overflow = actions.length > TRAY_MAX;
+  const inline = overflow ? actions.slice(0, TRAY_MAX - 1) : actions;
+  const extra = overflow ? actions.slice(TRAY_MAX - 1) : [];
+  const buttons = inline.map((action) => actionButton(action.label, action.attrs, action.icon, action.done)).join("");
+  const more = extra.length
+    ? `<span class="bubble-sep" aria-hidden="true"></span><div class="bubble-more"><button class="bubble-action" type="button" data-more aria-expanded="false" aria-label="More">${glyph("more")}<span class="bubble-tip">More</span></button><div class="more-menu" role="menu" hidden>${extra.map((action) => moreItem(action.label, action.attrs, action.done ? "check" : action.icon)).join("")}</div></div>`
+    : "";
+  return `<div class="bubble-menu" role="toolbar" aria-label="Message actions">${buttons}${more}</div>`;
 }
 
 function bubble(item) {
@@ -574,7 +586,31 @@ function bubble(item) {
 
 function taskView(thread) {
   if (!thread.task) {
-    return `<div class="quiet-empty"><strong>No open task</strong>This conversation doesn’t have a task yet.</div>`;
+    return `<div class="quiet-empty">
+      <svg class="empty-art" viewBox="0 0 220 180" aria-hidden="true">
+        <defs>
+          <linearGradient id="task-empty-front" x1="0.1" y1="0" x2="0.8" y2="1">
+            <stop offset="0" stop-color="#c9d8ff"/>
+            <stop offset="0.55" stop-color="#8aa6f4"/>
+            <stop offset="1" stop-color="#5d7fe6"/>
+          </linearGradient>
+          <linearGradient id="task-empty-back" x1="0" y1="0" x2="0.3" y2="1">
+            <stop offset="0" stop-color="#f7f9ff"/>
+            <stop offset="1" stop-color="#d7e4ff"/>
+          </linearGradient>
+        </defs>
+        <g transform="rotate(-10 118 86)">
+          <rect x="62" y="22" width="108" height="128" rx="22" fill="url(#task-empty-back)"/>
+        </g>
+        <rect x="42" y="46" width="128" height="104" rx="22" fill="url(#task-empty-front)"/>
+        <circle cx="74" cy="78" r="11" fill="none" stroke="#fff" stroke-width="2.5"/>
+        <rect x="96" y="72" width="50" height="7" rx="3.5" fill="#fff"/>
+        <rect x="62" y="104" width="88" height="7" rx="3.5" fill="#fff" opacity="0.62"/>
+        <rect x="62" y="120" width="60" height="7" rx="3.5" fill="#fff" opacity="0.4"/>
+      </svg>
+      <strong>No open task</strong>
+      <p>This conversation doesn’t have a task yet.</p>
+    </div>`;
   }
   const owner = state.reassigned ? "Casey Nguyen" : "Lee Martin · Out of office";
   const activity = [
@@ -625,7 +661,30 @@ function transcriptFor(thread) {
   const extra = state.drafts[thread.id] || [];
   const items = [...thread.conversation, ...extra];
   if (!items.length) {
-    return `<div class="quiet-empty"><strong>New conversation</strong>Write a message to start the thread.</div>`;
+    return `<div class="quiet-empty">
+      <svg class="empty-art" viewBox="0 0 220 180" aria-hidden="true">
+        <defs>
+          <linearGradient id="convo-empty-front" x1="0.1" y1="0" x2="0.85" y2="1">
+            <stop offset="0" stop-color="#c9d8ff"/>
+            <stop offset="0.5" stop-color="#8aa6f4"/>
+            <stop offset="1" stop-color="#5d7fe6"/>
+          </linearGradient>
+          <linearGradient id="convo-empty-back" x1="0" y1="0" x2="0.4" y2="1">
+            <stop offset="0" stop-color="#f7f9ff"/>
+            <stop offset="1" stop-color="#d7e4ff"/>
+          </linearGradient>
+        </defs>
+        <g transform="rotate(-8 140 52)">
+          <path fill="url(#convo-empty-back)" d="M86 16h76c11 0 20 9 20 20v32c0 11-9 20-20 20h-22l-14 14v-14H86c-11 0-20-9-20-20V36c0-11 9-20 20-20z"/>
+        </g>
+        <path fill="url(#convo-empty-front)" d="M34 70h108c13 0 24 11 24 24v36c0 13-11 24-24 24H86l-18 16v-16H34c-13 0-24-11-24-24V94c0-13 11-24 24-24z"/>
+        <circle cx="66" cy="112" r="5.5" fill="#fff"/>
+        <circle cx="88" cy="112" r="5.5" fill="#fff" opacity="0.72"/>
+        <circle cx="110" cy="112" r="5.5" fill="#fff" opacity="0.45"/>
+      </svg>
+      <strong>New conversation</strong>
+      <p>Write a message to start the thread.</p>
+    </div>`;
   }
   return items.map(bubble).join("");
 }
@@ -751,13 +810,15 @@ function reviewPanel() {
     <div class="field menu-root" data-menu-root="owner">
       <span class="field-label">Assign to someone <em>*</em></span>
       <button class="select-trigger" id="owner-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="menu-owner">
-        <span><span>${selected.id}</span><span class="option-meta">${selected.meta}</span></span>
+        ${avatar(selected.person, "sm")}
+        <span class="option-copy"><span>${selected.id}</span><span class="option-meta">${selected.meta}</span></span>
         <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </button>
-      <div class="menu opens-up" id="menu-owner" role="listbox" aria-label="Assign to someone" hidden>
+      <div class="menu" id="menu-owner" role="listbox" aria-label="Assign to someone" hidden>
         ${OWNERS.map(
           (item) => `<button class="menu-option" type="button" role="option" data-owner="${item.id}" aria-selected="${item.id === state.owner}">
             <span class="radio" aria-hidden="true"></span>
+            ${avatar(item.person, "sm")}
             <span class="option-copy"><span>${item.id}</span><span class="option-meta">${item.meta}</span></span>
           </button>`,
         ).join("")}
@@ -1583,12 +1644,28 @@ function setSearchOpen(open, { focus = false } = {}) {
   if (focus) requestAnimationFrame(() => $("#thread-search").focus());
 }
 
+function syncSearchClear() {
+  $("#thread-search-clear").hidden = !$("#thread-search").value;
+}
+
 $("#thread-search").addEventListener("input", (event) => {
   state.query = event.target.value;
+  syncSearchClear();
   renderList();
   if (state.selectedId && !visibleThreads().some((thread) => thread.id === state.selectedId)) {
     closeConversation();
   }
+});
+
+$("#thread-search-clear").addEventListener("mousedown", (event) => {
+  event.preventDefault();
+});
+
+$("#thread-search-clear").addEventListener("click", () => {
+  const input = $("#thread-search");
+  input.value = "";
+  input.dispatchEvent(new Event("input", { bubbles: true }));
+  input.focus();
 });
 
 $("#thread-search").addEventListener("blur", () => {
@@ -1636,6 +1713,7 @@ $("#new-conversation").addEventListener("click", () => {
     state.status = "any";
     state.query = "";
     $("#thread-search").value = "";
+    syncSearchClear();
     setSearchOpen(false);
     paintChips();
     paintMenus();
@@ -1688,8 +1766,13 @@ function sizeOf(key) {
 function setSize(key, px) {
   const workspace = $("#workspace");
   const spec = RESIZE[key];
-  const other = key === "threads" ? (workspace.classList.contains("has-panel") ? sizeOf("panel") + 88 : 72) : sizeOf("threads") + 16;
-  const room = workspace.clientWidth - other - 16 - STAGE_MIN;
+  const metrics = getComputedStyle(workspace);
+  const gutter = parseFloat(metrics.getPropertyValue("--gutter")) || 8;
+  const railBlock = (parseFloat(metrics.getPropertyValue("--rail-width")) || 56) + gutter;
+  const other = key === "threads"
+    ? (workspace.classList.contains("has-panel") ? sizeOf("panel") + railBlock + gutter : railBlock)
+    : sizeOf("threads") + gutter + railBlock;
+  const room = workspace.clientWidth - other - gutter - STAGE_MIN;
   const max = Math.max(spec.min, Math.min(spec.max, room));
   const width = Math.round(Math.min(max, Math.max(spec.min, px)));
   workspace.style.setProperty(spec.prop, `${width}px`);

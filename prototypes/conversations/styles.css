@@ -23,7 +23,7 @@
   --action-ghost-pressed: #101d3814;
   --brand-soft: #e7eeff;
   --chat-member: #f2f4f7;
-  --chat-team: #e8eaf7;
+  --chat-team: #E0EAFF;
   --warning-soft: #fdf8e4;
   --warning-border: #efd98a;
   --warning-fg: #7a6414;
@@ -223,7 +223,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
   width: 0;
   height: 0;
   border-radius: 8px;
-  background: #e8eafc;
+  background: #F0F4FF;
   pointer-events: none;
   transition:
     transform var(--motion-duration-slow) var(--motion-easing-standard),
@@ -255,7 +255,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
   font-weight: 600;
 }
 .scope button[aria-checked="true"]:hover { background: transparent; color: var(--brand); }
-.scope:has(button[aria-checked="true"]:hover) .scope-thumb { background: #e0e3fa; }
+.scope:has(button[aria-checked="true"]:hover) .scope-thumb { background: #E6EDFF; }
 .scope .count { margin-left: 8px; font-weight: 500; }
 .scope button[aria-checked="true"] .count { font-weight: 500; color: var(--brand); }
 
@@ -618,10 +618,10 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 .thread:active { background: var(--action-ghost-pressed); }
 .thread.is-selected {
   margin: 4px 0;
-  background: var(--chat-team);
+  background: #F0F4FF;
   box-shadow: none;
 }
-.thread.is-selected:hover { background: #e2e5f1; }
+.thread.is-selected:hover { background: #E6EDFF; }
 .thread.is-selected .thread-title { color: var(--brand); font-weight: 600; }
 .thread-copy { display: flex; flex: 1; flex-direction: column; min-width: 0; }
 .thread-title {

@@ -2819,7 +2819,7 @@
   function layoutInsSegmentedThumb(segmented, { animate = true } = {}) {
     const root = segmented || stage.querySelector(".ins-segmented");
     const thumb = root?.querySelector(".ins-segmented-thumb");
-    const active = root?.querySelector("[data-ins-network].is-active");
+    const active = root?.querySelector("button.is-active");
     if (!root || !thumb || !active) return;
     if (!animate) thumb.classList.add("is-instant");
     const rootRect = root.getBoundingClientRect();
@@ -4020,6 +4020,9 @@
     const work = document.querySelector("#work-page");
     work?.removeAttribute("hidden");
     document.title = "Care App — My Work";
+    requestAnimationFrame(() => {
+      layoutInsSegmentedThumb(document.querySelector("#incoming-view-switch"), { animate: false });
+    });
   }
 
   function showChatPage() {
@@ -9091,6 +9094,25 @@ Timestamp: 8/21/18 KS`;
   navDrawerScrim?.addEventListener("click", closeNavDrawer);
   navDrawerLayer?.querySelectorAll(".nav-drawer-links a").forEach((a) => {
     a.addEventListener("click", closeNavDrawer);
+  });
+
+  const incomingSwitch = document.querySelector("#incoming-view-switch");
+  incomingSwitch?.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      incomingSwitch.querySelectorAll("button").forEach((other) => {
+        const on = other === btn;
+        other.classList.toggle("is-active", on);
+        other.setAttribute("aria-pressed", String(on));
+      });
+      const queue = btn.dataset.chatQueue;
+      document.querySelectorAll("[data-chat-rows]").forEach((body) => {
+        body.hidden = body.dataset.chatRows !== queue;
+      });
+      layoutInsSegmentedThumb(incomingSwitch, { animate: true });
+    });
+  });
+  window.addEventListener("resize", () => {
+    layoutInsSegmentedThumb(incomingSwitch, { animate: false });
   });
 
   document.querySelectorAll('[data-nav="work"]').forEach((link) => {

@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=soma-composer-1" />
+    <link rel="stylesheet" href="styles.css?v=incoming-switch-1" />
   </head>
   <body>
     <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
@@ -480,9 +480,19 @@
     </main>
 
     <main class="page work-page" id="work-page" hidden>
-      <section class="work-section" aria-labelledby="incoming-title">
+      <section class="work-section" aria-label="Chats">
         <div class="work-section-head">
-          <h1 id="incoming-title">Incoming chats</h1>
+          <div class="ins-segmented ins-segmented--border" id="incoming-view-switch" role="group" aria-label="Chats">
+            <span class="ins-segmented-thumb" aria-hidden="true"></span>
+            <button type="button" class="is-active" data-chat-queue="incoming" aria-pressed="true">
+              Incoming chats
+              <span class="ins-segmented-count">2</span>
+            </button>
+            <button type="button" data-chat-queue="closed" aria-pressed="false">
+              Closed chats
+              <span class="ins-segmented-count">3</span>
+            </button>
+          </div>
         </div>
         <div class="work-card">
           <div class="work-table-wrap">
@@ -497,7 +507,7 @@
                   <th><span class="visually-hidden">Open</span></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody data-chat-rows="incoming">
                 <tr>
                   <td>Jerald Googleo'Connell</td>
                   <td>Google</td>
@@ -512,6 +522,32 @@
                   <td>—</td>
                   <td>—</td>
                   <td>45d</td>
+                  <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
+                </tr>
+              </tbody>
+              <tbody data-chat-rows="closed" hidden>
+                <tr>
+                  <td>Morgan Ellis</td>
+                  <td>Google</td>
+                  <td>CA</td>
+                  <td>Referral</td>
+                  <td>2d</td>
+                  <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
+                </tr>
+                <tr>
+                  <td>Dana Whitfield</td>
+                  <td>Google</td>
+                  <td>WA</td>
+                  <td>Benefits</td>
+                  <td>9d</td>
+                  <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
+                </tr>
+                <tr>
+                  <td>Kenji Sato</td>
+                  <td>Google</td>
+                  <td>CA</td>
+                  <td>Claim</td>
+                  <td>21d</td>
                   <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
               </tbody>
@@ -687,6 +723,6 @@
     </div>
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
     <script src="chat-engine.js?v=mode-trigger-1"></script>
-    <script src="app.js?v=my-work-nav-1"></script>
+    <script src="app.js?v=incoming-switch-1"></script>
   </body>
 </html>

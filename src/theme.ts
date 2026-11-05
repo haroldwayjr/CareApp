@@ -1,4 +1,6 @@
+import type { CSSProperties } from 'react'
 import { createTheme } from '@mui/material/styles'
+import { soma, type SomaTokens } from './soma/tokens'
 
 const figtree = [
   'Figtree',
@@ -15,6 +17,7 @@ declare module '@mui/material/styles' {
       secondary: string
       tertiary: string
     }
+    soma: SomaTokens
   }
   interface PaletteOptions {
     icon?: {
@@ -22,6 +25,22 @@ declare module '@mui/material/styles' {
       secondary?: string
       tertiary?: string
     }
+    soma?: SomaTokens
+  }
+  interface TypographyVariants {
+    subtitle3: CSSProperties
+    badgeSmall: CSSProperties
+  }
+  interface TypographyVariantsOptions {
+    subtitle3?: CSSProperties
+    badgeSmall?: CSSProperties
+  }
+}
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    subtitle3: true
+    badgeSmall: true
   }
 }
 
@@ -67,6 +86,7 @@ const theme = createTheme({
       tertiary: '#98A2B3',
     },
     divider: '#E5E7EB',
+    soma,
   },
   typography: {
     fontFamily: figtree,
@@ -75,13 +95,16 @@ const theme = createTheme({
     allVariants: {
       letterSpacing: 0,
     },
-    body1: { fontSize: 14, lineHeight: '20px', letterSpacing: 0 },
+    body1: { ...soma.type.body1 },
     body2: { fontSize: '0.875rem', letterSpacing: 0 },
     caption: { fontSize: '0.75rem', letterSpacing: 0 },
+    h4: { ...soma.type.h4 },
     h5: { fontWeight: 400, fontSize: '1.75rem', letterSpacing: 0 },
     h6: { fontWeight: 600, fontSize: '1.125rem', letterSpacing: 0 },
     subtitle1: { fontWeight: 600, fontSize: '0.875rem', letterSpacing: 0 },
-    subtitle2: { fontWeight: 600, fontSize: '0.875rem', letterSpacing: 0 },
+    subtitle2: { ...soma.type.subtitle2 },
+    subtitle3: { ...soma.type.subtitle3 },
+    badgeSmall: { ...soma.type.badgeSmall },
     button: {
       textTransform: 'none',
       fontWeight: 500,

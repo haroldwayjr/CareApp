@@ -38,6 +38,7 @@ type Status =
 
 type ProfileMenuProps = {
   onAction?: (message: string) => void
+  initial?: string
 }
 
 function Chevron({ direction }: { direction: 'left' | 'right' }) {
@@ -144,7 +145,7 @@ const rowSx = {
   },
 }
 
-export function ProfileMenu({ onAction }: ProfileMenuProps) {
+export function ProfileMenu({ onAction, initial = 'HW' }: ProfileMenuProps) {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
   const [level, setLevel] = useState<1 | 2>(1)
   const [status, setStatus] = useState<Status>('Available')
@@ -231,7 +232,7 @@ export function ProfileMenu({ onAction }: ProfileMenuProps) {
               fontWeight: 600,
             }}
           >
-            HW
+            {initial}
           </Avatar>
         </Badge>
       </IconButton>

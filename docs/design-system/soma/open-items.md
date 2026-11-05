@@ -41,6 +41,16 @@ Do not silently fix these — confirm or file explicitly.
 - [x] **Tooltip motion recipe** — enter `normal` + `emphasized`, leave `fast` + `exit`, ~4px settle; default **200ms** hover-intent on all tips. Documented in library `motion.md` + Care App `component-notes.md` / `quick-reference.md` (2026-10-20).
 - [ ] Figma ↔ code pipeline — no export/sync; all decisions Figma-only until pipeline exists.
 
+## Unified Messaging Design Spike prototype
+
+Gaps found while building the Care App spike for Figma `l3qnyJuSl4F01VLBN16so1`, section **Screens to Prototype**. These are stand-ins so that prototype can ship. They are not requests to mint Soma masters, and they are not gaps in the published library. Promote an item into Components / foundations only if someone later decides the pattern belongs in Soma.
+
+- [ ] **DensityToggle and RoleSwitcher** — the spike maps both to **View switcher** (Elevated). Cards/Table is icon-only; Q/S is a two-label switch. No published DensityToggle or RoleSwitcher.
+- [ ] **KPI stat tile** — Open / Priority / Delayed / Owner unavailable tiles are composed **Card** (label, value, hint). No stat-tile master.
+- [ ] **Grouped filter menu** — the table toolbar uses one Filters button that opens radio groups for Health Grade, Watchers, and Due Date, plus a Sort menu. Mapped to Menu group labels, radio items, and separators. Not a published filter-menu master. Selecting a selected radio again clears that group.
+- [ ] **Health sparkline** — an earlier expanded-row frame used a custom SVG area chart. The current Screens to Prototype section no longer shows it on the expanded row, so the table does not render it.
+- [ ] **Member need card** — composed from Card, Badge, and Alert for the QB cards layout. No member-need card master.
+
 ## Documentation / naming
 
 - [ ] Buttons code examples import `@nova/ui` — naming inconsistency with "Soma"; needs decision.

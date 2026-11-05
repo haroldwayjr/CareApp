@@ -7,20 +7,29 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import { AppIcon } from '../icons/AppIcon'
 import logomark from '../assets/figma/logomark.svg'
+import { soma } from '../soma/tokens'
 import { ProfileMenu } from './ProfileMenu'
 
 const NAV_ITEMS = ['Dashboard', 'My Work', 'Schedule', 'Search'] as const
 
+export type NavItem = (typeof NAV_ITEMS)[number]
+
 type AppShellProps = {
   onBrandClick?: () => void
-  onNavClick?: (item: (typeof NAV_ITEMS)[number]) => void
+  onNavClick?: (item: NavItem) => void
   onPrototypeAction?: (message: string) => void
+  activeNav?: NavItem
+  navItems?: readonly NavItem[]
+  avatarInitial?: string
 }
 
 export function AppShell({
   onBrandClick,
   onNavClick,
   onPrototypeAction,
+  activeNav,
+  navItems = NAV_ITEMS,
+  avatarInitial = 'HW',
 }: AppShellProps) {
   return (
     <AppBar
@@ -80,25 +89,38 @@ export function AppShell({
               display: { xs: 'none', md: 'flex' },
             }}
           >
-            {NAV_ITEMS.map((item) => (
-              <Button
-                key={item}
-                color="inherit"
-                onClick={() => onNavClick?.(item)}
-                sx={{
-                  borderRadius: 1,
-                  px: 1,
-                  py: 0.75,
-                  color: 'text.secondary',
-                  fontWeight: 400,
-                  fontSize: 14,
-                  letterSpacing: 0,
-                  lineHeight: '24px',
-                }}
-              >
-                {item}
-              </Button>
-            ))}
+            {navItems.map((item) => {
+              const active = item === activeNav
+              return (
+                <Button
+                  key={item}
+                  color="inherit"
+                  onClick={() => onNavClick?.(item)}
+                  aria-current={active ? 'page' : undefined}
+                  sx={{
+                    position: 'relative',
+                    borderRadius: `${soma.radius.sm}px`,
+                    px: 1.5,
+                    height: 56,
+                    color: active ? soma.text.brand : soma.text.tertiary,
+                    ...(active ? soma.type.h5 : soma.type.body1),
+                    '&::after': active
+                      ? {
+                          content: '""',
+                          position: 'absolute',
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          height: 2,
+                          bgcolor: soma.action.primary,
+                        }
+                      : undefined,
+                  }}
+                >
+                  {item}
+                </Button>
+              )
+            })}
           </Stack>
         </Stack>
 
@@ -137,7 +159,7 @@ export function AppShell({
           >
             <AppIcon name="notifications" sx={{ fontSize: 24 }} />
           </IconButton>
-          <ProfileMenu onAction={onPrototypeAction} />
+          <ProfileMenu onAction={onPrototypeAction} initial={avatarInitial} />
         </Stack>
       </Toolbar>
     </AppBar>

@@ -14,6 +14,7 @@
   --surface-selected-hover: #e5ebff;
   --border: #e6ebf0;
   --border-subtle: #d0d5dd;
+  --border-strong: #667085;
   --text-primary: #101828;
   --text-secondary: #344054;
   --text-tertiary: #667085;
@@ -996,13 +997,14 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
   gap: 8px;
   margin: 4px 12px 12px;
   padding: 8px 8px 8px 10px;
-  border: 1px solid #e4e7ec;
+  border: 1px solid var(--border-subtle);
   border-radius: 14px;
   background: var(--surface);
   transition: border-color var(--motion-duration-normal) var(--motion-easing-standard),
     box-shadow var(--motion-duration-normal) var(--motion-easing-standard);
 }
-.composer:focus-within { border-color: #c5cde0; box-shadow: var(--focus); }
+.composer:focus-within,
+.composer.is-filled { border-color: var(--border-strong); box-shadow: none; }
 .composer textarea {
   flex: 1;
   min-height: 28px;

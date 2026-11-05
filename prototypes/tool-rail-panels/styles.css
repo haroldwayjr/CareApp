@@ -1345,7 +1345,7 @@ html[data-color-mode="dark"] .badge-tip {
 /* View in chevron — slightly smaller + heavier than field selects */
 .view-in-button svg {
   width: 12px; height: 12px; stroke-width: 2.25; flex: 0 0 auto;
-  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform var(--motion-duration-slow) var(--motion-easing-standard);
 }
 .view-menu-wrap:has(.view-menu:not([hidden])) .view-in-button svg { transform: rotate(180deg); }
 
@@ -1993,7 +1993,7 @@ button.inline-field-control.select-trigger .select-trigger-label.is-placeholder 
 button.inline-field-control.select-trigger > svg {
   width: 14px; height: 14px; flex: 0 0 auto;
   color: var(--icon-tertiary); stroke-width: 1.75;
-  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform var(--motion-duration-slow) var(--motion-easing-standard);
 }
 .select-wrap.is-open .select-trigger > svg { transform: rotate(180deg); }
 .list-item {
@@ -4203,7 +4203,7 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
 .ins-dropdown-trigger > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ins-dropdown-trigger > svg {
   width: 14px; height: 14px; flex: 0 0 auto; color: var(--icon-tertiary);
-  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform var(--motion-duration-slow) var(--motion-easing-standard);
 }
 .ins-dropdown-wrap.is-open .ins-dropdown-trigger > svg { transform: rotate(180deg); }
 .ins-dropdown-menu {
@@ -6236,10 +6236,20 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding-bottom: 28px;
+  padding-bottom: 4px;
+}
+.resolution-scroll .notes-form,
+.resolution-scroll .notes-field--body {
+  flex: 0 0 auto;
+  min-height: 0;
 }
 .resolution-notes {
-  min-height: 220px;
+  display: block;
+  width: 100%;
+  min-height: 96px;
+  height: 160px;
+  resize: vertical;
+  overflow: auto;
   white-space: pre-wrap;
 }
 .resolution-regen-row {
@@ -6289,7 +6299,8 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   box-shadow: 0 12px 32px rgba(16, 29, 56, 0.28);
 }
 .resolution-tip[hidden] { display: none !important; }
-.resolution-tip.is-open { animation: resolution-tip-in 180ms ease both; }
+.resolution-tip.is-open { animation: resolution-tip-in var(--tip-duration-enter) var(--tip-easing-enter) both; }
+.resolution-tip.is-above.is-open { animation-name: resolution-tip-in-up; }
 .resolution-tip.is-settled { animation: none; }
 .resolution-tip::before {
   position: absolute;
@@ -6356,6 +6367,10 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
 .resolution-end-bar .button { min-width: 109px; height: 40px; }
 @keyframes resolution-tip-in {
   from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes resolution-tip-in-up {
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {

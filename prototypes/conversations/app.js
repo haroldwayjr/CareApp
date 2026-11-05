@@ -753,7 +753,9 @@ function renderStage() {
   if (field) {
     field.addEventListener("input", () => {
       const send = root.querySelector(".send");
-      send.disabled = !field.value.trim();
+      const filled = !!field.value.trim();
+      send.disabled = !filled;
+      field.closest(".composer")?.classList.toggle("is-filled", filled);
       field.style.height = "auto";
       field.style.height = `${Math.min(field.scrollHeight, 120)}px`;
     });
@@ -1010,7 +1012,9 @@ function bindTeamComposer() {
   if (!field) return;
   const sync = () => {
     const send = $("#team-composer .send");
-    if (send) send.disabled = !field.value.trim();
+    const filled = !!field.value.trim();
+    if (send) send.disabled = !filled;
+    field.closest(".composer")?.classList.toggle("is-filled", filled);
     field.style.height = "auto";
     field.style.height = `${Math.min(field.scrollHeight, 120)}px`;
     paintMentions(mentionQuery(field.value, field.selectionStart));
@@ -1055,7 +1059,9 @@ function insertMention(name) {
   field.focus();
   field.setSelectionRange(pos, pos);
   const send = $("#team-composer .send");
-  if (send) send.disabled = !field.value.trim();
+  const filled = !!field.value.trim();
+  if (send) send.disabled = !filled;
+  field.closest(".composer")?.classList.toggle("is-filled", filled);
   paintMentions(null);
 }
 

@@ -3708,7 +3708,10 @@
     hidden.value = value;
     const wrap = hidden.closest(".select-wrap");
     const label = wrap?.querySelector(".select-trigger-label");
-    if (label) label.textContent = value;
+    if (label) {
+      label.textContent = value || "Select";
+      label.classList.toggle("is-placeholder", !value);
+    }
     wrap?.querySelectorAll("[data-value]").forEach((row) => {
       const on = row.dataset.value === value;
       row.classList.toggle("is-selected", on);
@@ -3883,15 +3886,15 @@
           </div>
           <div class="notes-field notes-field--compact">
             ${notesFieldLabel("Primary Disposition", { required: true })}
-            ${notesSelectHtml("resolution-disposition", "disposition", resolutionState.disposition, RESOLUTION_DISPOSITION_OPTIONS)}
+            ${notesSelectHtml("resolution-disposition", "disposition", resolutionState.disposition, RESOLUTION_DISPOSITION_OPTIONS, "Select")}
           </div>
           <div class="notes-field notes-field--compact">
             ${notesFieldLabel("Resolution", { required: true })}
-            ${notesSelectHtml("resolution-outcome", "resolution", resolutionState.resolution, RESOLUTION_OUTCOME_OPTIONS)}
+            ${notesSelectHtml("resolution-outcome", "resolution", resolutionState.resolution, RESOLUTION_OUTCOME_OPTIONS, "Select")}
           </div>
           <div class="notes-field notes-field--body">
             ${notesFieldLabel("Notes", { required: true })}
-            <textarea class="inline-field-control inline-field-textarea resolution-notes" id="resolution-notes" data-field="notes" rows="10" required>${escapeAttr(resolutionState.notes)}</textarea>
+            <textarea class="inline-field-control inline-field-textarea resolution-notes" id="resolution-notes" data-field="notes" rows="5" required>${escapeAttr(resolutionState.notes)}</textarea>
           </div>
         </div>
         <div class="resolution-regen-row">
@@ -3992,6 +3995,18 @@
     document.title = "Care App — Chat with Riley Smith";
   }
 
+  function openQueuedChat() {
+    if (resolutionOpen) closeResolution();
+    sessionEnded = false;
+    syncHeaderEndSession();
+    showChatPage();
+    revealEndSessionCta();
+  }
+
+  document.querySelectorAll("[data-open-chat]").forEach((button) => {
+    button.addEventListener("click", openQueuedChat);
+  });
+
   function endChatSession() {
     readResolutionFromDom();
     if (!resolutionIsComplete() || sessionEnded) return;
@@ -4076,6 +4091,26 @@
     stage.querySelector("#resolution-end")?.addEventListener("click", endChatSession);
     syncResolutionEndButton();
     bindResolutionTip();
+    const notes = stage.querySelector("#resolution-notes");
+    notes?.addEventListener("mouseup", () => {
+      if (!notes.dataset.fitted) return;
+      if (Math.abs(notes.offsetHeight - Number(notes.dataset.fitted)) > 2) notes.dataset.resized = "1";
+    });
+    requestAnimationFrame(() => fitResolutionNotes());
+  }
+
+  function fitResolutionNotes() {
+    const notes = stage.querySelector("#resolution-notes");
+    const scroll = stage.querySelector(".resolution-scroll");
+    const regen = stage.querySelector(".resolution-regen-row");
+    if (!notes || !scroll || !regen || notes.dataset.resized === "1") return;
+    const padBottom = parseFloat(getComputedStyle(scroll).paddingBottom) || 0;
+    const scrollRect = scroll.getBoundingClientRect();
+    const regenRect = regen.getBoundingClientRect();
+    const room = scrollRect.bottom - padBottom - regenRect.bottom;
+    const height = Math.max(96, Math.floor(notes.offsetHeight + room));
+    notes.style.height = `${height}px`;
+    notes.dataset.fitted = String(notes.offsetHeight);
   }
 
   function notesCreateFormHtml() {

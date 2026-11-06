@@ -2737,6 +2737,34 @@
         </div>`;
   }
 
+  /** Compare table figures per network — `out` falls back to `in` when the value does not change (premiums). */
+  const insuranceCompareRows = [
+    { section: "Premiums" },
+    { label: "Employee Only", in: ["$62.76", "$48.50"] },
+    { label: "Employee and Children", in: ["$118.50", "$95.00"] },
+    { label: "Employee and Family", in: ["$175.00", "$142.00"] },
+    { label: "Employee and Spouse", in: ["$132.00", "$105.00"] },
+    { section: "Summary" },
+    { label: "Individual Deductible", in: ["$1,000<br>($500 copayment,<br>$500 coinsurance)", "$500"], out: ["$3,000", "$1,500"] },
+    { label: "Family Deductible", in: ["$2,000", "$1,000"], out: ["$6,000", "$3,000"] },
+    { label: "Standard Coinsurance", in: ["20%", "15%"], out: ["40%", "35%"] },
+    { label: "Individual OOP", in: ["$4,000", "$3,000"], out: ["$8,000", "$6,000"] },
+    { label: "Family OOP", in: ["$8,000", "$6,000"], out: ["$16,000", "$12,000"] },
+    { section: "Benefit Services" },
+    { label: "Primary Care Visit", in: ["$25", "$20"], out: ["Ded/40%", "Ded/35%"] },
+  ];
+
+  function insuranceCompareRowsHtml() {
+    const network = insuranceState.compareNetwork === "out" ? "out" : "in";
+    return insuranceCompareRows
+      .map((row) => {
+        if (row.section) return `<tr class="ins-section-row"><th colspan="3">${row.section}</th></tr>`;
+        const [a, b] = row[network] || row.in;
+        return `<tr><td>${row.label}</td><td>${a}</td><td>${b}</td></tr>`;
+      })
+      .join("");
+  }
+
   function insuranceCompareDetailTemplate() {
     return `<article class="panel-content ins-panel" data-content="insurance">
       <header class="panel-header panel-header--detail">
@@ -2751,21 +2779,7 @@
             <col class="ins-cmp-col-plan" />
             <col class="ins-cmp-col-plan" />
           </colgroup>
-          <tbody>
-            <tr class="ins-section-row"><th colspan="3">Premiums</th></tr>
-            <tr><td>Employee Only</td><td>$62.76</td><td>$48.50</td></tr>
-            <tr><td>Employee and Children</td><td>$118.50</td><td>$95.00</td></tr>
-            <tr><td>Employee and Family</td><td>$175.00</td><td>$142.00</td></tr>
-            <tr><td>Employee and Spouse</td><td>$132.00</td><td>$105.00</td></tr>
-            <tr class="ins-section-row"><th colspan="3">Summary</th></tr>
-            <tr><td>Individual Deductible</td><td>$1,000<br>($500 copayment,<br>$500 coinsurance)</td><td>$500</td></tr>
-            <tr><td>Family Deductible</td><td>$2,000</td><td>$1,000</td></tr>
-            <tr><td>Standard Coinsurance</td><td>20%</td><td>15%</td></tr>
-            <tr><td>Individual OOP</td><td>$4,000</td><td>$3,000</td></tr>
-            <tr><td>Family OOP</td><td>$8,000</td><td>$6,000</td></tr>
-            <tr class="ins-section-row"><th colspan="3">Benefit Services</th></tr>
-            <tr><td>Primary Care Visit</td><td>$25</td><td>$20</td></tr>
-          </tbody>
+          <tbody id="ins-compare-rows">${insuranceCompareRowsHtml()}</tbody>
         </table></div>
       </div>
       ${taskListHtml()}
@@ -2861,6 +2875,9 @@
       btn.setAttribute("aria-pressed", String(active));
     });
     layoutInsSegmentedThumb(segmented, { animate: true });
+    /* Swap figures in place — never remount the panel */
+    const body = stage.querySelector("#ins-compare-rows");
+    if (body) body.innerHTML = insuranceCompareRowsHtml();
   }
 
   function bindCompareDetailControls() {
@@ -4069,7 +4086,7 @@
         </div>
         <div class="resolution-regen-row">
           <div class="resolution-regen-anchor">
-            <button class="button button-secondary" type="button" id="resolution-regenerate">Regenerate note</button>
+            <button class="button button-secondary" type="button" id="resolution-regenerate">Regenerate Note</button>
             ${resolutionTipHtml()}
           </div>
           <p class="resolution-status" id="resolution-status" role="status" data-state="${status}"${status === "idle" ? " hidden" : ""}>

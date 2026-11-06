@@ -6765,8 +6765,9 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
 .resolution-scroll {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding-bottom: 4px;
+  /* Same space above Regenerate Note (field → button) and below it (button → End Chat bar) */
+  gap: 16px;
+  padding-bottom: 16px;
 }
 .resolution-scroll .notes-form,
 .resolution-scroll .notes-field--body {
@@ -6787,7 +6788,7 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-top: 2px;
+  margin-top: 0;
 }
 .resolution-regen-anchor { position: relative; flex: 0 0 auto; }
 #resolution-regenerate:disabled { opacity: 0.65; cursor: progress; }

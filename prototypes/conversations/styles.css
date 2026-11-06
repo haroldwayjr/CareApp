@@ -388,7 +388,6 @@ html.is-page-settled .page-rise {
 }
 .threads-head.is-search-open .search-slot { grid-template-rows: 1fr; }
 .search-clip { min-height: 0; overflow: hidden; }
-.threads-head.is-search-open .search-clip { margin: 0 -3px; padding: 0 3px 3px; }
 .search {
   display: flex;
   align-items: center;
@@ -402,7 +401,8 @@ html.is-page-settled .page-rise {
   transition: border-color var(--motion-duration-normal) var(--motion-easing-standard),
     box-shadow var(--motion-duration-normal) var(--motion-easing-standard);
 }
-.search:focus-within { border-color: #b9c4de; box-shadow: var(--focus); }
+.search:focus-within,
+.search:has(input:not(:placeholder-shown)) { border-color: var(--border-strong); box-shadow: none; }
 .search:has(.search-clear:not([hidden])) { padding-right: 6px; }
 .search svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; }
 .search-clear {
@@ -853,7 +853,7 @@ html.is-page-settled .page-rise {
   top: 17.5px;
   display: block;
   overflow: visible;
-  transform: scale(0.9);
+  transform: scale(0.72);
 }
 .empty { --empty-lead: 0ms; }
 .empty.is-first-load { --empty-lead: 320ms; }
@@ -1174,9 +1174,8 @@ html.is-page-settled .page-rise {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.privacy-line, .privacy-scope { display: block; font-size: 12px; line-height: 16px; }
-.privacy-line { font-weight: 500; }
-.privacy-scope { color: var(--text-tertiary); font-weight: 400; }
+.privacy-line { display: block; font-size: 12px; font-weight: 500; line-height: 16px; }
+.privacy-scope { display: block; font-size: 11px; font-weight: 400; line-height: 15px; color: var(--text-tertiary); }
 .ask-quote {
   display: flex;
   gap: 8px;
@@ -1202,11 +1201,11 @@ html.is-page-settled .page-rise {
   margin: 0;
   padding: 10px 12px;
   border-radius: 12px;
-  background: #f2f4f7;
+  background: var(--chat-member);
   font-size: 14px;
   line-height: 20px;
 }
-.aside-msg.own .aside-bubble { background: #e8eafc; }
+.aside-msg.own .aside-bubble { background: var(--chat-team); }
 .mention { color: var(--brand); font-weight: 600; }
 .aside-note { margin: 14px 0 0; color: var(--text-tertiary); font-size: 12px; line-height: 16px; text-align: center; }
 .team-composer { position: relative; margin-top: 0; }

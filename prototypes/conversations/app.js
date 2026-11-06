@@ -862,8 +862,8 @@ function richText(text) {
   return html;
 }
 
-function lockIcon() {
-  return `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="11" width="12" height="9" rx="1.5"/><path d="M8.5 11V8.5a3.5 3.5 0 0 1 7 0V11"/></svg>`;
+function privacyIcon() {
+  return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.78 21 21.53 3"/><path d="M9 19.05a9.91 9.91 0 0 0 3 .45c4.1.07 8.26-2.81 10.82-5.64a1.65 1.65 0 0 0 0-2.22 20.06 20.06 0 0 0-3.07-2.76"/><path d="M17.09 7.27A11.31 11.31 0 0 0 12 6c-4-.07-8.2 2.75-10.82 5.64a1.65 1.65 0 0 0 0 2.22 20 20 0 0 0 4.93 4"/><path d="M9 15.07a3.85 3.85 0 0 1 5.5-5.28"/><path d="M15.75 12.75A3.75 3.75 0 0 1 12 16.5"/></svg>`;
 }
 
 function stretchHTML(stretch) {
@@ -897,7 +897,7 @@ function teamPanel(thread) {
       </div>
     </div>
     <div class="panel-scroll team-log">
-      <div class="privacy-badge">${lockIcon()}<span><span class="privacy-line">Not visible to ${esc(member)}</span><span class="privacy-scope">${esc(asideScope(thread))}</span></span></div>
+      <div class="privacy-badge">${privacyIcon()}<span><span class="privacy-line">Not visible to ${esc(member)}</span><span class="privacy-scope">${esc(asideScope(thread))}</span></span></div>
       ${body}
     </div>
     <form class="composer team-composer" id="team-composer">

@@ -4417,6 +4417,8 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
   --ins-cmp-label: 30%;
   --ins-cmp-plan: calc((100% - var(--ins-cmp-label)) / 2);
   --ins-cmp-gutter: 8px;
+  /* Space between the network switcher and the first plan field */
+  --ins-cmp-switch-gap: 20px;
   position: relative;
 }
 .ins-compare-controls {
@@ -4430,7 +4432,7 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
   display: flex; flex-direction: column; align-items: stretch; gap: 6px;
   min-width: 0; box-sizing: border-box;
 }
-.ins-cmp-col:nth-child(1) { padding-right: calc(var(--ins-cmp-gutter) / 2); }
+.ins-cmp-col:nth-child(1) { padding-right: var(--ins-cmp-switch-gap); }
 .ins-cmp-col:nth-child(2) { padding-left: calc(var(--ins-cmp-gutter) / 2); padding-right: calc(var(--ins-cmp-gutter) / 2); }
 .ins-cmp-col:nth-child(3) { padding-left: calc(var(--ins-cmp-gutter) / 2); }
 .ins-dropdown-wrap { position: relative; z-index: 0; min-width: 0; width: 100%; box-sizing: border-box; }
@@ -4476,6 +4478,7 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
   position: relative; display: flex; justify-content: flex-start;
   align-self: stretch; margin: 2px 0 8px; width: 100%; max-width: 100%; min-width: 0;
 }
+.ins-share-tips-wrap[hidden] { display: none; }
 .ins-share-tips-wrap.is-tip-open { z-index: 15; }
 .ins-share-tips {
   display: inline-flex; align-items: center; gap: 6px; margin: 0; padding: 4px 8px;

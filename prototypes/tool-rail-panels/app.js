@@ -82,8 +82,9 @@
     const switcher = detail?.querySelector(".ins-cmp-network");
     if (!detail || !switcher) return;
     const gutter = parseFloat(getComputedStyle(detail).getPropertyValue("--ins-cmp-gutter")) || 8;
+    const switchGap = parseFloat(getComputedStyle(detail).getPropertyValue("--ins-cmp-switch-gap")) || 20;
     const switcherW = [...switcher.querySelectorAll("button")].reduce((sum, btn) => sum + btn.offsetWidth, 0);
-    const labelW = Math.ceil(switcherW + gutter / 2);
+    const labelW = Math.ceil(switcherW + switchGap);
     detail.style.setProperty("--ins-cmp-label", `${labelW}px`);
     if (isSheetMode()) return;
 
@@ -2654,7 +2655,9 @@
   function insuranceCompareControlsHtml() {
     const planOptions = insurancePlans.map((p) => [p.id, p.name.replace("2026 ", "").replace(" Premium", " Premium 2024").replace(" Select", " Select 2024"), p.ihp]);
     const out = insuranceState.compareNetwork === "out";
-    const shareTipsHtml = `<div class="ins-share-tips-wrap">
+    /* IHP tips only apply when an IHP plan is one of the compared plans */
+    const anyIhp = insuranceState.comparePlanIds.some((id) => insurancePlans.find((p) => p.id === id)?.ihp);
+    const shareTipsHtml = `<div class="ins-share-tips-wrap"${anyIhp ? "" : " hidden"}>
           <button class="ins-share-tips" id="ins-tips" type="button" aria-describedby="ins-tips-popover">${icon.infoFilled}<span>Don’t forget to share these tips</span></button>
           <aside class="ins-tips-popover" id="ins-tips-popover" role="tooltip">
             <button type="button" id="ins-tips-close" class="ins-tips-close" aria-label="Close tips" hidden>${icon.close}</button>
@@ -2779,7 +2782,18 @@
         else if (!selected && existing) existing.remove();
       });
 
+    syncShareTipsVisibility();
     applyCompareDropdownOpenState();
+  }
+
+  /** IHP tips only show when an IHP plan is one of the compared plans. */
+  function syncShareTipsVisibility() {
+    const tips = stage.querySelector(".ins-share-tips-wrap");
+    if (!tips) return;
+    const anyIhp = insuranceState.comparePlanIds.some((id) => insurancePlans.find((p) => p.id === id)?.ihp);
+    tips.hidden = !anyIhp;
+    if (!anyIhp) tips.classList.remove("is-tip-open");
+    requestAnimationFrame(ensurePanelFitsCompare);
   }
 
   function syncCompareNetwork(mode) {

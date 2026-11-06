@@ -4413,17 +4413,19 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
   transition-delay: var(--tip-delay-enter);
 }
 .ins-compare-detail {
-  /* Shared tracks: 30% / 35% / 35% — controls + table use the same splits */
+  /* Shared tracks — label column sized to the network switcher (JS sets px); plans split the rest */
   --ins-cmp-label: 30%;
-  --ins-cmp-plan: 35%;
+  --ins-cmp-plan: calc((100% - var(--ins-cmp-label)) / 2);
   --ins-cmp-gutter: 8px;
   position: relative;
 }
 .ins-compare-controls {
   position: relative; z-index: 10; display: grid;
-  grid-template-columns: var(--ins-cmp-label) var(--ins-cmp-plan) var(--ins-cmp-plan);
+  grid-template-columns: var(--ins-cmp-label) minmax(0, 1fr) minmax(0, 1fr);
   column-gap: 0; align-items: start; padding: 8px 0 4px;
 }
+.ins-cmp-network { align-self: flex-start; height: 38px; }
+.ins-cmp-network button { height: 38px; }
 .ins-cmp-col {
   display: flex; flex-direction: column; align-items: stretch; gap: 6px;
   min-width: 0; box-sizing: border-box;
@@ -4431,12 +4433,6 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
 .ins-cmp-col:nth-child(1) { padding-right: calc(var(--ins-cmp-gutter) / 2); }
 .ins-cmp-col:nth-child(2) { padding-left: calc(var(--ins-cmp-gutter) / 2); padding-right: calc(var(--ins-cmp-gutter) / 2); }
 .ins-cmp-col:nth-child(3) { padding-left: calc(var(--ins-cmp-gutter) / 2); }
-.ins-cmp-ihp-slot {
-  display: flex; align-items: flex-end; min-height: 20px;
-}
-.ins-cmp-ihp-slot .soft-badge {
-  height: 18px; min-height: 18px; padding-inline: 5px; font-size: 10px; line-height: 16px;
-}
 .ins-dropdown-wrap { position: relative; z-index: 0; min-width: 0; width: 100%; box-sizing: border-box; }
 /* Open menu stacks above sibling Share tips chip (and other columns) */
 .ins-dropdown-wrap.is-open { z-index: 30; }
@@ -4447,7 +4443,11 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
   font-family: "Figtree", system-ui, sans-serif;
   font-size: 14px; font-weight: 500; line-height: 20px; /* subtitle2 */
 }
-.ins-dropdown-trigger > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ins-dropdown-trigger > .ins-dropdown-label {
+  flex: 1 1 auto; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.ins-dropdown-trigger > .ins-dropdown-ihp { flex: 0 0 auto; }
 .ins-dropdown-trigger > svg {
   width: 14px; height: 14px; flex: 0 0 auto; color: var(--icon-tertiary);
   transition: transform var(--motion-duration-slow) var(--motion-easing-standard);

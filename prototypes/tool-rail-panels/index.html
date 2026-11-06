@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=toast-wash-16" />
+    <link rel="stylesheet" href="styles.css?v=work-header-1" />
   </head>
   <body>
     <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
@@ -36,7 +36,7 @@
         </a>
         <nav class="global-nav" aria-label="Primary">
           <a href="#">Dashboard</a>
-          <a class="is-active" href="#" aria-current="page">My Work</a>
+          <a class="is-active" href="#my-work" data-nav="work" aria-current="page">My Work</a>
           <a href="#">Schedule</a>
           <a href="#">Search</a>
         </nav>
@@ -220,9 +220,12 @@
             </button>
           </div>
         </div>
-        <button class="icon-button notification-button" type="button" aria-label="Notifications">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 1 1 12 0c0 7 3 7 3 7H3s3 0 3-7"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
-        </button>
+        <div class="notif-wrap">
+          <button class="icon-button notification-button has-unread" id="notif-button" type="button" aria-label="Notifications" aria-haspopup="dialog" aria-expanded="false" aria-controls="notif-panel">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 1 1 12 0c0 7 3 7 3 7H3s3 0 3-7"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+          </button>
+          <section class="notif-panel" id="notif-panel" role="dialog" aria-labelledby="notif-title" hidden></section>
+        </div>
         <button class="icon-button" type="button" aria-label="Settings">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a8 8 0 0 0-1.7-1L14.5 3h-5L9 6a8 8 0 0 0-1.7 1L5 6 3 9.4 5 11a7 7 0 0 0 0 2l-2 1.6L5 18l2.4-1a8 8 0 0 0 1.7 1l.4 3h5l.4-3a8 8 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6a7 7 0 0 0 .1-1Z"/></svg>
         </button>
@@ -270,7 +273,7 @@
               <path d="m12.75 15.754 3.75 -3.75 -3.75 -3.75" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
               <path d="M3.306 16.6a10.5 10.5 0 1 0 0.179 -9.542" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
             </svg>
-            End Session
+            Resolve Chat
           </button>
           <button class="button button-secondary create-task" type="button">Create Task</button>
         </div>
@@ -465,7 +468,7 @@
     </main>
 
     <main class="page work-page" id="work-page" hidden>
-      <section class="work-section" aria-labelledby="incoming-title">
+      <section class="work-section work-incoming work-rise" style="--rise: 0" aria-labelledby="incoming-title">
         <div class="work-section-head">
           <h1 id="incoming-title">Incoming chats</h1>
         </div>
@@ -478,7 +481,7 @@
                   <th>Customer</th>
                   <th>State</th>
                   <th>Intent</th>
-                  <th>Time waiting</th>
+                  <th><span class="work-sort">Time waiting <svg class="work-chevron is-up" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></th>
                   <th><span class="visually-hidden">Open</span></th>
                 </tr>
               </thead>
@@ -506,26 +509,79 @@
       </section>
 
       <section class="work-section" aria-labelledby="tasks-title">
-        <div class="work-section-head">
+        <div class="work-section-head work-section-head--tasks work-rise" style="--rise: 1">
           <h2 id="tasks-title">My tasks</h2>
           <span class="soft-badge soft-neutral"><span class="soft-badge-label">65</span></span>
+          <div class="ins-segmented" id="work-view-switch" role="group" aria-label="Task view">
+            <span class="ins-segmented-thumb" aria-hidden="true"></span>
+            <button type="button" class="is-active" data-work-view="case" aria-pressed="true">Case View</button>
+            <button type="button" data-work-view="task" aria-pressed="false">Task View</button>
+          </div>
         </div>
-        <div class="work-filters">
-          <button class="work-filter" type="button">All types <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-          <button class="work-filter" type="button">All statuses <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-          <button class="work-filter" type="button">All tasks <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-          <button class="work-filter" type="button">All members <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-          <button class="button button-secondary" type="button">Clear</button>
+        <div class="work-filters work-rise" style="--rise: 2">
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="type" value="All types" data-default="All types" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox">
+              <span class="select-trigger-label">All types</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All types" aria-selected="true"><span>All types</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Human in the Loop" aria-selected="false"><span>Human in the Loop</span></button>
+              <button type="button" role="option" data-value="Clinical review" aria-selected="false"><span>Clinical review</span></button>
+              <button type="button" role="option" data-value="Administrative" aria-selected="false"><span>Administrative</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="status" value="All statuses" data-default="All statuses" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox">
+              <span class="select-trigger-label">All statuses</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All statuses" aria-selected="true"><span>All statuses</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="In Progress" aria-selected="false"><span>In Progress</span></button>
+              <button type="button" role="option" data-value="Not started" aria-selected="false"><span>Not started</span></button>
+              <button type="button" role="option" data-value="Completed" aria-selected="false"><span>Completed</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="task" value="All tasks" data-default="All tasks" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox">
+              <span class="select-trigger-label">All tasks</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All tasks" aria-selected="true"><span>All tasks</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Respond to Chat" aria-selected="false"><span>Respond to Chat</span></button>
+              <button type="button" role="option" data-value="Claims / Portal Research" aria-selected="false"><span>Claims / Portal Research</span></button>
+              <button type="button" role="option" data-value="Follow up" aria-selected="false"><span>Follow up</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="member" value="All members" data-default="All members" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox">
+              <span class="select-trigger-label">All members</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All members" aria-selected="true"><span>All members</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Jerald Googleo'Connell" aria-selected="false"><span>Jerald Googleo'Connell</span></button>
+              <button type="button" role="option" data-value="Alex Rivera" aria-selected="false"><span>Alex Rivera</span></button>
+              <button type="button" role="option" data-value="Riley Smith" aria-selected="false"><span>Riley Smith</span></button>
+            </div>
+          </div>
+          <button class="button button-secondary" type="button" id="work-filters-clear">Clear</button>
           <button class="button button-primary" type="button">Apply</button>
         </div>
-        <div class="work-meta">
+        <div class="work-meta work-rise" style="--rise: 3">
           <span>65 results</span>
           <button class="work-refresh" type="button">
             <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 12a8 8 0 1 1-2.2-5.5"/><path d="M20 4v5h-5"/></svg>
             Refresh List
           </button>
         </div>
-        <div class="work-card">
+        <div class="work-card work-rise" style="--rise: 4">
           <div class="work-table-wrap">
             <table class="work-table">
               <thead>
@@ -540,7 +596,7 @@
                   <th>Member</th>
                   <th>Customer</th>
                   <th>Task Status</th>
-                  <th>Due Date</th>
+                  <th><span class="work-sort">Due Date <svg class="work-chevron is-up" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></th>
                 </tr>
               </thead>
               <tbody>
@@ -559,7 +615,7 @@
                 </tr>
                 <tr>
                   <td>Human in the Loop</td>
-                  <td>Claims / Portal Research</td>
+                  <td><span class="work-name">Claims / Portal Research <svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
                   <td>—</td>
                   <td>—</td>
                   <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
@@ -585,7 +641,7 @@
                 </tr>
                 <tr>
                   <td>Human in the Loop</td>
-                  <td>Claims / Portal Research</td>
+                  <td><span class="work-name">Claims / Portal Research <svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
                   <td>—</td>
                   <td>—</td>
                   <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
@@ -595,6 +651,84 @@
                   <td>Google</td>
                   <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
                   <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>8/20/26</span></td>
+                </tr>
+                <tr>
+                  <td>Human in the Loop</td>
+                  <td>Respond to Chat</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>—</td>
+                  <td>10/07/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Human in the Loop</td>
+                  <td><span class="work-name">Claims / Portal Research <svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>—</td>
+                  <td>8/20/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>8/20/26</span></td>
+                </tr>
+                <tr>
+                  <td>Human in the Loop</td>
+                  <td>Respond to Chat</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>—</td>
+                  <td>10/07/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Human in the Loop</td>
+                  <td>Respond to Chat</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>—</td>
+                  <td>10/07/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Human in the Loop</td>
+                  <td>Respond to Chat</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>—</td>
+                  <td>10/07/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Human in the Loop</td>
+                  <td>Respond to Chat</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>—</td>
+                  <td>10/07/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
                 </tr>
                 <tr>
                   <td>Human in the Loop</td>
@@ -626,15 +760,27 @@
             </table>
           </div>
         </div>
-        <div class="work-pager">
+        <div class="work-pager work-rise" style="--rise: 5">
           <div class="work-pages" aria-label="Pagination">
+            <button class="work-page-nav" type="button" aria-label="Previous page" disabled>
+              <svg class="work-chevron is-left" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
             <button class="work-page-btn is-current" type="button" aria-current="page">1</button>
             <button class="work-page-btn" type="button">2</button>
             <button class="work-page-btn" type="button">3</button>
             <span aria-hidden="true">…</span>
             <button class="work-page-btn" type="button">12</button>
+            <button class="work-page-nav" type="button" aria-label="Next page">
+              <svg class="work-chevron is-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
-          <div class="work-page-size">Show items <strong>12</strong></div>
+          <div class="work-page-size">
+            Show items
+            <button class="work-page-size-select" type="button" aria-label="Show items">
+              12
+              <svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
         </div>
       </section>
     </main>
@@ -650,7 +796,7 @@
         </header>
         <div class="nav-drawer-links">
           <a href="#">Dashboard</a>
-          <a class="is-active" href="#" aria-current="page">My Work</a>
+          <a class="is-active" href="#my-work" data-nav="work" aria-current="page">My Work</a>
           <a href="#">Schedule</a>
           <a href="#">Search</a>
         </div>
@@ -672,6 +818,6 @@
     </div>
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
     <script src="chat-engine.js?v=mode-trigger-1"></script>
-    <script src="app.js?v=undo-toast-close-1"></script>
+    <script src="app.js?v=resolve-chat-labels-1"></script>
   </body>
 </html>

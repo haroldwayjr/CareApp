@@ -247,8 +247,10 @@
     }
 
     const triggerRect = trigger.getBoundingClientRect();
+    /* Work-page filters sit on the main canvas, not inside the side panel. */
+    const inWorkPage = Boolean(wrap.closest("#work-page"));
     /* Wrap stays in the panel — menu may already be on <body> */
-    const panelRoot = wrap.closest(".panel-content") || panel;
+    const panelRoot = inWorkPage ? null : wrap.closest(".panel-content") || panel;
     const panelRect = panelRoot?.getBoundingClientRect();
     const gap = 4;
     let bottomLimit = (panelRect?.bottom ?? window.innerHeight) - 8;
@@ -301,11 +303,13 @@
     const rail = document.querySelector(".tool-rail");
     const railLeft = rail ? rail.getBoundingClientRect().left - 8 : window.innerWidth - 8;
     /* Clip to panel + rail — use the panel that still owns the wrap (menu is on <body>) */
-    const rightEdge = Math.min(
-      railLeft,
-      (panelRect?.right ?? window.innerWidth) - 8,
-      window.innerWidth - 8
-    );
+    const rightEdge = inWorkPage
+      ? window.innerWidth - 8
+      : Math.min(
+          railLeft,
+          (panelRect?.right ?? window.innerWidth) - 8,
+          window.innerWidth - 8
+        );
     /* Flush with trigger left; form Select matches trigger width */
     let left = Math.round(triggerRect.left);
     /*
@@ -1484,15 +1488,13 @@
       if (nextBtn) nextBtn.setAttribute("aria-label", "Next month");
 
       const startDow = new Date(year, month - 1, 1).getDay();
-      const gridStart = new Date(year, month - 1, 1 - startDow);
-      for (let i = 0; i < 42; i += 1) {
-        const cell = new Date(gridStart.getFullYear(), gridStart.getMonth(), gridStart.getDate() + i);
-        const y = cell.getFullYear();
-        const m = cell.getMonth() + 1;
-        const d = cell.getDate();
-        const cellIso = `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+      const daysInMonth = new Date(year, month, 0).getDate();
+      for (let i = 0; i < startDow; i += 1) {
+        cells.push(`<span class="dob-calendar-pad" aria-hidden="true"></span>`);
+      }
+      for (let d = 1; d <= daysInMonth; d += 1) {
+        const cellIso = `${year}-${String(month).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
         const classes = ["dob-calendar-day"];
-        if (m !== month) classes.push("is-outside");
         if (cellIso === today) classes.push("is-today");
         if (selected && cellIso === selected) classes.push("is-selected");
         cells.push(
@@ -1609,7 +1611,6 @@
               <button type="button" class="dob-calendar-nav" data-dob-prev aria-label="Previous month">${icon.chevronLeft}</button>
               <button type="button" class="dob-calendar-title" data-dob-title aria-label="Choose month and year">
                 <span class="dob-calendar-title-label"></span>
-                <span class="dob-calendar-title-chevron" aria-hidden="true">${icon.down}</span>
               </button>
               <button type="button" class="dob-calendar-nav dob-calendar-nav--next" data-dob-next aria-label="Next month">${icon.chevronLeft}</button>
             </div>
@@ -1821,7 +1822,7 @@
   }
 
   function closeInlineSelects(except) {
-    stage.querySelectorAll(".inline-select.is-open").forEach((wrap) => {
+    document.querySelectorAll(".inline-select.is-open").forEach((wrap) => {
       if (wrap === except) return;
       const menu = selectMenuForWrap(wrap);
       const trigger = wrap.querySelector(".select-trigger");
@@ -1836,7 +1837,7 @@
   }
 
   function bindInlineSelects() {
-    stage.querySelectorAll(".inline-select").forEach((wrap) => {
+    document.querySelectorAll(".inline-select").forEach((wrap) => {
       /* Avoid open→close from double-binding (accordion + notes both call this). */
       if (wrap.dataset.selectBound === "1") return;
       const trigger = wrap.querySelector(".select-trigger");
@@ -2819,7 +2820,7 @@
   function layoutInsSegmentedThumb(segmented, { animate = true } = {}) {
     const root = segmented || stage.querySelector(".ins-segmented");
     const thumb = root?.querySelector(".ins-segmented-thumb");
-    const active = root?.querySelector("[data-ins-network].is-active");
+    const active = root?.querySelector("button.is-active");
     if (!root || !thumb || !active) return;
     if (!animate) thumb.classList.add("is-instant");
     const rootRect = root.getBoundingClientRect();
@@ -3715,7 +3716,7 @@
     if (loading) {
       btn.innerHTML = `<span class="button-spinner" aria-hidden="true"></span><span>Ending...</span>`;
     } else {
-      btn.textContent = "End Session";
+      btn.textContent = "End Chat";
     }
   }
 
@@ -3940,7 +3941,7 @@
         </div>
       </div>
       <div class="resolution-end-bar">
-        <button class="button button-danger" type="button" id="resolution-end"${resolutionIsComplete() ? "" : " disabled"}>End Session</button>
+        <button class="button button-danger" type="button" id="resolution-end"${resolutionIsComplete() ? "" : " disabled"}>End Chat</button>
       </div>
       ${taskListHtml()}
     </article>`;
@@ -3973,6 +3974,7 @@
     panel.removeAttribute("inert");
     panel.setAttribute("aria-hidden", "false");
     panel.setAttribute("aria-label", "Chat Resolution panel");
+    updateRail("notes", true);
     syncSheetChrome();
     clearTimeout(transitionTimer);
     if (wasOpen && !reduceMotion()) {
@@ -4015,15 +4017,45 @@
     updateRail(activePanel, true);
   }
 
+  function layoutWorkViewSwitch(animate = false) {
+    const segmented = document.querySelector("#work-view-switch");
+    if (!segmented || segmented.closest("[hidden]")) return;
+    layoutInsSegmentedThumb(segmented, { animate });
+  }
+
   function showWorkPage() {
     document.querySelector("#chat-page")?.setAttribute("hidden", "");
     const work = document.querySelector("#work-page");
-    work?.removeAttribute("hidden");
+    if (!work) return;
+    work.classList.remove("is-entering", "is-entered");
+    work.removeAttribute("hidden");
     document.title = "Care App — My Work";
+    if (reduceMotion()) {
+      work.classList.add("is-entered");
+      requestAnimationFrame(() => layoutWorkViewSwitch(false));
+      return;
+    }
+    requestAnimationFrame(() => {
+      layoutWorkViewSwitch(false);
+      work.classList.add("is-entering");
+      const rises = [...work.querySelectorAll(".work-rise")];
+      const last = rises[rises.length - 1];
+      let settled = false;
+      const finish = () => {
+        if (settled || !work.classList.contains("is-entering")) return;
+        settled = true;
+        work.classList.remove("is-entering");
+        work.classList.add("is-entered");
+      };
+      last?.addEventListener("animationend", finish, { once: true });
+      window.setTimeout(finish, 1100);
+    });
   }
 
   function showChatPage() {
-    document.querySelector("#work-page")?.setAttribute("hidden", "");
+    const work = document.querySelector("#work-page");
+    work?.setAttribute("hidden", "");
+    work?.classList.remove("is-entering", "is-entered");
     document.querySelector("#chat-page")?.removeAttribute("hidden");
     document.title = "Care App — Chat with Riley Smith";
   }
@@ -4046,7 +4078,7 @@
     sessionEnded = true;
     syncHeaderEndSession();
     showWorkPage();
-    showToast("Session ended for Riley Smith", {
+    showToast("Chat with Riley Smith ended", {
       dwellMs: 8000,
       action: {
         label: "Undo",
@@ -7829,12 +7861,12 @@ Timestamp: 8/21/18 KS`;
     if (!t.closest(".inline-dob-wrap")) closeInlineDobCalendars();
     if (!t.closest(".mode-switcher-wrap")) closeModeSwitcherMenu();
     if (!t.closest(".status-switcher-wrap")) closeStatusMenu();
+    if (!t.closest(".notif-wrap")) closeNotifPanel();
   }
 
   function bindPanelActions() {
     stage.querySelector(".panel-close")?.addEventListener("click", () => {
-      if (resolutionOpen) closeResolution();
-      else collapsePanel();
+      collapsePanel();
     });
 
     const viewButton = stage.querySelector(".view-in-button");
@@ -8839,6 +8871,7 @@ Timestamp: 8/21/18 KS`;
   function openModeSwitcherMenu() {
     if (!modeSwitcherMenu || !modeSwitcherButton) return;
     closeStatusMenu();
+    closeNotifPanel();
     modeSwitcherMenu.hidden = false;
     modeSwitcherButton.setAttribute("aria-expanded", "true");
   }
@@ -8866,6 +8899,393 @@ Timestamp: 8/21/18 KS`;
       closeModeSwitcherMenu();
     });
   });
+
+  /* Soma Notification list / Panel — App Shell bell dropdown */
+  const NOTIFICATIONS = [
+    { id: "epds-score", group: "today", title: "New EPDS result", detail: "For Flor Gomez", criticalDetail: "Self-harm indicated; score >10 for Flor Gomez", critical: true, time: "30 min ago", unread: true, target: "member" },
+    { id: "epds-harm", group: "today", title: "New EPDS result", detail: "For Flor Gomez", criticalDetail: "Self-harm indicated for Flor Gomez", critical: true, time: "3 hours ago", unread: true, target: "member" },
+    { id: "epds-denza", group: "today", title: "New EPDS result", detail: "For Denza Smith", criticalDetail: "Score > 10 for Denza Smith", critical: true, time: "5 hours ago", unread: true, target: "member" },
+    { id: "note-new", group: "earlier", title: "New case note", time: "1 week ago", unread: true, target: "notes" },
+    { id: "note-updated", group: "earlier", title: "Case note updated", time: "1 day ago", unread: true, target: "notes" },
+    { id: "epds-read", group: "earlier", title: "New EPDS result", detail: "For Flor Gomez", criticalDetail: "Self-harm indicated for Flor Gomez", critical: true, time: "1 day ago", unread: false, target: "member" },
+    { id: "msg-olivia", group: "earlier", title: "New message from Olivia Westfield-Johnson", time: "1 day ago", unread: false, target: "communication" },
+    { id: "msg-eunice", group: "earlier", title: "New message from Eunice Kim", time: "1 week ago", unread: false, target: "communication" },
+  ];
+  const NOTIF_GROUPS = [
+    ["today", "Today"],
+    ["earlier", "Earlier"],
+  ];
+  const NOTIF_STAGGER_CAP = 6;
+  const notifState = { view: "all", critical: false };
+  const notifButton = document.getElementById("notif-button");
+  const notifPanel = document.getElementById("notif-panel");
+  const NOTIF_LOAD_MS = 720;
+  let notifCloseTimer = 0;
+  let notifSwapTimer = 0;
+  let notifLoadTimer = 0;
+  let notifLoading = false;
+
+  const notifIcon = {
+    cog: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a8 8 0 0 0-1.7-1L14.5 3h-5L9 6a8 8 0 0 0-1.7 1L5 6 3 9.4 5 11a7 7 0 0 0 0 2l-2 1.6L5 18l2.4-1a8 8 0 0 0 1.7 1l.4 3h5l.4-3a8 8 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6a7 7 0 0 0 .1-1Z"/></svg>`,
+    /* icon/actions/check.bold — Size xs, Style bold */
+    check: `<svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>`,
+  };
+
+  const notifUnreadCount = () => NOTIFICATIONS.filter((item) => item.unread).length;
+  const notifHasUnreadCritical = () => NOTIFICATIONS.some((item) => item.critical && item.unread);
+  const notifShowsAlert = () => notifState.critical && notifHasUnreadCritical();
+
+  function notifVisibleItems() {
+    return notifState.view === "unread" ? NOTIFICATIONS.filter((item) => item.unread) : NOTIFICATIONS;
+  }
+
+  function notifRowHtml(item, index) {
+    const showCritical = notifState.critical && item.critical && item.criticalDetail;
+    const detailText = showCritical ? item.criticalDetail : item.detail;
+    const detail = detailText
+      ? `<span class="notif-row-detail${showCritical ? " is-critical" : ""}">${escapeAttr(detailText)}</span>`
+      : "";
+    const label = `${item.unread ? "Unread. " : ""}${item.title}${detailText ? `, ${detailText}` : ""}, ${item.time}`;
+    return `
+      <button type="button" class="notif-row${item.unread ? " is-unread" : ""}" data-notif-id="${item.id}"
+        tabindex="${index === 0 ? "0" : "-1"}" style="--i: ${Math.min(index, NOTIF_STAGGER_CAP)}"
+        aria-label="${escapeAttr(label)}">
+        <span class="notif-row-well" aria-hidden="true"><span class="notif-row-dot"></span></span>
+        <span class="notif-row-content">
+          <span class="notif-row-title-row">
+            <span class="notif-row-title">${escapeAttr(item.title)}</span>
+            <span class="notif-row-time">${escapeAttr(item.time)}</span>
+          </span>
+          ${detail}
+        </span>
+      </button>`;
+  }
+
+  function notifSkeletonHtml() {
+    const row = (width) => `
+      <div class="notif-skel-row">
+        <span class="skeleton notif-skel-dot"></span>
+        <span class="notif-skel-copy">
+          <span class="notif-skel-line">
+            <span class="skeleton notif-skel-title" style="width:${width}"></span>
+            <span class="skeleton notif-skel-time"></span>
+          </span>
+          <span class="skeleton notif-skel-detail"></span>
+        </span>
+      </div>`;
+    return `
+      <div class="notif-skeleton" aria-hidden="true">
+        <span class="skeleton notif-skel-label"></span>
+        ${row("62%")}${row("48%")}${row("70%")}
+        <span class="skeleton notif-skel-label"></span>
+        ${row("44%")}${row("56%")}
+      </div>`;
+  }
+
+  function notifBodyHtml() {
+    const items = notifVisibleItems();
+    if (!items.length) {
+      return `
+        <div class="notif-empty">
+          <span class="notif-empty-well" aria-hidden="true"><span class="notif-empty-glyph"></span></span>
+          <p class="notif-empty-title">You’re all caught up</p>
+          <p class="notif-empty-copy">No unread notifications right now.</p>
+        </div>`;
+    }
+    let index = 0;
+    return NOTIF_GROUPS.map(([group, label]) => {
+      const rows = items.filter((item) => item.group === group);
+      if (!rows.length) return "";
+      return `
+        <div class="notif-group" role="group" aria-label="${label}">
+          <p class="notif-group-label" aria-hidden="true">${label}</p>
+          ${rows.map((item) => notifRowHtml(item, index++)).join("")}
+        </div>`;
+    }).join("");
+  }
+
+  function notifAlertHtml() {
+    if (!notifShowsAlert()) return "";
+    return `
+      <div class="notif-alert-slot">
+        <div class="notif-alert-inner">
+          <div class="notif-alert" role="alert">
+            <span class="notif-alert-icon" aria-hidden="true"></span>
+            <span class="notif-alert-title">Unread critical notifications: review immediately</span>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  /** Collapse the critical banner once nothing critical is left unread. */
+  function collapseNotifAlert() {
+    const slot = notifPanel?.querySelector(".notif-alert-slot");
+    if (!slot || notifShowsAlert()) return Promise.resolve();
+    if (reduceMotion()) {
+      slot.remove();
+      return Promise.resolve();
+    }
+    return new Promise((resolve) => {
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        slot.remove();
+        resolve();
+      };
+      slot.classList.add("is-collapsing");
+      slot.addEventListener("transitionend", (event) => {
+        if (event.target === slot) finish();
+      });
+      window.setTimeout(finish, 320);
+    });
+  }
+
+  function renderNotifPanel() {
+    if (!notifPanel) return;
+    const tab = (view, label) => {
+      const active = notifState.view === view;
+      return `<button type="button" class="tab${active ? " is-active" : ""}" role="tab" data-notif-view="${view}"
+        id="notif-tab-${view}" aria-selected="${active}" aria-controls="notif-body" tabindex="${active ? "0" : "-1"}">${label}</button>`;
+    };
+    notifPanel.innerHTML = `
+      <header class="notif-header">
+        <h2 class="notif-title" id="notif-title">Notifications</h2>
+        <button type="button" class="icon-button notif-settings" data-notif-critical aria-pressed="false" aria-label="Show critical notifications">${notifIcon.cog}</button>
+      </header>
+      <div class="notif-filter">
+        <div class="tabs notif-tabs" role="tablist" aria-label="Filter notifications">
+          ${tab("all", "All")}
+          ${tab("unread", "Unread")}
+          <span class="tabs-indicator" aria-hidden="true"></span>
+        </div>
+        <button type="button" class="notif-mark-all" data-notif-mark-all>${notifIcon.check}<span>Mark all as read</span></button>
+      </div>
+      ${notifLoading ? "" : notifAlertHtml()}
+      <div class="notif-body" id="notif-body" role="tabpanel" aria-labelledby="notif-tab-${notifState.view}" aria-busy="${notifLoading}">${notifLoading ? notifSkeletonHtml() : notifBodyHtml()}</div>
+    `;
+    syncNotifChrome();
+    layoutTabsIndicator(notifPanel.querySelector(".notif-tabs"), { animate: false });
+  }
+
+  function syncNotifChrome() {
+    const unread = notifUnreadCount();
+    notifButton?.classList.toggle("has-unread", unread > 0);
+    notifButton?.setAttribute("aria-label", unread ? `Notifications, ${unread} unread` : "Notifications");
+    const markAll = notifPanel?.querySelector("[data-notif-mark-all]");
+    if (markAll) markAll.disabled = notifLoading || unread === 0;
+    notifPanel?.querySelectorAll("[data-notif-view]").forEach((tabEl) => {
+      const active = tabEl.dataset.notifView === notifState.view;
+      tabEl.classList.toggle("is-active", active);
+      tabEl.setAttribute("aria-selected", String(active));
+      tabEl.tabIndex = active ? 0 : -1;
+    });
+    notifPanel?.querySelector("#notif-body")?.setAttribute("aria-labelledby", `notif-tab-${notifState.view}`);
+    const settings = notifPanel?.querySelector("[data-notif-critical]");
+    if (settings) {
+      settings.setAttribute("aria-pressed", String(notifState.critical));
+      settings.setAttribute("aria-label", notifState.critical ? "Hide critical notifications" : "Show critical notifications");
+    }
+  }
+
+  /** Prototype hot link — settings toggles the self-harm review view. */
+  function toggleNotifCritical() {
+    notifState.critical = !notifState.critical;
+    syncNotifChrome();
+    const body = notifPanel?.querySelector("#notif-body");
+    if (!body) return;
+    if (notifState.critical && notifShowsAlert() && !notifPanel.querySelector(".notif-alert-slot")) {
+      body.insertAdjacentHTML("beforebegin", notifAlertHtml());
+      const slot = notifPanel.querySelector(".notif-alert-slot");
+      if (!reduceMotion() && slot) {
+        slot.classList.add("is-collapsing");
+        requestAnimationFrame(() => requestAnimationFrame(() => slot.classList.remove("is-collapsing")));
+      }
+    } else if (!notifState.critical) {
+      collapseNotifAlert();
+    }
+    if (reduceMotion()) {
+      body.innerHTML = notifBodyHtml();
+      return;
+    }
+    body.classList.add("is-swapping-out");
+    window.setTimeout(() => {
+      body.innerHTML = notifBodyHtml();
+      body.classList.remove("is-swapping-out");
+      body.classList.add("is-swapping-in");
+      window.setTimeout(() => body.classList.remove("is-swapping-in"), 180);
+    }, 120);
+  }
+
+  /** Swap the list body: fade out, resize the panel to the new content height, fade in. */
+  function swapNotifBody() {
+    const body = notifPanel?.querySelector("#notif-body");
+    if (!body) return;
+    window.clearTimeout(notifSwapTimer);
+    if (reduceMotion()) {
+      body.innerHTML = notifBodyHtml();
+      return;
+    }
+    const from = notifPanel.offsetHeight;
+    body.classList.add("is-swapping-out");
+    notifSwapTimer = window.setTimeout(() => {
+      body.innerHTML = notifBodyHtml();
+      body.classList.remove("is-swapping-out");
+      notifPanel.style.height = "";
+      const to = notifPanel.offsetHeight;
+      notifPanel.style.height = `${from}px`;
+      void notifPanel.offsetHeight;
+      notifPanel.classList.add("is-resizing");
+      notifPanel.style.height = `${to}px`;
+      body.classList.add("is-swapping-in");
+      const done = () => {
+        notifPanel.classList.remove("is-resizing");
+        notifPanel.style.height = "";
+        body.classList.remove("is-swapping-in");
+      };
+      notifSwapTimer = window.setTimeout(done, 240);
+    }, 120);
+  }
+
+  function setNotifView(view) {
+    if (notifState.view === view) return;
+    notifState.view = view;
+    syncNotifChrome();
+    layoutTabsIndicator(notifPanel.querySelector(".notif-tabs"));
+    swapNotifBody();
+  }
+
+  function markAllNotifsRead() {
+    if (!notifUnreadCount()) return;
+    const showEmpty = notifState.view === "unread";
+    NOTIFICATIONS.forEach((item) => (item.unread = false));
+    notifPanel?.querySelectorAll(".notif-row.is-unread").forEach((row) => row.classList.remove("is-unread"));
+    syncNotifChrome();
+    const collapsed = collapseNotifAlert();
+    if (showEmpty) collapsed.then(() => swapNotifBody());
+    showToast("All notifications marked as read", { dwellMs: 3000 });
+  }
+
+  function openNotifFromRow(id) {
+    const item = NOTIFICATIONS.find((entry) => entry.id === id);
+    if (!item) return;
+    item.unread = false;
+    syncNotifChrome();
+    closeNotifPanel();
+    if (item.target) openPanel(item.target);
+    showToast(`Opened ${item.title}`, { dwellMs: 3000 });
+  }
+
+  function settleNotifList() {
+    notifLoading = false;
+    const body = notifPanel?.querySelector("#notif-body");
+    if (!body) return;
+    if (notifShowsAlert() && !notifPanel.querySelector(".notif-alert-slot")) {
+      body.insertAdjacentHTML("beforebegin", notifAlertHtml());
+    }
+    body.innerHTML = notifBodyHtml();
+    body.setAttribute("aria-busy", "false");
+    if (!reduceMotion()) {
+      body.classList.add("is-swapping-in");
+      window.setTimeout(() => body.classList.remove("is-swapping-in"), 180);
+    }
+    syncNotifChrome();
+  }
+
+  function openNotifPanel({ focusInside = false } = {}) {
+    if (!notifPanel || !notifButton) return;
+    closeStatusMenu();
+    closeModeSwitcherMenu();
+    window.clearTimeout(notifCloseTimer);
+    window.clearTimeout(notifLoadTimer);
+    notifLoading = !reduceMotion();
+    renderNotifPanel();
+    notifPanel.classList.remove("is-leaving");
+    notifPanel.hidden = false;
+    notifPanel.classList.add("is-opening");
+    layoutTabsIndicator(notifPanel.querySelector(".notif-tabs"), { animate: false });
+    notifButton.setAttribute("aria-expanded", "true");
+    window.setTimeout(() => notifPanel.classList.remove("is-opening"), 480);
+    if (notifLoading) notifLoadTimer = window.setTimeout(settleNotifList, NOTIF_LOAD_MS);
+    if (focusInside) notifPanel.querySelector(".tab.is-active")?.focus();
+  }
+
+  function closeNotifPanel({ restoreFocus = false } = {}) {
+    if (!notifPanel || notifPanel.hidden) return;
+    notifButton?.setAttribute("aria-expanded", "false");
+    window.clearTimeout(notifSwapTimer);
+    window.clearTimeout(notifLoadTimer);
+    notifLoading = false;
+    if (restoreFocus) notifButton?.focus();
+    if (reduceMotion()) {
+      notifPanel.hidden = true;
+      return;
+    }
+    notifPanel.classList.remove("is-opening");
+    notifPanel.classList.add("is-leaving");
+    window.clearTimeout(notifCloseTimer);
+    notifCloseTimer = window.setTimeout(() => {
+      notifPanel.classList.remove("is-leaving");
+      notifPanel.hidden = true;
+    }, 140);
+  }
+
+  function isNotifPanelOpen() {
+    return !!notifPanel && !notifPanel.hidden && !notifPanel.classList.contains("is-leaving");
+  }
+
+  notifButton?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    if (isNotifPanelOpen()) closeNotifPanel();
+    else openNotifPanel({ focusInside: event.detail === 0 });
+  });
+
+  notifPanel?.addEventListener("click", (event) => {
+    const t = event.target;
+    if (notifLoading) return;
+    const viewTab = t.closest("[data-notif-view]");
+    if (viewTab) {
+      setNotifView(viewTab.dataset.notifView);
+      return;
+    }
+    if (t.closest("[data-notif-mark-all]")) {
+      markAllNotifsRead();
+      return;
+    }
+    if (t.closest("[data-notif-critical]")) {
+      toggleNotifCritical();
+      return;
+    }
+    const row = t.closest(".notif-row");
+    if (row) openNotifFromRow(row.dataset.notifId);
+  });
+
+  notifPanel?.addEventListener("keydown", (event) => {
+    const active = document.activeElement;
+    const tabs = [...notifPanel.querySelectorAll("[data-notif-view]")];
+    if (tabs.includes(active) && (event.key === "ArrowLeft" || event.key === "ArrowRight")) {
+      event.preventDefault();
+      const next = tabs[(tabs.indexOf(active) + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
+      setNotifView(next.dataset.notifView);
+      next.focus();
+      return;
+    }
+    if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+    const rows = [...notifPanel.querySelectorAll(".notif-row")];
+    if (!rows.length) return;
+    const current = rows.indexOf(active);
+    if (current < 0 && (event.key === "Home" || event.key === "End")) return;
+    event.preventDefault();
+    let next;
+    if (event.key === "Home") next = 0;
+    else if (event.key === "End") next = rows.length - 1;
+    else if (current < 0) next = event.key === "ArrowDown" ? 0 : rows.length - 1;
+    else next = Math.min(rows.length - 1, Math.max(0, current + (event.key === "ArrowDown" ? 1 : -1)));
+    rows.forEach((row, i) => (row.tabIndex = i === next ? 0 : -1));
+    rows[next].focus();
+  });
+
+  syncNotifChrome();
 
   const STATUS_OPTIONS = [
     { id: "available", label: "Available" },
@@ -8976,6 +9396,7 @@ Timestamp: 8/21/18 KS`;
   function openStatusMenu({ focusOption = false } = {}) {
     if (!statusMenu || !statusButton || statusConnecting) return;
     closeModeSwitcherMenu();
+    closeNotifPanel();
     statusMenu.hidden = false;
     statusButton.setAttribute("aria-expanded", "true");
     if (!focusOption) return;
@@ -9081,6 +9502,53 @@ Timestamp: 8/21/18 KS`;
     a.addEventListener("click", closeNavDrawer);
   });
 
+  document.querySelectorAll('[data-nav="work"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (sessionEnding) {
+        cancelPendingSessionEnd();
+        setResolutionEndLoading(false);
+        syncResolutionEndButton();
+      }
+      showWorkPage();
+    });
+  });
+
+  const workViewSwitch = document.querySelector("#work-view-switch");
+  workViewSwitch?.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      workViewSwitch.querySelectorAll("button").forEach((other) => {
+        const on = other === btn;
+        other.classList.toggle("is-active", on);
+        other.setAttribute("aria-pressed", String(on));
+      });
+      layoutWorkViewSwitch(true);
+    });
+  });
+  window.addEventListener("resize", () => layoutWorkViewSwitch(false));
+
+  bindInlineSelects();
+  document.querySelector("#work-filters-clear")?.addEventListener("click", () => {
+    document.querySelectorAll("#work-page .inline-select").forEach((wrap) => {
+      const hidden = wrap.querySelector("input[data-field]");
+      const label = wrap.querySelector(".select-trigger-label");
+      const menu = selectMenuForWrap(wrap);
+      const fallback = hidden?.dataset.default || "";
+      if (!hidden || !label || !menu) return;
+      hidden.value = fallback;
+      label.textContent = fallback;
+      menu.querySelectorAll("[data-value]").forEach((row) => {
+        const on = row.dataset.value === fallback;
+        row.classList.toggle("is-selected", on);
+        row.setAttribute("aria-selected", String(on));
+        const check = row.querySelector("svg");
+        if (on && !check) row.insertAdjacentHTML("beforeend", icon.check);
+        else if (!on && check) check.remove();
+      });
+    });
+    closeInlineSelects();
+  });
+
   document.querySelector(".wordmark")?.addEventListener("click", (event) => {
     event.preventDefault();
     resetAssistAiGlow();
@@ -9183,6 +9651,10 @@ Timestamp: 8/21/18 KS`;
       }
       if (modeSwitcherMenu && !modeSwitcherMenu.hidden) {
         closeModeSwitcherMenu();
+        return;
+      }
+      if (isNotifPanelOpen()) {
+        closeNotifPanel({ restoreFocus: true });
         return;
       }
       const hasMenu =

@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=work-header-1" />
+    <link rel="stylesheet" href="styles.css?v=soma-work-merge-1" />
   </head>
   <body>
     <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
@@ -292,15 +292,31 @@
                 <span class="assigned-line">Assigned to Lila George</span>
               </div>
             </div>
-            <div class="reply-timers" aria-label="Reply timers">
-              <div class="reply-timer is-active" data-reply-side="member">
-                <span class="reply-timer-label">Member Replied</span>
-                <span class="reply-timer-value" data-reply-timer="member">00:03</span>
+            <div class="reply-timers" data-reply-mode="active" aria-label="Response time">
+              <div class="reply-timer" data-reply-side="member" hidden>
+                <span class="reply-timer-well" aria-hidden="true">
+                  <svg class="reply-timer-clock" viewBox="0 0 24 24" width="20" height="20">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v5l3 2"></path>
+                  </svg>
+                </span>
+                <span class="reply-timer-copy">
+                  <span class="reply-timer-label">Member response time</span>
+                  <span class="reply-timer-value" data-reply-timer="member">00:00</span>
+                </span>
               </div>
               <span class="reply-timers-divider" aria-hidden="true"></span>
-              <div class="reply-timer" data-reply-side="you">
-                <span class="reply-timer-label">You Replied</span>
-                <span class="reply-timer-value" data-reply-timer="you">00:03</span>
+              <div class="reply-timer is-active" data-reply-side="you">
+                <span class="reply-timer-well" aria-hidden="true">
+                  <svg class="reply-timer-clock" viewBox="0 0 24 24" width="20" height="20">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v5l3 2"></path>
+                  </svg>
+                </span>
+                <span class="reply-timer-copy">
+                  <span class="reply-timer-label">Your response time</span>
+                  <span class="reply-timer-value" data-reply-timer="you">00:03</span>
+                </span>
               </div>
             </div>
           </header>
@@ -399,40 +415,39 @@
             </article>
           </div>
           <footer class="composer">
-            <div class="composer-field" id="composer-field">
-              <label class="composer-input-wrap">
-                <span class="visually-hidden">Message</span>
-                <textarea class="composer-input" id="composer-input" rows="1" placeholder="Write a message..."></textarea>
-              </label>
-              <div class="composer-toolbar">
+            <div class="composer-row">
+              <div class="composer-field" id="composer-field">
                 <button class="composer-icon-btn composer-icon-btn--attach" id="composer-attach" type="button" aria-label="Attach an image">
-                  <!-- Streamline Regular Add xs — rounded caps -->
+                  <!-- icon/actions/add — xs -->
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
                     <path d="M1 12h22M12 1v22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25"/>
                   </svg>
                 </button>
+                <label class="composer-input-wrap">
+                  <span class="visually-hidden">Message</span>
+                  <textarea class="composer-input" id="composer-input" rows="1" placeholder="Write a reply to the member..."></textarea>
+                </label>
                 <input class="visually-hidden" id="composer-attach-input" type="file" accept="image/*" tabindex="-1" />
-                <div class="composer-toolbar-end">
-                  <button class="composer-icon-btn composer-icon-btn--rewrite" id="composer-cleanup" type="button" aria-label="Clean up">
-                    <!-- icon/actions/edit.sparkle — Regular 1.5, translate-only -->
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true" overflow="visible">
-                      <path d="M22.19 1.81a3.639 3.639 0 0 0-5.17.035l-14.5 14.5L.75 23.25l6.905-1.771 14.5-14.5a3.637 3.637 0 0 0 .035-5.169Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-                      <path d="m16.606 2.26 5.134 5.134" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-                      <path d="m2.521 16.344 5.139 5.13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-                      <g transform="translate(2.75 13.75)">
-                        <path d="M22.8125 5.948c-2.8135.944-3.741 1.996-4.427 4.615-.686-2.619-1.613-3.67-4.427-4.615 2.814-.944 3.741-1.996 4.427-4.615.686 2.619 1.613 3.67 4.427 4.615Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-                      </g>
-                    </svg>
-                    <span class="tooltip tooltip--above">Clean up</span>
-                  </button>
-                  <button class="composer-send" id="composer-send" type="button" disabled aria-label="Send message">
-                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                      <path d="M1.4 3.743a1.5 1.5 0 0 1 1.973-2.077l19.014 9.659a.75.75 0 0 1 0 1.337L3.373 22.334A1.5 1.5 0 0 1 1.4 20.257l5.058-8.264Z" fill="currentColor"/>
-                      <path d="M6.453 11.993h16.344" class="composer-send-seam" stroke-linecap="round" stroke-width="1.75"/>
-                    </svg>
-                  </button>
-                </div>
               </div>
+              <button class="composer-icon-btn composer-icon-btn--rewrite" id="composer-cleanup" type="button" aria-label="Rewrite">
+                <!-- icon/actions/edit.sparkle — sm outline -->
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true" overflow="visible">
+                  <path d="M22.19 1.81a3.639 3.639 0 0 0-5.17.035l-14.5 14.5L.75 23.25l6.905-1.771 14.5-14.5a3.637 3.637 0 0 0 .035-5.169Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  <path d="m16.606 2.26 5.134 5.134" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  <path d="m2.521 16.344 5.139 5.13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  <g transform="translate(2.75 13.75)">
+                    <path d="M22.8125 5.948c-2.8135.944-3.741 1.996-4.427 4.615-.686-2.619-1.613-3.67-4.427-4.615 2.814-.944 3.741-1.996 4.427-4.615.686 2.619 1.613 3.67 4.427 4.615Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  </g>
+                </svg>
+                <span class="tooltip tooltip--above">Rewrite</span>
+              </button>
+              <button class="button button-primary composer-send" id="composer-send" type="button" disabled>
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path d="M1.4 3.743a1.5 1.5 0 0 1 1.973-2.077l19.014 9.659a.75.75 0 0 1 0 1.337L3.373 22.334A1.5 1.5 0 0 1 1.4 20.257l5.058-8.264Z" fill="currentColor"/>
+                  <path d="M6.453 11.993h16.344" class="composer-send-seam" stroke-linecap="round" stroke-width="1.75"/>
+                </svg>
+                Send
+              </button>
             </div>
           </footer>
         </section>
@@ -468,9 +483,33 @@
     </main>
 
     <main class="page work-page" id="work-page" hidden>
-      <section class="work-section work-incoming work-rise" style="--rise: 0" aria-labelledby="incoming-title">
+      <section class="work-section work-incoming work-rise" style="--rise: 0" aria-label="Chats">
         <div class="work-section-head">
-          <h1 id="incoming-title">Incoming chats</h1>
+          <div class="ins-segmented ins-segmented--border" id="incoming-view-switch" role="group" aria-label="Chats">
+            <span class="ins-segmented-thumb" aria-hidden="true"></span>
+            <button type="button" class="is-active" data-chat-queue="incoming" aria-pressed="true">
+              Incoming chats
+              <span class="soft-badge soft-neutral"><span class="soft-badge-label">2</span></span>
+            </button>
+            <button type="button" data-chat-queue="closed" aria-pressed="false">
+              Closed chats
+              <span class="soft-badge soft-neutral"><span class="soft-badge-label">3</span></span>
+            </button>
+          </div>
+        </div>
+        <div class="work-filters">
+          <button class="work-filter" type="button">All types <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+          <button class="work-filter" type="button">All statuses <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+          <button class="work-filter" type="button">All tasks <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+          <button class="work-filter" type="button">All members <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+          <button class="button button-secondary" type="button">Clear</button>
+          <button class="button button-primary" type="button">Apply</button>
+        </div>
+        <div class="work-meta">
+          <button class="work-refresh" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 12a8 8 0 1 1-2.2-5.5"/><path d="M20 4v5h-5"/></svg>
+            Refresh List
+          </button>
         </div>
         <div class="work-card">
           <div class="work-table-wrap">
@@ -485,7 +524,7 @@
                   <th><span class="visually-hidden">Open</span></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody data-chat-rows="incoming">
                 <tr>
                   <td>Jerald Googleo'Connell</td>
                   <td>Google</td>
@@ -500,6 +539,32 @@
                   <td>—</td>
                   <td>—</td>
                   <td>45d</td>
+                  <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
+                </tr>
+              </tbody>
+              <tbody data-chat-rows="closed" hidden>
+                <tr>
+                  <td>Morgan Ellis</td>
+                  <td>Google</td>
+                  <td>CA</td>
+                  <td>Referral</td>
+                  <td>2d</td>
+                  <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
+                </tr>
+                <tr>
+                  <td>Dana Whitfield</td>
+                  <td>Google</td>
+                  <td>WA</td>
+                  <td>Benefits</td>
+                  <td>9d</td>
+                  <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
+                </tr>
+                <tr>
+                  <td>Kenji Sato</td>
+                  <td>Google</td>
+                  <td>CA</td>
+                  <td>Claim</td>
+                  <td>21d</td>
                   <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
               </tbody>
@@ -818,6 +883,6 @@
     </div>
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
     <script src="chat-engine.js?v=mode-trigger-1"></script>
-    <script src="app.js?v=resolve-chat-labels-1"></script>
+    <script src="app.js?v=soma-work-merge-1"></script>
   </body>
 </html>

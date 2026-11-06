@@ -2655,9 +2655,9 @@
   function insuranceCompareControlsHtml() {
     const planOptions = insurancePlans.map((p) => [p.id, p.name.replace("2026 ", "").replace(" Premium", " Premium 2024").replace(" Select", " Select 2024"), p.ihp]);
     const out = insuranceState.compareNetwork === "out";
-    /* IHP tips only apply when an IHP plan is one of the compared plans */
-    const anyIhp = insuranceState.comparePlanIds.some((id) => insurancePlans.find((p) => p.id === id)?.ihp);
-    const shareTipsHtml = `<div class="ins-share-tips-wrap"${anyIhp ? "" : " hidden"}>
+    /* IHP tips sit under the column of the selected IHP plan */
+    const ihpCol = insuranceState.comparePlanIds.findIndex((id) => insurancePlans.find((p) => p.id === id)?.ihp);
+    const shareTipsHtml = `<div class="ins-share-tips-wrap"${ihpCol < 0 ? " hidden" : ""}>
           <button class="ins-share-tips" id="ins-tips" type="button" aria-describedby="ins-tips-popover">${icon.infoFilled}<span>Don’t forget to share these tips</span></button>
           <aside class="ins-tips-popover" id="ins-tips-popover" role="tooltip">
             <button type="button" id="ins-tips-close" class="ins-tips-close" aria-label="Close tips" hidden>${icon.close}</button>
@@ -2677,12 +2677,13 @@
               <button type="button" data-ins-compare-network="out" class="${out ? "is-active" : ""}" aria-pressed="${out}">Out-of-network</button>
             </div>
           </div>
-          <div class="ins-cmp-col ins-cmp-col--plan-a">
+          <div class="ins-cmp-col ins-cmp-col--plan">
             ${compareDropdownHtml("plan-a", "", planOptions, insuranceState.comparePlanIds[0])}
-            ${shareTipsHtml}
+            ${ihpCol === 1 ? "" : shareTipsHtml}
           </div>
-          <div class="ins-cmp-col">
+          <div class="ins-cmp-col ins-cmp-col--plan">
             ${compareDropdownHtml("plan-b", "", planOptions, insuranceState.comparePlanIds[1])}
+            ${ihpCol === 1 ? shareTipsHtml : ""}
           </div>
         </div>`;
   }
@@ -2786,13 +2787,18 @@
     applyCompareDropdownOpenState();
   }
 
-  /** IHP tips only show when an IHP plan is one of the compared plans. */
+  /** IHP tips show under the column of the selected IHP plan, hidden when neither plan is IHP. */
   function syncShareTipsVisibility() {
     const tips = stage.querySelector(".ins-share-tips-wrap");
     if (!tips) return;
-    const anyIhp = insuranceState.comparePlanIds.some((id) => insurancePlans.find((p) => p.id === id)?.ihp);
-    tips.hidden = !anyIhp;
-    if (!anyIhp) tips.classList.remove("is-tip-open");
+    const ihpCol = insuranceState.comparePlanIds.findIndex((id) => insurancePlans.find((p) => p.id === id)?.ihp);
+    tips.hidden = ihpCol < 0;
+    if (ihpCol < 0) {
+      tips.classList.remove("is-tip-open");
+    } else {
+      const col = stage.querySelectorAll(".ins-compare-controls .ins-cmp-col--plan")[ihpCol];
+      if (col && tips.parentElement !== col) col.appendChild(tips);
+    }
     requestAnimationFrame(ensurePanelFitsCompare);
   }
 

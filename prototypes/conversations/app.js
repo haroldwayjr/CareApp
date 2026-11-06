@@ -711,31 +711,9 @@ function renderStage() {
   const thread = threads.find((item) => item.id === state.selectedId);
   if (!thread) {
     root.innerHTML = `<div class="empty rise">
-      <svg class="empty-art" viewBox="0 0 220 180" aria-hidden="true">
-        <defs>
-          <linearGradient id="empty-front" x1="0.15" y1="0" x2="0.7" y2="1">
-            <stop offset="0" stop-color="#b9cbff"/>
-            <stop offset="0.48" stop-color="#7d9bf3"/>
-            <stop offset="1" stop-color="#4f6fe3"/>
-          </linearGradient>
-          <linearGradient id="empty-back" x1="0" y1="0" x2="0.2" y2="1">
-            <stop offset="0" stop-color="#f4f7ff"/>
-            <stop offset="1" stop-color="#d5e3ff"/>
-          </linearGradient>
-          <clipPath id="empty-front-clip">
-            <rect x="38" y="64" width="128" height="104" rx="24"/>
-          </clipPath>
-        </defs>
-        <g transform="rotate(16 128 78)">
-          <rect x="70" y="8" width="108" height="118" rx="20" fill="url(#empty-back)"/>
-        </g>
-        <rect x="38" y="64" width="128" height="104" rx="24" fill="url(#empty-front)"/>
-        <g clip-path="url(#empty-front-clip)">
-          <g transform="rotate(16 128 78)" opacity="0.72">
-            <rect x="70" y="8" width="108" height="118" rx="20" fill="#e7efff"/>
-          </g>
-        </g>
-      </svg>
+      <div class="empty-nothing" aria-hidden="true">
+        <img src="assets/empty-nothing-yet.svg" width="134.167" height="165" alt="" draggable="false" />
+      </div>
       <h2>Select a conversation</h2>
       <p>Choose a thread to open it here.</p>
     </div>`;

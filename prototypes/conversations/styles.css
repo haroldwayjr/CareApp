@@ -807,6 +807,17 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
   text-align: center;
 }
 .empty-art { width: 156px; height: auto; margin-bottom: 16px; }
+.empty-nothing {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  flex: none;
+}
+.empty-nothing img {
+  position: absolute;
+  left: 33.34px;
+  top: 17.5px;
+}
 .empty h2 { margin: 0; font-size: 18px; font-weight: 600; line-height: 24px; }
 .empty p { margin: 0; color: var(--text-tertiary); font-size: 14px; }
 

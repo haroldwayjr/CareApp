@@ -508,8 +508,6 @@ function glyph(name) {
     task: `<rect x="5" y="4.5" width="14" height="15" rx="2"/><path d="M8.5 9.5h7M8.5 13.5h7M8.5 17h4"/>`,
     check: `<path d="m6.5 12.5 3.2 3.2 7.3-7.4"/>`,
     reply: `<path d="M9 14 5 10l4-4"/><path d="M5 10h8a6 6 0 0 1 6 6v1"/>`,
-    more: `<path d="M6 12h.01M12 12h.01M18 12h.01"/>`,
-    unread: `<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>`,
     flag: `<path d="M6 20V5"/><path d="M6 5h11l-2.2 3.5L17 12H6"/>`,
     clock: `<circle cx="12" cy="12" r="7"/><path d="M12 8.5V12l2.5 2"/>`,
   };
@@ -519,13 +517,6 @@ function glyph(name) {
 function actionButton(label, attrs, icon, done) {
   return `<button class="bubble-action${done ? " is-done" : ""}" type="button" ${attrs} aria-label="${esc(label)}">${glyph(done ? "check" : icon)}<span class="bubble-tip">${esc(label)}</span></button>`;
 }
-
-function moreItem(label, attrs, icon) {
-  return `<button class="more-item" type="button" role="menuitem" ${attrs}>${glyph(icon)}<span>${label}</span></button>`;
-}
-
-/** Five slots total. More takes one, so it appears only past this count. */
-const TRAY_MAX = 5;
 
 function messageMenu(item, side, person, stretch, thread) {
   if (state.view !== "conversation") return "";
@@ -539,28 +530,21 @@ function messageMenu(item, side, person, stretch, thread) {
   };
   const actions = side === "in"
     ? [
-        stretch
-          ? { label: "In team chat", attrs: `data-open-stretch="${esc(stretch.id)}"`, icon: "ask" }
-          : { label: "Ask the team", attrs: `data-ask-text="${esc(item.text)}" data-ask-time="${esc(item.time)}" data-ask-who="${esc(person.name)}"`, icon: "ask" },
+        ...(stretch
+          ? []
+          : [{ label: "Ask the team", attrs: `data-ask-text="${esc(item.text)}" data-ask-time="${esc(item.time)}" data-ask-who="${esc(person.name)}"`, icon: "ask" }]),
         { label: "Reply", attrs: `data-reply data-reply-name="${esc(person.name)}"`, icon: "reply" },
         ...(hasTask ? [taskAction] : []),
         { label: "Copy", attrs: "data-copy-msg", icon: "copy" },
         { label: "Flag for handoff", attrs: "data-flag", icon: "flag" },
-        { label: "Mark unread", attrs: "data-mark-unread", icon: "unread" },
         ...(hasTask ? [{ label: "Remind me", attrs: "data-remind", icon: "clock" }] : []),
       ]
     : [
         { label: "Copy", attrs: "data-copy-msg", icon: "copy" },
         ...(hasTask ? [taskAction] : []),
       ];
-  const overflow = actions.length > TRAY_MAX;
-  const inline = overflow ? actions.slice(0, TRAY_MAX - 1) : actions;
-  const extra = overflow ? actions.slice(TRAY_MAX - 1) : [];
-  const buttons = inline.map((action) => actionButton(action.label, action.attrs, action.icon, action.done)).join("");
-  const more = extra.length
-    ? `<span class="bubble-sep" aria-hidden="true"></span><div class="bubble-more"><button class="bubble-action" type="button" data-more aria-expanded="false" aria-label="More">${glyph("more")}<span class="bubble-tip">More</span></button><div class="more-menu" role="menu" hidden>${extra.map((action) => moreItem(action.label, action.attrs, action.done ? "check" : action.icon)).join("")}</div></div>`
-    : "";
-  return `<div class="bubble-menu" role="toolbar" aria-label="Message actions">${buttons}${more}</div>`;
+  const buttons = actions.map((action) => actionButton(action.label, action.attrs, action.icon, action.done)).join("");
+  return `<div class="bubble-menu" role="toolbar" aria-label="Message actions">${buttons}</div>`;
 }
 
 function bubble(item) {
@@ -581,13 +565,13 @@ function bubble(item) {
     : null;
   const linked = stretch ? `<button class="in-aside" type="button" data-open-stretch="${esc(stretch.id)}">In team chat</button>` : "";
   const quoted = item.reply ? `<span class="bubble-reply"><span>${esc(item.reply.name)}</span><span>${esc(item.reply.text)}</span></span>` : "";
-  return `<div class="msg ${side}" data-msg-name="${esc(person.name)}" data-msg-time="${esc(item.time)}"><div class="msg-col">${messageMenu(item, side, person, stretch, thread)}${by}<div class="bubble-wrap"><p class="bubble">${quoted}${esc(item.text)}</p></div><div class="msg-meta"><time>${esc(item.time)}</time>${linked}</div></div></div>`;
+  return `<div class="msg ${side}" data-msg-name="${esc(person.name)}" data-msg-time="${esc(item.time)}"><div class="msg-col">${by}<div class="bubble-wrap"><p class="bubble">${quoted}${esc(item.text)}</p></div><div class="msg-meta"><time>${esc(item.time)}</time>${linked}${messageMenu(item, side, person, stretch, thread)}</div></div></div>`;
 }
 
 function taskView(thread) {
   if (!thread.task) {
-    return `<div class="quiet-empty">
-      <svg class="empty-art" viewBox="0 0 220 180" aria-hidden="true">
+    return `<div class="quiet-empty task-empty">
+      <svg class="empty-art task-empty-art" viewBox="0 0 220 180" aria-hidden="true">
         <defs>
           <linearGradient id="task-empty-front" x1="0.1" y1="0" x2="0.8" y2="1">
             <stop offset="0" stop-color="#c9d8ff"/>
@@ -599,14 +583,16 @@ function taskView(thread) {
             <stop offset="1" stop-color="#d7e4ff"/>
           </linearGradient>
         </defs>
-        <g transform="rotate(-10 118 86)">
+        <g class="task-empty-back">
           <rect x="62" y="22" width="108" height="128" rx="22" fill="url(#task-empty-back)"/>
         </g>
-        <rect x="42" y="46" width="128" height="104" rx="22" fill="url(#task-empty-front)"/>
-        <circle cx="74" cy="78" r="11" fill="none" stroke="#fff" stroke-width="2.5"/>
-        <rect x="96" y="72" width="50" height="7" rx="3.5" fill="#fff"/>
-        <rect x="62" y="104" width="88" height="7" rx="3.5" fill="#fff" opacity="0.62"/>
-        <rect x="62" y="120" width="60" height="7" rx="3.5" fill="#fff" opacity="0.4"/>
+        <g class="task-empty-front">
+          <rect x="42" y="46" width="128" height="104" rx="22" fill="url(#task-empty-front)"/>
+          <circle cx="74" cy="78" r="11" fill="none" stroke="#fff" stroke-width="2.5"/>
+          <rect x="96" y="72" width="50" height="7" rx="3.5" fill="#fff"/>
+          <rect x="62" y="104" width="88" height="7" rx="3.5" fill="#fff" opacity="0.62"/>
+          <rect x="62" y="120" width="60" height="7" rx="3.5" fill="#fff" opacity="0.4"/>
+        </g>
       </svg>
       <strong>No open task</strong>
       <p>This conversation doesn’t have a task yet.</p>
@@ -634,9 +620,13 @@ function taskView(thread) {
   ];
   return `<div class="task-view">
     <article class="task-card">
-      <span class="soft-badge">${esc(thread.taskBadge)}</span>
-      <h3>${esc(thread.taskTitle)}</h3>
-      <p class="task-member">${esc(people[thread.person].name)} · CalPERS PPO</p>
+      <header class="task-card-head">
+        <div>
+          <h3>${esc(thread.taskTitle)}</h3>
+          <p class="task-member">${esc(people[thread.person].name)} · CalPERS PPO</p>
+        </div>
+        ${thread.taskBadge ? `<span class="soft-badge">${esc(thread.taskBadge)}</span>` : ""}
+      </header>
       ${kv([
         ["Linked need", "Get my denied claim resolved"],
         ["Claim", "CLM-48213 · Cardiology · Oct 14"],
@@ -710,32 +700,24 @@ function renderStage() {
   const root = $("#stage");
   const thread = threads.find((item) => item.id === state.selectedId);
   if (!thread) {
-    root.innerHTML = `<div class="empty rise">
-      <svg class="empty-art" viewBox="0 0 220 180" aria-hidden="true">
-        <defs>
-          <linearGradient id="empty-front" x1="0.15" y1="0" x2="0.7" y2="1">
-            <stop offset="0" stop-color="#b9cbff"/>
-            <stop offset="0.48" stop-color="#7d9bf3"/>
-            <stop offset="1" stop-color="#4f6fe3"/>
-          </linearGradient>
-          <linearGradient id="empty-back" x1="0" y1="0" x2="0.2" y2="1">
-            <stop offset="0" stop-color="#f4f7ff"/>
-            <stop offset="1" stop-color="#d5e3ff"/>
-          </linearGradient>
-          <clipPath id="empty-front-clip">
-            <rect x="38" y="64" width="128" height="104" rx="24"/>
-          </clipPath>
-        </defs>
-        <g transform="rotate(16 128 78)">
-          <rect x="70" y="8" width="108" height="118" rx="20" fill="url(#empty-back)"/>
-        </g>
-        <rect x="38" y="64" width="128" height="104" rx="24" fill="url(#empty-front)"/>
-        <g clip-path="url(#empty-front-clip)">
-          <g transform="rotate(16 128 78)" opacity="0.72">
-            <rect x="70" y="8" width="108" height="118" rx="20" fill="#e7efff"/>
-          </g>
-        </g>
-      </svg>
+    const firstLoad = document.documentElement.matches(".is-page-boot, .is-page-ready");
+    root.innerHTML = `<div class="empty${firstLoad ? " is-first-load" : ""}">
+      <div class="empty-nothing" aria-hidden="true">
+        <svg class="empty-illo" width="134.167" height="165" viewBox="0 0 134.167 165" fill="none" aria-hidden="true">
+          <path class="illo-doc" d="M63.2493 0.330285C57.9613 -1.05175 52.5315 2.02977 51.1215 7.2131L26.1703 98.9388C24.7603 104.123 27.9041 109.444 33.1922 110.826L101.082 128.57C106.37 129.952 111.799 126.871 113.21 121.687L132.091 52.2751C132.748 49.8608 132.43 47.2913 131.204 45.1007L115.534 17.1048C114.231 14.7782 112.015 13.0753 109.399 12.3916L63.2493 0.330285Z" fill="url(#empty-doc)"/>
+          <path class="illo-folder" d="M123.575 75.0941H56.4912C55.537 75.0918 54.6227 74.7187 53.9491 74.0567L44.4868 64.7203C43.5185 63.6712 42.344 62.8241 41.0336 62.23C39.7232 61.6358 38.3038 61.3067 36.8605 61.2624H12.6399C9.2876 61.2624 6.07259 62.5667 3.70214 64.8882C1.3317 67.2098 0 70.3586 0 73.6418V152.621C0 155.904 1.3317 159.053 3.70214 161.374C6.07259 163.696 9.2876 165 12.6399 165H121.527C124.879 165 128.094 163.696 130.465 161.374C132.835 159.053 134.167 155.904 134.167 152.621V85.4679C134.167 82.7166 133.051 80.078 131.064 78.1325C129.078 76.187 126.384 75.0941 123.575 75.0941Z" fill="url(#empty-folder)"/>
+          <defs>
+            <linearGradient id="empty-doc" x1="78.9659" y1="-0.558957" x2="78.9616" y2="129.524" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#81ADF6" stop-opacity="0.4"/>
+              <stop offset="1" stop-color="#A6C8FF"/>
+            </linearGradient>
+            <linearGradient id="empty-folder" x1="66.8039" y1="164.917" x2="66.8039" y2="60.8431" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#578EE8" stop-opacity="0.5"/>
+              <stop offset="1" stop-color="#0012E7" stop-opacity="0.6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
       <h2>Select a conversation</h2>
       <p>Choose a thread to open it here.</p>
     </div>`;
@@ -880,8 +862,8 @@ function richText(text) {
   return html;
 }
 
-function lockIcon() {
-  return `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="11" width="12" height="9" rx="1.5"/><path d="M8.5 11V8.5a3.5 3.5 0 0 1 7 0V11"/></svg>`;
+function privacyIcon() {
+  return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.78 21 21.53 3"/><path d="M9 19.05a9.91 9.91 0 0 0 3 .45c4.1.07 8.26-2.81 10.82-5.64a1.65 1.65 0 0 0 0-2.22 20.06 20.06 0 0 0-3.07-2.76"/><path d="M17.09 7.27A11.31 11.31 0 0 0 12 6c-4-.07-8.2 2.75-10.82 5.64a1.65 1.65 0 0 0 0 2.22 20 20 0 0 0 4.93 4"/><path d="M9 15.07a3.85 3.85 0 0 1 5.5-5.28"/><path d="M15.75 12.75A3.75 3.75 0 0 1 12 16.5"/></svg>`;
 }
 
 function stretchHTML(stretch) {
@@ -915,7 +897,7 @@ function teamPanel(thread) {
       </div>
     </div>
     <div class="panel-scroll team-log">
-      <div class="privacy-badge">${lockIcon()}<span><span class="privacy-line">Not visible to ${esc(member)}</span><span class="privacy-scope">${esc(asideScope(thread))}</span></span></div>
+      <div class="privacy-badge">${privacyIcon()}<span><span class="privacy-line">Not visible to ${esc(member)}</span><span class="privacy-scope">${esc(asideScope(thread))}</span></span></div>
       ${body}
     </div>
     <form class="composer team-composer" id="team-composer">
@@ -1158,46 +1140,6 @@ function quoteFromMessage(node) {
   };
 }
 
-function closeMoreMenus() {
-  document.querySelectorAll(".msg.is-menu-open").forEach((msg) => {
-    msg.classList.remove("is-menu-open");
-    msg.querySelector(".bubble-more")?.classList.remove("is-open");
-    const menu = msg.querySelector(".more-menu");
-    const button = msg.querySelector("[data-more]");
-    if (menu) {
-      menu.hidden = true;
-      menu.classList.remove("opens-up");
-    }
-    if (button) button.setAttribute("aria-expanded", "false");
-  });
-}
-
-function toggleMore(button) {
-  const msg = button.closest(".msg");
-  const open = button.getAttribute("aria-expanded") === "true";
-  closeMoreMenus();
-  if (open) return;
-  button.setAttribute("aria-expanded", "true");
-  button.closest(".bubble-more").classList.add("is-open");
-  msg.classList.add("is-menu-open");
-  const menu = msg.querySelector(".more-menu");
-  menu.hidden = false;
-  placeMoreMenu(menu);
-}
-
-function placeMoreMenu(menu) {
-  menu.classList.remove("opens-up");
-  const stage = document.querySelector(".stage-body");
-  const bounds = stage ? stage.getBoundingClientRect() : { top: 0, bottom: window.innerHeight };
-  const rect = menu.getBoundingClientRect();
-  if (rect.bottom <= bounds.bottom - 8) return;
-  menu.classList.add("opens-up");
-  const flipped = menu.getBoundingClientRect();
-  const downOverflow = rect.bottom - bounds.bottom;
-  const upOverflow = bounds.top - flipped.top;
-  if (upOverflow > downOverflow) menu.classList.remove("opens-up");
-}
-
 function fallbackCopy(text) {
   const area = document.createElement("textarea");
   area.value = text;
@@ -1212,10 +1154,7 @@ function fallbackCopy(text) {
 
 function copyMessage(button) {
   const text = button.closest(".msg").querySelector(".bubble").textContent;
-  const done = () => {
-    flashAction(button, "Copied");
-    closeMoreMenus();
-  };
+  const done = () => flashAction(button, "Copied");
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(done).catch(() => {
       fallbackCopy(text);
@@ -1233,11 +1172,6 @@ function addMessageToTask(button) {
   const quote = quoteFromMessage(button);
   const list = state.taskQuotes[thread.id] || (state.taskQuotes[thread.id] = []);
   if (!list.some((item) => item.text === quote.text && item.time === quote.time)) list.unshift(quote);
-  if (button.classList.contains("more-item")) {
-    live("Added to the task");
-    closeMoreMenus();
-    return;
-  }
   button.innerHTML = `${glyph("check")}<span class="bubble-tip">Added to the task</span>`;
   button.setAttribute("aria-label", "On the task");
   flashAction(button, "Added to the task", true);
@@ -1257,16 +1191,6 @@ function remember(bucket, quote, label) {
   const list = state[bucket][thread.id] || (state[bucket][thread.id] = []);
   if (!list.some((item) => item.text === quote.text && item.time === quote.time)) list.unshift(quote);
   live(label);
-  closeMoreMenus();
-}
-
-function markUnread() {
-  const thread = threads.find((entry) => entry.id === state.selectedId);
-  if (!thread) return;
-  thread.unread = true;
-  renderList();
-  live("Marked unread");
-  closeMoreMenus();
 }
 
 function addAsideTool() {
@@ -1492,12 +1416,6 @@ renderStage();
 renderPanel();
 
 document.addEventListener("click", (event) => {
-  const moreBtn = event.target.closest("[data-more]");
-  if (moreBtn) {
-    toggleMore(moreBtn);
-    return;
-  }
-  if (!event.target.closest(".more-menu")) closeMoreMenus();
   const scope = event.target.closest("[data-scope]");
   if (scope) {
     setScope(scope.dataset.scope);
@@ -1541,10 +1459,6 @@ document.addEventListener("click", (event) => {
   const reply = event.target.closest("[data-reply]");
   if (reply) {
     replyToMessage(reply);
-    return;
-  }
-  if (event.target.closest("[data-mark-unread]")) {
-    markUnread();
     return;
   }
   if (event.target.closest("[data-flag]")) {
@@ -1735,10 +1649,6 @@ document.addEventListener("keydown", (event) => {
       else $("#thread-search").blur();
       return;
     }
-    if (document.querySelector(".msg.is-menu-open")) {
-      closeMoreMenus();
-      return;
-    }
     const mentions = $("#mention-menu");
     if (mentions && !mentions.hidden) {
       mentions.hidden = true;
@@ -1843,3 +1753,32 @@ document.fonts?.ready.then(() => layoutScopeThumb(false));
 document.querySelectorAll(".global-nav a").forEach((link) => {
   link.addEventListener("click", (event) => event.preventDefault());
 });
+
+/** Staggered ease-up on first paint; skipped when prefers-reduced-motion. */
+function runPageEntrance() {
+  const root = document.documentElement;
+  if (!root.classList.contains("is-page-boot")) return;
+  if (reduced) {
+    root.classList.remove("is-page-boot");
+    root.classList.add("is-page-settled");
+    return;
+  }
+  let settled = false;
+  const finish = () => {
+    if (settled) return;
+    settled = true;
+    root.classList.add("is-page-settled");
+    root.classList.remove("is-page-ready");
+  };
+  requestAnimationFrame(() => {
+    root.classList.add("is-page-ready");
+    root.classList.remove("is-page-boot");
+    const last = [...document.querySelectorAll(".page-rise")].pop();
+    last?.addEventListener("animationend", (event) => {
+      if (event.target === last && event.animationName === "page-rise") finish();
+    });
+    window.setTimeout(finish, 1100);
+  });
+}
+
+runPageEntrance();

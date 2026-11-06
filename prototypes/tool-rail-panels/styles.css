@@ -4424,7 +4424,7 @@ html[data-color-mode="dark"] .ins-plan-option input:checked {
 .ins-compare-controls {
   position: relative; z-index: 10; display: grid;
   grid-template-columns: var(--ins-cmp-label) minmax(0, 1fr) minmax(0, 1fr);
-  column-gap: 0; align-items: start; padding: 8px 0 4px;
+  column-gap: 0; align-items: start; padding: 8px 0 16px;
 }
 .ins-cmp-network { align-self: flex-start; height: 38px; }
 .ins-cmp-network button { height: 38px; }

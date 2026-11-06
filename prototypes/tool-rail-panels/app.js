@@ -26,6 +26,8 @@
   const PANEL_INSURANCE = 440;
   /** Member field lists go 2-up once the panel is this wide */
   const PANEL_FIELDS_WIDE = 480;
+  /** Compare detail plan column floor — fits "Aetna PPO Premium 2024" + IHP + chevron */
+  const COMPARE_PLAN_MIN = 240;
 
   function isSheetMode() {
     return sheetModeMq.matches;
@@ -44,6 +46,11 @@
     );
   }
 
+  function ensurePanelFitsContent() {
+    ensurePanelFitsTabs();
+    ensurePanelFitsCompare();
+  }
+
   /** Expand Insurance if tab labels (and badges) would clip — never shrink a wider size. */
   function ensurePanelFitsTabs() {
     if (isSheetMode() || !panelOpen || activePanel !== "insurance") return;
@@ -59,6 +66,56 @@
     const needed = Math.ceil(contentW + pad + 12);
     const current = currentPanelWidth();
     if (needed > current) setPanelWidth(needed);
+  }
+
+  /** Width to return to when leaving Compare detail; null when not comparing. */
+  let compareRestoreWidth = null;
+  let compareUserResized = false;
+
+  /**
+   * Compare detail: label column hugs the network switcher; each plan column must fit
+   * the share-tips chip (or a readable plan name). Grow the panel to fit — never shrink.
+   */
+  function ensurePanelFitsCompare() {
+    if (!panelOpen || activePanel !== "insurance" || insuranceState.view !== "compare-detail") return;
+    const detail = stage?.querySelector(".ins-compare-detail");
+    const switcher = detail?.querySelector(".ins-cmp-network");
+    if (!detail || !switcher) return;
+    const gutter = parseFloat(getComputedStyle(detail).getPropertyValue("--ins-cmp-gutter")) || 8;
+    const switchGap = parseFloat(getComputedStyle(detail).getPropertyValue("--ins-cmp-switch-gap")) || 20;
+    const switcherW = [...switcher.querySelectorAll("button")].reduce((sum, btn) => sum + btn.offsetWidth, 0);
+    const labelW = Math.ceil(switcherW + switchGap);
+    detail.style.setProperty("--ins-cmp-label", `${labelW}px`);
+    if (isSheetMode()) return;
+
+    const chip = detail.querySelector(".ins-share-tips");
+    const chipText = chip?.querySelector("span");
+    const chipW = chip && chipText ? chip.offsetWidth - chipText.clientWidth + chipText.scrollWidth : 0;
+    const planW = Math.max(COMPARE_PLAN_MIN, chipW) + gutter;
+    const style = getComputedStyle(detail);
+    const pad =
+      (parseFloat(style.paddingLeft) || 0) +
+      (parseFloat(style.paddingRight) || 0) +
+      (detail.offsetWidth - detail.clientWidth);
+    const needed = Math.ceil(labelW + planW * 2 + pad);
+    if (needed > currentPanelWidth()) setPanelWidth(needed);
+  }
+
+  function enterCompareWidth() {
+    compareRestoreWidth = currentPanelWidth();
+    compareUserResized = false;
+  }
+
+  function leaveCompareWidth() {
+    if (compareRestoreWidth !== null && !compareUserResized && !isSheetMode()) {
+      setPanelWidth(compareRestoreWidth);
+    }
+    compareRestoreWidth = null;
+    compareUserResized = false;
+  }
+
+  function noteManualPanelResize() {
+    if (compareRestoreWidth !== null) compareUserResized = true;
   }
 
   function syncSheetChrome() {
@@ -633,6 +690,7 @@
     const onPointerMove = (e) => {
       if (!dragging) return;
       const next = startWidth + (startX - e.clientX);
+      noteManualPanelResize();
       setPanelWidth(next);
     };
     const endDrag = (e) => {
@@ -662,6 +720,7 @@
     resizer.addEventListener("keydown", (e) => {
       const step = e.shiftKey ? 32 : 16;
       const current = currentPanelWidth();
+      if (["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) noteManualPanelResize();
       if (e.key === "ArrowLeft") {
         e.preventDefault();
         setPanelWidth(current + step);
@@ -684,7 +743,7 @@
     window.addEventListener("resize", () => {
       setPanelWidth(currentPanelWidth());
       requestAnimationFrame(() => {
-        ensurePanelFitsTabs();
+        ensurePanelFitsContent();
         syncRailIndicator({ animate: false });
       });
     });
@@ -2588,19 +2647,18 @@
     const selectedOption = options.find(([id]) => id === selected);
     const triggerLabel = label || selectedOption?.[1] || "";
     const ihpInTrigger = showIhpInTrigger && selectedOption?.[2];
-    return `<div class="ins-dropdown-wrap${open ? " is-open" : ""}"><button class="ins-dropdown-trigger" type="button" data-ins-dropdown="${kind}" aria-expanded="${open}"><span>${triggerLabel}${ihpInTrigger ? ` <span class="soft-badge soft-accent">IHP</span>` : ""}</span>${icon.down}</button>
+    return `<div class="ins-dropdown-wrap${open ? " is-open" : ""}"><button class="ins-dropdown-trigger" type="button" data-ins-dropdown="${kind}" aria-expanded="${open}"><span class="ins-dropdown-label">${triggerLabel}</span>${ihpInTrigger ? `<span class="soft-badge soft-accent ins-dropdown-ihp">IHP</span>` : ""}${icon.down}</button>
       <div class="ins-dropdown-menu" ${open ? "" : "hidden"}>${options.map(([id, text, ihp]) => `<button type="button" data-ins-dropdown-option="${kind}" data-value="${id}" class="${id === selected ? "is-selected" : ""}"><span>${text}${ihp ? ` <span class="soft-badge soft-accent">IHP</span>` : ""}</span>${id === selected ? icon.check : ""}</button>`).join("")}</div>
     </div>`;
   }
 
   function insuranceCompareControlsHtml() {
     const planOptions = insurancePlans.map((p) => [p.id, p.name.replace("2026 ", "").replace(" Premium", " Premium 2024").replace(" Select", " Select 2024"), p.ihp]);
-    const planA = insurancePlans.find((p) => p.id === insuranceState.comparePlanIds[0]);
-    const planB = insurancePlans.find((p) => p.id === insuranceState.comparePlanIds[1]);
-    const ihpSlot = (show) =>
-      `<div class="ins-cmp-ihp-slot">${show ? `<span class="soft-badge soft-accent">IHP</span>` : ""}</div>`;
-    const shareTipsHtml = `<div class="ins-share-tips-wrap">
-          <button class="ins-share-tips" id="ins-tips" type="button" title="Share these tips" aria-describedby="ins-tips-popover">${icon.infoFilled}<span>Share these tips</span></button>
+    const out = insuranceState.compareNetwork === "out";
+    /* IHP tips sit under the column of the selected IHP plan */
+    const ihpCol = insuranceState.comparePlanIds.findIndex((id) => insurancePlans.find((p) => p.id === id)?.ihp);
+    const shareTipsHtml = `<div class="ins-share-tips-wrap"${ihpCol < 0 ? " hidden" : ""}>
+          <button class="ins-share-tips" id="ins-tips" type="button" aria-describedby="ins-tips-popover">${icon.infoFilled}<span>Don’t forget to share these tips</span></button>
           <aside class="ins-tips-popover" id="ins-tips-popover" role="tooltip">
             <button type="button" id="ins-tips-close" class="ins-tips-close" aria-label="Close tips" hidden>${icon.close}</button>
             <strong>Don’t forget to share these tips with the member</strong>
@@ -2612,20 +2670,50 @@
           </aside>
         </div>`;
     return `<div class="ins-compare-controls">
-          <div class="ins-cmp-col">
-            ${ihpSlot(false)}
-            ${compareDropdownHtml("network", insuranceState.compareNetwork === "in" ? "In Network" : "Out of Network", [["in", "In Network"], ["out", "Out of Network"]], insuranceState.compareNetwork)}
+          <div class="ins-cmp-col ins-cmp-col--network">
+            <div class="ins-segmented ins-segmented--small ins-cmp-network" role="group" aria-label="Network">
+              <span class="ins-segmented-thumb" aria-hidden="true"></span>
+              <button type="button" data-ins-compare-network="in" class="${out ? "" : "is-active"}" aria-pressed="${!out}">In-network</button>
+              <button type="button" data-ins-compare-network="out" class="${out ? "is-active" : ""}" aria-pressed="${out}">Out-of-network</button>
+            </div>
           </div>
-          <div class="ins-cmp-col ins-cmp-col--plan-a">
-            ${ihpSlot(Boolean(planA?.ihp))}
-            ${compareDropdownHtml("plan-a", "", planOptions, insuranceState.comparePlanIds[0], { showIhpInTrigger: false })}
-            ${shareTipsHtml}
+          <div class="ins-cmp-col ins-cmp-col--plan">
+            ${compareDropdownHtml("plan-a", "", planOptions, insuranceState.comparePlanIds[0])}
+            ${ihpCol === 1 ? "" : shareTipsHtml}
           </div>
-          <div class="ins-cmp-col">
-            ${ihpSlot(Boolean(planB?.ihp))}
-            ${compareDropdownHtml("plan-b", "", planOptions, insuranceState.comparePlanIds[1], { showIhpInTrigger: false })}
+          <div class="ins-cmp-col ins-cmp-col--plan">
+            ${compareDropdownHtml("plan-b", "", planOptions, insuranceState.comparePlanIds[1])}
+            ${ihpCol === 1 ? shareTipsHtml : ""}
           </div>
         </div>`;
+  }
+
+  /** Compare table figures per network — `out` falls back to `in` when the value does not change (premiums). */
+  const insuranceCompareRows = [
+    { section: "Premiums" },
+    { label: "Employee Only", in: ["$62.76", "$48.50"] },
+    { label: "Employee and Children", in: ["$118.50", "$95.00"] },
+    { label: "Employee and Family", in: ["$175.00", "$142.00"] },
+    { label: "Employee and Spouse", in: ["$132.00", "$105.00"] },
+    { section: "Summary" },
+    { label: "Individual Deductible", in: ["$1,000<br>($500 copayment,<br>$500 coinsurance)", "$500"], out: ["$3,000", "$1,500"] },
+    { label: "Family Deductible", in: ["$2,000", "$1,000"], out: ["$6,000", "$3,000"] },
+    { label: "Standard Coinsurance", in: ["20%", "15%"], out: ["40%", "35%"] },
+    { label: "Individual OOP", in: ["$4,000", "$3,000"], out: ["$8,000", "$6,000"] },
+    { label: "Family OOP", in: ["$8,000", "$6,000"], out: ["$16,000", "$12,000"] },
+    { section: "Benefit Services" },
+    { label: "Primary Care Visit", in: ["$25", "$20"], out: ["Ded/40%", "Ded/35%"] },
+  ];
+
+  function insuranceCompareRowsHtml() {
+    const network = insuranceState.compareNetwork === "out" ? "out" : "in";
+    return insuranceCompareRows
+      .map((row) => {
+        if (row.section) return `<tr class="ins-section-row"><th colspan="3">${row.section}</th></tr>`;
+        const [a, b] = row[network] || row.in;
+        return `<tr><td>${row.label}</td><td>${a}</td><td>${b}</td></tr>`;
+      })
+      .join("");
   }
 
   function insuranceCompareDetailTemplate() {
@@ -2642,21 +2730,7 @@
             <col class="ins-cmp-col-plan" />
             <col class="ins-cmp-col-plan" />
           </colgroup>
-          <tbody>
-            <tr class="ins-section-row"><th colspan="3">Premiums</th></tr>
-            <tr><td>Employee Only</td><td>$62.76</td><td>$48.50</td></tr>
-            <tr><td>Employee and Children</td><td>$118.50</td><td>$95.00</td></tr>
-            <tr><td>Employee and Family</td><td>$175.00</td><td>$142.00</td></tr>
-            <tr><td>Employee and Spouse</td><td>$132.00</td><td>$105.00</td></tr>
-            <tr class="ins-section-row"><th colspan="3">Summary</th></tr>
-            <tr><td>Individual Deductible</td><td>$1,000<br>($500 copayment,<br>$500 coinsurance)</td><td>$500</td></tr>
-            <tr><td>Family Deductible</td><td>$2,000</td><td>$1,000</td></tr>
-            <tr><td>Standard Coinsurance</td><td>20%</td><td>15%</td></tr>
-            <tr><td>Individual OOP</td><td>$4,000</td><td>$3,000</td></tr>
-            <tr><td>Family OOP</td><td>$8,000</td><td>$6,000</td></tr>
-            <tr class="ins-section-row"><th colspan="3">Benefit Services</th></tr>
-            <tr><td>Primary Care Visit</td><td>$25</td><td>$20</td></tr>
-          </tbody>
+          <tbody id="ins-compare-rows">${insuranceCompareRowsHtml()}</tbody>
         </table></div>
       </div>
       ${taskListHtml()}
@@ -2691,8 +2765,7 @@
 
   /** Apply selection + close menus without replacing controls HTML (avoids panel-in). */
   function applyCompareDropdownSelection(kind, value) {
-    if (kind === "network") insuranceState.compareNetwork = value;
-    else insuranceState.comparePlanIds[kind === "plan-a" ? 0 : 1] = value;
+    insuranceState.comparePlanIds[kind === "plan-a" ? 0 : 1] = value;
     insuranceState.openDropdown = null;
 
     const wrap = stage.querySelector(`[data-ins-dropdown="${kind}"]`)?.closest(".ins-dropdown-wrap");
@@ -2701,12 +2774,16 @@
       return;
     }
 
-    const triggerLabel = wrap.querySelector(".ins-dropdown-trigger > span");
-    if (triggerLabel) {
-      if (kind === "network") {
-        triggerLabel.textContent = value === "in" ? "In Network" : "Out of Network";
-      } else {
-        triggerLabel.textContent = planOptionLabel(value);
+    const trigger = wrap.querySelector(".ins-dropdown-trigger");
+    const triggerLabel = trigger?.querySelector(".ins-dropdown-label");
+    if (triggerLabel) triggerLabel.textContent = planOptionLabel(value);
+    if (trigger) {
+      const plan = insurancePlans.find((p) => p.id === value);
+      const badge = trigger.querySelector(".ins-dropdown-ihp");
+      if (plan?.ihp && !badge) {
+        triggerLabel?.insertAdjacentHTML("afterend", `<span class="soft-badge soft-accent ins-dropdown-ihp">IHP</span>`);
+      } else if (!plan?.ihp && badge) {
+        badge.remove();
       }
     }
 
@@ -2720,20 +2797,49 @@
         else if (!selected && existing) existing.remove();
       });
 
-    if (kind === "plan-a" || kind === "plan-b") {
-      const col = wrap.closest(".ins-cmp-col");
-      const slot = col?.querySelector(".ins-cmp-ihp-slot");
-      const plan = insurancePlans.find((p) => p.id === value);
-      if (slot) {
-        slot.innerHTML = plan?.ihp ? `<span class="soft-badge soft-accent">IHP</span>` : "";
-      }
-    }
-
+    syncShareTipsVisibility();
     applyCompareDropdownOpenState();
+  }
+
+  /** IHP tips show under the column of the selected IHP plan, hidden when neither plan is IHP. */
+  function syncShareTipsVisibility() {
+    const tips = stage.querySelector(".ins-share-tips-wrap");
+    if (!tips) return;
+    const ihpCol = insuranceState.comparePlanIds.findIndex((id) => insurancePlans.find((p) => p.id === id)?.ihp);
+    tips.hidden = ihpCol < 0;
+    if (ihpCol < 0) {
+      tips.classList.remove("is-tip-open");
+    } else {
+      const col = stage.querySelectorAll(".ins-compare-controls .ins-cmp-col--plan")[ihpCol];
+      if (col && tips.parentElement !== col) col.appendChild(tips);
+    }
+    requestAnimationFrame(ensurePanelFitsCompare);
+  }
+
+  function syncCompareNetwork(mode) {
+    const segmented = stage.querySelector(".ins-cmp-network");
+    if (!segmented || insuranceState.compareNetwork === mode) return;
+    insuranceState.compareNetwork = mode;
+    segmented.querySelectorAll("[data-ins-compare-network]").forEach((btn) => {
+      const active = btn.dataset.insCompareNetwork === mode;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", String(active));
+    });
+    layoutInsSegmentedThumb(segmented, { animate: true });
+    /* Swap figures in place — never remount the panel */
+    const body = stage.querySelector("#ins-compare-rows");
+    if (body) body.innerHTML = insuranceCompareRowsHtml();
   }
 
   function bindCompareDetailControls() {
     bindShareTipsHover();
+    const compareNetwork = stage.querySelector(".ins-cmp-network");
+    if (compareNetwork) {
+      compareNetwork.querySelectorAll("[data-ins-compare-network]").forEach((btn) => {
+        btn.addEventListener("click", () => syncCompareNetwork(btn.dataset.insCompareNetwork));
+      });
+      requestAnimationFrame(() => layoutInsSegmentedThumb(compareNetwork, { animate: false }));
+    }
     stage.querySelectorAll("[data-ins-dropdown]").forEach((trigger) => {
       trigger.addEventListener("click", (event) => {
         event.stopPropagation();
@@ -7660,7 +7766,7 @@ Timestamp: 8/21/18 KS`;
         stage.innerHTML = templates[name]();
         stage.querySelector(".panel-content")?.classList.add("is-content-reveal");
         bindPanelActions();
-        requestAnimationFrame(ensurePanelFitsTabs);
+        requestAnimationFrame(ensurePanelFitsContent);
         if (options.toastAfter) showToast(options.toastAfter);
       }, options.forceLoader ? 750 : 620);
       return;
@@ -7673,7 +7779,7 @@ Timestamp: 8/21/18 KS`;
       stage.querySelector(".panel-content")?.classList.add("is-entering");
     }
     bindPanelActions();
-    requestAnimationFrame(ensurePanelFitsTabs);
+    requestAnimationFrame(ensurePanelFitsContent);
   }
 
   function openPanel(name) {
@@ -7684,6 +7790,9 @@ Timestamp: 8/21/18 KS`;
       teardownResolutionTipArm();
     }
     const switching = panelOpen && activePanel !== name;
+    if (switching && activePanel === "insurance" && insuranceState.view === "compare-detail") {
+      leaveCompareWidth();
+    }
     if (name === "insurance" && (!panelOpen || activePanel !== "insurance")) {
       Object.assign(insuranceState, {
         tab: "member-plan",
@@ -8019,6 +8128,7 @@ Timestamp: 8/21/18 KS`;
     bindInsuranceMainTabContent();
     stage.querySelectorAll("[data-ins-back]").forEach((button) => {
       button.addEventListener("click", () => {
+        if (insuranceState.view === "compare-detail") leaveCompareWidth();
         insuranceState.view = button.dataset.insBack === "main" ? "main" : "compare-select";
         insuranceState.tab = "member-plan";
         insuranceState.openDropdown = null;
@@ -8043,6 +8153,7 @@ Timestamp: 8/21/18 KS`;
       if (insuranceState.compareSelected.length !== 2) return;
       insuranceState.comparePlanIds = [...insuranceState.compareSelected];
       insuranceState.view = "compare-detail";
+      enterCompareWidth();
       render("insurance");
     });
     stage.querySelector("#ins-export")?.addEventListener("click", () => showToast("Plan comparison exported"));

@@ -5413,6 +5413,76 @@
     bindCommunicationPanelActions();
   }
 
+  /**
+   * Width the draft would have on the single-line row (plus | text | actions).
+   * Used so a wrapped draft stays expanded after the textarea grows to full width.
+   */
+  function composerInlineTextWidth(field) {
+    const cs = getComputedStyle(field);
+    const pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+    const gap = parseFloat(cs.columnGap) || 0;
+    const attach = field.querySelector(".composer-icon-btn--attach");
+    const end = field.querySelector(".composer-toolbar-end");
+    const wrap = field.querySelector(".composer-input-wrap");
+    const wrapPad = wrap
+      ? (parseFloat(getComputedStyle(wrap).paddingLeft) || 0) +
+        (parseFloat(getComputedStyle(wrap).paddingRight) || 0)
+      : 0;
+    return Math.max(
+      0,
+      field.clientWidth - pad - gap * 2 - (attach?.offsetWidth || 0) - (end?.offsetWidth || 0) - wrapPad
+    );
+  }
+
+  let composerMeasureEl = null;
+  function composerDraftOverflowsLine(field, input) {
+    const value = input.value;
+    if (!value) return false;
+    if (value.includes("\n")) return true;
+    const available = composerInlineTextWidth(field);
+    if (available <= 0) return false;
+    if (!composerMeasureEl) {
+      composerMeasureEl = document.createElement("span");
+      composerMeasureEl.setAttribute("aria-hidden", "true");
+      composerMeasureEl.style.cssText =
+        "position:fixed;left:0;top:0;visibility:hidden;white-space:pre;pointer-events:none;width:max-content;";
+      document.body.append(composerMeasureEl);
+    }
+    const cs = getComputedStyle(input);
+    composerMeasureEl.style.font = cs.font;
+    composerMeasureEl.style.letterSpacing = cs.letterSpacing;
+    composerMeasureEl.textContent = value;
+    return composerMeasureEl.offsetWidth > available + 1;
+  }
+
+  function layoutComposerField(field, input, maxPx = 100) {
+    if (!field || !input) return;
+    const multiline = composerDraftOverflowsLine(field, input);
+    field.classList.toggle("is-multiline", multiline);
+    if (!multiline) {
+      input.style.height = "20px";
+      return;
+    }
+    input.style.height = "auto";
+    const next = Math.min(input.scrollHeight, maxPx);
+    input.style.height = `${Math.max(next, 20)}px`;
+  }
+
+  function watchComposerWidth(field, onWidth) {
+    if (!field || typeof ResizeObserver === "undefined") return null;
+    let lastW = -1;
+    const observer = new ResizeObserver((entries) => {
+      const w = Math.round(entries[0].contentRect.width);
+      if (w === lastW) return;
+      lastW = w;
+      onWidth();
+    });
+    observer.observe(field);
+    return observer;
+  }
+
+  let commComposerResizeObserver = null;
+
   function syncCommThreadComposer(root) {
     const input = root.querySelector("[data-comm-composer-input]");
     const send = root.querySelector("[data-comm-composer-send]");
@@ -5423,6 +5493,7 @@
     send.classList.toggle("is-active", hasText);
     send.setAttribute("aria-disabled", hasText ? "false" : "true");
     field?.classList.toggle("is-filled", hasText);
+    if (field) layoutComposerField(field, input, COMPOSER_INPUT_MAX);
   }
 
   function bindCommunicationListActions(root) {
@@ -5495,6 +5566,9 @@
     if (composerInput) {
       composerInput.addEventListener("input", () => syncCommThreadComposer(root));
       syncCommThreadComposer(root);
+      const field = root.querySelector("[data-comm-composer-field]");
+      commComposerResizeObserver?.disconnect();
+      commComposerResizeObserver = watchComposerWidth(field, () => syncCommThreadComposer(root));
     }
   }
 
@@ -9700,7 +9774,7 @@ Timestamp: 8/21/18 KS`;
   const composerAttachInput = document.querySelector("#composer-attach-input");
   const composerEl = document.querySelector(".composer");
   const conversationEl = document.querySelector("#conversation");
-  const COMPOSER_INPUT_MAX = 100; /* px — field grows; toolbar stays pinned */
+  const COMPOSER_INPUT_MAX = 140; /* px — field grows; toolbar stays pinned */
   let cleanupBusy = false;
   /** @type {AbortController | null} */
   let cleanupAbort = null;
@@ -9929,10 +10003,8 @@ Timestamp: 8/21/18 KS`;
   };
 
   const syncComposerHeight = () => {
-    if (!composerInput) return;
-    composerInput.style.height = "auto";
-    const next = Math.min(composerInput.scrollHeight, COMPOSER_INPUT_MAX);
-    composerInput.style.height = `${Math.max(next, 20)}px`;
+    if (!composerField || !composerInput) return;
+    layoutComposerField(composerField, composerInput, COMPOSER_INPUT_MAX);
   };
 
   const syncComposerSend = () => {
@@ -10131,7 +10203,9 @@ Timestamp: 8/21/18 KS`;
   });
   composerSend?.addEventListener("click", () => sendAdvocateMessage());
   composerCleanup?.addEventListener("click", () => cleanupComposerDraft());
+  watchComposerWidth(composerField, () => syncComposerHeight());
   syncComposerSend();
+  document.fonts?.ready?.then(() => syncComposerSend());
   seedChatHistoryFromDom();
   /* Seed thread ends with member — Member Replied is the live clock */
   paintReplyTimers();

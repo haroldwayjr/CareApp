@@ -1415,16 +1415,22 @@ html[data-color-mode="dark"] .badge-tip {
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
 
-/* Chat / Composer / Modern — Soma master 5002:36752 */
+/* Chat / Composer / Modern — one row until the draft wraps, then actions drop below */
 .composer {
   display: flex; flex-direction: column; gap: 12px;
   padding: 12px 20px 16px; border-top: 0; background: var(--surface);
 }
 .composer-field {
-  display: flex; flex-direction: column; gap: 12px; /* inset/md between message + actions */
-  min-height: 0; max-height: 168px;
-  /* Figma: pt inset/lg 16 · px/pb inset/md 12 · radius/xl 12 */
-  padding: 16px 12px 12px;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 0;
+  row-gap: 12px; /* inset/md between message + actions once the draft wraps */
+  min-height: 0;
+  max-height: 260px;
+  /* 12 + 40 send + 12 = 64px single-line bar · radius/xl 12 */
+  padding: 12px;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
   background: var(--surface);
@@ -1434,14 +1440,27 @@ html[data-color-mode="dark"] .badge-tip {
 .composer-field.is-filled {
   border-color: var(--border-strong);
 }
-/* Message column has extra 8px left inset vs action icons */
+.composer-field.is-multiline {
+  padding-top: 16px; /* inset/lg above a wrapped draft */
+}
+/* Message column has extra 8px inset vs action icons */
 .composer-input-wrap {
-  display: block; flex: 1 1 auto; min-height: 20px; padding-left: 8px;
+  grid-area: 1 / 2;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  min-height: 20px;
+  padding: 0 8px;
+}
+.composer-field.is-multiline .composer-input-wrap {
+  grid-area: 1 / 1 / 2 / -1;
+  align-items: flex-start;
 }
 .composer-input {
   display: block; width: 100%;
+  height: 20px;
   min-height: 20px;
-  max-height: 100px;
+  max-height: 140px;
   padding: 0;
   border: 0; outline: none; resize: none; overflow-y: auto;
   background: transparent;
@@ -1449,16 +1468,17 @@ html[data-color-mode="dark"] .badge-tip {
   /* body1 — Figtree Regular 14 / 20 */
   font: 400 14px / 20px "Figtree", system-ui, sans-serif;
   letter-spacing: 0;
-  field-sizing: content;
 }
 .composer-input::placeholder {
   color: var(--text-tertiary); /* text/tertiary #475467 */
   font: 400 14px / 20px "Figtree", system-ui, sans-serif;
 }
-.composer-toolbar {
-  display: flex; flex: 0 0 auto; align-items: center; justify-content: space-between; gap: 8px;
+.composer-toolbar { display: contents; }
+.composer-toolbar-end {
+  grid-area: 1 / 3;
+  display: flex; align-items: center; gap: 8px;
 }
-.composer-toolbar-end { display: flex; align-items: center; gap: 8px; }
+.composer-field.is-multiline .composer-toolbar-end { grid-area: 2 / 3; }
 /* IconButton size=small · tone=brand · variant=text */
 .composer-icon-btn {
   position: relative;
@@ -1475,6 +1495,8 @@ html[data-color-mode="dark"] .badge-tip {
 }
 .composer-icon-btn svg { display: block; width: 20px; height: 20px; }
 /* icon/actions/add — Regular xs, optically thicker than hairline 1.5 */
+.composer-icon-btn--attach { grid-area: 1 / 1; }
+.composer-field.is-multiline .composer-icon-btn--attach { grid-area: 2 / 1; }
 .composer-icon-btn--attach svg { width: 16px; height: 16px; }
 .composer-icon-btn--attach svg path {
   fill: none; stroke: currentColor; stroke-width: 2.25;
@@ -6475,7 +6497,7 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   border-top: 1px solid var(--border);
 }
 .comm-thread-composer .composer-field {
-  max-height: 140px;
+  max-height: 260px;
 }
 
 /* ——— Chat resolution ——— */

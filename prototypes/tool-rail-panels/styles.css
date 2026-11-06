@@ -3885,12 +3885,11 @@ html[data-color-mode="dark"] .elig-benefit-check:indeterminate {
 .ins-segmented button.is-active {
   color: var(--brand); font-weight: 600;
 }
-.ins-segmented-count {
-  font-size: 12px; font-weight: 400; line-height: 16px; /* caption */
-  color: var(--text-tertiary);
-  font-variant-numeric: tabular-nums;
+/* Count uses the same Soft Neutral badge as My tasks — keep it Regular on the selected label. */
+.ins-segmented .soft-badge.soft-neutral {
+  flex: 0 0 auto;
+  font-weight: 400;
 }
-.ins-segmented button.is-active .ins-segmented-count { color: var(--brand); }
 /* Border=True — inset stroke so the 40px track and flush thumb stay exact */
 .ins-segmented--border { box-shadow: inset 0 0 0 1px var(--border-subtle); }
 /* View switcher Size=small — pairs with Button Size=small (36 / buttonSmall 13/18) */

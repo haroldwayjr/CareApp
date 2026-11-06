@@ -812,7 +812,7 @@
     selectedBenefitIds: new Set(),
   };
 
-  const PROVIDER_SEARCH_BY_OPTIONS = ["Name", "Specialty", "NPI"];
+  const PROVIDER_SEARCH_BY_OPTIONS = ["Name", "NPI", "Specialty/Condition", "Places"];
   const PROVIDER_ADDRESS_OPTIONS = [
     "1 California Street, San Francisco, CA 94111",
     "Phoenix, AZ",
@@ -830,6 +830,40 @@
     ["distance", "Distance"],
     ["name", "Name A–Z"],
   ];
+  const PROVIDER_GENDER_OPTIONS = [
+    ["all", "All Genders"],
+    ["Female", "Female"],
+    ["Male", "Male"],
+    ["Non-Binary", "Non-Binary"],
+  ];
+  const PROVIDER_DISTANCE_OPTIONS = [
+    ["best", "Best Nearby"],
+    ["1", "1 mile"],
+    ["2", "2 miles"],
+    ["5", "5 miles"],
+    ["10", "10 miles"],
+    ["25", "25 miles"],
+    ["50", "50 miles"],
+  ];
+  const PROVIDER_LANGUAGE_PRIMARY = ["Chinese", "English", "German", "Hindi", "Spanish"];
+  const PROVIDER_LANGUAGE_MORE = ["Arabic", "French", "Korean", "Tagalog", "Vietnamese"];
+  const PROVIDER_LANGUAGE_OPTIONS = [...PROVIDER_LANGUAGE_PRIMARY, ...PROVIDER_LANGUAGE_MORE];
+  const PROVIDER_DAY_OPTIONS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  const PROVIDER_HOUR_OPTIONS = [
+    ["morning", "Morning - 5AM to 12PM"],
+    ["afternoon", "Afternoon - 12PM to 5PM"],
+    ["evening", "Evening - 5PM to 9PM"],
+  ];
+  const PROVIDER_FILTER_META = {
+    p1: { languages: ["English", "Spanish"], days: ["Monday", "Wednesday", "Friday"], hours: ["morning", "afternoon"], premiumCare: true },
+    p2: { languages: ["English"], days: ["Tuesday", "Thursday"], hours: ["morning"], premiumCare: false },
+    p3: { languages: ["English", "Hindi"], days: ["Monday", "Tuesday", "Wednesday"], hours: ["afternoon"], premiumCare: false },
+    p4: { languages: ["English", "German"], days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], hours: ["morning"], premiumCare: false },
+    p5: { languages: ["English", "Hindi", "Spanish"], days: ["Monday", "Wednesday"], hours: ["afternoon", "evening"], premiumCare: true },
+    p6: { languages: ["English", "Spanish"], days: ["Tuesday", "Thursday", "Friday"], hours: ["morning"], premiumCare: false },
+    p7: { languages: ["English", "Chinese"], days: ["Monday", "Tuesday"], hours: ["afternoon"], premiumCare: false },
+    p8: { languages: ["English"], days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], hours: ["morning", "afternoon"], premiumCare: false },
+  };
   const MOCK_PROVIDERS = [
     {
       id: "p1",
@@ -937,12 +971,24 @@
     resultsLoading: false,
     sortBy: "best",
     sortMenuOpen: false,
+    filterMenuOpen: false,
+    filterDrill: null,
+    languageQuery: "",
+    languageShowAll: false,
+    filters: {
+      gender: "all",
+      distance: "best",
+      languages: ["English"],
+      days: [],
+      hours: [],
+    },
     selectedIds: new Set(),
     view: "results",
     overviewId: null,
     locationIndex: 0,
   });
   let providerSearchState = providerSearchDefaults();
+  let providerFilterDraft = null;
   /** In-place Show more keys for the open Provider Overview. */
   const providerOverviewExpanded = new Set();
   let providerResultsLoaderTimer = 0;
@@ -1007,6 +1053,9 @@
     copy: `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg>`,
     /* Soft Success badge — icon/actions/check.circle Size=xs Style=bold @ 12×12, icon/success */
     checkCircle: `<svg class="provider-check-circle" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 0a12 12 0 1 0 12 12A12 12 0 0 0 12 0Zm6.93 8.2-6.85 9.29a1 1 0 0 1-1.43.19l-4.89-3.91a1 1 0 0 1-.15-1.41A1 1 0 0 1 7 12.21l4.08 3.26L17.32 7a1 1 0 0 1 1.39-.21 1 1 0 0 1 .22 1.41Z"/></svg>`,
+    /* Soft Danger / provider No — filled circle with X cutout (pairs with checkCircle) */
+    /* Streamline Ultimate Bold — Remove Circle (pairs with check.circle) */
+    xCircle: `<svg class="provider-x-circle" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 0a12 12 0 1 0 12 12A12 12 0 0 0 12 0Zm5.49 16.07a1 1 0 0 1-1.41 1.42l-3.9-3.9a0.25 0.25 0 0 0-0.36 0l-3.9 3.9a1 1 0 1 1-1.41-1.42l3.9-3.89a0.25 0.25 0 0 0 0-0.36l-3.9-3.9a1 1 0 0 1 1.41-1.41l3.9 3.9a0.25 0.25 0 0 0 0.36 0l3.9-3.9a1 1 0 0 1 1.41 1.41l-3.9 3.9a0.25 0.25 0 0 0 0 0.36Z"/></svg>`,
     /* Soma icon/status/sparkles — Streamline Reward Stars 3 (Card / AI) */
     sparkles: `<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" class="assist-sparkles-glyph"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M11.3051 1.52853C11.3299 1.43398 11.3853 1.3503 11.4627 1.29059C11.5401 1.23088 11.635 1.19849 11.7328 1.19849C11.8305 1.19849 11.9255 1.23088 12.0029 1.29059C12.0803 1.3503 12.1357 1.43398 12.1605 1.52853C12.355 2.27247 12.569 2.72933 12.8885 3.06711C13.2104 3.40725 13.6808 3.67252 14.4831 3.94192C14.5709 3.9714 14.6472 4.02772 14.7013 4.10293C14.7554 4.17813 14.7845 4.26842 14.7845 4.36105C14.7845 4.45368 14.7554 4.54398 14.7013 4.61918C14.6472 4.69438 14.5709 4.7507 14.4831 4.78018C13.6814 5.04958 13.2098 5.31486 12.8885 5.655C12.569 5.99337 12.3556 6.44964 12.1605 7.19358C12.1355 7.28787 12.08 7.37126 12.0027 7.43075C11.9254 7.49024 11.8306 7.5225 11.7331 7.5225C11.6355 7.5225 11.5407 7.49024 11.4634 7.43075C11.3861 7.37126 11.3307 7.28787 11.3057 7.19358C11.1106 6.44964 10.8966 5.99337 10.5771 5.655C10.2558 5.31486 9.7848 5.04958 8.9825 4.78018C8.89468 4.7507 8.81835 4.69438 8.76427 4.61918C8.71018 4.54398 8.68109 4.45368 8.68109 4.36105C8.68109 4.26842 8.71018 4.17813 8.76427 4.10293C8.81835 4.02772 8.89468 3.9714 8.9825 3.94192C9.7848 3.67252 10.2558 3.40725 10.5771 3.0677C10.8966 2.72933 11.1106 2.27188 11.3051 1.52912V1.52853ZM5.64123 3.99203C5.66601 3.89748 5.72142 3.81381 5.7988 3.75409C5.87619 3.69438 5.97117 3.66199 6.06891 3.66199C6.16666 3.66199 6.26164 3.69438 6.33902 3.75409C6.4164 3.81381 6.47181 3.89748 6.49659 3.99203C6.84734 5.33785 7.24525 6.21679 7.87012 6.88056C8.49616 7.5461 9.39338 8.0401 10.8359 8.52643C10.9237 8.55591 11 8.61223 11.0541 8.68743C11.1082 8.76264 11.1373 8.85293 11.1373 8.94556C11.1373 9.03819 11.1082 9.12848 11.0541 9.20369C11 9.27889 10.9237 9.33521 10.8359 9.36469C9.39338 9.85044 8.49616 10.345 7.87012 11.0106C7.24525 11.6743 6.84734 12.5533 6.49659 13.8991C6.47181 13.9936 6.4164 14.0773 6.33902 14.137C6.26164 14.1967 6.16666 14.2291 6.06891 14.2291C5.97117 14.2291 5.87619 14.1967 5.7988 14.137C5.72142 14.0773 5.66601 13.9936 5.64123 13.8991C5.2899 12.5533 4.89258 11.6743 4.26771 11.0106C3.64108 10.345 2.74445 9.85044 1.30137 9.36469C1.21355 9.33521 1.13722 9.27889 1.08314 9.20369C1.02905 9.12848 0.999959 9.03819 0.999959 8.94556C0.999959 8.85293 1.02905 8.76264 1.08314 8.68743C1.13722 8.61223 1.21355 8.55591 1.30137 8.52643C2.74445 8.0401 3.64167 7.5461 4.26771 6.88056C4.89258 6.21679 5.2899 5.33785 5.64123 3.99203ZM12.6268 9.97364C12.5294 9.97357 12.4347 10.0057 12.3574 10.0649C12.2801 10.1242 12.2246 10.2073 12.1994 10.3014C12.0579 10.8319 11.9064 11.1391 11.6906 11.3625C11.4725 11.5889 11.1448 11.774 10.557 11.9673C10.4686 11.9964 10.3916 12.0526 10.337 12.1281C10.2824 12.2035 10.253 12.2942 10.253 12.3873C10.253 12.4804 10.2824 12.5712 10.337 12.6466C10.3916 12.722 10.4686 12.7783 10.557 12.8073C11.1448 13.0001 11.4725 13.1852 11.6906 13.4116C11.9064 13.6356 12.0579 13.9421 12.1994 14.4727C12.2244 14.567 12.2798 14.6504 12.3571 14.7098C12.4344 14.7693 12.5292 14.8016 12.6268 14.8016C12.7243 14.8016 12.8191 14.7693 12.8964 14.7098C12.9737 14.6504 13.0292 14.567 13.0541 14.4727C13.1956 13.9421 13.3465 13.6356 13.5623 13.4116C13.7804 13.1852 14.1082 13.0001 14.6959 12.8073C14.7843 12.7783 14.8614 12.722 14.916 12.6466C14.9706 12.5712 15 12.4804 15 12.3873C15 12.2942 14.9706 12.2035 14.916 12.1281C14.8614 12.0526 14.7843 11.9964 14.6959 11.9673C14.1082 11.774 13.7804 11.5889 13.5623 11.3625C13.3465 11.1391 13.1956 10.8319 13.0536 10.3014C13.0284 10.2074 12.9729 10.1244 12.8958 10.0651C12.8186 10.0059 12.724 9.9737 12.6268 9.97364Z"/></svg>`,
     /* Filled info mark for Share tips chip */
@@ -5502,6 +5551,76 @@
     bindCommunicationPanelActions();
   }
 
+  /**
+   * Width the draft would have on the single-line row (plus | text | actions).
+   * Used so a wrapped draft stays expanded after the textarea grows to full width.
+   */
+  function composerInlineTextWidth(field) {
+    const cs = getComputedStyle(field);
+    const pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+    const gap = parseFloat(cs.columnGap) || 0;
+    const attach = field.querySelector(".composer-icon-btn--attach");
+    const end = field.querySelector(".composer-toolbar-end");
+    const wrap = field.querySelector(".composer-input-wrap");
+    const wrapPad = wrap
+      ? (parseFloat(getComputedStyle(wrap).paddingLeft) || 0) +
+        (parseFloat(getComputedStyle(wrap).paddingRight) || 0)
+      : 0;
+    return Math.max(
+      0,
+      field.clientWidth - pad - gap * 2 - (attach?.offsetWidth || 0) - (end?.offsetWidth || 0) - wrapPad
+    );
+  }
+
+  let composerMeasureEl = null;
+  function composerDraftOverflowsLine(field, input) {
+    const value = input.value;
+    if (!value) return false;
+    if (value.includes("\n")) return true;
+    const available = composerInlineTextWidth(field);
+    if (available <= 0) return false;
+    if (!composerMeasureEl) {
+      composerMeasureEl = document.createElement("span");
+      composerMeasureEl.setAttribute("aria-hidden", "true");
+      composerMeasureEl.style.cssText =
+        "position:fixed;left:0;top:0;visibility:hidden;white-space:pre;pointer-events:none;width:max-content;";
+      document.body.append(composerMeasureEl);
+    }
+    const cs = getComputedStyle(input);
+    composerMeasureEl.style.font = cs.font;
+    composerMeasureEl.style.letterSpacing = cs.letterSpacing;
+    composerMeasureEl.textContent = value;
+    return composerMeasureEl.offsetWidth > available + 1;
+  }
+
+  function layoutComposerField(field, input, maxPx = 100) {
+    if (!field || !input) return;
+    const multiline = composerDraftOverflowsLine(field, input);
+    field.classList.toggle("is-multiline", multiline);
+    if (!multiline) {
+      input.style.height = "20px";
+      return;
+    }
+    input.style.height = "auto";
+    const next = Math.min(input.scrollHeight, maxPx);
+    input.style.height = `${Math.max(next, 20)}px`;
+  }
+
+  function watchComposerWidth(field, onWidth) {
+    if (!field || typeof ResizeObserver === "undefined") return null;
+    let lastW = -1;
+    const observer = new ResizeObserver((entries) => {
+      const w = Math.round(entries[0].contentRect.width);
+      if (w === lastW) return;
+      lastW = w;
+      onWidth();
+    });
+    observer.observe(field);
+    return observer;
+  }
+
+  let commComposerResizeObserver = null;
+
   function syncCommThreadComposer(root) {
     const input = root.querySelector("[data-comm-composer-input]");
     const send = root.querySelector("[data-comm-composer-send]");
@@ -5512,6 +5631,7 @@
     send.classList.toggle("is-active", hasText);
     send.setAttribute("aria-disabled", hasText ? "false" : "true");
     field?.classList.toggle("is-filled", hasText);
+    if (field) layoutComposerField(field, input, COMPOSER_INPUT_MAX);
   }
 
   function bindCommunicationListActions(root) {
@@ -5584,6 +5704,9 @@
     if (composerInput) {
       composerInput.addEventListener("input", () => syncCommThreadComposer(root));
       syncCommThreadComposer(root);
+      const field = root.querySelector("[data-comm-composer-field]");
+      commComposerResizeObserver?.disconnect();
+      commComposerResizeObserver = watchComposerWidth(field, () => syncCommThreadComposer(root));
     }
   }
 
@@ -6646,8 +6769,9 @@
   }
 
   function providerSearchPlaceholder() {
-    if (providerSearchState.searchBy === "Specialty") return "Search by specialty";
     if (providerSearchState.searchBy === "NPI") return "Search by NPI";
+    if (providerSearchState.searchBy === "Specialty/Condition") return "Search by specialty or condition";
+    if (providerSearchState.searchBy === "Places") return "Search by place";
     return "Search by name";
   }
 
@@ -6659,17 +6783,117 @@
     return PROVIDER_SORT_OPTIONS.find(([value]) => value === providerSearchState.sortBy)?.[1] || "Best Match";
   }
 
+  function providerFilterMeta(provider) {
+    return (
+      PROVIDER_FILTER_META[provider.id] || {
+        languages: ["English"],
+        days: [],
+        hours: [],
+        premiumCare: false,
+      }
+    );
+  }
+
+  function providerMatchesQuery(provider, q) {
+    if (!q) return true;
+    const by = providerSearchState.searchBy;
+    if (by === "NPI") {
+      return String(PROVIDER_PROFILE[provider.id]?.npi || "")
+        .toLowerCase()
+        .includes(q);
+    }
+    if (by === "Specialty/Condition") {
+      const conditions = (CONDITIONS_BY_SPECIALTY[provider.specialty] || []).join(" ").toLowerCase();
+      return provider.specialty.toLowerCase().includes(q) || conditions.includes(q);
+    }
+    if (by === "Places") {
+      return `${provider.group} ${provider.address}`.toLowerCase().includes(q);
+    }
+    return provider.name.toLowerCase().includes(q);
+  }
+
+  function providerPassesFilters(provider, filters = providerSearchState.filters) {
+    if (filters.gender !== "all" && PROVIDER_PROFILE[provider.id]?.gender !== filters.gender) return false;
+    if (filters.distance !== "best" && provider.distanceMiles > Number(filters.distance)) return false;
+    const meta = providerFilterMeta(provider);
+    if (filters.languages.length && !filters.languages.some((lang) => meta.languages.includes(lang))) return false;
+    if (filters.days.length && !filters.days.some((day) => meta.days.includes(day))) return false;
+    if (filters.hours.length && !filters.hours.some((hour) => meta.hours.includes(hour))) return false;
+    return true;
+  }
+
   function filterProviderResults() {
     const q = String(providerSearchState.query || "")
       .trim()
       .toLowerCase();
-    if (!q) return [...MOCK_PROVIDERS];
-    const by = providerSearchState.searchBy;
-    return MOCK_PROVIDERS.filter((p) => {
-      if (by === "Specialty") return p.specialty.toLowerCase().includes(q);
-      if (by === "NPI") return p.id.toLowerCase().includes(q) || p.name.toLowerCase().includes(q);
-      return p.name.toLowerCase().includes(q) || p.specialty.toLowerCase().includes(q);
-    });
+    return MOCK_PROVIDERS.filter(
+      (provider) => providerMatchesQuery(provider, q) && providerPassesFilters(provider)
+    );
+  }
+
+  function cloneProviderFilters(filters) {
+    return {
+      gender: filters.gender,
+      distance: filters.distance,
+      languages: [...filters.languages],
+      days: [...filters.days],
+      hours: [...filters.hours],
+    };
+  }
+
+  function providerGenderFieldLabel(gender) {
+    return gender === "all" ? "Any" : gender;
+  }
+
+  function providerDistanceFieldLabel(distance) {
+    return PROVIDER_DISTANCE_OPTIONS.find(([value]) => value === distance)?.[1] || "Best Nearby";
+  }
+
+  function providerLanguageFieldLabel(languages) {
+    const ordered = PROVIDER_LANGUAGE_OPTIONS.filter((lang) => languages.includes(lang));
+    if (!ordered.length) return "Any";
+    if (ordered.length === 1) return ordered[0];
+    return `${ordered[0]} +${ordered.length - 1}`;
+  }
+
+  function providerFilterTriggerLabel() {
+    const q = String(providerSearchState.query || "")
+      .trim()
+      .toLowerCase();
+    const base = MOCK_PROVIDERS.filter((provider) => providerMatchesQuery(provider, q));
+    const filters = providerSearchState.filters;
+    const labels = [];
+    const narrower = (pred) => base.filter(pred).length < base.length;
+    if (filters.gender !== "all" && narrower((provider) => PROVIDER_PROFILE[provider.id]?.gender === filters.gender)) {
+      labels.push(filters.gender);
+    }
+    if (filters.distance !== "best" && narrower((provider) => provider.distanceMiles <= Number(filters.distance))) {
+      labels.push(providerDistanceFieldLabel(filters.distance));
+    }
+    if (
+      filters.languages.length &&
+      narrower((provider) => filters.languages.some((lang) => providerFilterMeta(provider).languages.includes(lang)))
+    ) {
+      labels.push(providerLanguageFieldLabel(filters.languages));
+    }
+    if (
+      (filters.days.length || filters.hours.length) &&
+      narrower((provider) => {
+        const meta = providerFilterMeta(provider);
+        if (filters.days.length && !filters.days.some((day) => meta.days.includes(day))) return false;
+        if (filters.hours.length && !filters.hours.some((hour) => meta.hours.includes(hour))) return false;
+        return true;
+      })
+    ) {
+      if (filters.days.length === 1 && !filters.hours.length) labels.push(filters.days[0]);
+      else if (!filters.days.length && filters.hours.length === 1) {
+        const hour = PROVIDER_HOUR_OPTIONS.find(([value]) => value === filters.hours[0]);
+        labels.push(hour ? hour[1].split(" - ")[0] : "Availability");
+      } else labels.push("Availability");
+    }
+    if (!labels.length) return "Any";
+    if (labels.length === 1) return labels[0];
+    return `${labels.length} filters`;
   }
 
   function sortProviderResults(list) {
@@ -6749,6 +6973,118 @@
       </article>`;
   }
 
+  function providerFilterChoiceHtml(pick, value, label, selected) {
+    return `
+      <button type="button" class="provider-filter-option${selected ? " is-selected" : ""}" data-provider-filter-pick="${escapeAttr(pick)}" data-value="${escapeAttr(value)}" role="menuitemradio" aria-checked="${selected}">
+        <span class="provider-filter-option-label">${escapeAttr(label)}</span>
+        <span class="provider-filter-mark" aria-hidden="true">${icon.check}</span>
+      </button>`;
+  }
+
+  function providerFilterCheckHtml(pick, value, label, selected, extra = false) {
+    const extraAttr = pick === "language" ? ` data-provider-language data-language-extra="${extra ? "true" : "false"}"` : "";
+    return `
+      <button type="button" class="provider-filter-check-option${selected ? " is-selected" : ""}" data-provider-filter-pick="${escapeAttr(pick)}" data-value="${escapeAttr(value)}" role="menuitemcheckbox" aria-checked="${selected}"${extraAttr}${extra ? " hidden" : ""}>
+        <i class="provider-filter-check${selected ? " is-checked" : ""}" aria-hidden="true"></i>
+        <span class="provider-filter-option-label">${escapeAttr(label)}</span>
+      </button>`;
+  }
+
+  function providerFilterDrillActionsHtml() {
+    return `
+      <div class="provider-filter-drill-actions">
+        <button type="button" class="button button-primary" data-provider-filter-apply>Apply</button>
+        <button type="button" class="button button-secondary" data-provider-filter-cancel>Cancel</button>
+      </div>`;
+  }
+
+  function providerFilterControlHtml() {
+    const open = providerSearchState.filterMenuOpen;
+    const drill = providerSearchState.filterDrill;
+    const filters = providerSearchState.filters;
+    const draft = providerFilterDraft || filters;
+    const languageQuery = providerSearchState.languageQuery || "";
+    return `
+      <div class="select-wrap provider-filter-wrap${open ? " is-open" : ""}">
+        <button
+          class="inline-field-control select-trigger provider-sort-trigger"
+          type="button"
+          id="provider-filter-trigger"
+          aria-label="Filter by"
+          aria-expanded="${open}"
+          aria-haspopup="dialog"
+        >
+          <span class="select-trigger-label">${escapeAttr(providerFilterTriggerLabel())}</span>${icon.down}
+        </button>
+        <div class="elig-filter-menu provider-filter-menu${drill ? " is-drilling" : ""}" role="dialog" aria-label="Filter by" ${open ? "" : "hidden"}>
+          <div class="provider-filter-field${drill === "gender" ? " is-open" : ""}">
+            <span class="provider-filter-field-label">Gender</span>
+            <button type="button" class="inline-field-control select-trigger provider-filter-field-trigger" data-provider-filter-open="gender" aria-expanded="${drill === "gender"}">
+              <span data-provider-filter-value="gender">${escapeAttr(providerGenderFieldLabel(filters.gender))}</span>${icon.down}
+            </button>
+            <div class="provider-filter-drill" data-provider-filter-drill="gender" ${drill === "gender" ? "" : "hidden"}>
+              ${PROVIDER_GENDER_OPTIONS.map(([value, label]) => providerFilterChoiceHtml("gender", value, label, draft.gender === value)).join("")}
+              ${providerFilterDrillActionsHtml()}
+            </div>
+          </div>
+          <div class="provider-filter-field${drill === "distance" ? " is-open" : ""}">
+            <span class="provider-filter-field-label">Distance</span>
+            <button type="button" class="inline-field-control select-trigger provider-filter-field-trigger" data-provider-filter-open="distance" aria-expanded="${drill === "distance"}">
+              <span data-provider-filter-value="distance">${escapeAttr(providerDistanceFieldLabel(filters.distance))}</span>${icon.down}
+            </button>
+            <div class="provider-filter-drill" data-provider-filter-drill="distance" ${drill === "distance" ? "" : "hidden"}>
+              ${PROVIDER_DISTANCE_OPTIONS.map(([value, label]) => providerFilterChoiceHtml("distance", value, label, draft.distance === value)).join("")}
+              ${providerFilterDrillActionsHtml()}
+            </div>
+          </div>
+          <div class="provider-filter-field${drill === "language" ? " is-open" : ""}">
+            <span class="provider-filter-field-label">Language</span>
+            <button type="button" class="inline-field-control select-trigger provider-filter-field-trigger" data-provider-filter-open="language" aria-expanded="${drill === "language"}">
+              <span data-provider-filter-value="language">${escapeAttr(providerLanguageFieldLabel(filters.languages))}</span>${icon.down}
+            </button>
+            <div class="provider-filter-drill" data-provider-filter-drill="language" ${drill === "language" ? "" : "hidden"}>
+              <label class="provider-lookup-query provider-filter-search">
+                <span class="provider-lookup-query-icon" aria-hidden="true">${icon.search}</span>
+                <input type="search" data-provider-language-query placeholder="Enter language" value="${escapeAttr(languageQuery)}" autocomplete="off" aria-label="Enter language" />
+              </label>
+              ${PROVIDER_LANGUAGE_PRIMARY.map((lang) => providerFilterCheckHtml("language", lang, lang, draft.languages.includes(lang))).join("")}
+              <button type="button" class="provider-filter-show-all" data-provider-language-more ${providerSearchState.languageShowAll ? "hidden" : ""}>Show all</button>
+              ${PROVIDER_LANGUAGE_MORE.map((lang) => providerFilterCheckHtml("language", lang, lang, draft.languages.includes(lang), !providerSearchState.languageShowAll)).join("")}
+              ${providerFilterDrillActionsHtml()}
+            </div>
+          </div>
+          <div class="provider-filter-field${drill === "availability" ? " is-open" : ""}">
+            <span class="provider-filter-field-label">Availability</span>
+            <button type="button" class="inline-field-control select-trigger provider-filter-field-trigger" data-provider-filter-open="availability" aria-expanded="${drill === "availability"}">
+              <span data-provider-filter-value="availability">By Days</span>${icon.down}
+            </button>
+            <div class="provider-filter-drill" data-provider-filter-drill="availability" ${drill === "availability" ? "" : "hidden"}>
+              <div class="provider-filter-section-label">By Days</div>
+              ${PROVIDER_DAY_OPTIONS.map((day) => providerFilterCheckHtml("day", day, day, draft.days.includes(day))).join("")}
+              <div class="provider-filter-section-label">By Hours</div>
+              ${PROVIDER_HOUR_OPTIONS.map(([value, label]) => providerFilterCheckHtml("hour", value, label, draft.hours.includes(value))).join("")}
+              ${providerFilterDrillActionsHtml()}
+            </div>
+          </div>
+          <button type="button" class="button button-primary provider-filter-close" data-provider-filter-close>Close</button>
+        </div>
+      </div>`;
+  }
+
+  function providerResultsControlsHtml() {
+    return `
+      <div class="provider-results-controls">
+        <div class="provider-results-control">
+          <span class="provider-results-control-label">Sort by</span>
+          ${providerSortControlHtml()}
+        </div>
+        <div class="provider-results-control">
+          <span class="provider-results-control-label">Filter by</span>
+          ${providerFilterControlHtml()}
+        </div>
+      </div>`;
+  }
+
   function providerSortControlHtml() {
     const open = providerSearchState.sortMenuOpen;
     return `
@@ -6791,7 +7127,10 @@
           <h4 class="provider-results-title">Results</h4>
           <span class="skeleton skeleton-line provider-results-count-skel" aria-hidden="true"></span>
         </div>
-        <div class="skeleton skeleton-line provider-sort-skel" aria-hidden="true"></div>
+        <div class="provider-results-controls" aria-hidden="true">
+          <div class="skeleton skeleton-line provider-sort-skel"></div>
+          <div class="skeleton skeleton-line provider-sort-skel"></div>
+        </div>
       </div>
       <div class="provider-results-list" aria-busy="true" aria-label="Loading providers">
         ${[0, 1, 2, 3]
@@ -6834,7 +7173,7 @@
           <h4 class="provider-results-title">Results</h4>
           <span class="provider-results-found">${count} provider${count === 1 ? "" : "s"} found</span>
         </div>
-        ${providerSortControlHtml()}
+        ${providerResultsControlsHtml()}
       </div>
       <div class="provider-results-list">
         ${
@@ -6850,6 +7189,9 @@
     providerSearchState.hasSearched = true;
     providerSearchState.resultsLoading = true;
     providerSearchState.sortMenuOpen = false;
+    providerSearchState.filterMenuOpen = false;
+    providerSearchState.filterDrill = null;
+    providerFilterDraft = null;
     render("provider-search", { skipEnter: true });
     providerResultsLoaderTimer = window.setTimeout(() => {
       providerSearchState.resultsLoading = false;
@@ -6882,7 +7224,7 @@
         <span class="provider-selected-count">${label}</span>
         <div class="provider-selected-actions">
           <button class="button button-ghost" type="button" data-provider-selection-clear>Clear</button>
-          <button class="button button-primary" type="button" data-provider-send>Send to member</button>
+          <button class="button button-primary" type="button" data-provider-send>Send to Member</button>
         </div>
       </div>`;
   }
@@ -6954,28 +7296,69 @@
     return `https://www.sutterhealth.org/find-doctor/${slug}`;
   }
 
+  function providerInitials(name) {
+    const parts = String(name)
+      .replace(/^Dr\.\s*/i, "")
+      .replace(/,.*$/, "")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    return parts
+      .slice(0, 2)
+      .map((part) => part[0])
+      .join("")
+      .toUpperCase();
+  }
+
+  function providerSendBadgesHtml(provider) {
+    const badges = [];
+    if (provider.acceptingNewPatients) {
+      badges.push(
+        `<span class="soft-badge soft-success"><span class="provider-badge-check" aria-hidden="true">${icon.checkCircle}</span><span class="soft-badge-label">Accepting new patients</span></span>`
+      );
+    }
+    if (providerFilterMeta(provider).premiumCare) {
+      badges.push(
+        `<span class="soft-badge soft-accent"><span class="provider-badge-heart" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20.25s-6.75-4.35-6.75-8.55a3.9 3.9 0 0 1 6.75-2.55 3.9 3.9 0 0 1 6.75 2.55c0 4.2-6.75 8.55-6.75 8.55z"/></svg></span><span class="soft-badge-label">Premium care physician</span></span>`
+      );
+    }
+    return badges.length ? `<div class="provider-send-badges">${badges.join("")}</div>` : "";
+  }
+
   function openSendToMemberModal() {
     const selected = MOCK_PROVIDERS.filter((provider) => providerSearchState.selectedIds.has(provider.id));
     if (!selected.length) return;
     const rows = selected
       .map((provider) => {
         const dist = providerDistanceLabel(provider.distanceMiles);
+        const phoneHref = `tel:${String(provider.phone).replace(/[^\d+]/g, "")}`;
         return `
-        <div class="provider-send-row">
-          <p class="provider-send-name">${escapeAttr(provider.name)}</p>
-          <p class="provider-send-meta">${escapeAttr(provider.specialty)}</p>
-          <p class="provider-send-meta">${escapeAttr(provider.address)} · ${escapeAttr(dist)}</p>
-        </div>`;
+        <article class="provider-send-card">
+          <span class="provider-send-avatar" aria-hidden="true">${escapeAttr(providerInitials(provider.name))}</span>
+          <div class="provider-send-card-main">
+            <div class="provider-send-name-row">
+              <h3 class="provider-send-name">${escapeAttr(provider.name)}</h3>
+              <button type="button" class="provider-card-copy" data-provider-copy="${escapeAttr(provider.id)}" aria-label="Copy ${escapeAttr(provider.name)}">${icon.copy}</button>
+            </div>
+            <p class="provider-send-specialty">${escapeAttr(provider.specialty)}</p>
+            ${providerSendBadgesHtml(provider)}
+            <p class="provider-send-meta">${escapeAttr(provider.address)} · ${escapeAttr(dist)}</p>
+            <a class="provider-send-phone" href="${escapeAttr(phoneHref)}">${escapeAttr(provider.phone)}</a>
+          </div>
+        </article>`;
       })
       .join("");
     openModal({
       title: "Send provider list to member",
       variant: "provider-send",
       body: `
-        <p class="modal-copy">The email will include a list of all locations & network statuses for the selected providers.</p>
+        <p class="modal-copy">The email will include a list of all locations &amp; network statuses for the selected providers.</p>
         <div class="notes-field">
           ${notesFieldLabel("Send to")}
-          <input class="inline-field-control" id="provider-send-email" type="email" autocomplete="email" value="${escapeAttr(memberContact.email)}" />
+          <label class="provider-lookup-query provider-send-email">
+            <span class="provider-lookup-query-icon" aria-hidden="true">${icon.mail}</span>
+            <input id="provider-send-email" type="email" autocomplete="email" value="${escapeAttr(memberContact.email)}" aria-label="Send to" />
+          </label>
         </div>
         <div class="provider-send-list">${rows}</div>
       `,
@@ -7006,6 +7389,8 @@
     });
     email?.focus();
     email?.select();
+    const dialog = email?.closest(".modal");
+    if (dialog) bindProviderResultCardActions(dialog);
   }
 
   function bindProviderResultCardActions(root = stage) {
@@ -7090,9 +7475,22 @@
 
   const PROVIDER_PROFILE = {
     p1: { gender: "Female", school: "University of Michigan Medical School", npi: "1457382910" },
-    p2: { gender: "Male", school: "Yale University School of Medicine", npi: "1871515205", rich: true },
-    p3: { gender: "Female", school: "UCSF School of Medicine", npi: "1629384750" },
-    p4: { gender: "Male", school: "Stanford University School of Medicine", npi: "1392048576" },
+    p2: {
+      gender: "Male",
+      school: "Yale University School of Medicine",
+      npi: "1871515205",
+      rich: true,
+      networkStatus: "No network status data available",
+    },
+    p3: {
+      gender: "Female",
+      school: "UCSF School of Medicine",
+      npi: "1629384750",
+      thirdParty: "By request",
+      nextAppointment: "In 3 weeks",
+      networkStatus: "Out of Network",
+    },
+    p4: { gender: "Non-Binary", school: "Stanford University School of Medicine", npi: "1392048576" },
     p5: { gender: "Female", school: "Johns Hopkins School of Medicine", npi: "1748293650", rich: true },
     p6: { gender: "Male", school: "UCLA David Geffen School of Medicine", npi: "1582736409" },
     p7: { gender: "Female", school: "University of Washington School of Medicine", npi: "1203948576" },
@@ -7153,13 +7551,13 @@ Timestamp: 8/21/18 KS`;
       name: provider.group,
       address: provider.address,
       acceptingNewPatients: Boolean(provider.acceptingNewPatients),
-      thirdPartyScheduling: null,
-      nextAppointment: null,
+      thirdPartyScheduling: profile.thirdParty ?? null,
+      nextAppointment: profile.nextAppointment ?? null,
       telemedicine: !profile.rich,
       requiredReferral: /surgery/i.test(provider.specialty),
       requiresRecords: false,
       distanceMiles: provider.distanceMiles,
-      networkStatus: provider.inNetwork ? "In network" : "No network status data available",
+      networkStatus: profile.networkStatus || (provider.inNetwork ? "In network" : "No network status data available"),
       phone: provider.phone,
       fax: providerFaxFromPhone(provider.phone),
       website,
@@ -7199,11 +7597,11 @@ Timestamp: 8/21/18 KS`;
   }
 
   function providerYesNoHtml(value) {
-    if (value == null) return "—";
+    if (value == null) return "-";
     const yes = Boolean(value);
     const mark = yes
       ? `<span class="provider-yn-mark" aria-hidden="true">${icon.checkCircle}</span>`
-      : `<span class="provider-yn-mark" aria-hidden="true">×</span>`;
+      : `<span class="provider-yn-mark" aria-hidden="true">${icon.xCircle}</span>`;
     return `<span class="provider-yn provider-yn--${yes ? "yes" : "no"}">${mark}${yes ? "Yes" : "No"}</span>`;
   }
 
@@ -7230,26 +7628,33 @@ Timestamp: 8/21/18 KS`;
       <div class="provider-overview-value">
         <div class="provider-overview-clamp${expanded ? " is-expanded" : ""}" data-provider-clamp="${escapeAttr(key)}">${body}</div>
         <button class="notes-show-more" type="button" data-provider-more="${escapeAttr(key)}" aria-expanded="${expanded}"${expanded ? "" : " hidden"}>
-          <span class="notes-show-more-label">${expanded ? "Show less" : "Show more"}</span>
+          <span class="notes-show-more-label">${expanded ? "Less" : "More"}</span>
           <span class="notes-show-more-chevron" aria-hidden="true">${expanded ? icon.up : icon.chevron}</span>
         </button>
       </div>`;
   }
 
+  function providerLocationValueHtml(value) {
+    if (typeof value === "string") {
+      const text = value.trim();
+      return text ? escapeAttr(text) : "-";
+    }
+    return providerYesNoHtml(value);
+  }
+
   function providerLocationCardHtml(location, index) {
-    const next = location.nextAppointment ? escapeAttr(location.nextAppointment) : "—";
     return `
       <p class="provider-location-name">${escapeAttr(location.name)}</p>
       <p class="provider-location-address">${escapeAttr(location.address)}</p>
       <div class="provider-location-rows">
         ${providerOverviewRow("Accepting new patients", providerYesNoHtml(location.acceptingNewPatients))}
-        ${providerOverviewRow("Allows third-party scheduling", providerYesNoHtml(location.thirdPartyScheduling))}
-        ${providerOverviewRow("Next appointment", next)}
-        ${providerOverviewRow("Telemedicine available", providerYesNoHtml(location.telemedicine))}
-        ${providerOverviewRow("Required referral", providerYesNoHtml(location.requiredReferral))}
-        ${providerOverviewRow("Requires records", providerYesNoHtml(location.requiresRecords))}
+        ${providerOverviewRow("Allows Third-Party Scheduling", providerLocationValueHtml(location.thirdPartyScheduling))}
+        ${providerOverviewRow("Next Appointment", providerLocationValueHtml(location.nextAppointment))}
+        ${providerOverviewRow("Telemedicine Available", providerYesNoHtml(location.telemedicine))}
+        ${providerOverviewRow("Required Referral", providerYesNoHtml(location.requiredReferral))}
+        ${providerOverviewRow("Requires Records", providerYesNoHtml(location.requiresRecords))}
         ${providerOverviewRow("Distance", escapeAttr(providerMilesAwayLabel(location.distanceMiles)))}
-        ${providerOverviewRow("Network status", escapeAttr(location.networkStatus || "No network status data available"))}
+        ${providerOverviewRow("Network Status", escapeAttr(location.networkStatus || "No network status data available"))}
         ${providerOverviewRow("Phone", providerTelLink(location.phone))}
         ${providerOverviewRow("Fax", providerTelLink(location.fax))}
         ${providerOverviewRow("Website", providerWebsiteLink(location.website))}
@@ -7278,7 +7683,7 @@ Timestamp: 8/21/18 KS`;
     clamp.classList.toggle("is-expanded", expanded);
     btn.hidden = false;
     btn.setAttribute("aria-expanded", String(expanded));
-    label.textContent = expanded ? "Show less" : "Show more";
+    label.textContent = expanded ? "Less" : "More";
     chevron.innerHTML = expanded ? icon.up : icon.chevron;
   }
 
@@ -7301,18 +7706,39 @@ Timestamp: 8/21/18 KS`;
     });
   }
 
+  function syncProviderLocationNav(root = stage) {
+    const provider = MOCK_PROVIDERS.find((item) => item.id === providerSearchState.overviewId);
+    const count = provider ? providerOverview(provider).locations.length : 0;
+    const index = providerSearchState.locationIndex;
+    const prev = root.querySelector("[data-provider-location-prev]");
+    const next = root.querySelector("[data-provider-location-next]");
+    if (prev) {
+      const disabled = count < 2 || index <= 0;
+      prev.disabled = disabled;
+      prev.setAttribute("aria-disabled", String(disabled));
+    }
+    if (next) {
+      const disabled = count < 2 || index >= count - 1;
+      next.disabled = disabled;
+      next.setAttribute("aria-disabled", String(disabled));
+    }
+  }
+
   function shiftProviderLocation(delta) {
     const provider = MOCK_PROVIDERS.find((item) => item.id === providerSearchState.overviewId);
     if (!provider) return;
     const locations = providerOverview(provider).locations;
     const count = locations.length;
     if (count < 2) return;
-    providerSearchState.locationIndex = (providerSearchState.locationIndex + delta + count) % count;
+    const nextIndex = providerSearchState.locationIndex + delta;
+    if (nextIndex < 0 || nextIndex >= count) return;
+    providerSearchState.locationIndex = nextIndex;
     const card = stage.querySelector("[data-provider-location-card]");
     if (!card) return;
     const index = providerSearchState.locationIndex;
     card.innerHTML = providerLocationCardHtml(locations[index], index);
     bindProviderOverviewClamps(card);
+    syncProviderLocationNav();
     requestAnimationFrame(() => syncProviderOverviewClamps(card));
   }
 
@@ -7328,6 +7754,7 @@ Timestamp: 8/21/18 KS`;
     content.querySelector("[data-provider-location-next]")?.addEventListener("click", () => shiftProviderLocation(1));
     bindProviderOverviewClamps(content);
     bindProviderResultCardActions(content);
+    syncProviderLocationNav(content);
     requestAnimationFrame(() => syncProviderOverviewClamps(content));
   }
 
@@ -7340,22 +7767,25 @@ Timestamp: 8/21/18 KS`;
     }
     const overview = providerOverview(provider);
     const count = overview.locations.length;
-    const index = Math.min(providerSearchState.locationIndex, count - 1);
+    const index = Math.min(Math.max(providerSearchState.locationIndex, 0), Math.max(count - 1, 0));
     providerSearchState.locationIndex = index;
+    const prevDisabled = count < 2 || index <= 0;
+    const nextDisabled = count < 2 || index >= count - 1;
     const locationNav =
       count > 1
         ? `<div class="provider-location-nav">
-            <button class="icon-button" type="button" data-provider-location-prev aria-label="Previous location">${icon.chevronLeft}</button>
-            <button class="icon-button provider-location-next" type="button" data-provider-location-next aria-label="Next location">${icon.chevronLeft}</button>
+            <button class="icon-button" type="button" data-provider-location-prev aria-label="Previous location"${prevDisabled ? " disabled" : ""} aria-disabled="${prevDisabled}">${icon.chevronLeft}</button>
+            <button class="icon-button provider-location-next" type="button" data-provider-location-next aria-label="Next location"${nextDisabled ? " disabled" : ""} aria-disabled="${nextDisabled}">${icon.chevronLeft}</button>
           </div>`
         : "";
-    const inNetworkCount = MEMBER_COVERAGE_PLANS.length;
-    const planRows = MEMBER_COVERAGE_PLANS.map((name) =>
-      providerOverviewRow(
-        name,
-        `<span class="provider-yn provider-yn--yes"><span class="provider-yn-mark" aria-hidden="true">${icon.checkCircle}</span>In Network</span>`
-      )
-    ).join("");
+    const covered = Boolean(provider.inNetwork);
+    const coveragePlans = covered ? MEMBER_COVERAGE_PLANS : ["PPO Plan", "PPO COBRA", "gHIP Plan"];
+    const coverageCount = coveragePlans.length;
+    const coverageLabel = covered ? `${coverageCount} In Network` : `${coverageCount} Out of Network`;
+    const coverageValue = covered
+      ? `<span class="provider-yn provider-yn--yes"><span class="provider-yn-mark" aria-hidden="true">${icon.checkCircle}</span>In Network</span>`
+      : `<span class="provider-yn provider-yn--no"><span class="provider-yn-mark" aria-hidden="true">${icon.xCircle}</span>Out of Network</span>`;
+    const planRows = coveragePlans.map((name) => providerOverviewRow(name, coverageValue)).join("");
     return `
     <article class="panel-content" data-content="provider-search">
       <header class="panel-header panel-header--detail">
@@ -7363,7 +7793,7 @@ Timestamp: 8/21/18 KS`;
           <button class="icon-button panel-back" type="button" data-provider-overview-back aria-label="Back">${icon.chevronLeft}</button>
           <h2>Provider Overview</h2>
         </div>
-        <button class="icon-button panel-close" type="button" aria-label="Close Provider Lookup">${icon.close}</button>
+        <button class="icon-button panel-close" type="button" aria-label="Close Provider Search">${icon.close}</button>
       </header>
       <div class="panel-scroll provider-overview">
         <div class="provider-overview-identity">
@@ -7373,12 +7803,12 @@ Timestamp: 8/21/18 KS`;
         <h3 class="benefit-detail-section provider-overview-section">Provider Information</h3>
         <div class="provider-overview-fields">
           ${providerOverviewRow("Specialties", providerClampValueHtml("specialties", overview.specialties), true)}
-          ${providerOverviewRow("Conditions treated", providerClampValueHtml("conditions", overview.conditions), true)}
-          ${providerOverviewRow("Services offered", providerClampValueHtml("services", overview.services), true)}
+          ${providerOverviewRow("Conditions Treated", providerClampValueHtml("conditions", overview.conditions), true)}
+          ${providerOverviewRow("Services Offered", providerClampValueHtml("services", overview.services), true)}
           ${providerOverviewRow("Gender", escapeAttr(overview.gender))}
           ${providerOverviewRow("Provider NPI", escapeAttr(overview.npi))}
           ${providerOverviewRow("Studied at", escapeAttr(overview.studiedAt))}
-          ${providerOverviewRow("Hospital affiliations", providerClampValueHtml("affiliations", overview.affiliations), true)}
+          ${providerOverviewRow("Hospital Affiliations", providerClampValueHtml("affiliations", overview.affiliations), true)}
         </div>
         <div class="provider-overview-section-head">
           <h3 class="benefit-detail-section">Locations (${count})</h3>
@@ -7387,14 +7817,14 @@ Timestamp: 8/21/18 KS`;
         <article class="provider-location-card" data-provider-location-card>
           ${providerLocationCardHtml(overview.locations[index], index)}
         </article>
-        <h3 class="benefit-detail-section">Member's Insurance Coverage (${inNetworkCount})</h3>
+        <h3 class="benefit-detail-section">Member's Insurance Coverage (${coverageCount})</h3>
         <section class="accordion provider-coverage" data-section="provider-coverage">
           <div class="accordion-header-row">
             <button class="accordion-toggle" type="button" aria-expanded="false">
               <span class="accordion-chevron" aria-hidden="true">${icon.chevron}</span>
               <span class="provider-coverage-heading">
-                <span class="provider-coverage-plan">${escapeAttr(memberAccount.plan)}</span>
-                <span class="provider-coverage-count">${inNetworkCount} In Network</span>
+                <span class="provider-coverage-plan">Aetna</span>
+                <span class="provider-coverage-count ${covered ? "is-in" : "is-out"}">${escapeAttr(coverageLabel)}</span>
               </span>
             </button>
           </div>
@@ -7420,8 +7850,8 @@ Timestamp: 8/21/18 KS`;
     return `
     <article class="panel-content" data-content="provider-search">
       <header class="panel-header">
-        <h2>Provider Lookup</h2>
-        <button class="icon-button panel-close" type="button" aria-label="Close Provider Lookup">${icon.close}</button>
+        <h2>Provider Search</h2>
+        <button class="icon-button panel-close" type="button" aria-label="Close Provider Search">${icon.close}</button>
       </header>
       <div class="panel-scroll provider-lookup">
         <div class="provider-lookup-filters">
@@ -7484,6 +7914,186 @@ Timestamp: 8/21/18 KS`;
     }
   }
 
+  function syncProviderFilterChecks(menu) {
+    const working = providerFilterDraft || providerSearchState.filters;
+    const committed = providerSearchState.filters;
+    menu.querySelectorAll("[data-provider-filter-pick]").forEach((btn) => {
+      const pick = btn.dataset.providerFilterPick;
+      const value = btn.dataset.value;
+      let on = false;
+      if (pick === "gender") on = working.gender === value;
+      else if (pick === "distance") on = working.distance === value;
+      else if (pick === "language") on = working.languages.includes(value);
+      else if (pick === "day") on = working.days.includes(value);
+      else if (pick === "hour") on = working.hours.includes(value);
+      btn.setAttribute("aria-checked", String(on));
+      btn.classList.toggle("is-selected", on);
+      btn.querySelector(".provider-filter-check")?.classList.toggle("is-checked", on);
+    });
+    const gender = menu.querySelector('[data-provider-filter-value="gender"]');
+    const distance = menu.querySelector('[data-provider-filter-value="distance"]');
+    const language = menu.querySelector('[data-provider-filter-value="language"]');
+    if (gender) gender.textContent = providerGenderFieldLabel(committed.gender);
+    if (distance) distance.textContent = providerDistanceFieldLabel(committed.distance);
+    if (language) language.textContent = providerLanguageFieldLabel(committed.languages);
+    const trigger = stage.querySelector("#provider-filter-trigger .select-trigger-label");
+    if (trigger) trigger.textContent = providerFilterTriggerLabel();
+  }
+
+  function syncProviderLanguageOptions(menu) {
+    const q = String(providerSearchState.languageQuery || "")
+      .trim()
+      .toLowerCase();
+    const showAll = providerSearchState.languageShowAll;
+    menu.querySelectorAll("[data-provider-language]").forEach((btn) => {
+      const extra = btn.dataset.languageExtra === "true";
+      const matches = !q || String(btn.dataset.value || "").toLowerCase().includes(q);
+      btn.hidden = !matches || (extra && !showAll && !q);
+    });
+    const more = menu.querySelector("[data-provider-language-more]");
+    if (more) more.hidden = showAll || Boolean(q);
+  }
+
+  function hideProviderFilterDrills(menu) {
+    menu?.querySelectorAll("[data-provider-filter-drill]").forEach((drill) => {
+      drill.hidden = true;
+    });
+    menu?.classList.remove("is-drilling");
+    menu?.querySelectorAll(".provider-filter-field").forEach((field) => {
+      field.classList.remove("is-open");
+      field.querySelector("[data-provider-filter-open]")?.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function setProviderFilterDrill(name) {
+    const menu = stage.querySelector(".provider-filter-menu");
+    if (!menu) return;
+    if (providerSearchState.filterDrill === name) {
+      providerSearchState.filterDrill = null;
+      providerFilterDraft = null;
+    } else {
+      providerSearchState.filterDrill = name;
+      providerFilterDraft = cloneProviderFilters(providerSearchState.filters);
+    }
+    menu.querySelectorAll("[data-provider-filter-drill]").forEach((drill) => {
+      drill.hidden = drill.dataset.providerFilterDrill !== providerSearchState.filterDrill;
+    });
+    menu.classList.toggle("is-drilling", Boolean(providerSearchState.filterDrill));
+    menu.querySelectorAll(".provider-filter-field").forEach((field) => {
+      const openBtn = field.querySelector("[data-provider-filter-open]");
+      const open = openBtn?.dataset.providerFilterOpen === providerSearchState.filterDrill;
+      field.classList.toggle("is-open", open);
+      openBtn?.setAttribute("aria-expanded", String(open));
+    });
+    syncProviderFilterChecks(menu);
+    if (providerSearchState.filterDrill === "language") syncProviderLanguageOptions(menu);
+  }
+
+  function toggleProviderFilterPick(pick, value) {
+    if (!providerFilterDraft) providerFilterDraft = cloneProviderFilters(providerSearchState.filters);
+    const draft = providerFilterDraft;
+    const toggleList = (list) => (list.includes(value) ? list.filter((item) => item !== value) : [...list, value]);
+    if (pick === "gender") draft.gender = value;
+    else if (pick === "distance") draft.distance = value;
+    else if (pick === "language") draft.languages = toggleList(draft.languages);
+    else if (pick === "day") draft.days = toggleList(draft.days);
+    else if (pick === "hour") draft.hours = toggleList(draft.hours);
+    const menu = stage.querySelector(".provider-filter-menu");
+    if (menu) syncProviderFilterChecks(menu);
+  }
+
+  function finishProviderFilterDrill(commit) {
+    if (commit && providerFilterDraft) providerSearchState.filters = cloneProviderFilters(providerFilterDraft);
+    providerFilterDraft = null;
+    providerSearchState.filterDrill = null;
+    const menu = stage.querySelector(".provider-filter-menu");
+    hideProviderFilterDrills(menu);
+    if (menu) syncProviderFilterChecks(menu);
+    if (commit) refreshProviderResultsList({ ease: true });
+  }
+
+  function closeProviderFilterMenu() {
+    providerSearchState.filterMenuOpen = false;
+    providerSearchState.filterDrill = null;
+    providerFilterDraft = null;
+    const wrap = stage.querySelector(".provider-filter-wrap");
+    const btn = stage.querySelector("#provider-filter-trigger");
+    const menu = stage.querySelector(".provider-filter-menu");
+    if (wrap) wrap.classList.remove("is-open");
+    if (btn) btn.setAttribute("aria-expanded", "false");
+    hideProviderFilterDrills(menu);
+    if (menu) {
+      hideMenuPopover(menu);
+      menu.hidden = true;
+    }
+  }
+
+  function bindProviderFilterActions(content) {
+    const trigger = content.querySelector("#provider-filter-trigger");
+    const menu = content.querySelector(".provider-filter-menu");
+    trigger?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const opening = !providerSearchState.filterMenuOpen;
+      closeOverlayMenus("provider-filter");
+      providerSearchState.filterMenuOpen = opening;
+      providerSearchState.filterDrill = opening ? providerSearchState.filterDrill : null;
+      if (!opening) providerFilterDraft = null;
+      trigger.setAttribute("aria-expanded", String(opening));
+      content.querySelector(".provider-filter-wrap")?.classList.toggle("is-open", opening);
+      if (opening && menu) {
+        menu.hidden = false;
+        showMenuPopover(menu);
+      } else if (menu) {
+        hideProviderFilterDrills(menu);
+        hideMenuPopover(menu);
+        menu.hidden = true;
+      }
+    });
+    menu?.addEventListener("click", (event) => {
+      const open = event.target.closest("[data-provider-filter-open]");
+      if (open) {
+        event.stopPropagation();
+        setProviderFilterDrill(open.dataset.providerFilterOpen);
+        return;
+      }
+      const pick = event.target.closest("[data-provider-filter-pick]");
+      if (pick) {
+        event.stopPropagation();
+        toggleProviderFilterPick(pick.dataset.providerFilterPick, pick.dataset.value);
+        return;
+      }
+      if (event.target.closest("[data-provider-language-more]")) {
+        event.stopPropagation();
+        providerSearchState.languageShowAll = true;
+        syncProviderLanguageOptions(menu);
+        return;
+      }
+      if (event.target.closest("[data-provider-filter-apply]")) {
+        event.stopPropagation();
+        finishProviderFilterDrill(true);
+        return;
+      }
+      if (event.target.closest("[data-provider-filter-cancel]")) {
+        event.stopPropagation();
+        finishProviderFilterDrill(false);
+        return;
+      }
+      if (event.target.closest("[data-provider-filter-close]")) {
+        event.stopPropagation();
+        closeProviderFilterMenu();
+      }
+    });
+    menu?.querySelector("[data-provider-language-query]")?.addEventListener("input", (event) => {
+      providerSearchState.languageQuery = event.target.value;
+      syncProviderLanguageOptions(menu);
+    });
+    if (providerSearchState.filterMenuOpen && menu) {
+      menu.hidden = false;
+      requestAnimationFrame(() => showMenuPopover(menu));
+      if (providerSearchState.filterDrill === "language") syncProviderLanguageOptions(menu);
+    }
+  }
+
   function bindProviderSearchPanelActions() {
     const content = stage.querySelector('.panel-content[data-content="provider-search"]');
     if (!content) return;
@@ -7530,6 +8140,7 @@ Timestamp: 8/21/18 KS`;
     content.querySelector("[data-provider-clear]")?.addEventListener("click", () => {
       clearTimeout(providerResultsLoaderTimer);
       providerSearchState = providerSearchDefaults();
+      providerFilterDraft = null;
       providerOverviewExpanded.clear();
       render("provider-search", { skipEnter: true });
     });
@@ -7578,6 +8189,7 @@ Timestamp: 8/21/18 KS`;
       sortMenu.hidden = false;
       requestAnimationFrame(() => showMenuPopover(sortMenu));
     }
+    bindProviderFilterActions(content);
   }
 
 
@@ -7610,7 +8222,7 @@ Timestamp: 8/21/18 KS`;
     if (name === "notes") return "Notes";
     if (name === "communication") return "All conversations";
     if (name === "activity") return "Activity";
-    if (name === "provider-search") return "Provider Lookup";
+    if (name === "provider-search") return "Provider Search";
     return name[0].toUpperCase() + name.slice(1);
   }
 
@@ -7881,6 +8493,7 @@ Timestamp: 8/21/18 KS`;
     }
     if (except !== "elig-filter") closeBenefitFilterMenu();
     if (except !== "provider-sort") closeProviderSortMenu();
+    if (except !== "provider-filter") closeProviderFilterMenu();
     if (except !== "activity-filter") closeActivityFilterMenus();
     if (except !== "ins-dropdown" && insuranceState.openDropdown) {
       insuranceState.openDropdown = null;
@@ -7928,6 +8541,9 @@ Timestamp: 8/21/18 KS`;
     }
     if (!t.closest(".provider-sort-wrap") && !t.closest(".provider-sort-menu")) {
       closeProviderSortMenu();
+    }
+    if (!t.closest(".provider-filter-wrap")) {
+      closeProviderFilterMenu();
     }
     if (!t.closest(".activity-filter-wrap") && !t.closest(".activity-filter-menu")) {
       closeActivityFilterMenus();
@@ -9020,9 +9636,7 @@ Timestamp: 8/21/18 KS`;
   let notifLoading = false;
 
   const notifIcon = {
-    cog: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a8 8 0 0 0-1.7-1L14.5 3h-5L9 6a8 8 0 0 0-1.7 1L5 6 3 9.4 5 11a7 7 0 0 0 0 2l-2 1.6L5 18l2.4-1a8 8 0 0 0 1.7 1l.4 3h5l.4-3a8 8 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6a7 7 0 0 0 .1-1Z"/></svg>`,
-    /* icon/actions/check.bold — Size xs, Style bold */
-    check: `<svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>`,
+    refresh: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.2-5.5"/><path d="M20 4v5h-5"/></svg>`,
   };
 
   const notifUnreadCount = () => NOTIFICATIONS.filter((item) => item.unread).length;
@@ -9040,13 +9654,14 @@ Timestamp: 8/21/18 KS`;
       ? `<span class="notif-row-detail${showCritical ? " is-critical" : ""}">${escapeAttr(detailText)}</span>`
       : "";
     const label = `${item.unread ? "Unread. " : ""}${item.title}${detailText ? `, ${detailText}` : ""}, ${item.time}`;
+    const dot = item.unread ? `<span class="notif-row-dot" aria-hidden="true"></span>` : "";
     return `
       <button type="button" class="notif-row${item.unread ? " is-unread" : ""}" data-notif-id="${item.id}"
         tabindex="${index === 0 ? "0" : "-1"}" style="--i: ${Math.min(index, NOTIF_STAGGER_CAP)}"
         aria-label="${escapeAttr(label)}">
-        <span class="notif-row-well" aria-hidden="true"><span class="notif-row-dot"></span></span>
         <span class="notif-row-content">
           <span class="notif-row-title-row">
+            ${dot}
             <span class="notif-row-title">${escapeAttr(item.title)}</span>
             <span class="notif-row-time">${escapeAttr(item.time)}</span>
           </span>
@@ -9080,8 +9695,10 @@ Timestamp: 8/21/18 KS`;
     const items = notifVisibleItems();
     if (!items.length) {
       return `
-        <div class="notif-empty">
-          <span class="notif-empty-well" aria-hidden="true"><span class="notif-empty-glyph"></span></span>
+        <div class="notif-empty" role="status">
+          <div class="notif-empty-art" aria-hidden="true">
+            <img src="assets/empty-nothing-yet.svg" width="107.33" height="132" alt="" draggable="false" />
+          </div>
           <p class="notif-empty-title">You’re all caught up</p>
           <p class="notif-empty-copy">No unread notifications right now.</p>
         </div>`;
@@ -9145,7 +9762,7 @@ Timestamp: 8/21/18 KS`;
     notifPanel.innerHTML = `
       <header class="notif-header">
         <h2 class="notif-title" id="notif-title">Notifications</h2>
-        <button type="button" class="icon-button notif-settings" data-notif-critical aria-pressed="false" aria-label="Show critical notifications">${notifIcon.cog}</button>
+        <button type="button" class="icon-button notif-refresh" data-notif-refresh aria-label="Refresh notifications">${notifIcon.refresh}</button>
       </header>
       <div class="notif-filter">
         <div class="tabs notif-tabs" role="tablist" aria-label="Filter notifications">
@@ -9153,7 +9770,6 @@ Timestamp: 8/21/18 KS`;
           ${tab("unread", "Unread")}
           <span class="tabs-indicator" aria-hidden="true"></span>
         </div>
-        <button type="button" class="notif-mark-all" data-notif-mark-all>${notifIcon.check}<span>Mark all as read</span></button>
       </div>
       ${notifLoading ? "" : notifAlertHtml()}
       <div class="notif-body" id="notif-body" role="tabpanel" aria-labelledby="notif-tab-${notifState.view}" aria-busy="${notifLoading}">${notifLoading ? notifSkeletonHtml() : notifBodyHtml()}</div>
@@ -9166,8 +9782,6 @@ Timestamp: 8/21/18 KS`;
     const unread = notifUnreadCount();
     notifButton?.classList.toggle("has-unread", unread > 0);
     notifButton?.setAttribute("aria-label", unread ? `Notifications, ${unread} unread` : "Notifications");
-    const markAll = notifPanel?.querySelector("[data-notif-mark-all]");
-    if (markAll) markAll.disabled = notifLoading || unread === 0;
     notifPanel?.querySelectorAll("[data-notif-view]").forEach((tabEl) => {
       const active = tabEl.dataset.notifView === notifState.view;
       tabEl.classList.toggle("is-active", active);
@@ -9175,40 +9789,6 @@ Timestamp: 8/21/18 KS`;
       tabEl.tabIndex = active ? 0 : -1;
     });
     notifPanel?.querySelector("#notif-body")?.setAttribute("aria-labelledby", `notif-tab-${notifState.view}`);
-    const settings = notifPanel?.querySelector("[data-notif-critical]");
-    if (settings) {
-      settings.setAttribute("aria-pressed", String(notifState.critical));
-      settings.setAttribute("aria-label", notifState.critical ? "Hide critical notifications" : "Show critical notifications");
-    }
-  }
-
-  /** Prototype hot link — settings toggles the self-harm review view. */
-  function toggleNotifCritical() {
-    notifState.critical = !notifState.critical;
-    syncNotifChrome();
-    const body = notifPanel?.querySelector("#notif-body");
-    if (!body) return;
-    if (notifState.critical && notifShowsAlert() && !notifPanel.querySelector(".notif-alert-slot")) {
-      body.insertAdjacentHTML("beforebegin", notifAlertHtml());
-      const slot = notifPanel.querySelector(".notif-alert-slot");
-      if (!reduceMotion() && slot) {
-        slot.classList.add("is-collapsing");
-        requestAnimationFrame(() => requestAnimationFrame(() => slot.classList.remove("is-collapsing")));
-      }
-    } else if (!notifState.critical) {
-      collapseNotifAlert();
-    }
-    if (reduceMotion()) {
-      body.innerHTML = notifBodyHtml();
-      return;
-    }
-    body.classList.add("is-swapping-out");
-    window.setTimeout(() => {
-      body.innerHTML = notifBodyHtml();
-      body.classList.remove("is-swapping-out");
-      body.classList.add("is-swapping-in");
-      window.setTimeout(() => body.classList.remove("is-swapping-in"), 180);
-    }, 120);
   }
 
   /** Swap the list body: fade out, resize the panel to the new content height, fade in. */
@@ -9241,23 +9821,19 @@ Timestamp: 8/21/18 KS`;
     }, 120);
   }
 
+  function refreshNotifList() {
+    window.clearTimeout(notifLoadTimer);
+    notifLoading = !reduceMotion();
+    renderNotifPanel();
+    if (notifLoading) notifLoadTimer = window.setTimeout(settleNotifList, NOTIF_LOAD_MS);
+  }
+
   function setNotifView(view) {
     if (notifState.view === view) return;
     notifState.view = view;
     syncNotifChrome();
     layoutTabsIndicator(notifPanel.querySelector(".notif-tabs"));
     swapNotifBody();
-  }
-
-  function markAllNotifsRead() {
-    if (!notifUnreadCount()) return;
-    const showEmpty = notifState.view === "unread";
-    NOTIFICATIONS.forEach((item) => (item.unread = false));
-    notifPanel?.querySelectorAll(".notif-row.is-unread").forEach((row) => row.classList.remove("is-unread"));
-    syncNotifChrome();
-    const collapsed = collapseNotifAlert();
-    if (showEmpty) collapsed.then(() => swapNotifBody());
-    showToast("All notifications marked as read", { dwellMs: 3000 });
   }
 
   function openNotifFromRow(id) {
@@ -9342,12 +9918,8 @@ Timestamp: 8/21/18 KS`;
       setNotifView(viewTab.dataset.notifView);
       return;
     }
-    if (t.closest("[data-notif-mark-all]")) {
-      markAllNotifsRead();
-      return;
-    }
-    if (t.closest("[data-notif-critical]")) {
-      toggleNotifCritical();
+    if (t.closest("[data-notif-refresh]")) {
+      refreshNotifList();
       return;
     }
     const row = t.closest(".notif-row");
@@ -9794,7 +10366,7 @@ Timestamp: 8/21/18 KS`;
   const composerAttachInput = document.querySelector("#composer-attach-input");
   const composerEl = document.querySelector(".composer");
   const conversationEl = document.querySelector("#conversation");
-  const COMPOSER_INPUT_MAX = 100; /* px — field grows; toolbar stays pinned */
+  const COMPOSER_INPUT_MAX = 140; /* px — field grows; toolbar stays pinned */
   let cleanupBusy = false;
   /** @type {AbortController | null} */
   let cleanupAbort = null;
@@ -10023,10 +10595,8 @@ Timestamp: 8/21/18 KS`;
   };
 
   const syncComposerHeight = () => {
-    if (!composerInput) return;
-    composerInput.style.height = "auto";
-    const next = Math.min(composerInput.scrollHeight, COMPOSER_INPUT_MAX);
-    composerInput.style.height = `${Math.max(next, 20)}px`;
+    if (!composerField || !composerInput) return;
+    layoutComposerField(composerField, composerInput, COMPOSER_INPUT_MAX);
   };
 
   const syncComposerSend = () => {
@@ -10225,7 +10795,9 @@ Timestamp: 8/21/18 KS`;
   });
   composerSend?.addEventListener("click", () => sendAdvocateMessage());
   composerCleanup?.addEventListener("click", () => cleanupComposerDraft());
+  watchComposerWidth(composerField, () => syncComposerHeight());
   syncComposerSend();
+  document.fonts?.ready?.then(() => syncComposerSend());
   seedChatHistoryFromDom();
   /* Seed thread ends with member — Member Replied is the live clock */
   paintReplyTimers();

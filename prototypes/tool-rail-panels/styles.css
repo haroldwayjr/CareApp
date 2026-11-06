@@ -6782,6 +6782,20 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   align-items: center;
   gap: 8px;
 }
+.work-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text-primary);
+  font: 400 14px/20px "Figtree", system-ui, sans-serif;
+  cursor: default;
+}
+.work-filter svg { width: 14px; height: 14px; color: var(--icon-tertiary); }
 .work-filters .select-wrap {
   flex: 1 1 140px;
   min-width: 0;

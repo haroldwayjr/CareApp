@@ -3931,7 +3931,7 @@
         </div>
         <div class="resolution-regen-row">
           <div class="resolution-regen-anchor">
-            <button class="button button-secondary" type="button" id="resolution-regenerate">Regenerate note</button>
+            <button class="button button-secondary" type="button" id="resolution-regenerate">Regenerate Note</button>
             ${resolutionTipHtml()}
           </div>
           <p class="resolution-status" id="resolution-status" role="status" data-state="${status}"${status === "idle" ? " hidden" : ""}>

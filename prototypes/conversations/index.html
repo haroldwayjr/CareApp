@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="is-page-boot">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,11 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=composer-filled" />
+    <link rel="stylesheet" href="styles.css?v=task-badge-header" />
   </head>
   <body>
     <div class="app">
-      <header class="app-header">
+      <header class="app-header page-rise" style="--rise: 0">
         <div class="header-left">
           <a class="wordmark" href="#conversations" aria-label="Care App home">
             <svg class="wordmark-mark" viewBox="0 0 22 24" width="18" height="20" aria-hidden="true">
@@ -48,7 +48,7 @@
       </header>
 
       <main class="main">
-        <div class="page-head">
+        <div class="page-head page-rise" style="--rise: 1">
           <h1>Conversations</h1>
           <div class="page-head-row">
             <div class="scope" role="radiogroup" aria-label="Inbox">
@@ -62,7 +62,7 @@
         </div>
 
         <div class="workspace" id="workspace">
-          <section class="card threads" aria-label="Threads">
+          <section class="card threads page-rise" style="--rise: 2" aria-label="Threads">
             <div class="threads-head">
               <div class="threads-title">
                 <h2>Threads</h2>
@@ -110,7 +110,7 @@
 
           <button class="resizer resizer-threads" type="button" data-resize="threads" aria-label="Resize thread list" aria-orientation="vertical" role="separator"></button>
 
-          <section class="card stage" id="stage" aria-live="polite"></section>
+          <section class="card stage page-rise" id="stage" style="--rise: 3" aria-live="polite"></section>
 
           <button class="resizer resizer-panel" type="button" data-resize="panel" aria-label="Resize side panel" aria-orientation="vertical" role="separator" aria-controls="panel"></button>
 
@@ -133,6 +133,6 @@
       </main>
     </div>
     <div class="sr-only" id="live" aria-live="polite"></div>
-    <script src="app.js?v=composer-filled"></script>
+    <script src="app.js?v=task-badge-header"></script>
   </body>
 </html>

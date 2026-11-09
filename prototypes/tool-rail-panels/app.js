@@ -9847,7 +9847,7 @@ Timestamp: 8/21/18 KS`;
     });
     const results = document.querySelector("#task-results");
     if (results) {
-      const count = matched.length;
+      const count = matched.length === ordered.length ? 65 : matched.length;
       results.textContent = `${count} result${count === 1 ? "" : "s"}`;
     }
   }

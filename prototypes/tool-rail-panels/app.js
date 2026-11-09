@@ -1859,7 +1859,12 @@
           /* Remeasure after paint — fixed place clears accordion clip / Save bar */
           requestAnimationFrame(() => {
             positionSelectMenu(menu);
-            requestAnimationFrame(() => positionSelectMenu(menu));
+            requestAnimationFrame(() => {
+              positionSelectMenu(menu);
+              if (wrap.hasAttribute("data-member-filter")) {
+                menu.querySelector("[data-member-search]")?.focus();
+              }
+            });
           });
         } else {
           hideMenuPopover(menu);
@@ -1868,9 +1873,14 @@
         }
       });
 
+      const workMulti = Boolean(wrap.closest("[data-chat-filters], [data-task-filters]"));
       menu.querySelectorAll("[data-value]").forEach((option) => {
         option.addEventListener("click", (event) => {
           event.stopPropagation();
+          if (workMulti) {
+            toggleWorkMultiOption(wrap, option);
+            return;
+          }
           const value = option.dataset.value ?? "";
           hidden.value = value;
           label.textContent = value;
@@ -1888,11 +1898,45 @@
           trigger.setAttribute("aria-expanded", "false");
           syncMemberEditChrome();
           syncNotesEditChrome();
-          if (wrap.closest("[data-chat-filters]")) {
-            hidden.dispatchEvent(new Event("change", { bubbles: true }));
-          }
         });
       });
+
+      if (wrap.hasAttribute("data-member-filter") && menu.dataset.memberSearchBound !== "1") {
+        menu.dataset.memberSearchBound = "1";
+        const search = menu.querySelector("[data-member-search]");
+        const clearSearch = menu.querySelector("[data-member-search-clear]");
+        const applyMemberQuery = () => {
+          const query = (search?.value || "").trim().toLowerCase();
+          if (clearSearch) clearSearch.hidden = !query;
+          let matches = 0;
+          menu.querySelectorAll("[data-value]").forEach((option) => {
+            const pinned = option.dataset.value === "All Members";
+            const show = pinned || !query || (option.dataset.value || "").toLowerCase().includes(query);
+            option.hidden = !show;
+            if (show && !pinned) matches += 1;
+          });
+          const empty = menu.querySelector("[data-member-empty]");
+          if (empty) empty.hidden = !query || matches > 0;
+          if (!menu.hidden) positionSelectMenu(menu);
+        };
+        search?.addEventListener("mousedown", (event) => event.stopPropagation());
+        search?.addEventListener("click", (event) => event.stopPropagation());
+        search?.addEventListener("keydown", (event) => event.stopPropagation());
+        search?.addEventListener("input", (event) => {
+          event.stopPropagation();
+          applyMemberQuery();
+        });
+        clearSearch?.addEventListener("mousedown", (event) => event.stopPropagation());
+        clearSearch?.addEventListener("click", (event) => {
+          event.stopPropagation();
+          if (search) {
+            search.value = "";
+            search.focus();
+          }
+          applyMemberQuery();
+        });
+        menu._applyMemberQuery = applyMemberQuery;
+      }
     });
   }
 
@@ -4034,7 +4078,6 @@
     work.removeAttribute("hidden");
     document.title = "Care App — My Work";
     const layoutSwitches = () => {
-      layoutInsSegmentedThumb(document.querySelector("#incoming-view-switch"), { animate: false });
       layoutWorkViewSwitch(false);
     };
     if (reduceMotion()) {
@@ -9535,22 +9578,83 @@ Timestamp: 8/21/18 KS`;
     return !value || value === "All" || value.startsWith("All ");
   }
 
+  function workFilterTokens(value) {
+    if (isOpenChatFilter(value)) return [];
+    return String(value).split("|").map((part) => part.trim()).filter(Boolean);
+  }
+
+  function workFilterMatches(cell, value) {
+    const selected = workFilterTokens(value);
+    if (!selected.length) return true;
+    return selected.includes(cell);
+  }
+
+  function setWorkOptionChecked(option, on) {
+    option.classList.toggle("is-selected", on);
+    option.setAttribute("aria-selected", String(on));
+    option.querySelector(".activity-filter-check")?.classList.toggle("is-checked", on);
+  }
+
+  function syncWorkMultiSelect(wrap, { commit = false } = {}) {
+    const hidden = wrap.querySelector("input[data-field]");
+    const label = wrap.querySelector(".select-trigger-label");
+    const menu = selectMenuForWrap(wrap);
+    if (!hidden || !label || !menu) return;
+    const options = [...menu.querySelectorAll("[data-value]")];
+    const allOption = options.find((option) => isOpenChatFilter(option.dataset.value));
+    let selected = options.filter((option) => option.classList.contains("is-selected") && option !== allOption);
+    if (!selected.length) {
+      options.forEach((option) => setWorkOptionChecked(option, option === allOption));
+      selected = [];
+    } else if (allOption?.classList.contains("is-selected")) {
+      setWorkOptionChecked(allOption, false);
+    }
+    const allLabel = hidden.dataset.default || "All";
+    label.textContent = selected.length === 0
+      ? allLabel
+      : selected.length === 1
+        ? selected[0].dataset.value
+        : `${selected[0].dataset.value} +${selected.length - 1}`;
+    if (commit) hidden.value = selected.length ? selected.map((option) => option.dataset.value).join("|") : allLabel;
+  }
+
+  function toggleWorkMultiOption(wrap, option) {
+    const menu = selectMenuForWrap(wrap);
+    if (!menu) return;
+    const options = [...menu.querySelectorAll("[data-value]")];
+    if (isOpenChatFilter(option.dataset.value)) {
+      options.forEach((row) => setWorkOptionChecked(row, row === option));
+    } else {
+      setWorkOptionChecked(option, !option.classList.contains("is-selected"));
+    }
+    syncWorkMultiSelect(wrap, { commit: false });
+  }
+
+  function commitWorkFilters(root) {
+    root?.querySelectorAll(".inline-select").forEach((wrap) => syncWorkMultiSelect(wrap, { commit: true }));
+  }
+
+  function resetWorkMultiSelect(wrap) {
+    const menu = selectMenuForWrap(wrap);
+    if (!menu) return;
+    menu.querySelectorAll("[data-value]").forEach((option) => {
+      setWorkOptionChecked(option, isOpenChatFilter(option.dataset.value));
+    });
+    const search = menu.querySelector("[data-member-search]");
+    if (search) search.value = "";
+    menu._applyMemberQuery?.();
+    syncWorkMultiSelect(wrap, { commit: true });
+  }
+
   function rowMatchesChatFilters(row, root) {
     if (!root) return true;
     const cells = [...row.cells];
     const text = (index) => (cells[index]?.textContent || "").replace(/\s+/g, " ").trim();
-    const memberQuery = chatFilterValue(root, "member").toLowerCase();
-    if (memberQuery && !text(0).toLowerCase().includes(memberQuery)) return false;
-    const customer = chatFilterValue(root, "customer");
-    if (!isOpenChatFilter(customer) && text(1) !== customer) return false;
-    const type = chatFilterValue(root, "type");
-    if (!isOpenChatFilter(type) && text(2) !== type) return false;
-    const channel = chatFilterValue(root, "channel");
-    if (!isOpenChatFilter(channel) && text(3) !== channel) return false;
-    const lastActive = chatFilterValue(root, "last-active").toLowerCase();
-    if (lastActive && !text(4).toLowerCase().includes(lastActive)) return false;
-    const status = chatFilterValue(root, "status");
-    if (!isOpenChatFilter(status) && text(5) !== status) return false;
+    if (!workFilterMatches(text(0), chatFilterValue(root, "member"))) return false;
+    if (!workFilterMatches(text(1), chatFilterValue(root, "customer"))) return false;
+    if (!workFilterMatches(text(2), chatFilterValue(root, "type"))) return false;
+    if (!workFilterMatches(text(3), chatFilterValue(root, "channel"))) return false;
+    if (!workFilterMatches(text(5), chatFilterValue(root, "status"))) return false;
     const read = chatFilterValue(root, "read");
     if (read === "Read" || read === "Unread") {
       const unread = Boolean(row.querySelector(".work-activity-dot"));
@@ -9560,27 +9664,120 @@ Timestamp: 8/21/18 KS`;
   }
 
   function resetChatFilters(root) {
-    root.querySelectorAll("input[data-chat-filter]").forEach((field) => {
-      if (field.type === "search" || field.type === "text") {
-        field.value = "";
-        return;
-      }
-      const wrap = field.closest(".inline-select");
-      const label = wrap?.querySelector(".select-trigger-label");
-      const menu = wrap ? selectMenuForWrap(wrap) : null;
-      const fallback = field.dataset.default || "";
-      field.value = fallback;
-      if (label) label.textContent = fallback;
-      menu?.querySelectorAll("[data-value]").forEach((row) => {
-        const on = row.dataset.value === fallback;
-        row.classList.toggle("is-selected", on);
-        row.setAttribute("aria-selected", String(on));
-        const check = row.querySelector("svg");
-        if (on && !check) row.insertAdjacentHTML("beforeend", icon.check);
-        else if (!on && check) check.remove();
+    root.querySelectorAll(".inline-select").forEach((wrap) => resetWorkMultiSelect(wrap));
+    closeInlineSelects();
+  }
+
+  const tableSort = {
+    chat: { index: null, dir: "asc", type: "text" },
+    tasks: { index: null, dir: "asc", type: "text" },
+  };
+
+  function stampRowOrder(rows) {
+    rows.forEach((row, index) => {
+      if (row.dataset.rowIndex == null || row.dataset.rowIndex === "") row.dataset.rowIndex = String(index);
+    });
+  }
+
+  function cellSortText(row, index) {
+    return (row.cells[index]?.textContent || "").replace(/\s+/g, " ").trim();
+  }
+
+  function parseSortDate(value) {
+    const match = String(value).match(/^(\d{1,2})\/(\d{1,2})\/(\d{2})$/);
+    if (!match) return null;
+    return new Date(2000 + Number(match[3]), Number(match[1]) - 1, Number(match[2])).getTime();
+  }
+
+  function compareSortedRows(a, b, state) {
+    const tie = Number(a.dataset.rowIndex) - Number(b.dataset.rowIndex);
+    const left = cellSortText(a, state.index);
+    const right = cellSortText(b, state.index);
+    if (state.type === "date") {
+      const leftDate = parseSortDate(left);
+      const rightDate = parseSortDate(right);
+      if (leftDate === null && rightDate === null) return tie;
+      if (leftDate === null) return 1;
+      if (rightDate === null) return -1;
+      const result = state.dir === "desc" ? rightDate - leftDate : leftDate - rightDate;
+      return result || tie;
+    }
+    const result = left.localeCompare(right, undefined, { sensitivity: "base", numeric: true });
+    const signed = state.dir === "desc" ? -result : result;
+    return signed || tie;
+  }
+
+  function sortTableRows(rows, state) {
+    stampRowOrder(rows);
+    if (state.index == null) return rows;
+    const ordered = [...rows].sort((a, b) => compareSortedRows(a, b, state));
+    const body = ordered[0]?.parentElement;
+    ordered.forEach((row) => body?.appendChild(row));
+    return ordered;
+  }
+
+  function syncSortHeaders(table, state) {
+    table?.querySelectorAll("[data-sort]").forEach((button) => {
+      const on = Number(button.dataset.sort) === state.index;
+      button.classList.toggle("is-sorted", on);
+      button.closest("th")?.setAttribute("aria-sort", on ? (state.dir === "asc" ? "ascending" : "descending") : "none");
+      const chevron = button.querySelector(".work-chevron");
+      if (!chevron) return;
+      chevron.hidden = !on;
+      chevron.classList.toggle("is-up", on && state.dir === "asc");
+    });
+  }
+
+  function bindTableSort(table, key, repaint) {
+    table?.querySelectorAll("[data-sort]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const index = Number(button.dataset.sort);
+        if (tableSort[key].index === index) {
+          tableSort[key].dir = tableSort[key].dir === "asc" ? "desc" : "asc";
+        } else {
+          tableSort[key].index = index;
+          tableSort[key].dir = "asc";
+          tableSort[key].type = button.dataset.sortType || "text";
+        }
+        syncSortHeaders(table, tableSort[key]);
+        repaint();
       });
     });
-    closeInlineSelects();
+  }
+
+  let taskPastDueApplied = false;
+
+  function taskFilterValue(name) {
+    return (document.querySelector(`[data-task-filters] [data-task-filter="${name}"]`)?.value || "").trim();
+  }
+
+  function paintTasks() {
+    const rows = [...document.querySelectorAll('[aria-labelledby="tasks-title"] tbody tr')];
+    const member = taskFilterValue("member");
+    const customer = taskFilterValue("customer");
+    const status = taskFilterValue("status");
+    const priority = taskFilterValue("priority");
+    const type = taskFilterValue("type");
+    const ordered = sortTableRows(rows, tableSort.tasks);
+    syncSortHeaders(ordered[0]?.closest("table"), tableSort.tasks);
+    const text = (row, index) => (row.cells[index]?.textContent || "").replace(/\s+/g, " ").trim();
+    const matched = ordered.filter((row) => {
+      if (!workFilterMatches(text(row, 0), priority)) return false;
+      if (!workFilterMatches(text(row, 1), type)) return false;
+      if (!workFilterMatches(text(row, 3), member)) return false;
+      if (!workFilterMatches(text(row, 4), customer)) return false;
+      if (!workFilterMatches(text(row, 5), status)) return false;
+      if (taskPastDueApplied && !row.querySelector(".work-due")) return false;
+      return true;
+    });
+    ordered.forEach((row) => {
+      row.hidden = !matched.includes(row);
+    });
+    const results = document.querySelector("#task-results");
+    if (results) {
+      const count = matched.length;
+      results.textContent = `${count} result${count === 1 ? "" : "s"}`;
+    }
   }
 
   function paintChatQueue(queue, page = 1) {
@@ -9591,7 +9788,8 @@ Timestamp: 8/21/18 KS`;
       filters.hidden = filters.dataset.chatFilters !== queue;
     });
     const root = document.querySelector(`[data-chat-filters="${queue}"]`);
-    const rows = [...document.querySelectorAll(`[data-chat-rows="${queue}"] tbody tr`)];
+    const rows = sortTableRows([...document.querySelectorAll(`[data-chat-rows="${queue}"] tbody tr`)], tableSort.chat);
+    syncSortHeaders(rows[0]?.closest("table"), tableSort.chat);
     const matched = rows.filter((row) => rowMatchesChatFilters(row, root));
     const count = matched.length;
     const pageCount = Math.max(1, Math.ceil(count / CHAT_PAGE_SIZE));
@@ -9623,30 +9821,19 @@ Timestamp: 8/21/18 KS`;
     chatPager.dataset.pages = String(pageCount);
   }
 
-  const incomingSwitch = document.querySelector("#incoming-view-switch");
-  incomingSwitch?.querySelectorAll("button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      incomingSwitch.querySelectorAll("button").forEach((other) => {
-        const on = other === btn;
-        other.classList.toggle("is-active", on);
-        other.setAttribute("aria-pressed", String(on));
-      });
-      paintChatQueue(btn.dataset.chatQueue, 1);
-      layoutInsSegmentedThumb(incomingSwitch, { animate: true });
-    });
-  });
   chatPages?.addEventListener("click", (event) => {
     const btn = event.target.closest("[data-chat-page]");
     if (!btn || btn.disabled) return;
-    const queue = incomingSwitch?.querySelector("button.is-active")?.dataset.chatQueue || "incoming";
     const current = Number(chatPager?.dataset.page || 1);
     const pageCount = Number(chatPager?.dataset.pages || 1);
     const which = btn.dataset.chatPage;
     const next = which === "prev" ? current - 1 : which === "next" ? current + 1 : Number(which);
     if (next < 1 || next > pageCount || next === current) return;
-    paintChatQueue(queue, next);
+    paintChatQueue("incoming", next);
   });
   paintChatQueue("incoming", 1);
+  bindTableSort(document.querySelector('[data-chat-rows="incoming"]'), "chat", () => paintChatQueue("incoming", 1));
+  bindTableSort(document.querySelector('[aria-labelledby="tasks-title"] table'), "tasks", () => paintTasks());
 
   document.querySelectorAll('[data-nav="work"]').forEach((link) => {
     link.addEventListener("click", (event) => {
@@ -9660,61 +9847,34 @@ Timestamp: 8/21/18 KS`;
     });
   });
 
-  const workViewSwitch = document.querySelector("#work-view-switch");
-  workViewSwitch?.querySelectorAll("button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      workViewSwitch.querySelectorAll("button").forEach((other) => {
-        const on = other === btn;
-        other.classList.toggle("is-active", on);
-        other.setAttribute("aria-pressed", String(on));
-      });
-      layoutWorkViewSwitch(true);
-    });
-  });
-  window.addEventListener("resize", () => {
-    layoutInsSegmentedThumb(incomingSwitch, { animate: false });
-    layoutWorkViewSwitch(false);
-  });
-
   bindInlineSelects();
   document.querySelectorAll("[data-chat-filters]").forEach((root) => {
-    root.addEventListener("input", (event) => {
-      if (event.target.matches("[data-chat-filter]")) paintChatQueue(root.dataset.chatFilters, 1);
-    });
-    root.addEventListener("change", (event) => {
-      if (!event.target.matches("[data-chat-filter]")) return;
-      if (event.target.matches("input[type='search']")) return;
-      paintChatQueue(root.dataset.chatFilters, 1);
-    });
     root.addEventListener("click", (event) => {
       if (event.target.closest("[data-chat-clear]")) {
         resetChatFilters(root);
         paintChatQueue(root.dataset.chatFilters, 1);
       } else if (event.target.closest("[data-chat-apply]")) {
+        commitWorkFilters(root);
         paintChatQueue(root.dataset.chatFilters, 1);
       }
     });
   });
   document.querySelector("#work-filters-clear")?.addEventListener("click", () => {
     document.querySelector("#work-filters-clear").closest(".work-filters")?.querySelectorAll(".inline-select").forEach((wrap) => {
-      const hidden = wrap.querySelector("input[data-field]");
-      const label = wrap.querySelector(".select-trigger-label");
-      const menu = selectMenuForWrap(wrap);
-      const fallback = hidden?.dataset.default || "";
-      if (!hidden || !label || !menu) return;
-      hidden.value = fallback;
-      label.textContent = fallback;
-      menu.querySelectorAll("[data-value]").forEach((row) => {
-        const on = row.dataset.value === fallback;
-        row.classList.toggle("is-selected", on);
-        row.setAttribute("aria-selected", String(on));
-        const check = row.querySelector("svg");
-        if (on && !check) row.insertAdjacentHTML("beforeend", icon.check);
-        else if (!on && check) check.remove();
-      });
+      resetWorkMultiSelect(wrap);
     });
     closeInlineSelects();
+    const pastDue = document.querySelector("#task-past-due");
+    if (pastDue) pastDue.checked = false;
+    taskPastDueApplied = false;
+    paintTasks();
   });
+  document.querySelector("[data-task-apply]")?.addEventListener("click", () => {
+    commitWorkFilters(document.querySelector("[data-task-filters]"));
+    taskPastDueApplied = document.querySelector("#task-past-due")?.checked === true;
+    paintTasks();
+  });
+  paintTasks();
 
   document.querySelector(".wordmark")?.addEventListener("click", (event) => {
     event.preventDefault();

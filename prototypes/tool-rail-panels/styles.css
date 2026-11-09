@@ -6761,6 +6761,18 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
 .work-table tr:last-child td { border-bottom: 0; }
 .work-incoming .work-table tr:last-child td { border-bottom: 1px solid #ebecf0; }
 .work-table .work-actions { text-align: right; }
+.work-activity {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.work-activity-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--brand);
+}
 .work-sort,
 .work-name {
   display: inline-flex;

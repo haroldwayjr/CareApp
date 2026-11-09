@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=soma-work-merge-1" />
+    <link rel="stylesheet" href="styles.css?v=closed-chats-1" />
   </head>
   <body>
     <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
@@ -515,7 +515,7 @@
         </div>
         <div class="work-card">
           <div class="work-table-wrap">
-            <table class="work-table">
+            <table class="work-table" data-chat-rows="incoming">
               <thead>
                 <tr>
                   <th>Member</th>
@@ -525,7 +525,7 @@
                   <th><span class="visually-hidden">Open</span></th>
                 </tr>
               </thead>
-              <tbody data-chat-rows="incoming">
+              <tbody>
                 <tr>
                   <td>Jerald Googleo'Connell</td>
                   <td>Google</td>
@@ -541,26 +541,45 @@
                   <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
               </tbody>
-              <tbody data-chat-rows="closed" hidden>
+            </table>
+            <table class="work-table" data-chat-rows="closed" hidden>
+              <thead>
                 <tr>
-                  <td>Morgan Ellis</td>
+                  <th>Member</th>
+                  <th>Customer</th>
+                  <th>State</th>
+                  <th>Intent</th>
+                  <th>Last active</th>
+                  <th>Status</th>
+                  <th><span class="visually-hidden">Open</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Morgan Ellis</span></td>
                   <td>Google</td>
-                  <td>Incoming / Live</td>
-                  <td>SMS</td>
+                  <td>CA</td>
+                  <td>Prescription coverage</td>
+                  <td>11/06/26, 2:14 PM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                   <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
                 <tr>
-                  <td>Dana Whitfield</td>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Dana Whitfield</span></td>
                   <td>Google</td>
-                  <td>Incoming / Live</td>
-                  <td>Call</td>
+                  <td>WA</td>
+                  <td>Update primary care provider</td>
+                  <td>11/04/26, 9:40 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
                   <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
                 <tr>
-                  <td>Kenji Sato</td>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Kenji Sato</span></td>
                   <td>Google</td>
-                  <td>Incoming / Live</td>
-                  <td>Task</td>
+                  <td>CA</td>
+                  <td>Claims status question</td>
+                  <td>10/28/26, 4:05 PM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
                   <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
               </tbody>
@@ -879,6 +898,6 @@
     </div>
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
     <script src="chat-engine.js?v=mode-trigger-1"></script>
-    <script src="app.js?v=chat-results-1"></script>
+    <script src="app.js?v=closed-chats-1"></script>
   </body>
 </html>

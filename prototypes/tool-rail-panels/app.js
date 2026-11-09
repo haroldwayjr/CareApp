@@ -9530,6 +9530,11 @@ Timestamp: 8/21/18 KS`;
       document.querySelectorAll("[data-chat-rows]").forEach((body) => {
         body.hidden = body.dataset.chatRows !== queue;
       });
+      const results = document.querySelector("#chat-results");
+      if (results) {
+        const count = document.querySelectorAll(`[data-chat-rows="${queue}"] tr`).length;
+        results.textContent = `${count} result${count === 1 ? "" : "s"}`;
+      }
       layoutInsSegmentedThumb(incomingSwitch, { animate: true });
     });
   });

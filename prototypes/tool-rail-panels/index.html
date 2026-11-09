@@ -483,8 +483,9 @@
     </main>
 
     <main class="page work-page" id="work-page" hidden>
-      <section class="work-section work-incoming work-rise" style="--rise: 0" aria-label="Chats">
-        <div class="work-section-head">
+      <section class="work-section work-incoming work-rise" style="--rise: 0" aria-labelledby="conversations-title">
+        <div class="work-section-head work-section-head--tasks">
+          <h2 id="conversations-title">Conversations</h2>
           <div class="ins-segmented ins-segmented--border" id="incoming-view-switch" role="group" aria-label="Chats">
             <span class="ins-segmented-thumb" aria-hidden="true"></span>
             <button type="button" class="is-active" data-chat-queue="incoming" aria-pressed="true">
@@ -519,9 +520,8 @@
                 <tr>
                   <th>Member</th>
                   <th>Customer</th>
-                  <th>State</th>
-                  <th>Intent</th>
-                  <th><span class="work-sort">Time waiting <svg class="work-chevron is-up" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></th>
+                  <th>Type</th>
+                  <th>Channel</th>
                   <th><span class="visually-hidden">Open</span></th>
                 </tr>
               </thead>
@@ -529,17 +529,15 @@
                 <tr>
                   <td>Jerald Googleo'Connell</td>
                   <td>Google</td>
-                  <td>IL</td>
-                  <td>—</td>
-                  <td>58d</td>
+                  <td>Direct</td>
+                  <td>Chat</td>
                   <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
                 <tr>
                   <td>Alex Rivera</td>
                   <td>Google</td>
-                  <td>—</td>
-                  <td>—</td>
-                  <td>45d</td>
+                  <td>Incoming / Live</td>
+                  <td>Email</td>
                   <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
               </tbody>
@@ -547,25 +545,22 @@
                 <tr>
                   <td>Morgan Ellis</td>
                   <td>Google</td>
-                  <td>CA</td>
-                  <td>Referral</td>
-                  <td>2d</td>
+                  <td>Incoming / Live</td>
+                  <td>SMS</td>
                   <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
                 <tr>
                   <td>Dana Whitfield</td>
                   <td>Google</td>
-                  <td>WA</td>
-                  <td>Benefits</td>
-                  <td>9d</td>
+                  <td>Incoming / Live</td>
+                  <td>Call</td>
                   <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
                 <tr>
                   <td>Kenji Sato</td>
                   <td>Google</td>
-                  <td>CA</td>
-                  <td>Claim</td>
-                  <td>21d</td>
+                  <td>Incoming / Live</td>
+                  <td>Task</td>
                   <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
               </tbody>

@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=work-header-1" />
+    <link rel="stylesheet" href="styles.css?v=chat-filters-1" />
   </head>
   <body>
     <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
@@ -292,15 +292,31 @@
                 <span class="assigned-line">Assigned to Lila George</span>
               </div>
             </div>
-            <div class="reply-timers" aria-label="Reply timers">
-              <div class="reply-timer is-active" data-reply-side="member">
-                <span class="reply-timer-label">Member Replied</span>
-                <span class="reply-timer-value" data-reply-timer="member">00:03</span>
+            <div class="reply-timers" data-reply-mode="active" aria-label="Response time">
+              <div class="reply-timer" data-reply-side="member" hidden>
+                <span class="reply-timer-well" aria-hidden="true">
+                  <svg class="reply-timer-clock" viewBox="0 0 24 24" width="20" height="20">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v5l3 2"></path>
+                  </svg>
+                </span>
+                <span class="reply-timer-copy">
+                  <span class="reply-timer-label">Member response time</span>
+                  <span class="reply-timer-value" data-reply-timer="member">00:00</span>
+                </span>
               </div>
               <span class="reply-timers-divider" aria-hidden="true"></span>
-              <div class="reply-timer" data-reply-side="you">
-                <span class="reply-timer-label">You Replied</span>
-                <span class="reply-timer-value" data-reply-timer="you">00:03</span>
+              <div class="reply-timer is-active" data-reply-side="you">
+                <span class="reply-timer-well" aria-hidden="true">
+                  <svg class="reply-timer-clock" viewBox="0 0 24 24" width="20" height="20">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v5l3 2"></path>
+                  </svg>
+                </span>
+                <span class="reply-timer-copy">
+                  <span class="reply-timer-label">Your response time</span>
+                  <span class="reply-timer-value" data-reply-timer="you">00:03</span>
+                </span>
               </div>
             </div>
           </header>
@@ -399,40 +415,39 @@
             </article>
           </div>
           <footer class="composer">
-            <div class="composer-field" id="composer-field">
-              <label class="composer-input-wrap">
-                <span class="visually-hidden">Message</span>
-                <textarea class="composer-input" id="composer-input" rows="1" placeholder="Write a message..."></textarea>
-              </label>
-              <div class="composer-toolbar">
+            <div class="composer-row">
+              <div class="composer-field" id="composer-field">
                 <button class="composer-icon-btn composer-icon-btn--attach" id="composer-attach" type="button" aria-label="Attach an image">
-                  <!-- Streamline Regular Add xs — rounded caps -->
+                  <!-- icon/actions/add — xs -->
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
                     <path d="M1 12h22M12 1v22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25"/>
                   </svg>
                 </button>
+                <label class="composer-input-wrap">
+                  <span class="visually-hidden">Message</span>
+                  <textarea class="composer-input" id="composer-input" rows="1" placeholder="Write a reply to the member..."></textarea>
+                </label>
                 <input class="visually-hidden" id="composer-attach-input" type="file" accept="image/*" tabindex="-1" />
-                <div class="composer-toolbar-end">
-                  <button class="composer-icon-btn composer-icon-btn--rewrite" id="composer-cleanup" type="button" aria-label="Clean up">
-                    <!-- icon/actions/edit.sparkle — Regular 1.5, translate-only -->
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true" overflow="visible">
-                      <path d="M22.19 1.81a3.639 3.639 0 0 0-5.17.035l-14.5 14.5L.75 23.25l6.905-1.771 14.5-14.5a3.637 3.637 0 0 0 .035-5.169Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-                      <path d="m16.606 2.26 5.134 5.134" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-                      <path d="m2.521 16.344 5.139 5.13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-                      <g transform="translate(2.75 13.75)">
-                        <path d="M22.8125 5.948c-2.8135.944-3.741 1.996-4.427 4.615-.686-2.619-1.613-3.67-4.427-4.615 2.814-.944 3.741-1.996 4.427-4.615.686 2.619 1.613 3.67 4.427 4.615Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-                      </g>
-                    </svg>
-                    <span class="tooltip tooltip--above">Clean up</span>
-                  </button>
-                  <button class="composer-send" id="composer-send" type="button" disabled aria-label="Send message">
-                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                      <path d="M1.4 3.743a1.5 1.5 0 0 1 1.973-2.077l19.014 9.659a.75.75 0 0 1 0 1.337L3.373 22.334A1.5 1.5 0 0 1 1.4 20.257l5.058-8.264Z" fill="currentColor"/>
-                      <path d="M6.453 11.993h16.344" class="composer-send-seam" stroke-linecap="round" stroke-width="1.75"/>
-                    </svg>
-                  </button>
-                </div>
               </div>
+              <button class="composer-icon-btn composer-icon-btn--rewrite" id="composer-cleanup" type="button" aria-label="Rewrite">
+                <!-- icon/actions/edit.sparkle — sm outline -->
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true" overflow="visible">
+                  <path d="M22.19 1.81a3.639 3.639 0 0 0-5.17.035l-14.5 14.5L.75 23.25l6.905-1.771 14.5-14.5a3.637 3.637 0 0 0 .035-5.169Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  <path d="m16.606 2.26 5.134 5.134" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  <path d="m2.521 16.344 5.139 5.13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  <g transform="translate(2.75 13.75)">
+                    <path d="M22.8125 5.948c-2.8135.944-3.741 1.996-4.427 4.615-.686-2.619-1.613-3.67-4.427-4.615 2.814-.944 3.741-1.996 4.427-4.615.686 2.619 1.613 3.67 4.427 4.615Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  </g>
+                </svg>
+                <span class="tooltip tooltip--above">Rewrite</span>
+              </button>
+              <button class="button button-primary composer-send" id="composer-send" type="button" disabled>
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path d="M1.4 3.743a1.5 1.5 0 0 1 1.973-2.077l19.014 9.659a.75.75 0 0 1 0 1.337L3.373 22.334A1.5 1.5 0 0 1 1.4 20.257l5.058-8.264Z" fill="currentColor"/>
+                  <path d="M6.453 11.993h16.344" class="composer-send-seam" stroke-linecap="round" stroke-width="1.75"/>
+                </svg>
+                Send
+              </button>
             </div>
           </footer>
         </section>
@@ -468,20 +483,157 @@
     </main>
 
     <main class="page work-page" id="work-page" hidden>
-      <section class="work-section work-incoming work-rise" style="--rise: 0" aria-labelledby="incoming-title">
-        <div class="work-section-head">
-          <h1 id="incoming-title">Incoming chats</h1>
+      <section class="work-section work-incoming work-rise" style="--rise: 0" aria-labelledby="conversations-title">
+        <div class="work-section-head work-section-head--tasks">
+          <h2 id="conversations-title">Conversations</h2>
+          <div class="ins-segmented ins-segmented--border" id="incoming-view-switch" role="group" aria-label="Chats">
+            <span class="ins-segmented-thumb" aria-hidden="true"></span>
+            <button type="button" class="is-active" data-chat-queue="incoming" aria-pressed="true">
+              Incoming chats
+              <span class="soft-badge soft-neutral"><span class="soft-badge-label">2</span></span>
+            </button>
+            <button type="button" data-chat-queue="closed" aria-pressed="false">
+              Closed chats
+              <span class="soft-badge soft-neutral"><span class="soft-badge-label">30</span></span>
+            </button>
+          </div>
+        </div>
+        <div class="work-filters" data-chat-filters="incoming">
+          <label class="work-filter-search">
+            <span class="visually-hidden">Search members</span>
+            <input type="search" data-chat-filter="member" placeholder="Search members" aria-label="Search members" autocomplete="off" />
+          </label>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="customer" data-chat-filter="customer" value="All customers" data-default="All customers" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Customer">
+              <span class="select-trigger-label">All customers</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All customers" aria-selected="true"><span>All customers</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Google" aria-selected="false"><span>Google</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="type" data-chat-filter="type" value="All types" data-default="All types" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Type">
+              <span class="select-trigger-label">All types</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All types" aria-selected="true"><span>All types</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Incoming / Live" aria-selected="false"><span>Incoming / Live</span></button>
+              <button type="button" role="option" data-value="Direct" aria-selected="false"><span>Direct</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="channel" data-chat-filter="channel" value="All channels" data-default="All channels" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Channel">
+              <span class="select-trigger-label">All channels</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All channels" aria-selected="true"><span>All channels</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Chat" aria-selected="false"><span>Chat</span></button>
+              <button type="button" role="option" data-value="Email" aria-selected="false"><span>Email</span></button>
+              <button type="button" role="option" data-value="SMS" aria-selected="false"><span>SMS</span></button>
+              <button type="button" role="option" data-value="Call" aria-selected="false"><span>Call</span></button>
+              <button type="button" role="option" data-value="Task" aria-selected="false"><span>Task</span></button>
+            </div>
+          </div>
+          <button class="button button-secondary" type="button" data-chat-clear>Clear</button>
+          <button class="button button-primary" type="button" data-chat-apply>Apply</button>
+        </div>
+        <div class="work-filters" data-chat-filters="closed" hidden>
+          <label class="work-filter-search">
+            <span class="visually-hidden">Search members</span>
+            <input type="search" data-chat-filter="member" placeholder="Search members" aria-label="Search members" autocomplete="off" />
+          </label>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="customer" data-chat-filter="customer" value="All customers" data-default="All customers" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Customer">
+              <span class="select-trigger-label">All customers</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All customers" aria-selected="true"><span>All customers</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Google" aria-selected="false"><span>Google</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="type" data-chat-filter="type" value="All types" data-default="All types" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Type">
+              <span class="select-trigger-label">All types</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All types" aria-selected="true"><span>All types</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Incoming / Live" aria-selected="false"><span>Incoming / Live</span></button>
+              <button type="button" role="option" data-value="Direct" aria-selected="false"><span>Direct</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="channel" data-chat-filter="channel" value="All channels" data-default="All channels" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Channel">
+              <span class="select-trigger-label">All channels</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All channels" aria-selected="true"><span>All channels</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Chat" aria-selected="false"><span>Chat</span></button>
+              <button type="button" role="option" data-value="Email" aria-selected="false"><span>Email</span></button>
+              <button type="button" role="option" data-value="SMS" aria-selected="false"><span>SMS</span></button>
+              <button type="button" role="option" data-value="Call" aria-selected="false"><span>Call</span></button>
+              <button type="button" role="option" data-value="Task" aria-selected="false"><span>Task</span></button>
+            </div>
+          </div>
+          <label class="work-filter-search">
+            <span class="visually-hidden">Last active</span>
+            <input type="search" data-chat-filter="last-active" placeholder="Last active" aria-label="Last active" autocomplete="off" />
+          </label>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="status" data-chat-filter="status" value="All statuses" data-default="All statuses" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Status">
+              <span class="select-trigger-label">All statuses</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All statuses" aria-selected="true"><span>All statuses</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Escalated" aria-selected="false"><span>Escalated</span></button>
+              <button type="button" role="option" data-value="Closed" aria-selected="false"><span>Closed</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="read" data-chat-filter="read" value="All" data-default="All" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Read state">
+              <span class="select-trigger-label">All</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All" aria-selected="true"><span>All</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Read" aria-selected="false"><span>Read</span></button>
+              <button type="button" role="option" data-value="Unread" aria-selected="false"><span>Unread</span></button>
+            </div>
+          </div>
+          <button class="button button-secondary" type="button" data-chat-clear>Clear</button>
+          <button class="button button-primary" type="button" data-chat-apply>Apply</button>
+        </div>
+        <div class="work-meta">
+          <span id="chat-results">2 results</span>
+          <button class="work-refresh" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 12a8 8 0 1 1-2.2-5.5"/><path d="M20 4v5h-5"/></svg>
+            Refresh List
+          </button>
         </div>
         <div class="work-card">
           <div class="work-table-wrap">
-            <table class="work-table">
+            <table class="work-table" data-chat-rows="incoming">
               <thead>
                 <tr>
                   <th>Member</th>
                   <th>Customer</th>
-                  <th>State</th>
-                  <th>Intent</th>
-                  <th><span class="work-sort">Time waiting <svg class="work-chevron is-up" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></th>
+                  <th>Type</th>
+                  <th>Channel</th>
                   <th><span class="visually-hidden">Open</span></th>
                 </tr>
               </thead>
@@ -489,21 +641,283 @@
                 <tr>
                   <td>Jerald Googleo'Connell</td>
                   <td>Google</td>
-                  <td>IL</td>
-                  <td>—</td>
-                  <td>58d</td>
-                  <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
+                  <td>Direct</td>
+                  <td>Chat</td>
+                  <td class="work-actions"><button class="button button-secondary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
                 <tr>
                   <td>Alex Rivera</td>
                   <td>Google</td>
-                  <td>—</td>
-                  <td>—</td>
-                  <td>45d</td>
-                  <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
+                  <td>Incoming / Live</td>
+                  <td>Email</td>
+                  <td class="work-actions"><button class="button button-secondary button-small" type="button" data-open-chat>View chat</button></td>
                 </tr>
               </tbody>
             </table>
+            <table class="work-table" data-chat-rows="closed" hidden>
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Customer</th>
+                  <th>Type</th>
+                  <th>Channel</th>
+                  <th>Last active</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Morgan Ellis</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>Chat</td>
+                  <td>11/06/26, 2:14 PM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Dana Whitfield</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Email</td>
+                  <td>11/04/26, 9:40 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Kenji Sato</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>SMS</td>
+                  <td>10/28/26, 4:05 PM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Morgan Ellis</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Call</td>
+                  <td>10/27/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Dana Whitfield</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>Task</td>
+                  <td>10/26/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Kenji Sato</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Chat</td>
+                  <td>10/25/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Morgan Ellis</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>Email</td>
+                  <td>10/24/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Dana Whitfield</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>SMS</td>
+                  <td>10/23/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Kenji Sato</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>Call</td>
+                  <td>10/22/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Morgan Ellis</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Task</td>
+                  <td>10/21/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Dana Whitfield</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>Chat</td>
+                  <td>10/20/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Kenji Sato</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Email</td>
+                  <td>10/19/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Morgan Ellis</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>SMS</td>
+                  <td>10/18/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Dana Whitfield</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Call</td>
+                  <td>10/17/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Kenji Sato</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>Task</td>
+                  <td>10/16/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Morgan Ellis</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Chat</td>
+                  <td>10/15/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Dana Whitfield</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>Email</td>
+                  <td>10/14/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Kenji Sato</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>SMS</td>
+                  <td>10/13/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Morgan Ellis</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>Call</td>
+                  <td>10/12/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Dana Whitfield</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Task</td>
+                  <td>10/11/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Kenji Sato</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>Chat</td>
+                  <td>10/10/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Morgan Ellis</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Email</td>
+                  <td>10/09/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Dana Whitfield</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>SMS</td>
+                  <td>10/08/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Kenji Sato</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Call</td>
+                  <td>10/07/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Morgan Ellis</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>Task</td>
+                  <td>10/06/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Dana Whitfield</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Chat</td>
+                  <td>10/05/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Kenji Sato</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>Email</td>
+                  <td>10/04/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Morgan Ellis</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>SMS</td>
+                  <td>10/03/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Dana Whitfield</span></td>
+                  <td>Google</td>
+                  <td>Incoming / Live</td>
+                  <td>Call</td>
+                  <td>10/02/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
+                </tr>
+                <tr>
+                  <td><span class="work-activity">Kenji Sato</span></td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Task</td>
+                  <td>10/01/26, 11:20 AM</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="work-pager work-pager--live" id="chat-pager" hidden>
+          <div class="work-pages" id="chat-pages" aria-label="Pagination"></div>
+          <div class="work-page-size">
+            Show items
+            <button class="work-page-size-select" type="button" aria-label="Show items">
+              5
+              <svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
         </div>
       </section>
@@ -818,6 +1232,6 @@
     </div>
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
     <script src="chat-engine.js?v=mode-trigger-1"></script>
-    <script src="app.js?v=resolve-chat-labels-1"></script>
+    <script src="app.js?v=chat-filters-1"></script>
   </body>
 </html>

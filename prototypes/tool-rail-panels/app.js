@@ -1888,6 +1888,9 @@
           trigger.setAttribute("aria-expanded", "false");
           syncMemberEditChrome();
           syncNotesEditChrome();
+          if (wrap.closest("[data-chat-filters]")) {
+            hidden.dispatchEvent(new Event("change", { bubbles: true }));
+          }
         });
       });
     });
@@ -4030,13 +4033,17 @@
     work.classList.remove("is-entering", "is-entered");
     work.removeAttribute("hidden");
     document.title = "Care App — My Work";
+    const layoutSwitches = () => {
+      layoutInsSegmentedThumb(document.querySelector("#incoming-view-switch"), { animate: false });
+      layoutWorkViewSwitch(false);
+    };
     if (reduceMotion()) {
       work.classList.add("is-entered");
-      requestAnimationFrame(() => layoutWorkViewSwitch(false));
+      requestAnimationFrame(layoutSwitches);
       return;
     }
     requestAnimationFrame(() => {
-      layoutWorkViewSwitch(false);
+      layoutSwitches();
       work.classList.add("is-entering");
       const rises = [...work.querySelectorAll(".work-rise")];
       const last = rises[rises.length - 1];
@@ -4077,6 +4084,9 @@
     sessionEnding = false;
     sessionEnded = true;
     syncHeaderEndSession();
+    replyTimerState.mode = "closed";
+    window.clearInterval(replyTimerState.intervalId);
+    paintReplyTimers();
     showWorkPage();
     showToast("Chat with Riley Smith ended", {
       dwellMs: 8000,
@@ -4084,6 +4094,9 @@
         label: "Undo",
         onClick: () => {
           sessionEnded = false;
+          replyTimerState.mode = "active";
+          paintReplyTimers();
+          startReplyTimerTick();
           showChatPage();
           syncHeaderEndSession();
           setResolutionEndLoading(false);
@@ -5244,29 +5257,31 @@
   function commThreadComposerHtml() {
     return `
       <footer class="composer comm-thread-composer">
-        <div class="composer-field" data-comm-composer-field>
-          <label class="composer-input-wrap">
-            <span class="visually-hidden">Message</span>
-            <textarea class="composer-input" data-comm-composer-input rows="1" placeholder="Describe your issue..."></textarea>
-          </label>
-          <div class="composer-toolbar">
+        <div class="composer-row">
+          <div class="composer-field" data-comm-composer-field>
             <button class="composer-icon-btn composer-icon-btn--attach" type="button" aria-label="Attach an image" tabindex="-1">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
                 <path d="M1 12h22M12 1v22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25"/>
               </svg>
             </button>
-            <div class="composer-toolbar-end">
-              <button class="composer-icon-btn composer-icon-btn--rewrite" type="button" aria-label="Clean up" tabindex="-1" disabled>
-                ${icon.sparkles}
-              </button>
-              <button class="composer-send" data-comm-composer-send type="button" disabled aria-label="Send message">
-                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                  <path d="M1.4 3.743a1.5 1.5 0 0 1 1.973-2.077l19.014 9.659a.75.75 0 0 1 0 1.337L3.373 22.334A1.5 1.5 0 0 1 1.4 20.257l5.058-8.264Z" fill="currentColor"/>
-                  <path d="M6.453 11.993h16.344" class="composer-send-seam" stroke-linecap="round" stroke-width="1.75"/>
-                </svg>
-              </button>
-            </div>
+            <label class="composer-input-wrap">
+              <span class="visually-hidden">Message</span>
+              <textarea class="composer-input" data-comm-composer-input rows="1" placeholder="Write a reply to the member..."></textarea>
+            </label>
           </div>
+          <button class="composer-icon-btn composer-icon-btn--rewrite" type="button" aria-label="Rewrite" tabindex="-1" disabled>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true" overflow="visible">
+              <path d="M22.19 1.81a3.639 3.639 0 0 0-5.17.035l-14.5 14.5L.75 23.25l6.905-1.771 14.5-14.5a3.637 3.637 0 0 0 .035-5.169Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+              <path d="m16.606 2.26 5.134 5.134" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+              <path d="m2.521 16.344 5.139 5.13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+            </svg>
+          </button>
+          <button class="button button-primary composer-send" data-comm-composer-send type="button" disabled>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path d="M1.4 3.743a1.5 1.5 0 0 1 1.973-2.077l19.014 9.659a.75.75 0 0 1 0 1.337L3.373 22.334A1.5 1.5 0 0 1 1.4 20.257l5.058-8.264Z" fill="currentColor"/>
+            </svg>
+            Send
+          </button>
         </div>
       </footer>`;
   }
@@ -5423,6 +5438,10 @@
     send.classList.toggle("is-active", hasText);
     send.setAttribute("aria-disabled", hasText ? "false" : "true");
     field?.classList.toggle("is-filled", hasText);
+    input.style.height = "auto";
+    const next = Math.min(input.scrollHeight, 104);
+    input.style.height = `${Math.max(next, 20)}px`;
+    field?.classList.toggle("is-multiline", next > 28);
   }
 
   function bindCommunicationListActions(root) {
@@ -9502,6 +9521,133 @@ Timestamp: 8/21/18 KS`;
     a.addEventListener("click", closeNavDrawer);
   });
 
+  const CHAT_PAGE_SIZE = 5;
+  const chatPager = document.querySelector("#chat-pager");
+  const chatPages = document.querySelector("#chat-pages");
+  const pageChevron = (direction) =>
+    `<svg class="work-chevron is-${direction}" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+  function chatFilterValue(root, name) {
+    return (root?.querySelector(`[data-chat-filter="${name}"]`)?.value || "").trim();
+  }
+
+  function isOpenChatFilter(value) {
+    return !value || value === "All" || value.startsWith("All ");
+  }
+
+  function rowMatchesChatFilters(row, root) {
+    if (!root) return true;
+    const cells = [...row.cells];
+    const text = (index) => (cells[index]?.textContent || "").replace(/\s+/g, " ").trim();
+    const memberQuery = chatFilterValue(root, "member").toLowerCase();
+    if (memberQuery && !text(0).toLowerCase().includes(memberQuery)) return false;
+    const customer = chatFilterValue(root, "customer");
+    if (!isOpenChatFilter(customer) && text(1) !== customer) return false;
+    const type = chatFilterValue(root, "type");
+    if (!isOpenChatFilter(type) && text(2) !== type) return false;
+    const channel = chatFilterValue(root, "channel");
+    if (!isOpenChatFilter(channel) && text(3) !== channel) return false;
+    const lastActive = chatFilterValue(root, "last-active").toLowerCase();
+    if (lastActive && !text(4).toLowerCase().includes(lastActive)) return false;
+    const status = chatFilterValue(root, "status");
+    if (!isOpenChatFilter(status) && text(5) !== status) return false;
+    const read = chatFilterValue(root, "read");
+    if (read === "Read" || read === "Unread") {
+      const unread = Boolean(row.querySelector(".work-activity-dot"));
+      if ((read === "Unread") !== unread) return false;
+    }
+    return true;
+  }
+
+  function resetChatFilters(root) {
+    root.querySelectorAll("input[data-chat-filter]").forEach((field) => {
+      if (field.type === "search" || field.type === "text") {
+        field.value = "";
+        return;
+      }
+      const wrap = field.closest(".inline-select");
+      const label = wrap?.querySelector(".select-trigger-label");
+      const menu = wrap ? selectMenuForWrap(wrap) : null;
+      const fallback = field.dataset.default || "";
+      field.value = fallback;
+      if (label) label.textContent = fallback;
+      menu?.querySelectorAll("[data-value]").forEach((row) => {
+        const on = row.dataset.value === fallback;
+        row.classList.toggle("is-selected", on);
+        row.setAttribute("aria-selected", String(on));
+        const check = row.querySelector("svg");
+        if (on && !check) row.insertAdjacentHTML("beforeend", icon.check);
+        else if (!on && check) check.remove();
+      });
+    });
+    closeInlineSelects();
+  }
+
+  function paintChatQueue(queue, page = 1) {
+    document.querySelectorAll("[data-chat-rows]").forEach((table) => {
+      table.hidden = table.dataset.chatRows !== queue;
+    });
+    document.querySelectorAll("[data-chat-filters]").forEach((filters) => {
+      filters.hidden = filters.dataset.chatFilters !== queue;
+    });
+    const root = document.querySelector(`[data-chat-filters="${queue}"]`);
+    const rows = [...document.querySelectorAll(`[data-chat-rows="${queue}"] tbody tr`)];
+    const matched = rows.filter((row) => rowMatchesChatFilters(row, root));
+    const count = matched.length;
+    const pageCount = Math.max(1, Math.ceil(count / CHAT_PAGE_SIZE));
+    const current = Math.min(Math.max(page, 1), pageCount);
+    const start = (current - 1) * CHAT_PAGE_SIZE;
+    const paged = count > CHAT_PAGE_SIZE;
+    const visible = new Set(paged ? matched.slice(start, start + CHAT_PAGE_SIZE) : matched);
+    rows.forEach((row) => {
+      row.hidden = !visible.has(row);
+      row.classList.toggle("is-page-first", paged && row === matched[start]);
+    });
+    const results = document.querySelector("#chat-results");
+    if (results) results.textContent = `${count} result${count === 1 ? "" : "s"}`;
+    if (!chatPager || !chatPages) return;
+    chatPager.hidden = !paged;
+    if (!paged) return;
+    const numbers = Array.from({ length: pageCount }, (_, index) => index + 1)
+      .map((number) => {
+        const currentPage = number === current;
+        return `<button class="work-page-btn${currentPage ? " is-current" : ""}" type="button"${currentPage ? ' aria-current="page"' : ""} data-chat-page="${number}">${number}</button>`;
+      })
+      .join("");
+    chatPages.innerHTML = `
+      <button class="work-page-nav" type="button" aria-label="Previous page" data-chat-page="prev"${current === 1 ? " disabled" : ""}>${pageChevron("left")}</button>
+      ${numbers}
+      <button class="work-page-nav" type="button" aria-label="Next page" data-chat-page="next"${current === pageCount ? " disabled" : ""}>${pageChevron("right")}</button>
+    `;
+    chatPager.dataset.page = String(current);
+    chatPager.dataset.pages = String(pageCount);
+  }
+
+  const incomingSwitch = document.querySelector("#incoming-view-switch");
+  incomingSwitch?.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      incomingSwitch.querySelectorAll("button").forEach((other) => {
+        const on = other === btn;
+        other.classList.toggle("is-active", on);
+        other.setAttribute("aria-pressed", String(on));
+      });
+      paintChatQueue(btn.dataset.chatQueue, 1);
+      layoutInsSegmentedThumb(incomingSwitch, { animate: true });
+    });
+  });
+  chatPages?.addEventListener("click", (event) => {
+    const btn = event.target.closest("[data-chat-page]");
+    if (!btn || btn.disabled) return;
+    const queue = incomingSwitch?.querySelector("button.is-active")?.dataset.chatQueue || "incoming";
+    const current = Number(chatPager?.dataset.page || 1);
+    const pageCount = Number(chatPager?.dataset.pages || 1);
+    const which = btn.dataset.chatPage;
+    const next = which === "prev" ? current - 1 : which === "next" ? current + 1 : Number(which);
+    if (next < 1 || next > pageCount || next === current) return;
+    paintChatQueue(queue, next);
+  });
+  paintChatQueue("incoming", 1);
+
   document.querySelectorAll('[data-nav="work"]').forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
@@ -9525,11 +9671,32 @@ Timestamp: 8/21/18 KS`;
       layoutWorkViewSwitch(true);
     });
   });
-  window.addEventListener("resize", () => layoutWorkViewSwitch(false));
+  window.addEventListener("resize", () => {
+    layoutInsSegmentedThumb(incomingSwitch, { animate: false });
+    layoutWorkViewSwitch(false);
+  });
 
   bindInlineSelects();
+  document.querySelectorAll("[data-chat-filters]").forEach((root) => {
+    root.addEventListener("input", (event) => {
+      if (event.target.matches("[data-chat-filter]")) paintChatQueue(root.dataset.chatFilters, 1);
+    });
+    root.addEventListener("change", (event) => {
+      if (!event.target.matches("[data-chat-filter]")) return;
+      if (event.target.matches("input[type='search']")) return;
+      paintChatQueue(root.dataset.chatFilters, 1);
+    });
+    root.addEventListener("click", (event) => {
+      if (event.target.closest("[data-chat-clear]")) {
+        resetChatFilters(root);
+        paintChatQueue(root.dataset.chatFilters, 1);
+      } else if (event.target.closest("[data-chat-apply]")) {
+        paintChatQueue(root.dataset.chatFilters, 1);
+      }
+    });
+  });
   document.querySelector("#work-filters-clear")?.addEventListener("click", () => {
-    document.querySelectorAll("#work-page .inline-select").forEach((wrap) => {
+    document.querySelector("#work-filters-clear").closest(".work-filters")?.querySelectorAll(".inline-select").forEach((wrap) => {
       const hidden = wrap.querySelector("input[data-field]");
       const label = wrap.querySelector(".select-trigger-label");
       const menu = selectMenuForWrap(wrap);
@@ -9700,7 +9867,7 @@ Timestamp: 8/21/18 KS`;
   const composerAttachInput = document.querySelector("#composer-attach-input");
   const composerEl = document.querySelector(".composer");
   const conversationEl = document.querySelector("#conversation");
-  const COMPOSER_INPUT_MAX = 100; /* px — field grows; toolbar stays pinned */
+  const COMPOSER_INPUT_MAX = 104; /* field max 128 minus inset pads */
   let cleanupBusy = false;
   /** @type {AbortController | null} */
   let cleanupAbort = null;
@@ -9755,13 +9922,22 @@ Timestamp: 8/21/18 KS`;
     });
   };
 
-  /** Ping-pong reply clocks — only the last responder’s timer counts up. */
+  /**
+   * Chat / Response timer — Active shows who must reply next.
+   * Seed thread ends on the member, so the advocate clock is live.
+   */
   const replyTimerState = {
-    memberSec: 3,
+    memberSec: 0,
     youSec: 3,
     /** @type {'member' | 'you'} */
-    active: "member",
+    active: "you",
+    /** @type {'active' | 'closed'} */
+    mode: "active",
     intervalId: 0,
+  };
+  const replyTimerLabels = {
+    active: { member: "Member response time", you: "Your response time" },
+    closed: { member: "Member Replied", you: "You Replied" },
   };
 
   const formatReplyMmSs = (totalSec) => {
@@ -9771,13 +9947,33 @@ Timestamp: 8/21/18 KS`;
     return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
   };
 
+  const formatReplyAge = (totalSec) => {
+    const safe = Math.max(0, Math.floor(totalSec));
+    if (safe < 60) return `${safe}s`;
+    const minutes = Math.floor(safe / 60);
+    if (minutes < 60) return `${minutes}m`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours}h`;
+    return `${Math.floor(hours / 24)}d`;
+  };
+
   const paintReplyTimers = () => {
-    const memberEl = document.querySelector('[data-reply-timer="member"]');
-    const youEl = document.querySelector('[data-reply-timer="you"]');
-    if (memberEl) memberEl.textContent = formatReplyMmSs(replyTimerState.memberSec);
-    if (youEl) youEl.textContent = formatReplyMmSs(replyTimerState.youSec);
+    const root = document.querySelector(".reply-timers");
+    const closed = replyTimerState.mode === "closed";
+    root?.classList.toggle("is-closed", closed);
+    root?.setAttribute("data-reply-mode", closed ? "closed" : "active");
+    const labels = closed ? replyTimerLabels.closed : replyTimerLabels.active;
     document.querySelectorAll(".reply-timer[data-reply-side]").forEach((el) => {
-      el.classList.toggle("is-active", el.getAttribute("data-reply-side") === replyTimerState.active);
+      const side = el.getAttribute("data-reply-side");
+      const on = side === replyTimerState.active;
+      el.classList.toggle("is-active", !closed && on);
+      el.hidden = !closed && !on;
+      const label = el.querySelector(".reply-timer-label");
+      if (label && (side === "member" || side === "you")) label.textContent = labels[side];
+      const value = el.querySelector("[data-reply-timer]");
+      if (!value) return;
+      const sec = side === "member" ? replyTimerState.memberSec : replyTimerState.youSec;
+      value.textContent = closed ? formatReplyAge(sec) : formatReplyMmSs(sec);
     });
   };
 
@@ -9790,14 +9986,15 @@ Timestamp: 8/21/18 KS`;
     }, 1000);
   };
 
-  /** Reset the side that just replied and make it the counting clock; freeze the other. */
+  /** Who just spoke. The other party owes the next reply, so their clock restarts. */
   const onReplyTurn = (side) => {
+    if (replyTimerState.mode === "closed") return;
     if (side === "member") {
-      replyTimerState.memberSec = 0;
-      replyTimerState.active = "member";
-    } else {
       replyTimerState.youSec = 0;
       replyTimerState.active = "you";
+    } else {
+      replyTimerState.memberSec = 0;
+      replyTimerState.active = "member";
     }
     paintReplyTimers();
     startReplyTimerTick();
@@ -9933,6 +10130,7 @@ Timestamp: 8/21/18 KS`;
     composerInput.style.height = "auto";
     const next = Math.min(composerInput.scrollHeight, COMPOSER_INPUT_MAX);
     composerInput.style.height = `${Math.max(next, 20)}px`;
+    composerField?.classList.toggle("is-multiline", next > 28);
   };
 
   const syncComposerSend = () => {
@@ -9957,7 +10155,7 @@ Timestamp: 8/21/18 KS`;
     const draft = composerInput.value.trim();
     if (!draft) return;
     if (!globalThis.CareChatEngine?.rewriteDraft) {
-      showToast("Clean up failed to load");
+      showToast("Rewrite failed to load");
       return;
     }
 
@@ -9975,7 +10173,7 @@ Timestamp: 8/21/18 KS`;
       });
       if (cleaned && cleaned !== draft) {
         composerInput.value = cleaned;
-        showToast("Message cleaned up");
+        showToast("Message rewritten");
       } else if (cleaned) {
         composerInput.value = cleaned;
       }
@@ -10133,7 +10331,7 @@ Timestamp: 8/21/18 KS`;
   composerCleanup?.addEventListener("click", () => cleanupComposerDraft());
   syncComposerSend();
   seedChatHistoryFromDom();
-  /* Seed thread ends with member — Member Replied is the live clock */
+  /* Seed thread ends with the member — Your response time is the live clock */
   paintReplyTimers();
   startReplyTimerTick();
 

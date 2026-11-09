@@ -1888,6 +1888,9 @@
           trigger.setAttribute("aria-expanded", "false");
           syncMemberEditChrome();
           syncNotesEditChrome();
+          if (wrap.closest("[data-chat-filters]")) {
+            hidden.dispatchEvent(new Event("change", { bubbles: true }));
+          }
         });
       });
     });
@@ -9524,20 +9527,81 @@ Timestamp: 8/21/18 KS`;
   const pageChevron = (direction) =>
     `<svg class="work-chevron is-${direction}" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
+  function chatFilterValue(root, name) {
+    return (root?.querySelector(`[data-chat-filter="${name}"]`)?.value || "").trim();
+  }
+
+  function isOpenChatFilter(value) {
+    return !value || value === "All" || value.startsWith("All ");
+  }
+
+  function rowMatchesChatFilters(row, root) {
+    if (!root) return true;
+    const cells = [...row.cells];
+    const text = (index) => (cells[index]?.textContent || "").replace(/\s+/g, " ").trim();
+    const memberQuery = chatFilterValue(root, "member").toLowerCase();
+    if (memberQuery && !text(0).toLowerCase().includes(memberQuery)) return false;
+    const customer = chatFilterValue(root, "customer");
+    if (!isOpenChatFilter(customer) && text(1) !== customer) return false;
+    const type = chatFilterValue(root, "type");
+    if (!isOpenChatFilter(type) && text(2) !== type) return false;
+    const channel = chatFilterValue(root, "channel");
+    if (!isOpenChatFilter(channel) && text(3) !== channel) return false;
+    const lastActive = chatFilterValue(root, "last-active").toLowerCase();
+    if (lastActive && !text(4).toLowerCase().includes(lastActive)) return false;
+    const status = chatFilterValue(root, "status");
+    if (!isOpenChatFilter(status) && text(5) !== status) return false;
+    const read = chatFilterValue(root, "read");
+    if (read === "Read" || read === "Unread") {
+      const unread = Boolean(row.querySelector(".work-activity-dot"));
+      if ((read === "Unread") !== unread) return false;
+    }
+    return true;
+  }
+
+  function resetChatFilters(root) {
+    root.querySelectorAll("input[data-chat-filter]").forEach((field) => {
+      if (field.type === "search" || field.type === "text") {
+        field.value = "";
+        return;
+      }
+      const wrap = field.closest(".inline-select");
+      const label = wrap?.querySelector(".select-trigger-label");
+      const menu = wrap ? selectMenuForWrap(wrap) : null;
+      const fallback = field.dataset.default || "";
+      field.value = fallback;
+      if (label) label.textContent = fallback;
+      menu?.querySelectorAll("[data-value]").forEach((row) => {
+        const on = row.dataset.value === fallback;
+        row.classList.toggle("is-selected", on);
+        row.setAttribute("aria-selected", String(on));
+        const check = row.querySelector("svg");
+        if (on && !check) row.insertAdjacentHTML("beforeend", icon.check);
+        else if (!on && check) check.remove();
+      });
+    });
+    closeInlineSelects();
+  }
+
   function paintChatQueue(queue, page = 1) {
     document.querySelectorAll("[data-chat-rows]").forEach((table) => {
       table.hidden = table.dataset.chatRows !== queue;
     });
+    document.querySelectorAll("[data-chat-filters]").forEach((filters) => {
+      filters.hidden = filters.dataset.chatFilters !== queue;
+    });
+    const root = document.querySelector(`[data-chat-filters="${queue}"]`);
     const rows = [...document.querySelectorAll(`[data-chat-rows="${queue}"] tbody tr`)];
-    const count = rows.length;
+    const matched = rows.filter((row) => rowMatchesChatFilters(row, root));
+    const count = matched.length;
     const pageCount = Math.max(1, Math.ceil(count / CHAT_PAGE_SIZE));
     const current = Math.min(Math.max(page, 1), pageCount);
     const start = (current - 1) * CHAT_PAGE_SIZE;
     const paged = count > CHAT_PAGE_SIZE;
-    rows.forEach((row, index) => {
-      const onPage = !paged || (index >= start && index < start + CHAT_PAGE_SIZE);
-      row.hidden = !onPage;
-      row.classList.toggle("is-page-first", paged && index === start);
+    const visible = new Set(paged ? matched.slice(start, start + CHAT_PAGE_SIZE) : matched);
+    rows.forEach((row) => {
+      row.hidden = !visible.has(row);
+      row.classList.toggle("is-page-first", paged && row === matched[start]);
     });
     const results = document.querySelector("#chat-results");
     if (results) results.textContent = `${count} result${count === 1 ? "" : "s"}`;
@@ -9613,8 +9677,26 @@ Timestamp: 8/21/18 KS`;
   });
 
   bindInlineSelects();
+  document.querySelectorAll("[data-chat-filters]").forEach((root) => {
+    root.addEventListener("input", (event) => {
+      if (event.target.matches("[data-chat-filter]")) paintChatQueue(root.dataset.chatFilters, 1);
+    });
+    root.addEventListener("change", (event) => {
+      if (!event.target.matches("[data-chat-filter]")) return;
+      if (event.target.matches("input[type='search']")) return;
+      paintChatQueue(root.dataset.chatFilters, 1);
+    });
+    root.addEventListener("click", (event) => {
+      if (event.target.closest("[data-chat-clear]")) {
+        resetChatFilters(root);
+        paintChatQueue(root.dataset.chatFilters, 1);
+      } else if (event.target.closest("[data-chat-apply]")) {
+        paintChatQueue(root.dataset.chatFilters, 1);
+      }
+    });
+  });
   document.querySelector("#work-filters-clear")?.addEventListener("click", () => {
-    document.querySelectorAll("#work-page .inline-select").forEach((wrap) => {
+    document.querySelector("#work-filters-clear").closest(".work-filters")?.querySelectorAll(".inline-select").forEach((wrap) => {
       const hidden = wrap.querySelector("input[data-field]");
       const label = wrap.querySelector(".select-trigger-label");
       const menu = selectMenuForWrap(wrap);

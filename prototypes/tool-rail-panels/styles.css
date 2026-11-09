@@ -6794,6 +6794,8 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   align-items: center;
   gap: 8px;
 }
+.work-filters[hidden],
+.work-pager[hidden] { display: none; }
 .work-filter {
   display: inline-flex;
   align-items: center;
@@ -6808,6 +6810,26 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   cursor: default;
 }
 .work-filter svg { width: 14px; height: 14px; color: var(--icon-tertiary); }
+.work-filter-search {
+  flex: 1 1 180px;
+  min-width: 160px;
+}
+.work-filter-search input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text-primary);
+  font: 400 14px/20px "Figtree", system-ui, sans-serif;
+}
+.work-filter-search input::placeholder { color: var(--text-tertiary); }
+.work-filter-search input:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(0, 35, 128, 0.12);
+}
 .work-filters .select-wrap {
   flex: 1 1 140px;
   min-width: 0;

@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=chat-pager-1" />
+    <link rel="stylesheet" href="styles.css?v=chat-filters-1" />
   </head>
   <body>
     <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
@@ -498,13 +498,125 @@
             </button>
           </div>
         </div>
-        <div class="work-filters">
-          <button class="work-filter" type="button">All types <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-          <button class="work-filter" type="button">All statuses <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-          <button class="work-filter" type="button">All tasks <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-          <button class="work-filter" type="button">All members <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-          <button class="button button-secondary" type="button">Clear</button>
-          <button class="button button-primary" type="button">Apply</button>
+        <div class="work-filters" data-chat-filters="incoming">
+          <label class="work-filter-search">
+            <span class="visually-hidden">Search members</span>
+            <input type="search" data-chat-filter="member" placeholder="Search members" aria-label="Search members" autocomplete="off" />
+          </label>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="customer" data-chat-filter="customer" value="All customers" data-default="All customers" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Customer">
+              <span class="select-trigger-label">All customers</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All customers" aria-selected="true"><span>All customers</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Google" aria-selected="false"><span>Google</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="type" data-chat-filter="type" value="All types" data-default="All types" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Type">
+              <span class="select-trigger-label">All types</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All types" aria-selected="true"><span>All types</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Incoming / Live" aria-selected="false"><span>Incoming / Live</span></button>
+              <button type="button" role="option" data-value="Direct" aria-selected="false"><span>Direct</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="channel" data-chat-filter="channel" value="All channels" data-default="All channels" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Channel">
+              <span class="select-trigger-label">All channels</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All channels" aria-selected="true"><span>All channels</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Chat" aria-selected="false"><span>Chat</span></button>
+              <button type="button" role="option" data-value="Email" aria-selected="false"><span>Email</span></button>
+              <button type="button" role="option" data-value="SMS" aria-selected="false"><span>SMS</span></button>
+              <button type="button" role="option" data-value="Call" aria-selected="false"><span>Call</span></button>
+              <button type="button" role="option" data-value="Task" aria-selected="false"><span>Task</span></button>
+            </div>
+          </div>
+          <button class="button button-secondary" type="button" data-chat-clear>Clear</button>
+          <button class="button button-primary" type="button" data-chat-apply>Apply</button>
+        </div>
+        <div class="work-filters" data-chat-filters="closed" hidden>
+          <label class="work-filter-search">
+            <span class="visually-hidden">Search members</span>
+            <input type="search" data-chat-filter="member" placeholder="Search members" aria-label="Search members" autocomplete="off" />
+          </label>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="customer" data-chat-filter="customer" value="All customers" data-default="All customers" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Customer">
+              <span class="select-trigger-label">All customers</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All customers" aria-selected="true"><span>All customers</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Google" aria-selected="false"><span>Google</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="type" data-chat-filter="type" value="All types" data-default="All types" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Type">
+              <span class="select-trigger-label">All types</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All types" aria-selected="true"><span>All types</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Incoming / Live" aria-selected="false"><span>Incoming / Live</span></button>
+              <button type="button" role="option" data-value="Direct" aria-selected="false"><span>Direct</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="channel" data-chat-filter="channel" value="All channels" data-default="All channels" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Channel">
+              <span class="select-trigger-label">All channels</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All channels" aria-selected="true"><span>All channels</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Chat" aria-selected="false"><span>Chat</span></button>
+              <button type="button" role="option" data-value="Email" aria-selected="false"><span>Email</span></button>
+              <button type="button" role="option" data-value="SMS" aria-selected="false"><span>SMS</span></button>
+              <button type="button" role="option" data-value="Call" aria-selected="false"><span>Call</span></button>
+              <button type="button" role="option" data-value="Task" aria-selected="false"><span>Task</span></button>
+            </div>
+          </div>
+          <label class="work-filter-search">
+            <span class="visually-hidden">Last active</span>
+            <input type="search" data-chat-filter="last-active" placeholder="Last active" aria-label="Last active" autocomplete="off" />
+          </label>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="status" data-chat-filter="status" value="All statuses" data-default="All statuses" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Status">
+              <span class="select-trigger-label">All statuses</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All statuses" aria-selected="true"><span>All statuses</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Escalated" aria-selected="false"><span>Escalated</span></button>
+              <button type="button" role="option" data-value="Closed" aria-selected="false"><span>Closed</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="read" data-chat-filter="read" value="All" data-default="All" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Read state">
+              <span class="select-trigger-label">All</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="select-menu" role="listbox" hidden>
+              <button type="button" role="option" class="is-selected" data-value="All" aria-selected="true"><span>All</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg></button>
+              <button type="button" role="option" data-value="Read" aria-selected="false"><span>Read</span></button>
+              <button type="button" role="option" data-value="Unread" aria-selected="false"><span>Unread</span></button>
+            </div>
+          </div>
+          <button class="button button-secondary" type="button" data-chat-clear>Clear</button>
+          <button class="button button-primary" type="button" data-chat-apply>Apply</button>
         </div>
         <div class="work-meta">
           <span id="chat-results">2 results</span>
@@ -563,7 +675,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Dana Whitfield</span></td>
+                  <td><span class="work-activity">Dana Whitfield</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>Email</td>
@@ -571,7 +683,7 @@
                   <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Kenji Sato</span></td>
+                  <td><span class="work-activity">Kenji Sato</span></td>
                   <td>Google</td>
                   <td>Incoming / Live</td>
                   <td>SMS</td>
@@ -579,7 +691,7 @@
                   <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Morgan Ellis</span></td>
+                  <td><span class="work-activity">Morgan Ellis</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>Call</td>
@@ -595,7 +707,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Kenji Sato</span></td>
+                  <td><span class="work-activity">Kenji Sato</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>Chat</td>
@@ -611,7 +723,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Dana Whitfield</span></td>
+                  <td><span class="work-activity">Dana Whitfield</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>SMS</td>
@@ -627,7 +739,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Morgan Ellis</span></td>
+                  <td><span class="work-activity">Morgan Ellis</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>Task</td>
@@ -643,7 +755,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Kenji Sato</span></td>
+                  <td><span class="work-activity">Kenji Sato</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>Email</td>
@@ -659,7 +771,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Dana Whitfield</span></td>
+                  <td><span class="work-activity">Dana Whitfield</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>Call</td>
@@ -675,7 +787,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Morgan Ellis</span></td>
+                  <td><span class="work-activity">Morgan Ellis</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>Chat</td>
@@ -691,7 +803,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Kenji Sato</span></td>
+                  <td><span class="work-activity">Kenji Sato</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>SMS</td>
@@ -707,7 +819,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Dana Whitfield</span></td>
+                  <td><span class="work-activity">Dana Whitfield</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>Task</td>
@@ -723,7 +835,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Morgan Ellis</span></td>
+                  <td><span class="work-activity">Morgan Ellis</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>Email</td>
@@ -739,7 +851,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Kenji Sato</span></td>
+                  <td><span class="work-activity">Kenji Sato</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>Call</td>
@@ -755,7 +867,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Dana Whitfield</span></td>
+                  <td><span class="work-activity">Dana Whitfield</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>Chat</td>
@@ -771,7 +883,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Morgan Ellis</span></td>
+                  <td><span class="work-activity">Morgan Ellis</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>SMS</td>
@@ -787,7 +899,7 @@
                   <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Escalated</span></span></td>
                 </tr>
                 <tr>
-                  <td><span class="work-activity"><span class="work-activity-dot" role="img" aria-label="New activity"></span>Kenji Sato</span></td>
+                  <td><span class="work-activity">Kenji Sato</span></td>
                   <td>Google</td>
                   <td>Direct</td>
                   <td>Task</td>
@@ -1120,6 +1232,6 @@
     </div>
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
     <script src="chat-engine.js?v=mode-trigger-1"></script>
-    <script src="app.js?v=chat-pager-1"></script>
+    <script src="app.js?v=chat-filters-1"></script>
   </body>
 </html>

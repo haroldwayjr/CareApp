@@ -6875,6 +6875,15 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   background: var(--brand);
   color: var(--text-on-brand);
 }
+.work-pager--live .work-page-btn,
+.work-pager--live .work-page-nav:not(:disabled) { cursor: pointer; }
+.work-pager--live .work-page-btn:hover,
+.work-pager--live .work-page-nav:not(:disabled):hover { background: var(--action-ghost-hover); }
+.work-pager--live .work-page-btn.is-current:hover { background: var(--brand); }
+.work-table tbody tr.is-page-first td {
+  height: 69px;
+  border-top: 16px solid transparent;
+}
 .work-page-size {
   display: inline-flex;
   align-items: center;

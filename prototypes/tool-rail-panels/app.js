@@ -9518,6 +9518,47 @@ Timestamp: 8/21/18 KS`;
     a.addEventListener("click", closeNavDrawer);
   });
 
+  const CHAT_PAGE_SIZE = 5;
+  const chatPager = document.querySelector("#chat-pager");
+  const chatPages = document.querySelector("#chat-pages");
+  const pageChevron = (direction) =>
+    `<svg class="work-chevron is-${direction}" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+  function paintChatQueue(queue, page = 1) {
+    document.querySelectorAll("[data-chat-rows]").forEach((table) => {
+      table.hidden = table.dataset.chatRows !== queue;
+    });
+    const rows = [...document.querySelectorAll(`[data-chat-rows="${queue}"] tbody tr`)];
+    const count = rows.length;
+    const pageCount = Math.max(1, Math.ceil(count / CHAT_PAGE_SIZE));
+    const current = Math.min(Math.max(page, 1), pageCount);
+    const start = (current - 1) * CHAT_PAGE_SIZE;
+    const paged = count > CHAT_PAGE_SIZE;
+    rows.forEach((row, index) => {
+      const onPage = !paged || (index >= start && index < start + CHAT_PAGE_SIZE);
+      row.hidden = !onPage;
+      row.classList.toggle("is-page-first", paged && index === start);
+    });
+    const results = document.querySelector("#chat-results");
+    if (results) results.textContent = `${count} result${count === 1 ? "" : "s"}`;
+    if (!chatPager || !chatPages) return;
+    chatPager.hidden = !paged;
+    if (!paged) return;
+    const numbers = Array.from({ length: pageCount }, (_, index) => index + 1)
+      .map((number) => {
+        const currentPage = number === current;
+        return `<button class="work-page-btn${currentPage ? " is-current" : ""}" type="button"${currentPage ? ' aria-current="page"' : ""} data-chat-page="${number}">${number}</button>`;
+      })
+      .join("");
+    chatPages.innerHTML = `
+      <button class="work-page-nav" type="button" aria-label="Previous page" data-chat-page="prev"${current === 1 ? " disabled" : ""}>${pageChevron("left")}</button>
+      ${numbers}
+      <button class="work-page-nav" type="button" aria-label="Next page" data-chat-page="next"${current === pageCount ? " disabled" : ""}>${pageChevron("right")}</button>
+    `;
+    chatPager.dataset.page = String(current);
+    chatPager.dataset.pages = String(pageCount);
+  }
+
   const incomingSwitch = document.querySelector("#incoming-view-switch");
   incomingSwitch?.querySelectorAll("button").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -9526,18 +9567,22 @@ Timestamp: 8/21/18 KS`;
         other.classList.toggle("is-active", on);
         other.setAttribute("aria-pressed", String(on));
       });
-      const queue = btn.dataset.chatQueue;
-      document.querySelectorAll("[data-chat-rows]").forEach((table) => {
-        table.hidden = table.dataset.chatRows !== queue;
-      });
-      const results = document.querySelector("#chat-results");
-      if (results) {
-        const count = document.querySelectorAll(`[data-chat-rows="${queue}"] tbody tr`).length;
-        results.textContent = `${count} result${count === 1 ? "" : "s"}`;
-      }
+      paintChatQueue(btn.dataset.chatQueue, 1);
       layoutInsSegmentedThumb(incomingSwitch, { animate: true });
     });
   });
+  chatPages?.addEventListener("click", (event) => {
+    const btn = event.target.closest("[data-chat-page]");
+    if (!btn || btn.disabled) return;
+    const queue = incomingSwitch?.querySelector("button.is-active")?.dataset.chatQueue || "incoming";
+    const current = Number(chatPager?.dataset.page || 1);
+    const pageCount = Number(chatPager?.dataset.pages || 1);
+    const which = btn.dataset.chatPage;
+    const next = which === "prev" ? current - 1 : which === "next" ? current + 1 : Number(which);
+    if (next < 1 || next > pageCount || next === current) return;
+    paintChatQueue(queue, next);
+  });
+  paintChatQueue("incoming", 1);
 
   document.querySelectorAll('[data-nav="work"]').forEach((link) => {
     link.addEventListener("click", (event) => {

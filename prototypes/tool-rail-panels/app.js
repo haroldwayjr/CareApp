@@ -1873,12 +1873,13 @@
         }
       });
 
-      const workMulti = Boolean(wrap.closest("[data-chat-filters], [data-task-filters]"));
+      const workMulti = Boolean(wrap.closest("[data-chat-filters], [data-task-filters], [data-dashboard-filters]"));
       menu.querySelectorAll("[data-value]").forEach((option) => {
         option.addEventListener("click", (event) => {
           event.stopPropagation();
           if (workMulti) {
             toggleWorkMultiOption(wrap, option);
+            if (wrap.closest("[data-dashboard-filters]")) syncDashboardSaveButton();
             return;
           }
           const value = option.dataset.value ?? "";
@@ -4070,13 +4071,51 @@
     layoutInsSegmentedThumb(segmented, { animate });
   }
 
+  function setActiveNav(name) {
+    document.querySelectorAll("[data-nav]").forEach((link) => {
+      const on = link.dataset.nav === name;
+      link.classList.toggle("is-active", on);
+      if (on) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
+  }
+
+  function hidePage(page) {
+    page?.setAttribute("hidden", "");
+    page?.classList.remove("is-entering", "is-entered");
+  }
+
+  function playWorkEnter(page) {
+    if (!page) return;
+    if (reduceMotion()) {
+      page.classList.add("is-entered");
+      return;
+    }
+    requestAnimationFrame(() => {
+      page.classList.add("is-entering");
+      const rises = [...page.querySelectorAll(".work-rise")];
+      const last = rises[rises.length - 1];
+      let settled = false;
+      const finish = () => {
+        if (settled || !page.classList.contains("is-entering")) return;
+        settled = true;
+        page.classList.remove("is-entering");
+        page.classList.add("is-entered");
+      };
+      last?.addEventListener("animationend", finish, { once: true });
+      window.setTimeout(finish, 1100);
+    });
+  }
+
   function showWorkPage() {
     document.querySelector("#chat-page")?.setAttribute("hidden", "");
+    hidePage(document.querySelector("#dashboard-page"));
     const work = document.querySelector("#work-page");
     if (!work) return;
     work.classList.remove("is-entering", "is-entered");
     work.removeAttribute("hidden");
     document.title = "Care App — My Work";
+    setActiveNav("work");
     const layoutSwitches = () => {
       layoutWorkViewSwitch(false);
     };
@@ -4103,11 +4142,23 @@
   }
 
   function showChatPage() {
-    const work = document.querySelector("#work-page");
-    work?.setAttribute("hidden", "");
-    work?.classList.remove("is-entering", "is-entered");
+    hidePage(document.querySelector("#work-page"));
+    hidePage(document.querySelector("#dashboard-page"));
     document.querySelector("#chat-page")?.removeAttribute("hidden");
     document.title = "Care App — Chat with Riley Smith";
+  }
+
+  function showDashboardPage() {
+    document.querySelector("#chat-page")?.setAttribute("hidden", "");
+    hidePage(document.querySelector("#work-page"));
+    const dashboard = document.querySelector("#dashboard-page");
+    if (!dashboard) return;
+    dashboard.classList.remove("is-entering", "is-entered");
+    dashboard.removeAttribute("hidden");
+    document.title = "Care App — Dashboard";
+    setActiveNav("dashboard");
+    paintDashboard(Number(document.querySelector("#dashboard-pager")?.dataset.page || 1));
+    playWorkEnter(dashboard);
   }
 
   function openQueuedChat() {
@@ -9671,7 +9722,24 @@ Timestamp: 8/21/18 KS`;
   const tableSort = {
     chat: { index: null, dir: "asc", type: "text" },
     tasks: { index: null, dir: "asc", type: "text" },
+    dashboard: { index: null, dir: "asc", type: "text" },
   };
+  const DASHBOARD_PAGE_SIZE = 12;
+
+  function dashboardPageWindow(current, pageCount) {
+    if (pageCount <= 5) return Array.from({ length: pageCount }, (_, index) => index + 1);
+    const pages = new Set([1, 2, 3, pageCount]);
+    [current - 1, current, current + 1].forEach((number) => {
+      if (number >= 1 && number <= pageCount) pages.add(number);
+    });
+    const sorted = [...pages].sort((a, b) => a - b);
+    const window = [];
+    sorted.forEach((number, index) => {
+      if (index && number - sorted[index - 1] > 1) window.push("…");
+      window.push(number);
+    });
+    return window;
+  }
 
   function stampRowOrder(rows) {
     rows.forEach((row, index) => {
@@ -9720,11 +9788,8 @@ Timestamp: 8/21/18 KS`;
     table?.querySelectorAll("[data-sort]").forEach((button) => {
       const on = Number(button.dataset.sort) === state.index;
       button.classList.toggle("is-sorted", on);
+      button.classList.toggle("is-asc", on && state.dir === "asc");
       button.closest("th")?.setAttribute("aria-sort", on ? (state.dir === "asc" ? "ascending" : "descending") : "none");
-      const chevron = button.querySelector(".work-chevron");
-      if (!chevron) return;
-      chevron.hidden = !on;
-      chevron.classList.toggle("is-up", on && state.dir === "asc");
     });
   }
 
@@ -9745,10 +9810,15 @@ Timestamp: 8/21/18 KS`;
     });
   }
 
-  let taskPastDueApplied = false;
-
   function taskFilterValue(name) {
     return (document.querySelector(`[data-task-filters] [data-task-filter="${name}"]`)?.value || "").trim();
+  }
+
+  function setWorkRowShown(row, shown) {
+    row.classList.toggle("is-out", !shown);
+    row.inert = !shown;
+    if (shown) row.removeAttribute("aria-hidden");
+    else row.setAttribute("aria-hidden", "true");
   }
 
   function paintTasks() {
@@ -9767,11 +9837,13 @@ Timestamp: 8/21/18 KS`;
       if (!workFilterMatches(text(row, 3), member)) return false;
       if (!workFilterMatches(text(row, 4), customer)) return false;
       if (!workFilterMatches(text(row, 5), status)) return false;
-      if (taskPastDueApplied && !row.querySelector(".work-due")) return false;
+      if (document.querySelector("#task-past-due")?.checked && !row.querySelector(".work-due")) return false;
       return true;
     });
     ordered.forEach((row) => {
-      row.hidden = !matched.includes(row);
+      const visible = matched.includes(row);
+      setWorkRowShown(row, visible);
+      row.classList.toggle("is-page-first", visible && row === matched[0]);
     });
     const results = document.querySelector("#task-results");
     if (results) {
@@ -9798,8 +9870,9 @@ Timestamp: 8/21/18 KS`;
     const paged = count > CHAT_PAGE_SIZE;
     const visible = new Set(paged ? matched.slice(start, start + CHAT_PAGE_SIZE) : matched);
     rows.forEach((row) => {
-      row.hidden = !visible.has(row);
-      row.classList.toggle("is-page-first", paged && row === matched[start]);
+      const shown = visible.has(row);
+      setWorkRowShown(row, shown);
+      row.classList.toggle("is-page-first", shown && row === matched[start]);
     });
     const results = document.querySelector("#chat-results");
     if (results) results.textContent = `${count} result${count === 1 ? "" : "s"}`;
@@ -9835,6 +9908,71 @@ Timestamp: 8/21/18 KS`;
   bindTableSort(document.querySelector('[data-chat-rows="incoming"]'), "chat", () => paintChatQueue("incoming", 1));
   bindTableSort(document.querySelector('[aria-labelledby="tasks-title"] table'), "tasks", () => paintTasks());
 
+  function dashboardFilterValue(name) {
+    return (document.querySelector(`[data-dashboard-filters] [data-dashboard-filter="${name}"]`)?.value || "").trim();
+  }
+
+  function paintDashboard(page = 1) {
+    const table = document.querySelector(".dashboard-table");
+    if (!table) return;
+    const rows = sortTableRows([...table.querySelectorAll("tbody tr")], tableSort.dashboard);
+    syncSortHeaders(table, tableSort.dashboard);
+    const text = (row, index) => (row.cells[index]?.textContent || "").replace(/\s+/g, " ").trim();
+    const pastDue = document.querySelector("#dashboard-past-due")?.checked === true;
+    const matched = rows.filter((row) => {
+      if (!workFilterMatches(text(row, 1), dashboardFilterValue("type"))) return false;
+      if (!workFilterMatches(text(row, 5), dashboardFilterValue("status"))) return false;
+      if (!workFilterMatches(text(row, 4), dashboardFilterValue("assignee"))) return false;
+      if (!workFilterMatches(text(row, 3), dashboardFilterValue("customer"))) return false;
+      if (!workFilterMatches(text(row, 0), dashboardFilterValue("priority"))) return false;
+      if (pastDue && !row.querySelector(".work-due")) return false;
+      return true;
+    });
+    const count = matched.length;
+    const pageCount = Math.max(1, Math.ceil(count / DASHBOARD_PAGE_SIZE) || 1);
+    const current = Math.min(Math.max(page, 1), pageCount);
+    const start = (current - 1) * DASHBOARD_PAGE_SIZE;
+    const visible = new Set(matched.slice(start, start + DASHBOARD_PAGE_SIZE));
+    rows.forEach((row) => {
+      const shown = visible.has(row);
+      setWorkRowShown(row, shown);
+      row.classList.toggle("is-page-first", shown && row === matched[start]);
+    });
+    const results = document.querySelector("#dashboard-results");
+    if (results) results.textContent = `${count} result${count === 1 ? "" : "s"}`;
+    const total = document.querySelector("#dashboard-count");
+    if (total) total.textContent = String(rows.length);
+    const pages = document.querySelector("#dashboard-pages");
+    const pager = document.querySelector("#dashboard-pager");
+    if (!pages || !pager) return;
+    pager.dataset.page = String(current);
+    pager.dataset.pages = String(pageCount);
+    const numbers = dashboardPageWindow(current, pageCount)
+      .map((number) => {
+        if (number === "…") return `<span aria-hidden="true">…</span>`;
+        const currentPage = number === current;
+        return `<button class="work-page-btn${currentPage ? " is-current" : ""}" type="button"${currentPage ? ' aria-current="page"' : ""} data-dashboard-page="${number}">${number}</button>`;
+      })
+      .join("");
+    pages.innerHTML = `
+      <button class="work-page-nav" type="button" aria-label="Previous page" data-dashboard-page="prev"${current === 1 ? " disabled" : ""}>${pageChevron("left")}</button>
+      ${numbers}
+      <button class="work-page-nav" type="button" aria-label="Next page" data-dashboard-page="next"${current === pageCount ? " disabled" : ""}>${pageChevron("right")}</button>
+    `;
+  }
+
+  document.querySelector("#dashboard-pages")?.addEventListener("click", (event) => {
+    const btn = event.target.closest("[data-dashboard-page]");
+    if (!btn || btn.disabled) return;
+    const pager = document.querySelector("#dashboard-pager");
+    const current = Number(pager?.dataset.page || 1);
+    const pageCount = Number(pager?.dataset.pages || 1);
+    const which = btn.dataset.dashboardPage;
+    const next = which === "prev" ? current - 1 : which === "next" ? current + 1 : Number(which);
+    if (next < 1 || next > pageCount || next === current) return;
+    paintDashboard(next);
+  });
+
   document.querySelectorAll('[data-nav="work"]').forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
@@ -9846,6 +9984,96 @@ Timestamp: 8/21/18 KS`;
       showWorkPage();
     });
   });
+  document.querySelectorAll('[data-nav="dashboard"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      showDashboardPage();
+    });
+  });
+  const DASHBOARD_DEFAULT_KEY = "careapp.dashboard.defaultFilter";
+  let dashboardSavedDefault = null;
+  try {
+    dashboardSavedDefault = JSON.parse(sessionStorage.getItem(DASHBOARD_DEFAULT_KEY) || "null");
+  } catch {
+    dashboardSavedDefault = null;
+  }
+
+  function dashboardSelection() {
+    const root = document.querySelector("[data-dashboard-filters]");
+    const filters = {};
+    root?.querySelectorAll(".inline-select").forEach((wrap) => {
+      const hidden = wrap.querySelector("[data-dashboard-filter]");
+      const menu = selectMenuForWrap(wrap);
+      const selected = [...(menu?.querySelectorAll("[data-value].is-selected") || [])]
+        .map((option) => option.dataset.value)
+        .filter((value) => value && !isOpenChatFilter(value))
+        .sort();
+      if (hidden) filters[hidden.dataset.dashboardFilter] = selected;
+    });
+    return {
+      filters,
+      pastDue: document.querySelector("#dashboard-past-due")?.checked === true,
+    };
+  }
+
+  function dashboardSelectionKey(selection) {
+    const filters = {};
+    Object.keys(selection?.filters || {}).sort().forEach((key) => {
+      filters[key] = selection.filters[key];
+    });
+    return JSON.stringify({ filters, pastDue: selection?.pastDue === true });
+  }
+
+  function restoreDashboardSelection(selection) {
+    const root = document.querySelector("[data-dashboard-filters]");
+    root?.querySelectorAll(".inline-select").forEach((wrap) => {
+      const hidden = wrap.querySelector("[data-dashboard-filter]");
+      const wanted = new Set(selection?.filters?.[hidden?.dataset.dashboardFilter] || []);
+      selectMenuForWrap(wrap)?.querySelectorAll("[data-value]").forEach((option) => {
+        const open = isOpenChatFilter(option.dataset.value);
+        setWorkOptionChecked(option, wanted.size ? wanted.has(option.dataset.value) : open);
+      });
+      syncWorkMultiSelect(wrap, { commit: true });
+    });
+    const past = document.querySelector("#dashboard-past-due");
+    if (past) past.checked = selection?.pastDue === true;
+  }
+
+  function syncDashboardSaveButton() {
+    const button = document.querySelector(".dashboard-save");
+    if (!button) return;
+    const saved = dashboardSavedDefault ? dashboardSelectionKey(dashboardSavedDefault) : null;
+    button.disabled = saved != null && dashboardSelectionKey(dashboardSelection()) === saved;
+  }
+
+  document.querySelector("[data-dashboard-clear]")?.addEventListener("click", () => {
+    document.querySelector("[data-dashboard-filters]")?.querySelectorAll(".inline-select").forEach((wrap) => {
+      resetWorkMultiSelect(wrap);
+    });
+    closeInlineSelects();
+    paintDashboard(1);
+    syncDashboardSaveButton();
+  });
+  document.querySelector("[data-dashboard-apply]")?.addEventListener("click", () => {
+    commitWorkFilters(document.querySelector("[data-dashboard-filters]"));
+    paintDashboard(1);
+  });
+  document.querySelector(".dashboard-save")?.addEventListener("click", () => {
+    commitWorkFilters(document.querySelector("[data-dashboard-filters]"));
+    dashboardSavedDefault = dashboardSelection();
+    sessionStorage.setItem(DASHBOARD_DEFAULT_KEY, JSON.stringify(dashboardSavedDefault));
+    paintDashboard(1);
+    syncDashboardSaveButton();
+    showToast("Default filter saved.");
+  });
+  document.querySelector("#dashboard-past-due")?.addEventListener("change", () => {
+    paintDashboard(1);
+    syncDashboardSaveButton();
+  });
+  if (dashboardSavedDefault) restoreDashboardSelection(dashboardSavedDefault);
+  syncDashboardSaveButton();
+  paintDashboard(1);
+  bindTableSort(document.querySelector(".dashboard-table"), "dashboard", () => paintDashboard(1));
 
   bindInlineSelects();
   document.querySelectorAll("[data-chat-filters]").forEach((root) => {
@@ -9864,14 +10092,11 @@ Timestamp: 8/21/18 KS`;
       resetWorkMultiSelect(wrap);
     });
     closeInlineSelects();
-    const pastDue = document.querySelector("#task-past-due");
-    if (pastDue) pastDue.checked = false;
-    taskPastDueApplied = false;
     paintTasks();
   });
+  document.querySelector("#task-past-due")?.addEventListener("change", () => paintTasks());
   document.querySelector("[data-task-apply]")?.addEventListener("click", () => {
     commitWorkFilters(document.querySelector("[data-task-filters]"));
-    taskPastDueApplied = document.querySelector("#task-past-due")?.checked === true;
     paintTasks();
   });
   paintTasks();
@@ -10557,5 +10782,6 @@ Timestamp: 8/21/18 KS`;
     });
   }
 
+  showWorkPage();
   runPageEntrance();
 })();

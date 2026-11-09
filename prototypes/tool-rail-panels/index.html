@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Care App chat and member context prototype" />
-    <title>Care App — Chat with Riley Smith</title>
+    <title>Care App — My Work</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=past-due-checkbox-1" />
+    <link rel="stylesheet" href="styles.css?v=dashboard-defaults-1" />
   </head>
   <body>
     <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
@@ -35,7 +35,7 @@
           <span>Care App</span>
         </a>
         <nav class="global-nav" aria-label="Primary">
-          <a href="#">Dashboard</a>
+          <a href="#dashboard" data-nav="dashboard">Dashboard</a>
           <a class="is-active" href="#my-work" data-nav="work" aria-current="page">My Work</a>
           <a href="#">Schedule</a>
           <a href="#">Search</a>
@@ -235,7 +235,7 @@
       </div>
     </header>
 
-    <main class="page" id="chat-page">
+    <main class="page" id="chat-page" hidden>
       <section class="page-heading page-rise" style="--rise: 1" aria-labelledby="page-title">
         <div class="page-heading-copy">
           <div class="page-heading-lines">
@@ -482,7 +482,7 @@
       </div>
     </main>
 
-    <main class="page work-page" id="work-page" hidden>
+    <main class="page work-page" id="work-page">
       <section class="work-section work-incoming work-rise" style="--rise: 0" aria-labelledby="conversations-title">
         <div class="work-section-head work-section-head--tasks">
           <h2 id="conversations-title">Conversations</h2>
@@ -566,10 +566,10 @@
             <table class="work-table" data-chat-rows="incoming">
               <thead>
                 <tr>
-                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="0">Member<svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
-                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="1">Customer<svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
-                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="2">Type<svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
-                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="3">Channel<svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="0">Member<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="1">Customer<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="2">Type<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="3">Channel<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
                   <th><span class="visually-hidden">Open</span></th>
                 </tr>
               </thead>
@@ -699,11 +699,6 @@
               <button type="button" role="option" class="activity-filter-option is-selected" data-value="All types" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All types</span></button><button type="button" role="option" class="activity-filter-option" data-value="Live" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Live</span></button><button type="button" role="option" class="activity-filter-option" data-value="Direct" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Direct</span></button><button type="button" role="option" class="activity-filter-option" data-value="Claims / Portal Research" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Claims / Portal Research</span></button><button type="button" role="option" class="activity-filter-option" data-value="Follow up" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Follow up</span></button>
             </div>
           </div>
-          <label class="work-past-due-toggle">
-            <input type="checkbox" id="task-past-due" />
-            <i class="activity-filter-check" aria-hidden="true"></i>
-            <span>Past due</span>
-          </label>
           <button class="button button-secondary" type="button" id="work-filters-clear">Clear</button>
           <button class="button button-primary" type="button" data-task-apply>Apply</button>
         </div>
@@ -713,19 +708,24 @@
             <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 12a8 8 0 1 1-2.2-5.5"/><path d="M20 4v5h-5"/></svg>
             Refresh List
           </button>
+          <label class="work-past-due-toggle">
+            <input type="checkbox" id="task-past-due" />
+            <i class="activity-filter-check" aria-hidden="true"></i>
+            <span>Past due</span>
+          </label>
         </div>
         <div class="work-card work-rise" style="--rise: 4">
           <div class="work-table-wrap">
             <table class="work-table">
               <thead>
                 <tr>
-                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="0">Priority<svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
-                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="1">Type<svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
-                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="2" data-sort-type="date">Created On<svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
-                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="3">Member<svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
-                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="4">Customer<svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
-                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="5">Status<svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
-                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="6" data-sort-type="date">Due Date<svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="0">Priority<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="1">Type<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="2" data-sort-type="date">Created On<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="3">Member<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="4">Customer<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="5">Status<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="6" data-sort-type="date">Due Date<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
                 </tr>
               </thead>
               <tbody>
@@ -866,6 +866,406 @@
       </section>
     </main>
 
+
+    <main class="page work-page" id="dashboard-page" hidden>
+      <section class="work-section" aria-labelledby="dashboard-title">
+        <div class="work-section-head work-rise" style="--rise: 0">
+          <h1 id="dashboard-title">Dashboard</h1>
+          <span class="soft-badge soft-neutral"><span class="soft-badge-label" id="dashboard-count">30</span></span>
+        </div>
+        <div class="work-filters dashboard-filters work-rise" data-dashboard-filters style="--rise: 1">
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="type" data-dashboard-filter="type" value="All types" data-default="All types" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Type">
+              <span class="select-trigger-label">All types</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All types" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All types</span></button><button type="button" role="option" class="activity-filter-option" data-value="Administrative" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Administrative</span></button><button type="button" role="option" class="activity-filter-option" data-value="Clinical review" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Clinical review</span></button><button type="button" role="option" class="activity-filter-option" data-value="Follow up" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Follow up</span></button><button type="button" role="option" class="activity-filter-option" data-value="Provider" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Provider</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="status" data-dashboard-filter="status" value="All statuses" data-default="All statuses" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Status">
+              <span class="select-trigger-label">All statuses</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All statuses" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All statuses</span></button><button type="button" role="option" class="activity-filter-option" data-value="In Progress" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">In Progress</span></button><button type="button" role="option" class="activity-filter-option" data-value="Not started" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Not started</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="assignee" data-dashboard-filter="assignee" value="All assignees" data-default="All assignees" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Assignee">
+              <span class="select-trigger-label">All assignees</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All assignees" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All assignees</span></button><button type="button" role="option" class="activity-filter-option" data-value="—" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">—</span></button><button type="button" role="option" class="activity-filter-option" data-value="Dr. Amy March, MD" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Dr. Amy March, MD</span></button><button type="button" role="option" class="activity-filter-option" data-value="Dr. Julianna Chen, MD" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Dr. Julianna Chen, MD</span></button><button type="button" role="option" class="activity-filter-option" data-value="Dr. Marcus Hale, MD" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Dr. Marcus Hale, MD</span></button><button type="button" role="option" class="activity-filter-option" data-value="Lila George" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Lila George</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="customer" data-dashboard-filter="customer" value="All customers" data-default="All customers" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Customer">
+              <span class="select-trigger-label">All customers</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All customers" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All customers</span></button><button type="button" role="option" class="activity-filter-option" data-value="Included Health" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Included Health</span></button><button type="button" role="option" class="activity-filter-option" data-value="VPC with PCP Choice" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">VPC with PCP Choice</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="priority" data-dashboard-filter="priority" value="All priorities" data-default="All priorities" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Priority">
+              <span class="select-trigger-label">All priorities</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All priorities" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All priorities</span></button><button type="button" role="option" class="activity-filter-option" data-value="Low" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Low</span></button><button type="button" role="option" class="activity-filter-option" data-value="Routine" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Routine</span></button><button type="button" role="option" class="activity-filter-option" data-value="Urgent" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Urgent</span></button>
+            </div>
+          </div>
+          <button class="dashboard-save" type="button">Save default filter</button>
+          <button class="button button-secondary" type="button" data-dashboard-clear>Clear</button>
+          <button class="button button-primary" type="button" data-dashboard-apply>Apply</button>
+        </div>
+        <div class="work-meta work-rise" style="--rise: 2">
+          <span id="dashboard-results">30 results</span>
+          <button class="work-refresh" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 12a8 8 0 1 1-2.2-5.5"/><path d="M20 4v5h-5"/></svg>
+            Refresh List
+          </button>
+          <label class="work-past-due-toggle">
+            <input type="checkbox" id="dashboard-past-due" />
+            <i class="activity-filter-check" aria-hidden="true"></i>
+            <span>Past due</span>
+          </label>
+        </div>
+        <div class="work-card work-rise" style="--rise: 3">
+          <div class="work-table-wrap">
+            <table class="work-table dashboard-table">
+              <thead>
+                <tr>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="0">Priority<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="1">Type<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="2">Member<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="3">Customer<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="4">Assignee<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="5">Status<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="6" data-sort-type="date">Created On<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="7" data-sort-type="date">Due Date<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Provider</td>
+                  <td>Linda Ih4ihbelcher</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>1/08/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>1/13/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Follow up</td>
+                  <td>Larry Johnston</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Lila George</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>2/10/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>2/14/26</span></td>
+                </tr>
+                <tr>
+                  <td>—</td>
+                  <td>Follow up</td>
+                  <td>Larry Johnston</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Julianna Chen, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>4/22/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>4/30/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Administrative</td>
+                  <td>Bob Ih4ihbelcher</td>
+                  <td>Included Health</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>8/12/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>8/12/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Administrative</td>
+                  <td>Bob Ih4ihbelcher</td>
+                  <td>Included Health</td>
+                  <td>Dr. Marcus Hale, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>8/13/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>8/13/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Clinical review</td>
+                  <td>Maya Chen</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>10/02/26</td>
+                  <td>11/20/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Follow up</td>
+                  <td>Riley Smith</td>
+                  <td>Included Health</td>
+                  <td>Lila George</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>10/18/26</td>
+                  <td>11/28/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Provider</td>
+                  <td>Jordan Lee</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>9/30/26</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Clinical review</td>
+                  <td>Noah Patel</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>6/14/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>7/02/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Follow up</td>
+                  <td>Amara Okonkwo</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Julianna Chen, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>9/04/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>9/18/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Provider</td>
+                  <td>Elena Vargas</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>9/20/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>10/01/26</span></td>
+                </tr>
+                <tr>
+                  <td>—</td>
+                  <td>Administrative</td>
+                  <td>Alex Rivera</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Marcus Hale, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>10/08/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>10/22/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Follow up</td>
+                  <td>Priya Shah</td>
+                  <td>Included Health</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>10/15/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>11/01/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Clinical review</td>
+                  <td>Sam Okada</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>10/28/26</td>
+                  <td>11/18/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Provider</td>
+                  <td>Chris Nguyen</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Lila George</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>11/02/26</td>
+                  <td>11/24/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Follow up</td>
+                  <td>Dana Brooks</td>
+                  <td>Included Health</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>11/05/26</td>
+                  <td>12/02/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Administrative</td>
+                  <td>Owen Clark</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>8/03/26</td>
+                  <td>12/09/26</td>
+                </tr>
+                <tr>
+                  <td>—</td>
+                  <td>Clinical review</td>
+                  <td>Maya Chen</td>
+                  <td>Included Health</td>
+                  <td>Dr. Julianna Chen, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>7/19/26</td>
+                  <td>12/16/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Provider</td>
+                  <td>Riley Smith</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>5/11/26</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Follow up</td>
+                  <td>Jordan Lee</td>
+                  <td>Included Health</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>3/22/26</td>
+                  <td>11/12/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Administrative</td>
+                  <td>Linda Ih4ihbelcher</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Marcus Hale, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>4/09/26</td>
+                  <td>11/30/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Clinical review</td>
+                  <td>Bob Ih4ihbelcher</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>1/27/26</td>
+                  <td>12/04/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Follow up</td>
+                  <td>Larry Johnston</td>
+                  <td>Included Health</td>
+                  <td>Lila George</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>2/16/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>8/04/26</span></td>
+                </tr>
+                <tr>
+                  <td>—</td>
+                  <td>Provider</td>
+                  <td>Noah Patel</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>6/30/26</td>
+                  <td>12/22/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Administrative</td>
+                  <td>Amara Okonkwo</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>8/21/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>9/09/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Clinical review</td>
+                  <td>Elena Vargas</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Julianna Chen, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>9/12/26</td>
+                  <td>1/08/27</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Follow up</td>
+                  <td>Alex Rivera</td>
+                  <td>Included Health</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>10/06/26</td>
+                  <td>12/18/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Provider</td>
+                  <td>Priya Shah</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>11/01/26</td>
+                  <td>1/15/27</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Administrative</td>
+                  <td>Sam Okada</td>
+                  <td>Included Health</td>
+                  <td>Dr. Marcus Hale, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>7/07/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>11/06/26</span></td>
+                </tr>
+                <tr>
+                  <td>—</td>
+                  <td>Follow up</td>
+                  <td>Chris Nguyen</td>
+                  <td>Included Health</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>8/28/26</td>
+                  <td>12/11/26</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="work-pager work-pager--live work-rise" id="dashboard-pager" style="--rise: 4">
+          <div class="work-pages" id="dashboard-pages" aria-label="Pagination"></div>
+          <div class="work-page-size">
+            Show items
+            <button class="work-page-size-select" type="button" aria-label="Show items">
+              12
+              <svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
     <div class="nav-drawer-layer" id="nav-drawer-layer" aria-hidden="true">
       <button class="nav-drawer-scrim" type="button" aria-label="Close menu"></button>
       <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
@@ -876,7 +1276,7 @@
           </button>
         </header>
         <div class="nav-drawer-links">
-          <a href="#">Dashboard</a>
+          <a href="#dashboard" data-nav="dashboard">Dashboard</a>
           <a class="is-active" href="#my-work" data-nav="work" aria-current="page">My Work</a>
           <a href="#">Schedule</a>
           <a href="#">Search</a>
@@ -899,6 +1299,6 @@
     </div>
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
     <script src="chat-engine.js?v=mode-trigger-1"></script>
-    <script src="app.js?v=past-due-checkbox-1"></script>
+    <script src="app.js?v=dashboard-defaults-1"></script>
   </body>
 </html>

@@ -6756,6 +6756,9 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
 .work-table th:first-child { border-radius: 12px 0 0 12px; }
 .work-table th:last-child { border-radius: 0 12px 12px 0; }
 /* Gap under the header bar sits outside the 53px row pitch. */
+.work-table tbody tr.is-out {
+  visibility: collapse;
+}
 .work-table tbody tr:first-child td {
   height: 69px;
   border-top: 16px solid transparent;
@@ -6787,11 +6790,25 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   padding: 0;
   background: transparent;
   cursor: pointer;
-  font: inherit;
+  color: var(--text-secondary);
+  font: 500 12px/16px "Figtree", system-ui, sans-serif;
 }
 .work-table th .work-sort:hover,
 .work-table th .work-sort.is-sorted { color: var(--text-primary); }
-.work-sort .work-chevron[hidden] { display: none; }
+.work-sort-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  flex: 0 0 12px;
+  color: var(--icon-tertiary);
+}
+.work-table th .work-sort.is-sorted .work-sort-icon { color: var(--text-primary); }
+.work-sort-glyph { display: block; }
+.work-sort-glyph--up,
+.work-sort.is-asc .work-sort-glyph--down { display: none; }
+.work-sort.is-asc .work-sort-glyph--up { display: block; }
 .work-chevron {
   width: 12px;
   height: 12px;
@@ -6815,6 +6832,21 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
+}
+.dashboard-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: var(--brand);
+  font: 600 14px/20px "Figtree", system-ui, sans-serif;
+  cursor: pointer;
+}
+.dashboard-save:disabled {
+  color: var(--text-tertiary);
+  cursor: default;
 }
 .work-filters[hidden],
 .work-pager[hidden] { display: none; }
@@ -6863,6 +6895,11 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
 .work-filters .select-trigger span { font-weight: 400; }
 .work-filters .select-menu { min-width: 100%; }
 .work-filters .button { flex: 0 0 auto; }
+.work-filters > .button-secondary { margin-left: auto; }
+.work-filters.dashboard-filters .select-wrap {
+  flex: 1 1 160px;
+  max-width: 220px;
+}
 .work-meta {
   display: flex;
   align-items: center;
@@ -6894,7 +6931,7 @@ html[data-color-mode="dark"] .select-menu.activity-filter-menu button.activity-f
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 40px;
+  height: 20px;
   flex: 0 0 auto;
   margin: 0;
   color: var(--text-primary);

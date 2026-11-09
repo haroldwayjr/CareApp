@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Floppy-Disk--Streamline-Streamline-3.0">
+  <desc>
+    Floppy Disk Streamline Icon: https://streamlinehq.com
+  </desc>
+  <g>
+    <path d="M22 0H5.91A2 2 0 0 0 4.5 0.59L0.59 4.5A2 2 0 0 0 0 5.91V22a2 2 0 0 0 2 2h20a2 2 0 0 0 2 -2V2a2 2 0 0 0 -2 -2Zm-3.5 2a0.5 0.5 0 0 1 0.5 0.5v4A1.5 1.5 0 0 1 17.5 8h-10A1.5 1.5 0 0 1 6 6.5v-4a0.5 0.5 0 0 1 0.5 -0.5ZM5 22a0.5 0.5 0 0 1 -0.5 -0.5v-8A1.5 1.5 0 0 1 6 12h13a1.5 1.5 0 0 1 1.5 1.5v8a0.5 0.5 0 0 1 -0.5 0.5Z" fill="#0F1828" stroke-width="1"></path>
+    <path d="M15 4.25v1.5a0.75 0.75 0 0 0 1.5 0v-1.5a0.75 0.75 0 0 0 -1.5 0Z" fill="#0F1828" stroke-width="1"></path>
+    <path d="M7 16.25h6.5a0.75 0.75 0 0 0 0 -1.5H7a0.75 0.75 0 0 0 0 1.5Z" fill="#0F1828" stroke-width="1"></path>
+    <path d="M7 20.25h11a0.75 0.75 0 0 0 0 -1.5H7a0.75 0.75 0 0 0 0 1.5Z" fill="#0F1828" stroke-width="1"></path>
+  </g>
+</svg>

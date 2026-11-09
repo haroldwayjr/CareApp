@@ -1,0 +1,127 @@
+[
+  {
+    "name": "eye-health",
+    "category": "health",
+    "placedOnNodeId": "49:1379"
+  },
+  {
+    "name": "eye-off",
+    "category": "status",
+    "placedOnNodeId": "49:1433"
+  },
+  {
+    "name": "face-id",
+    "category": "misc",
+    "placedOnNodeId": "49:1391"
+  },
+  {
+    "name": "factory",
+    "category": "misc",
+    "placedOnNodeId": "49:1400"
+  },
+  {
+    "name": "family-care",
+    "category": "health",
+    "placedOnNodeId": "49:1427"
+  },
+  {
+    "name": "faq",
+    "category": "files",
+    "placedOnNodeId": "49:1383"
+  },
+  {
+    "name": "file",
+    "category": "files",
+    "placedOnNodeId": "49:1424"
+  },
+  {
+    "name": "file-code",
+    "category": "files",
+    "placedOnNodeId": "49:1411"
+  },
+  {
+    "name": "fingerprint",
+    "category": "misc",
+    "placedOnNodeId": "49:1474"
+  },
+  {
+    "name": "fire",
+    "category": "misc",
+    "placedOnNodeId": "49:1494"
+  },
+  {
+    "name": "cut",
+    "category": "actions",
+    "placedOnNodeId": "49:1225"
+  },
+  {
+    "name": "database",
+    "category": "files",
+    "placedOnNodeId": "49:1205"
+  },
+  {
+    "name": "delete",
+    "category": "actions",
+    "placedOnNodeId": "49:1230"
+  },
+  {
+    "name": "desktop",
+    "category": "misc",
+    "placedOnNodeId": "49:1198"
+  },
+  {
+    "name": "discount",
+    "category": "commerce",
+    "placedOnNodeId": "49:1174"
+  },
+  {
+    "name": "discover",
+    "category": "actions",
+    "placedOnNodeId": "49:1189"
+  },
+  {
+    "name": "dna",
+    "category": "health",
+    "placedOnNodeId": "49:1216"
+  },
+  {
+    "name": "doctor",
+    "category": "health",
+    "placedOnNodeId": "49:1179"
+  },
+  {
+    "name": "document",
+    "category": "files",
+    "placedOnNodeId": "49:1233"
+  },
+  {
+    "name": "dollar",
+    "category": "commerce",
+    "placedOnNodeId": "49:1235"
+  },
+  {
+    "name": "dosage",
+    "category": "health",
+    "placedOnNodeId": "49:1266"
+  },
+  {
+    "name": "download",
+    "category": "actions",
+    "placedOnNodeId": "49:1252"
+  },
+  {
+    "name": "draft",
+    "category": "actions",
+    "placedOnNodeId": "49:1255"
+  },
+  {
+    "name": "drag",
+    "category": "navigation",
+    "placedOnNodeId": "49:1246"
+  },
+  {
+    "name": "drawer",
+    "category": "files",
+    "placedOnNodeId": "49:1250"
+  }
+]

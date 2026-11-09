@@ -1,0 +1,13 @@
+const page = figma.root.children.find(p => /Icons/i.test(p.name));
+await figma.setCurrentPageAsync(page);
+await figma.loadFontAsync({ family: "Inter", style: "Regular" });
+const name = "__sb15_8";
+let t = page.findOne(n => n.type === "TEXT" && n.name === name);
+if (!t) {
+  t = figma.createText();
+  t.name = name;
+  t.visible = false;
+  page.appendChild(t);
+}
+t.characters = "MFptNi45MyA4LjIgLTYuODUgOS4yOWExIDEgMCAwIDEgLTEuNDMgMC4xOWwtNC44OSAtMy45MWExIDEgMCAwIDEgLTAuMTUgLTEuNDFBMSAxIDAgMCAxIDcgMTIuMjFsNC4wOCAzLjI2TDE3LjMyIDdhMSAxIDAgMCAxIDEuMzkgLTAuMjEgMSAxIDAgMCAxIDAuMjIgMS40MVpcIiBmaWxsPVwiIzAwMDAwMFwiIHN0cm9rZS13aWR0aD1cIjFcIj48L3BhdGg+XG48L3N2Zz4ifV07CmxldCBvayA9IDAsIG1pc3NpbmcgPSAwLCBmYWlsZWQgPSAwOwpjb25zdCBtaXNzID0gW10sIGZhaWwgPSBbXTsKZm9yIChjb25zdCBpdGVtIG9mIEJBVENIKSB7CiAgY29uc3Qgc2V0ID0gcGFnZS5maW5kT25lKG4gPT4gbi50eXBlID09PSAnQ09NUE9ORU5UX1NFVCcgJiYgbi5uYW1lID09PSBpdGVtLnNldE5hbWUpOwogIGlmICghc2V0KSB7IG1pc3NpbmcrKzsgaWYgKG1pc3MubGVuZ3RoIDwgNSkgbWlzcy5wdXNoKGl0ZW0uc2V0TmFtZSk7IGNvbnRpbnVlOyB9CiAgdHJ5IHsKICAgIGNvbnN0IHIgPSBhcHBseUJvbGRYcyhzZXQsIGl0ZW0uc3ZnKTsKICAgIGlmIChyLm9rKSBvaysrOyBlbHNlIHsgZmFpbGVkKys7IGZhaWwucHVzaCh7IG5hbWU6IGl0ZW0uc2V0TmFtZSwgciB9KTsgfQogIH0gY2F0Y2ggKGUpIHsKICAgIGZhaWxlZCsrOwogICAgaWYgKGZhaWwubGVuZ3RoIDwgNSkgZmFpbC5wdXNoKHsgbmFtZTogaXRlbS5zZXROYW1lLCBlcnI6IFN0cmluZyhlKSB9KTsKICB9Cn0KcmV0dXJuIHsgb2ssIG1pc3NpbmcsIGZhaWxlZCwgbWlzcywgZmFpbCB9Owo=";
+return { name, len: t.characters.length, id: t.id };

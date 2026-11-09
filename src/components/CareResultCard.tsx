@@ -16,24 +16,27 @@ import { formatProviderCopyText } from '../utils/formatProviderCopyText'
 const CHIP_SUCCESS = {
   bgcolor: '#EFFDF0',
   color: '#045623',
-  border: '1px solid #B7EFBC',
+  border: 'none',
 } as const
 
 const CHIP_ERROR = {
   bgcolor: '#FEECEC',
   color: '#D13238',
+  border: 'none',
 } as const
 
-const CHIP_WARNING = {
-  bgcolor: '#FDF9E1',
-  color: '#524200',
-  border: '1px solid #F4E392',
+/** Soft Standard — Care App MUI `warning` (image 4 / text.warning). */
+const CHIP_STANDARD = {
+  bgcolor: '#fff4e5',
+  color: '#9a3412',
+  border: 'none',
 } as const
 
-const CHIP_BRAND = {
-  bgcolor: '#F2F5FF',
-  color: '#002380',
-  border: '1px solid #C3DAFF',
+/** Soft Preferred — Care App MUI `secondary.soft` (#f3e5f5 / purple/50). */
+const CHIP_PREFERRED = {
+  bgcolor: 'secondary.soft',
+  color: 'secondary.dark',
+  border: 'none',
 } as const
 
 type ChipTone = {
@@ -72,8 +75,9 @@ type NetworkIconVariant = 'solid' | 'outline' | 'error' | 'warning'
 
 function NetworkStatusIcon({ variant }: { variant: NetworkIconVariant }) {
   const filled = variant === 'solid' || variant === 'error'
+  const isError = variant === 'error'
   const color =
-    variant === 'error' ? '#B71C1C' : variant === 'warning' ? '#E65100' : '#1B5E20'
+    isError ? '#B71C1C' : variant === 'warning' ? '#E65100' : '#1B5E20'
 
   return (
     <Box
@@ -95,7 +99,26 @@ function NetworkStatusIcon({ variant }: { variant: NetworkIconVariant }) {
         flexShrink: 0,
       }}
     >
-      {variant === 'error' ? '×' : '✓'}
+      {isError ? (
+        <svg width="9" height="9" viewBox="0 0 12 12" fill="none">
+          <path
+            d="M2.75 2.75 9.25 9.25M9.25 2.75 2.75 9.25"
+            stroke="currentColor"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+          />
+        </svg>
+      ) : (
+        <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
+          <path
+            d="M2.4 6.2 4.9 8.7 9.6 3.4"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      )}
     </Box>
   )
 }
@@ -128,7 +151,7 @@ function getNetworkChip(
   switch (status) {
     case 'in_network_tier_1':
     case 'in_network_tier_2':
-      return { label: 'In network', tone: CHIP_SUCCESS, icon: 'solid' }
+      return { label: 'In-network', tone: CHIP_SUCCESS, icon: 'solid' }
     case 'out_of_network':
       return { label: 'Out of network', tone: CHIP_ERROR, icon: 'error' }
     default:
@@ -167,7 +190,7 @@ export function CareResultCard({
       result.networkStatus === 'in_network_tier_2')
       ? null
       : rawNetworkChip
-  const tierChipTone = isPreferred ? CHIP_BRAND : CHIP_WARNING
+  const tierChipTone = isPreferred ? CHIP_PREFERRED : CHIP_STANDARD
   const tierPrefix = isPreferred ? 'Preferred Provider:' : 'Standard Provider:'
 
   async function handleCopyName(event: MouseEvent) {
@@ -189,8 +212,10 @@ export function CareResultCard({
       }}
       sx={{
         p: 2,
-        borderColor: highlighted ? 'primary.main' : 'divider',
-        bgcolor: highlighted ? 'action.hover' : 'background.paper',
+        borderRadius: '8px',
+        borderColor: inList || highlighted ? 'primary.main' : 'divider',
+        // Checkbox selection: blue outline only. Map/overview highlight keeps soft fill.
+        bgcolor: highlighted && !inList ? 'action.hover' : 'background.paper',
         cursor: 'pointer',
       }}
     >
@@ -288,93 +313,82 @@ export function CareResultCard({
               sx={{ p: 0.5, mt: -0.5, flexShrink: 0 }}
             />
           </Stack>
-        </Box>
-      </Stack>
 
-      <Box sx={{ pl: '57px', mt: 1.5 }}>
-        <Stack
-          direction="row"
-          spacing={1}
-          useFlexGap
-          sx={{
-            flexWrap: 'wrap',
-            alignItems: 'baseline',
-            justifyContent: 'space-between',
-            rowGap: 0.25,
-          }}
-        >
-          <Typography
-            component="span"
-            sx={{
-              fontSize: 14,
-              fontWeight: 600,
-              letterSpacing: 0,
-              color: 'text.primary',
-            }}
+          <Stack
+            direction="row"
+            spacing={1}
+            useFlexGap
+            sx={{ flexWrap: 'wrap', mt: 1 }}
           >
-            {result.group}
-            <Typography
-              component="span"
-              sx={{
-                fontWeight: 400,
-                color: 'text.secondary',
-              }}
-            >
-              {' '}
-              {result.address}
-            </Typography>
-          </Typography>
-          <Typography
-            component="span"
-            sx={{
-              fontSize: 14,
-              fontWeight: 600,
-              letterSpacing: 0,
-              color: 'text.primary',
-              flexShrink: 0,
-            }}
-          >
-            {Math.round(result.distanceMiles)} mi
-          </Typography>
-        </Stack>
-
-        <Link
-          href={`tel:${result.phone}`}
-          underline="always"
-          onClick={(event) => event.stopPropagation()}
-          sx={{
-            display: 'inline-block',
-            mt: 0.5,
-            fontSize: 14,
-            letterSpacing: 0,
-          }}
-        >
-          {result.phone}
-        </Link>
-
-        <Stack
-          direction="row"
-          spacing={1}
-          useFlexGap
-          sx={{ flexWrap: 'wrap', mt: 1.5 }}
-        >
-          {networkChip ? (
             <Chip
               size="small"
-              icon={<NetworkStatusIcon variant={networkChip.icon} />}
-              label={networkChip.label}
-              sx={{ ...chipSx, ...networkChip.tone }}
+              {...(isPreferred
+                ? {
+                    icon: (
+                      <Box
+                        component="img"
+                        src={verificationBadge}
+                        alt=""
+                        aria-hidden
+                        sx={{ width: 14, height: 14 }}
+                      />
+                    ),
+                  }
+                : {})}
+              label={
+                <TierCopayChipLabel prefix={tierPrefix} copay={result.copay} />
+              }
+              sx={{ ...chipSx, ...tierChipTone }}
             />
-          ) : null}
-          <Chip
-            size="small"
-            label={
-              <TierCopayChipLabel prefix={tierPrefix} copay={result.copay} />
-            }
-            sx={{ ...chipSx, ...tierChipTone }}
-          />
-        </Stack>
-      </Box>
+            {networkChip ? (
+              <Chip
+                size="small"
+                icon={<NetworkStatusIcon variant={networkChip.icon} />}
+                label={networkChip.label}
+                sx={{ ...chipSx, ...networkChip.tone }}
+              />
+            ) : null}
+          </Stack>
+
+          <Typography
+            component="p"
+            sx={{
+              m: 0,
+              mt: 1.5,
+              fontSize: 14,
+              letterSpacing: 0,
+              lineHeight: 1.4,
+              color: 'text.primary',
+            }}
+          >
+            <Box component="span" sx={{ fontWeight: 600 }}>
+              {result.group}
+            </Box>
+            <Box component="span" sx={{ fontWeight: 400, color: 'text.secondary' }}>
+              {' '}
+              {result.address}
+            </Box>
+            <Box component="span" sx={{ fontWeight: 400, color: 'text.secondary' }}>
+              {' '}
+              • {Math.round(result.distanceMiles)} mi
+            </Box>
+          </Typography>
+
+          <Link
+            href={`tel:${result.phone}`}
+            underline="always"
+            onClick={(event) => event.stopPropagation()}
+            sx={{
+              display: 'inline-block',
+              mt: 0.5,
+              fontSize: 14,
+              letterSpacing: 0,
+            }}
+          >
+            {result.phone}
+          </Link>
+        </Box>
+      </Stack>
     </Paper>
   )
 }

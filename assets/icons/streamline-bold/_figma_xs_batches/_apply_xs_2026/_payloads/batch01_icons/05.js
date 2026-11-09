@@ -1,0 +1,59 @@
+
+const page = await figma.getNodeByIdAsync('9:13081');
+await figma.setCurrentPageAsync(page);
+const colorVar = await figma.variables.getVariableByIdAsync('VariableID:34:2');
+const FILL = { r: 0.062745, g: 0.094118, b: 0.156863 };
+function paint(node) {
+  node.fills = [figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: FILL }, 'color', colorVar)];
+  node.strokes = [];
+}
+function bindFills(root) {
+  const stack = [root];
+  while (stack.length) {
+    const n = stack.pop();
+    if ('constraints' in n) n.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    if (n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION' || n.type === 'ELLIPSE' || n.type === 'STAR' || n.type === 'POLYGON') paint(n);
+    if ('clipsContent' in n && n.type === 'FRAME') n.clipsContent = false;
+    if ('children' in n) for (const c of n.children) stack.push(c);
+  }
+}
+function applyBoldXs(set, svg) {
+  const xs = set.children.find(c => c.name === 'Size=xs');
+  if (!xs) return { ok: false, reason: 'no-xs' };
+  for (const c of [...xs.children]) c.remove();
+  const node = figma.createNodeFromSvg(svg);
+  node.name = set.name.split('/').pop() + ' · bold';
+  try { node.resize(16, 16); } catch (e) {}
+  node.x = 0; node.y = 0;
+  node.clipsContent = false;
+  if ('constraints' in node) node.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+  xs.appendChild(node);
+  bindFills(node);
+  try { xs.resizeWithoutConstraints(16, 16); } catch (e) { try { xs.resize(16, 16); } catch (e2) {} }
+  xs.clipsContent = false;
+  xs.visible = true;
+  for (const v of set.children) v.visible = true;
+  set.clipsContent = true;
+  set.counterAxisAlignItems = 'MIN';
+  set.primaryAxisAlignItems = 'MIN';
+  if (set.layoutMode !== 'NONE') {
+    set.primaryAxisSizingMode = 'FIXED';
+    set.counterAxisSizingMode = 'FIXED';
+  }
+  set.resize(16, 16);
+  try { set.layoutSizingHorizontal = 'FIXED'; set.layoutSizingVertical = 'FIXED'; } catch (e) {}
+  return { ok: true };
+}
+
+const BATCH = [{"setName": "icon/health/hipaa", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\"> <path fill=\"#000000\" d=\"M12.0059 0.00195312C15.1007 -0.0258205 18.1707 0.534368 21.0527 1.65234l0.5743 0.23145 0.0039 0.00098c0.4047 0.1718 0.7508 0.45895 0.9941 0.82519 0.2432 0.36615 0.3735 0.7958 0.375 1.23535V11.459c-0.0305 2.6171 -0.865 5.1617 -2.3896 7.289 -1.5227 2.1246 -3.6606 3.7301 -6.125 4.6006l0.0009 0.001 -1.0937 0.4033 -0.002 0.001c-0.8977 0.3296 -1.8835 0.3296 -2.7812 0l-0.002 -0.001 -1.09373 -0.4033v-0.001c-2.46406 -0.8706 -4.60154 -2.4763 -6.12402 -4.6006C1.86502 16.6207 1.03049 14.0761 1 11.459V3.94531l0.00684 -0.16406c0.02928 -0.38173 0.15533 -0.75086 0.36816 -1.07129 0.24329 -0.36624 0.58941 -0.65339 0.99414 -0.82519l0.00391 -0.00098C5.41956 0.612221 8.69216 -0.028514 11.9932 0.000976562c0.0022 -0.000021589 0.0045 0.000997288 0.0068 0.000976558 0.0023 0.00002073 0.0046 -0.000998147 0.0068 -0.000976558zM8.53711 11.0576c-0.28024 -0.116 -0.60291 -0.0514 -0.81738 0.1631l-2.5 2.5c-0.2929 0.2929 -0.29289 0.7677 0 1.0605l2.5 2.5c0.21448 0.2145 0.53714 0.2792 0.81738 0.1631 0.28025 -0.1161 0.46289 -0.39 0.46289 -0.6933v-1.75h9.25c0.4142 0 0.75 -0.3358 0.75 -0.75s-0.3358 -0.75 -0.75 -0.75H9v-1.75c0 -0.3034 -0.18264 -0.5773 -0.46289 -0.6934m7.74319 -6.3369c-0.2145 -0.21447 -0.5372 -0.27912 -0.8174 -0.16308 -0.2803 0.11608 -0.4629 0.39001 -0.4629 0.69336v1.75H5.75c-0.41421 0 -0.75 0.33579 -0.75 0.75s0.33579 0.75 0.75 0.75H15V10.251c0 0.3033 0.1826 0.5772 0.4629 0.6933 0.2802 0.1161 0.6029 0.0514 0.8174 -0.1631l2.5 -2.49995c0.2929 -0.29289 0.2929 -0.76765 0 -1.06055z\" stroke-width=\"1\"></path> </svg>"}];
+;
+let ok=0, missing=0, failed=0; const miss=[], fail=[];
+for (const item of BATCH) {
+  const set = figma.currentPage.findOne(n => n.type === 'COMPONENT_SET' && n.name === item.setName);
+  if (!set) { missing++; if (miss.length<8) miss.push(item.setName); continue; }
+  try {
+    const r = applyBoldXs(set, item.svg);
+    if (r.ok) ok++; else { failed++; fail.push({name:item.setName,r}); }
+  } catch(e) { failed++; if (fail.length<8) fail.push({name:item.setName,err:String(e)}); }
+}
+return { ok, missing, failed, miss, fail };

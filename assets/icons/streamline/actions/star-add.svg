@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Rating-Star-Add--Streamline-Streamline-3.0">
+  <desc>
+    Rating Star Add Streamline Icon: https://streamlinehq.com
+  </desc>
+  <defs></defs>
+  <title>rating-star-add</title>
+  <path d="M11.25 17.25a6 6 0 1 0 12 0 6 6 0 1 0 -12 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m17.25 14.25 0 6" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m14.25 17.25 6 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m22.732 10.112 0.278 -0.275a0.805 0.805 0 0 0 -0.5 -1.374l-6.44 -0.638L12.729 1.2a0.819 0.819 0 0 0 -1.458 0L7.925 7.825l-6.44 0.638a0.805 0.805 0 0 0 -0.5 1.374l5.3 5.253 -1.956 7.138a0.813 0.813 0 0 0 1.151 0.935l3.737 -1.851" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>

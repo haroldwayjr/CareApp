@@ -1,0 +1,82 @@
+[
+  {
+    "name": "presentation",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vGpu2aEeLjEi8ZjK",
+    "streamlineName": "Presentation",
+    "score": 239.4,
+    "path": "comms/presentation.svg"
+  },
+  {
+    "name": "meeting",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vKEW2aEeLjJttS12",
+    "streamlineName": "Meeting Remote",
+    "score": 252.3,
+    "path": "comms/meeting.svg"
+  },
+  {
+    "name": "file",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vPrV2aE6nlfvjl02",
+    "streamlineName": "Common File Book",
+    "score": 315.2,
+    "path": "files/file.svg"
+  },
+  {
+    "name": "file-text",
+    "category": "files",
+    "hash": "ico_mRu4pQJ4vutn2aE6nljUAQ1c",
+    "streamlineName": "Common File Text",
+    "score": 315.2,
+    "path": "files/file-text.svg"
+  },
+  {
+    "name": "bank",
+    "category": "commerce",
+    "hash": "ico_Gv5P1VGfOVoWF8I1",
+    "streamlineName": "Blood Bank",
+    "score": 302.5,
+    "path": "commerce/bank.svg"
+  },
+  {
+    "name": "piggy-bank",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4v9He2aEgWagWaZoI",
+    "streamlineName": "Saving Piggy Bank",
+    "score": 265.15,
+    "path": "commerce/piggy-bank.svg"
+  },
+  {
+    "name": "coins",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vJMt2aEgWa49r9Ov",
+    "streamlineName": "Accounting Coins",
+    "score": 252.2,
+    "path": "commerce/coins.svg"
+  },
+  {
+    "name": "chart-line",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vWvQ2aEeLjfSZ0EG",
+    "streamlineName": "Analytics Graph",
+    "score": 252.25,
+    "path": "commerce/chart-line.svg"
+  },
+  {
+    "name": "chart-bar",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vEeq2aEeLjfSZCPM",
+    "streamlineName": "Analytics Bars",
+    "score": 252.3,
+    "path": "commerce/chart-bar.svg"
+  },
+  {
+    "name": "heart",
+    "category": "health",
+    "hash": "ico_6K5fj7KvSHFDSDVz",
+    "streamlineName": "Heart Approve 1",
+    "score": 315.25,
+    "path": "health/heart.svg"
+  }
+]

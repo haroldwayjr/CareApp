@@ -1,0 +1,983 @@
+{
+  "resolved": {
+    "waiting-room": {
+      "name": "waiting-room",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4v8CIeLjK1iy7qxrJ",
+      "streamlineName": "Waiting Room Lamp",
+      "setSlug": "streamline-regular",
+      "score": 130.15,
+      "query": "Waiting Room"
+    },
+    "bed": {
+      "name": "bed",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vIUUeLj9UL9ULtZu",
+      "streamlineName": "Hospital Bedroom",
+      "setSlug": "streamline-regular",
+      "score": 122.2,
+      "query": "Hospital Bed"
+    },
+    "sign-language": {
+      "name": "sign-language",
+      "category": "health",
+      "hash": "ico_Uq8RqrLRzjcJklPJ",
+      "streamlineName": "Sign Language Love",
+      "setSlug": "streamline-regular",
+      "score": 130.1,
+      "query": "Sign Language"
+    },
+    "hipaa": {
+      "name": "hipaa",
+      "category": "health",
+      "hash": "ico_HL2t8f46SUMX3dQu",
+      "streamlineName": "Firewall Privacy Shield",
+      "setSlug": "streamline-regular",
+      "score": 79.85,
+      "query": "Privacy Shield"
+    },
+    "map-pin": {
+      "name": "map-pin",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vE6HeLjvhjK1iliS",
+      "streamlineName": "Pin Location",
+      "setSlug": "streamline-regular",
+      "score": 252.4,
+      "query": "Pin Location"
+    },
+    "globe": {
+      "name": "globe",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vXQ8eLjvhjWGyjAr",
+      "streamlineName": "Earth 1",
+      "setSlug": "streamline-regular",
+      "score": 117.65,
+      "query": "Earth"
+    },
+    "wifi": {
+      "name": "wifi",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vL2P2aEhtdjUABzP",
+      "streamlineName": "Wifi",
+      "setSlug": "streamline-regular",
+      "score": 239.8,
+      "query": "Wifi"
+    },
+    "battery": {
+      "name": "battery",
+      "category": "misc",
+      "hash": "ico_a9UM4da1qk94KNhh",
+      "streamlineName": "Battery Slash No",
+      "setSlug": "streamline-regular",
+      "score": 155.2,
+      "query": "Battery"
+    },
+    "sun": {
+      "name": "sun",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vwg7eLj9ULQ3y6nl",
+      "streamlineName": "Uv Sun",
+      "setSlug": "streamline-regular",
+      "score": 67.7,
+      "query": "Sun"
+    },
+    "moon": {
+      "name": "moon",
+      "category": "misc",
+      "hash": "ico_xWMA1OIjiyI4Z5ud",
+      "streamlineName": "Astrology Moon",
+      "setSlug": "streamline-regular",
+      "score": 67.3,
+      "query": "Moon"
+    },
+    "grid": {
+      "name": "grid",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vqFE2aEJttK1ihtd",
+      "streamlineName": "Layout",
+      "setSlug": "streamline-regular",
+      "score": 104.7,
+      "query": "Layout Grid"
+    },
+    "list": {
+      "name": "list",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4v7is2aEDeGNc3tKN",
+      "streamlineName": "List Add",
+      "setSlug": "streamline-regular",
+      "score": 167.6,
+      "query": "List"
+    },
+    "layout": {
+      "name": "layout",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vxfN2aEDeGgWaNei",
+      "streamlineName": "Layout Dashboard",
+      "setSlug": "streamline-regular",
+      "score": 102.2,
+      "query": "Dashboard Layout"
+    },
+    "zoom-in": {
+      "name": "zoom-in",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vUtk2aEDeGsjsaSz",
+      "streamlineName": "Zoom In",
+      "setSlug": "streamline-regular",
+      "score": 302.65,
+      "query": "Zoom In"
+    },
+    "zoom-out": {
+      "name": "zoom-out",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vWg02aEDeGsjsaON",
+      "streamlineName": "Zoom Out",
+      "setSlug": "streamline-regular",
+      "score": 302.6,
+      "query": "Zoom Out"
+    },
+    "wifi-off": {
+      "name": "wifi-off",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4veSZ2aEhtditsgLv",
+      "streamlineName": "Wifi Off",
+      "setSlug": "streamline-regular",
+      "score": 252.6,
+      "query": "Wifi Off"
+    },
+    "bluetooth": {
+      "name": "bluetooth",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vA7OeLjM5py7qSaf",
+      "streamlineName": "Bluetooth",
+      "setSlug": "streamline-regular",
+      "score": 289.55,
+      "query": "Bluetooth"
+    },
+    "battery-low": {
+      "name": "battery-low",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vBKneLjM5pfSZXyC",
+      "streamlineName": "Charging Battery Low 1",
+      "setSlug": "streamline-regular",
+      "score": 117.9,
+      "query": "Battery Low"
+    },
+    "battery-full": {
+      "name": "battery-full",
+      "category": "misc",
+      "hash": "ico_MDocWpy6LC4r16re",
+      "streamlineName": "Battery Full",
+      "setSlug": "streamline-regular",
+      "score": 252.4,
+      "query": "Battery Full"
+    },
+    "battery-charging": {
+      "name": "battery-charging",
+      "category": "misc",
+      "hash": "ico_oAeewFxYAD0J0bsA",
+      "streamlineName": "Battery Charging 2",
+      "setSlug": "streamline-regular",
+      "score": 130.1,
+      "query": "Battery Charging"
+    },
+    "signal": {
+      "name": "signal",
+      "category": "misc",
+      "hash": "ico_T5s2QvkjE3qPHj9W",
+      "streamlineName": "Signal Wave",
+      "setSlug": "streamline-regular",
+      "score": 167.45,
+      "query": "Signal"
+    },
+    "airplane": {
+      "name": "airplane",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4v12q2aEhtditsMeA",
+      "streamlineName": "Airplane Mode",
+      "setSlug": "streamline-regular",
+      "score": 252.35,
+      "query": "Airplane Mode"
+    },
+    "light-mode": {
+      "name": "light-mode",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vvtF2aENc32aE8ue",
+      "streamlineName": "Light Mode Bw",
+      "setSlug": "streamline-regular",
+      "score": 130.35,
+      "query": "Light Mode"
+    },
+    "accessibility": {
+      "name": "accessibility",
+      "category": "misc",
+      "hash": "ico_cYcMbAhdQ2yaurYG",
+      "streamlineName": "Tools Reality Accessibility",
+      "setSlug": "streamline-regular",
+      "score": 54.65,
+      "query": "Accessibility"
+    },
+    "translate": {
+      "name": "translate",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vx6d2aEDeGNc3Cuh",
+      "streamlineName": "Translate",
+      "setSlug": "streamline-regular",
+      "score": 289.55,
+      "query": "Translate"
+    },
+    "language": {
+      "name": "language",
+      "category": "misc",
+      "hash": "ico_a9ZgAVjuETfDT6LZ",
+      "streamlineName": "Language Barrier Confused",
+      "setSlug": "streamline-regular",
+      "score": 154.75,
+      "query": "Language"
+    },
+    "keyboard": {
+      "name": "keyboard",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vO7y2aEhtdZOsdBC",
+      "streamlineName": "Keyboard",
+      "setSlug": "streamline-regular",
+      "score": 289.6,
+      "query": "Keyboard"
+    },
+    "mouse": {
+      "name": "mouse",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vo4k2aEhtdqmIly0",
+      "streamlineName": "Mouse",
+      "setSlug": "streamline-regular",
+      "score": 289.75,
+      "query": "Mouse"
+    },
+    "desktop": {
+      "name": "desktop",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4v3CJ2aEJttNc3ei2",
+      "streamlineName": "Desktop Computer",
+      "setSlug": "streamline-regular",
+      "score": 167.2,
+      "query": "Desktop"
+    },
+    "laptop": {
+      "name": "laptop",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vHK22aEhtdQ3y208",
+      "streamlineName": "Laptop",
+      "setSlug": "streamline-regular",
+      "score": 289.7,
+      "query": "Laptop"
+    },
+    "tablet": {
+      "name": "tablet",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vrGt2aEhtdjHWniS",
+      "streamlineName": "Tablet",
+      "setSlug": "streamline-regular",
+      "score": 289.7,
+      "query": "Tablet"
+    },
+    "smartphone": {
+      "name": "smartphone",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vBaK2aEdzpjHW5ES",
+      "streamlineName": "Smartphone Pay Dollar 2",
+      "setSlug": "streamline-regular",
+      "score": 92.85,
+      "query": "Smartphone"
+    },
+    "watch": {
+      "name": "watch",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vfkX2aEDeGgns7Pi",
+      "streamlineName": "Watch Time",
+      "setSlug": "streamline-regular",
+      "score": 167.5,
+      "query": "Watch"
+    },
+    "printer-alt": {
+      "name": "printer-alt",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vLw82aEhtdiJ40Tt",
+      "streamlineName": "Printer",
+      "setSlug": "streamline-regular",
+      "score": 289.65,
+      "query": "Printer"
+    },
+    "scanner": {
+      "name": "scanner",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vDcq2aEhtdiJ4niE",
+      "streamlineName": "Scanner",
+      "setSlug": "streamline-regular",
+      "score": 289.65,
+      "query": "Scanner"
+    },
+    "projector": {
+      "name": "projector",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vzLX2aEJttn8OXeS",
+      "streamlineName": "Video Projector",
+      "setSlug": "streamline-regular",
+      "score": 67.25,
+      "query": "Projector"
+    },
+    "code": {
+      "name": "code",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4va8g2aE232J4vSJ4",
+      "streamlineName": "Folder Code",
+      "setSlug": "streamline-regular",
+      "score": 117.45,
+      "query": "Code"
+    },
+    "terminal": {
+      "name": "terminal",
+      "category": "misc",
+      "hash": "ico_X9OwiAQAfsrEvPYE",
+      "streamlineName": "Terminal",
+      "setSlug": "streamline-regular",
+      "score": 239.6,
+      "query": "Terminal"
+    },
+    "bug": {
+      "name": "bug",
+      "category": "misc",
+      "hash": "ico_sP5QtJjzwwZXlvjT",
+      "streamlineName": "Catch Bug",
+      "setSlug": "streamline-regular",
+      "score": 67.55,
+      "query": "Bug"
+    },
+    "wrench": {
+      "name": "wrench",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vLMG2aEDeGPvJfLJ",
+      "streamlineName": "Wrench",
+      "setSlug": "streamline-regular",
+      "score": 289.7,
+      "query": "Wrench"
+    },
+    "hammer": {
+      "name": "hammer",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4veCi2aEDeGPvJ73d",
+      "streamlineName": "Hammer",
+      "setSlug": "streamline-regular",
+      "score": 289.7,
+      "query": "Hammer"
+    },
+    "tool": {
+      "name": "tool",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vUw6eLjQ3yjUAx2W",
+      "streamlineName": "Tools Keys",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Tools"
+    },
+    "key": {
+      "name": "key",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4v6dy2aEDeGg0YdsA",
+      "streamlineName": "Key Lock",
+      "setSlug": "streamline-regular",
+      "score": 167.6,
+      "query": "Key"
+    },
+    "fingerprint": {
+      "name": "fingerprint",
+      "category": "misc",
+      "hash": "ico_8mVqr4CCNTI4mxBZ",
+      "streamlineName": "Fingerprint Add",
+      "setSlug": "streamline-regular",
+      "score": 167.25,
+      "query": "Fingerprint"
+    },
+    "face-id": {
+      "name": "face-id",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vA6d2aEDeGwvSRc2",
+      "streamlineName": "Face Id",
+      "setSlug": "streamline-regular",
+      "score": 302.65,
+      "query": "Face Id"
+    },
+    "qr-scan": {
+      "name": "qr-scan",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vgVH2aEDeG8uecqY",
+      "streamlineName": "Iris Scan",
+      "setSlug": "streamline-regular",
+      "score": 117.55,
+      "query": "Scan"
+    },
+    "barcode-scan": {
+      "name": "barcode-scan",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vIAc2aEdzpgWaib6",
+      "streamlineName": "Barcode Scan",
+      "setSlug": "streamline-regular",
+      "score": 302.4,
+      "query": "Barcode Scan"
+    },
+    "camera-off": {
+      "name": "camera-off",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vLm02aENc3JttYOv",
+      "streamlineName": "Controls Camera Off",
+      "setSlug": "streamline-regular",
+      "score": 80.05,
+      "query": "Camera Off"
+    },
+    "flash": {
+      "name": "flash",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4v4Z72aEJttT2FGNT",
+      "streamlineName": "Flash",
+      "setSlug": "streamline-regular",
+      "score": 289.75,
+      "query": "Flash"
+    },
+    "flash-off": {
+      "name": "flash-off",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vMcF2aEJtt49rylB",
+      "streamlineName": "Flash Off",
+      "setSlug": "streamline-regular",
+      "score": 302.55,
+      "query": "Flash Off"
+    },
+    "timer": {
+      "name": "timer",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vkyE2aENc36nlgSw",
+      "streamlineName": "Timer",
+      "setSlug": "streamline-regular",
+      "score": 239.75,
+      "query": "Timer"
+    },
+    "alarm": {
+      "name": "alarm",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vIlB2aEDeG3ziL8i",
+      "streamlineName": "Alarm Bell",
+      "setSlug": "streamline-regular",
+      "score": 167.5,
+      "query": "Alarm"
+    },
+    "stopwatch": {
+      "name": "stopwatch",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vayE2aEDeGYBGLVG",
+      "streamlineName": "Stopwatch",
+      "setSlug": "streamline-regular",
+      "score": 289.55,
+      "query": "Stopwatch"
+    },
+    "history": {
+      "name": "history",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vV6OeLj9ULy7qY5t",
+      "streamlineName": "History Fan",
+      "setSlug": "streamline-regular",
+      "score": 117.45,
+      "query": "History"
+    },
+    "schedule": {
+      "name": "schedule",
+      "category": "misc",
+      "hash": "ico_TBybvuB4vUua0cFx",
+      "streamlineName": "Scheduled Phone Call Calendar 2",
+      "setSlug": "streamline-regular",
+      "score": 60.45,
+      "query": "Schedule"
+    },
+    "weather": {
+      "name": "weather",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vXVleLj4pQdzpi1D",
+      "streamlineName": "Weather Rain",
+      "setSlug": "streamline-regular",
+      "score": 117.4,
+      "query": "Weather"
+    },
+    "cloud-sun": {
+      "name": "cloud-sun",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vmspeLj4pQhtd9Ov",
+      "streamlineName": "Weather Cloud Sun Wind",
+      "setSlug": "streamline-regular",
+      "score": 67.9,
+      "query": "Cloud Sun"
+    },
+    "rain": {
+      "name": "rain",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vFlSeLj4pQNc3bvO",
+      "streamlineName": "Rain Umbrella",
+      "setSlug": "streamline-regular",
+      "score": 117.35,
+      "query": "Rain"
+    },
+    "snow": {
+      "name": "snow",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vknBeLj4pQdzpg3m",
+      "streamlineName": "Weather Snow",
+      "setSlug": "streamline-regular",
+      "score": 67.4,
+      "query": "Snow"
+    },
+    "wind": {
+      "name": "wind",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vTnBeLj9ULQ3yR5q",
+      "streamlineName": "Wind West",
+      "setSlug": "streamline-regular",
+      "score": 117.55,
+      "query": "Wind"
+    },
+    "temperature": {
+      "name": "temperature",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vhbseLj9ULK1ijk1",
+      "streamlineName": "Temperature Up",
+      "setSlug": "streamline-regular",
+      "score": 117.3,
+      "query": "Temperature"
+    },
+    "umbrella": {
+      "name": "umbrella",
+      "category": "misc",
+      "hash": "ico_8mzfd6efEXxX1p9u",
+      "streamlineName": "Umbrella Circle",
+      "setSlug": "streamline-regular",
+      "score": 117.25,
+      "query": "Umbrella"
+    },
+    "coffee": {
+      "name": "coffee",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vY3leLjQ3y2aEpQ8",
+      "streamlineName": "Coffee Jar",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Coffee"
+    },
+    "food": {
+      "name": "food",
+      "category": "misc",
+      "hash": "ico_hVlPXWflk1dDElGL",
+      "streamlineName": "Food Delivery Bag",
+      "setSlug": "streamline-regular",
+      "score": 105.15,
+      "query": "Food"
+    },
+    "car": {
+      "name": "car",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vOa5eLj08UwvSTyj",
+      "streamlineName": "Car",
+      "setSlug": "streamline-regular",
+      "score": 239.85,
+      "query": "Car"
+    },
+    "bus": {
+      "name": "bus",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vvcieLj08U7yVv3X",
+      "streamlineName": "Bus",
+      "setSlug": "streamline-regular",
+      "score": 239.85,
+      "query": "Bus"
+    },
+    "train": {
+      "name": "train",
+      "category": "misc",
+      "hash": "ico_ED2zmmKuth17RU0u",
+      "streamlineName": "Train Location",
+      "setSlug": "streamline-regular",
+      "score": 117.3,
+      "query": "Train"
+    },
+    "bike": {
+      "name": "bike",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vVRdeLj08UinpbRt",
+      "streamlineName": "Bicycle",
+      "setSlug": "streamline-regular",
+      "score": 239.65,
+      "query": "Bicycle"
+    },
+    "parking": {
+      "name": "parking",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vRqbeLj08UgnsSDc",
+      "streamlineName": "Parking P",
+      "setSlug": "streamline-regular",
+      "score": 117.55,
+      "query": "Parking"
+    },
+    "gas": {
+      "name": "gas",
+      "category": "misc",
+      "hash": "ico_8mKP2UMCLovyRyjs",
+      "streamlineName": "Gas Station",
+      "setSlug": "streamline-regular",
+      "score": 252.45,
+      "query": "Gas Station"
+    },
+    "building": {
+      "name": "building",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4v8fgeLjvhj6nlDl0",
+      "streamlineName": "Building",
+      "setSlug": "streamline-regular",
+      "score": 239.6,
+      "query": "Building"
+    },
+    "office": {
+      "name": "office",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vPkC2aEaf7y7qNc3",
+      "streamlineName": "Office File Text Alternate",
+      "setSlug": "streamline-regular",
+      "score": 142.7,
+      "query": "Office"
+    },
+    "factory": {
+      "name": "factory",
+      "category": "misc",
+      "hash": "ico_oACifJUOanFI4Rok",
+      "streamlineName": "Factory Belt",
+      "setSlug": "streamline-regular",
+      "score": 117.4,
+      "query": "Factory"
+    },
+    "school": {
+      "name": "school",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vbYfeLj9ULwvSjv2",
+      "streamlineName": "School Bell",
+      "setSlug": "streamline-regular",
+      "score": 117.45,
+      "query": "School"
+    },
+    "book": {
+      "name": "book",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vXWS2aEdzpy7qnO8",
+      "streamlineName": "Book Pin",
+      "setSlug": "streamline-regular",
+      "score": 167.6,
+      "query": "Book"
+    },
+    "graduation": {
+      "name": "graduation",
+      "category": "misc",
+      "hash": "ico_iyciOjqz1No3E9hs",
+      "streamlineName": "Graduation Hat",
+      "setSlug": "streamline-regular",
+      "score": 117.3,
+      "query": "Graduation"
+    },
+    "briefcase": {
+      "name": "briefcase",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vLeS2aEaf708UcsM",
+      "streamlineName": "Briefcase",
+      "setSlug": "streamline-regular",
+      "score": 239.55,
+      "query": "Briefcase"
+    },
+    "id-card": {
+      "name": "id-card",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vnJ42aE232fSZSBo",
+      "streamlineName": "Single Man Id Card",
+      "setSlug": "streamline-regular",
+      "score": 118.1,
+      "query": "Id Card"
+    },
+    "passport": {
+      "name": "passport",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4v915eLjK1i2aERw9",
+      "streamlineName": "Passport",
+      "setSlug": "streamline-regular",
+      "score": 239.6,
+      "query": "Passport"
+    },
+    "ticket": {
+      "name": "ticket",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vgZ1eLjK1iHO2rFk",
+      "streamlineName": "Ticket",
+      "setSlug": "streamline-regular",
+      "score": 239.7,
+      "query": "Ticket"
+    },
+    "trophy": {
+      "name": "trophy",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vbRa2aEaf72aEPvm",
+      "streamlineName": "Seo Trophy",
+      "setSlug": "streamline-regular",
+      "score": 67.5,
+      "query": "Trophy"
+    },
+    "medal": {
+      "name": "medal",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4viYEeLjK1iWipHx4",
+      "streamlineName": "Award Medal",
+      "setSlug": "streamline-regular",
+      "score": 67.45,
+      "query": "Medal"
+    },
+    "award": {
+      "name": "award",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vgN6eLjK1iiJ4Ygx",
+      "streamlineName": "Award Star",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Award"
+    },
+    "cake": {
+      "name": "cake",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vMbdeLjK1i232cV2",
+      "streamlineName": "Cake Flour",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Cake"
+    },
+    "balloon": {
+      "name": "balloon",
+      "category": "misc",
+      "hash": "ico_kT5nsGVWGF7FlHO1",
+      "streamlineName": "Balloon Party",
+      "setSlug": "streamline-regular",
+      "score": 117.35,
+      "query": "Balloon"
+    },
+    "fire": {
+      "name": "fire",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vROmeLjvhjgWaqV4",
+      "streamlineName": "House Fire",
+      "setSlug": "streamline-regular",
+      "score": 67.5,
+      "query": "Fire"
+    },
+    "leaf": {
+      "name": "leaf",
+      "category": "misc",
+      "hash": "ico_u4FWVrLqtaWiU7cY",
+      "streamlineName": "Ecology Leaf",
+      "setSlug": "streamline-regular",
+      "score": 67.4,
+      "query": "Leaf"
+    },
+    "recycle": {
+      "name": "recycle",
+      "category": "misc",
+      "hash": "ico_PNn6BBS5Ry6Wv6Y1",
+      "streamlineName": "Plastic Bag Recycle",
+      "setSlug": "streamline-regular",
+      "score": 55.05,
+      "query": "Recycle"
+    },
+    "ecology": {
+      "name": "ecology",
+      "category": "misc",
+      "hash": "ico_Jw3ybwjKHgYVWJLy",
+      "streamlineName": "Ecology Leaf Book",
+      "setSlug": "streamline-regular",
+      "score": 105.15,
+      "query": "Ecology"
+    },
+    "water": {
+      "name": "water",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4v2NgeLjQ3y49rlNw",
+      "streamlineName": "Water Straw",
+      "setSlug": "streamline-regular",
+      "score": 117.45,
+      "query": "Water"
+    },
+    "droplet": {
+      "name": "droplet",
+      "category": "misc",
+      "hash": "ico_F3HVew6sGIX2K0Z0",
+      "streamlineName": "Eye Drop",
+      "setSlug": "streamline-regular",
+      "score": 117.6,
+      "query": "Drop"
+    },
+    "atom": {
+      "name": "atom",
+      "category": "misc",
+      "hash": "ico_RD3XJlGJzv1eqZUM",
+      "streamlineName": "Science Atom Positive Negative",
+      "setSlug": "streamline-regular",
+      "score": 42.5,
+      "query": "Atom"
+    },
+    "rocket": {
+      "name": "rocket",
+      "category": "misc",
+      "hash": "ico_0IfoUv3nzOmlljXo",
+      "streamlineName": "Rocket Attack",
+      "setSlug": "streamline-regular",
+      "score": 117.35,
+      "query": "Rocket"
+    },
+    "planet": {
+      "name": "planet",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vitseLj9ULHO2xih",
+      "streamlineName": "Astronomy Planet",
+      "setSlug": "streamline-regular",
+      "score": 67.2,
+      "query": "Planet"
+    },
+    "satellite": {
+      "name": "satellite",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vMXe2aEDeGitsdim",
+      "streamlineName": "Satellite",
+      "setSlug": "streamline-regular",
+      "score": 289.55,
+      "query": "Satellite"
+    },
+    "robot": {
+      "name": "robot",
+      "category": "misc",
+      "hash": "ico_mRu4pQJ4vbJP2aEJttgnsu5N",
+      "streamlineName": "Robot",
+      "setSlug": "streamline-regular",
+      "score": 239.75,
+      "query": "Robot"
+    }
+  },
+  "notFound": [
+    "icu",
+    "er",
+    "clinic",
+    "gurney",
+    "wheelchair-access",
+    "interpreter",
+    "consent-form",
+    "phi",
+    "records",
+    "ehr",
+    "fhir",
+    "dark-mode",
+    "recent",
+    "timezone",
+    "gift-alt"
+  ],
+  "usedHashes": {
+    "ico_mRu4pQJ4v8CIeLjK1iy7qxrJ": "waiting-room",
+    "ico_mRu4pQJ4vIUUeLj9UL9ULtZu": "bed",
+    "ico_Uq8RqrLRzjcJklPJ": "sign-language",
+    "ico_HL2t8f46SUMX3dQu": "hipaa",
+    "ico_mRu4pQJ4vE6HeLjvhjK1iliS": "map-pin",
+    "ico_mRu4pQJ4vXQ8eLjvhjWGyjAr": "globe",
+    "ico_mRu4pQJ4vL2P2aEhtdjUABzP": "wifi",
+    "ico_a9UM4da1qk94KNhh": "battery",
+    "ico_mRu4pQJ4vwg7eLj9ULQ3y6nl": "sun",
+    "ico_xWMA1OIjiyI4Z5ud": "moon",
+    "ico_mRu4pQJ4vqFE2aEJttK1ihtd": "grid",
+    "ico_mRu4pQJ4v7is2aEDeGNc3tKN": "list",
+    "ico_mRu4pQJ4vxfN2aEDeGgWaNei": "layout",
+    "ico_mRu4pQJ4vUtk2aEDeGsjsaSz": "zoom-in",
+    "ico_mRu4pQJ4vWg02aEDeGsjsaON": "zoom-out",
+    "ico_mRu4pQJ4veSZ2aEhtditsgLv": "wifi-off",
+    "ico_mRu4pQJ4vA7OeLjM5py7qSaf": "bluetooth",
+    "ico_mRu4pQJ4vBKneLjM5pfSZXyC": "battery-low",
+    "ico_MDocWpy6LC4r16re": "battery-full",
+    "ico_oAeewFxYAD0J0bsA": "battery-charging",
+    "ico_T5s2QvkjE3qPHj9W": "signal",
+    "ico_mRu4pQJ4v12q2aEhtditsMeA": "airplane",
+    "ico_mRu4pQJ4vvtF2aENc32aE8ue": "light-mode",
+    "ico_cYcMbAhdQ2yaurYG": "accessibility",
+    "ico_mRu4pQJ4vx6d2aEDeGNc3Cuh": "translate",
+    "ico_a9ZgAVjuETfDT6LZ": "language",
+    "ico_mRu4pQJ4vO7y2aEhtdZOsdBC": "keyboard",
+    "ico_mRu4pQJ4vo4k2aEhtdqmIly0": "mouse",
+    "ico_mRu4pQJ4v3CJ2aEJttNc3ei2": "desktop",
+    "ico_mRu4pQJ4vHK22aEhtdQ3y208": "laptop",
+    "ico_mRu4pQJ4vrGt2aEhtdjHWniS": "tablet",
+    "ico_mRu4pQJ4vBaK2aEdzpjHW5ES": "smartphone",
+    "ico_mRu4pQJ4vfkX2aEDeGgns7Pi": "watch",
+    "ico_mRu4pQJ4vLw82aEhtdiJ40Tt": "printer-alt",
+    "ico_mRu4pQJ4vDcq2aEhtdiJ4niE": "scanner",
+    "ico_mRu4pQJ4vzLX2aEJttn8OXeS": "projector",
+    "ico_mRu4pQJ4va8g2aE232J4vSJ4": "code",
+    "ico_X9OwiAQAfsrEvPYE": "terminal",
+    "ico_sP5QtJjzwwZXlvjT": "bug",
+    "ico_mRu4pQJ4vLMG2aEDeGPvJfLJ": "wrench",
+    "ico_mRu4pQJ4veCi2aEDeGPvJ73d": "hammer",
+    "ico_mRu4pQJ4vUw6eLjQ3yjUAx2W": "tool",
+    "ico_mRu4pQJ4v6dy2aEDeGg0YdsA": "key",
+    "ico_8mVqr4CCNTI4mxBZ": "fingerprint",
+    "ico_mRu4pQJ4vA6d2aEDeGwvSRc2": "face-id",
+    "ico_mRu4pQJ4vgVH2aEDeG8uecqY": "qr-scan",
+    "ico_mRu4pQJ4vIAc2aEdzpgWaib6": "barcode-scan",
+    "ico_mRu4pQJ4vLm02aENc3JttYOv": "camera-off",
+    "ico_mRu4pQJ4v4Z72aEJttT2FGNT": "flash",
+    "ico_mRu4pQJ4vMcF2aEJtt49rylB": "flash-off",
+    "ico_mRu4pQJ4vkyE2aENc36nlgSw": "timer",
+    "ico_mRu4pQJ4vIlB2aEDeG3ziL8i": "alarm",
+    "ico_mRu4pQJ4vayE2aEDeGYBGLVG": "stopwatch",
+    "ico_mRu4pQJ4vV6OeLj9ULy7qY5t": "history",
+    "ico_TBybvuB4vUua0cFx": "schedule",
+    "ico_mRu4pQJ4vXVleLj4pQdzpi1D": "weather",
+    "ico_mRu4pQJ4vmspeLj4pQhtd9Ov": "cloud-sun",
+    "ico_mRu4pQJ4vFlSeLj4pQNc3bvO": "rain",
+    "ico_mRu4pQJ4vknBeLj4pQdzpg3m": "snow",
+    "ico_mRu4pQJ4vTnBeLj9ULQ3yR5q": "wind",
+    "ico_mRu4pQJ4vhbseLj9ULK1ijk1": "temperature",
+    "ico_8mzfd6efEXxX1p9u": "umbrella",
+    "ico_mRu4pQJ4vY3leLjQ3y2aEpQ8": "coffee",
+    "ico_hVlPXWflk1dDElGL": "food",
+    "ico_mRu4pQJ4vOa5eLj08UwvSTyj": "car",
+    "ico_mRu4pQJ4vvcieLj08U7yVv3X": "bus",
+    "ico_ED2zmmKuth17RU0u": "train",
+    "ico_mRu4pQJ4vVRdeLj08UinpbRt": "bike",
+    "ico_mRu4pQJ4vRqbeLj08UgnsSDc": "parking",
+    "ico_8mKP2UMCLovyRyjs": "gas",
+    "ico_mRu4pQJ4v8fgeLjvhj6nlDl0": "building",
+    "ico_mRu4pQJ4vPkC2aEaf7y7qNc3": "office",
+    "ico_oACifJUOanFI4Rok": "factory",
+    "ico_mRu4pQJ4vbYfeLj9ULwvSjv2": "school",
+    "ico_mRu4pQJ4vXWS2aEdzpy7qnO8": "book",
+    "ico_iyciOjqz1No3E9hs": "graduation",
+    "ico_mRu4pQJ4vLeS2aEaf708UcsM": "briefcase",
+    "ico_mRu4pQJ4vnJ42aE232fSZSBo": "id-card",
+    "ico_mRu4pQJ4v915eLjK1i2aERw9": "passport",
+    "ico_mRu4pQJ4vgZ1eLjK1iHO2rFk": "ticket",
+    "ico_mRu4pQJ4vbRa2aEaf72aEPvm": "trophy",
+    "ico_mRu4pQJ4viYEeLjK1iWipHx4": "medal",
+    "ico_mRu4pQJ4vgN6eLjK1iiJ4Ygx": "award",
+    "ico_mRu4pQJ4vMbdeLjK1i232cV2": "cake",
+    "ico_kT5nsGVWGF7FlHO1": "balloon",
+    "ico_mRu4pQJ4vROmeLjvhjgWaqV4": "fire",
+    "ico_u4FWVrLqtaWiU7cY": "leaf",
+    "ico_PNn6BBS5Ry6Wv6Y1": "recycle",
+    "ico_Jw3ybwjKHgYVWJLy": "ecology",
+    "ico_mRu4pQJ4v2NgeLjQ3y49rlNw": "water",
+    "ico_F3HVew6sGIX2K0Z0": "droplet",
+    "ico_RD3XJlGJzv1eqZUM": "atom",
+    "ico_0IfoUv3nzOmlljXo": "rocket",
+    "ico_mRu4pQJ4vitseLj9ULHO2xih": "planet",
+    "ico_mRu4pQJ4vMXe2aEDeGitsdim": "satellite",
+    "ico_mRu4pQJ4vbJP2aEJttgnsu5N": "robot"
+  }
+}

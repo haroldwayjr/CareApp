@@ -2,6 +2,7 @@ import { useMemo, useState, type KeyboardEvent, type MouseEvent } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
+import Divider from '@mui/material/Divider'
 import FormControl from '@mui/material/FormControl'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
@@ -21,7 +22,6 @@ import {
   REMOVABLE_FILTER_CHIP_GAP,
   stopSelectChipEvent,
 } from './RemovableFilterChip'
-import { RiseTransition, RISE_DURATION_MS } from './RiseTransition'
 import {
   SomaMenuCheckbox,
   SomaMenuRadio,
@@ -40,6 +40,7 @@ import {
   isAvailabilityHourValue,
   type ProviderFilters,
 } from '../data/mockCareResults'
+import { RiseTransition, RISE_DURATION_MS } from './RiseTransition'
 
 // TODO(P3): Confirm before persisting applied filters in the URL query string
 // for shareable / restorable filter state.
@@ -934,11 +935,11 @@ function AvailabilityFilterSelect({
   )
 }
 
-/** Centered filters modal using MUI Select and Soma menu items. */
+/** Centered filters dialog using MUI Select and Soma menu items. */
 export function FilterDrawer({
   open,
   draft,
-  draftResultCount,
+  draftResultCount: _draftResultCount,
   openMenu,
   onClose,
   onDraftChange,
@@ -952,7 +953,6 @@ export function FilterDrawer({
     if (event.key !== 'Enter' || event.defaultPrevented) return
     const target = event.target as HTMLElement | null
     if (!target) return
-    // Don't apply while typing in search / focused on a button.
     if (
       target.tagName === 'INPUT' ||
       target.tagName === 'TEXTAREA' ||
@@ -987,9 +987,7 @@ export function FilterDrawer({
       }}
       slotProps={{
         backdrop: {
-          sx: {
-            bgcolor: 'rgba(33, 33, 33, 0.42)',
-          },
+          sx: { bgcolor: 'rgba(33, 33, 33, 0.42)' },
         },
         paper: {
           sx: {
@@ -1036,31 +1034,24 @@ export function FilterDrawer({
           onClick={onClose}
           edge="end"
           sx={{
-            width: 32,
-            height: 32,
-            color: 'icon.tertiary',
-            '&:hover': { bgcolor: 'action.hover', color: 'icon.tertiary' },
+            width: 44,
+            height: 44,
+            color: 'icon.secondary',
+            '&:hover': { bgcolor: 'action.hover', color: 'text.primary' },
           }}
         >
           <Box
             component="span"
             aria-hidden
             sx={{
-              width: 20,
-              height: 20,
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              fontSize: 26,
+              lineHeight: 1,
+              fontWeight: 300,
+              display: 'block',
+              mt: '-2px',
             }}
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path
-                d="M5 5 15 15M15 5 5 15"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
+            ×
           </Box>
         </IconButton>
       </Stack>
@@ -1071,43 +1062,11 @@ export function FilterDrawer({
           px: { xs: 2, sm: 3 },
           pb: 2,
           pt: 2,
-          overflowY: 'auto',
+          overflow: 'auto',
           minHeight: 0,
           flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
         }}
       >
-        <SingleFilterSelect
-          label="Distance"
-          options={DISTANCE_OPTIONS}
-          value={draft.distance}
-          open={openMenu === 'distance'}
-          onOpen={() => onOpenMenuChange('distance')}
-          onClose={() => onOpenMenuChange(null)}
-          onChange={(distance) =>
-            onDraftChange({
-              ...draft,
-              distance: distance as ProviderFilters['distance'],
-            })
-          }
-        />
-
-        <AvailabilityFilterSelect
-          values={draft.availability}
-          onChange={(availability) =>
-            onDraftChange({ ...draft, availability })
-          }
-        />
-
-        <LanguageFilterSelect
-          values={draft.languages}
-          open={openMenu === 'language'}
-          onOpen={() => onOpenMenuChange('language')}
-          onClose={() => onOpenMenuChange(null)}
-          onChange={(languages) => onDraftChange({ ...draft, languages })}
-        />
-
         <MultiFilterSelect
           label="Gender"
           options={GENDER_OPTIONS}
@@ -1129,24 +1088,50 @@ export function FilterDrawer({
           smartMenuPlacement
           emptyPlaceholder="Select Tier"
         />
+
+        <SingleFilterSelect
+          label="Distance"
+          options={DISTANCE_OPTIONS}
+          value={draft.distance}
+          open={openMenu === 'distance'}
+          onOpen={() => onOpenMenuChange('distance')}
+          onClose={() => onOpenMenuChange(null)}
+          onChange={(distance) =>
+            onDraftChange({
+              ...draft,
+              distance: distance as ProviderFilters['distance'],
+            })
+          }
+        />
+
+        <LanguageFilterSelect
+          values={draft.languages}
+          open={openMenu === 'language'}
+          onOpen={() => onOpenMenuChange('language')}
+          onClose={() => onOpenMenuChange(null)}
+          onChange={(languages) => onDraftChange({ ...draft, languages })}
+        />
+
+        <AvailabilityFilterSelect
+          values={draft.availability}
+          onChange={(availability) =>
+            onDraftChange({ ...draft, availability })
+          }
+        />
       </Stack>
+
+      <Divider sx={{ borderColor: 'rgba(0, 0, 0, 0.08)', flexShrink: 0 }} />
 
       <Stack
         direction="row"
         spacing={2}
         sx={{
-          position: 'sticky',
-          bottom: 0,
-          zIndex: (theme) => theme.zIndex.tooltip,
           px: { xs: 2, sm: 3 },
           py: 2,
           alignItems: 'center',
           justifyContent: 'space-between',
           flexShrink: 0,
           bgcolor: 'background.paper',
-          borderTop: 1,
-          borderColor: 'divider',
-          boxShadow: 3,
         }}
       >
         <Button
@@ -1157,16 +1142,8 @@ export function FilterDrawer({
         >
           Reset filters
         </Button>
-        <Button
-          variant="contained"
-          onClick={onApply}
-          sx={{ minWidth: 128, px: 2 }}
-        >
-          {draftResultCount === 0
-            ? 'No providers match'
-            : draftResultCount === 1
-              ? 'Show 1 provider'
-              : `Show ${draftResultCount} providers`}
+        <Button variant="contained" onClick={onApply} sx={{ minWidth: 128, px: 2 }}>
+          Apply
         </Button>
       </Stack>
     </Dialog>

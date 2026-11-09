@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Flag--Streamline-Streamline-3.0">
+  <desc>
+    Flag Streamline Icon: https://streamlinehq.com
+  </desc>
+  <g>
+    <path d="m0.75 0.75 0 22.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="M0.75 2.25h12a1.5 1.5 0 0 1 1.5 1.5v12H0.75" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="m9.75 20.25 4.5 -4.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="M14.25 6.75h8.25A0.75 0.75 0 0 1 23.06 8l-4 4.5a1.52 1.52 0 0 0 0 2l4 4.5a0.75 0.75 0 0 1 -0.56 1.25h-14a1.5 1.5 0 0 1 -1.5 -1.5v-3" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  </g>
+</svg>

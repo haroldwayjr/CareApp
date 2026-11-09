@@ -1,0 +1,307 @@
+[
+  {
+    "name": "home-alt",
+    "hash": "ico_mRu4pQJ4vtWC2aEbmojHWNei",
+    "path": "navigation/home-alt.svg"
+  },
+  {
+    "name": "chevron-left",
+    "hash": "ico_eA8GWYvR5WBSJkJY",
+    "path": "navigation/chevron-left.svg"
+  },
+  {
+    "name": "chevron-right",
+    "hash": "ico_O4DC394JKvQGULe7",
+    "path": "navigation/chevron-right.svg"
+  },
+  {
+    "name": "chevron-up",
+    "hash": "ico_R4kAJl7jA3nhceik",
+    "path": "navigation/chevron-up.svg"
+  },
+  {
+    "name": "arrow-up",
+    "hash": "ico_k1M6ElXlvuBOQzAP",
+    "path": "navigation/arrow-up.svg"
+  },
+  {
+    "name": "arrow-down",
+    "hash": "ico_MDzhrttDMTSnz1xM",
+    "path": "navigation/arrow-down.svg"
+  },
+  {
+    "name": "more-horizontal",
+    "hash": "ico_mRu4pQJ4vkgn2aEbmoJ4v232",
+    "path": "navigation/more-horizontal.svg"
+  },
+  {
+    "name": "more-vertical",
+    "hash": "ico_mRu4pQJ4vNFt2aEbmoJ4vSdl",
+    "path": "navigation/more-vertical.svg"
+  },
+  {
+    "name": "back",
+    "hash": "ico_GS3koyDjktm4fZZn",
+    "path": "navigation/back.svg"
+  },
+  {
+    "name": "forward",
+    "hash": "ico_s9oTaLJ4PbfI42fg",
+    "path": "navigation/forward.svg"
+  },
+  {
+    "name": "external-link",
+    "hash": "ico_mRu4pQJ4vTcM2aEWGywvSy2a",
+    "path": "navigation/external-link.svg"
+  },
+  {
+    "name": "sidebar",
+    "hash": "ico_mRu4pQJ4vQnU2aEbmodzpQ4o",
+    "path": "navigation/sidebar.svg"
+  },
+  {
+    "name": "breadcrumb",
+    "hash": "ico_mRu4pQJ4vHA72aEWGy4pQf6y",
+    "path": "navigation/breadcrumb.svg"
+  },
+  {
+    "name": "scroll",
+    "hash": "ico_mRu4pQJ4vz1j2aEWGy2aE66M",
+    "path": "navigation/scroll.svg"
+  },
+  {
+    "name": "drag",
+    "hash": "ico_mRu4pQJ4vthE2aEWGyQzIz3X",
+    "path": "navigation/drag.svg"
+  },
+  {
+    "name": "fullscreen",
+    "hash": "ico_mRu4pQJ4vRI12aEWGyBPuxJe",
+    "path": "navigation/fullscreen.svg"
+  },
+  {
+    "name": "exit-fullscreen",
+    "hash": "ico_mRu4pQJ4vax82aEWGyBPuJsN",
+    "path": "navigation/exit-fullscreen.svg"
+  },
+  {
+    "name": "compass",
+    "hash": "ico_mRu4pQJ4vUFW2aE7yV7QUVsB",
+    "path": "navigation/compass.svg"
+  },
+  {
+    "name": "map",
+    "hash": "ico_zkkZNSrjXSdetKZk",
+    "path": "navigation/map.svg"
+  },
+  {
+    "name": "layers",
+    "hash": "ico_mRu4pQJ4vDlx2aEP2WwvSZm6",
+    "path": "navigation/layers.svg"
+  },
+  {
+    "name": "merge",
+    "hash": "ico_8NndYOSkO1dwRZor",
+    "path": "navigation/merge.svg"
+  },
+  {
+    "name": "resize",
+    "hash": "ico_mRu4pQJ4vdYE2aEWGyBPufxr",
+    "path": "navigation/resize.svg"
+  },
+  {
+    "name": "save",
+    "hash": "ico_mRu4pQJ4vwOo2aE2aE2aEW93",
+    "path": "actions/save.svg"
+  },
+  {
+    "name": "share",
+    "hash": "ico_mRu4pQJ4vORO2aEbmohNEAtl",
+    "path": "actions/share.svg"
+  },
+  {
+    "name": "share-alt",
+    "hash": "ico_mRu4pQJ4vCML2aEbmofvjvZ5",
+    "path": "actions/share-alt.svg"
+  },
+  {
+    "name": "undo",
+    "hash": "ico_mRu4pQJ4vafx2aEbmoDeGdIV",
+    "path": "actions/undo.svg"
+  },
+  {
+    "name": "redo",
+    "hash": "ico_mRu4pQJ4vWKm2aEbmoDeGegE",
+    "path": "actions/redo.svg"
+  },
+  {
+    "name": "print",
+    "hash": "ico_mRu4pQJ4v48F2aE2aE7QURc2",
+    "path": "actions/print.svg"
+  },
+  {
+    "name": "link",
+    "hash": "ico_mRu4pQJ4vtOW2aEbmofSZM8j",
+    "path": "actions/link.svg"
+  },
+  {
+    "name": "cut",
+    "hash": "ico_mRu4pQJ4v9Vx2aEbmofvjjUZ",
+    "path": "actions/cut.svg"
+  },
+  {
+    "name": "duplicate",
+    "hash": "ico_7oaSxYVUINxu7by9",
+    "path": "actions/duplicate.svg"
+  },
+  {
+    "name": "archive",
+    "hash": "ico_mRu4pQJ4vWfW2aEP2WT2Fiz8",
+    "path": "actions/archive.svg"
+  },
+  {
+    "name": "restore",
+    "hash": "ico_YpcRMXrqpyGYIUsy",
+    "path": "actions/restore.svg"
+  },
+  {
+    "name": "trash",
+    "hash": "ico_mRu4pQJ4vYle2aEbmognsMRy",
+    "path": "actions/trash.svg"
+  },
+  {
+    "name": "empty-trash",
+    "hash": "ico_mRu4pQJ4vcoD2aEbmognspCK",
+    "path": "actions/empty-trash.svg"
+  },
+  {
+    "name": "login",
+    "hash": "ico_mRu4pQJ4vIOs2aEbmoJ4vq06",
+    "path": "actions/login.svg"
+  },
+  {
+    "name": "logout",
+    "hash": "ico_mRu4pQJ4vunX2aEbmoZOs3ip",
+    "path": "actions/logout.svg"
+  },
+  {
+    "name": "attach",
+    "hash": "ico_mRu4pQJ4veIe2aEbmofSZOFk",
+    "path": "actions/attach.svg"
+  },
+  {
+    "name": "pin",
+    "hash": "ico_mRu4pQJ4vq0J2aEbmoPop19B",
+    "path": "actions/pin.svg"
+  },
+  {
+    "name": "navigation-pointer",
+    "hash": "ico_mRu4pQJ4v1Os2aEWGy6nllo1",
+    "path": "navigation/navigation-pointer.svg"
+  },
+  {
+    "name": "panel-left",
+    "hash": "ico_XL5D49HNXzl1JJtL",
+    "path": "navigation/panel-left.svg"
+  },
+  {
+    "name": "close-alt",
+    "hash": "ico_mRu4pQJ4vOnx2aEbmosjsGBB",
+    "path": "actions/close-alt.svg"
+  },
+  {
+    "name": "panel-top",
+    "hash": "ico_mRu4pQJ4vA8J2aEbmodzpFt8",
+    "path": "navigation/panel-top.svg"
+  },
+  {
+    "name": "panel-bottom",
+    "hash": "ico_6kTJV0iy9Rrmw6Vu",
+    "path": "navigation/panel-bottom.svg"
+  },
+  {
+    "name": "panel-right",
+    "hash": "ico_CESF4t6WmE0QN31y",
+    "path": "navigation/panel-right.svg"
+  },
+  {
+    "name": "upload",
+    "hash": "ico_xaO55AgbevHzyuYP",
+    "path": "actions/upload.svg"
+  },
+  {
+    "name": "erase",
+    "hash": "ico_mRu4pQJ4vWt92aEbmoitsccE",
+    "path": "actions/erase.svg"
+  },
+  {
+    "name": "flag-alt",
+    "hash": "ico_mRu4pQJ4vMrx2aEwvSSFbUgm",
+    "path": "actions/flag-alt.svg"
+  },
+  {
+    "name": "power",
+    "hash": "ico_mRu4pQJ4vF0l2aEWGyPvJFs8",
+    "path": "actions/power.svg"
+  },
+  {
+    "name": "move",
+    "hash": "ico_mRu4pQJ4vzgK2aEWGySFbYYL",
+    "path": "actions/move.svg"
+  },
+  {
+    "name": "search-alt",
+    "hash": "ico_mRu4pQJ4vypL2aEbmo3zi7yx",
+    "path": "actions/search-alt.svg"
+  },
+  {
+    "name": "quote-reply",
+    "hash": "ico_ozYOD6ipuZkmWZH1",
+    "path": "actions/quote-reply.svg"
+  },
+  {
+    "name": "select-all",
+    "hash": "ico_DKJsoKUjK26fSYre",
+    "path": "actions/select-all.svg"
+  },
+  {
+    "name": "import",
+    "hash": "ico_RY4lldvooU0Tgc5m",
+    "path": "actions/import.svg"
+  },
+  {
+    "name": "export",
+    "hash": "ico_c7xHQ1hFcqINmSu4",
+    "path": "actions/export.svg"
+  },
+  {
+    "name": "sync",
+    "hash": "ico_mRu4pQJ4vdHY2aEWGyqmIZmj",
+    "path": "actions/sync.svg"
+  },
+  {
+    "name": "sort-asc",
+    "hash": "ico_b2RWsfdA1itUmLFj",
+    "path": "actions/sort-asc.svg"
+  },
+  {
+    "name": "sort-desc",
+    "hash": "ico_MtRhAIGxjumgrI84",
+    "path": "actions/sort-desc.svg"
+  },
+  {
+    "name": "open",
+    "hash": "ico_wVDZznuczwXS9k5v",
+    "path": "actions/open.svg"
+  },
+  {
+    "name": "sort",
+    "hash": "ico_gYyJDjLMAu7UV4oa",
+    "path": "actions/sort.svg"
+  },
+  {
+    "name": "snooze",
+    "hash": "ico_Pv87nRusdAFKGNJp",
+    "path": "actions/snooze.svg"
+  }
+]

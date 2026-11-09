@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Expand-8--Streamline-Streamline-3.0">
+  <desc>
+    Expand 8 Streamline Icon: https://streamlinehq.com
+  </desc>
+  <defs></defs>
+  <title>expand-8</title>
+  <path d="M0.751 8.248v-6a1.5 1.5 0 0 1 1.5 -1.5h6" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M23.251 8.248v-6a1.5 1.5 0 0 0 -1.5 -1.5h-6" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M23.251 15.748v6a1.5 1.5 0 0 1 -1.5 1.5h-6" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M2.251 11.248h9s1.5 0 1.5 1.5v9s0 1.5 -1.5 1.5h-9s-1.5 0 -1.5 -1.5v-9s0 -1.5 1.5 -1.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>

@@ -1,0 +1,6 @@
+namespace=plugin-figma-figma
+tool=use_figma
+fileKey=hB1NzwMnZt2ALeR0OslaWi
+desc=Restore damaged icons chunk 00
+skills=figma-use
+codeLen=28113

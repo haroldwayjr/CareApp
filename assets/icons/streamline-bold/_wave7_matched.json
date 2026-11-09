@@ -1,0 +1,258 @@
+[
+  {
+    "name": "pause",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vj0z2aEWGyjHWowo",
+    "streamlineName": "Button Pause",
+    "path": "media/pause.svg",
+    "score": 302.4
+  },
+  {
+    "name": "volume",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vHu62aEbmoinpGBB",
+    "streamlineName": "Volume",
+    "path": "media/volume.svg",
+    "score": 289.7
+  },
+  {
+    "name": "camera",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vv7c2aEP2Wn8OBsm",
+    "streamlineName": "Camera",
+    "path": "media/camera.svg",
+    "score": 239.7
+  },
+  {
+    "name": "music",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vLYd2aE6nl9ULi2S",
+    "streamlineName": "Music Note",
+    "path": "media/music.svg",
+    "score": 252.5
+  },
+  {
+    "name": "stop",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vs8s2aEWGy08Uh1s",
+    "streamlineName": "Button Stop",
+    "path": "media/stop.svg",
+    "score": 302.45
+  },
+  {
+    "name": "volume-off",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vEHs2aE6nl7QUdGw",
+    "streamlineName": "Volume Control Off",
+    "path": "media/volume-off.svg",
+    "score": 265.1
+  },
+  {
+    "name": "mic",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vQWF2aE6nlT2Fb4v",
+    "streamlineName": "Microphone",
+    "path": "media/mic.svg",
+    "score": 239.5
+  },
+  {
+    "name": "skip-forward",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vgIj2aEWGyjHW0Ij",
+    "streamlineName": "Button Next",
+    "path": "media/skip-forward.svg",
+    "score": 302.45
+  },
+  {
+    "name": "image",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vFbb2aE6nlK1iH4q",
+    "streamlineName": "Image File Landscape",
+    "path": "media/image.svg",
+    "score": 315.0
+  },
+  {
+    "name": "mic-off",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vQVm2aE6nl49rkWX",
+    "streamlineName": "Microphone Off",
+    "path": "media/mic-off.svg",
+    "score": 252.3
+  },
+  {
+    "name": "play",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vNaG2aEWGyjHWkz5",
+    "streamlineName": "Button Play",
+    "path": "media/play.svg",
+    "score": 302.45
+  },
+  {
+    "name": "skip-back",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vKDW2aEWGyjHWxxf",
+    "streamlineName": "Button Previous",
+    "path": "media/skip-back.svg",
+    "score": 302.25
+  },
+  {
+    "name": "video",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4v7k52aE6nl7yVyBV",
+    "streamlineName": "Video Player",
+    "path": "media/video.svg",
+    "score": 252.4
+  },
+  {
+    "name": "headphones",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vhP82aE6nlWipIF9",
+    "streamlineName": "Headphones",
+    "path": "media/headphones.svg",
+    "score": 239.5
+  },
+  {
+    "name": "credit-card",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vCjt2aEgWaSFbaDU",
+    "streamlineName": "Credit Card",
+    "path": "commerce/credit-card.svg",
+    "score": 252.45
+  },
+  {
+    "name": "wallet",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vgTQ2aEgWaWGyMMy",
+    "streamlineName": "Money Wallet",
+    "path": "commerce/wallet.svg",
+    "score": 252.4
+  },
+  {
+    "name": "coupon",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vj3b2aEgWay7qVOn",
+    "streamlineName": "Coupon Cut",
+    "path": "commerce/coupon.svg",
+    "score": 302.5
+  },
+  {
+    "name": "bag",
+    "category": "commerce",
+    "hash": "ico_dU9UgoPTyUaqUO1o",
+    "streamlineName": "Shopping Bag",
+    "path": "commerce/bag.svg",
+    "score": 302.4
+  },
+  {
+    "name": "cart",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vMiC2aEgWasjsZEI",
+    "streamlineName": "Shopping Cart",
+    "path": "commerce/cart.svg",
+    "score": 302.35
+  },
+  {
+    "name": "send",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vQmq2aEinpaf7KJ9",
+    "streamlineName": "Send Email 2",
+    "path": "comms/send.svg",
+    "score": 265.4
+  },
+  {
+    "name": "film",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vE022aE6nlSFbhJM",
+    "streamlineName": "Movies Film",
+    "path": "media/film.svg",
+    "score": 252.45
+  },
+  {
+    "name": "discount",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4v3At2aEgWay7qZF8",
+    "streamlineName": "Discount",
+    "path": "commerce/discount.svg",
+    "score": 289.6
+  },
+  {
+    "name": "payment",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vtHo2aEgWaQzIXDf",
+    "streamlineName": "Credit Card Payment",
+    "path": "commerce/payment.svg",
+    "score": 265.05
+  },
+  {
+    "name": "dollar",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vnTn2aEgWaP2WjN8",
+    "streamlineName": "Currency Dollar",
+    "path": "commerce/dollar.svg",
+    "score": 252.25
+  },
+  {
+    "name": "invoice",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vnVV2aEgWa49rqxu",
+    "streamlineName": "Accounting Invoice",
+    "path": "commerce/invoice.svg",
+    "score": 252.1
+  },
+  {
+    "name": "barcode",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vXtQ2aEgWafSZPdR",
+    "streamlineName": "Barcode",
+    "path": "commerce/barcode.svg",
+    "score": 289.65
+  },
+  {
+    "name": "receipt",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vHAJ2aEgWa3zi6rJ",
+    "streamlineName": "Receipt",
+    "path": "commerce/receipt.svg",
+    "score": 289.65
+  },
+  {
+    "name": "qr-code",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vxkY2aEgWafSZkAl",
+    "streamlineName": "Qr Code",
+    "path": "commerce/qr-code.svg",
+    "score": 302.65
+  },
+  {
+    "name": "store",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vab32aEgWaOrjkYQ",
+    "streamlineName": "Shop Open",
+    "path": "commerce/store.svg",
+    "score": 302.55
+  },
+  {
+    "name": "reply",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4vFm02aE8ue4pQsn7",
+    "streamlineName": "Email Action Reply",
+    "path": "comms/reply.svg",
+    "score": 265.1
+  },
+  {
+    "name": "forward-mail",
+    "category": "comms",
+    "hash": "ico_mRu4pQJ4voJP2aE8ue4pQIMW",
+    "streamlineName": "Email Action Share",
+    "path": "comms/forward-mail.svg",
+    "score": 265.1
+  },
+  {
+    "name": "gift",
+    "category": "commerce",
+    "hash": "ico_mRu4pQJ4vXPd2aEwvSBPu7JV",
+    "streamlineName": "Gift Box",
+    "path": "commerce/gift.svg",
+    "score": 252.6
+  }
+]

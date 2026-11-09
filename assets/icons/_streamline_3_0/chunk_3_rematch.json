@@ -1,0 +1,332 @@
+[
+  {
+    "name": "rocket",
+    "figma": "icon/misc/rocket",
+    "file": "misc/rocket.svg",
+    "old": "Rocket Attack",
+    "svgName": "Rocket Attack",
+    "try1": "Rocket Attack",
+    "try2": "Rocket Attack",
+    "try3": "rocket"
+  },
+  {
+    "name": "route",
+    "figma": "icon/navigation/route",
+    "file": "navigation/route.svg",
+    "old": "Journey Trip Route",
+    "svgName": null,
+    "try1": null,
+    "try2": "Journey Trip Route",
+    "try3": "route"
+  },
+  {
+    "name": "schedule",
+    "figma": "icon/misc/schedule",
+    "file": "misc/schedule.svg",
+    "old": "Scheduled Phone Call Calendar 2",
+    "svgName": "Scheduled Phone Call Calendar 2",
+    "try1": "Scheduled Phone Call Calendar 2",
+    "try2": "Scheduled Phone Call",
+    "try3": "schedule"
+  },
+  {
+    "name": "search-alt",
+    "figma": "icon/actions/search.alt",
+    "file": "actions/search-alt.svg",
+    "old": "Search 1",
+    "svgName": "Search 1",
+    "try1": "Search 1",
+    "try2": "Search",
+    "try3": "search alt"
+  },
+  {
+    "name": "select",
+    "figma": "icon/actions/select",
+    "file": "actions/select.svg",
+    "old": "Select 3d",
+    "svgName": "Select 3d",
+    "try1": "Select 3d",
+    "try2": "Select 3d",
+    "try3": "select"
+  },
+  {
+    "name": "select-all",
+    "figma": "icon/actions/select.all",
+    "file": "actions/select-all.svg",
+    "old": "Select All",
+    "svgName": "Select All",
+    "try1": "Select All",
+    "try2": "Select All",
+    "try3": "select all"
+  },
+  {
+    "name": "sign-language",
+    "figma": "icon/health/sign.language",
+    "file": "health/sign-language.svg",
+    "old": "Sign Language Love",
+    "svgName": "Sign Language Love",
+    "try1": "Sign Language Love",
+    "try2": "Sign Language Love",
+    "try3": "sign language"
+  },
+  {
+    "name": "signal",
+    "figma": "icon/misc/signal",
+    "file": "misc/signal.svg",
+    "old": "Signal Wave",
+    "svgName": "Signal Wave",
+    "try1": "Signal Wave",
+    "try2": "Signal Wave",
+    "try3": "signal"
+  },
+  {
+    "name": "sleep",
+    "figma": "icon/health/sleep",
+    "file": "health/sleep.svg",
+    "old": "Sleep Zzz",
+    "svgName": "Sleep Zzz",
+    "try1": "Sleep Zzz",
+    "try2": "Sleep Zzz",
+    "try3": "sleep"
+  },
+  {
+    "name": "smartphone",
+    "figma": "icon/misc/smartphone",
+    "file": "misc/smartphone.svg",
+    "old": "Smartphone Pay Dollar 2",
+    "svgName": "Smartphone Pay Dollar 2",
+    "try1": "Smartphone Pay Dollar 2",
+    "try2": "Smartphone Pay Dollar",
+    "try3": "smartphone"
+  },
+  {
+    "name": "snooze",
+    "figma": "icon/actions/snooze",
+    "file": "actions/snooze.svg",
+    "old": "Snooze Return Repeat",
+    "svgName": "Snooze Return Repeat",
+    "try1": "Snooze Return Repeat",
+    "try2": "Snooze Return Repeat",
+    "try3": "snooze"
+  },
+  {
+    "name": "sort",
+    "figma": "icon/actions/sort",
+    "file": "actions/sort.svg",
+    "old": "Sort Size Ascending Order Up",
+    "svgName": null,
+    "try1": null,
+    "try2": "Sort Size Ascending",
+    "try3": "sort"
+  },
+  {
+    "name": "sort-asc",
+    "figma": "icon/actions/sort.asc",
+    "file": "actions/sort-asc.svg",
+    "old": "Ascending Sort 1",
+    "svgName": "Ascending Sort 1",
+    "try1": "Ascending Sort 1",
+    "try2": "Ascending Sort",
+    "try3": "sort asc"
+  },
+  {
+    "name": "sort-desc",
+    "figma": "icon/actions/sort.desc",
+    "file": "actions/sort-desc.svg",
+    "old": "Descending Sort 1",
+    "svgName": "Descending Sort 1",
+    "try1": "Descending Sort 1",
+    "try2": "Descending Sort",
+    "try3": "sort desc"
+  },
+  {
+    "name": "split",
+    "figma": "icon/navigation/split",
+    "file": "navigation/split.svg",
+    "old": "Split Subset Spreadsheet 2",
+    "svgName": "Split Subset Spreadsheet 2",
+    "try1": "Split Subset Spreadsheet 2",
+    "try2": "Split Subset Spreadsheet",
+    "try3": "split"
+  },
+  {
+    "name": "star",
+    "figma": "icon/status/star",
+    "file": "status/star.svg",
+    "old": "Star Half",
+    "svgName": "Rating Star",
+    "try1": "Rating Star",
+    "try2": "Rating Star",
+    "try3": "star"
+  },
+  {
+    "name": "stethoscope",
+    "figma": "icon/health/stethoscope",
+    "file": "health/stethoscope.svg",
+    "old": "Stethoscope Website",
+    "svgName": "Stethoscope Website",
+    "try1": "Stethoscope Website",
+    "try2": "Stethoscope Website",
+    "try3": "stethoscope"
+  },
+  {
+    "name": "store",
+    "figma": "icon/commerce/store",
+    "file": "commerce/store.svg",
+    "old": "Cannabis Store",
+    "svgName": "Cannabis Store",
+    "try1": "Cannabis Store",
+    "try2": "Cannabis Store",
+    "try3": "store"
+  },
+  {
+    "name": "surgery",
+    "figma": "icon/health/surgery",
+    "file": "health/surgery.svg",
+    "old": "Surgery Liposuction",
+    "svgName": "Surgery Liposuction",
+    "try1": "Surgery Liposuction",
+    "try2": "Surgery Liposuction",
+    "try3": "surgery"
+  },
+  {
+    "name": "symptoms",
+    "figma": "icon/health/symptoms",
+    "file": "health/symptoms.svg",
+    "old": "Symptoms Fever",
+    "svgName": "Symptoms Fever",
+    "try1": "Symptoms Fever",
+    "try2": "Symptoms Fever",
+    "try3": "symptoms"
+  },
+  {
+    "name": "terminal",
+    "figma": "icon/misc/terminal",
+    "file": "misc/terminal.svg",
+    "old": "Terminal",
+    "svgName": "Terminal",
+    "try1": "Terminal",
+    "try2": "Terminal",
+    "try3": "terminal"
+  },
+  {
+    "name": "tooth",
+    "figma": "icon/health/tooth",
+    "file": "health/tooth.svg",
+    "old": "Tooth 2",
+    "svgName": "Tooth 2",
+    "try1": "Tooth 2",
+    "try2": "Tooth",
+    "try3": "tooth"
+  },
+  {
+    "name": "train",
+    "figma": "icon/misc/train",
+    "file": "misc/train.svg",
+    "old": "Train Location",
+    "svgName": "Train Location",
+    "try1": "Train Location",
+    "try2": "Train Location",
+    "try3": "train"
+  },
+  {
+    "name": "ultrasound",
+    "figma": "icon/health/ultrasound",
+    "file": "health/ultrasound.svg",
+    "old": "Ultrasound Scan",
+    "svgName": null,
+    "try1": null,
+    "try2": "Ultrasound Scan",
+    "try3": "ultrasound"
+  },
+  {
+    "name": "umbrella",
+    "figma": "icon/misc/umbrella",
+    "file": "misc/umbrella.svg",
+    "old": "Umbrella Circle",
+    "svgName": null,
+    "try1": null,
+    "try2": "Umbrella Circle",
+    "try3": "umbrella"
+  },
+  {
+    "name": "user",
+    "figma": "icon/comms/user",
+    "file": "comms/user.svg",
+    "old": "User Story",
+    "svgName": "User Story",
+    "try1": "User Story",
+    "try2": "User Story",
+    "try3": "user"
+  },
+  {
+    "name": "users",
+    "figma": "icon/comms/users",
+    "file": "comms/users.svg",
+    "old": "Multiple Users 1",
+    "svgName": "Multiple Users 1",
+    "try1": "Multiple Users 1",
+    "try2": "Multiple Users",
+    "try3": "users"
+  },
+  {
+    "name": "vaccine",
+    "figma": "icon/health/vaccine",
+    "file": "health/vaccine.svg",
+    "old": "Vaccine Bottle 1",
+    "svgName": "Vaccine Bottle 1",
+    "try1": "Vaccine Bottle 1",
+    "try2": "Vaccine Bottle",
+    "try3": "vaccine"
+  },
+  {
+    "name": "video-call",
+    "figma": "icon/comms/video.call",
+    "file": "comms/video-call.svg",
+    "old": "Video Call",
+    "svgName": "Video Call",
+    "try1": "Video Call",
+    "try2": "Video Call",
+    "try3": "video call"
+  },
+  {
+    "name": "virus",
+    "figma": "icon/health/virus",
+    "file": "health/virus.svg",
+    "old": "Medical Specialty Virus",
+    "svgName": "Medical Specialty Virus",
+    "try1": "Medical Specialty Virus",
+    "try2": "Medical Specialty Virus",
+    "try3": "virus"
+  },
+  {
+    "name": "wallet",
+    "figma": "icon/commerce/wallet",
+    "file": "commerce/wallet.svg",
+    "old": "Wallet Sensor Tag Radiowaves",
+    "svgName": null,
+    "try1": null,
+    "try2": "Wallet Sensor Tag",
+    "try3": "wallet"
+  },
+  {
+    "name": "wheelchair",
+    "figma": "icon/health/wheelchair",
+    "file": "health/wheelchair.svg",
+    "old": "Wheelchair Way",
+    "svgName": "Wheelchair Way",
+    "try1": "Wheelchair Way",
+    "try2": "Wheelchair Way",
+    "try3": "wheelchair"
+  },
+  {
+    "name": "wiki",
+    "figma": "icon/files/wiki",
+    "file": "files/wiki.svg",
+    "old": "Wikipedia Logo",
+    "svgName": "Wikipedia Logo",
+    "try1": "Wikipedia Logo",
+    "try2": "Wikipedia Logo",
+    "try3": "wiki"
+  }
+]

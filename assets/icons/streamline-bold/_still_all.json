@@ -1,0 +1,674 @@
+[
+  {
+    "name": "map-pin",
+    "category": "misc",
+    "streamlineName": "Pin Location",
+    "query": "Pin Location"
+  },
+  {
+    "name": "globe",
+    "category": "misc",
+    "streamlineName": "Earth 1",
+    "query": "Earth"
+  },
+  {
+    "name": "wifi",
+    "category": "misc",
+    "streamlineName": "Wifi",
+    "query": "Wifi"
+  },
+  {
+    "name": "battery",
+    "category": "misc",
+    "streamlineName": "Battery Slash No",
+    "query": "Battery"
+  },
+  {
+    "name": "sun",
+    "category": "misc",
+    "streamlineName": "Uv Sun",
+    "query": "Sun"
+  },
+  {
+    "name": "moon",
+    "category": "misc",
+    "streamlineName": "Astrology Moon",
+    "query": "Moon"
+  },
+  {
+    "name": "grid",
+    "category": "misc",
+    "streamlineName": "Layout",
+    "query": "Layout Grid"
+  },
+  {
+    "name": "list",
+    "category": "misc",
+    "streamlineName": "List Add",
+    "query": "List"
+  },
+  {
+    "name": "layout",
+    "category": "misc",
+    "streamlineName": "Layout Dashboard",
+    "query": "Dashboard Layout"
+  },
+  {
+    "name": "zoom-in",
+    "category": "misc",
+    "streamlineName": "Zoom In",
+    "query": "Zoom In"
+  },
+  {
+    "name": "zoom-out",
+    "category": "misc",
+    "streamlineName": "Zoom Out",
+    "query": "Zoom Out"
+  },
+  {
+    "name": "wifi-off",
+    "category": "misc",
+    "streamlineName": "Wifi Off",
+    "query": "Wifi Off"
+  },
+  {
+    "name": "bluetooth",
+    "category": "misc",
+    "streamlineName": "Bluetooth",
+    "query": "Bluetooth"
+  },
+  {
+    "name": "battery-low",
+    "category": "misc",
+    "streamlineName": "Charging Battery Low 1",
+    "query": "Battery Low"
+  },
+  {
+    "name": "battery-full",
+    "category": "misc",
+    "streamlineName": "Battery Full",
+    "query": "Battery Full"
+  },
+  {
+    "name": "hearing-aid",
+    "category": "health",
+    "streamlineName": "Hearing Aid",
+    "query": "Hearing Aid"
+  },
+  {
+    "name": "family-care",
+    "category": "health",
+    "streamlineName": "Family Home",
+    "query": "Family"
+  },
+  {
+    "name": "mental-wellness",
+    "category": "health",
+    "streamlineName": "Mindfulness 2",
+    "query": "Mindfulness"
+  },
+  {
+    "name": "crisis",
+    "category": "health",
+    "streamlineName": "Emergency Call",
+    "query": "Emergency"
+  },
+  {
+    "name": "oxygen",
+    "category": "health",
+    "streamlineName": "Oxygen",
+    "query": "Oxygen"
+  },
+  {
+    "name": "radiology",
+    "category": "health",
+    "streamlineName": "Radiology Scan",
+    "query": "Radiology"
+  },
+  {
+    "name": "signal",
+    "category": "misc",
+    "streamlineName": "Signal Wave",
+    "query": "Signal"
+  },
+  {
+    "name": "accessibility",
+    "category": "misc",
+    "streamlineName": "Tools Reality Accessibility",
+    "query": "Accessibility"
+  },
+  {
+    "name": "mouse",
+    "category": "misc",
+    "streamlineName": "Mouse",
+    "query": "Mouse"
+  },
+  {
+    "name": "smartphone",
+    "category": "misc",
+    "streamlineName": "Smartphone Pay Dollar 2",
+    "query": "Smartphone"
+  },
+  {
+    "name": "projector",
+    "category": "misc",
+    "streamlineName": "Video Projector",
+    "query": "Projector"
+  },
+  {
+    "name": "wrench",
+    "category": "misc",
+    "streamlineName": "Wrench",
+    "query": "Wrench"
+  },
+  {
+    "name": "fingerprint",
+    "category": "misc",
+    "streamlineName": "Fingerprint Add",
+    "query": "Fingerprint"
+  },
+  {
+    "name": "glasses",
+    "category": "health",
+    "streamlineName": "Glasses",
+    "query": "Glasses"
+  },
+  {
+    "name": "pediatric",
+    "category": "health",
+    "streamlineName": "Baby",
+    "query": "Baby"
+  },
+  {
+    "name": "meditation",
+    "category": "health",
+    "streamlineName": "Yoga Meditation Pose2",
+    "query": "Meditation"
+  },
+  {
+    "name": "inhaler",
+    "category": "health",
+    "streamlineName": "Inhaler",
+    "query": "Inhaler"
+  },
+  {
+    "name": "orthopedics",
+    "category": "health",
+    "streamlineName": "Medical Specialty Broken Bone",
+    "query": "Bone"
+  },
+  {
+    "name": "surgery",
+    "category": "health",
+    "streamlineName": "Surgery Liposuction",
+    "query": "Surgery"
+  },
+  {
+    "name": "airplane",
+    "category": "misc",
+    "streamlineName": "Airplane Mode",
+    "query": "Airplane Mode"
+  },
+  {
+    "name": "translate",
+    "category": "misc",
+    "streamlineName": "Translate",
+    "query": "Translate"
+  },
+  {
+    "name": "desktop",
+    "category": "misc",
+    "streamlineName": "Desktop Computer",
+    "query": "Desktop"
+  },
+  {
+    "name": "watch",
+    "category": "misc",
+    "streamlineName": "Watch Time",
+    "query": "Watch"
+  },
+  {
+    "name": "code",
+    "category": "misc",
+    "streamlineName": "Folder Code",
+    "query": "Code"
+  },
+  {
+    "name": "hammer",
+    "category": "misc",
+    "streamlineName": "Hammer",
+    "query": "Hammer"
+  },
+  {
+    "name": "face-id",
+    "category": "misc",
+    "streamlineName": "Face Id",
+    "query": "Face Id"
+  },
+  {
+    "name": "flash",
+    "category": "misc",
+    "streamlineName": "Flash",
+    "query": "Flash"
+  },
+  {
+    "name": "stopwatch",
+    "category": "misc",
+    "streamlineName": "Stopwatch",
+    "query": "Stopwatch"
+  },
+  {
+    "name": "mri",
+    "category": "health",
+    "streamlineName": "Radiology Scan Mri",
+    "query": "MRI"
+  },
+  {
+    "name": "prosthetic",
+    "category": "health",
+    "streamlineName": "Prosthetic Leg 1",
+    "query": "Prosthetic"
+  },
+  {
+    "name": "counseling",
+    "category": "health",
+    "streamlineName": "Counseling 3",
+    "query": "Counseling"
+  },
+  {
+    "name": "cancer",
+    "category": "health",
+    "streamlineName": "Cancer Cell 2",
+    "query": "Cancer"
+  },
+  {
+    "name": "neurology",
+    "category": "health",
+    "streamlineName": "Brain Neurology",
+    "query": "Neurology"
+  },
+  {
+    "name": "language",
+    "category": "misc",
+    "streamlineName": "Language Barrier Confused",
+    "query": "Language"
+  },
+  {
+    "name": "laptop",
+    "category": "misc",
+    "streamlineName": "Laptop",
+    "query": "Laptop"
+  },
+  {
+    "name": "printer-alt",
+    "category": "misc",
+    "streamlineName": "Printer View",
+    "query": "Printer"
+  },
+  {
+    "name": "terminal",
+    "category": "misc",
+    "streamlineName": "Terminal",
+    "query": "Terminal"
+  },
+  {
+    "name": "camera-off",
+    "category": "misc",
+    "streamlineName": "Controls Camera Off",
+    "query": "Camera Off"
+  },
+  {
+    "name": "alarm",
+    "category": "misc",
+    "streamlineName": "Alarm Clock",
+    "query": "Alarm"
+  },
+  {
+    "name": "schedule",
+    "category": "misc",
+    "streamlineName": "Scheduled Phone Call Calendar 2",
+    "query": "Schedule"
+  },
+  {
+    "name": "rain",
+    "category": "misc",
+    "streamlineName": "Rain Umbrella",
+    "query": "Rain"
+  },
+  {
+    "name": "umbrella",
+    "category": "misc",
+    "streamlineName": "Umbrella Circle",
+    "query": "Umbrella"
+  },
+  {
+    "name": "bus",
+    "category": "misc",
+    "streamlineName": "Bus",
+    "query": "Bus"
+  },
+  {
+    "name": "gas",
+    "category": "misc",
+    "streamlineName": "Gas Station",
+    "query": "Gas Station"
+  },
+  {
+    "name": "school",
+    "category": "misc",
+    "streamlineName": "School Bell",
+    "query": "School"
+  },
+  {
+    "name": "id-card",
+    "category": "misc",
+    "streamlineName": "Single Man Id Card",
+    "query": "Id Card"
+  },
+  {
+    "name": "medal",
+    "category": "misc",
+    "streamlineName": "Award Medal",
+    "query": "Medal"
+  },
+  {
+    "name": "balloon",
+    "category": "misc",
+    "streamlineName": "Balloon Party",
+    "query": "Balloon"
+  },
+  {
+    "name": "ecology",
+    "category": "misc",
+    "streamlineName": "Ecology Leaf",
+    "query": "Ecology"
+  },
+  {
+    "name": "rocket",
+    "category": "misc",
+    "streamlineName": "Rocket Attack",
+    "query": "Rocket"
+  },
+  {
+    "name": "snow",
+    "category": "misc",
+    "streamlineName": "Weather Snow",
+    "query": "Snow"
+  },
+  {
+    "name": "coffee",
+    "category": "misc",
+    "streamlineName": "Coffee Jar",
+    "query": "Coffee"
+  },
+  {
+    "name": "train",
+    "category": "misc",
+    "streamlineName": "Train Location",
+    "query": "Train"
+  },
+  {
+    "name": "building",
+    "category": "misc",
+    "streamlineName": "Building",
+    "query": "Building"
+  },
+  {
+    "name": "book",
+    "category": "misc",
+    "streamlineName": "Book Pin",
+    "query": "Book"
+  },
+  {
+    "name": "passport",
+    "category": "misc",
+    "streamlineName": "Passport",
+    "query": "Passport"
+  },
+  {
+    "name": "award",
+    "category": "misc",
+    "streamlineName": "Award Star",
+    "query": "Award"
+  },
+  {
+    "name": "fire",
+    "category": "misc",
+    "streamlineName": "House Fire",
+    "query": "Fire"
+  },
+  {
+    "name": "water",
+    "category": "misc",
+    "streamlineName": "Water Straw",
+    "query": "Water"
+  },
+  {
+    "name": "planet",
+    "category": "misc",
+    "streamlineName": "Astronomy Planet",
+    "query": "Planet"
+  },
+  {
+    "name": "tool",
+    "category": "misc",
+    "streamlineName": "Tools Keys",
+    "query": "Tools"
+  },
+  {
+    "name": "qr-scan",
+    "category": "misc",
+    "streamlineName": "Iris Scan",
+    "query": "Scan"
+  },
+  {
+    "name": "flash-off",
+    "category": "misc",
+    "streamlineName": "Flash Off",
+    "query": "Flash Off"
+  },
+  {
+    "name": "history",
+    "category": "misc",
+    "streamlineName": "History Fan",
+    "query": "History"
+  },
+  {
+    "name": "weather",
+    "category": "misc",
+    "streamlineName": "Weather Rain",
+    "query": "Weather"
+  },
+  {
+    "name": "wind",
+    "category": "misc",
+    "streamlineName": "Wind West",
+    "query": "Wind"
+  },
+  {
+    "name": "food",
+    "category": "misc",
+    "streamlineName": "Food Delivery Bag",
+    "query": "Food"
+  },
+  {
+    "name": "bike",
+    "category": "misc",
+    "streamlineName": "Bicycle",
+    "query": "Bicycle"
+  },
+  {
+    "name": "office",
+    "category": "misc",
+    "streamlineName": "Office File Text Alternate",
+    "query": "Office"
+  },
+  {
+    "name": "graduation",
+    "category": "misc",
+    "streamlineName": "Graduation Hat",
+    "query": "Graduation"
+  },
+  {
+    "name": "ticket",
+    "category": "misc",
+    "streamlineName": "Ticket",
+    "query": "Ticket"
+  },
+  {
+    "name": "droplet",
+    "category": "misc",
+    "streamlineName": "Drop Shape",
+    "query": "Drop"
+  },
+  {
+    "name": "satellite",
+    "category": "misc",
+    "streamlineName": "Satellite",
+    "query": "Satellite"
+  },
+  {
+    "name": "pregnancy",
+    "category": "health",
+    "streamlineName": "Pregnancy Vgr",
+    "query": "Pregnancy"
+  },
+  {
+    "name": "battery-charging",
+    "category": "misc",
+    "streamlineName": "Battery Charging 2",
+    "query": "Battery Charging"
+  },
+  {
+    "name": "light-mode",
+    "category": "misc",
+    "streamlineName": "Light Mode Bw",
+    "query": "Light Mode"
+  },
+  {
+    "name": "keyboard",
+    "category": "misc",
+    "streamlineName": "Keyboard",
+    "query": "Keyboard"
+  },
+  {
+    "name": "tablet",
+    "category": "misc",
+    "streamlineName": "Tablet",
+    "query": "Tablet"
+  },
+  {
+    "name": "scanner",
+    "category": "misc",
+    "streamlineName": "Scanner",
+    "query": "Scanner"
+  },
+  {
+    "name": "bug",
+    "category": "misc",
+    "streamlineName": "Catch Bug",
+    "query": "Bug"
+  },
+  {
+    "name": "key",
+    "category": "misc",
+    "streamlineName": "Key Lock",
+    "query": "Key"
+  },
+  {
+    "name": "barcode-scan",
+    "category": "misc",
+    "streamlineName": "Barcode Scan",
+    "query": "Barcode Scan"
+  },
+  {
+    "name": "timer",
+    "category": "misc",
+    "streamlineName": "Timer",
+    "query": "Timer"
+  },
+  {
+    "name": "cloud-sun",
+    "category": "misc",
+    "streamlineName": "Weather Cloud Sun Wind",
+    "query": "Cloud Sun"
+  },
+  {
+    "name": "temperature",
+    "category": "misc",
+    "streamlineName": "Temperature Up",
+    "query": "Temperature"
+  },
+  {
+    "name": "car",
+    "category": "misc",
+    "streamlineName": "Car",
+    "query": "Car"
+  },
+  {
+    "name": "parking",
+    "category": "misc",
+    "streamlineName": "Parking P",
+    "query": "Parking"
+  },
+  {
+    "name": "factory",
+    "category": "misc",
+    "streamlineName": "Factory Belt",
+    "query": "Factory"
+  },
+  {
+    "name": "briefcase",
+    "category": "misc",
+    "streamlineName": "Briefcase",
+    "query": "Briefcase"
+  },
+  {
+    "name": "trophy",
+    "category": "misc",
+    "streamlineName": "Seo Trophy",
+    "query": "Trophy"
+  },
+  {
+    "name": "cake",
+    "category": "misc",
+    "streamlineName": "Cake Flour",
+    "query": "Cake"
+  },
+  {
+    "name": "recycle",
+    "category": "misc",
+    "streamlineName": "Plastic Bag Recycle",
+    "query": "Recycle"
+  },
+  {
+    "name": "atom",
+    "category": "misc",
+    "streamlineName": "Science Atom Positive Negative",
+    "query": "Atom"
+  },
+  {
+    "name": "robot",
+    "category": "misc",
+    "streamlineName": "Robot",
+    "query": "Robot"
+  },
+  {
+    "name": "emergency",
+    "category": "health",
+    "streamlineName": "Hospital Emergency Department",
+    "query": "Emergency"
+  },
+  {
+    "name": "leaf",
+    "category": "misc",
+    "streamlineName": "Vegetable Basil Leaf",
+    "query": "Leaf"
+  },
+  {
+    "name": "911",
+    "category": "health",
+    "streamlineName": "Safety 911",
+    "query": "Emergency Call"
+  }
+]

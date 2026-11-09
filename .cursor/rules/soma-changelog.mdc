@@ -1,0 +1,41 @@
+---
+description: Keep the Soma Design System Figma changelog current after every Soma file change
+alwaysApply: true
+---
+
+# Soma Changelog
+
+Whenever you change the Soma Design System Figma file (`hB1NzwMnZt2ALeR0OslaWi`), finish by appending to the Changelog page at node `1016:14943`.
+
+https://www.figma.com/design/hB1NzwMnZt2ALeR0OslaWi/Soma-Design-System?node-id=1016-14943
+
+This is part of finishing the task, not optional cleanup.
+
+## Entry format (required)
+
+Each bullet is **one scannable line**: bold component name, em dash, short outcome.
+
+```
+Component — What changed, in one clause.
+```
+
+- Label: Figtree **SemiBold** 14 / 18 (component or token family only)
+- Rest: Figtree Regular 14 / 18
+- Marker: a separate `•` text node, not a typed prefix inside the body
+- Row: horizontal auto-layout — `•` (hug) + 8px gap + body (fill). Wrapped lines must hang past the bullet and align with the first line of text
+- Sort A–Z by component name within Changed / Fixed / Added
+- Merge related notes for the same component into one line; do not split one change across four bullets
+- No implementation asides: no pixel math, no “was X”, no parentheticals, no token dumps
+
+```
+❌ Pagination page selector is 24px; prev/next containers are radius.full circles.
+❌ Pagination prev/next use the Select chevron.down glyph (12px), rotated 90°.
+✅ Pagination — 24px selector, circular prev/next, Select chevron, 12px value–chevron gap.
+```
+
+## Page structure
+
+- Date group = **today**, most recent first — never invent semver
+- Badge: Soft, smallest size — Added = success, Changed = brand, Fixed = warning
+- Reuse an existing category block for that date; do not duplicate badges
+- If a later change supersedes an older bullet, update the stale line instead of adding a second one

@@ -1,0 +1,42 @@
+{
+  "n": 14,
+  "raw_len": 26952,
+  "b64_len": 35936,
+  "chunks": 9,
+  "chunk_size": 4000,
+  "steps": [
+    "_canvas_14_s0.js",
+    "_canvas_14_s1.js",
+    "_canvas_14_s2.js",
+    "_canvas_14_s3.js",
+    "_canvas_14_s4.js",
+    "_canvas_14_s5.js",
+    "_canvas_14_s6.js",
+    "_canvas_14_s7.js",
+    "_canvas_14_s8.js",
+    "_canvas_14_s9.js"
+  ],
+  "step_lens": [
+    4480,
+    4382,
+    4382,
+    4382,
+    4382,
+    4382,
+    4382,
+    4382,
+    4318,
+    460
+  ],
+  "cum_lens": [
+    4000,
+    8000,
+    12000,
+    16000,
+    20000,
+    24000,
+    28000,
+    32000,
+    35936
+  ]
+}

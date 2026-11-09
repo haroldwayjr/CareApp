@@ -1,0 +1,170 @@
+[
+  {
+    "name": "route",
+    "category": "navigation",
+    "hash": "ico_lvs4Sr6wqW4mwqLN",
+    "streamlineName": "Journey Trip Route",
+    "score": 265.1,
+    "path": "navigation/route.svg"
+  },
+  {
+    "name": "split",
+    "category": "navigation",
+    "hash": "ico_RzhjIlPrywKFxwM2",
+    "streamlineName": "Split Subset Spreadsheet 2",
+    "score": 327.7,
+    "path": "navigation/split.svg"
+  },
+  {
+    "name": "paste",
+    "category": "actions",
+    "hash": "ico_mRu4pQJ4vBs12aEbmofvjly0",
+    "streamlineName": "Copy Paste",
+    "score": 117.5,
+    "path": "actions/paste.svg"
+  },
+  {
+    "name": "select",
+    "category": "actions",
+    "hash": "ico_xEkJPhjNK40jZDdz",
+    "streamlineName": "Select 3d",
+    "score": 252.55,
+    "path": "actions/select.svg"
+  },
+  {
+    "name": "swap",
+    "category": "actions",
+    "hash": "ico_mRu4pQJ4vaTV2aE6nlaf7vZ5",
+    "streamlineName": "Folder Exchange",
+    "score": 302.25,
+    "path": "actions/swap.svg"
+  },
+  {
+    "name": "star-add",
+    "category": "actions",
+    "hash": "ico_mRu4pQJ4vQFQ2aEwvSgWaeFQ",
+    "streamlineName": "Rating Star Add",
+    "score": 265.25,
+    "path": "actions/star-add.svg"
+  },
+  {
+    "name": "send-alt",
+    "category": "actions",
+    "hash": "ico_mRu4pQJ4vLZo2aEinpaf7nFg",
+    "streamlineName": "Send Email",
+    "score": 252.5,
+    "path": "actions/send-alt.svg"
+  },
+  {
+    "name": "forward-alt",
+    "category": "actions",
+    "hash": "ico_mRu4pQJ4vrXG2aEWGy9ULS5p",
+    "streamlineName": "Button Fast Forward",
+    "score": 315.05,
+    "path": "actions/forward-alt.svg"
+  },
+  {
+    "name": "reply-alt",
+    "category": "actions",
+    "hash": "ico_GRo0QcAqsz807KJw",
+    "streamlineName": "Reply To Message",
+    "score": 315.2,
+    "path": "actions/reply-alt.svg"
+  },
+  {
+    "name": "edit-alt",
+    "category": "actions",
+    "hash": "ico_0egBCT7qaedNcjOi",
+    "streamlineName": "Edit Pdf",
+    "score": 302.6,
+    "path": "actions/edit-alt.svg"
+  },
+  {
+    "name": "create",
+    "category": "actions",
+    "hash": "ico_8L3kJu2tCPK8dpRO",
+    "streamlineName": "Create Chart",
+    "score": 302.4,
+    "path": "actions/create.svg"
+  },
+  {
+    "name": "new",
+    "category": "actions",
+    "hash": "ico_nRGTbKZh6GxCWZFt",
+    "streamlineName": "New Spreadsheet",
+    "score": 302.25,
+    "path": "actions/new.svg"
+  },
+  {
+    "name": "locate",
+    "category": "actions",
+    "hash": "ico_mRu4pQJ4vBv32aE7yVaf7h1s",
+    "streamlineName": "Earth Locate",
+    "score": 252.4,
+    "path": "actions/locate.svg"
+  },
+  {
+    "name": "find",
+    "category": "actions",
+    "hash": "ico_mRu4pQJ4vReA2aE2aEqmIVg1",
+    "streamlineName": "Monitor Find",
+    "score": 302.4,
+    "path": "actions/find.svg"
+  },
+  {
+    "name": "browse",
+    "category": "actions",
+    "hash": "ico_mRu4pQJ4vfjv2aEgWaYBGfPf",
+    "streamlineName": "E Commerce Apparel Browse",
+    "score": 327.75,
+    "path": "actions/browse.svg"
+  },
+  {
+    "name": "cancel",
+    "category": "actions",
+    "hash": "ico_moD6bh3PtGXXIvKY",
+    "streamlineName": "Lock Cancel Slash",
+    "score": 315.15,
+    "path": "actions/cancel.svg"
+  },
+  {
+    "name": "discover",
+    "category": "actions",
+    "hash": "ico_k60WX89ARxdJWIRd",
+    "streamlineName": "Discover Pay",
+    "score": 252.4,
+    "path": "actions/discover.svg"
+  },
+  {
+    "name": "remind",
+    "category": "actions",
+    "hash": "ico_13frY18BB5QqYfo1",
+    "streamlineName": "Reminder Hand Sign",
+    "score": 265.1,
+    "path": "actions/remind.svg"
+  },
+  {
+    "name": "clear",
+    "category": "actions",
+    "hash": "ico_OwZU9J2Y0R41Pmu8",
+    "streamlineName": "Alert Clear Notification",
+    "score": 314.8,
+    "path": "actions/clear.svg"
+  },
+  {
+    "name": "explore",
+    "category": "actions",
+    "hash": "ico_mRu4pQJ4veOm2aESFbPop3ip",
+    "streamlineName": "Space Explore",
+    "score": 252.35,
+    "path": "actions/explore.svg"
+  },
+  {
+    "name": "draft",
+    "category": "actions",
+    "hash": "ico_3AGpJasrtHvhcnfw",
+    "streamlineName": "Workflow Request Draft",
+    "score": 314.9,
+    "path": "actions/draft.svg"
+  }
+]

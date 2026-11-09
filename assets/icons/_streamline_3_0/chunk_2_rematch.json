@@ -1,0 +1,707 @@
+[
+  {
+    "name": "magazine",
+    "figma": "icon/files/magazine",
+    "file": "files/magazine.svg",
+    "oldQuery": "Shopping Magazine Advertising",
+    "svgName": "Shopping Magazine Advertising",
+    "regularTop3": [
+      "Shopping Voucher Mail",
+      "Advertising Technorati",
+      "Advertising Megaphone"
+    ],
+    "boldTop3": [
+      "Shopping Voucher Mail",
+      "Advertising Technorati",
+      "Advertising Megaphone"
+    ]
+  },
+  {
+    "name": "manual",
+    "figma": "icon/files/manual",
+    "file": "files/manual.svg",
+    "oldQuery": "Manual Book Content Sign",
+    "svgName": "Manual Book Content Sign",
+    "regularTop3": [
+      "Content Pen",
+      "Content Pen 1",
+      "Content Pen 2"
+    ],
+    "boldTop3": [
+      "Content Pen",
+      "Content Pen 1",
+      "Content Pen 2"
+    ]
+  },
+  {
+    "name": "map",
+    "figma": "icon/navigation/map",
+    "file": "navigation/map.svg",
+    "oldQuery": "Map Marks",
+    "svgName": "Map Marks",
+    "regularTop3": [
+      "Maps Mark",
+      "Real Estate Dimensions Map",
+      "Pin Map"
+    ],
+    "boldTop3": [
+      "Maps Mark",
+      "Pin Map",
+      "Pin Map 1"
+    ]
+  },
+  {
+    "name": "medical-cross",
+    "figma": "icon/health/medical.cross",
+    "file": "health/medical-cross.svg",
+    "oldQuery": "Medical Cross",
+    "svgName": "Medical Cross",
+    "regularTop3": [
+      "Medical App Laptop",
+      "Medical App Laptop 1",
+      "Medical Condition Cough"
+    ],
+    "boldTop3": [
+      "Medical App Laptop",
+      "Medical App Laptop 1",
+      "Medical Condition Cough"
+    ]
+  },
+  {
+    "name": "meditation",
+    "figma": "icon/health/meditation",
+    "file": "health/meditation.svg",
+    "oldQuery": "Yoga Meditation Pose2",
+    "svgName": "Yoga Meditation Pose2",
+    "regularTop3": [
+      "Yoga Arm Stretch",
+      "Yoga Arms Stretch",
+      "Yoga Back Stretch"
+    ],
+    "boldTop3": [
+      "Yoga Arm Stretch",
+      "Yoga Arms Stretch",
+      "Yoga Back Stretch"
+    ]
+  },
+  {
+    "name": "mental-health",
+    "figma": "icon/health/mental.health",
+    "file": "health/mental-health.svg",
+    "oldQuery": "Mental Health 2",
+    "svgName": "Mental Health 2",
+    "regularTop3": [
+      "Diet Health",
+      "Graph Stats",
+      "Pstyle Two In Cart"
+    ],
+    "boldTop3": [
+      "Diet Health",
+      "Graph Stats",
+      "Graph Stats Square Alternate"
+    ]
+  },
+  {
+    "name": "mental-wellness",
+    "figma": "icon/health/mental.wellness",
+    "file": "health/mental-wellness.svg",
+    "oldQuery": "Mindfulness 2",
+    "svgName": "Mindfulness 2",
+    "regularTop3": [
+      "Pstyle Two In Cart",
+      "Style Two Pin Add",
+      "Style Two Pin Bolt"
+    ],
+    "boldTop3": [
+      "Pstyle Two In Cart",
+      "Style Two Pin Add",
+      "Style Two Pin Bolt"
+    ]
+  },
+  {
+    "name": "merge",
+    "figma": "icon/navigation/merge",
+    "file": "navigation/merge.svg",
+    "oldQuery": "Merge",
+    "svgName": "Merge",
+    "regularTop3": [
+      "Phone Actions Merge",
+      "Diagram Merge Down",
+      "Pathfinder Merge"
+    ],
+    "boldTop3": [
+      "Diagram Merge Down",
+      "Pathfinder Merge",
+      "Phone Actions Merge"
+    ]
+  },
+  {
+    "name": "message",
+    "figma": "icon/comms/message",
+    "file": "comms/message.svg",
+    "oldQuery": "Chat Consultation Phone",
+    "svgName": "Chat Consultation Phone",
+    "regularTop3": [
+      "Phone Actions Call",
+      "Phone Actions Call 1",
+      "Phone Ring"
+    ],
+    "boldTop3": [
+      "Phone Actions Call",
+      "Phone Actions Call 1",
+      "Phone Ring"
+    ]
+  },
+  {
+    "name": "microscope",
+    "figma": "icon/health/microscope",
+    "file": "health/microscope.svg",
+    "oldQuery": "Microscope 1",
+    "svgName": "Microscope 1",
+    "regularTop3": [
+      "Style One Pin",
+      "Style One Pin Bolt",
+      "Style One Pin Book"
+    ],
+    "boldTop3": [
+      "Style One Pin",
+      "Style One Pin Bolt",
+      "Style One Pin Book"
+    ]
+  },
+  {
+    "name": "moon",
+    "figma": "icon/misc/moon",
+    "file": "misc/moon.svg",
+    "oldQuery": "Astrology Moon",
+    "svgName": "Astrology Moon",
+    "regularTop3": [
+      "Astrology Aquarius",
+      "Astrology Aries",
+      "Astrology Aries 1"
+    ],
+    "boldTop3": [
+      "Astrology Aquarius",
+      "Astrology Aries",
+      "Astrology Aries 1"
+    ]
+  },
+  {
+    "name": "neurology",
+    "figma": "icon/health/neurology",
+    "file": "health/neurology.svg",
+    "oldQuery": "Brain Neurology",
+    "svgName": null,
+    "regularTop3": [
+      "Brain Head",
+      "Brain Head 1",
+      "Brain Network"
+    ],
+    "boldTop3": [
+      "Brain Head",
+      "Brain Head 1",
+      "Brain Network"
+    ]
+  },
+  {
+    "name": "new",
+    "figma": "icon/actions/new",
+    "file": "actions/new.svg",
+    "oldQuery": "New Spreadsheet",
+    "svgName": "New Spreadsheet",
+    "regularTop3": [
+      "Tag New",
+      "Tag New Circle",
+      "Family Add New Member"
+    ],
+    "boldTop3": [
+      "Tag New",
+      "Tag New Circle",
+      "Family Add New Member"
+    ]
+  },
+  {
+    "name": "notification",
+    "figma": "icon/status/notification",
+    "file": "status/notification.svg",
+    "oldQuery": "Alert Notification",
+    "svgName": "Alert Notification",
+    "regularTop3": [
+      "Alert Circle",
+      "Alarm Bell",
+      "Alarm Clock"
+    ],
+    "boldTop3": [
+      "Alarm Bell",
+      "Alarm Bell 1",
+      "Alarm Clock 1"
+    ]
+  },
+  {
+    "name": "nurse",
+    "figma": "icon/health/nurse",
+    "file": "health/nurse.svg",
+    "oldQuery": "Nurse With Cap Cloth",
+    "svgName": "Nurse With Cap Cloth",
+    "regularTop3": [
+      "Hospital Bedroom Nurse",
+      "Cap",
+      "Cap 1"
+    ],
+    "boldTop3": [
+      "Hospital Bedroom Nurse",
+      "Cap",
+      "Cap 1"
+    ]
+  },
+  {
+    "name": "office",
+    "figma": "icon/misc/office",
+    "file": "misc/office.svg",
+    "oldQuery": "Office File Text Alternate",
+    "svgName": "Office File Text Alternate",
+    "regularTop3": "Office File Text Alternate",
+    "boldTop3": [
+      "Office File Text Graph",
+      "Office File Text",
+      "Office File Doc"
+    ]
+  },
+  {
+    "name": "online",
+    "figma": "icon/status/online",
+    "file": "status/online.svg",
+    "oldQuery": "Online Video Chat",
+    "svgName": "Online Video Chat",
+    "regularTop3": [
+      "Video Edit Brightness",
+      "Video Edit Brightness 1",
+      "Video Edit Cc"
+    ],
+    "boldTop3": [
+      "Video Edit Brightness",
+      "Video Edit Brightness 1",
+      "Video Edit Cc"
+    ]
+  },
+  {
+    "name": "open",
+    "figma": "icon/actions/open",
+    "file": "actions/open.svg",
+    "oldQuery": "Open Eyes",
+    "svgName": "Open Eyes",
+    "regularTop3": [
+      "Book Open",
+      "Book Open 1",
+      "Book Open 2"
+    ],
+    "boldTop3": [
+      "Book Open",
+      "Book Open 1",
+      "Book Open 2"
+    ]
+  },
+  {
+    "name": "otc",
+    "figma": "icon/health/otc",
+    "file": "health/otc.svg",
+    "oldQuery": "Medicine Liquid Cup",
+    "svgName": "Medicine Liquid Cup",
+    "regularTop3": [
+      "Coffee Cup",
+      "Dating Cup",
+      "Tea Cup"
+    ],
+    "boldTop3": [
+      "Coffee Cup",
+      "Dating Cup",
+      "Tea Cup"
+    ]
+  },
+  {
+    "name": "oxygen",
+    "figma": "icon/health/oxygen",
+    "file": "health/oxygen.svg",
+    "oldQuery": "Oxygen",
+    "svgName": "Oxygen",
+    "regularTop3": [
+      "Diving Oxygen",
+      "Diving Oxygen Tank"
+    ],
+    "boldTop3": [
+      "Diving Oxygen",
+      "Diving Oxygen Tank"
+    ]
+  },
+  {
+    "name": "package-alt",
+    "figma": "icon/files/package.alt",
+    "file": "files/package-alt.svg",
+    "oldQuery": "Package Dimension",
+    "svgName": "Package Dimension",
+    "regularTop3": [
+      "Warehouse Package Box",
+      "Real Estate Dimensions Block",
+      "Real Estate Dimensions Building"
+    ],
+    "boldTop3": [
+      "Warehouse Package Box",
+      "Real Estate Dimensions Block",
+      "Real Estate Dimensions Building"
+    ]
+  },
+  {
+    "name": "panel-bottom",
+    "figma": "icon/navigation/panel.bottom",
+    "file": "navigation/panel-bottom.svg",
+    "oldQuery": "Layout 9",
+    "svgName": "Layout 9",
+    "regularTop3": [
+      "Layout",
+      "Layout 1",
+      "Layout 2"
+    ],
+    "boldTop3": [
+      "Layout",
+      "Layout 1",
+      "Layout 2"
+    ]
+  },
+  {
+    "name": "panel-left",
+    "figma": "icon/navigation/panel.left",
+    "file": "navigation/panel-left.svg",
+    "oldQuery": "Sidebar Expand",
+    "svgName": "Sidebar Expand",
+    "regularTop3": [
+      "Expand",
+      "Expand 1",
+      "Expand 2"
+    ],
+    "boldTop3": [
+      "Expand",
+      "Expand 1",
+      "Expand 2"
+    ]
+  },
+  {
+    "name": "panel-right",
+    "figma": "icon/navigation/panel.right",
+    "file": "navigation/panel-right.svg",
+    "oldQuery": "Sidebar Collapes",
+    "svgName": "Sidebar Collapes",
+    "regularTop3": [
+      "Navigation Menu 1"
+    ],
+    "boldTop3": [
+      "Navigation Menu 1"
+    ]
+  },
+  {
+    "name": "parcel",
+    "figma": "icon/files/parcel",
+    "file": "files/parcel.svg",
+    "oldQuery": "Lightweight Parcel",
+    "svgName": null,
+    "regularTop3": [
+      "Shipment Packages",
+      "Share Location Hand",
+      "Share Location Hand 1"
+    ],
+    "boldTop3": [
+      "Shipment Package",
+      "Shipment Packages",
+      "Share Location Hand"
+    ]
+  },
+  {
+    "name": "paste",
+    "figma": "icon/actions/paste",
+    "file": "actions/paste.svg",
+    "oldQuery": "Insurance Document Clipboard",
+    "svgName": "Insurance Document Clipboard",
+    "regularTop3": [
+      "Car Insurance Hands",
+      "Real Estate Insurance Building",
+      "Real Estate Insurance House"
+    ],
+    "boldTop3": [
+      "Car Insurance Hands",
+      "Real Estate Insurance Building",
+      "Real Estate Insurance Building 1"
+    ]
+  },
+  {
+    "name": "patient",
+    "figma": "icon/health/patient",
+    "file": "health/patient.svg",
+    "oldQuery": "Patient Care",
+    "svgName": "Patient Care",
+    "regularTop3": [
+      "Medical File",
+      "Baby Care Body",
+      "Baby Care Bottle"
+    ],
+    "boldTop3": [
+      "Baby Care Body",
+      "Baby Care Bottle",
+      "Baby Care Bib"
+    ]
+  },
+  {
+    "name": "pharmacy",
+    "figma": "icon/health/pharmacy",
+    "file": "health/pharmacy.svg",
+    "oldQuery": "Pharmacy",
+    "svgName": "Pharmacy",
+    "regularTop3": [],
+    "boldTop3": []
+  },
+  {
+    "name": "pharmacy-alt",
+    "figma": "icon/health/pharmacy.alt",
+    "file": "health/pharmacy-alt.svg",
+    "oldQuery": "Pharmacy Shop",
+    "svgName": null,
+    "regularTop3": [
+      "Shop",
+      "Shop 1",
+      "Shop Arrow"
+    ],
+    "boldTop3": [
+      "Shop",
+      "Shop 1",
+      "Shop Assistant"
+    ]
+  },
+  {
+    "name": "policy",
+    "figma": "icon/files/policy",
+    "file": "files/policy.svg",
+    "oldQuery": "Ai Policy Script",
+    "svgName": null,
+    "regularTop3": [
+      "Insurance Hand",
+      "Insurance Hands",
+      "Car Insurance Hands"
+    ],
+    "boldTop3": [
+      "Insurance Hand",
+      "Insurance Hands",
+      "Car Insurance Hands"
+    ]
+  },
+  {
+    "name": "portfolio",
+    "figma": "icon/files/portfolio",
+    "file": "files/portfolio.svg",
+    "oldQuery": "Portfolio Project User",
+    "svgName": null,
+    "regularTop3": [
+      "Project Plan Pen",
+      "Project Blueprint Buildings",
+      "Project Blueprint Create"
+    ],
+    "boldTop3": [
+      "Project Plan Pen",
+      "Project Blueprint Buildings",
+      "Project Blueprint Create"
+    ]
+  },
+  {
+    "name": "prescription",
+    "figma": "icon/health/prescription",
+    "file": "health/prescription.svg",
+    "oldQuery": "Prescription Px",
+    "svgName": "Prescription Px",
+    "regularTop3": [
+      "Social 500px"
+    ],
+    "boldTop3": [
+      "Social 500px"
+    ]
+  },
+  {
+    "name": "prosthetic",
+    "figma": "icon/health/prosthetic",
+    "file": "health/prosthetic.svg",
+    "oldQuery": "Prosthetic Leg 1",
+    "svgName": "Prosthetic Leg 1",
+    "regularTop3": [
+      "Technology Prosthetic Leg",
+      "Bandage Leg Hanging",
+      "Bandage Leg"
+    ],
+    "boldTop3": [
+      "Technology Prosthetic Leg",
+      "Bandage Leg Hanging",
+      "Bandage Leg"
+    ]
+  },
+  {
+    "name": "pulse",
+    "figma": "icon/health/pulse",
+    "file": "health/pulse.svg",
+    "oldQuery": "Hypertension Pulse",
+    "svgName": null,
+    "regularTop3": [
+      "Graph Stats Circle",
+      "Monitor Heart Beat",
+      "Social Music Beats Studio"
+    ],
+    "boldTop3": [
+      "Graph Stats Circle",
+      "Graph Stats Square Alternate",
+      "Monitor Heart Beat"
+    ]
+  },
+  {
+    "name": "quote-reply",
+    "figma": "icon/actions/quote.reply",
+    "file": "actions/quote-reply.svg",
+    "oldQuery": "Quote",
+    "svgName": "Quote",
+    "regularTop3": [
+      "Open Quote",
+      "Close Quote",
+      "Messages Bubble Quote"
+    ],
+    "boldTop3": [
+      "Open Quote",
+      "Close Quote",
+      "Messages Bubble Quote Alternate"
+    ]
+  },
+  {
+    "name": "record",
+    "figma": "icon/media/record",
+    "file": "media/record.svg",
+    "oldQuery": "Phone Record",
+    "svgName": "Phone Record",
+    "regularTop3": [
+      "Phone Actions Record",
+      "Phone Actions Record 1",
+      "Phone Action Record"
+    ],
+    "boldTop3": [
+      "Phone Actions Record",
+      "Phone Actions Record 1",
+      "Phone Action Record"
+    ]
+  },
+  {
+    "name": "recycle",
+    "figma": "icon/misc/recycle",
+    "file": "misc/recycle.svg",
+    "oldQuery": "Plastic Bag Recycle",
+    "svgName": "Plastic Bag Recycle",
+    "regularTop3": [
+      "Bag Purse",
+      "Shopping Bag Barcode",
+      "Shopping Bag Barcode 1"
+    ],
+    "boldTop3": [
+      "Shopping Bag Purse Barcode",
+      "Bag Purse",
+      "Shopping Bag Barcode"
+    ]
+  },
+  {
+    "name": "remind",
+    "figma": "icon/actions/remind",
+    "file": "actions/remind.svg",
+    "oldQuery": "Reminder Hand Sign",
+    "svgName": null,
+    "regularTop3": [
+      "Business Contract Handshake Sign",
+      "Sign Badge Circle",
+      "Road Sign 66"
+    ],
+    "boldTop3": [
+      "Business Contract Handshake Sign",
+      "Sign Badge Circle",
+      "Sign Badge Rectangular"
+    ]
+  },
+  {
+    "name": "reply",
+    "figma": "icon/comms/reply",
+    "file": "comms/reply.svg",
+    "oldQuery": "Reply Time Clock",
+    "svgName": null,
+    "regularTop3": [
+      "Time Clock File",
+      "Time Clock File 1",
+      "Time Clock File Add"
+    ],
+    "boldTop3": [
+      "Time Clock File",
+      "Time Clock File 1",
+      "Time Clock File Add"
+    ]
+  },
+  {
+    "name": "reply-alt",
+    "figma": "icon/actions/reply.alt",
+    "file": "actions/reply-alt.svg",
+    "oldQuery": "Reply To Message",
+    "svgName": "Reply To Message",
+    "regularTop3": [
+      "Email Action Reply",
+      "Email Action Reply 1",
+      "Email Action Reply 2"
+    ],
+    "boldTop3": [
+      "Email Action Reply",
+      "Email Action Reply 1",
+      "Email Action Reply All"
+    ]
+  },
+  {
+    "name": "resize",
+    "figma": "icon/navigation/resize",
+    "file": "navigation/resize.svg",
+    "oldQuery": "Expand 8",
+    "svgName": "Expand 8",
+    "regularTop3": "Expand 8",
+    "boldTop3": [
+      "Expand",
+      "Expand 1",
+      "Expand 2"
+    ]
+  },
+  {
+    "name": "restore",
+    "figma": "icon/actions/restore",
+    "file": "actions/restore.svg",
+    "oldQuery": "Archive Restore",
+    "svgName": "Archive Restore",
+    "regularTop3": [
+      "Archive",
+      "Archive Books",
+      "Archive Drawer"
+    ],
+    "boldTop3": [
+      "Archive",
+      "Archive Books",
+      "Archive Drawer"
+    ]
+  },
+  {
+    "name": "resume",
+    "figma": "icon/files/resume",
+    "file": "files/resume.svg",
+    "oldQuery": "Recruiting Resume Document",
+    "svgName": "Recruiting Resume Document",
+    "regularTop3": [
+      "Job Choose Cadidate 1",
+      "Job Choose Candidate",
+      "Job Search"
+    ],
+    "boldTop3": [
+      "Job Choose Cadidate 1",
+      "Job Choose Candidate",
+      "Job Search"
+    ]
+  }
+]

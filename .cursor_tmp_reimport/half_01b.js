@@ -1,0 +1,73 @@
+
+const page = figma.root.children.find(p => /Icons/i.test(p.name));
+await figma.setCurrentPageAsync(page);
+const collections = await figma.variables.getLocalVariableCollectionsAsync();
+let iconDefault = null;
+for (const coll of collections) {
+  for (const id of coll.variableIds) {
+    const v = await figma.variables.getVariableByIdAsync(id);
+    if (v && v.name === 'icon/default') iconDefault = v;
+  }
+}
+function bindStrokes(root) {
+  const stack = [root];
+  while (stack.length) {
+    const n = stack.pop();
+    if ('constraints' in n) n.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    if (n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION' || n.type === 'ELLIPSE' || n.type === 'LINE') {
+      const hasStroke = Array.isArray(n.strokes) && n.strokes.length > 0;
+      const hasFill = Array.isArray(n.fills) && n.fills.some(f => f.type === 'SOLID' && f.visible !== false);
+      if (hasStroke || (!hasFill && n.type === 'VECTOR')) {
+        n.fills = [];
+        n.strokes = [figma.variables.setBoundVariableForPaint(
+          { type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', iconDefault)];
+        n.strokeWeight = 1.5;
+        n.strokeJoin = 'ROUND';
+        n.strokeCap = 'ROUND';
+        try { n.strokeAlign = 'CENTER'; } catch (_) {}
+      }
+      if (hasFill && !hasStroke) {
+        n.fills = [figma.variables.setBoundVariableForPaint(
+          { type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', iconDefault)];
+      }
+    }
+    if ('clipsContent' in n && n.type === 'FRAME') n.clipsContent = false;
+    if ('children' in n) for (const c of n.children) stack.push(c);
+  }
+}
+const SIZE_PX = { sm: 20, md: 24, lg: 32 };
+function reimportRegular(set, svg) {
+  const results = {};
+  for (const [size, px] of Object.entries(SIZE_PX)) {
+    const variant = set.children.find(c => c.name === 'Size=' + size);
+    if (!variant) continue;
+    variant.visible = true;
+    for (const c of [...variant.children]) c.remove();
+    const node = figma.createNodeFromSvg(svg);
+    node.name = set.name.split('/').pop();
+    node.resize(px, px);
+    node.x = 0; node.y = 0;
+    node.clipsContent = false;
+    if ('constraints' in node) node.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    variant.appendChild(node);
+    try { variant.resizeWithoutConstraints(px, px); } catch (_) { try { variant.resize(px, px); } catch(__){} }
+    bindStrokes(node);
+    variant.clipsContent = false;
+    results[size] = node.findAll(n => n.type==='VECTOR' || n.type==='ELLIPSE' || n.type==='LINE' || n.type==='BOOLEAN_OPERATION').length;
+  }
+  for (const c of set.children) c.visible = (c.name === 'Size=md');
+  try { set.resizeWithoutConstraints(24, 24); } catch (_) {}
+  set.clipsContent = true;
+  return results;
+}
+
+const SVGS = {"icon/files/press": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Force-Touch-Press--Streamline-Ultimate\">\n  <desc>\n    Force Touch Press Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m23.2503 16.73 -2.44 -2.44c-0.5025 -0.5035 -1.1674 -0.8121 -1.8763 -0.8707 -0.7088 -0.0586 -1.4154 0.1366 -1.9937 0.5507l-1.64 1.17 -3.44 -3.43c-0.1386 -0.1403 -0.3037 -0.2517 -0.4856 -0.3277 -0.182 -0.0761 -0.3772 -0.1152 -0.5744 -0.1152s-0.3925 0.0391 -0.5744 0.1152c-0.182 0.076 -0.34705 0.1874 -0.48564 0.3277 -0.27848 0.2825 -0.4346 0.6632 -0.4346 1.06 0 0.3967 0.15612 0.7774 0.4346 1.06l5.00004 5 -1.25 0.42c-0.3782 0.1326 -0.6947 0.3991 -0.8898 0.7492 -0.195 0.3501 -0.2552 0.7595 -0.169 1.1509 0.0861 0.3913 0.3126 0.7376 0.6366 0.9734 0.3241 0.2359 0.7232 0.3448 1.1222 0.3065l3.73 -0.42 1.5042 1.2399\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M8.53497 16.1817c-0.54733 -0.3161 -1.01469 -0.7537 -1.366 -1.2792 -0.35131 -0.5254 -0.57717 -1.1245 -0.66014 -1.7511 -0.08296 -0.6266 -0.02082 -1.2639 0.18164 -1.8626 0.20246 -0.5988 0.53981 -1.143 0.98601 -1.59063 0.4462 -0.44765 0.98931 -0.78677 1.5874 -0.99118 0.59809 -0.2044 1.23512 -0.26862 1.86202 -0.18769 0.6268 0.08093 1.2267 0.30484 1.7533 0.65444 0.5265 0.34959 0.9657 0.81553 1.2836 1.36186\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" d=\"M10.5 23.25H3.75c-1.65685 0 -3 -1.3431 -3 -3V3.75c0 -1.65685 1.34315 -3 3 -3h7.5c1.6569 0 3 1.34315 3 3v2.875\" stroke-width=\"1\"></path>\n</svg>", "icon/files/server": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Server--Streamline-Ultimate\">\n  <desc>\n    Server Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M13.501 8.25024h1.5\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M18.001 8.25024h1.5\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" d=\"M5.625 14.6252c-0.20711 0 -0.375 -0.1678 -0.375 -0.375 0 -0.2071 0.16789 -0.375 0.375 -0.375\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" d=\"M5.625 14.6252c0.20711 0 0.375 -0.1678 0.375 -0.375 0 -0.2071 -0.16789 -0.375 -0.375 -0.375\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" d=\"M5.625 8.62524c-0.20711 0 -0.375 -0.16789 -0.375 -0.375 0 -0.2071 0.16789 -0.375 0.375 -0.375\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" d=\"M5.625 8.62524c0.20711 0 0.375 -0.16789 0.375 -0.375 0 -0.2071 -0.16789 -0.375 -0.375 -0.375\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M13.501 14.2502h1.5\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M18.001 14.2502h1.5\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12.001 17.2502v6\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4.50098 23.2502H19.501\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" d=\"M1.14001 23.2502c-0.207102 0 -0.374995 -0.1678 -0.374995 -0.375 0 -0.2071 0.167893 -0.375 0.374995 -0.375\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" d=\"M1.14001 23.2502c0.20711 0 0.375 -0.1678 0.375 -0.375 0 -0.2071 -0.16789 -0.375 -0.375 -0.375\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" d=\"M22.876 23.2502c-0.2071 0 -0.375 -0.1678 -0.375 -0.375 0 -0.2071 0.1679 -0.375 0.375 -0.375\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" d=\"M22.876 23.2502c0.2071 0 0.375 -0.1678 0.375 -0.375 0 -0.2071 -0.1679 -0.375 -0.375 -0.375\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M23.251 14.2502c0 0.7957 -0.3161 1.5588 -0.8787 2.1214s-1.3257 0.8786 -2.1213 0.8786H3.75098c-0.79565 0 -1.55871 -0.316 -2.12132 -0.8786 -0.56261 -0.5626 -0.878683 -1.3257 -0.878683 -2.1214 0 -0.7956 0.316073 -1.5587 0.878683 -2.1213 0.56261 -0.5626 1.32567 -0.8787 2.12132 -0.8787H20.251c0.7956 0 1.5587 0.3161 2.1213 0.8787 0.5626 0.5626 0.8787 1.3257 0.8787 2.1213v0Z\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M23.251 8.25024c0 0.79565 -0.3161 1.55872 -0.8787 2.12136 -0.5626 0.5626 -1.3257 0.8786 -2.1213 0.8786H3.75098c-0.79565 0 -1.55871 -0.316 -2.12132 -0.8786 -0.56261 -0.56264 -0.878683 -1.32571 -0.878683 -2.12136 0 -0.79565 0.316073 -1.55871 0.878683 -2.12132 0.56261 -0.56261 1.32567 -0.87868 2.12132 -0.87868H20.251c0.7956 0 1.5587 0.31607 2.1213 0.87868 0.5626 0.56261 0.8787 1.32567 0.8787 2.12132v0Z\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m1.27905 6.55024 1.936 -3.485c0.38971 -0.70163 0.95997 -1.28627 1.65169 -1.69332C5.55846 0.964872 6.34646 0.750231 7.14905 0.750244h9.70005c0.8026 -0.000013 1.5905 0.214628 2.2823 0.621676 0.6917 0.40705 1.2619 0.99169 1.6517 1.69332l1.94 3.485\" stroke-width=\"1\"></path>\n</svg>", "icon/health/bandage": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Bandage--Streamline-Ultimate\">\n  <desc>\n    Bandage Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M8.99297 2.37097 21.726 15.105c0.4421 0.4331 0.7939 0.9495 1.0351 1.5195 0.2412 0.5699 0.3671 1.182 0.3702 1.8009 0.0032 0.6189 -0.1163 1.2323 -0.3517 1.8046 -0.2354 0.5724 -0.5819 1.0925 -1.0195 1.5301 -0.4376 0.4376 -0.9577 0.7841 -1.5301 1.0195 -0.5723 0.2354 -1.1857 0.3549 -1.8046 0.3517 -0.6189 -0.0031 -1.231 -0.129 -1.8009 -0.3702 -0.57 -0.2412 -1.0864 -0.593 -1.5195 -1.0351L2.37097 8.99297C1.49284 8.11484 0.999512 6.92384 0.999512 5.68197c0 -1.24186 0.493328 -2.43287 1.371458 -3.311 0.87813 -0.87813 2.06914 -1.371458 3.311 -1.371458 1.24187 0 2.43287 0.493328 3.311 1.371458v0Z\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M13.5769 6.95574 6.95557 13.5771l3.56523 3.5652 6.6213 -6.6213 -3.5652 -3.56526Z\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" d=\"M4.36499 6.77667c-0.20711 0 -0.375 -0.16789 -0.375 -0.375 0 -0.2071 0.16789 -0.375 0.375 -0.375\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" d=\"M4.36499 6.77667c0.20711 0 0.375 -0.16789 0.375 -0.375 0 -0.2071 -0.16789 -0.375 -0.375 -0.375\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" d=\"M8.43896 6.77667c-0.2071 0 -0.375 -0.16789 -0.375 -0.375 0 -0.2071 0.1679 -0.375 0.375 -0.375\" stroke-width=\"1\"></path>\n  <path stroke=\"#000000\" d=\"M8.43896 6.77667c0.20711 0 0.375 -0.16789 0.375 -0.375 0 -0.2071 -0.16789 -0.375 -0.375 -0.375\" stroke-width=\"1\"></path>\n  <g>\n    <path stroke=\"#000000\" d=\"M15.5702 17.982c-0.2071 0 -0.375 -0.1679 -0.375 -0.375s0.1679 -0.375 0.375 -0.375\" stroke-width=\"1\"></path>\n    <path stroke=\"#000000\" d=\"M15.5702 17.982c0.2071 0 0.375 -0.1679 0.375 -0.375s-0.1679 -0.375 -0.375 -0.375\" stroke-width=\"1\"></path>\n  </g>\n  <g>\n    <path stroke=\"#000000\" d=\"M19.6442 17.982c-0.2071 0 -0.375 -0.1679 -0.375 -0.375s0.1679 -0.375 0.375 -0.375\" stroke-width=\"1\"></path>\n    <path stroke=\"#000000\" d=\"M19.6442 17.982c0.2071 0 0.375 -0.1679 0.375 -0.375s-0.1679 -0.375 -0.375 -0.375\" stroke-width=\"1\"></path>\n  </g>\n</svg>", "icon/health/bed": "<svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" id=\"Hospital-Bedroom--Streamline-Ultimate\">\n  <desc>\n    Hospital Bedroom Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path d=\"M5.25 16.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 1 0 -4.5 0Z\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"></path>\n  <path d=\"M12 14.25h8.5a2 2 0 0 1 2 2v2.5l0 0H12l0 0v-4.5l0 0Z\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"></path>\n  <path d=\"M1.5 18.75h21v3h-21z\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"></path>\n  <path d=\"m1.5 23.25 0 -9\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"></path>\n  <path d=\"m22.5 23.25 0 -1.5\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"></path>\n  <path d=\"M17.25 3.75H15V1.5a0.75 0.75 0 0 0 -0.75 -0.75h-3a0.75 0.75 0 0 0 -0.75 0.75v2.25H8.25a0.75 0.75 0 0 0 -0.75 0.75v3a0.75 0.75 0 0 0 0.75 0.75h2.25v2.25a0.75 0.75 0 0 0 0.75 0.75h3a0.75 0.75 0 0 0 0.75 -0.75V8.25h2.25A0.75 0.75 0 0 0 18 7.5v-3a0.75 0.75 0 0 0 -0.75 -0.75Z\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"></path>\n</svg>"};
+
+const out = {};
+for (const [setName, svg] of Object.entries(SVGS)) {
+  const set = page.findOne(n => n.type === 'COMPONENT_SET' && n.name === setName);
+  if (!set) { out[setName] = { error: 'missing' }; continue; }
+  try { out[setName] = reimportRegular(set, svg); }
+  catch (e) { out[setName] = { error: String(e && e.message || e) }; }
+}
+return out;

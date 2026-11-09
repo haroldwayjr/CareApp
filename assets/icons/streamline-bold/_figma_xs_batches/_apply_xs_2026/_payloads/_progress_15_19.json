@@ -1,0 +1,27 @@
+{
+  "15": {
+    "batch": 15,
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "miss": [],
+    "fail": []
+  },
+  "16": {
+    "batch": 16,
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "miss": [],
+    "fail": []
+  },
+  "17_partial": {
+    "q0": {
+      "ok": 5
+    },
+    "half1": {
+      "ok": 10
+    },
+    "q1_pending": true
+  }
+}

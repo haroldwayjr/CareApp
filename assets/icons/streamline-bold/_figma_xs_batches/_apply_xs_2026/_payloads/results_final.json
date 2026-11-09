@@ -1,0 +1,103 @@
+{
+  "01": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "note": "skipped-done"
+  },
+  "02": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "note": "skipped-done"
+  },
+  "03": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "note": "skipped-done"
+  },
+  "04": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "note": "skipped-done"
+  },
+  "05": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "note": "skipped-done"
+  },
+  "06": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "miss": [],
+    "fail": []
+  },
+  "07": {
+    "ok": 2,
+    "missing": 0,
+    "failed": 0,
+    "partial": true,
+    "note": "p00 done"
+  },
+  "08": {
+    "ok": null,
+    "status": "pending"
+  },
+  "09": {
+    "ok": null,
+    "status": "pending"
+  },
+  "10": {
+    "ok": null,
+    "status": "pending"
+  },
+  "11": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "note": "skipped-done"
+  },
+  "12": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "note": "skipped-done"
+  },
+  "13": {
+    "ok": null,
+    "status": "pending"
+  },
+  "14": {
+    "ok": null,
+    "status": "pending"
+  },
+  "15": {
+    "ok": 20,
+    "missing": 0,
+    "failed": 0,
+    "note": "skipped-done"
+  },
+  "16": {
+    "ok": null,
+    "status": "pending"
+  },
+  "17": {
+    "ok": null,
+    "status": "pending"
+  },
+  "18": {
+    "ok": 4,
+    "missing": 0,
+    "failed": 0,
+    "partial": true,
+    "note": "g00 done (smoke+g00)"
+  },
+  "19": {
+    "ok": null,
+    "status": "pending"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "done": [
+    "icon/commerce/barcode",
+    "icon/commerce/gift",
+    "icon/files/attachment",
+    "icon/files/cloud",
+    "icon/files/file.zip",
+    "icon/files/portfolio",
+    "icon/files/shelf",
+    "icon/files/wiki",
+    "icon/health/mri",
+    "icon/health/prosthetic",
+    "icon/media/mic.off",
+    "icon/media/skip.forward",
+    "icon/status/loading",
+    "icon/status/lock",
+    "icon/status/shield.check",
+    "icon/status/star"
+  ]
+}

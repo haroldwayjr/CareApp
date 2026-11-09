@@ -1,0 +1,404 @@
+[
+  {
+    "file": "apply_00_p0.js",
+    "len": 11906,
+    "count": 16,
+    "batch": "apply_00"
+  },
+  {
+    "file": "apply_00_p1.js",
+    "len": 11194,
+    "count": 9,
+    "batch": "apply_00"
+  },
+  {
+    "file": "apply_01_p0.js",
+    "len": 11951,
+    "count": 6,
+    "batch": "apply_01"
+  },
+  {
+    "file": "apply_01_p1.js",
+    "len": 11467,
+    "count": 13,
+    "batch": "apply_01"
+  },
+  {
+    "file": "apply_01_p2.js",
+    "len": 9352,
+    "count": 6,
+    "batch": "apply_01"
+  },
+  {
+    "file": "apply_02_p0.js",
+    "len": 11979,
+    "count": 9,
+    "batch": "apply_02"
+  },
+  {
+    "file": "apply_02_p1.js",
+    "len": 11515,
+    "count": 5,
+    "batch": "apply_02"
+  },
+  {
+    "file": "apply_02_p2.js",
+    "len": 11596,
+    "count": 10,
+    "batch": "apply_02"
+  },
+  {
+    "file": "apply_02_p3.js",
+    "len": 3193,
+    "count": 1,
+    "batch": "apply_02"
+  },
+  {
+    "file": "apply_03_p0.js",
+    "len": 10857,
+    "count": 6,
+    "batch": "apply_03"
+  },
+  {
+    "file": "apply_03_p1.js",
+    "len": 11890,
+    "count": 8,
+    "batch": "apply_03"
+  },
+  {
+    "file": "apply_03_p2.js",
+    "len": 11184,
+    "count": 8,
+    "batch": "apply_03"
+  },
+  {
+    "file": "apply_03_p3.js",
+    "len": 8061,
+    "count": 3,
+    "batch": "apply_03"
+  },
+  {
+    "file": "apply_04_p0.js",
+    "len": 11237,
+    "count": 9,
+    "batch": "apply_04"
+  },
+  {
+    "file": "apply_04_p1.js",
+    "len": 11793,
+    "count": 6,
+    "batch": "apply_04"
+  },
+  {
+    "file": "apply_04_p2.js",
+    "len": 11393,
+    "count": 6,
+    "batch": "apply_04"
+  },
+  {
+    "file": "apply_04_p3.js",
+    "len": 6442,
+    "count": 4,
+    "batch": "apply_04"
+  },
+  {
+    "file": "apply_05_p0.js",
+    "len": 10895,
+    "count": 6,
+    "batch": "apply_05"
+  },
+  {
+    "file": "apply_05_p1.js",
+    "len": 11442,
+    "count": 4,
+    "batch": "apply_05"
+  },
+  {
+    "file": "apply_05_p2.js",
+    "len": 11429,
+    "count": 6,
+    "batch": "apply_05"
+  },
+  {
+    "file": "apply_05_p3.js",
+    "len": 10232,
+    "count": 5,
+    "batch": "apply_05"
+  },
+  {
+    "file": "apply_05_p4.js",
+    "len": 10315,
+    "count": 4,
+    "batch": "apply_05"
+  },
+  {
+    "file": "apply_06_p0.js",
+    "len": 11784,
+    "count": 5,
+    "batch": "apply_06"
+  },
+  {
+    "file": "apply_06_p1.js",
+    "len": 11304,
+    "count": 6,
+    "batch": "apply_06"
+  },
+  {
+    "file": "apply_06_p2.js",
+    "len": 11420,
+    "count": 5,
+    "batch": "apply_06"
+  },
+  {
+    "file": "apply_06_p3.js",
+    "len": 11662,
+    "count": 9,
+    "batch": "apply_06"
+  },
+  {
+    "file": "apply_07_p0.js",
+    "len": 10745,
+    "count": 9,
+    "batch": "apply_07"
+  },
+  {
+    "file": "apply_07_p1.js",
+    "len": 10638,
+    "count": 5,
+    "batch": "apply_07"
+  },
+  {
+    "file": "apply_07_p2.js",
+    "len": 10767,
+    "count": 9,
+    "batch": "apply_07"
+  },
+  {
+    "file": "apply_07_p3.js",
+    "len": 6700,
+    "count": 2,
+    "batch": "apply_07"
+  },
+  {
+    "file": "apply_08_p0.js",
+    "len": 9933,
+    "count": 6,
+    "batch": "apply_08"
+  },
+  {
+    "file": "apply_08_p1.js",
+    "len": 10656,
+    "count": 6,
+    "batch": "apply_08"
+  },
+  {
+    "file": "apply_08_p2.js",
+    "len": 11430,
+    "count": 7,
+    "batch": "apply_08"
+  },
+  {
+    "file": "apply_08_p3.js",
+    "len": 10448,
+    "count": 3,
+    "batch": "apply_08"
+  },
+  {
+    "file": "apply_08_p4.js",
+    "len": 7119,
+    "count": 3,
+    "batch": "apply_08"
+  },
+  {
+    "file": "apply_09_p0.js",
+    "len": 7584,
+    "count": 4,
+    "batch": "apply_09"
+  },
+  {
+    "file": "apply_09_p1.js",
+    "len": 12273,
+    "count": 1,
+    "batch": "apply_09"
+  },
+  {
+    "file": "apply_09_p2.js",
+    "len": 11544,
+    "count": 4,
+    "batch": "apply_09"
+  },
+  {
+    "file": "apply_09_p3.js",
+    "len": 11249,
+    "count": 10,
+    "batch": "apply_09"
+  },
+  {
+    "file": "apply_09_p4.js",
+    "len": 11099,
+    "count": 6,
+    "batch": "apply_09"
+  },
+  {
+    "file": "apply_10_p0.js",
+    "len": 11547,
+    "count": 6,
+    "batch": "apply_10"
+  },
+  {
+    "file": "apply_10_p1.js",
+    "len": 11907,
+    "count": 6,
+    "batch": "apply_10"
+  },
+  {
+    "file": "apply_10_p2.js",
+    "len": 10821,
+    "count": 8,
+    "batch": "apply_10"
+  },
+  {
+    "file": "apply_10_p3.js",
+    "len": 8552,
+    "count": 5,
+    "batch": "apply_10"
+  },
+  {
+    "file": "apply_11_p0.js",
+    "len": 11708,
+    "count": 9,
+    "batch": "apply_11"
+  },
+  {
+    "file": "apply_11_p1.js",
+    "len": 11479,
+    "count": 8,
+    "batch": "apply_11"
+  },
+  {
+    "file": "apply_11_p2.js",
+    "len": 11431,
+    "count": 6,
+    "batch": "apply_11"
+  },
+  {
+    "file": "apply_11_p3.js",
+    "len": 5385,
+    "count": 2,
+    "batch": "apply_11"
+  },
+  {
+    "file": "apply_12_p0.js",
+    "len": 8855,
+    "count": 2,
+    "batch": "apply_12"
+  },
+  {
+    "file": "apply_12_p1.js",
+    "len": 11278,
+    "count": 5,
+    "batch": "apply_12"
+  },
+  {
+    "file": "apply_12_p2.js",
+    "len": 11007,
+    "count": 11,
+    "batch": "apply_12"
+  },
+  {
+    "file": "apply_12_p3.js",
+    "len": 10589,
+    "count": 5,
+    "batch": "apply_12"
+  },
+  {
+    "file": "apply_12_p4.js",
+    "len": 6072,
+    "count": 2,
+    "batch": "apply_12"
+  },
+  {
+    "file": "apply_13_p0.js",
+    "len": 11774,
+    "count": 7,
+    "batch": "apply_13"
+  },
+  {
+    "file": "apply_13_p1.js",
+    "len": 11195,
+    "count": 7,
+    "batch": "apply_13"
+  },
+  {
+    "file": "apply_13_p2.js",
+    "len": 11151,
+    "count": 6,
+    "batch": "apply_13"
+  },
+  {
+    "file": "apply_13_p3.js",
+    "len": 10526,
+    "count": 5,
+    "batch": "apply_13"
+  },
+  {
+    "file": "apply_14_p0.js",
+    "len": 11272,
+    "count": 5,
+    "batch": "apply_14"
+  },
+  {
+    "file": "apply_14_p1.js",
+    "len": 11552,
+    "count": 7,
+    "batch": "apply_14"
+  },
+  {
+    "file": "apply_14_p2.js",
+    "len": 9991,
+    "count": 5,
+    "batch": "apply_14"
+  },
+  {
+    "file": "apply_14_p3.js",
+    "len": 11699,
+    "count": 5,
+    "batch": "apply_14"
+  },
+  {
+    "file": "apply_14_p4.js",
+    "len": 7224,
+    "count": 3,
+    "batch": "apply_14"
+  },
+  {
+    "file": "apply_15_p0.js",
+    "len": 9668,
+    "count": 5,
+    "batch": "apply_15"
+  },
+  {
+    "file": "apply_15_p1.js",
+    "len": 10898,
+    "count": 4,
+    "batch": "apply_15"
+  },
+  {
+    "file": "apply_15_p2.js",
+    "len": 10937,
+    "count": 4,
+    "batch": "apply_15"
+  },
+  {
+    "file": "apply_15_p3.js",
+    "len": 8773,
+    "count": 5,
+    "batch": "apply_15"
+  },
+  {
+    "file": "apply_15_p4.js",
+    "len": 6356,
+    "count": 2,
+    "batch": "apply_15"
+  }
+]

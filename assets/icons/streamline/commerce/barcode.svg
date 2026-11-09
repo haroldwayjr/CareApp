@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Barcode--Streamline-Streamline-3.0">
+  <desc>
+    Barcode Streamline Icon: https://streamlinehq.com
+  </desc>
+  <g>
+    <path d="m4.5 8.25 0 7.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="m8.25 8.25 0 4.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="m15.75 8.25 0 4.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="m19.5 8.25 0 7.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="m12 8.25 0 4.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="m8.25 15.75 7.5 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="M2.29 4.5h19.42s1.54 0 1.54 1.54v11.92s0 1.54 -1.54 1.54H2.29s-1.54 0 -1.54 -1.54V6.04s0 -1.54 1.54 -1.54" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  </g>
+</svg>

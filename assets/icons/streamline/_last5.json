@@ -1,0 +1,27 @@
+[
+  {
+    "name": "shield-off",
+    "category": "status",
+    "query": "Shield"
+  },
+  {
+    "name": "critical",
+    "category": "status",
+    "query": "Flash"
+  },
+  {
+    "name": "emergency",
+    "category": "health",
+    "query": "Emergency"
+  },
+  {
+    "name": "911",
+    "category": "health",
+    "query": "Emergency Call"
+  },
+  {
+    "name": "leaf",
+    "category": "misc",
+    "query": "Leaf"
+  }
+]

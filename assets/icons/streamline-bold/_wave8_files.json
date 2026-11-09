@@ -1,0 +1,260 @@
+[
+  {
+    "name": "bookmark",
+    "category": "files",
+    "streamlineName": "Bookmark 3",
+    "query": "Bookmark"
+  },
+  {
+    "name": "file-image",
+    "category": "files",
+    "streamlineName": "Common File Horizontal Image",
+    "query": "Common File Image"
+  },
+  {
+    "name": "drawer",
+    "category": "files",
+    "streamlineName": "Drawer Open",
+    "query": "Drawer"
+  },
+  {
+    "name": "cloud-download",
+    "category": "files",
+    "streamlineName": "Cloud Download",
+    "query": "Cloud Download"
+  },
+  {
+    "name": "usb",
+    "category": "files",
+    "streamlineName": "Usb Port",
+    "query": "USB"
+  },
+  {
+    "name": "faq",
+    "category": "files",
+    "streamlineName": "Contact Us Faq",
+    "query": "FAQ"
+  },
+  {
+    "name": "blog",
+    "category": "files",
+    "streamlineName": "Blog Blogger Logo",
+    "query": "Blog"
+  },
+  {
+    "name": "press",
+    "category": "files",
+    "streamlineName": "Force Touch Press",
+    "query": "Press"
+  },
+  {
+    "name": "postcard",
+    "category": "files",
+    "streamlineName": "Envelope Postcard",
+    "query": "Postcard"
+  },
+  {
+    "name": "folder-shared",
+    "category": "files",
+    "streamlineName": "Folder Shared",
+    "query": "Folder Shared"
+  },
+  {
+    "name": "folder",
+    "category": "files",
+    "streamlineName": "Folder",
+    "query": "Folder"
+  },
+  {
+    "name": "tag",
+    "category": "files",
+    "streamlineName": "Tag New",
+    "query": "Tag"
+  },
+  {
+    "name": "file-code",
+    "category": "files",
+    "streamlineName": "Common File Dash",
+    "query": "Common File Code"
+  },
+  {
+    "name": "document",
+    "category": "files",
+    "streamlineName": "Document",
+    "query": "Document"
+  },
+  {
+    "name": "cabinet",
+    "category": "files",
+    "streamlineName": "Bathroom Mirror Cabinet",
+    "query": "Cabinet"
+  },
+  {
+    "name": "database",
+    "category": "files",
+    "streamlineName": "Database",
+    "query": "Database"
+  },
+  {
+    "name": "contract",
+    "category": "files",
+    "streamlineName": "Business Contract Give",
+    "query": "Contract"
+  },
+  {
+    "name": "package-alt",
+    "category": "files",
+    "streamlineName": "Package Dimension",
+    "query": "Package"
+  },
+  {
+    "name": "attachment",
+    "category": "files",
+    "streamlineName": "Attachment 1",
+    "query": "Attachment"
+  },
+  {
+    "name": "file-zip",
+    "category": "files",
+    "streamlineName": "Zip File",
+    "query": "Zip"
+  },
+  {
+    "name": "notes",
+    "category": "files",
+    "streamlineName": "Notes Add",
+    "query": "Notes"
+  },
+  {
+    "name": "cloud",
+    "category": "files",
+    "streamlineName": "Cloud",
+    "query": "Cloud"
+  },
+  {
+    "name": "server",
+    "category": "files",
+    "streamlineName": "Server",
+    "query": "Server"
+  },
+  {
+    "name": "agreement",
+    "category": "files",
+    "streamlineName": "Workflow Agreement",
+    "query": "Agreement"
+  },
+  {
+    "name": "manual",
+    "category": "files",
+    "streamlineName": "Manual Book Content Sign",
+    "query": "Manual"
+  },
+  {
+    "name": "wiki",
+    "category": "files",
+    "streamlineName": "Wikipedia Logo",
+    "query": "Wiki"
+  },
+  {
+    "name": "magazine",
+    "category": "files",
+    "streamlineName": "Shopping Magazine Advertising",
+    "query": "Magazine"
+  },
+  {
+    "name": "portfolio",
+    "category": "files",
+    "streamlineName": "Portfolio Project User",
+    "query": "Portfolio"
+  },
+  {
+    "name": "letter",
+    "category": "files",
+    "streamlineName": "Letter Balloon",
+    "query": "Letter"
+  },
+  {
+    "name": "parcel",
+    "category": "files",
+    "streamlineName": "Lightweight Parcel",
+    "query": "Parcel"
+  },
+  {
+    "name": "shelf",
+    "category": "files",
+    "streamlineName": "Shelf Tv",
+    "query": "Shelf"
+  },
+  {
+    "name": "folder-star",
+    "category": "files",
+    "streamlineName": "Folder Star",
+    "query": "Folder Star"
+  },
+  {
+    "name": "clipboard",
+    "category": "files",
+    "streamlineName": "Insert Row From Clipboard",
+    "query": "Clipboard"
+  },
+  {
+    "name": "file-pdf",
+    "category": "files",
+    "streamlineName": "Pdf Reader",
+    "query": "PDF"
+  },
+  {
+    "name": "folder-add",
+    "category": "files",
+    "streamlineName": "Folder Add",
+    "query": "Folder Add"
+  },
+  {
+    "name": "cloud-upload",
+    "category": "files",
+    "streamlineName": "Cloud Upload",
+    "query": "Cloud Upload"
+  },
+  {
+    "name": "hard-drive",
+    "category": "files",
+    "streamlineName": "Hard Drive",
+    "query": "Hard Drive"
+  },
+  {
+    "name": "policy",
+    "category": "files",
+    "streamlineName": "Ai Policy Script",
+    "query": "Policy"
+  },
+  {
+    "name": "guide",
+    "category": "files",
+    "streamlineName": "Drug Guide Book",
+    "query": "Guide"
+  },
+  {
+    "name": "newspaper",
+    "category": "files",
+    "streamlineName": "Newspaper",
+    "query": "Newspaper"
+  },
+  {
+    "name": "resume",
+    "category": "files",
+    "streamlineName": "Recruiting Resume Document",
+    "query": "Resume"
+  },
+  {
+    "name": "envelope",
+    "category": "files",
+    "streamlineName": "Envelope",
+    "query": "Envelope"
+  },
+  {
+    "name": "box-alt",
+    "category": "files",
+    "streamlineName": "Text Box 2",
+    "query": "Box"
+  }
+]

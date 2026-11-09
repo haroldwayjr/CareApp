@@ -1,0 +1,4 @@
+let s=figma.root.getSharedPluginData("careapp","c07_1_4")||"";
+s+="IG1pc3NpbmcrKzsgaWYgKG1pc3MubGVuZ3RoPDgpIG1pc3MucHVzaChpdGVtLnNldE5hbWUpOyBjb250aW51ZTsgfQogIHRyeSB7CiAgICBjb25zdCByID0gYXBwbHlCb2xkWHMoc2V0LCBpdGVtLnN2Zyk7CiAgICBpZiAoci5vaykgb2srKzsgZWxzZSB7IGZhaWxlZCsrOyBmYWlsLnB1c2goe25hbWU6aXRlbS5zZXROYW1lLHJ9KTsgfQogIH0gY2F0Y2goZSkgeyBmYWlsZWQrKzsgaWYgKGZhaWwubGVuZ3RoPDgpIGZhaWwucHVzaCh7bmFtZTppdGVtLnNldE5hbWUsZXJyOlN0cmluZyhlKX0pOyB9Cn0KcmV0dXJuIHsgb2ssIG1pc3NpbmcsIGZhaWxlZCwgbWlzcywgZmFpbCB9Owo=";
+figma.root.setSharedPluginData("careapp","c07_1_4",s);
+return {key:"c07_1_4", i:2, len:s.length, done:s.length===2040};

@@ -1,0 +1,37 @@
+{
+  "generated": "2026-08-25",
+  "sourceOfTruth": {
+    "regularManifest": "assets/icons/streamline/manifest.json",
+    "boldHashes": "assets/icons/streamline/_bold_hashes.json",
+    "boldSvgs": "assets/icons/streamline-bold/**/*.svg",
+    "figmaFile": "hB1NzwMnZt2ALeR0OslaWi",
+    "figmaPage": "9:13081",
+    "streamlineSet": "Ultimate Bold (workspace exports; live MCP download blocked on free plan)"
+  },
+  "counts": {
+    "hashed": 394,
+    "replace": 393,
+    "preserve": 1,
+    "missingSvg": 0,
+    "extraSvgNoHash": [
+      "actions/check-circle-1.svg",
+      "status/alert-triangle.svg"
+    ]
+  },
+  "preserve": [
+    {
+      "publicName": "icon/health/heart",
+      "category": "health",
+      "name": "heart",
+      "file": "health/heart.svg",
+      "hash": "ico_6K5fj7KvSHFDSDVz",
+      "streamlineName": "Heart Approve 1",
+      "preserve": true,
+      "hasSvg": true,
+      "svgBytes": 1271,
+      "svgId": "Heart-Approve-1--Streamline-Ultimate"
+    }
+  ],
+  "missing": [],
+  "statement": "Proposed changes are limited to Size=xs, Style=bold nested vectors. SM/MD/LG and Style=outline are not in the replacement set."
+}

@@ -1,0 +1,58 @@
+
+const page = await figma.getNodeByIdAsync('9:13081');
+await figma.setCurrentPageAsync(page);
+const colorVar = await figma.variables.getVariableByIdAsync('VariableID:34:2');
+const FILL = { r: 0.062745, g: 0.094118, b: 0.156863 };
+function paint(node) {
+  node.fills = [figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: FILL }, 'color', colorVar)];
+  node.strokes = [];
+}
+function bindFills(root) {
+  const stack = [root];
+  while (stack.length) {
+    const n = stack.pop();
+    if ('constraints' in n) n.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    if (n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION' || n.type === 'ELLIPSE' || n.type === 'STAR' || n.type === 'POLYGON') paint(n);
+    if ('clipsContent' in n && n.type === 'FRAME') n.clipsContent = false;
+    if ('children' in n) for (const c of n.children) stack.push(c);
+  }
+}
+function applyBoldXs(set, svg) {
+  const xs = set.children.find(c => c.name === 'Size=xs');
+  if (!xs) return { ok: false, reason: 'no-xs' };
+  for (const c of [...xs.children]) c.remove();
+  const node = figma.createNodeFromSvg(svg);
+  node.name = set.name.split('/').pop() + ' · bold';
+  try { node.resize(16, 16); } catch (e) {}
+  node.x = 0; node.y = 0;
+  node.clipsContent = false;
+  if ('constraints' in node) node.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+  xs.appendChild(node);
+  bindFills(node);
+  try { xs.resizeWithoutConstraints(16, 16); } catch (e) { try { xs.resize(16, 16); } catch (e2) {} }
+  xs.clipsContent = false;
+  xs.visible = true;
+  for (const v of set.children) v.visible = true;
+  set.clipsContent = true;
+  set.counterAxisAlignItems = 'MIN';
+  set.primaryAxisAlignItems = 'MIN';
+  if (set.layoutMode !== 'NONE') {
+    set.primaryAxisSizingMode = 'FIXED';
+    set.counterAxisSizingMode = 'FIXED';
+  }
+  set.resize(16, 16);
+  try { set.layoutSizingHorizontal = 'FIXED'; set.layoutSizingVertical = 'FIXED'; } catch (e) {}
+  return { ok: true };
+}
+
+const BATCH = [{"setName": "icon/actions/reply.alt", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Reply-To-Message--Streamline-Ultimate\"> <path fill=\"#000000\" fill-rule=\"evenodd\" d=\"M13.293 0.273a0.75 0.75 0 0 1 0.463 0.693v1.459h6.632a2.915 2.915 0 0 1 2.915 2.915v11.861a2.915 2.915 0 0 1 -2.915 2.916h-8.595l-4.802 3.317c-1.299 0.898 -3.07 -0.032 -3.07 -1.61v-1.707h-0.308a2.915 2.915 0 0 1 -2.916 -2.916V5.341a2.915 2.915 0 0 1 2.916 -2.916h2.146a1 1 0 1 1 0 2H3.613a0.915 0.915 0 0 0 -0.916 0.915v11.861c0 0.506 0.41 0.916 0.916 0.916H4.92a1 1 0 0 1 1 1v2.626l4.993 -3.449a1 1 0 0 1 0.568 -0.177h8.907c0.506 0 0.915 -0.41 0.915 -0.916V5.341a0.915 0.915 0 0 0 -0.915 -0.916h-6.632v1.458a0.75 0.75 0 0 1 -1.28 0.53l-2.459 -2.458a0.75 0.75 0 0 1 0 -1.061L12.476 0.436a0.75 0.75 0 0 1 0.817 -0.163m-0.03 10.97a1.264 1.264 0 1 1 -2.529 0 1.264 1.264 0 0 1 2.528 0Zm-6.247 1.265a1.264 1.264 0 1 0 0 -2.528 1.264 1.264 0 0 0 0 2.528m11.233 -1.264a1.264 1.264 0 1 1 -2.528 0 1.264 1.264 0 0 1 2.528 0\" clip-rule=\"evenodd\" stroke-width=\"1\"></path> </svg>"}, {"setName": "icon/actions/restore", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Archive-Restore--Streamline-Ultimate\"> <path fill=\"#000000\" fill-rule=\"evenodd\" d=\"M1.5 1h21c0.8 0 1.5 0.7 1.5 1.5v2.75a1 1 0 0 1 -1 1H1a1 1 0 0 1 -1 -1V2.5C0 1.7 0.7 1 1.5 1Zm0.7 7a0.75 0.75 0 0 0 -0.75 0.75v10.5C1.45 21.364 3.086 23 5.2 23h13.6c2.114 0 3.75 -1.636 3.75 -3.75V8.75A0.75 0.75 0 0 0 21.8 8H2.2Zm9.4 3.25c0.1 -0.1 0.2 -0.2 0.4 -0.2s0.3 0.1 0.4 0.2l3.3 3.8c0.1 0.2 0.2 0.4 0.1 0.6 -0.1 0.2 -0.3 0.3 -0.5 0.3H13v3.1c0 0.6 -0.4 1 -1 1s-1 -0.4 -1 -1v-3.1H8.7c-0.2 0 -0.4 -0.1 -0.5 -0.3 -0.1 -0.2 0 -0.4 0.1 -0.6l3.3 -3.8Z\" clip-rule=\"evenodd\" stroke-width=\"1\"></path> </svg>"}, {"setName": "icon/actions/save", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Floppy-Disk--Streamline-Ultimate\"> <g> <path d=\"M22 0H5.91A2 2 0 0 0 4.5 0.59L0.59 4.5A2 2 0 0 0 0 5.91V22a2 2 0 0 0 2 2h20a2 2 0 0 0 2 -2V2a2 2 0 0 0 -2 -2Zm-3.5 2a0.5 0.5 0 0 1 0.5 0.5v4A1.5 1.5 0 0 1 17.5 8h-10A1.5 1.5 0 0 1 6 6.5v-4a0.5 0.5 0 0 1 0.5 -0.5ZM5 22a0.5 0.5 0 0 1 -0.5 -0.5v-8A1.5 1.5 0 0 1 6 12h13a1.5 1.5 0 0 1 1.5 1.5v8a0.5 0.5 0 0 1 -0.5 0.5Z\" fill=\"#000000\" stroke-width=\"1\"></path> <path d=\"M15 4.25v1.5a0.75 0.75 0 0 0 1.5 0v-1.5a0.75 0.75 0 0 0 -1.5 0Z\" fill=\"#000000\" stroke-width=\"1\"></path> <path d=\"M7 16.25h6.5a0.75 0.75 0 0 0 0 -1.5H7a0.75 0.75 0 0 0 0 1.5Z\" fill=\"#000000\" stroke-width=\"1\"></path> <path d=\"M7 20.25h11a0.75 0.75 0 0 0 0 -1.5H7a0.75 0.75 0 0 0 0 1.5Z\" fill=\"#000000\" stroke-width=\"1\"></path> </g> </svg>"}, {"setName": "icon/actions/search.alt", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Search-1--Streamline-Ultimate\"> <path d=\"M23.41 20.59 18.77 16a10.25 10.25 0 1 0 -8.52 4.56 10.14 10.14 0 0 0 5.69 -1.74l4.65 4.65a2 2 0 0 0 2.82 0 2 2 0 0 0 0 -2.88ZM10.25 3A7.25 7.25 0 1 1 3 10.26 7.26 7.26 0 0 1 10.25 3Z\" fill=\"#000000\" stroke-width=\"1\"></path> </svg>"}];
+let ok=0, missing=0, failed=0; const miss=[], fail=[];
+for (const item of BATCH) {
+  const set = figma.currentPage.findOne(n => n.type === 'COMPONENT_SET' && n.name === item.setName);
+  if (!set) { missing++; if (miss.length<8) miss.push(item.setName); continue; }
+  try {
+    const r = applyBoldXs(set, item.svg);
+    if (r.ok) ok++; else { failed++; fail.push({name:item.setName,r}); }
+  } catch(e) { failed++; if (fail.length<8) fail.push({name:item.setName,err:String(e)}); }
+}
+return { ok, missing, failed, miss, fail };

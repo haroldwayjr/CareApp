@@ -1,0 +1,640 @@
+[
+  [
+    {
+      "file": "s001_apply_00_p1.js",
+      "len": 8810,
+      "icons": 9,
+      "batch": "apply_00"
+    },
+    {
+      "file": "s002_apply_00_p2.js",
+      "len": 7970,
+      "icons": 5,
+      "batch": "apply_00"
+    },
+    {
+      "file": "s003_apply_01_p0.js",
+      "len": 8562,
+      "icons": 3,
+      "batch": "apply_01"
+    },
+    {
+      "file": "s004_apply_01_p1.js",
+      "len": 8747,
+      "icons": 8,
+      "batch": "apply_01"
+    }
+  ],
+  [
+    {
+      "file": "s005_apply_01_p2.js",
+      "len": 8545,
+      "icons": 8,
+      "batch": "apply_01"
+    },
+    {
+      "file": "s006_apply_01_p3.js",
+      "len": 8582,
+      "icons": 5,
+      "batch": "apply_01"
+    },
+    {
+      "file": "s007_apply_01_p4.js",
+      "len": 3228,
+      "icons": 1,
+      "batch": "apply_01"
+    },
+    {
+      "file": "s008_apply_02_p0.js",
+      "len": 8665,
+      "icons": 5,
+      "batch": "apply_02"
+    }
+  ],
+  [
+    {
+      "file": "s009_apply_02_p1.js",
+      "len": 8615,
+      "icons": 5,
+      "batch": "apply_02"
+    },
+    {
+      "file": "s010_apply_02_p2.js",
+      "len": 8650,
+      "icons": 4,
+      "batch": "apply_02"
+    },
+    {
+      "file": "s011_apply_02_p3.js",
+      "len": 8977,
+      "icons": 7,
+      "batch": "apply_02"
+    },
+    {
+      "file": "s012_apply_02_p4.js",
+      "len": 5768,
+      "icons": 4,
+      "batch": "apply_02"
+    }
+  ],
+  [
+    {
+      "file": "s013_apply_03_p0.js",
+      "len": 8507,
+      "icons": 5,
+      "batch": "apply_03"
+    },
+    {
+      "file": "s014_apply_03_p1.js",
+      "len": 7968,
+      "icons": 4,
+      "batch": "apply_03"
+    },
+    {
+      "file": "s015_apply_03_p2.js",
+      "len": 8708,
+      "icons": 5,
+      "batch": "apply_03"
+    },
+    {
+      "file": "s016_apply_03_p3.js",
+      "len": 8837,
+      "icons": 6,
+      "batch": "apply_03"
+    }
+  ],
+  [
+    {
+      "file": "s017_apply_03_p4.js",
+      "len": 7148,
+      "icons": 3,
+      "batch": "apply_03"
+    },
+    {
+      "file": "s018_apply_03_p5.js",
+      "len": 5696,
+      "icons": 2,
+      "batch": "apply_03"
+    },
+    {
+      "file": "s019_apply_04_p0.js",
+      "len": 8393,
+      "icons": 6,
+      "batch": "apply_04"
+    },
+    {
+      "file": "s020_apply_04_p1.js",
+      "len": 7608,
+      "icons": 4,
+      "batch": "apply_04"
+    }
+  ],
+  [
+    {
+      "file": "s021_apply_04_p2.js",
+      "len": 8171,
+      "icons": 4,
+      "batch": "apply_04"
+    },
+    {
+      "file": "s022_apply_04_p3.js",
+      "len": 8790,
+      "icons": 4,
+      "batch": "apply_04"
+    },
+    {
+      "file": "s023_apply_04_p4.js",
+      "len": 8236,
+      "icons": 5,
+      "batch": "apply_04"
+    },
+    {
+      "file": "s024_apply_04_p5.js",
+      "len": 4539,
+      "icons": 2,
+      "batch": "apply_04"
+    }
+  ],
+  [
+    {
+      "file": "s025_apply_05_p0.js",
+      "len": 7111,
+      "icons": 4,
+      "batch": "apply_05"
+    },
+    {
+      "file": "s026_apply_05_p1.js",
+      "len": 8772,
+      "icons": 3,
+      "batch": "apply_05"
+    },
+    {
+      "file": "s027_apply_05_p2.js",
+      "len": 8890,
+      "icons": 3,
+      "batch": "apply_05"
+    },
+    {
+      "file": "s028_apply_05_p3.js",
+      "len": 8309,
+      "icons": 4,
+      "batch": "apply_05"
+    }
+  ],
+  [
+    {
+      "file": "s029_apply_05_p4.js",
+      "len": 8672,
+      "icons": 4,
+      "batch": "apply_05"
+    },
+    {
+      "file": "s030_apply_05_p5.js",
+      "len": 7116,
+      "icons": 3,
+      "batch": "apply_05"
+    },
+    {
+      "file": "s031_apply_05_p6.js",
+      "len": 8607,
+      "icons": 3,
+      "batch": "apply_05"
+    },
+    {
+      "file": "s032_apply_05_p7.js",
+      "len": 4166,
+      "icons": 1,
+      "batch": "apply_05"
+    }
+  ],
+  [
+    {
+      "file": "s033_apply_06_p0.js",
+      "len": 6689,
+      "icons": 2,
+      "batch": "apply_06"
+    },
+    {
+      "file": "s034_apply_06_p1.js",
+      "len": 7553,
+      "icons": 3,
+      "batch": "apply_06"
+    },
+    {
+      "file": "s035_apply_06_p2.js",
+      "len": 8099,
+      "icons": 4,
+      "batch": "apply_06"
+    },
+    {
+      "file": "s036_apply_06_p3.js",
+      "len": 8875,
+      "icons": 4,
+      "batch": "apply_06"
+    }
+  ],
+  [
+    {
+      "file": "s037_apply_06_p4.js",
+      "len": 8857,
+      "icons": 4,
+      "batch": "apply_06"
+    },
+    {
+      "file": "s038_apply_06_p5.js",
+      "len": 8555,
+      "icons": 6,
+      "batch": "apply_06"
+    },
+    {
+      "file": "s039_apply_06_p6.js",
+      "len": 4894,
+      "icons": 2,
+      "batch": "apply_06"
+    },
+    {
+      "file": "s040_apply_07_p0.js",
+      "len": 8886,
+      "icons": 7,
+      "batch": "apply_07"
+    }
+  ],
+  [
+    {
+      "file": "s041_apply_07_p1.js",
+      "len": 7675,
+      "icons": 4,
+      "batch": "apply_07"
+    },
+    {
+      "file": "s042_apply_07_p2.js",
+      "len": 8849,
+      "icons": 4,
+      "batch": "apply_07"
+    },
+    {
+      "file": "s043_apply_07_p3.js",
+      "len": 8485,
+      "icons": 7,
+      "batch": "apply_07"
+    },
+    {
+      "file": "s044_apply_07_p4.js",
+      "len": 7347,
+      "icons": 3,
+      "batch": "apply_07"
+    }
+  ],
+  [
+    {
+      "file": "s045_apply_08_p0.js",
+      "len": 7468,
+      "icons": 4,
+      "batch": "apply_08"
+    },
+    {
+      "file": "s046_apply_08_p1.js",
+      "len": 8385,
+      "icons": 4,
+      "batch": "apply_08"
+    },
+    {
+      "file": "s047_apply_08_p2.js",
+      "len": 7172,
+      "icons": 4,
+      "batch": "apply_08"
+    },
+    {
+      "file": "s048_apply_08_p3.js",
+      "len": 8046,
+      "icons": 5,
+      "batch": "apply_08"
+    }
+  ],
+  [
+    {
+      "file": "s049_apply_08_p4.js",
+      "len": 8787,
+      "icons": 3,
+      "batch": "apply_08"
+    },
+    {
+      "file": "s050_apply_08_p5.js",
+      "len": 7481,
+      "icons": 2,
+      "batch": "apply_08"
+    },
+    {
+      "file": "s051_apply_08_p6.js",
+      "len": 7097,
+      "icons": 3,
+      "batch": "apply_08"
+    },
+    {
+      "file": "s052_apply_09_p0.js",
+      "len": 7562,
+      "icons": 4,
+      "batch": "apply_09"
+    }
+  ],
+  [
+    {
+      "file": "s053_apply_09_p1.js",
+      "len": 12251,
+      "icons": 1,
+      "batch": "apply_09"
+    },
+    {
+      "file": "s054_apply_09_p2.js",
+      "len": 7790,
+      "icons": 2,
+      "batch": "apply_09"
+    },
+    {
+      "file": "s055_apply_09_p3.js",
+      "len": 8197,
+      "icons": 4,
+      "batch": "apply_09"
+    },
+    {
+      "file": "s056_apply_09_p4.js",
+      "len": 8733,
+      "icons": 7,
+      "batch": "apply_09"
+    }
+  ],
+  [
+    {
+      "file": "s057_apply_09_p5.js",
+      "len": 8609,
+      "icons": 5,
+      "batch": "apply_09"
+    },
+    {
+      "file": "s058_apply_09_p6.js",
+      "len": 5457,
+      "icons": 2,
+      "batch": "apply_09"
+    },
+    {
+      "file": "s059_apply_10_p0.js",
+      "len": 8109,
+      "icons": 4,
+      "batch": "apply_10"
+    },
+    {
+      "file": "s060_apply_10_p1.js",
+      "len": 7631,
+      "icons": 3,
+      "batch": "apply_10"
+    }
+  ],
+  [
+    {
+      "file": "s061_apply_10_p2.js",
+      "len": 7306,
+      "icons": 3,
+      "batch": "apply_10"
+    },
+    {
+      "file": "s062_apply_10_p3.js",
+      "len": 8748,
+      "icons": 4,
+      "batch": "apply_10"
+    },
+    {
+      "file": "s063_apply_10_p4.js",
+      "len": 8612,
+      "icons": 7,
+      "batch": "apply_10"
+    },
+    {
+      "file": "s064_apply_10_p5.js",
+      "len": 7293,
+      "icons": 4,
+      "batch": "apply_10"
+    }
+  ],
+  [
+    {
+      "file": "s065_apply_11_p0.js",
+      "len": 7345,
+      "icons": 5,
+      "batch": "apply_11"
+    },
+    {
+      "file": "s066_apply_11_p1.js",
+      "len": 8313,
+      "icons": 5,
+      "batch": "apply_11"
+    },
+    {
+      "file": "s067_apply_11_p2.js",
+      "len": 8039,
+      "icons": 5,
+      "batch": "apply_11"
+    },
+    {
+      "file": "s068_apply_11_p3.js",
+      "len": 8169,
+      "icons": 4,
+      "batch": "apply_11"
+    }
+  ],
+  [
+    {
+      "file": "s069_apply_11_p4.js",
+      "len": 7646,
+      "icons": 4,
+      "batch": "apply_11"
+    },
+    {
+      "file": "s070_apply_11_p5.js",
+      "len": 5363,
+      "icons": 2,
+      "batch": "apply_11"
+    },
+    {
+      "file": "s071_apply_12_p0.js",
+      "len": 8833,
+      "icons": 2,
+      "batch": "apply_12"
+    },
+    {
+      "file": "s072_apply_12_p1.js",
+      "len": 8247,
+      "icons": 2,
+      "batch": "apply_12"
+    }
+  ],
+  [
+    {
+      "file": "s073_apply_12_p2.js",
+      "len": 8665,
+      "icons": 8,
+      "batch": "apply_12"
+    },
+    {
+      "file": "s074_apply_12_p3.js",
+      "len": 7809,
+      "icons": 6,
+      "batch": "apply_12"
+    },
+    {
+      "file": "s075_apply_12_p4.js",
+      "len": 6874,
+      "icons": 4,
+      "batch": "apply_12"
+    },
+    {
+      "file": "s076_apply_12_p5.js",
+      "len": 8079,
+      "icons": 2,
+      "batch": "apply_12"
+    }
+  ],
+  [
+    {
+      "file": "s077_apply_12_p6.js",
+      "len": 4144,
+      "icons": 1,
+      "batch": "apply_12"
+    },
+    {
+      "file": "s078_apply_13_p0.js",
+      "len": 6721,
+      "icons": 4,
+      "batch": "apply_13"
+    },
+    {
+      "file": "s079_apply_13_p1.js",
+      "len": 8728,
+      "icons": 4,
+      "batch": "apply_13"
+    },
+    {
+      "file": "s080_apply_13_p2.js",
+      "len": 7561,
+      "icons": 4,
+      "batch": "apply_13"
+    }
+  ],
+  [
+    {
+      "file": "s081_apply_13_p3.js",
+      "len": 6465,
+      "icons": 3,
+      "batch": "apply_13"
+    },
+    {
+      "file": "s082_apply_13_p4.js",
+      "len": 8717,
+      "icons": 4,
+      "batch": "apply_13"
+    },
+    {
+      "file": "s083_apply_13_p5.js",
+      "len": 8551,
+      "icons": 5,
+      "batch": "apply_13"
+    },
+    {
+      "file": "s084_apply_13_p6.js",
+      "len": 5255,
+      "icons": 1,
+      "batch": "apply_13"
+    }
+  ],
+  [
+    {
+      "file": "s085_apply_14_p0.js",
+      "len": 8598,
+      "icons": 4,
+      "batch": "apply_14"
+    },
+    {
+      "file": "s086_apply_14_p1.js",
+      "len": 7506,
+      "icons": 3,
+      "batch": "apply_14"
+    },
+    {
+      "file": "s087_apply_14_p2.js",
+      "len": 8547,
+      "icons": 4,
+      "batch": "apply_14"
+    },
+    {
+      "file": "s088_apply_14_p3.js",
+      "len": 7531,
+      "icons": 5,
+      "batch": "apply_14"
+    }
+  ],
+  [
+    {
+      "file": "s089_apply_14_p4.js",
+      "len": 8297,
+      "icons": 2,
+      "batch": "apply_14"
+    },
+    {
+      "file": "s090_apply_14_p5.js",
+      "len": 8907,
+      "icons": 4,
+      "batch": "apply_14"
+    },
+    {
+      "file": "s091_apply_14_p6.js",
+      "len": 7202,
+      "icons": 3,
+      "batch": "apply_14"
+    },
+    {
+      "file": "s092_apply_15_p0.js",
+      "len": 8494,
+      "icons": 4,
+      "batch": "apply_15"
+    }
+  ],
+  [
+    {
+      "file": "s093_apply_15_p1.js",
+      "len": 8157,
+      "icons": 2,
+      "batch": "apply_15"
+    },
+    {
+      "file": "s094_apply_15_p2.js",
+      "len": 6351,
+      "icons": 3,
+      "batch": "apply_15"
+    },
+    {
+      "file": "s095_apply_15_p3.js",
+      "len": 7715,
+      "icons": 2,
+      "batch": "apply_15"
+    },
+    {
+      "file": "s096_apply_15_p4.js",
+      "len": 8587,
+      "icons": 5,
+      "batch": "apply_15"
+    }
+  ],
+  [
+    {
+      "file": "s097_apply_15_p5.js",
+      "len": 5844,
+      "icons": 2,
+      "batch": "apply_15"
+    },
+    {
+      "file": "s098_apply_15_p6.js",
+      "len": 6334,
+      "icons": 2,
+      "batch": "apply_15"
+    }
+  ]
+]

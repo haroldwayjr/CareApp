@@ -1,0 +1,2 @@
+figma.root.setSharedPluginData("careapp","xs09g02_3", "IGVsc2UgeyBmYWlsZWQrKzsgZmFpbC5wdXNoKHtuYW1lOml0ZW0uc2V0TmFtZSxyfSk7IH0KICB9IGNhdGNoKGUpIHsgZmFpbGVkKys7IGlmIChmYWlsLmxlbmd0aDw4KSBmYWlsLnB1c2goe25hbWU6aXRlbS5zZXROYW1lLGVycjpTdHJpbmcoZSl9KTsgfQp9CnJldHVybiB7IG9rLCBtaXNzaW5nLCBmYWlsZWQsIG1pc3MsIGZhaWwgfTsK");
+return {i:3, len:256};

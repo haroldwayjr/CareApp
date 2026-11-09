@@ -1,0 +1,11 @@
+<svg id="Wind-West--Streamline-Streamline-3.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <desc>
+    Wind West Streamline Icon: https://streamlinehq.com
+  </desc>
+  <defs></defs>
+  <title>wind-west</title>
+  <path d="M8.25 9.75 18.75 6 16.5 9.75l2.25 3.75 -10.5 -3.75z" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M0.75 20.25h10.5a1.5 1.5 0 0 1 1.5 1.5h0a1.5 1.5 0 0 1 -1.5 1.5h-0.75" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M0.75 17.25H6a1.5 1.5 0 0 0 1.5 -1.5h0a1.5 1.5 0 0 0 -1.5 -1.5h-0.75" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M16.578 18.446A9 9 0 1 0 5.25 9.75a9.1 9.1 0 0 0 0.131 1.541" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>

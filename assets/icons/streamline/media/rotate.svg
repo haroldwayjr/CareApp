@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Rotate--Streamline-Streamline-3.0">
+  <desc>
+    Rotate Streamline Icon: https://streamlinehq.com
+  </desc>
+  <defs></defs>
+  <title>rotate</title>
+  <path d="m9.811 3.834 7.46 7.46s0.707 0.706 0 1.414l-7.46 7.459s-0.707 0.707 -1.414 0l-7.46 -7.46s-0.706 -0.707 0 -1.414l7.46 -7.459s0.707 -0.707 1.414 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m22.604 4.5 -3.75 0 0 3.75" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m18.854 15.75 0 3.75 3.75 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m18.854 4.5 2.523 2.652a6.75 6.75 0 0 1 0 9.546l-2.523 2.8" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>

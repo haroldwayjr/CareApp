@@ -1,0 +1,87 @@
+[
+  {
+    "figma": "icon/navigation/arrow.bottom.left",
+    "file": "navigation/arrow-bottom-left.svg",
+    "query": "Arrow Corner Left",
+    "regularHash": "ico_wsT03Mm5z5hzBY7L",
+    "regularName": "Arrow Corner Left",
+    "boldHash": "ico_CwurqlS8R539USdf",
+    "boldName": "Arrow Corner Left"
+  },
+  {
+    "figma": "icon/navigation/arrow.bottom.right",
+    "file": "navigation/arrow-bottom-right.svg",
+    "query": "Arrow Corner Right",
+    "regularHash": "ico_nHlnrw5ZsRAKvvRB",
+    "regularName": "Arrow Corner Right",
+    "boldHash": "ico_aJNYKCk91hGI9xiy",
+    "boldName": "Arrow Corner Right"
+  },
+  {
+    "figma": "icon/navigation/filter",
+    "file": "navigation/filter.svg",
+    "query": "Filter Sort Lines Descending",
+    "regularHash": "ico_eaG9ShpNKJgO68xe",
+    "regularName": "Filter Sort Lines Descending",
+    "boldHash": "ico_KwRhCnWyX6zg9VNS",
+    "boldName": "Filter Sort Lines Descending"
+  },
+  {
+    "figma": "icon/status/lock.2",
+    "file": "interface/lock-2.svg",
+    "query": "Lock 2",
+    "regularHash": "ico_7ALAyLrkEWZt9ZQk",
+    "regularName": "Lock 2",
+    "boldHash": "ico_XJept3ZzSKFhPEVp",
+    "boldName": "Lock 2"
+  },
+  {
+    "figma": "icon/actions/minus",
+    "file": "actions/minus.svg",
+    "query": "Subtract",
+    "regularHash": "ico_LezcqZSTnu7QwVI5",
+    "regularName": "Subtract",
+    "boldHash": "ico_oeMuEOGrZ0QDS9u6",
+    "boldName": "Subtract"
+  },
+  {
+    "figma": "icon/actions/check",
+    "file": "actions/check.svg",
+    "query": "Check 1",
+    "regularHash": "ico_cZ3mhC4XgZjTBduQ",
+    "regularName": "Check 1",
+    "boldHash": "ico_gOvLeXCGUDw7pOAj",
+    "boldName": "Check 1"
+  },
+  {
+    "figma": "icon/actions/check.bold",
+    "file": "actions/check-bold.svg",
+    "query": "Check",
+    "filledOnOutline": true,
+    "regularHash": "ico_oaO8mRieOiF0PaVJ",
+    "regularName": "Check",
+    "boldHash": "ico_oaO8mRieOiF0PaVJ",
+    "boldName": "Check",
+    "note": "Intentional filled glyph on outline slots; use Bold 3.0 Check for all sizes"
+  },
+  {
+    "figma": "icon/status/star.filled",
+    "file": "status/star-filled.svg",
+    "query": "Rating Star",
+    "filledOnOutline": true,
+    "regularHash": "ico_tXfn9fmMp2o63KlK",
+    "regularName": "Rating Star",
+    "boldHash": "ico_tXfn9fmMp2o63KlK",
+    "boldName": "Rating Star",
+    "note": "Intentional filled companion; use Bold 3.0 Rating Star for all sizes"
+  },
+  {
+    "figma": "icon/status/star",
+    "file": "status/star.svg",
+    "query": "Rating Star",
+    "regularHash": "ico_L0HF8TjGUOkU6kM9",
+    "regularName": "Rating Star",
+    "boldHash": "ico_tXfn9fmMp2o63KlK",
+    "boldName": "Rating Star"
+  }
+]

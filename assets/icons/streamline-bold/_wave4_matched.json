@@ -1,0 +1,82 @@
+[
+  {
+    "name": "stethoscope",
+    "category": "health",
+    "hash": "ico_aRjQE1CVBIO77huC",
+    "streamlineName": "Stethoscope Website",
+    "score": 302.05,
+    "path": "health/stethoscope.svg"
+  },
+  {
+    "name": "pill",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4v6RL2aESFbZOsOdT",
+    "streamlineName": "Pill",
+    "score": 289.8,
+    "path": "health/pill.svg"
+  },
+  {
+    "name": "first-aid",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4vlwE2aESFb9ULT2h",
+    "streamlineName": "Hospital First Aid",
+    "score": 315.1,
+    "path": "health/first-aid.svg"
+  },
+  {
+    "name": "thermometer",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4vMoc2aESFbM5pXtb",
+    "streamlineName": "Temperature Thermometer",
+    "score": 251.85,
+    "path": "health/thermometer.svg"
+  },
+  {
+    "name": "syringe",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4vQSY2aESFbqmItw9",
+    "streamlineName": "Medical Instrument Syringe",
+    "score": 314.7,
+    "path": "health/syringe.svg"
+  },
+  {
+    "name": "hospital",
+    "category": "health",
+    "hash": "ico_lSJOYsuEqjpoyTw0",
+    "streamlineName": "Hospital Pin",
+    "score": 302.4,
+    "path": "health/hospital.svg"
+  },
+  {
+    "name": "ambulance",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4vUzX2aESFbjHWaRX",
+    "streamlineName": "Ambulance Car",
+    "score": 302.35,
+    "path": "health/ambulance.svg"
+  },
+  {
+    "name": "medical-cross",
+    "category": "health",
+    "hash": "ico_0xaKd6KaSGQEYrKh",
+    "streamlineName": "Medical Cross",
+    "score": 302.35,
+    "path": "health/medical-cross.svg"
+  },
+  {
+    "name": "bandage",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4vQ9t2aESFbZOsIv2",
+    "streamlineName": "Bandage",
+    "score": 289.65,
+    "path": "health/bandage.svg"
+  },
+  {
+    "name": "dna",
+    "category": "health",
+    "hash": "ico_mRu4pQJ4v4ef2aEWGyfSZbSr",
+    "streamlineName": "Dna",
+    "score": 239.85,
+    "path": "health/dna.svg"
+  }
+]

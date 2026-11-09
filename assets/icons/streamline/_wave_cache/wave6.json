@@ -1,0 +1,1058 @@
+{
+  "folder-star": {
+    "category": "files",
+    "query": "Folder Star",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vnCf2aE232WipSJ4",
+        "name": "Folder Star",
+        "categorySlug": "files-folders",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vW922aE232qmIikB",
+        "name": "Folder File Star",
+        "categorySlug": "files-folders",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_lIAZnOmY5Wguq2oe",
+        "name": "Coding Apps Website Folder Star",
+        "categorySlug": "programing-apps-websites",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vNNUeLjK1iBPuPsR",
+        "name": "Rating Booklet",
+        "categorySlug": "hotels-spas",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vA5K2aE232T2FIDy",
+        "name": "Zip File Star",
+        "categorySlug": "files-folders",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vklx2aEdzpOrjbfh",
+        "name": "Shipment Star",
+        "categorySlug": "shipping-delivery",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vaBqeLjjHWWipELQ",
+        "name": "Christmas Tree Top Star",
+        "categorySlug": "holidays",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vh9XeLjK1iiJ4czF",
+        "name": "Award Trophy Star",
+        "categorySlug": "social-medias-rewards-rating",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vaMVeLjK1iiJ4E7K",
+        "name": "Award Trophy Star 1",
+        "categorySlug": "social-medias-rewards-rating",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v5YNeLjK1iqmI42Q",
+        "name": "Ranking Star Top",
+        "categorySlug": "social-medias-rewards-rating",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "cart": {
+    "category": "commerce",
+    "query": "Shopping Cart",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vv012aEdzpwvSkVB",
+        "name": "Shopping Cart",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vz3d2aEdzpwvS7qU",
+        "name": "Shopping Cart 1",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vnbw2aEdzpwvSyQj",
+        "name": "Shopping Cart Disable",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vvOC2aEdzpBPuQxe",
+        "name": "Shopping Cart Man Message",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vHu02aEdzpBPuFjW",
+        "name": "Shopping Cart Download 1",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vM3Y2aEdzpBPuR0j",
+        "name": "Shopping Cart Heart",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vcPE2aEdzpinpRHJ",
+        "name": "Shopping Basket 1",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vPV42aE232sjsARZ",
+        "name": "Single Neutral Actions Cart",
+        "categorySlug": "users",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vha42aEdzp6nln8u",
+        "name": "Shopping Bag Check",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_hKFo6pZj6bFkgA8L",
+        "name": "Mobile Shopping Cart 1",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "credit-card": {
+    "category": "commerce",
+    "query": "Credit Card",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vP562aEdzp4pQy0X",
+        "name": "Credit Card 1",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vs9P2aEdzp9ULl02",
+        "name": "Credit Card Remove",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v4PE2aEdzp9ULSMw",
+        "name": "Credit Card Sync",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v3O52aEdzp9ULu7b",
+        "name": "Credit Card Mastercard",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vJzY2aEdzp4pQ3ip",
+        "name": "Credit Card Dollar 1",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vraX2aE232Jtt95A",
+        "name": "Single Man Actions Credit Card",
+        "categorySlug": "users",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vPt62aEdzp9ULPVA",
+        "name": "Credit Card Payment",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vu6m2aEdzpjHWwvS",
+        "name": "Credit Card Visa",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vZMG2aEdzp4pQjUZ",
+        "name": "Credit Card Dollar",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vhAM2aEdzp4pQdXz",
+        "name": "Credit Card",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "dollar": {
+    "category": "commerce",
+    "query": "Dollar",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vr9h2aEaf7JttOSw",
+        "name": "Currency Dollar",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vc5J2aEdzpgWaPQ6",
+        "name": "Discount Dollar Dash",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v3QZ2aEaf7Jtt0sn",
+        "name": "Currency Dollar Bill",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vgXHeLjvhjjHWpQ8",
+        "name": "Style One Pin Dollar",
+        "categorySlug": "maps-navigation",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vUEY2aEaf7htduTD",
+        "name": "Currency Dollar Circle",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vBaK2aEdzpjHW5ES",
+        "name": "Smartphone Pay Dollar 2",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vj4G2aEdzpeLj08U",
+        "name": "Receipt Dollar",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vYqK2aEaf7Ei85G6",
+        "name": "Money Bag Dollar",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vUYZ2aEdzpP2WMT3",
+        "name": "Tag Dollar 1",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vLjV2aEaf7htdkTj",
+        "name": "Currency Dollar Increase",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "gift": {
+    "category": "commerce",
+    "query": "Gift",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vANWeLjK1i49rlb7",
+        "name": "Gift Box",
+        "categorySlug": "social-medias-rewards-rating",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4veHCeLjK1i49rA15",
+        "name": "Gift Box 1",
+        "categorySlug": "social-medias-rewards-rating",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vXx2eLjK1i49reLX",
+        "name": "Gift Circle",
+        "categorySlug": "social-medias-rewards-rating",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vISceLjK1i49rtKN",
+        "name": "Gift Heart",
+        "categorySlug": "social-medias-rewards-rating",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_ySixxxVKyDBIaWrM",
+        "name": "Donation Donate Gift Box 2",
+        "categorySlug": "business-products",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vZgg2aEdzpwAZJuT",
+        "name": "Products Give Gift",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vAn0eLj9ULdzpyLr",
+        "name": "Love Gift Couple Box",
+        "categorySlug": "romance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_dHydEWhQVXBARjx8",
+        "name": "Gift Square With Bow",
+        "categorySlug": "social-medias-rewards-rating",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_wsRBW9abQAUdIuwD",
+        "name": "Gift Rectangle With Bow",
+        "categorySlug": "social-medias-rewards-rating",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vgRA2aEdzpWGyCPM",
+        "name": "E Commerce Gift",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "receipt": {
+    "category": "commerce",
+    "query": "Receipt",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4v84u2aEdzp2aEtCj",
+        "name": "Receipt",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vWoV2aEdzp2aEWQD",
+        "name": "Receipt 1",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vXCI2aEdzpeLjRHJ",
+        "name": "Receipt Slip 1",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vj4G2aEdzpeLj08U",
+        "name": "Receipt Dollar",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vC2u2aEdzpeLjK7O",
+        "name": "Receipt Slip",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vvsU2aEdzpeLjc0U",
+        "name": "Receipt Register Print",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vDub2aEdzpeLjuTD",
+        "name": "Receipt Register",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_ycrzm89qhv31py2J",
+        "name": "Electronic Billing Laptop Notebook",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vBwJ2aE232jHWq06",
+        "name": "Common File Text Cash",
+        "categorySlug": "files-folders",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_z5CA7XgaGjqnzQPA",
+        "name": "Electronic Billing Monitor Pound",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "wallet": {
+    "category": "commerce",
+    "query": "Wallet",
+    "results": [
+      {
+        "hash": "ico_NkO1YJTQXH0f93P0",
+        "name": "Crypto Wallet",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vXt42aEaf7Ei8CiE",
+        "name": "Money Wallet 1",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_wngkfHy2JHwj7Ptl",
+        "name": "Google Wallet Logo",
+        "categorySlug": "logos",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_0ibX83PKdVvDDv9F",
+        "name": "Wallet Sensor Tag Radiowaves",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vqIy2aEdzpM5pyL1",
+        "name": "Crypto Currency Bitcoin Wallet",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vFtl2aEdzpQ3yA1u",
+        "name": "Cash Payment Wallet",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vDKU2aEaf7Ei8KJ9",
+        "name": "Money Wallet",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vuv42aEaf7Ei8Ekd",
+        "name": "Money Wallet Open",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vZnD2aEaf7JttU9o",
+        "name": "Saving Wallet International",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_4zC1ZxONLVQwD9YK",
+        "name": "Crypto Wallet Metamask",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "bag": {
+    "category": "commerce",
+    "query": "Shopping Bag",
+    "results": [
+      {
+        "hash": "ico_vcSImXOVVq2O8d0r",
+        "name": "Shopping Bag",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vT7y2aEdzp2aEg0Y",
+        "name": "Mobile Shopping Bag",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vefW2aEdzp7QUywi",
+        "name": "Shopping Bag Side",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vP5I2aEdzp7QUxfh",
+        "name": "Shopping Bag Smile",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vGXo2aEdzp7QUX0n",
+        "name": "Shopping Bag Tag 1",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vKvA2aEdzp7QU95A",
+        "name": "Shopping Bag Play",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vxoM2aEdzp7QUJPp",
+        "name": "Shopping Bag Tag",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vSbH2aEdzp7QUNei",
+        "name": "Shopping Bag Heart",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vha42aEdzp6nln8u",
+        "name": "Shopping Bag Check",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vVVX2aEdzp6nlDxv",
+        "name": "Shopping Bag Download",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "barcode": {
+    "category": "commerce",
+    "query": "Barcode",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4veuQ2aEdzpgWaQlb",
+        "name": "Barcode",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_GimcM8FwmbVCJNRO",
+        "name": "Shopping Barcode",
+        "categorySlug": "business-products",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vIAc2aEdzpgWaib6",
+        "name": "Barcode Scan",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vccQ2aEdzpQzISFb",
+        "name": "Shipment Barcode",
+        "categorySlug": "shipping-delivery",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vGG72aEdzpgWatCj",
+        "name": "Barcode Tag",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vUe72aEdzpgWaOfx",
+        "name": "Barcode Search",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_HkKNpkar4AWlyrX6",
+        "name": "Shipping Logistic Barcode Reader",
+        "categorySlug": "shipping-delivery",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_OGeJZFt4orv1UJaK",
+        "name": "No Barcode",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_2uGSy4GdPsCQQcVd",
+        "name": "Refresh Barcode",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vIDS2aEdzp6nlQlb",
+        "name": "Shopping Bag Barcode 1",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "qr-code": {
+    "category": "commerce",
+    "query": "QR Code",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4v9BXeLjM5peixybj",
+        "name": "Qr Code Scan",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v1dm2aEdzpP2Wbzb",
+        "name": "Qr Code",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_8euGUSDTQomT89nZ",
+        "name": "Pathfinder Crop",
+        "categorySlug": "design",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_tbHLN33YJiZdirq2",
+        "name": "Cashless Payment Smart Pay Bus Smartphone Qr",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vK8G2aENc3eLj2Ek",
+        "name": "Focus Close",
+        "categorySlug": "images-photography",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_IzC1O3WpoPsB2lsr",
+        "name": "Cashless Payment Qr Code Basket",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v9n7eLjM5peixXDf",
+        "name": "Mobile Qr Code",
+        "categorySlug": "phones-mobile-devices",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_ggNp5D6Y91VMRWVR",
+        "name": "Scanner",
+        "categorySlug": "design",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_Dh4Wg1RESAcqDOPE",
+        "name": "Cashless Payment Qr Code Card",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vIAc2aEdzpgWaib6",
+        "name": "Barcode Scan",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "coupon": {
+    "category": "commerce",
+    "query": "Coupon",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vUho2aEdzpgWa7yV",
+        "name": "Discount Coupon",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v1mD2aEdzpeLj5ke",
+        "name": "Coupon Cut",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_07noQYVMwN4xmg2f",
+        "name": "Currency Sign Won Coupon",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_ezCUhEu0velis42l",
+        "name": "Currency Sign Peso Coupon",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_3tNEaphP972G4wX6",
+        "name": "Currency Sign Baht Coupon",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_khBz4eJBF4LaQY1H",
+        "name": "Currency Sign Colon Coupon",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_5VWCs9wIDTq8ZoeD",
+        "name": "Currency Sign Franc Coupon",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_8faTOzdL9dSqUYXq",
+        "name": "Currency Sign Nagras Coupon",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_bEsktCBnDK4RTi0s",
+        "name": "Access Token Authentication Coupon",
+        "categorySlug": "programing-apps-websites",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_pc3E6xziJiTDMM1N",
+        "name": "Currency Sign Rupee Coupon",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "discount": {
+    "category": "commerce",
+    "query": "Discount",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vdpC2aEdzpgWaWQD",
+        "name": "Discount 30",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vaHZ2aEdzpP2WNei",
+        "name": "Discount 50",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vpXy2aEdzpP2W3gZ",
+        "name": "Discount 70",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vwdF2aEdzpeLjvWZ",
+        "name": "Discount 1",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v7Y82aEdzpeLjLwy",
+        "name": "Discount",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vvN72aEdzpP2WiN0",
+        "name": "Discount 50 Alternate",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vzCq2aEdzpgWaycG",
+        "name": "Discount Square",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vdsr2aEdzpP2WWip",
+        "name": "Discount 30 Alternate",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v66z2aEdzpeLjVMd",
+        "name": "Discount Bubble",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vUho2aEdzpgWa7yV",
+        "name": "Discount Coupon",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "price-tag": {
+    "category": "commerce",
+    "query": "Price Tag",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vUYZ2aEdzpP2WMT3",
+        "name": "Tag Dollar 1",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vjm82aEJttYBGyQj",
+        "name": "Tags Edit",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vk4U2aEJttYBGeET",
+        "name": "Tags Cash",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vSB52aEJttSyUg3B",
+        "name": "Tags",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vlbA2aEdzpP2WbRt",
+        "name": "Tag Dollar",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v0uy2aEJttHO2TZe",
+        "name": "Tags Favorite Star",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vXJJ2aEJttYBGkVB",
+        "name": "Tags Check",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vGG72aEdzpgWatCj",
+        "name": "Barcode Tag",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vFCn2aEJttHO2r4T",
+        "name": "Tags Search",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vR522aEJttHO28HF",
+        "name": "Tags Remove",
+        "categorySlug": "interface-essential",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "store": {
+    "category": "commerce",
+    "query": "Store",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vsjweLjJ4vP2WXG3",
+        "name": "App Store Logo",
+        "categorySlug": "logos",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vRDneLjJ4v6nlPQ6",
+        "name": "Play Store Logo",
+        "categorySlug": "logos",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_NAF4FaiTthqv0KnK",
+        "name": "Cannabis Store",
+        "categorySlug": "cannabis",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_D2RAxHxrxQYWd3ZC",
+        "name": "Web Store Logo",
+        "categorySlug": "logos",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_OSATzuvlmrjGHKwv",
+        "name": "Avatar Woman Store Clerk",
+        "categorySlug": "avatars",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_nlFwSdOtX1mTQ8sZ",
+        "name": "Pet Shop",
+        "categorySlug": "pets-animals",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4v95neLjvhjbmovtM",
+        "name": "Style Three Pin Shop",
+        "categorySlug": "maps-navigation",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vUWz2aEdzpvhjX57",
+        "name": "Shop Like",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vZ6r2aEdzp08UEQT",
+        "name": "Shop Arrow",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vG2Q2aEdzpvhjFMm",
+        "name": "Shop Sign Bag",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "payment": {
+    "category": "commerce",
+    "query": "Payment",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vENV2aEdzpjHWMMy",
+        "name": "Wireless Payment Smartphone",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vRWU2aEdzpjHWBeQ",
+        "name": "Self Payment",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vxNf2aEdzpQ3y6Gd",
+        "name": "Check Payment Give",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_4aXwoM1YzwFihAoa",
+        "name": "Contactless Payment Euro",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vAgI2aEdzpK1i3Lk",
+        "name": "Cash Payment Bill 3",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vjlB2aEdzp4pQ7lT",
+        "name": "Credit Card Laptop Payment",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_whGbMMnvbFoMFMyx",
+        "name": "Cashless Payment Online Transfer Monitor",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vDAZ2aEdzp08UPop",
+        "name": "Wireless Payment Smartphone 1",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_RkHuuftiZMVozI3w",
+        "name": "Smart Tv Payment",
+        "categorySlug": "video-movies-tv",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vmR22aEdzpQ3yzPL",
+        "name": "Cash Payment Sign 1",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  },
+  "invoice": {
+    "category": "commerce",
+    "query": "Invoice",
+    "results": [
+      {
+        "hash": "ico_mRu4pQJ4vK8f2aEaf7sjsHmR",
+        "name": "Accounting Invoice",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vg642aEaf7sjs3Lk",
+        "name": "Accounting Invoice Mail",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_XfcrbT53c1ceNx7E",
+        "name": "Accounting Invoice Hand Euro",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vD232aEaf7sjsA6l",
+        "name": "Accounting Invoice Hand",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_bm4SI0z12p8jWt5P",
+        "name": "Accounting Invoice Euro",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_uTRG6yfoLtewTjSe",
+        "name": "Accounting Invoice Mail Euro",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_VN3TXP2dhn1NoID5",
+        "name": "Accounting Document Euro",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_An0uOWwg2ljEsBi9",
+        "name": "Electronic Billing Monitor",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_z5CA7XgaGjqnzQPA",
+        "name": "Electronic Billing Monitor Pound",
+        "categorySlug": "money-payments-finance",
+        "setSlug": "streamline-regular"
+      },
+      {
+        "hash": "ico_mRu4pQJ4vj4G2aEdzpeLj08U",
+        "name": "Receipt Dollar",
+        "categorySlug": "shopping-ecommerce",
+        "setSlug": "streamline-regular"
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+
+const page = await figma.getNodeByIdAsync('9:13081');
+await figma.setCurrentPageAsync(page);
+const colorVar = await figma.variables.getVariableByIdAsync('VariableID:34:2');
+const FILL = { r: 0.062745, g: 0.094118, b: 0.156863 };
+function paint(node) {
+  node.fills = [figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: FILL }, 'color', colorVar)];
+  node.strokes = [];
+}
+function bindFills(root) {
+  const stack = [root];
+  while (stack.length) {
+    const n = stack.pop();
+    if ('constraints' in n) n.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    if (n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION' || n.type === 'ELLIPSE' || n.type === 'STAR' || n.type === 'POLYGON') paint(n);
+    if ('clipsContent' in n && n.type === 'FRAME') n.clipsContent = false;
+    if ('children' in n) for (const c of n.children) stack.push(c);
+  }
+}
+function applyBoldXs(set, svg) {
+  const xs = set.children.find(c => c.name === 'Size=xs');
+  if (!xs) return { ok: false, reason: 'no-xs' };
+  for (const c of [...xs.children]) c.remove();
+  const node = figma.createNodeFromSvg(svg);
+  node.name = set.name.split('/').pop() + ' · bold';
+  try { node.resize(16, 16); } catch (e) {}
+  node.x = 0; node.y = 0;
+  node.clipsContent = false;
+  if ('constraints' in node) node.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+  xs.appendChild(node);
+  bindFills(node);
+  try { xs.resizeWithoutConstraints(16, 16); } catch (e) { try { xs.resize(16, 16); } catch (e2) {} }
+  xs.clipsContent = false;
+  xs.visible = true;
+  for (const v of set.children) v.visible = true;
+  set.clipsContent = true;
+  set.counterAxisAlignItems = 'MIN';
+  set.primaryAxisAlignItems = 'MIN';
+  if (set.layoutMode !== 'NONE') {
+    set.primaryAxisSizingMode = 'FIXED';
+    set.counterAxisSizingMode = 'FIXED';
+  }
+  set.resize(16, 16);
+  try { set.layoutSizingHorizontal = 'FIXED'; set.layoutSizingVertical = 'FIXED'; } catch (e) {}
+  return { ok: true };
+}
+
+const BATCH = [{"setName": "icon/comms/phone.off", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Phone-Off--Streamline-Ultimate\"> <g> <path d=\"m19.2 14.71 -1.55 -1.55a1.55 1.55 0 0 0 -2.18 0.11l-0.57 0.58 -0.27 -0.22a0.26 0.26 0 0 0 -0.34 0l-2.1 2.11a0.26 0.26 0 0 0 0 0.37 20.62 20.62 0 0 0 3 2.16 2.37 2.37 0 0 0 2.92 -0.45l0.95 -0.94a1.55 1.55 0 0 0 0.14 -2.17\" fill=\"#000000\" stroke-width=\"1\"></path> <path d=\"M12 0a12 12 0 1 0 12 12A12 12 0 0 0 12 0M2.09 10.65a10 10 0 0 1 16 -6.57 0.25 0.25 0 0 1 0 0.38l-6.26 6.27a0.25 0.25 0 0 1 -0.37 0L10.15 9.1l0.58 -0.57a1.55 1.55 0 0 0 0.11 -2.18L9.29 4.8a1.55 1.55 0 0 0 -2.18 0.11l-0.94 1a2.37 2.37 0 0 0 -0.45 2.92 48.21 48.21 0 0 0 3.35 4.37 0.26 0.26 0 0 1 0 0.34l-4.61 4.58a0.25 0.25 0 0 1 -0.38 0 10 10 0 0 1 -1.99 -7.47m19.82 2.7a10 10 0 0 1 -16 6.57 0.25 0.25 0 0 1 0 -0.38L19.54 5.88a0.25 0.25 0 0 1 0.38 0 10 10 0 0 1 1.99 7.47\" fill=\"#000000\" stroke-width=\"1\"></path> </g> </svg>"}, {"setName": "icon/comms/presentation", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Presentation--Streamline-Ultimate\"> <g> <path d=\"M8.5 9h7a0.51 0.51 0 0 0 0.4 -0.2 0.5 0.5 0 0 0 0.1 -0.44 4.21 4.21 0 0 0 -2.61 -2.84 0.25 0.25 0 0 1 -0.16 -0.2 0.24 0.24 0 0 1 0.1 -0.24 2.25 2.25 0 1 0 -2.62 0 0.22 0.22 0 0 1 0.1 0.24 0.25 0.25 0 0 1 -0.16 0.2A4.21 4.21 0 0 0 8 8.36a0.5 0.5 0 0 0 0.08 0.44 0.51 0.51 0 0 0 0.42 0.2\" fill=\"#000000\" stroke-width=\"1\"></path> <path d=\"M24 17.86A4.21 4.21 0 0 0 21.37 15a0.25 0.25 0 0 1 -0.16 -0.2 0.24 0.24 0 0 1 0.1 -0.24 2.25 2.25 0 1 0 -2.62 0 0.22 0.22 0 0 1 0.1 0.24 0.25 0.25 0 0 1 -0.16 0.2 3.62 3.62 0 0 0 -1 0.53 0.24 0.24 0 0 0 -0.1 0.25L18 18.3a0.26 0.26 0 0 0 0.25 0.2h5.25a0.51 0.51 0 0 0 0.4 -0.2 0.5 0.5 0 0 0 0.1 -0.44\" fill=\"#000000\" stroke-width=\"1\"></path> <path d=\"M6.48 15.8a0.24 0.24 0 0 0 -0.1 -0.25 3.62 3.62 0 0 0 -1 -0.53 0.25 0.25 0 0 1 -0.16 -0.2 0.24 0.24 0 0 1 0.1 -0.24 2.25 2.25 0 1 0 -2.62 0 0.22 0.22 0 0 1 0.1 0.24 0.25 0.25 0 0 1 -0.16 0.2A4.21 4.21 0 0 0 0 17.86a0.5 0.5 0 0 0 0.08 0.44 0.51 0.51 0 0 0 0.4 0.2h5.23a0.26 0.26 0 0 0 0.29 -0.2Z\" fill=\"#000000\" stroke-width=\"1\"></path> <path d=\"M15.67 11.8a1 1 0 0 0 -1 -0.8H9.31a1 1 0 0 0 -1 0.8l-2.08 10a1 1 0 0 0 0.2 0.83 1 1 0 0 0 0.78 0.37h9.54a1 1 0 0 0 0.78 -0.37 1 1 0 0 0 0.2 -0.83Zm-1.37 9a0.49 0.49 0 0 1 -0.38 0.17h-3.84a0.49 0.49 0 0 1 -0.38 -0.17 0.49 0.49 0 0 1 -0.12 -0.4l0.36 -2.5a0.49 0.49 0 0 1 0.49 -0.43h3.14a0.49 0.49 0 0 1 0.49 0.43l0.36 2.5a0.49 0.49 0 0 1 -0.12 0.43Z\" fill=\"#000000\" stroke-width=\"1\"></path> </g> </svg>"}, {"setName": "icon/comms/reply", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Email-Action-Reply--Streamline-Ultimate\"> <path d=\"M19.62 10.68c-3 -2.67 -7.13 -2.85 -8.86 -2.79a0.29 0.29 0 0 1 -0.18 -0.07 0.27 0.27 0 0 1 -0.08 -0.18V5.06a1 1 0 0 0 -0.57 -0.9 1 1 0 0 0 -1.07 0.14l-7.5 6.37a1 1 0 0 0 -0.36 0.77 1 1 0 0 0 0.35 0.76l7.51 6.63a1 1 0 0 0 1.64 -0.77V15a0.26 0.26 0 0 1 0.2 -0.25c1.91 -0.4 8.13 -1.15 11.36 4.89a0.5 0.5 0 0 0 0.94 -0.23c0 -3.79 -1.14 -6.74 -3.38 -8.73\" fill=\"#000000\" stroke-width=\"1\"></path> </svg>"}, {"setName": "icon/comms/reply.all", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Email-Action-Reply-All--Streamline-Ultimate\"> <g> <path d=\"M20.82 10.74A10.65 10.65 0 0 0 14.24 8a0.24 0.24 0 0 1 -0.24 -0.23V5.56a1 1 0 0 0 -1.63 -0.75l-6.93 5.93a1 1 0 0 0 0 1.52l7 6a0.94 0.94 0 0 0 1 0.14 1 1 0 0 0 0.57 -0.88v-2.47a0.24 0.24 0 0 1 0.19 -0.24c1.47 -0.4 5.84 -1 8.86 4.92a0.51 0.51 0 0 0 0.57 0.26 0.51 0.51 0 0 0 0.37 -0.49c0 -3.81 -1.07 -6.76 -3.18 -8.76\" fill=\"#000000\" stroke-width=\"1\"></path> <path d=\"m2.29 11.5 7 -5.73A1 1 0 0 0 8 4.23L0.55 10.34a1.5 1.5 0 0 0 0 2.32l7.25 6a1 1 0 1 0 1.27 -1.54Z\" fill=\"#000000\" stroke-width=\"1\"></path> </g> </svg>"}];
+let ok=0, missing=0, failed=0; const miss=[], fail=[];
+for (const item of BATCH) {
+  const set = figma.currentPage.findOne(n => n.type === 'COMPONENT_SET' && n.name === item.setName);
+  if (!set) { missing++; if (miss.length<8) miss.push(item.setName); continue; }
+  try {
+    const r = applyBoldXs(set, item.svg);
+    if (r.ok) ok++; else { failed++; fail.push({name:item.setName,r}); }
+  } catch(e) { failed++; if (fail.length<8) fail.push({name:item.setName,err:String(e)}); }
+}
+return { ok, missing, failed, miss, fail };

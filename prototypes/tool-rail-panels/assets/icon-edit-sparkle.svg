@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" overflow="visible" id="edit-sparkle--composed-Regular">
+  <desc>Streamline Regular 3.0 Pencil + Reward Stars sparkle — 1.5 stroke, translate-only layout</desc>
+  <!-- Pencil at true Regular 1.5 (no scale — scale thins strokes) -->
+  <path d="M22.19 1.81a3.639 3.639 0 0 0-5.17.035l-14.5 14.5L.75 23.25l6.905-1.771 14.5-14.5a3.637 3.637 0 0 0 .035-5.169Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill="none"/>
+  <path d="m16.606 2.26 5.134 5.134" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill="none"/>
+  <path d="m2.521 16.344 5.139 5.13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill="none"/>
+  <!-- Sparkle: translate-only, lower-right with clear gap from pencil barrel -->
+  <g transform="translate(2.75 13.75)">
+    <path d="M22.8125 5.948c-2.8135.944-3.741 1.996-4.427 4.615-.686-2.619-1.613-3.67-4.427-4.615 2.814-.944 3.741-1.996 4.427-4.615.686 2.619 1.613 3.67 4.427 4.615Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill="none"/>
+  </g>
+</svg>

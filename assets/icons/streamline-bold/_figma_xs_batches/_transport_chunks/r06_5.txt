@@ -1,0 +1,11 @@
+=\"#000000\" fill-rule=\"evenodd\" d=\"m16.123 1.77856 -1.9414 4.14867 4.7589 0c0.099 0 0.1967 0.00402 0.2932 0.01189l0.6536 -2.86734c0.2269 -0.99504 -0.3313 -2.00141 -1.2955 -2.335881 -0.9685 -0.335964 -2.0343 0.114158 -2.4688 1.042661M20.8425 20.759c0.4181 1.2918 -0.5451 2.6158 -1.9028 2.6158H5.06006c-1.35775 0 -2.32088 -1.324 -1.90284 -2.6158l1.3354 -4.1264c0.2591 -0.8006 0.2591 -1.6625 0 -2.4632L3.15723 10.043c-0.41805 -1.29174 0.54509 -2.61575 1.90283 -2.61575H18.9397c1.3577 0 2.3209 1.32401 1.9028 2.61575l-1.3354 4.1264c-0.2591 0.8007 -0.2591 1.6626 0 2.4632zm-10.368 -2.2586c0 0.5523 0.4477 1 1 1h1.0551c0.5522 0 1 -0.4477 1 -1v-1.5718h1.573c0.5522 0 1 -0.4477 1 -1v-1.055c0 -0.5523 -0.4478 -1 -1 -1h-1.573v-1.5718c0 -0.5522 -0.4478 -1 -1 -1h-1.0551c-0.5523 0 -1 0.4478 -1 1v1.5718l-1.57047 0c-0.55229 0 -1 0.4477 -1 1v1.055c0 0.5523 0.44771 1 0.99999 1h1.57048z\" clip-rule=\"evenodd\" stroke-width=\"1\"></path>\n</svg>"}];
+let ok=0, missing=0, failed=0; const miss=[], fail=[];
+for (const item of BATCH) {
+  const set = page.findOne(n => n.type === 'COMPONENT_SET' && n.name === item.setName);
+  if (!set) { missing++; if (miss.length<8) miss.push(item.setName); continue; }
+  try {
+    const r = applyBoldXs(set, item.svg);
+    if (r.ok) ok++; else { failed++; fail.push({name:item.setName,r}); }
+  } catch(e) { failed++; if (fail.length<8) fail.push({name:item.setName,err:String(e)}); }
+}
+return { ok, missing, failed, miss, fail };

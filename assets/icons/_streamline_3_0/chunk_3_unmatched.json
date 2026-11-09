@@ -1,0 +1,77 @@
+[
+  {
+    "name": "sign-language",
+    "figma": "icon/health/sign.language",
+    "query": "Sign Language Love"
+  },
+  {
+    "name": "sleep",
+    "figma": "icon/health/sleep",
+    "query": "Sleep Zzz"
+  },
+  {
+    "name": "snooze",
+    "figma": "icon/actions/snooze",
+    "query": "Snooze Return Repeat"
+  },
+  {
+    "name": "sort",
+    "figma": "icon/actions/sort",
+    "query": "Sort Size Ascending Order Up"
+  },
+  {
+    "name": "sort-asc",
+    "figma": "icon/actions/sort.asc",
+    "query": "Ascending Sort 1"
+  },
+  {
+    "name": "sort-desc",
+    "figma": "icon/actions/sort.desc",
+    "query": "Descending Sort 1"
+  },
+  {
+    "name": "split",
+    "figma": "icon/navigation/split",
+    "query": "Split Subset Spreadsheet 2"
+  },
+  {
+    "name": "surgery",
+    "figma": "icon/health/surgery",
+    "query": "Surgery Liposuction"
+  },
+  {
+    "name": "symptoms",
+    "figma": "icon/health/symptoms",
+    "query": "Symptoms Fever"
+  },
+  {
+    "name": "terminal",
+    "figma": "icon/misc/terminal",
+    "query": "Terminal"
+  },
+  {
+    "name": "train",
+    "figma": "icon/misc/train",
+    "query": "Train Location"
+  },
+  {
+    "name": "ultrasound",
+    "figma": "icon/health/ultrasound",
+    "query": "Ultrasound Scan"
+  },
+  {
+    "name": "umbrella",
+    "figma": "icon/misc/umbrella",
+    "query": "Umbrella Circle"
+  },
+  {
+    "name": "vaccine",
+    "figma": "icon/health/vaccine",
+    "query": "Vaccine Bottle 1"
+  },
+  {
+    "name": "virus",
+    "figma": "icon/health/virus",
+    "query": "Medical Specialty Virus"
+  }
+]

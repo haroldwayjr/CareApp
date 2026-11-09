@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
 import MenuItem from '@mui/material/MenuItem'
 import Pagination from '@mui/material/Pagination'
 import Select from '@mui/material/Select'
@@ -13,14 +14,17 @@ import { ConversationsPage } from './components/ConversationsPage'
 import { CareResultCard } from './components/CareResultCard'
 import { CareResultCardSkeleton } from './components/CareResultCardSkeleton'
 import { FilterDrawer, type OpenFilterMenu } from './components/FilterDrawer'
+import { IncludedHealthPlanKey } from './components/IncludedHealthPlanKey'
 import {
   RemovableFilterChip,
   REMOVABLE_FILTER_CHIP_GAP,
 } from './components/RemovableFilterChip'
 import { ProviderOverviewDrawer } from './components/ProviderOverviewDrawer'
+import { SendToMemberDialog } from './components/SendToMemberDialog'
 import { ResultsMap } from './components/ResultsMap'
 import {
   APP_SHELL_HEIGHT,
+  RESULTS_CONTENT_TOP_GAP,
   RESULTS_TOOLBAR_OFFSET,
   ResultsBackHeader,
   ResultsPageChrome,
@@ -49,8 +53,8 @@ import {
 
 type View = 'home' | 'results' | 'conversations'
 
-/** Simulated fetch delay after Search so the skeleton can be perceived. */
-const SEARCH_LOADING_MS = 750
+/** Simulated fetch delay after Search so the key + soft skeleton can settle. */
+const SEARCH_LOADING_MS = 1100
 
 const PAGE_SIZE_OPTIONS = [5, 10, 25, 50] as const
 
@@ -73,10 +77,14 @@ export default function App() {
   const [overviewId, setOverviewId] = useState<string | null>(null)
   const [overviewOpen, setOverviewOpen] = useState(false)
   const [listedIds, setListedIds] = useState<string[]>([])
+  const [sendDialogOpen, setSendDialogOpen] = useState(false)
   const [toast, setToast] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState('Best match')
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState<(typeof PAGE_SIZE_OPTIONS)[number]>(10)
+  const [resultsToolbarHeight, setResultsToolbarHeight] = useState(
+    RESULTS_TOOLBAR_OFFSET,
+  )
   const loadingTimeoutRef = useRef<number | null>(null)
 
   useEffect(() => {
@@ -108,6 +116,15 @@ export default function App() {
   const activeCount = countActiveFilters(appliedFilters)
   const chips = buildFilterChips(appliedFilters)
   const isFiltered = activeCount > 0
+  const mapStickyTop =
+    APP_SHELL_HEIGHT + resultsToolbarHeight + RESULTS_CONTENT_TOP_GAP
+  const listedProviders = useMemo(
+    () =>
+      listedIds
+        .map((id) => mockProviders.find((p) => p.id === id))
+        .filter((p): p is (typeof mockProviders)[number] => p != null),
+    [listedIds],
+  )
 
   useEffect(() => {
     setPage((current) => Math.min(current, pageCount))
@@ -205,17 +222,21 @@ export default function App() {
   }
 
   function toggleListed(id: string) {
-    const match = mockProviders.find((item) => item.id === id)
-    const name = match?.name ?? 'Provider'
-    const removing = listedIds.includes(id)
     setListedIds((current) =>
-      removing ? current.filter((item) => item !== id) : [...current, id],
+      current.includes(id)
+        ? current.filter((item) => item !== id)
+        : [...current, id],
     )
-    setToast(
-      removing
-        ? `Prototype only — ${name} removed from list.`
-        : `Prototype only — ${name} added to list.`,
-    )
+  }
+
+  function clearListed() {
+    setListedIds([])
+  }
+
+  function handleSendToMember(email: string) {
+    setSendDialogOpen(false)
+    setToast(`Prototype only — list sent to ${email}.`)
+    setListedIds([])
   }
 
   function handleSearch() {
@@ -294,6 +315,7 @@ export default function App() {
             searchTerm={appliedSearchTerm}
             resultCount={visibleResults.length}
             loading={resultsLoading}
+            onToolbarHeightChange={setResultsToolbarHeight}
             actions={
               <Stack
                 direction="row"
@@ -403,48 +425,46 @@ export default function App() {
                   </Select>
                 </Stack>
                 <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-                  <Button
-                    variant="outlined"
+                  <IconButton
                     color="primary"
-                    startIcon={
-                      <AppIcon
-                        name="filter"
-                        sx={{ fontSize: 20, color: 'inherit' }}
-                      />
-                    }
                     onClick={() => openFilters()}
                     aria-label={
                       activeCount > 0
                         ? `Filters, ${activeCount} applied`
                         : 'Filters'
                     }
+                    aria-haspopup="dialog"
+                    aria-expanded={drawerOpen}
                     sx={{
-                      fontWeight: 400,
-                      fontSize: 14,
-                      letterSpacing: 0,
-                      px: 1.5,
-                      py: 0.75,
-                      textTransform: 'none',
-                      minHeight: 40,
+                      width: 40,
+                      height: 40,
+                      border: '1px solid',
+                      borderColor: 'primary.main',
+                      borderRadius: '50%',
+                      color: 'primary.main',
+                      '&:hover': { bgcolor: 'rgba(0, 35, 128, 0.04)' },
                     }}
                   >
-                    Filters
-                  </Button>
+                    <AppIcon
+                      name="filter"
+                      sx={{ fontSize: 18, color: 'inherit' }}
+                    />
+                  </IconButton>
                   {activeCount > 0 ? (
                     <Box
                       component="span"
                       aria-hidden
                       sx={{
                         position: 'absolute',
-                        top: -4,
-                        right: -4,
-                        minWidth: 20,
-                        height: 20,
+                        top: -6,
+                        right: -8,
+                        minWidth: 18,
+                        height: 18,
                         px: 0.5,
                         borderRadius: 10,
                         bgcolor: 'primary.main',
                         color: '#fff',
-                        fontSize: 12,
+                        fontSize: 11,
                         fontWeight: 600,
                         lineHeight: 1,
                         display: 'inline-flex',
@@ -500,11 +520,25 @@ export default function App() {
                 flex: 1,
               }}
             >
-              <Stack spacing={2} onClick={() => setSelectedId(null)} sx={{ minHeight: 120, minWidth: 0 }}>
+              <Stack
+                spacing={2}
+                useFlexGap
+                onClick={() => setSelectedId(null)}
+                sx={{ minHeight: 120, minWidth: 0 }}
+              >
+                <Box
+                  sx={{ display: { xs: 'block', lg: 'none' } }}
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  <IncludedHealthPlanKey variant="banner" />
+                </Box>
+
                 {resultsLoading ? (
-                  <CareResultCardSkeleton count={4} />
+                  <Box className="results-soft-enter" sx={{ opacity: 0.72 }}>
+                    <CareResultCardSkeleton count={3} />
+                  </Box>
                 ) : (
-                  <>
+                  <Stack spacing={2} className="results-soft-enter">
                     {pagedResults.map((result, index) => (
                       <CareResultCard
                         key={result.id}
@@ -560,20 +594,112 @@ export default function App() {
                         </Stack>
                       </Box>
                     ) : null}
-                  </>
+                  </Stack>
                 )}
               </Stack>
 
-              <Box sx={{ minWidth: 0, alignSelf: { lg: 'stretch' } }}>
-                <ResultsMap
-                  results={resultsLoading ? [] : pagedResults}
-                  selectedId={resultsLoading ? null : selectedId}
-                  onSelect={setSelectedId}
-                  stickyTop={APP_SHELL_HEIGHT + RESULTS_TOOLBAR_OFFSET}
-                  indexOffset={(page - 1) * pageSize}
-                />
-              </Box>
+              <Stack
+                spacing={2}
+                useFlexGap
+                sx={{
+                  minWidth: 0,
+                  position: { lg: 'sticky' },
+                  top: { lg: mapStickyTop },
+                  height: { lg: `calc(100dvh - ${mapStickyTop}px)` },
+                  maxHeight: { lg: `calc(100dvh - ${mapStickyTop}px)` },
+                  alignSelf: { lg: 'start' },
+                }}
+              >
+                <Box
+                  sx={{ display: { xs: 'none', lg: 'block' }, flexShrink: 0 }}
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  <IncludedHealthPlanKey variant="sidebar" />
+                </Box>
+                <Box
+                  sx={{
+                    flex: 1,
+                    minHeight: { xs: 280, sm: 360, lg: 0 },
+                    minWidth: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
+                  <ResultsMap
+                    results={resultsLoading ? [] : pagedResults}
+                    selectedId={resultsLoading ? null : selectedId}
+                    onSelect={setSelectedId}
+                    stickyTop={mapStickyTop}
+                    indexOffset={(page - 1) * pageSize}
+                    fillParent
+                  />
+                </Box>
+              </Stack>
             </Box>
+
+            {listedIds.length > 0 ? (
+              <Stack
+                direction={{ xs: 'column', sm: 'row' }}
+                spacing={1.5}
+                sx={{
+                  // Full-width sticky footer — page-level send action stays visible while scrolling.
+                  position: 'sticky',
+                  bottom: 0,
+                  zIndex: 9,
+                  alignItems: { xs: 'stretch', sm: 'center' },
+                  justifyContent: 'space-between',
+                  px: 2,
+                  py: 1.5,
+                  mt: 2,
+                  border: 1,
+                  borderColor: 'divider',
+                  borderRadius: '8px',
+                  bgcolor: 'background.paper',
+                  boxShadow: '0 -4px 16px rgba(0,0,0,0.06)',
+                }}
+              >
+                <Typography sx={{ fontSize: 14, fontWeight: 500, letterSpacing: 0 }}>
+                  {listedIds.length}{' '}
+                  {listedIds.length === 1 ? 'provider' : 'providers'} selected
+                </Typography>
+                <Stack
+                  direction="row"
+                  spacing={1.5}
+                  sx={{
+                    alignItems: 'center',
+                    justifyContent: { xs: 'flex-end', sm: 'flex-end' },
+                  }}
+                >
+                  <Button
+                    onClick={clearListed}
+                    sx={{
+                      fontWeight: 500,
+                      fontSize: 14,
+                      letterSpacing: 0,
+                      textTransform: 'none',
+                      color: 'text.secondary',
+                      minWidth: 0,
+                    }}
+                  >
+                    Clear
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => setSendDialogOpen(true)}
+                    sx={{
+                      fontWeight: 500,
+                      fontSize: 14,
+                      letterSpacing: 0,
+                      textTransform: 'none',
+                      px: 2,
+                    }}
+                  >
+                    Send to member
+                  </Button>
+                </Stack>
+              </Stack>
+            ) : null}
 
             <Stack
               direction={{ xs: 'column', sm: 'row' }}
@@ -659,6 +785,13 @@ export default function App() {
         onCopyName={(label) =>
           setToast(`Copied details for ${label} to clipboard.`)
         }
+      />
+
+      <SendToMemberDialog
+        open={sendDialogOpen}
+        providers={listedProviders}
+        onClose={() => setSendDialogOpen(false)}
+        onSend={handleSendToMember}
       />
 
       <Snackbar

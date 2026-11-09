@@ -13,6 +13,7 @@ import closeSvg from './streamline/close.svg?raw'
 import chevronDownSvg from './streamline/chevron-down.svg?raw'
 import sendSvg from './streamline/send.svg?raw'
 import editSparkleSvg from './streamline/edit-sparkle.svg?raw'
+import infoSvg from './streamline/info.svg?raw'
 
 /**
  * Icon names used by the app. Keep this list product-facing
@@ -32,6 +33,7 @@ export type AppIconName =
   | 'chevronDown'
   | 'send'
   | 'editSparkle'
+  | 'info'
 
 type IconComponent = ComponentType<SvgIconProps>
 
@@ -54,13 +56,22 @@ function streamlineIcon(rawSvg: string): IconComponent {
   }
 }
 
-/** Multi-path Regular 3.0 stroke icons (e.g. Light Mode Dark Light). */
+/** Multi-path Regular 3.0 stroke icons (optional filled circles for i-dots). */
 function streamlineStrokeIcon(rawSvg: string): IconComponent {
   const viewBoxMatch = rawSvg.match(/viewBox="([^"]+)"/)
   const viewBox = viewBoxMatch?.[1] ?? '0 0 24 24'
   const paths = [...rawSvg.matchAll(/<path[^>]*\sd="([^"]+)"/gi)].map(
     (match) => match[1],
   )
+  const circles = [
+    ...rawSvg.matchAll(
+      /<circle[^>]*\scx="([^"]+)"[^>]*\scy="([^"]+)"[^>]*\sr="([^"]+)"[^>]*>/gi,
+    ),
+  ].map((match) => ({
+    cx: match[1],
+    cy: match[2],
+    r: match[3],
+  }))
 
   return function StreamlineStrokeIcon(props: SvgIconProps) {
     return (
@@ -76,6 +87,15 @@ function streamlineStrokeIcon(rawSvg: string): IconComponent {
             strokeLinejoin="round"
           />
         ))}
+        {circles.map((circle) => (
+          <circle
+            key={`${circle.cx}-${circle.cy}-${circle.r}`}
+            cx={circle.cx}
+            cy={circle.cy}
+            r={circle.r}
+            fill="currentColor"
+          />
+        ))}
       </SvgIcon>
     )
   }
@@ -88,13 +108,14 @@ const streamlineIconMap: Record<AppIconName, IconComponent> = {
   theme: streamlineStrokeIcon(themeSvg),
   notifications: streamlineIcon(notificationsSvg),
   account: streamlineIcon(accountSvg),
-  filter: streamlineIcon(filterSvg),
+  filter: streamlineStrokeIcon(filterSvg),
   copy: streamlineIcon(copySvg),
   add: streamlineStrokeIcon(addSvg),
   close: streamlineStrokeIcon(closeSvg),
   chevronDown: streamlineStrokeIcon(chevronDownSvg),
   send: streamlineStrokeIcon(sendSvg),
   editSparkle: streamlineStrokeIcon(editSparkleSvg),
+  info: streamlineStrokeIcon(infoSvg),
 }
 
 export type AppIconProps = SvgIconProps & {

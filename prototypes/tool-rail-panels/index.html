@@ -1,0 +1,1206 @@
+<!doctype html>
+<html lang="en" class="is-page-boot">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Care App chat and member context prototype" />
+    <title>Care App — My Work</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=filter-empty-1" />
+  </head>
+  <body>
+    <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
+      <div class="header-left">
+        <button
+          class="icon-button nav-menu-button"
+          id="nav-menu-button"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="nav-drawer"
+        >
+          <!-- icon/navigation/menu — sm outline -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/></svg>
+        </button>
+        <a class="wordmark" href="#" aria-label="Care App home">
+          <svg class="wordmark-mark" viewBox="0 0 22 24" width="18" height="20" aria-hidden="true">
+            <path d="M18.6667 24C20.5075 24 21.9999 22.4737 21.9999 20.5909C21.9999 18.7081 20.5075 17.1818 18.6667 17.1818C16.8258 17.1818 15.3335 18.7081 15.3335 20.5909C15.3335 22.4737 16.8258 24 18.6667 24Z"/>
+            <path d="M3.33383 6.8182C5.1747 6.8182 6.66702 5.2919 6.66702 3.4091C6.66702 1.52631 5.1747 0 3.33383 0C1.49296 0 0.00063671 1.52631 0.00063671 3.4091C0.00063671 5.2919 1.49296 6.8182 3.33383 6.8182Z"/>
+            <path d="M18.6667 6.8182C20.5075 6.8182 21.9999 5.2919 21.9999 3.4091C21.9999 1.52631 20.5075 0 18.6667 0C16.8258 0 15.3335 1.52631 15.3335 3.4091C15.3335 5.2919 16.8258 6.8182 18.6667 6.8182Z"/>
+            <path d="M3.33392 24C5.17479 24 6.66711 22.4737 6.66711 20.5909C6.66711 18.7081 5.17479 17.1818 3.33392 17.1818C1.49305 17.1818 0.000724532 18.7081 0.000724532 20.5909C0.000724532 22.4737 1.49305 24 3.33392 24Z"/>
+            <path d="M3.33393 15.4091C3.79414 15.4472 6.37323 14.9544 8.41468 14.543C10.1225 14.1988 11.8781 14.1988 13.5859 14.543C15.6274 14.9544 18.2065 15.4472 18.6667 15.4091C20.5076 15.4091 21.9999 13.8828 21.9999 12C21.9999 10.1172 20.5076 8.59091 18.6667 8.59091C17.9639 8.59091 15.5391 9.05288 13.6024 9.4461C11.8837 9.79504 10.1169 9.79504 8.39825 9.4461C6.46152 9.05288 4.03667 8.59091 3.33393 8.59091C1.49303 8.59091 0.000708191 10.1172 0.000708191 12C0.000708191 13.8828 1.49303 15.4091 3.33393 15.4091Z"/>
+          </svg>
+          <span>Care App</span>
+        </a>
+        <nav class="global-nav" aria-label="Primary">
+          <a href="#dashboard" data-nav="dashboard">Dashboard</a>
+          <a class="is-active" href="#my-work" data-nav="work" aria-current="page">My Work</a>
+          <a href="#">Schedule</a>
+          <a href="#">Search</a>
+        </nav>
+      </div>
+      <div class="header-actions">
+        <div class="status-switcher-wrap" id="status-switcher">
+          <button
+            class="status-switcher-trigger"
+            type="button"
+            id="status-switcher-button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-controls="status-switcher-menu"
+            aria-label="Status: Available"
+          >
+            <span class="status-switcher-face">
+              <span class="status-switcher-mark">
+                <span class="status-signal status-signal--available" data-status-signal aria-hidden="true"></span>
+                <span class="status-switcher-spinner" data-status-spinner aria-hidden="true"></span>
+                <svg class="status-switcher-warning" viewBox="0 0 24 24" aria-hidden="true">
+                  <path class="warning-shape" d="M12 2.8 1.6 21.2h20.8L12 2.8Z"/>
+                  <path class="warning-mark" d="M12 9.2v5.2"/>
+                  <circle class="warning-dot" cx="12" cy="17.4" r="1.15"/>
+                </svg>
+              </span>
+              <span class="status-switcher-label" data-status-label>Available</span>
+              <span class="status-switcher-timer type-caption" data-status-timer>
+                <svg class="status-switcher-clock" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.25"/>
+                  <path d="M12 7.75V12l3 2"/>
+                </svg>
+                <span data-status-time>12:32</span>
+              </span>
+              <svg class="status-switcher-chevron" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/>
+              </svg>
+            </span>
+            <span class="status-switcher-sizer" aria-hidden="true">
+              <span class="status-switcher-mark"></span>
+              <span class="status-switcher-label">Away from Desk</span>
+              <span class="status-switcher-timer type-caption">
+                <svg class="status-switcher-clock" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.25"/>
+                  <path d="M12 7.75V12l3 2"/>
+                </svg>
+                <span>00:00</span>
+              </span>
+              <svg class="status-switcher-chevron" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/>
+              </svg>
+            </span>
+          </button>
+          <div class="status-switcher-tip" id="status-switcher-tip" role="tooltip"></div>
+          <div class="status-switcher-menu" id="status-switcher-menu" role="listbox" aria-label="Status" hidden>
+            <button type="button" role="option" class="status-switcher-option" data-status="available" aria-selected="true" aria-checked="true">
+              <span class="status-signal status-signal--available" aria-hidden="true"></span>
+              <span class="status-switcher-option-label">Available</span>
+              <span class="status-switcher-check" aria-hidden="true">
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            <button type="button" role="option" class="status-switcher-option" data-status="meeting" aria-selected="false" aria-checked="false">
+              <span class="status-signal status-signal--meeting" aria-hidden="true"></span>
+              <span class="status-switcher-option-label">Meeting</span>
+              <span class="status-switcher-check" aria-hidden="true">
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            <button type="button" role="option" class="status-switcher-option" data-status="break" aria-selected="false" aria-checked="false">
+              <span class="status-signal status-signal--break" aria-hidden="true"></span>
+              <span class="status-switcher-option-label">Break</span>
+              <span class="status-switcher-check" aria-hidden="true">
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            <button type="button" role="option" class="status-switcher-option" data-status="meal" aria-selected="false" aria-checked="false">
+              <span class="status-signal status-signal--meal" aria-hidden="true"></span>
+              <span class="status-switcher-option-label">Meal</span>
+              <span class="status-switcher-check" aria-hidden="true">
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            <button type="button" role="option" class="status-switcher-option" data-status="away" aria-selected="false" aria-checked="false">
+              <span class="status-signal status-signal--away" aria-hidden="true"></span>
+              <span class="status-switcher-option-label">Away from Desk</span>
+              <span class="status-switcher-check" aria-hidden="true">
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            <button type="button" role="option" class="status-switcher-option" data-status="unavailable" aria-selected="false" aria-checked="false">
+              <span class="status-signal status-signal--unavailable" aria-hidden="true"></span>
+              <span class="status-switcher-option-label">Unavailable</span>
+              <span class="status-switcher-check" aria-hidden="true">
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+          </div>
+          <span class="visually-hidden" data-status-live aria-live="polite"></span>
+        </div>
+        <div class="mode-switcher-wrap">
+          <button
+            class="icon-button mode-switcher-button"
+            type="button"
+            id="mode-switcher-button"
+            aria-label="Color mode"
+            aria-expanded="false"
+            aria-haspopup="menu"
+          >
+            <!-- Streamline Regular 3.0 — Light Mode Dark Light (icon/misc/light.mode) -->
+            <svg class="mode-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m12 5.25 0 -4.5"/>
+              <path d="M7.227 7.227 4.045 4.045"/>
+              <path d="m5.25 12 -4.5 0"/>
+              <path d="m7.227 16.773 -3.182 3.182"/>
+              <path d="m12 18.75 0 4.5"/>
+              <path d="m16.773 16.773 3.182 3.182"/>
+              <path d="m18.75 12 4.5 0"/>
+              <path d="m16.773 7.227 3.182 -3.182"/>
+              <path d="M5.25 12a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 1 0 -13.5 0"/>
+              <path d="M15.75 15a6.752 6.752 0 0 1 -6.265 -9.265 6.751 6.751 0 1 0 8.78 8.78A6.716 6.716 0 0 1 15.75 15Z"/>
+            </svg>
+          </button>
+          <div class="mode-switcher-menu" id="mode-switcher-menu" role="menu" hidden>
+            <button type="button" role="menuitemradio" class="mode-switcher-option" data-mode="system" aria-checked="true">
+              <span class="mode-switcher-option-main">
+                <!-- Streamline Regular 3.0 — Light Mode Dark Light (icon/misc/light.mode) -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m12 5.25 0 -4.5"/>
+                  <path d="M7.227 7.227 4.045 4.045"/>
+                  <path d="m5.25 12 -4.5 0"/>
+                  <path d="m7.227 16.773 -3.182 3.182"/>
+                  <path d="m12 18.75 0 4.5"/>
+                  <path d="m16.773 16.773 3.182 3.182"/>
+                  <path d="m18.75 12 4.5 0"/>
+                  <path d="m16.773 7.227 3.182 -3.182"/>
+                  <path d="M5.25 12a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 1 0 -13.5 0"/>
+                  <path d="M15.75 15a6.752 6.752 0 0 1 -6.265 -9.265 6.751 6.751 0 1 0 8.78 8.78A6.716 6.716 0 0 1 15.75 15Z"/>
+                </svg>
+                System
+              </span>
+              <span class="mode-switcher-check" aria-hidden="true">
+                <!-- icon/actions/check.bold Size=xs Style=bold -->
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            <div class="mode-switcher-sep" role="separator"></div>
+            <div class="mode-switcher-label">Mode</div>
+            <button type="button" role="menuitemradio" class="mode-switcher-option" data-mode="light" aria-checked="false">
+              <span class="mode-switcher-option-main">
+                <!-- Streamline Regular 3.0 — Weather Sun (icon/misc/sun) -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5.25 12a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 1 0 -13.5 0"/>
+                  <path d="m12 2.25 0 -1.5"/>
+                  <path d="m18.894 5.106 1.061 -1.061"/>
+                  <path d="m21.75 12 1.5 0"/>
+                  <path d="m18.894 18.894 1.061 1.061"/>
+                  <path d="m12 21.75 0 1.5"/>
+                  <path d="m5.106 18.894 -1.061 1.061"/>
+                  <path d="m2.25 12 -1.5 0"/>
+                  <path d="M5.106 5.106 4.045 4.045"/>
+                </svg>
+                Light
+              </span>
+              <span class="mode-switcher-check" aria-hidden="true">
+                <!-- icon/actions/check.bold Size=xs Style=bold -->
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+            <button type="button" role="menuitemradio" class="mode-switcher-option" data-mode="dark" aria-checked="false">
+              <span class="mode-switcher-option-main">
+                <!-- Streamline — Astrology Moon (icon/misc/moon) -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M10.067 0.75a11.2 11.2 0 0 0 -7.384 2.763 8.75 8.75 0 1 1 0 16.974A11.25 11.25 0 1 0 10.067 0.75Z"/>
+                </svg>
+                Dark
+              </span>
+              <span class="mode-switcher-check" aria-hidden="true">
+                <!-- icon/actions/check.bold Size=xs Style=bold -->
+                <svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"/></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="notif-wrap">
+          <button class="icon-button notification-button has-unread" id="notif-button" type="button" aria-label="Notifications" aria-haspopup="dialog" aria-expanded="false" aria-controls="notif-panel">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 1 1 12 0c0 7 3 7 3 7H3s3 0 3-7"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+          </button>
+          <section class="notif-panel" id="notif-panel" role="dialog" aria-labelledby="notif-title" hidden></section>
+        </div>
+        <button class="icon-button" type="button" aria-label="Settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a8 8 0 0 0-1.7-1L14.5 3h-5L9 6a8 8 0 0 0-1.7 1L5 6 3 9.4 5 11a7 7 0 0 0 0 2l-2 1.6L5 18l2.4-1a8 8 0 0 0 1.7 1l.4 3h5l.4-3a8 8 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6a7 7 0 0 0 .1-1Z"/></svg>
+        </button>
+        <button class="user-avatar user-avatar--photo" type="button" aria-label="Account menu for Lila George">
+          <img class="user-avatar-img" src="assets/lila-george.jpg" width="32" height="32" alt="" />
+        </button>
+      </div>
+    </header>
+
+    <main class="page" id="chat-page" hidden>
+      <section class="page-heading page-rise" style="--rise: 1" aria-labelledby="page-title">
+        <div class="page-heading-copy">
+          <div class="page-heading-lines">
+            <div class="breadcrumb"><span>My Work</span><span aria-hidden="true">/</span><strong>Chats</strong></div>
+            <h1 id="page-title">Chat with Riley Smith</h1>
+          </div>
+          <div class="member-meta-row">
+            <span class="meta-text">DOB: 5/12/1986 (40 y/o)</span>
+            <span class="meta-text">Member ID: RS-1986-0512</span>
+            <div class="heading-badges" aria-label="Member badges">
+              <span class="badge-tip-wrap">
+                <button class="soft-badge soft-neutral is-tippable" type="button" aria-describedby="tip-plan">
+                  <span class="soft-badge-label">CalPERS PPO Basic Plan</span>
+                </button>
+                <div class="badge-tip" id="tip-plan" role="tooltip">
+                  <span class="badge-tip-label">Plan Name:</span> <strong>Aetna Choice</strong><br /><span class="badge-tip-label">Network Name:</span> <strong>Aetna Choice</strong>
+                </div>
+              </span>
+              <span class="badge-tip-wrap">
+                <button class="soft-badge soft-neutral is-tippable" type="button" aria-describedby="tip-primary">
+                  <span class="soft-badge-label">Primary</span>
+                </button>
+                <div class="badge-tip" id="tip-primary" role="tooltip">
+                  <span class="badge-tip-label">Caregiver for:</span> <strong>None</strong><br /><span class="badge-tip-label">Receiving care from:</span> <strong>None</strong>
+                </div>
+              </span>
+              <span class="soft-badge soft-accent"><span class="soft-badge-label">VIP</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="page-heading-actions">
+          <button class="button button-primary end-session" type="button" hidden>
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none">
+              <path d="m0.75 12.004 15.75 0" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+              <path d="m12.75 15.754 3.75 -3.75 -3.75 -3.75" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+              <path d="M3.306 16.6a10.5 10.5 0 1 0 0.179 -9.542" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+            </svg>
+            Resolve Chat
+          </button>
+          <button class="button button-secondary create-task" type="button">Create Task</button>
+        </div>
+      </section>
+
+      <div class="workspace">
+        <section class="card chat-card page-rise" style="--rise: 2" aria-label="Chat with Riley Smith">
+          <header class="chat-header">
+            <div class="member-identity">
+              <span class="avatar avatar--photo avatar--md avatar--presence">
+                <img class="avatar-img" src="assets/riley-smith.jpg" width="32" height="32" alt="" />
+                <span class="presence-dot" aria-hidden="true"></span>
+              </span>
+              <div class="member-identity-text">
+                <strong>Riley Smith</strong>
+                <span class="assigned-line">Assigned to Lila George</span>
+              </div>
+            </div>
+            <div class="reply-timers" data-reply-mode="active" aria-label="Response time">
+              <div class="reply-timer" data-reply-side="member" hidden>
+                <span class="reply-timer-well" aria-hidden="true">
+                  <svg class="reply-timer-clock" viewBox="0 0 24 24" width="20" height="20">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v5l3 2"></path>
+                  </svg>
+                </span>
+                <span class="reply-timer-copy">
+                  <span class="reply-timer-label">Member response time</span>
+                  <span class="reply-timer-value" data-reply-timer="member">00:00</span>
+                </span>
+              </div>
+              <span class="reply-timers-divider" aria-hidden="true"></span>
+              <div class="reply-timer is-active" data-reply-side="you">
+                <span class="reply-timer-well" aria-hidden="true">
+                  <svg class="reply-timer-clock" viewBox="0 0 24 24" width="20" height="20">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v5l3 2"></path>
+                  </svg>
+                </span>
+                <span class="reply-timer-copy">
+                  <span class="reply-timer-label">Your response time</span>
+                  <span class="reply-timer-value" data-reply-timer="you">00:03</span>
+                </span>
+              </div>
+            </div>
+          </header>
+          <div class="conversation" id="conversation">
+            <p class="msg-date">Yesterday · 2:59 PM</p>
+
+            <article class="msg-group msg-group--member">
+              <header class="msg-sender-head">
+                <img class="avatar-img avatar-img--msg" src="assets/riley-smith.jpg" width="20" height="20" alt="" />
+                <strong class="msg-sender-name">Riley Smith</strong>
+              </header>
+              <div class="msg-content">
+                <div class="msg-stack">
+                  <p class="msg-bubble msg-bubble--member">I need to speak with a human.</p>
+                  <p class="msg-bubble msg-bubble--member">How quickly can you connect me?</p>
+                  <p class="msg-bubble msg-bubble--member">I’ll need to drop my friend off at the airport in 15 minutes so please hurry!</p>
+                </div>
+                <footer class="msg-meta"><time datetime="2026-10-14T09:14">9:14 AM</time></footer>
+              </div>
+            </article>
+
+            <article class="msg-group msg-group--agent" id="msg-dot-first">
+              <header class="msg-sender-head">
+                <img class="logo-dot" src="assets/logo-dot.svg?v=cluster" width="20" height="20" alt="" />
+                <span class="msg-sender-name">Dot</span>
+              </header>
+              <div class="msg-content">
+                <p class="msg-plain">I can do that quickly, don’t worry. Would you like me to connect you to a member of the Care Team right&nbsp;now?</p>
+                <footer class="msg-meta">
+                  <time datetime="2026-10-14T09:14">9:14 AM</time>
+                  <span class="msg-meta-status">Read by Member</span>
+                </footer>
+              </div>
+            </article>
+
+            <article class="msg-group msg-group--member">
+              <header class="msg-sender-head">
+                <img class="avatar-img avatar-img--msg" src="assets/riley-smith.jpg" width="20" height="20" alt="" />
+                <strong class="msg-sender-name">Riley Smith</strong>
+              </header>
+              <div class="msg-content">
+                <div class="msg-stack">
+                  <p class="msg-bubble msg-bubble--member">yes</p>
+                </div>
+                <footer class="msg-meta"><time datetime="2026-10-14T09:14">9:14 AM</time></footer>
+              </div>
+            </article>
+
+            <article class="msg-group msg-group--agent">
+              <header class="msg-sender-head">
+                <img class="logo-dot" src="assets/logo-dot.svg?v=cluster" width="20" height="20" alt="" />
+                <span class="msg-sender-name">Dot</span>
+              </header>
+              <div class="msg-content">
+                <p class="msg-plain">Connecting you with Lila George on the Care Team. She typically replies within a few minutes.</p>
+                <footer class="msg-meta">
+                  <time datetime="2026-10-14T09:14">9:14 AM</time>
+                  <span class="msg-meta-status">Read by Member</span>
+                </footer>
+              </div>
+            </article>
+
+            <p class="msg-date">Today · 9:14 AM</p>
+            <p class="msg-system">Lila George joined the conversation</p>
+
+            <article class="msg-group msg-group--team">
+              <header class="msg-sender-head msg-sender-head--team">
+                <div class="msg-team-meta">
+                  <strong class="msg-sender-name">Lila George</strong>
+                  <span class="msg-team-sep" aria-hidden="true">•</span>
+                  <span class="msg-team-role">Care Team member</span>
+                </div>
+                <img class="avatar-img avatar-img--msg" src="assets/lila-george.jpg" width="20" height="20" alt="" />
+              </header>
+              <div class="msg-content msg-content--end">
+                <div class="msg-stack msg-stack--end">
+                  <p class="msg-bubble msg-bubble--team">Hi Riley — this is Lila from the Care Team. I see you’d like to talk with us. How can I help?</p>
+                </div>
+                <footer class="msg-meta msg-meta--end">
+                  <time datetime="2026-10-15T09:14">9:14 AM</time>
+                </footer>
+              </div>
+            </article>
+
+            <article class="msg-group msg-group--member">
+              <header class="msg-sender-head">
+                <img class="avatar-img avatar-img--msg" src="assets/riley-smith.jpg" width="20" height="20" alt="" />
+                <strong class="msg-sender-name">Riley Smith</strong>
+              </header>
+              <div class="msg-content">
+                <div class="msg-stack">
+                  <p class="msg-bubble msg-bubble--member">I have a question about a specialist referral on my CalPERS PPO plan.</p>
+                </div>
+                <footer class="msg-meta"><time datetime="2026-10-15T09:14">9:14 AM</time></footer>
+              </div>
+            </article>
+          </div>
+          <footer class="composer">
+            <div class="composer-row">
+              <div class="composer-field" id="composer-field">
+                <button class="composer-icon-btn composer-icon-btn--attach" id="composer-attach" type="button" aria-label="Attach an image">
+                  <!-- icon/actions/add — xs -->
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+                    <path d="M1 12h22M12 1v22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25"/>
+                  </svg>
+                </button>
+                <label class="composer-input-wrap">
+                  <span class="visually-hidden">Message</span>
+                  <textarea class="composer-input" id="composer-input" rows="1" placeholder="Write a reply to the member..."></textarea>
+                </label>
+                <input class="visually-hidden" id="composer-attach-input" type="file" accept="image/*" tabindex="-1" />
+              </div>
+              <button class="composer-icon-btn composer-icon-btn--rewrite" id="composer-cleanup" type="button" aria-label="Rewrite">
+                <!-- icon/actions/edit.sparkle — sm outline -->
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true" overflow="visible">
+                  <path d="M22.19 1.81a3.639 3.639 0 0 0-5.17.035l-14.5 14.5L.75 23.25l6.905-1.771 14.5-14.5a3.637 3.637 0 0 0 .035-5.169Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  <path d="m16.606 2.26 5.134 5.134" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  <path d="m2.521 16.344 5.139 5.13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  <g transform="translate(2.75 13.75)">
+                    <path d="M22.8125 5.948c-2.8135.944-3.741 1.996-4.427 4.615-.686-2.619-1.613-3.67-4.427-4.615 2.814-.944 3.741-1.996 4.427-4.615.686 2.619 1.613 3.67 4.427 4.615Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                  </g>
+                </svg>
+                <span class="tooltip tooltip--above">Rewrite</span>
+              </button>
+              <button class="button button-primary composer-send" id="composer-send" type="button" disabled>
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path d="M1.4 3.743a1.5 1.5 0 0 1 1.973-2.077l19.014 9.659a.75.75 0 0 1 0 1.337L3.373 22.334A1.5 1.5 0 0 1 1.4 20.257l5.058-8.264Z" fill="currentColor"/>
+                  <path d="M6.453 11.993h16.344" class="composer-send-seam" stroke-linecap="round" stroke-width="1.75"/>
+                </svg>
+                Send
+              </button>
+            </div>
+          </footer>
+        </section>
+
+        <button
+          type="button"
+          class="panel-resizer"
+          id="panel-resizer"
+          aria-label="Resize panels"
+          aria-orientation="vertical"
+          aria-controls="context-panel"
+        ></button>
+
+        <!-- Tablet/phone: tap dimmed chat to dismiss context sheet -->
+        <button type="button" class="workspace-sheet-scrim" id="workspace-sheet-scrim" aria-label="Close panel"></button>
+
+        <aside class="card context-panel page-rise" style="--rise: 3" id="context-panel" aria-label="Conversation context panel">
+          <div class="panel-stage" id="panel-stage"></div>
+        </aside>
+
+        <nav class="card tool-rail page-rise" style="--rise: 4" aria-label="Member tools">
+          <span class="rail-indicator" aria-hidden="true"></span>
+          <button class="rail-button is-active" type="button" data-panel="assist" aria-label="Chat Assist" aria-pressed="true" aria-controls="context-panel"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg><span class="tooltip">Chat Assist</span></button>
+          <button class="rail-button" type="button" data-panel="member" aria-label="Member Information" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="tooltip">Member Information</span></button>
+          <button class="rail-button" type="button" data-panel="insurance" aria-label="Insurance" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M12 8v8M8 12h8"/></svg><span class="tooltip">Insurance</span></button>
+          <button class="rail-button" type="button" data-panel="eligibility" aria-label="Eligibility" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><path d="M9 5H6a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3"/><rect x="9" y="2" width="6" height="5" rx="1"/><path d="m9 15 2 2 4-5"/></svg><span class="tooltip">Eligibility</span></button>
+          <button class="rail-button" type="button" data-panel="notes" aria-label="Notes" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><span class="tooltip">Notes</span></button>
+          <button class="rail-button" type="button" data-panel="communication" aria-label="Communication" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span class="tooltip">Communication</span></button>
+          <button class="rail-button" type="button" data-panel="activity" aria-controls="context-panel" aria-pressed="false" aria-label="Member Activity"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="tooltip">Member Activity</span></button>
+          <button class="rail-button" type="button" data-panel="provider-search" aria-label="Provider Search" aria-pressed="false" aria-controls="context-panel"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="tooltip">Provider Search</span></button>
+        </nav>
+      </div>
+    </main>
+
+    <main class="page work-page" id="work-page">
+      <section class="work-section work-incoming work-rise" style="--rise: 0" aria-labelledby="conversations-title">
+        <div class="work-section-head work-section-head--tasks">
+          <h2 id="conversations-title">Conversations</h2>
+        </div>
+        <div class="work-meta">
+          <span id="chat-results">2 results</span>
+          <button class="work-refresh" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 12a8 8 0 1 1-2.2-5.5"/><path d="M20 4v5h-5"/></svg>
+            Refresh List
+          </button>
+        </div>
+        <div class="work-card">
+          <div class="work-table-wrap">
+            <table class="work-table" data-chat-rows="incoming">
+              <thead>
+                <tr>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="0">Member<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="1">Customer<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="2">Type<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="3">Channel<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th><span class="visually-hidden">Open</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Maya Chen</td>
+                  <td>Google</td>
+                  <td>Direct</td>
+                  <td>Chat</td>
+                  <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
+                </tr>
+                <tr>
+                  <td>Riley Smith</td>
+                  <td>CalPERS</td>
+                  <td>Incoming</td>
+                  <td>Email</td>
+                  <td class="work-actions"><button class="button button-primary button-small" type="button" data-open-chat>View chat</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="work-section" aria-labelledby="tasks-title">
+        <div class="work-section-head work-section-head--tasks work-rise" style="--rise: 1">
+          <h2 id="tasks-title">My tasks</h2>
+          <span class="soft-badge soft-neutral"><span class="soft-badge-label">65</span></span>
+        </div>
+        <div class="work-filters work-rise" data-task-filters style="--rise: 2">
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="member" data-task-filter="member" value="All members" data-default="All members" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Member">
+              <span class="select-trigger-label">All members</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All members" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All members</span></button><button type="button" role="option" class="activity-filter-option" data-value="Alex Rivera" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Alex Rivera</span></button><button type="button" role="option" class="activity-filter-option" data-value="Amara Okonkwo" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Amara Okonkwo</span></button><button type="button" role="option" class="activity-filter-option" data-value="Devon Brooks" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Devon Brooks</span></button><button type="button" role="option" class="activity-filter-option" data-value="Elena Vargas" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Elena Vargas</span></button><button type="button" role="option" class="activity-filter-option" data-value="Jerald Googleo'Connell" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Jerald Googleo'Connell</span></button><button type="button" role="option" class="activity-filter-option" data-value="Jordan Lee" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Jordan Lee</span></button><button type="button" role="option" class="activity-filter-option" data-value="Maya Chen" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Maya Chen</span></button><button type="button" role="option" class="activity-filter-option" data-value="Noah Patel" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Noah Patel</span></button><button type="button" role="option" class="activity-filter-option" data-value="Riley Smith" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Riley Smith</span></button><button type="button" role="option" class="activity-filter-option" data-value="Sofia Alvarez" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Sofia Alvarez</span></button></div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="customer" data-task-filter="customer" value="All customers" data-default="All customers" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Customer">
+              <span class="select-trigger-label">All customers</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All customers" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All customers</span></button><button type="button" role="option" class="activity-filter-option" data-value="CalPERS" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">CalPERS</span></button><button type="button" role="option" class="activity-filter-option" data-value="Google" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Google</span></button></div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="status" data-task-filter="status" value="All statuses" data-default="All statuses" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Status">
+              <span class="select-trigger-label">All statuses</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All statuses" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All statuses</span></button><button type="button" role="option" class="activity-filter-option" data-value="In Progress" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">In Progress</span></button><button type="button" role="option" class="activity-filter-option" data-value="Not started" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Not started</span></button><button type="button" role="option" class="activity-filter-option" data-value="Completed" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Completed</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="priority" data-task-filter="priority" value="All priorities" data-default="All priorities" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Priority">
+              <span class="select-trigger-label">All priorities</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All priorities" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All priorities</span></button><button type="button" role="option" class="activity-filter-option" data-value="Routine" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Routine</span></button><button type="button" role="option" class="activity-filter-option" data-value="Urgent" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Urgent</span></button></div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="type" data-task-filter="type" value="All types" data-default="All types" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Type">
+              <span class="select-trigger-label">All types</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All types" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All types</span></button><button type="button" role="option" class="activity-filter-option" data-value="Live" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Live</span></button><button type="button" role="option" class="activity-filter-option" data-value="Direct" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Direct</span></button><button type="button" role="option" class="activity-filter-option" data-value="Claims / Portal Research" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Claims / Portal Research</span></button><button type="button" role="option" class="activity-filter-option" data-value="Follow up" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Follow up</span></button>
+            </div>
+          </div>
+          <button class="button button-secondary" type="button" id="work-filters-clear">Clear filters</button>
+        </div>
+        <div class="work-meta work-rise" style="--rise: 3">
+          <span id="task-results">65 results</span>
+          <button class="work-refresh" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 12a8 8 0 1 1-2.2-5.5"/><path d="M20 4v5h-5"/></svg>
+            Refresh List
+          </button>
+          <label class="work-past-due-toggle">
+            <input type="checkbox" id="task-past-due" />
+            <i class="activity-filter-check" aria-hidden="true"></i>
+            <span>Past due</span>
+          </label>
+        </div>
+        <div class="work-card work-rise" style="--rise: 4">
+          <div class="work-table-wrap">
+            <table class="work-table">
+              <thead>
+                <tr>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="0">Priority<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="1">Type<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="2" data-sort-type="date">Created On<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="3">Member<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="4">Customer<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="5">Status<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="6" data-sort-type="date">Due Date<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Live</td>
+                  <td>10/21/26</td>
+                  <td>Maya Chen</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Claims / Portal Research</td>
+                  <td>8/20/26</td>
+                  <td>Riley Smith</td>
+                  <td>CalPERS</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>8/20/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Direct</td>
+                  <td>10/07/26</td>
+                  <td>Jordan Lee</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Claims / Portal Research</td>
+                  <td>9/02/26</td>
+                  <td>Noah Patel</td>
+                  <td>CalPERS</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>9/02/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Live</td>
+                  <td>9/18/26</td>
+                  <td>Alex Rivera</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Completed</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Follow up</td>
+                  <td>8/12/26</td>
+                  <td>Amara Okonkwo</td>
+                  <td>CalPERS</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>9/15/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Direct</td>
+                  <td>10/02/26</td>
+                  <td>Jerald Googleo'Connell</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Live</td>
+                  <td>10/07/26</td>
+                  <td>Sofia Alvarez</td>
+                  <td>CalPERS</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Direct</td>
+                  <td>9/03/26</td>
+                  <td>Devon Brooks</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Completed</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Follow up</td>
+                  <td>8/28/26</td>
+                  <td>Elena Vargas</td>
+                  <td>CalPERS</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>8/28/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Live</td>
+                  <td>10/15/26</td>
+                  <td>Alex Rivera</td>
+                  <td>Google</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Direct</td>
+                  <td>9/18/26</td>
+                  <td>Maya Chen</td>
+                  <td>CalPERS</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Completed</span></span></td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="work-empty" data-work-empty="tasks" hidden>
+              <div class="work-empty-copy">
+                <div class="work-empty-media">
+                  <img src="assets/empty-well.svg" alt="" />
+                  <img class="work-empty-icon" src="assets/empty-search.svg" alt="" />
+                </div>
+                <p class="work-empty-title">No tasks found</p>
+                <p class="work-empty-body">Try adjusting your filters or search term</p>
+              </div>
+              <button class="work-empty-action" type="button" data-work-empty-clear="tasks">Clear filters</button>
+            </div>
+          </div>
+        </div>
+        <div class="work-pager work-rise" id="task-pager" style="--rise: 5">
+          <div class="work-pages" aria-label="Pagination">
+            <button class="work-page-nav" type="button" aria-label="Previous page" disabled>
+              <svg class="work-chevron is-left" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="work-page-btn is-current" type="button" aria-current="page">1</button>
+            <button class="work-page-btn" type="button">2</button>
+            <button class="work-page-btn" type="button">3</button>
+            <span aria-hidden="true">…</span>
+            <button class="work-page-btn" type="button">12</button>
+            <button class="work-page-nav" type="button" aria-label="Next page">
+              <svg class="work-chevron is-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="work-page-size">
+            Show items
+            <button class="work-page-size-select" type="button" aria-label="Show items">
+              12
+              <svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+
+    <main class="page work-page" id="dashboard-page" hidden>
+      <section class="work-section" aria-labelledby="dashboard-title">
+        <div class="work-section-head work-rise" style="--rise: 0">
+          <h1 id="dashboard-title">Dashboard</h1>
+          <span class="soft-badge soft-neutral"><span class="soft-badge-label" id="dashboard-count">30</span></span>
+        </div>
+        <div class="work-filters dashboard-filters work-rise" data-dashboard-filters style="--rise: 1">
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="type" data-dashboard-filter="type" value="All types" data-default="All types" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Type">
+              <span class="select-trigger-label">All types</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All types" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All types</span></button><button type="button" role="option" class="activity-filter-option" data-value="Administrative" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Administrative</span></button><button type="button" role="option" class="activity-filter-option" data-value="Clinical review" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Clinical review</span></button><button type="button" role="option" class="activity-filter-option" data-value="Follow up" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Follow up</span></button><button type="button" role="option" class="activity-filter-option" data-value="Provider" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Provider</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="status" data-dashboard-filter="status" value="All statuses" data-default="All statuses" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Status">
+              <span class="select-trigger-label">All statuses</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All statuses" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All statuses</span></button><button type="button" role="option" class="activity-filter-option" data-value="In Progress" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">In Progress</span></button><button type="button" role="option" class="activity-filter-option" data-value="Not started" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Not started</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="assignee" data-dashboard-filter="assignee" value="All assignees" data-default="All assignees" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Assignee">
+              <span class="select-trigger-label">All assignees</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All assignees" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All assignees</span></button><button type="button" role="option" class="activity-filter-option" data-value="—" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">—</span></button><button type="button" role="option" class="activity-filter-option" data-value="Dr. Amy March, MD" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Dr. Amy March, MD</span></button><button type="button" role="option" class="activity-filter-option" data-value="Dr. Julianna Chen, MD" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Dr. Julianna Chen, MD</span></button><button type="button" role="option" class="activity-filter-option" data-value="Dr. Marcus Hale, MD" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Dr. Marcus Hale, MD</span></button><button type="button" role="option" class="activity-filter-option" data-value="Lila George" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Lila George</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="customer" data-dashboard-filter="customer" value="All customers" data-default="All customers" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Customer">
+              <span class="select-trigger-label">All customers</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All customers" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All customers</span></button><button type="button" role="option" class="activity-filter-option" data-value="Included Health" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Included Health</span></button><button type="button" role="option" class="activity-filter-option" data-value="VPC with PCP Choice" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">VPC with PCP Choice</span></button>
+            </div>
+          </div>
+          <div class="select-wrap inline-select">
+            <input type="hidden" data-field="priority" data-dashboard-filter="priority" value="All priorities" data-default="All priorities" />
+            <button type="button" class="inline-field-control select-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Priority">
+              <span class="select-trigger-label">All priorities</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg>
+            </button>
+            <div class="activity-filter-menu activity-filter-menu--multi select-menu" role="listbox" aria-multiselectable="true" hidden>
+              <button type="button" role="option" class="activity-filter-option is-selected" data-value="All priorities" aria-selected="true"><i class="activity-filter-check is-checked" aria-hidden="true"></i><span class="activity-filter-option-label">All priorities</span></button><button type="button" role="option" class="activity-filter-option" data-value="Low" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Low</span></button><button type="button" role="option" class="activity-filter-option" data-value="Routine" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Routine</span></button><button type="button" role="option" class="activity-filter-option" data-value="Urgent" aria-selected="false"><i class="activity-filter-check" aria-hidden="true"></i><span class="activity-filter-option-label">Urgent</span></button>
+            </div>
+          </div>
+          <button class="dashboard-save" type="button">Save default filter</button>
+          <button class="button button-secondary" type="button" data-dashboard-clear>Clear filters</button>
+        </div>
+        <div class="work-meta work-rise" style="--rise: 2">
+          <span id="dashboard-results">30 results</span>
+          <button class="work-refresh" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 12a8 8 0 1 1-2.2-5.5"/><path d="M20 4v5h-5"/></svg>
+            Refresh List
+          </button>
+          <label class="work-past-due-toggle">
+            <input type="checkbox" id="dashboard-past-due" />
+            <i class="activity-filter-check" aria-hidden="true"></i>
+            <span>Past due</span>
+          </label>
+        </div>
+        <div class="work-card work-rise" style="--rise: 3">
+          <div class="work-table-wrap">
+            <table class="work-table dashboard-table">
+              <thead>
+                <tr>
+                  <th aria-sort="none"><button type="button" class="work-sort" data-sort="0">Priority<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="1">Type<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="2">Member<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="3">Customer<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="4">Assignee<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="5">Status<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="6" data-sort-type="date">Created On<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th><th aria-sort="none"><button type="button" class="work-sort" data-sort="7" data-sort-type="date">Due Date<span class="work-sort-icon" aria-hidden="true"><svg class="work-sort-glyph work-sort-glyph--down" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M10.6953 3.3128L5.83781 8.16984C5.80629 8.20141 5.76886 8.22645 5.72765 8.24354C5.68644 8.26063 5.64227 8.26942 5.59766 8.26942C5.55305 8.26942 5.50887 8.26063 5.46767 8.24354C5.42646 8.22645 5.38902 8.20141 5.3575 8.16984L0.5 3.3128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="work-sort-glyph work-sort-glyph--up" width="11.1953" height="10.875" viewBox="0 0 11.1953 10.875" fill="none"><path d="M0.5 7.78877L5.3575 2.93172C5.38902 2.90015 5.42646 2.87511 5.46767 2.85802C5.50887 2.84094 5.55305 2.83214 5.59766 2.83214C5.64227 2.83214 5.68644 2.84094 5.72765 2.85802C5.76886 2.87511 5.80629 2.90015 5.83781 2.93172L10.6953 7.78877" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Provider</td>
+                  <td>Linda Ih4ihbelcher</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>1/08/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>1/13/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Follow up</td>
+                  <td>Larry Johnston</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Lila George</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>2/10/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>2/14/26</span></td>
+                </tr>
+                <tr>
+                  <td>—</td>
+                  <td>Follow up</td>
+                  <td>Larry Johnston</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Julianna Chen, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>4/22/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>4/30/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Administrative</td>
+                  <td>Bob Ih4ihbelcher</td>
+                  <td>Included Health</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>8/12/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>8/12/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Administrative</td>
+                  <td>Bob Ih4ihbelcher</td>
+                  <td>Included Health</td>
+                  <td>Dr. Marcus Hale, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>8/13/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>8/13/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Clinical review</td>
+                  <td>Maya Chen</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>10/02/26</td>
+                  <td>11/20/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Follow up</td>
+                  <td>Riley Smith</td>
+                  <td>Included Health</td>
+                  <td>Lila George</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>10/18/26</td>
+                  <td>11/28/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Provider</td>
+                  <td>Jordan Lee</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>9/30/26</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Clinical review</td>
+                  <td>Noah Patel</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>6/14/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>7/02/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Follow up</td>
+                  <td>Amara Okonkwo</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Julianna Chen, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>9/04/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>9/18/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Provider</td>
+                  <td>Elena Vargas</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>9/20/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>10/01/26</span></td>
+                </tr>
+                <tr>
+                  <td>—</td>
+                  <td>Administrative</td>
+                  <td>Alex Rivera</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Marcus Hale, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>10/08/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>10/22/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Follow up</td>
+                  <td>Priya Shah</td>
+                  <td>Included Health</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>10/15/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>11/01/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Clinical review</td>
+                  <td>Sam Okada</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>10/28/26</td>
+                  <td>11/18/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Provider</td>
+                  <td>Chris Nguyen</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Lila George</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>11/02/26</td>
+                  <td>11/24/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Follow up</td>
+                  <td>Dana Brooks</td>
+                  <td>Included Health</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>11/05/26</td>
+                  <td>12/02/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Administrative</td>
+                  <td>Owen Clark</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>8/03/26</td>
+                  <td>12/09/26</td>
+                </tr>
+                <tr>
+                  <td>—</td>
+                  <td>Clinical review</td>
+                  <td>Maya Chen</td>
+                  <td>Included Health</td>
+                  <td>Dr. Julianna Chen, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>7/19/26</td>
+                  <td>12/16/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Provider</td>
+                  <td>Riley Smith</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>5/11/26</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Follow up</td>
+                  <td>Jordan Lee</td>
+                  <td>Included Health</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>3/22/26</td>
+                  <td>11/12/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Administrative</td>
+                  <td>Linda Ih4ihbelcher</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Marcus Hale, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>4/09/26</td>
+                  <td>11/30/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Clinical review</td>
+                  <td>Bob Ih4ihbelcher</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>1/27/26</td>
+                  <td>12/04/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Follow up</td>
+                  <td>Larry Johnston</td>
+                  <td>Included Health</td>
+                  <td>Lila George</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>2/16/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>8/04/26</span></td>
+                </tr>
+                <tr>
+                  <td>—</td>
+                  <td>Provider</td>
+                  <td>Noah Patel</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>6/30/26</td>
+                  <td>12/22/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Administrative</td>
+                  <td>Amara Okonkwo</td>
+                  <td>Included Health</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>8/21/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>9/09/26</span></td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-warning"><span class="soft-badge-label">Urgent</span></span></td>
+                  <td>Clinical review</td>
+                  <td>Elena Vargas</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Julianna Chen, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>9/12/26</td>
+                  <td>1/08/27</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Follow up</td>
+                  <td>Alex Rivera</td>
+                  <td>Included Health</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>10/06/26</td>
+                  <td>12/18/26</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Routine</span></span></td>
+                  <td>Provider</td>
+                  <td>Priya Shah</td>
+                  <td>VPC with PCP Choice</td>
+                  <td>Dr. Amy March, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>11/01/26</td>
+                  <td>1/15/27</td>
+                </tr>
+                <tr>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Low</span></span></td>
+                  <td>Administrative</td>
+                  <td>Sam Okada</td>
+                  <td>Included Health</td>
+                  <td>Dr. Marcus Hale, MD</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">In Progress</span></span></td>
+                  <td>7/07/26</td>
+                  <td><span class="work-due"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>11/06/26</span></td>
+                </tr>
+                <tr>
+                  <td>—</td>
+                  <td>Follow up</td>
+                  <td>Chris Nguyen</td>
+                  <td>Included Health</td>
+                  <td>—</td>
+                  <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Not started</span></span></td>
+                  <td>8/28/26</td>
+                  <td>12/11/26</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="work-empty" data-work-empty="dashboard" hidden>
+              <div class="work-empty-copy">
+                <div class="work-empty-media">
+                  <img src="assets/empty-well.svg" alt="" />
+                  <img class="work-empty-icon" src="assets/empty-search.svg" alt="" />
+                </div>
+                <p class="work-empty-title">No tasks found</p>
+                <p class="work-empty-body">Try adjusting your filters or search term</p>
+              </div>
+              <button class="work-empty-action" type="button" data-work-empty-clear="dashboard">Clear filters</button>
+            </div>
+          </div>
+        </div>
+        <div class="work-pager work-pager--live work-rise" id="dashboard-pager" style="--rise: 4">
+          <div class="work-pages" id="dashboard-pages" aria-label="Pagination"></div>
+          <div class="work-page-size">
+            Show items
+            <button class="work-page-size-select" type="button" aria-label="Show items">
+              12
+              <svg class="work-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="nav-drawer-layer" id="nav-drawer-layer" aria-hidden="true">
+      <button class="nav-drawer-scrim" type="button" aria-label="Close menu"></button>
+      <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+        <header class="nav-drawer-header">
+          <strong>Care App</strong>
+          <button class="icon-button" type="button" id="nav-drawer-close" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+        </header>
+        <div class="nav-drawer-links">
+          <a href="#dashboard" data-nav="dashboard">Dashboard</a>
+          <a class="is-active" href="#my-work" data-nav="work" aria-current="page">My Work</a>
+          <a href="#">Schedule</a>
+          <a href="#">Search</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="modal-layer" id="modal-layer" aria-hidden="true" data-dismissible="true">
+      <div class="modal-scrim"></div>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <header class="modal-header">
+          <h4 id="modal-title">Dialog</h4>
+          <button class="icon-button" type="button" data-close-modal aria-label="Close dialog">
+            <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+        </header>
+        <div class="modal-body" id="modal-body"></div>
+        <footer class="modal-footer" id="modal-footer"></footer>
+      </section>
+    </div>
+    <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <script src="chat-engine.js?v=mode-trigger-1"></script>
+    <script src="app.js?v=no-chat-filters-1"></script>
+  </body>
+</html>

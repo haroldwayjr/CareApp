@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="Earth-Locate--Streamline-Streamline-3.0">
+  <desc>
+    Earth Locate Streamline Icon: https://streamlinehq.com
+  </desc>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M14.29 22.963a11.2 11.2 0 1 1 8.661 -13.31" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="m5.031 20.773 0.996 -5.027h1.075a1.473 1.473 0 0 0 1.175 -0.578 1.434 1.434 0 0 0 0.268 -1.274L7.8 10.907a1.483 1.483 0 0 0 -1.444 -1.135H1.05" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M20.96 5.292h-4.062a1.483 1.483 0 0 0 -1.443 1.135l-0.648 2.599" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M18.72 11.266a4.472 4.472 0 0 1 4.48 4.48c0 1.911 -2.678 5.555 -3.893 7.108a0.747 0.747 0 0 1 -1.174 0c-1.215 -1.553 -3.893 -5.197 -3.893 -7.108a4.472 4.472 0 0 1 4.48 -4.48v0Z" stroke-width="1.5"></path>
+  <g>
+    <path stroke="#0F1828" d="M18.725 16.124a0.373 0.373 0 1 1 0 -0.747" stroke-width="1.5"></path>
+    <path stroke="#0F1828" d="M18.725 16.124a0.373 0.373 0 0 0 0 -0.747" stroke-width="1.5"></path>
+  </g>
+</svg>

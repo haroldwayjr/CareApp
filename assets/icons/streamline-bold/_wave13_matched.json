@@ -1,0 +1,149 @@
+[
+  {
+    "name": "schedule",
+    "hash": "ico_8HkC3cg2qUh62QZs",
+    "streamlineName": "Scheduled Phone Call Calendar 2",
+    "path": "misc/schedule.svg",
+    "score": 340.45
+  },
+  {
+    "name": "rain",
+    "hash": "ico_mRu4pQJ4vKdX2aEg0Ydzpfsi",
+    "streamlineName": "Rain Umbrella",
+    "path": "misc/rain.svg",
+    "score": 252.35
+  },
+  {
+    "name": "umbrella",
+    "hash": "ico_4kmxNK6EvHtp225k",
+    "streamlineName": "Umbrella Circle",
+    "path": "misc/umbrella.svg",
+    "score": 252.25
+  },
+  {
+    "name": "bus",
+    "hash": "ico_mRu4pQJ4vrI02aEPvJn8OsVZ",
+    "streamlineName": "Bus",
+    "path": "misc/bus.svg",
+    "score": 239.85
+  },
+  {
+    "name": "gas",
+    "hash": "ico_RlrF36Y9Au9GE89l",
+    "streamlineName": "Gas Station",
+    "path": "misc/gas.svg",
+    "score": 252.45
+  },
+  {
+    "name": "school",
+    "hash": "ico_mRu4pQJ4v6bx2aESFbBPupnJ",
+    "streamlineName": "School Bell",
+    "path": "misc/school.svg",
+    "score": 252.45
+  },
+  {
+    "name": "id-card",
+    "hash": "ico_mRu4pQJ4vVCW2aE7QUhtd0FZ",
+    "streamlineName": "Single Man Id Card",
+    "path": "misc/id-card.svg",
+    "score": 328.1
+  },
+  {
+    "name": "medal",
+    "hash": "ico_mRu4pQJ4vqC82aEwvS7QU5ES",
+    "streamlineName": "Award Medal",
+    "path": "misc/medal.svg",
+    "score": 252.45
+  },
+  {
+    "name": "balloon",
+    "hash": "ico_3Iw05vssq21PHiqx",
+    "streamlineName": "Balloon Party",
+    "path": "misc/balloon.svg",
+    "score": 252.35
+  },
+  {
+    "name": "ecology",
+    "hash": "ico_DanYwcW5lC6ZiCJU",
+    "streamlineName": "Ecology Leaf",
+    "path": "misc/ecology.svg",
+    "score": 252.4
+  },
+  {
+    "name": "rocket",
+    "hash": "ico_sSaBPXPMDGaO8LEm",
+    "streamlineName": "Rocket Attack",
+    "path": "misc/rocket.svg",
+    "score": 252.35
+  },
+  {
+    "name": "snow",
+    "hash": "ico_mRu4pQJ4vUYi2aEg0Yaf7DlA",
+    "streamlineName": "Weather Snow",
+    "path": "misc/snow.svg",
+    "score": 252.4
+  },
+  {
+    "name": "coffee",
+    "hash": "ico_mRu4pQJ4vddl2aEBPun8OZjK",
+    "streamlineName": "Coffee Jar",
+    "path": "misc/coffee.svg",
+    "score": 252.5
+  },
+  {
+    "name": "train",
+    "hash": "ico_wRrOCEYyHseUQL4B",
+    "streamlineName": "Train Location",
+    "path": "misc/train.svg",
+    "score": 252.3
+  },
+  {
+    "name": "building",
+    "hash": "ico_mRu4pQJ4vth92aEOrjM5pCo8",
+    "streamlineName": "Building",
+    "path": "misc/building.svg",
+    "score": 239.6
+  },
+  {
+    "name": "book",
+    "hash": "ico_mRu4pQJ4vqZY2aEP2WZOsuHa",
+    "streamlineName": "Book Pin",
+    "path": "misc/book.svg",
+    "score": 302.6
+  },
+  {
+    "name": "passport",
+    "hash": "ico_mRu4pQJ4vBTq2aEwvS7yVmtl",
+    "streamlineName": "Passport",
+    "path": "misc/passport.svg",
+    "score": 239.6
+  },
+  {
+    "name": "award",
+    "hash": "ico_mRu4pQJ4vekL2aEwvSinpitv",
+    "streamlineName": "Award Star",
+    "path": "misc/award.svg",
+    "score": 252.5
+  },
+  {
+    "name": "fire",
+    "hash": "ico_mRu4pQJ4vGxc2aE7yVNc3BHz",
+    "streamlineName": "House Fire",
+    "path": "misc/fire.svg",
+    "score": 252.5
+  },
+  {
+    "name": "water",
+    "hash": "ico_mRu4pQJ4vE2G2aEBPueixkVB",
+    "streamlineName": "Water Straw",
+    "path": "misc/water.svg",
+    "score": 252.45
+  },
+  {
+    "name": "planet",
+    "hash": "ico_mRu4pQJ4vlIx2aESFbfvjb8N",
+    "streamlineName": "Astronomy Planet",
+    "path": "misc/planet.svg",
+    "score": 252.2
+  }
+]

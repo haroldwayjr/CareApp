@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="Ticket--Streamline-Streamline-3.0">
+  <desc>
+    Ticket Streamline Icon: https://streamlinehq.com
+  </desc>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M19.5 12a3.75 3.75 0 0 1 3.124 -3.7 0.749 0.749 0 0 0 0.626 -0.739V5.25a1.5 1.5 0 0 0 -1.5 -1.5H2.25a1.5 1.5 0 0 0 -1.5 1.5v2.313a0.749 0.749 0 0 0 0.626 0.739 3.751 3.751 0 0 1 0 7.4 0.75 0.75 0 0 0 -0.626 0.739v2.309a1.5 1.5 0 0 0 1.5 1.5h19.5a1.5 1.5 0 0 0 1.5 -1.5v-2.313a0.75 0.75 0 0 0 -0.626 -0.739A3.75 3.75 0 0 1 19.5 12v0Z" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M12 9h5.25" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M15.375 16.5a1.875 1.875 0 1 0 0 -3.75 1.875 1.875 0 0 0 0 3.75Z" stroke-width="1.5"></path>
+  <path stroke="#0F1828" d="M7.875 8.25a0.375 0.375 0 1 1 0 -0.75" stroke-width="1.5"></path>
+  <path stroke="#0F1828" d="M7.875 8.25a0.375 0.375 0 1 0 0 -0.75" stroke-width="1.5"></path>
+  <path stroke="#0F1828" d="M7.875 12.75a0.375 0.375 0 0 1 0 -0.75" stroke-width="1.5"></path>
+  <path stroke="#0F1828" d="M7.875 12.75a0.375 0.375 0 0 0 0 -0.75" stroke-width="1.5"></path>
+  <g>
+    <path stroke="#0F1828" d="M7.875 17.25a0.375 0.375 0 0 1 0 -0.75" stroke-width="1.5"></path>
+    <path stroke="#0F1828" d="M7.875 17.25a0.375 0.375 0 0 0 0 -0.75" stroke-width="1.5"></path>
+  </g>
+</svg>

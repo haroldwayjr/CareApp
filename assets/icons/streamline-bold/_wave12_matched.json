@@ -1,0 +1,51 @@
+[
+  {
+    "name": "stopwatch",
+    "hash": "ico_mRu4pQJ4vEbO2aEbmog0Yn8O",
+    "streamlineName": "Stopwatch",
+    "path": "misc/stopwatch.svg",
+    "score": 289.55
+  },
+  {
+    "name": "language",
+    "hash": "ico_hIObmInL7ULdJC0e",
+    "streamlineName": "Language Barrier Confused",
+    "path": "misc/language.svg",
+    "score": 314.75
+  },
+  {
+    "name": "laptop",
+    "hash": "ico_mRu4pQJ4vEmY2aE2aEiJ4sp6",
+    "streamlineName": "Laptop",
+    "path": "misc/laptop.svg",
+    "score": 289.7
+  },
+  {
+    "name": "printer-alt",
+    "hash": "ico_mRu4pQJ4vTQx2aEbmoDeGOOo",
+    "streamlineName": "Printer View",
+    "path": "misc/printer-alt.svg",
+    "score": 302.4
+  },
+  {
+    "name": "terminal",
+    "hash": "ico_QK3Rp6MryQn8UcSB",
+    "streamlineName": "Terminal",
+    "path": "misc/terminal.svg",
+    "score": 239.6
+  },
+  {
+    "name": "camera-off",
+    "hash": "ico_mRu4pQJ4vXbk2aE6nleixSz2",
+    "streamlineName": "Controls Camera Off",
+    "path": "misc/camera-off.svg",
+    "score": 265.05
+  },
+  {
+    "name": "alarm",
+    "hash": "ico_mRu4pQJ4vaNn2aEbmo7yVRqO",
+    "streamlineName": "Alarm Clock 1",
+    "path": "misc/alarm.svg",
+    "score": 180.35
+  }
+]

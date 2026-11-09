@@ -1,0 +1,17 @@
+const page = figma.root.children.find(p => /Icons/i.test(p.name));
+await figma.setCurrentPageAsync(page);
+const batches = {"apply_11": ["icon/status/lock", "icon/status/star", "icon/status/shield.check", "icon/status/loading", "icon/media/skip.forward", "icon/media/image", "icon/media/mic.off", "icon/files/attachment", "icon/files/file.zip", "icon/files/notes", "icon/files/cloud", "icon/files/server", "icon/files/agreement", "icon/files/manual", "icon/files/wiki", "icon/files/magazine", "icon/files/portfolio", "icon/files/letter", "icon/files/parcel", "icon/files/shelf", "icon/files/folder.star", "icon/commerce/gift", "icon/commerce/barcode", "icon/health/mri", "icon/health/prosthetic"], "apply_12": ["icon/health/counseling", "icon/health/cancer", "icon/health/neurology", "icon/misc/language", "icon/misc/laptop", "icon/misc/printer.alt", "icon/misc/terminal", "icon/actions/draft", "icon/status/info", "icon/status/help", "icon/status/unlock", "icon/status/star.filled", "icon/status/notification", "icon/media/play", "icon/media/skip.back", "icon/media/video", "icon/media/headphones", "icon/files/clipboard", "icon/files/file.pdf", "icon/files/folder.add", "icon/files/cloud.upload", "icon/files/hard.drive", "icon/files/policy", "icon/files/guide", "icon/files/newspaper"], "apply_13": ["icon/files/resume", "icon/files/envelope", "icon/misc/camera.off", "icon/misc/alarm", "icon/misc/schedule", "icon/misc/rain", "icon/misc/umbrella", "icon/misc/bus", "icon/misc/gas", "icon/misc/school", "icon/misc/id.card", "icon/misc/medal", "icon/misc/balloon", "icon/misc/ecology", "icon/misc/rocket", "icon/misc/snow", "icon/misc/coffee", "icon/misc/train", "icon/misc/building", "icon/misc/book", "icon/misc/passport", "icon/misc/award", "icon/misc/fire", "icon/misc/water", "icon/misc/planet"], "apply_14": ["icon/misc/tool", "icon/misc/qr.scan", "icon/misc/flash.off", "icon/misc/history", "icon/misc/weather", "icon/misc/wind", "icon/misc/food", "icon/misc/bike", "icon/misc/office", "icon/misc/graduation", "icon/misc/ticket", "icon/misc/droplet", "icon/misc/satellite", "icon/files/box.alt", "icon/commerce/cart", "icon/commerce/receipt", "icon/commerce/qr.code", "icon/commerce/store", "icon/health/pregnancy", "icon/misc/battery.charging", "icon/misc/light.mode", "icon/misc/keyboard", "icon/misc/tablet", "icon/misc/scanner", "icon/misc/bug"], "apply_15": ["icon/misc/key", "icon/misc/barcode.scan", "icon/misc/timer", "icon/misc/cloud.sun", "icon/misc/temperature", "icon/misc/car", "icon/misc/parking", "icon/misc/factory", "icon/misc/briefcase", "icon/misc/trophy", "icon/misc/cake", "icon/misc/recycle", "icon/misc/atom", "icon/misc/robot", "icon/status/shield.off", "icon/status/critical", "icon/health/emergency", "icon/misc/leaf", "icon/health/911", "icon/actions/check.circle"]};
+const summary = {};
+for (const [batch, names] of Object.entries(batches)) {
+  let ok=0, missing=0, empty=0;
+  const miss=[], emptyNames=[];
+  for (const name of names) {
+    const set = page.findOne(n => n.type === 'COMPONENT_SET' && n.name === name);
+    if (!set) { missing++; if (miss.length<8) miss.push(name); continue; }
+    const xs = set.children.find(c => c.name === 'Size=xs');
+    if (!xs || xs.children.length === 0) { empty++; if (emptyNames.length<8) emptyNames.push(name); continue; }
+    ok++;
+  }
+  summary[batch] = {ok, missing, empty, miss, emptyNames, total: names.length};
+}
+return summary;

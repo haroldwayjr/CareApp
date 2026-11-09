@@ -1,0 +1,152 @@
+[
+  {
+    "name": "mail",
+    "category": "comms",
+    "query": "Email Action Home"
+  },
+  {
+    "name": "message",
+    "category": "comms",
+    "query": "Chat Consultation Phone"
+  },
+  {
+    "name": "phone",
+    "category": "comms",
+    "query": "Phone"
+  },
+  {
+    "name": "phone-off",
+    "category": "comms",
+    "query": "Phone Off"
+  },
+  {
+    "name": "calendar",
+    "category": "comms",
+    "query": "Calendar"
+  },
+  {
+    "name": "clock",
+    "category": "comms",
+    "query": "Time Play Time 1"
+  },
+  {
+    "name": "user",
+    "category": "comms",
+    "query": "User Story"
+  },
+  {
+    "name": "users",
+    "category": "comms",
+    "query": "Multiple Users 1"
+  },
+  {
+    "name": "user-add",
+    "category": "comms",
+    "query": "Phone Action Add User"
+  },
+  {
+    "name": "user-remove",
+    "category": "comms",
+    "query": "Phone Action Remove User"
+  },
+  {
+    "name": "user-check",
+    "category": "comms",
+    "query": "Messages People User Check"
+  },
+  {
+    "name": "inbox",
+    "category": "comms",
+    "query": "Inbox Tray Notification Badge"
+  },
+  {
+    "name": "reply-all",
+    "category": "comms",
+    "query": "Email Action Reply All"
+  },
+  {
+    "name": "chat",
+    "category": "comms",
+    "query": "Messages Bubble"
+  },
+  {
+    "name": "comment",
+    "category": "comms",
+    "query": "Comment Box"
+  },
+  {
+    "name": "video-call",
+    "category": "comms",
+    "query": "Video Call"
+  },
+  {
+    "name": "contacts",
+    "category": "comms",
+    "query": "Book Address"
+  },
+  {
+    "name": "group",
+    "category": "comms",
+    "query": "Group"
+  },
+  {
+    "name": "team",
+    "category": "comms",
+    "query": "Team Idea"
+  },
+  {
+    "name": "presentation",
+    "category": "comms",
+    "query": "Presentation"
+  },
+  {
+    "name": "meeting",
+    "category": "comms",
+    "query": "Meeting Remote"
+  },
+  {
+    "name": "file",
+    "category": "files",
+    "query": "Common File Book"
+  },
+  {
+    "name": "file-text",
+    "category": "files",
+    "query": "Common File Text"
+  },
+  {
+    "name": "bank",
+    "category": "commerce",
+    "query": "Blood Bank"
+  },
+  {
+    "name": "piggy-bank",
+    "category": "commerce",
+    "query": "Saving Piggy Bank"
+  },
+  {
+    "name": "coins",
+    "category": "commerce",
+    "query": "Accounting Coins"
+  },
+  {
+    "name": "chart-line",
+    "category": "commerce",
+    "query": "Analytics Graph"
+  },
+  {
+    "name": "chart-bar",
+    "category": "commerce",
+    "query": "Analytics Bars"
+  },
+  {
+    "name": "heart",
+    "category": "health",
+    "query": "Heart Approve 1"
+  },
+  {
+    "name": "stethoscope",
+    "category": "health",
+    "query": "Stethoscope Website"
+  }
+]

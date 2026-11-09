@@ -1,0 +1,1483 @@
+[
+  {
+    "name": "loading",
+    "category": "status",
+    "file": "status/loading.svg",
+    "query": "Loading",
+    "figma": "icon/status/loading",
+    "regularHash": "ico_fkAUCiIaSHM0MetN",
+    "regularName": "Loading",
+    "boldHash": "ico_hxT14Y3nxxQ1ptmU",
+    "boldName": "Loading",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "locate",
+    "category": "actions",
+    "file": "actions/locate.svg",
+    "query": "Earth Locate",
+    "figma": "icon/actions/locate",
+    "regularHash": "ico_9TFVEHD7hbCoD0Px",
+    "regularName": "Earth Locate",
+    "boldHash": "ico_OEYDKarXZLTeF1hW",
+    "boldName": "Earth Locate",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "lock",
+    "category": "status",
+    "file": "status/lock.svg",
+    "query": "Lock",
+    "figma": "icon/status/lock",
+    "regularHash": "ico_MRqCuIXDzm3fjmX7",
+    "regularName": "Lock",
+    "boldHash": "ico_m76tNIkNoTYCkz2X",
+    "boldName": "Lock",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "login",
+    "category": "actions",
+    "file": "actions/login.svg",
+    "query": "Login",
+    "figma": "icon/actions/login",
+    "regularHash": "ico_c84a1HVuLediilWL",
+    "regularName": "Login",
+    "boldHash": "ico_f2QcuiauCedijhRf",
+    "boldName": "Login",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "logout",
+    "category": "actions",
+    "file": "actions/logout.svg",
+    "query": "Logout",
+    "figma": "icon/actions/logout",
+    "regularHash": "ico_4dnXeYwwDlvobGO2",
+    "regularName": "Logout",
+    "boldHash": "ico_JMDHpJJiL5ExGWFf",
+    "boldName": "Logout",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "lungs",
+    "category": "health",
+    "file": "health/lungs.svg",
+    "query": "Medical Nanobot Lungs",
+    "figma": "icon/health/lungs",
+    "regularHash": "ico_yetdYR5Ykkml2BPo",
+    "regularName": "Medical Nanobot Lungs",
+    "boldHash": "ico_CGPVbFddqSPhZcvq",
+    "boldName": "Medical Nanobot Lungs",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "magazine",
+    "category": "files",
+    "file": "files/magazine.svg",
+    "query": "Newspaper",
+    "figma": "icon/files/magazine",
+    "regularHash": "ico_ook3kfRB6T1aryIk",
+    "regularName": "Newspaper",
+    "boldHash": "ico_0p0mDpGMJWchsKnH",
+    "boldName": "Newspaper",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "mail",
+    "category": "comms",
+    "file": "comms/mail.svg",
+    "query": "Email Action Home",
+    "figma": "icon/comms/mail",
+    "regularHash": "ico_4A8aLxNuBrTnOA3Z",
+    "regularName": "Email Action Home",
+    "boldHash": "ico_MRj74A2PrEARXW04",
+    "boldName": "Email Action Home",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "manual",
+    "category": "files",
+    "file": "files/manual.svg",
+    "query": "Manual Book Content Sign",
+    "figma": "icon/files/manual",
+    "regularHash": null,
+    "regularName": [
+      "Content Pen",
+      "Content Pen 1",
+      "Content Pen 2"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Content Pen",
+      "Content Pen 1",
+      "Content Pen 2"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "map",
+    "category": "navigation",
+    "file": "navigation/map.svg",
+    "query": "Maps",
+    "figma": "icon/navigation/map",
+    "regularHash": "ico_9mBAzmAmdwwH8LJ1",
+    "regularName": "Maps",
+    "boldHash": "ico_yQKX7SR3T2gqczhb",
+    "boldName": "Maps",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "map-pin",
+    "category": "misc",
+    "file": "misc/map-pin.svg",
+    "query": "Pin Location",
+    "figma": "icon/misc/map.pin",
+    "regularHash": "ico_Xmxed3ixzHrb2HAi",
+    "regularName": "Pin Location",
+    "boldHash": "ico_fChXSHiRrGl5xEXW",
+    "boldName": "Pin Location",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "mask",
+    "category": "health",
+    "file": "health/mask.svg",
+    "query": "Mask Circle",
+    "figma": "icon/health/mask",
+    "regularHash": "ico_8IdEW4xTCshL5XkH",
+    "regularName": "Mask Circle",
+    "boldHash": "ico_bJU7VG5XeZnOoMAH",
+    "boldName": "Mask Circle",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "medal",
+    "category": "misc",
+    "file": "misc/medal.svg",
+    "query": "Award Medal",
+    "figma": "icon/misc/medal",
+    "regularHash": "ico_bA7DnNuqHK4QxLaQ",
+    "regularName": "Award Medal",
+    "boldHash": "ico_fr18vSTQLwnDXeFq",
+    "boldName": "Award Medal",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "medical-cross",
+    "category": "health",
+    "file": "health/medical-cross.svg",
+    "query": "Hospital Sign",
+    "figma": "icon/health/medical.cross",
+    "regularHash": "ico_MBbKAXcVkNazlj60",
+    "regularName": "Hospital Sign",
+    "boldHash": "ico_OVIVdTJJ6Vpx3plU",
+    "boldName": "Hospital Sign",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "meditation",
+    "category": "health",
+    "file": "health/meditation.svg",
+    "query": "Yoga Meditation Pose2",
+    "figma": "icon/health/meditation",
+    "regularHash": null,
+    "regularName": [
+      "Yoga Arm Stretch",
+      "Yoga Arms Stretch",
+      "Yoga Back Stretch"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Yoga Arm Stretch",
+      "Yoga Arms Stretch",
+      "Yoga Back Stretch"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "meeting",
+    "category": "comms",
+    "file": "comms/meeting.svg",
+    "query": "Meeting Remote",
+    "figma": "icon/comms/meeting",
+    "regularHash": "ico_thskdghmt6aGHKQF",
+    "regularName": "Meeting Remote",
+    "boldHash": "ico_CG7tiEqFyr5LtMWc",
+    "boldName": "Meeting Remote",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "mental-health",
+    "category": "health",
+    "file": "health/mental-health.svg",
+    "query": "Mental Health 2",
+    "figma": "icon/health/mental.health",
+    "regularHash": null,
+    "regularName": [
+      "Diet Health",
+      "Graph Stats",
+      "Pstyle Two In Cart"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Diet Health",
+      "Graph Stats",
+      "Graph Stats Square Alternate"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "mental-wellness",
+    "category": "health",
+    "file": "health/mental-wellness.svg",
+    "query": "Mindfulness 2",
+    "figma": "icon/health/mental.wellness",
+    "regularHash": null,
+    "regularName": [
+      "Pstyle Two In Cart",
+      "Style Two Pin Add",
+      "Style Two Pin Bolt"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Pstyle Two In Cart",
+      "Style Two Pin Add",
+      "Style Two Pin Bolt"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "menu",
+    "category": "navigation",
+    "file": "navigation/menu.svg",
+    "query": "Navigation Menu",
+    "figma": "icon/navigation/menu",
+    "regularHash": "ico_w90oAjlQbRAsTeMn",
+    "regularName": "Navigation Menu",
+    "boldHash": "ico_2xpxcVJu1qf5T4hq",
+    "boldName": "Navigation Menu",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "merge",
+    "category": "navigation",
+    "file": "navigation/merge.svg",
+    "query": "Merge",
+    "figma": "icon/navigation/merge",
+    "regularHash": null,
+    "regularName": [
+      "Phone Actions Merge",
+      "Diagram Merge Down",
+      "Pathfinder Merge"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Diagram Merge Down",
+      "Pathfinder Merge",
+      "Phone Actions Merge"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "message",
+    "category": "comms",
+    "file": "comms/message.svg",
+    "query": "Messages Bubble Square",
+    "figma": "icon/comms/message",
+    "regularHash": "ico_AiaqZh6xKOZdZEmd",
+    "regularName": "Messages Bubble Square",
+    "boldHash": "ico_Ac8NJh179ySRApWI",
+    "boldName": "Messages Bubble Square",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "mic",
+    "category": "media",
+    "file": "media/mic.svg",
+    "query": "Microphone",
+    "figma": "icon/media/mic",
+    "regularHash": "ico_2PycEUNDjqIQNvFI",
+    "regularName": "Microphone",
+    "boldHash": "ico_K5WCXE26S8W8BrXY",
+    "boldName": "Microphone",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "mic-off",
+    "category": "media",
+    "file": "media/mic-off.svg",
+    "query": "Microphone Off",
+    "figma": "icon/media/mic.off",
+    "regularHash": "ico_MayGbgelHR8n5obY",
+    "regularName": "Microphone Off",
+    "boldHash": "ico_UzubXcRoX5E2tEXu",
+    "boldName": "Microphone Off",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "microscope",
+    "category": "health",
+    "file": "health/microscope.svg",
+    "query": "Microscope 1",
+    "figma": "icon/health/microscope",
+    "regularHash": null,
+    "regularName": [
+      "Style One Pin",
+      "Style One Pin Bolt",
+      "Style One Pin Book"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Style One Pin",
+      "Style One Pin Bolt",
+      "Style One Pin Book"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "moon",
+    "category": "misc",
+    "file": "misc/moon.svg",
+    "query": "Astrology Moon",
+    "figma": "icon/misc/moon",
+    "regularHash": null,
+    "regularName": [
+      "Astrology Aquarius",
+      "Astrology Aries",
+      "Astrology Aries 1"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Astrology Aquarius",
+      "Astrology Aries",
+      "Astrology Aries 1"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "more-horizontal",
+    "category": "navigation",
+    "file": "navigation/more-horizontal.svg",
+    "query": "Navigation Menu Horizontal",
+    "figma": "icon/navigation/more.horizontal",
+    "regularHash": "ico_Gogzr7BJQF90mdV9",
+    "regularName": "Navigation Menu Horizontal",
+    "boldHash": "ico_qp2GZpYF7CeTYkAb",
+    "boldName": "Navigation Menu Horizontal",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "more-vertical",
+    "category": "navigation",
+    "file": "navigation/more-vertical.svg",
+    "query": "Navigation Menu Vertical",
+    "figma": "icon/navigation/more.vertical",
+    "regularHash": "ico_RAalLdkrgI35oi2r",
+    "regularName": "Navigation Menu Vertical",
+    "boldHash": "ico_JAneMyIMUYZNSJjQ",
+    "boldName": "Navigation Menu Vertical",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "mouse",
+    "category": "misc",
+    "file": "misc/mouse.svg",
+    "query": "Mouse",
+    "figma": "icon/misc/mouse",
+    "regularHash": "ico_AScHO6jzs5kKzLyy",
+    "regularName": "Mouse",
+    "boldHash": "ico_eaSXOfJj0S8ukxVv",
+    "boldName": "Mouse",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "move",
+    "category": "actions",
+    "file": "actions/move.svg",
+    "query": "Move Down",
+    "figma": "icon/actions/move",
+    "regularHash": "ico_k2lKkVpcReVsKk18",
+    "regularName": "Move Down",
+    "boldHash": "ico_kzaDIlPo1ggC88qF",
+    "boldName": "Move Down",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "mri",
+    "category": "health",
+    "file": "health/mri.svg",
+    "query": "Radiology Scan Mri",
+    "figma": "icon/health/mri",
+    "regularHash": "ico_UNaxqmdeCoKI4KAy",
+    "regularName": "Radiology Scan Mri",
+    "boldHash": "ico_Kx8LQtsnleHvlUYu",
+    "boldName": "Radiology Scan Mri",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "music",
+    "category": "media",
+    "file": "media/music.svg",
+    "query": "Music Note",
+    "figma": "icon/media/music",
+    "regularHash": "ico_fz9u1z5xWMpZF0l2",
+    "regularName": "Music Note",
+    "boldHash": "ico_pTmXB9AjKoSGhAfo",
+    "boldName": "Music Note",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "navigation-pointer",
+    "category": "navigation",
+    "file": "navigation/navigation-pointer.svg",
+    "query": "Navigation Up 2",
+    "figma": "icon/navigation/navigation.pointer",
+    "regularHash": "ico_zUWRpIzwS36L48Oc",
+    "regularName": "Navigation Up 2",
+    "boldHash": "ico_CwBpiOy24aeQisHi",
+    "boldName": "Navigation Up 2",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "neurology",
+    "category": "health",
+    "file": "health/neurology.svg",
+    "query": "Brain",
+    "figma": "icon/health/neurology",
+    "regularHash": "ico_nMyDZ8YgD3ES1FGc",
+    "regularName": "Brain",
+    "boldHash": "ico_2CV15tAhmIeZtJEY",
+    "boldName": "Brain",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "new",
+    "category": "actions",
+    "file": "actions/new.svg",
+    "query": "New Spreadsheet",
+    "figma": "icon/actions/new",
+    "regularHash": null,
+    "regularName": [
+      "Tag New",
+      "Tag New Circle",
+      "Family Add New Member"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Tag New",
+      "Tag New Circle",
+      "Family Add New Member"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "newspaper",
+    "category": "files",
+    "file": "files/newspaper.svg",
+    "query": "Newspaper",
+    "figma": "icon/files/newspaper",
+    "regularHash": "ico_ook3kfRB6T1aryIk",
+    "regularName": "Newspaper",
+    "boldHash": "ico_0p0mDpGMJWchsKnH",
+    "boldName": "Newspaper",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "notes",
+    "category": "files",
+    "file": "files/notes.svg",
+    "query": "Notes Add",
+    "figma": "icon/files/notes",
+    "regularHash": "ico_dfH0WvEKMXvupfSL",
+    "regularName": "Notes Add",
+    "boldHash": "ico_XpyWlCRxCx1OoWMh",
+    "boldName": "Notes Add",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "notification",
+    "category": "status",
+    "file": "status/notification.svg",
+    "query": "Alert Notification",
+    "figma": "icon/status/notification",
+    "regularHash": null,
+    "regularName": [
+      "Alert Circle",
+      "Alarm Bell",
+      "Alarm Clock"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Alarm Bell",
+      "Alarm Bell 1",
+      "Alarm Clock 1"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "nurse",
+    "category": "health",
+    "file": "health/nurse.svg",
+    "query": "Medical Personnel Nurse",
+    "figma": "icon/health/nurse",
+    "regularHash": "ico_fIWUc9FCod61Mvnx",
+    "regularName": "Medical Personnel Nurse",
+    "boldHash": "ico_SVW9Wb6phG5d9SI9",
+    "boldName": "Medical Personnel Nurse",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "office",
+    "category": "misc",
+    "file": "misc/office.svg",
+    "query": "Office File Text",
+    "figma": "icon/misc/office",
+    "regularHash": "ico_FIA0GtXFmy5hU3dY",
+    "regularName": "Office File Text",
+    "boldHash": "ico_tRXxwd1IbUVcan7E",
+    "boldName": "Office File Text",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "online",
+    "category": "status",
+    "file": "status/online.svg",
+    "query": "Wifi",
+    "figma": "icon/status/online",
+    "regularHash": "ico_JzR2DTlMrIOnDQBO",
+    "regularName": "Wifi",
+    "boldHash": "ico_qQkM1zqRRWTp6QGS",
+    "boldName": "Wifi",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "open",
+    "category": "actions",
+    "file": "actions/open.svg",
+    "query": "Open Eyes",
+    "figma": "icon/actions/open",
+    "regularHash": null,
+    "regularName": [
+      "Book Open",
+      "Book Open 1",
+      "Book Open 2"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Book Open",
+      "Book Open 1",
+      "Book Open 2"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "orthopedics",
+    "category": "health",
+    "file": "health/orthopedics.svg",
+    "query": "Medical Specialty Broken Bone",
+    "figma": "icon/health/orthopedics",
+    "regularHash": "ico_PEFyKTH1JXujETQ3",
+    "regularName": "Medical Specialty Broken Bone",
+    "boldHash": "ico_4JOy3idgO1GCIdpJ",
+    "boldName": "Medical Specialty Broken Bone",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "otc",
+    "category": "health",
+    "file": "health/otc.svg",
+    "query": "Medicine Liquid Cup",
+    "figma": "icon/health/otc",
+    "regularHash": null,
+    "regularName": [
+      "Coffee Cup",
+      "Dating Cup",
+      "Tea Cup"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Coffee Cup",
+      "Dating Cup",
+      "Tea Cup"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "oxygen",
+    "category": "health",
+    "file": "health/oxygen.svg",
+    "query": "Oxygen",
+    "figma": "icon/health/oxygen",
+    "regularHash": null,
+    "regularName": [
+      "Diving Oxygen",
+      "Diving Oxygen Tank"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Diving Oxygen",
+      "Diving Oxygen Tank"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "package-alt",
+    "category": "files",
+    "file": "files/package-alt.svg",
+    "query": "Package Dimension",
+    "figma": "icon/files/package.alt",
+    "regularHash": null,
+    "regularName": [
+      "Warehouse Package Box",
+      "Real Estate Dimensions Block",
+      "Real Estate Dimensions Building"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Warehouse Package Box",
+      "Real Estate Dimensions Block",
+      "Real Estate Dimensions Building"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "panel-bottom",
+    "category": "navigation",
+    "file": "navigation/panel-bottom.svg",
+    "query": "Layout 9",
+    "figma": "icon/navigation/panel.bottom",
+    "regularHash": null,
+    "regularName": [
+      "Layout",
+      "Layout 1",
+      "Layout 2"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Layout",
+      "Layout 1",
+      "Layout 2"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "panel-left",
+    "category": "navigation",
+    "file": "navigation/panel-left.svg",
+    "query": "Layout Left",
+    "figma": "icon/navigation/panel.left",
+    "regularHash": "ico_YnNUQl6QoHstvHfw",
+    "regularName": "Layout Left",
+    "boldHash": "ico_FVRHomH3DhMwTuEA",
+    "boldName": "Layout Left",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "panel-right",
+    "category": "navigation",
+    "file": "navigation/panel-right.svg",
+    "query": "Layout Right",
+    "figma": "icon/navigation/panel.right",
+    "regularHash": "ico_TgjQuQpvKPZGz7iS",
+    "regularName": "Layout Right",
+    "boldHash": "ico_oc63ryLdveeFwAKh",
+    "boldName": "Layout Right",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "panel-top",
+    "category": "navigation",
+    "file": "navigation/panel-top.svg",
+    "query": "Layout 5",
+    "figma": "icon/navigation/panel.top",
+    "regularHash": "ico_GEykSzmUTBBDgllA",
+    "regularName": "Layout 5",
+    "boldHash": "ico_jCtBQ66z9AS0afXK",
+    "boldName": "Layout 5",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "parcel",
+    "category": "files",
+    "file": "files/parcel.svg",
+    "query": "Lightweight Parcel",
+    "figma": "icon/files/parcel",
+    "regularHash": null,
+    "regularName": [
+      "Shipment Packages",
+      "Share Location Hand",
+      "Share Location Hand 1"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Shipment Package",
+      "Shipment Packages",
+      "Share Location Hand"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "parking",
+    "category": "misc",
+    "file": "misc/parking.svg",
+    "query": "Parking P",
+    "figma": "icon/misc/parking",
+    "regularHash": "ico_V06gfGx6Wvl4V1mr",
+    "regularName": "Parking P",
+    "boldHash": "ico_PyP3uMWKbUIEaeqy",
+    "boldName": "Parking P",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "passport",
+    "category": "misc",
+    "file": "misc/passport.svg",
+    "query": "Passport",
+    "figma": "icon/misc/passport",
+    "regularHash": "ico_K1ZwX1Kxjk9jV7JZ",
+    "regularName": "Passport",
+    "boldHash": "ico_zW3SFU1wPoa4PdKL",
+    "boldName": "Passport",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "paste",
+    "category": "actions",
+    "file": "actions/paste.svg",
+    "query": "Insurance Document Clipboard",
+    "figma": "icon/actions/paste",
+    "regularHash": null,
+    "regularName": [
+      "Car Insurance Hands",
+      "Real Estate Insurance Building",
+      "Real Estate Insurance House"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Car Insurance Hands",
+      "Real Estate Insurance Building",
+      "Real Estate Insurance Building 1"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "patient",
+    "category": "health",
+    "file": "health/patient.svg",
+    "query": "Patient Care",
+    "figma": "icon/health/patient",
+    "regularHash": null,
+    "regularName": [
+      "Medical File",
+      "Baby Care Body",
+      "Baby Care Bottle"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Baby Care Body",
+      "Baby Care Bottle",
+      "Baby Care Bib"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "pause",
+    "category": "media",
+    "file": "media/pause.svg",
+    "query": "Button Pause",
+    "figma": "icon/media/pause",
+    "regularHash": "ico_SaJo6lSDX0TVgvlk",
+    "regularName": "Button Pause",
+    "boldHash": "ico_DRHFzFAqWRv1HAgY",
+    "boldName": "Button Pause",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "payment",
+    "category": "commerce",
+    "file": "commerce/payment.svg",
+    "query": "Self Payment",
+    "figma": "icon/commerce/payment",
+    "regularHash": "ico_37lN2741R2PaSCqa",
+    "regularName": "Self Payment",
+    "boldHash": "ico_P4lw8zgiYEgvkEDA",
+    "boldName": "Self Payment",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "pediatric",
+    "category": "health",
+    "file": "health/pediatric.svg",
+    "query": "Baby",
+    "figma": "icon/health/pediatric",
+    "regularHash": "ico_6inEeviRhb7OdDzJ",
+    "regularName": "Baby",
+    "boldHash": "ico_7RzmNX2bIiDVRKY4",
+    "boldName": "Baby",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "pending",
+    "category": "status",
+    "file": "status/pending.svg",
+    "query": "Hourglass",
+    "figma": "icon/status/pending",
+    "regularHash": "ico_ljImtIREs6EIoOzX",
+    "regularName": "Hourglass",
+    "boldHash": "ico_raszOfPlsaBdNEIN",
+    "boldName": "Hourglass",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "pharmacy",
+    "category": "health",
+    "file": "health/pharmacy.svg",
+    "query": "Pharmacy",
+    "figma": "icon/health/pharmacy",
+    "regularHash": null,
+    "regularName": [],
+    "boldHash": null,
+    "boldName": [],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "pharmacy-alt",
+    "category": "health",
+    "file": "health/pharmacy-alt.svg",
+    "query": "Pharmacy Shop",
+    "figma": "icon/health/pharmacy.alt",
+    "regularHash": null,
+    "regularName": [
+      "Shop",
+      "Shop 1",
+      "Shop Arrow"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Shop",
+      "Shop 1",
+      "Shop Assistant"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "phone",
+    "category": "comms",
+    "file": "comms/phone.svg",
+    "query": "Phone",
+    "figma": "icon/comms/phone",
+    "regularHash": "ico_q5qNKv9NY58uPm1C",
+    "regularName": "Phone",
+    "boldHash": "ico_vwDHmNn4gO3jzc8m",
+    "boldName": "Phone",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "phone-off",
+    "category": "comms",
+    "file": "comms/phone-off.svg",
+    "query": "Phone Off",
+    "figma": "icon/comms/phone.off",
+    "regularHash": "ico_kQB2QTeCc8xsEVxX",
+    "regularName": "Phone Off",
+    "boldHash": "ico_S9GuaHRHXL71RNik",
+    "boldName": "Phone Off",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "piggy-bank",
+    "category": "commerce",
+    "file": "commerce/piggy-bank.svg",
+    "query": "Saving Piggy Bank",
+    "figma": "icon/commerce/piggy.bank",
+    "regularHash": "ico_kee182Lgf6L0GA6w",
+    "regularName": "Saving Piggy Bank",
+    "boldHash": "ico_g2heWNi7Ni2YqlAW",
+    "boldName": "Saving Piggy Bank",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "pill",
+    "category": "health",
+    "file": "health/pill.svg",
+    "query": "Pill",
+    "figma": "icon/health/pill",
+    "regularHash": "ico_66VZyOCBLq1JEzo6",
+    "regularName": "Pill",
+    "boldHash": "ico_qRTyAWKjC14l7f2T",
+    "boldName": "Pill",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "pin",
+    "category": "actions",
+    "file": "actions/pin.svg",
+    "query": "Pin",
+    "figma": "icon/actions/pin",
+    "regularHash": "ico_Z5Dak1aaGQrpm6Yf",
+    "regularName": "Pin",
+    "boldHash": "ico_jmxeNVfxhI1uE0mf",
+    "boldName": "Pin",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "planet",
+    "category": "misc",
+    "file": "misc/planet.svg",
+    "query": "Astronomy Planet",
+    "figma": "icon/misc/planet",
+    "regularHash": "ico_uJIQRxidicxSq48L",
+    "regularName": "Astronomy Planet",
+    "boldHash": "ico_NFT2hhrm0YSTKPEc",
+    "boldName": "Astronomy Planet",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "play",
+    "category": "media",
+    "file": "media/play.svg",
+    "query": "Button Play",
+    "figma": "icon/media/play",
+    "regularHash": "ico_wdcPYQy9V8QJ4hIR",
+    "regularName": "Button Play",
+    "boldHash": "ico_F4UUL6x0jgMvFPFo",
+    "boldName": "Button Play",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "playlist",
+    "category": "media",
+    "file": "media/playlist.svg",
+    "query": "Playlist",
+    "figma": "icon/media/playlist",
+    "regularHash": "ico_9JgtcPTV9jascBwj",
+    "regularName": "Playlist",
+    "boldHash": "ico_UR5IlMAVW1tRsfJg",
+    "boldName": "Playlist",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "policy",
+    "category": "files",
+    "file": "files/policy.svg",
+    "query": "Ai Policy Script",
+    "figma": "icon/files/policy",
+    "regularHash": null,
+    "regularName": [
+      "Insurance Hand",
+      "Insurance Hands",
+      "Car Insurance Hands"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Insurance Hand",
+      "Insurance Hands",
+      "Car Insurance Hands"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "portfolio",
+    "category": "files",
+    "file": "files/portfolio.svg",
+    "query": "Briefcase",
+    "figma": "icon/files/portfolio",
+    "regularHash": "ico_EZV51NGOgq8rrMJI",
+    "regularName": "Briefcase",
+    "boldHash": "ico_dQJj3zZnNu63kfMU",
+    "boldName": "Briefcase",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "postcard",
+    "category": "files",
+    "file": "files/postcard.svg",
+    "query": "Envelope Postcard",
+    "figma": "icon/files/postcard",
+    "regularHash": "ico_N6FUunjoEryzYH7c",
+    "regularName": "Envelope Postcard",
+    "boldHash": "ico_JwUrQrrSIVqlTVj5",
+    "boldName": "Envelope Postcard",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "power",
+    "category": "actions",
+    "file": "actions/power.svg",
+    "query": "Power Button",
+    "figma": "icon/actions/power",
+    "regularHash": "ico_J2fSrgS89yfHG7X7",
+    "regularName": "Power Button",
+    "boldHash": "ico_diV4U9qeP9Rhxbzy",
+    "boldName": "Power Button",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "pregnancy",
+    "category": "health",
+    "file": "health/pregnancy.svg",
+    "query": "Pregnancy Vgr",
+    "figma": "icon/health/pregnancy",
+    "regularHash": "ico_civzDAkGhfKW0D65",
+    "regularName": "Pregnancy Vgr",
+    "boldHash": "ico_EXkkqDkC9SRWDmJa",
+    "boldName": "Pregnancy Vgr",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "prescription",
+    "category": "health",
+    "file": "health/prescription.svg",
+    "query": "Prescription Px",
+    "figma": "icon/health/prescription",
+    "regularHash": null,
+    "regularName": [
+      "Social 500px"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Social 500px"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "presentation",
+    "category": "comms",
+    "file": "comms/presentation.svg",
+    "query": "Presentation",
+    "figma": "icon/comms/presentation",
+    "regularHash": "ico_dBSpIt6MxjMw0SPc",
+    "regularName": "Presentation",
+    "boldHash": "ico_yYqU4TNXFRJYFvEJ",
+    "boldName": "Presentation",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "press",
+    "category": "files",
+    "file": "files/press.svg",
+    "query": "Force Touch Press",
+    "figma": "icon/files/press",
+    "regularHash": "ico_S3y0bnRppcRfodmG",
+    "regularName": "Force Touch Press",
+    "boldHash": "ico_tlJVIHBq5rMV3bAT",
+    "boldName": "Force Touch Press",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "print",
+    "category": "actions",
+    "file": "actions/print.svg",
+    "query": "Printer",
+    "figma": "icon/actions/print",
+    "regularHash": "ico_SQAiqBG0PjTwWhE7",
+    "regularName": "Printer",
+    "boldHash": "ico_JiBLhYQLd7RXM9jj",
+    "boldName": "Printer",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "printer-alt",
+    "category": "misc",
+    "file": "misc/printer-alt.svg",
+    "query": "Printer View",
+    "figma": "icon/misc/printer.alt",
+    "regularHash": "ico_mQSb4ROoOzXYJRmN",
+    "regularName": "Printer View",
+    "boldHash": "ico_CdSMONVYZYhYSVVO",
+    "boldName": "Printer View",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "projector",
+    "category": "misc",
+    "file": "misc/projector.svg",
+    "query": "Video Projector",
+    "figma": "icon/misc/projector",
+    "regularHash": "ico_pANBTwgiJR9x9rrc",
+    "regularName": "Video Projector",
+    "boldHash": "ico_GR8C9ocFvQleZpCB",
+    "boldName": "Video Projector",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "prosthetic",
+    "category": "health",
+    "file": "health/prosthetic.svg",
+    "query": "Prosthetic Leg 1",
+    "figma": "icon/health/prosthetic",
+    "regularHash": null,
+    "regularName": [
+      "Technology Prosthetic Leg",
+      "Bandage Leg Hanging",
+      "Bandage Leg"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Technology Prosthetic Leg",
+      "Bandage Leg Hanging",
+      "Bandage Leg"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "pulse",
+    "category": "health",
+    "file": "health/pulse.svg",
+    "query": "Hypertension Pulse",
+    "figma": "icon/health/pulse",
+    "regularHash": null,
+    "regularName": [
+      "Graph Stats Circle",
+      "Monitor Heart Beat",
+      "Social Music Beats Studio"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Graph Stats Circle",
+      "Graph Stats Square Alternate",
+      "Monitor Heart Beat"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "qr-code",
+    "category": "commerce",
+    "file": "commerce/qr-code.svg",
+    "query": "Qr Code",
+    "figma": "icon/commerce/qr.code",
+    "regularHash": "ico_0nBmaqeCaHkqnZWW",
+    "regularName": "Qr Code",
+    "boldHash": "ico_3ahoohxrrze0Plzy",
+    "boldName": "Qr Code",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "qr-scan",
+    "category": "misc",
+    "file": "misc/qr-scan.svg",
+    "query": "Iris Scan",
+    "figma": "icon/misc/qr.scan",
+    "regularHash": "ico_McGTvpUeuFHEqVgM",
+    "regularName": "Iris Scan",
+    "boldHash": "ico_2dafLCqlnvJ0Skri",
+    "boldName": "Iris Scan",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "quote-reply",
+    "category": "actions",
+    "file": "actions/quote-reply.svg",
+    "query": "Open Quote",
+    "figma": "icon/actions/quote.reply",
+    "regularHash": "ico_TCHjXLY1tsaI1MND",
+    "regularName": "Open Quote",
+    "boldHash": "ico_CrRk4F8JVf9NOzVR",
+    "boldName": "Open Quote",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "radiology",
+    "category": "health",
+    "file": "health/radiology.svg",
+    "query": "Radiology Scan",
+    "figma": "icon/health/radiology",
+    "regularHash": "ico_f5zJYxNBDcGUhpr1",
+    "regularName": "Radiology Scan",
+    "boldHash": "ico_u4KSvZapevyb8IUP",
+    "boldName": "Radiology Scan",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "rain",
+    "category": "misc",
+    "file": "misc/rain.svg",
+    "query": "Rain Umbrella",
+    "figma": "icon/misc/rain",
+    "regularHash": "ico_lPyO2rdsCqpKRiFc",
+    "regularName": "Rain Umbrella",
+    "boldHash": "ico_lZcrC3GpYiqkcejm",
+    "boldName": "Rain Umbrella",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "receipt",
+    "category": "commerce",
+    "file": "commerce/receipt.svg",
+    "query": "Receipt",
+    "figma": "icon/commerce/receipt",
+    "regularHash": "ico_tFbSy6dRnxjVa0yG",
+    "regularName": "Receipt",
+    "boldHash": "ico_RXpkWALBKQg1v7Xe",
+    "boldName": "Receipt",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "record",
+    "category": "media",
+    "file": "media/record.svg",
+    "query": "Button Record",
+    "figma": "icon/media/record",
+    "regularHash": "ico_aeL2R1o1iFUBcwTa",
+    "regularName": "Button Record",
+    "boldHash": "ico_iFdHskMMdD12fvXe",
+    "boldName": "Button Record",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "recycle",
+    "category": "misc",
+    "file": "misc/recycle.svg",
+    "query": "Recycling Sign",
+    "figma": "icon/misc/recycle",
+    "regularHash": "ico_4qb7gDhwwms6ztow",
+    "regularName": "Recycling Sign",
+    "boldHash": "ico_IidFrfGI1N33AmOc",
+    "boldName": "Recycling Sign",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "redo",
+    "category": "actions",
+    "file": "actions/redo.svg",
+    "query": "Redo",
+    "figma": "icon/actions/redo",
+    "regularHash": "ico_OptqDsuzchxWA4us",
+    "regularName": "Redo",
+    "boldHash": "ico_yGeMGlR1QL5ZgdZ6",
+    "boldName": "Redo",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "refresh",
+    "category": "actions",
+    "file": "actions/refresh.svg",
+    "query": "Button Refresh Arrow",
+    "figma": "icon/actions/refresh",
+    "regularHash": "ico_RQVVh62EGVyxoTlF",
+    "regularName": "Button Refresh Arrow",
+    "boldHash": "ico_uFicbZv8YVdJ0Cjt",
+    "boldName": "Button Refresh Arrow",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "remind",
+    "category": "actions",
+    "file": "actions/remind.svg",
+    "query": "Reminder Hand Sign",
+    "figma": "icon/actions/remind",
+    "regularHash": null,
+    "regularName": [
+      "Business Contract Handshake Sign",
+      "Sign Badge Circle",
+      "Road Sign 66"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Business Contract Handshake Sign",
+      "Sign Badge Circle",
+      "Sign Badge Rectangular"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "reply",
+    "category": "comms",
+    "file": "comms/reply.svg",
+    "query": "Email Action Reply",
+    "figma": "icon/comms/reply",
+    "regularHash": "ico_DnOOPnLyAViilksX",
+    "regularName": "Email Action Reply",
+    "boldHash": "ico_DMQitE6yHmT7LGSZ",
+    "boldName": "Email Action Reply",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "reply-all",
+    "category": "comms",
+    "file": "comms/reply-all.svg",
+    "query": "Email Action Reply All",
+    "figma": "icon/comms/reply.all",
+    "regularHash": "ico_SVhwLy5P2MtpPXP2",
+    "regularName": "Email Action Reply All",
+    "boldHash": "ico_6RNUika0FOAfaPao",
+    "boldName": "Email Action Reply All",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "reply-alt",
+    "category": "actions",
+    "file": "actions/reply-alt.svg",
+    "query": "Email Action Reply All",
+    "figma": "icon/actions/reply.alt",
+    "regularHash": "ico_SVhwLy5P2MtpPXP2",
+    "regularName": "Email Action Reply All",
+    "boldHash": "ico_6RNUika0FOAfaPao",
+    "boldName": "Email Action Reply All",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "resize",
+    "category": "navigation",
+    "file": "navigation/resize.svg",
+    "query": "Expand 8",
+    "figma": "icon/navigation/resize",
+    "regularHash": "ico_7cikhih8Z77Ow5KY",
+    "regularName": "Expand 8",
+    "boldHash": "ico_w5WOVuZzeVU1KzM5",
+    "boldName": "Expand 8",
+    "exactRegular": true,
+    "exactBold": true
+  },
+  {
+    "name": "restore",
+    "category": "actions",
+    "file": "actions/restore.svg",
+    "query": "Archive Restore",
+    "figma": "icon/actions/restore",
+    "regularHash": null,
+    "regularName": [
+      "Archive",
+      "Archive Books",
+      "Archive Drawer"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Archive",
+      "Archive Books",
+      "Archive Drawer"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "resume",
+    "category": "files",
+    "file": "files/resume.svg",
+    "query": "Recruiting Resume Document",
+    "figma": "icon/files/resume",
+    "regularHash": null,
+    "regularName": [
+      "Job Choose Cadidate 1",
+      "Job Choose Candidate",
+      "Job Search"
+    ],
+    "boldHash": null,
+    "boldName": [
+      "Job Choose Cadidate 1",
+      "Job Choose Candidate",
+      "Job Search"
+    ],
+    "exactRegular": false,
+    "exactBold": false
+  },
+  {
+    "name": "robot",
+    "category": "misc",
+    "file": "misc/robot.svg",
+    "query": "Robot",
+    "figma": "icon/misc/robot",
+    "regularHash": "ico_6oozzJx7VGkq99Hu",
+    "regularName": "Robot",
+    "boldHash": "ico_VuJLnWYnuP9VDsFu",
+    "boldName": "Robot",
+    "exactRegular": true,
+    "exactBold": true
+  }
+]

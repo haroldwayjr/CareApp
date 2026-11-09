@@ -1,0 +1,11 @@
+const page = figma.root.children.find(p => /Icons/i.test(p.name));
+await figma.setCurrentPageAsync(page);
+const old = page.findAll(n => n.type === 'TEXT' && n.name === "__reapply_payload_17");
+for (const o of old) o.remove();
+await figma.loadFontAsync({ family: "Inter", style: "Regular" });
+const t = figma.createText();
+t.name = "__reapply_payload_17";
+t.characters = "";
+t.visible = false;
+page.appendChild(t);
+return { step: "create", id: t.id, len: t.characters.length };

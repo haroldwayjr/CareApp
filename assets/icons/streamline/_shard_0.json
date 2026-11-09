@@ -1,0 +1,567 @@
+[
+  {
+    "name": "undo",
+    "category": "actions",
+    "query": "Undo"
+  },
+  {
+    "name": "redo",
+    "category": "actions",
+    "query": "Redo"
+  },
+  {
+    "name": "print",
+    "category": "actions",
+    "query": "Printer"
+  },
+  {
+    "name": "link",
+    "category": "actions",
+    "query": "Hyperlink"
+  },
+  {
+    "name": "unlink",
+    "category": "actions",
+    "query": "Hyperlink Off"
+  },
+  {
+    "name": "cut",
+    "category": "actions",
+    "query": "Scissor"
+  },
+  {
+    "name": "paste",
+    "category": "actions",
+    "query": "Clipboard"
+  },
+  {
+    "name": "duplicate",
+    "category": "actions",
+    "query": "Duplicate"
+  },
+  {
+    "name": "archive",
+    "category": "actions",
+    "query": "Archive"
+  },
+  {
+    "name": "restore",
+    "category": "actions",
+    "query": "Restore"
+  },
+  {
+    "name": "trash",
+    "category": "actions",
+    "query": "Bin"
+  },
+  {
+    "name": "empty-trash",
+    "category": "actions",
+    "query": "Bin"
+  },
+  {
+    "name": "select",
+    "category": "actions",
+    "query": "Select"
+  },
+  {
+    "name": "select-all",
+    "category": "actions",
+    "query": "Select All"
+  },
+  {
+    "name": "deselect",
+    "category": "actions",
+    "query": "Deselect"
+  },
+  {
+    "name": "move",
+    "category": "actions",
+    "query": "Move"
+  },
+  {
+    "name": "swap",
+    "category": "actions",
+    "query": "Exchange"
+  },
+  {
+    "name": "sort",
+    "category": "actions",
+    "query": "Sort"
+  },
+  {
+    "name": "sort-asc",
+    "category": "actions",
+    "query": "Sort Ascending"
+  },
+  {
+    "name": "sort-desc",
+    "category": "actions",
+    "query": "Sort Descending"
+  },
+  {
+    "name": "pin",
+    "category": "actions",
+    "query": "Pin"
+  },
+  {
+    "name": "unpin",
+    "category": "actions",
+    "query": "Unpin"
+  },
+  {
+    "name": "attach",
+    "category": "actions",
+    "query": "Attachment"
+  },
+  {
+    "name": "detach",
+    "category": "actions",
+    "query": "Detach"
+  },
+  {
+    "name": "import",
+    "category": "actions",
+    "query": "Import"
+  },
+  {
+    "name": "export",
+    "category": "actions",
+    "query": "Export"
+  },
+  {
+    "name": "sync",
+    "category": "actions",
+    "query": "Synchronize"
+  },
+  {
+    "name": "power",
+    "category": "actions",
+    "query": "Power"
+  },
+  {
+    "name": "logout",
+    "category": "actions",
+    "query": "Logout"
+  },
+  {
+    "name": "login",
+    "category": "actions",
+    "query": "Login"
+  },
+  {
+    "name": "prioritize",
+    "category": "actions",
+    "query": "Priority"
+  },
+  {
+    "name": "flag-alt",
+    "category": "actions",
+    "query": "Flag"
+  },
+  {
+    "name": "bookmark-add",
+    "category": "actions",
+    "query": "Bookmark Add"
+  },
+  {
+    "name": "bookmark-remove",
+    "category": "actions",
+    "query": "Bookmark Remove"
+  },
+  {
+    "name": "star-add",
+    "category": "actions",
+    "query": "Star Add"
+  },
+  {
+    "name": "star-remove",
+    "category": "actions",
+    "query": "Star Remove"
+  },
+  {
+    "name": "heart-add",
+    "category": "actions",
+    "query": "Heart Add"
+  },
+  {
+    "name": "heart-remove",
+    "category": "actions",
+    "query": "Heart Remove"
+  },
+  {
+    "name": "share-alt",
+    "category": "actions",
+    "query": "Share"
+  },
+  {
+    "name": "send-alt",
+    "category": "actions",
+    "query": "Send"
+  },
+  {
+    "name": "forward-alt",
+    "category": "actions",
+    "query": "Forward"
+  },
+  {
+    "name": "reply-alt",
+    "category": "actions",
+    "query": "Reply"
+  },
+  {
+    "name": "quote-reply",
+    "category": "actions",
+    "query": "Quote"
+  },
+  {
+    "name": "edit-alt",
+    "category": "actions",
+    "query": "Edit"
+  },
+  {
+    "name": "create",
+    "category": "actions",
+    "query": "Create"
+  },
+  {
+    "name": "new",
+    "category": "actions",
+    "query": "New"
+  },
+  {
+    "name": "open",
+    "category": "actions",
+    "query": "Open"
+  },
+  {
+    "name": "close-alt",
+    "category": "actions",
+    "query": "Close"
+  },
+  {
+    "name": "cancel",
+    "category": "actions",
+    "query": "Cancel"
+  },
+  {
+    "name": "confirm",
+    "category": "actions",
+    "query": "Confirm"
+  },
+  {
+    "name": "submit",
+    "category": "actions",
+    "query": "Submit"
+  },
+  {
+    "name": "apply",
+    "category": "actions",
+    "query": "Apply"
+  },
+  {
+    "name": "reset",
+    "category": "actions",
+    "query": "Reset"
+  },
+  {
+    "name": "clear",
+    "category": "actions",
+    "query": "Clear"
+  },
+  {
+    "name": "erase",
+    "category": "actions",
+    "query": "Erase"
+  },
+  {
+    "name": "replace",
+    "category": "actions",
+    "query": "Replace"
+  },
+  {
+    "name": "find-replace",
+    "category": "actions",
+    "query": "Find Replace"
+  },
+  {
+    "name": "search-alt",
+    "category": "actions",
+    "query": "Search"
+  },
+  {
+    "name": "find",
+    "category": "actions",
+    "query": "Find"
+  },
+  {
+    "name": "locate",
+    "category": "actions",
+    "query": "Locate"
+  },
+  {
+    "name": "discover",
+    "category": "actions",
+    "query": "Discover"
+  },
+  {
+    "name": "explore",
+    "category": "actions",
+    "query": "Explore"
+  },
+  {
+    "name": "browse",
+    "category": "actions",
+    "query": "Browse"
+  },
+  {
+    "name": "preview",
+    "category": "actions",
+    "query": "Preview"
+  },
+  {
+    "name": "publish",
+    "category": "actions",
+    "query": "Publish"
+  },
+  {
+    "name": "unpublish",
+    "category": "actions",
+    "query": "Unpublish"
+  },
+  {
+    "name": "draft",
+    "category": "actions",
+    "query": "Draft"
+  },
+  {
+    "name": "schedule-send",
+    "category": "actions",
+    "query": "Schedule Send"
+  },
+  {
+    "name": "remind",
+    "category": "actions",
+    "query": "Reminder"
+  },
+  {
+    "name": "snooze",
+    "category": "actions",
+    "query": "Snooze"
+  },
+  {
+    "name": "info",
+    "category": "status",
+    "query": "Information"
+  },
+  {
+    "name": "warning",
+    "category": "status",
+    "query": "Alert"
+  },
+  {
+    "name": "error",
+    "category": "status",
+    "query": "Remove Circle"
+  },
+  {
+    "name": "success",
+    "category": "status",
+    "query": "Check Circle"
+  },
+  {
+    "name": "help",
+    "category": "status",
+    "query": "Question"
+  },
+  {
+    "name": "bell",
+    "category": "status",
+    "query": "Bell"
+  },
+  {
+    "name": "bell-off",
+    "category": "status",
+    "query": "Bell Off"
+  },
+  {
+    "name": "lock",
+    "category": "status",
+    "query": "Lock"
+  },
+  {
+    "name": "unlock",
+    "category": "status",
+    "query": "Lock Unlock"
+  },
+  {
+    "name": "eye",
+    "category": "status",
+    "query": "View"
+  },
+  {
+    "name": "eye-off",
+    "category": "status",
+    "query": "View Off"
+  },
+  {
+    "name": "star",
+    "category": "status",
+    "query": "Star"
+  },
+  {
+    "name": "star-filled",
+    "category": "status",
+    "query": "Rating Star"
+  },
+  {
+    "name": "flag",
+    "category": "status",
+    "query": "Flag"
+  },
+  {
+    "name": "shield",
+    "category": "status",
+    "query": "Shield"
+  },
+  {
+    "name": "shield-check",
+    "category": "status",
+    "query": "Shield Check"
+  },
+  {
+    "name": "shield-off",
+    "category": "status",
+    "query": "Shield"
+  },
+  {
+    "name": "verified",
+    "category": "status",
+    "query": "Verified"
+  },
+  {
+    "name": "pending",
+    "category": "status",
+    "query": "Hourglass"
+  },
+  {
+    "name": "loading",
+    "category": "status",
+    "query": "Loading"
+  },
+  {
+    "name": "offline",
+    "category": "status",
+    "query": "Offline"
+  },
+  {
+    "name": "online",
+    "category": "status",
+    "query": "Online"
+  },
+  {
+    "name": "blocked",
+    "category": "status",
+    "query": "Block"
+  },
+  {
+    "name": "unavailable",
+    "category": "status",
+    "query": "Unavailable"
+  },
+  {
+    "name": "notification",
+    "category": "status",
+    "query": "Notification"
+  },
+  {
+    "name": "badge",
+    "category": "status",
+    "query": "Badge"
+  },
+  {
+    "name": "priority",
+    "category": "status",
+    "query": "Priority"
+  },
+  {
+    "name": "critical",
+    "category": "status",
+    "query": "Flash"
+  },
+  {
+    "name": "play",
+    "category": "media",
+    "query": "Button Play"
+  },
+  {
+    "name": "pause",
+    "category": "media",
+    "query": "Button Pause"
+  },
+  {
+    "name": "stop",
+    "category": "media",
+    "query": "Button Stop"
+  },
+  {
+    "name": "skip-forward",
+    "category": "media",
+    "query": "Button Next"
+  },
+  {
+    "name": "skip-back",
+    "category": "media",
+    "query": "Button Previous"
+  },
+  {
+    "name": "volume",
+    "category": "media",
+    "query": "Volume"
+  },
+  {
+    "name": "volume-off",
+    "category": "media",
+    "query": "Volume Off"
+  },
+  {
+    "name": "image",
+    "category": "media",
+    "query": "Image"
+  },
+  {
+    "name": "video",
+    "category": "media",
+    "query": "Video"
+  },
+  {
+    "name": "camera",
+    "category": "media",
+    "query": "Camera"
+  },
+  {
+    "name": "mic",
+    "category": "media",
+    "query": "Microphone"
+  },
+  {
+    "name": "mic-off",
+    "category": "media",
+    "query": "Microphone Off"
+  },
+  {
+    "name": "headphones",
+    "category": "media",
+    "query": "Headphones"
+  },
+  {
+    "name": "music",
+    "category": "media",
+    "query": "Music"
+  },
+  {
+    "name": "film",
+    "category": "media",
+    "query": "Movie"
+  }
+]

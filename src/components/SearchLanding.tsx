@@ -45,11 +45,11 @@ export function SearchLanding({
           component="h1"
           color="text.primary"
           sx={{
-            fontSize: { xs: 24, sm: 28 },
+            // App page title: below marketing display, above body — saves chrome height.
+            fontSize: { xs: 20, sm: 22 },
             fontWeight: 400,
             letterSpacing: 0,
-            lineHeight: 1.25,
-            // Match gap above Back (container pt: 1.5) — slightly tighter than before.
+            lineHeight: 1.3,
             mt: 1,
           }}
         >
@@ -61,8 +61,8 @@ export function SearchLanding({
         sx={{
           flex: 1,
           px: { xs: 2, md: 3 },
-          // Comfortable heading → form gap (~32px).
-          pt: 4,
+          // Heading → form gap.
+          pt: 2,
           pb: 2,
           display: 'flex',
           flexDirection: 'column',

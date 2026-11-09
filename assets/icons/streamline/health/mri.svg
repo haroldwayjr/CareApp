@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="Radiology-Scan-Mri--Streamline-Streamline-3.0">
+  <desc>
+    Radiology Scan Mri Streamline Icon: https://streamlinehq.com
+  </desc>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M23.25 23.25V3.75a1.5 1.5 0 0 0 -1.5 -1.5h-4.134a11.263 11.263 0 0 0 -11.232 0H2.25a1.5 1.5 0 0 0 -1.5 1.5v19.5" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M15.365 15.223a1.5 1.5 0 0 0 -1.4 -0.973h-3.926a1.5 1.5 0 0 0 -1.4 0.973L6.75 20.25h10.5l-1.885 -5.027Z" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M6.75 20.25v1.5a1.5 1.5 0 0 0 1.5 1.5h7.5a1.5 1.5 0 0 0 1.5 -1.5v-1.5" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M7.5 12a4.5 4.5 0 1 1 9 0" stroke-width="1.5"></path>
+  <path stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" d="M18.875 15a7.5 7.5 0 1 0 -13.75 0" stroke-width="1.5"></path>
+  <path stroke="#0F1828" d="M3.75 5.625a0.375 0.375 0 1 1 0 -0.75" stroke-width="1.5"></path>
+  <path stroke="#0F1828" d="M3.75 5.625a0.375 0.375 0 1 0 0 -0.75" stroke-width="1.5"></path>
+  <g>
+    <path stroke="#0F1828" d="M20.25 5.625a0.375 0.375 0 0 1 0 -0.75" stroke-width="1.5"></path>
+    <path stroke="#0F1828" d="M20.25 5.625a0.375 0.375 0 0 0 0 -0.75" stroke-width="1.5"></path>
+  </g>
+</svg>

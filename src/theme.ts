@@ -23,6 +23,12 @@ declare module '@mui/material/styles' {
       tertiary?: string
     }
   }
+  interface PaletteColor {
+    soft?: string
+  }
+  interface SimplePaletteColorOptions {
+    soft?: string
+  }
 }
 
 /** Soma light-mode tokens — primary = blue/800 (#002380). */
@@ -36,7 +42,12 @@ const theme = createTheme({
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#5c6bc0',
+      // Care App MUI secondary (purple) — Preferred / accent badges.
+      main: '#8e24aa',
+      light: '#ab47bc',
+      dark: '#6a1b9a',
+      soft: '#f3e5f5', // purple/50 — Soft badge fill
+      contrastText: '#ffffff',
     },
     success: {
       main: '#16B04A',
@@ -47,9 +58,10 @@ const theme = createTheme({
       light: '#FEECEC',
     },
     warning: {
-      main: '#C9A000',
-      light: '#FDF9E1',
-      dark: '#8A7300',
+      // Care App MUI warning — Standard badges (soft fill + ink).
+      main: '#ed6c02',
+      light: '#fff4e5',
+      dark: '#9a3412',
       contrastText: '#ffffff',
     },
     background: {

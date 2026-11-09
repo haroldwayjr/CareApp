@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Passport--Streamline-Streamline-3.0">
+  <desc>
+    Passport Streamline Icon: https://streamlinehq.com
+  </desc>
+  <defs></defs>
+  <title>passport</title>
+  <path d="M9 20.25H3.75a3 3 0 0 1 -3 -3V3.75" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M14.25 0.75H3.91a3.111 3.111 0 0 0 -3.119 2.5 3 3 0 0 0 2.959 3.5h9.75a0.75 0.75 0 0 1 0.75 0.75V9" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m3.75 3.75 9 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M11.25 17.25a6 6 0 1 0 12 0 6 6 0 1 0 -12 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M15.409 11.537 17.1 13.8a1.5 1.5 0 0 1 -0.3 2.1L15 17.25V18a1.5 1.5 0 0 1 -1.5 1.5h-1.813" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m23.238 16.872 -2.662 1.339a1.5 1.5 0 0 0 -0.784 1.706l0.621 2.431" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>

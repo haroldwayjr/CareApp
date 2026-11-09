@@ -11,6 +11,9 @@ export const APP_SHELL_HEIGHT = 56
 /** Approx. sticky results toolbar height for map offset under app shell. */
 export const RESULTS_TOOLBAR_OFFSET = 64
 
+/** Space between sticky filters toolbar and results content (cards / plan key). */
+export const RESULTS_CONTENT_TOP_GAP = 12
+
 type ResultsPageChromeProps = {
   header: ReactNode
   search: ReactNode
@@ -21,6 +24,8 @@ type ResultsPageChromeProps = {
   actions: ReactNode
   chips?: ReactNode
   children: ReactNode
+  /** Fires when the sticky results toolbar height changes (compact/expanded). */
+  onToolbarHeightChange?: (height: number) => void
 }
 
 /**
@@ -37,9 +42,11 @@ export function ResultsPageChrome({
   actions,
   chips,
   children,
+  onToolbarHeightChange,
 }: ResultsPageChromeProps) {
   const [compact, setCompact] = useState(false)
   const sentinelRef = useRef<HTMLDivElement>(null)
+  const toolbarRef = useRef<HTMLDivElement>(null)
   const displayTerm = searchTerm.trim() || 'All providers'
 
   useEffect(() => {
@@ -61,6 +68,20 @@ export function ResultsPageChrome({
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    const toolbar = toolbarRef.current
+    if (!toolbar || !onToolbarHeightChange) return
+
+    const report = () => {
+      onToolbarHeightChange(Math.round(toolbar.getBoundingClientRect().height))
+    }
+    report()
+
+    const observer = new ResizeObserver(report)
+    observer.observe(toolbar)
+    return () => observer.disconnect()
+  }, [onToolbarHeightChange, compact, chips, loading])
+
   return (
     <Box
       sx={{
@@ -73,12 +94,13 @@ export function ResultsPageChrome({
     >
       <Box sx={{ px: { xs: 2, md: 3 }, pt: 1.5, pb: 0 }}>{header}</Box>
 
-      <Box sx={{ px: { xs: 2, md: 3 }, pt: 4 }}>{search}</Box>
+      <Box sx={{ px: { xs: 2, md: 3 }, pt: 2 }}>{search}</Box>
 
       {/* Marks end of scroll-away chrome (title + search). */}
       <Box ref={sentinelRef} aria-hidden sx={{ height: 1, width: '100%' }} />
 
       <Box
+        ref={toolbarRef}
         component="section"
         aria-label="Results controls"
         sx={{
@@ -88,9 +110,12 @@ export function ResultsPageChrome({
           bgcolor: 'background.paper',
           px: { xs: 2, md: 3 },
           py: 1.5,
-          borderBottom: 1,
-          borderColor: 'divider',
-          boxShadow: compact ? '0 1px 0 rgba(0,0,0,0.04)' : 'none',
+          borderBottom: '1px solid',
+          borderColor: '#D0D5DD',
+          // Always-on seam so chrome reads separate from results (stronger when scrolled).
+          boxShadow: compact
+            ? '0 2px 6px rgba(0,0,0,0.08)'
+            : '0 1px 3px rgba(0,0,0,0.06)',
           transition: 'box-shadow 200ms cubic-bezier(0.33, 0, 0.2, 1)',
         }}
       >
@@ -113,7 +138,7 @@ export function ResultsPageChrome({
                 fontWeight: 400,
                 letterSpacing: 0,
                 lineHeight: 1.2,
-                color: 'text.primary',
+                color: 'text.secondary',
                 opacity: compact ? 0 : 1,
                 maxHeight: compact ? 0 : 18,
                 overflow: 'hidden',
@@ -135,14 +160,14 @@ export function ResultsPageChrome({
                 className="skeleton-shimmer"
                 variant="text"
                 width={220}
-                height={26}
+                height={22}
               />
             ) : (
               <Typography
                 component="h2"
                 sx={{
                   m: 0,
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: 600,
                   letterSpacing: 0,
                   lineHeight: 1.25,
@@ -166,7 +191,8 @@ export function ResultsPageChrome({
       <Box
         sx={{
           px: { xs: 2, md: 3 },
-          pt: 2,
+          // Slight seam under sticky filters toolbar before cards / plan key.
+          pt: `${RESULTS_CONTENT_TOP_GAP}px`,
           pb: 2,
           flex: 1,
           display: 'flex',
@@ -196,10 +222,11 @@ export function ResultsBackHeader({
         component="h1"
         color="text.primary"
         sx={{
-          fontSize: { xs: 24, sm: 28 },
+          // Match SearchLanding page title scale.
+          fontSize: { xs: 20, sm: 22 },
           fontWeight: 400,
           letterSpacing: 0,
-          lineHeight: 1.25,
+          lineHeight: 1.3,
           mt: 1,
         }}
       >

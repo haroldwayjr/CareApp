@@ -1,0 +1,31 @@
+---
+description: Soma Figma work — existing tokens + library components only on mockups; prompt before inventing
+alwaysApply: false
+---
+
+# Soma Figma context
+
+For Soma Design System work in Figma (`hB1NzwMnZt2ALeR0OslaWi`), read the relevant doc before acting:
+
+| Topic | Doc |
+|---|---|
+| File structure, naming, verification, **mockup rules** | `docs/design-system/soma/quick-reference.md` |
+| Color, spacing, typography, elevation, radius | `docs/design-system/soma/token-rules.md` |
+| Components + **Mockups / app examples (non-negotiable)** | `docs/design-system/soma/component-notes.md` |
+| Open gaps — do not silently fix | `docs/design-system/soma/open-items.md` |
+
+After any Figma change, follow `soma-changelog.mdc` (node `1016:14943`).
+
+**Live truth:** Figma MCP + Variables panel verification. Docs are decisions; Figma is source of record for current bindings.
+
+## Mockups (non-negotiable — read before building frames)
+
+Applies to Chat tasks, Chat Assist, APD, Care Plans, and every other app example:
+
+1. **Existing tokens only** — bind radius, spacing, color, elevation. Never type raw Corner radius / gap / pad when a variable exists (e.g. `12` → **`radius/xl`**, not a hardcoded `12`).
+2. **Existing text styles only** — Figtree via `body1` / `subtitle2` / `caption` / headings. No freehand fonts or unbound type scales.
+3. **Existing library components only** — instance published masters; do not detach to restyle; do not invent new components or one-off patterns.
+4. **Missing component / token / style → stop and prompt the user** before creating anything new. After they decide, note the gap in `open-items.md`. Never silently invent to unblock a mock.
+5. **Before done:** linked-variable icons on radius/fill/spacing; text styles applied; chrome is live instances; no new component/token/style without explicit go-ahead.
+
+Full checklist: `component-notes.md` → **Mockups / app examples**.

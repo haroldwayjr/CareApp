@@ -1,0 +1,494 @@
+[
+  {
+    "name": "chevron-left",
+    "category": "navigation",
+    "query": "Arrow Left 1",
+    "alt": "Arrow Left"
+  },
+  {
+    "name": "chevron-right",
+    "category": "navigation",
+    "query": "Arrow Right 1",
+    "alt": "Arrow Right"
+  },
+  {
+    "name": "chevron-up",
+    "category": "navigation",
+    "query": "Arrow Up 1",
+    "alt": "Arrow Up"
+  },
+  {
+    "name": "arrow-up",
+    "category": "navigation",
+    "query": "Arrow Up",
+    "alt": "Arrow Up"
+  },
+  {
+    "name": "arrow-down",
+    "category": "navigation",
+    "query": "Arrow Down",
+    "alt": "Arrow Down"
+  },
+  {
+    "name": "more-horizontal",
+    "category": "navigation",
+    "query": "Navigation Menu Horizontal",
+    "alt": "Navigation Menu Horizontal"
+  },
+  {
+    "name": "more-vertical",
+    "category": "navigation",
+    "query": "Navigation Menu Vertical",
+    "alt": "Navigation Menu Vertical"
+  },
+  {
+    "name": "back",
+    "category": "navigation",
+    "query": "Arrow Circle Left",
+    "alt": "Arrow Circle Left"
+  },
+  {
+    "name": "forward",
+    "category": "navigation",
+    "query": "Arrow Circle Right",
+    "alt": "Arrow Circle Right"
+  },
+  {
+    "name": "external-link",
+    "category": "navigation",
+    "query": "Expand",
+    "alt": "Expand"
+  },
+  {
+    "name": "sidebar",
+    "category": "navigation",
+    "query": "Layout 2",
+    "alt": "Layout"
+  },
+  {
+    "name": "breadcrumb",
+    "category": "navigation",
+    "query": "Hierarchy",
+    "alt": "Hierarchy"
+  },
+  {
+    "name": "scroll",
+    "category": "navigation",
+    "query": "Scroll Vertical",
+    "alt": "Scroll Vertical"
+  },
+  {
+    "name": "drag",
+    "category": "navigation",
+    "query": "Move Up",
+    "alt": "Move Up"
+  },
+  {
+    "name": "fullscreen",
+    "category": "navigation",
+    "query": "Expand Full",
+    "alt": "Expand Full"
+  },
+  {
+    "name": "exit-fullscreen",
+    "category": "navigation",
+    "query": "Shrink",
+    "alt": "Shrink"
+  },
+  {
+    "name": "home-alt",
+    "category": "navigation",
+    "query": "House",
+    "alt": "House"
+  },
+  {
+    "name": "compass",
+    "category": "navigation",
+    "query": "Compass",
+    "alt": "Compass"
+  },
+  {
+    "name": "map",
+    "category": "navigation",
+    "query": "Map Marks",
+    "alt": "Map Marks"
+  },
+  {
+    "name": "route",
+    "category": "navigation",
+    "query": "Journey Trip Route",
+    "alt": "Journey Trip Route"
+  },
+  {
+    "name": "navigation-pointer",
+    "category": "navigation",
+    "query": "Navigation Up 2",
+    "alt": "Navigation Up"
+  },
+  {
+    "name": "layers",
+    "category": "navigation",
+    "query": "Layers",
+    "alt": "Layers"
+  },
+  {
+    "name": "panel-left",
+    "category": "navigation",
+    "query": "Sidebar Expand",
+    "alt": "Sidebar Expand"
+  },
+  {
+    "name": "panel-right",
+    "category": "navigation",
+    "query": "Sidebar Collapes",
+    "alt": "Sidebar Collapes"
+  },
+  {
+    "name": "merge",
+    "category": "navigation",
+    "query": "Merge",
+    "alt": "Merge"
+  },
+  {
+    "name": "save",
+    "category": "actions",
+    "query": "Floppy Disk",
+    "alt": "Floppy Disk"
+  },
+  {
+    "name": "upload",
+    "category": "actions",
+    "query": "Upload Menu",
+    "alt": "Upload Menu"
+  },
+  {
+    "name": "share",
+    "category": "actions",
+    "query": "Share",
+    "alt": "Share"
+  },
+  {
+    "name": "split",
+    "category": "navigation",
+    "query": "Split Subset Spreadsheet 2",
+    "alt": "Split Subset Spreadsheet"
+  },
+  {
+    "name": "resize",
+    "category": "navigation",
+    "query": "Expand 8",
+    "alt": "Expand"
+  },
+  {
+    "name": "panel-top",
+    "category": "navigation",
+    "query": "Layout 5",
+    "alt": "Layout"
+  },
+  {
+    "name": "panel-bottom",
+    "category": "navigation",
+    "query": "Layout 9",
+    "alt": "Layout"
+  },
+  {
+    "name": "undo",
+    "category": "actions",
+    "query": "Undo",
+    "alt": "Undo"
+  },
+  {
+    "name": "redo",
+    "category": "actions",
+    "query": "Redo",
+    "alt": "Redo"
+  },
+  {
+    "name": "print",
+    "category": "actions",
+    "query": "Printer",
+    "alt": "Printer"
+  },
+  {
+    "name": "link",
+    "category": "actions",
+    "query": "Hyperlink",
+    "alt": "Hyperlink"
+  },
+  {
+    "name": "cut",
+    "category": "actions",
+    "query": "Scissors",
+    "alt": "Scissors"
+  },
+  {
+    "name": "paste",
+    "category": "actions",
+    "query": "Insurance Document Clipboard",
+    "alt": "Insurance Document Clipboard"
+  },
+  {
+    "name": "duplicate",
+    "category": "actions",
+    "query": "Duplicate",
+    "alt": "Duplicate"
+  },
+  {
+    "name": "archive",
+    "category": "actions",
+    "query": "Archive",
+    "alt": "Archive"
+  },
+  {
+    "name": "restore",
+    "category": "actions",
+    "query": "Archive Restore",
+    "alt": "Archive Restore"
+  },
+  {
+    "name": "trash",
+    "category": "actions",
+    "query": "Bin",
+    "alt": "Bin"
+  },
+  {
+    "name": "empty-trash",
+    "category": "actions",
+    "query": "Bin",
+    "alt": "Bin"
+  },
+  {
+    "name": "select",
+    "category": "actions",
+    "query": "Select 3d",
+    "alt": "Select 3d"
+  },
+  {
+    "name": "select-all",
+    "category": "actions",
+    "query": "Select All",
+    "alt": "Select All"
+  },
+  {
+    "name": "swap",
+    "category": "actions",
+    "query": "Folder Exchange",
+    "alt": "Folder Exchange"
+  },
+  {
+    "name": "sort",
+    "category": "actions",
+    "query": "Sort Size Ascending Order Up",
+    "alt": "Sort Size Ascending Order Up"
+  },
+  {
+    "name": "sort-asc",
+    "category": "actions",
+    "query": "Ascending Sort 1",
+    "alt": "Ascending Sort"
+  },
+  {
+    "name": "sort-desc",
+    "category": "actions",
+    "query": "Descending Sort 1",
+    "alt": "Descending Sort"
+  },
+  {
+    "name": "pin",
+    "category": "actions",
+    "query": "Pin",
+    "alt": "Pin"
+  },
+  {
+    "name": "attach",
+    "category": "actions",
+    "query": "Attachment",
+    "alt": "Attachment"
+  },
+  {
+    "name": "import",
+    "category": "actions",
+    "query": "Import File",
+    "alt": "Import File"
+  },
+  {
+    "name": "export",
+    "category": "actions",
+    "query": "Export File",
+    "alt": "Export File"
+  },
+  {
+    "name": "power",
+    "category": "actions",
+    "query": "Power Button",
+    "alt": "Power Button"
+  },
+  {
+    "name": "logout",
+    "category": "actions",
+    "query": "Logout",
+    "alt": "Logout"
+  },
+  {
+    "name": "login",
+    "category": "actions",
+    "query": "Login",
+    "alt": "Login"
+  },
+  {
+    "name": "flag-alt",
+    "category": "actions",
+    "query": "Flag",
+    "alt": "Flag"
+  },
+  {
+    "name": "star-add",
+    "category": "actions",
+    "query": "Rating Star Add",
+    "alt": "Rating Star Add"
+  },
+  {
+    "name": "send-alt",
+    "category": "actions",
+    "query": "Send Email",
+    "alt": "Send Email"
+  },
+  {
+    "name": "forward-alt",
+    "category": "actions",
+    "query": "Button Fast Forward",
+    "alt": "Button Fast Forward"
+  },
+  {
+    "name": "reply-alt",
+    "category": "actions",
+    "query": "Reply To Message",
+    "alt": "Reply To Message"
+  },
+  {
+    "name": "quote-reply",
+    "category": "actions",
+    "query": "Quote",
+    "alt": "Quote"
+  },
+  {
+    "name": "edit-alt",
+    "category": "actions",
+    "query": "Edit Pdf",
+    "alt": "Edit Pdf"
+  },
+  {
+    "name": "create",
+    "category": "actions",
+    "query": "Create Chart",
+    "alt": "Create Chart"
+  },
+  {
+    "name": "new",
+    "category": "actions",
+    "query": "New Spreadsheet",
+    "alt": "New Spreadsheet"
+  },
+  {
+    "name": "move",
+    "category": "actions",
+    "query": "Move Down",
+    "alt": "Move Down"
+  },
+  {
+    "name": "close-alt",
+    "category": "actions",
+    "query": "Close",
+    "alt": "Close"
+  },
+  {
+    "name": "locate",
+    "category": "actions",
+    "query": "Earth Locate",
+    "alt": "Earth Locate"
+  },
+  {
+    "name": "open",
+    "category": "actions",
+    "query": "Open Eyes",
+    "alt": "Open Eyes"
+  },
+  {
+    "name": "erase",
+    "category": "actions",
+    "query": "Eraser",
+    "alt": "Eraser"
+  },
+  {
+    "name": "find",
+    "category": "actions",
+    "query": "Monitor Find",
+    "alt": "Monitor Find"
+  },
+  {
+    "name": "browse",
+    "category": "actions",
+    "query": "E Commerce Apparel Browse",
+    "alt": "E Commerce Apparel Browse"
+  },
+  {
+    "name": "sync",
+    "category": "actions",
+    "query": "Synchronize Arrow 2",
+    "alt": "Synchronize Arrow"
+  },
+  {
+    "name": "share-alt",
+    "category": "actions",
+    "query": "Share 3",
+    "alt": "Share"
+  },
+  {
+    "name": "cancel",
+    "category": "actions",
+    "query": "Lock Cancel Slash",
+    "alt": "Lock Cancel Slash"
+  },
+  {
+    "name": "discover",
+    "category": "actions",
+    "query": "Discover Pay",
+    "alt": "Discover Pay"
+  },
+  {
+    "name": "remind",
+    "category": "actions",
+    "query": "Reminder Hand Sign",
+    "alt": "Reminder Hand Sign"
+  },
+  {
+    "name": "clear",
+    "category": "actions",
+    "query": "Alert Clear Notification",
+    "alt": "Alert Clear Notification"
+  },
+  {
+    "name": "search-alt",
+    "category": "actions",
+    "query": "Search 1",
+    "alt": "Search"
+  },
+  {
+    "name": "explore",
+    "category": "actions",
+    "query": "Space Explore",
+    "alt": "Space Explore"
+  },
+  {
+    "name": "snooze",
+    "category": "actions",
+    "query": "Snooze Return Repeat",
+    "alt": "Snooze Return Repeat"
+  },
+  {
+    "name": "draft",
+    "category": "actions",
+    "query": "Workflow Request Draft",
+    "alt": "Workflow Request Draft"
+  }
+]

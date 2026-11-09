@@ -27,6 +27,8 @@ type ResultsMapProps = {
   stickyTop?: number
   /** 0-based offset so pin labels match paginated list numbering. */
   indexOffset?: number
+  /** When true, fill a flex parent instead of sticky viewport height. */
+  fillParent?: boolean
 }
 
 function createPinIcon(label: string | number, selected: boolean) {
@@ -145,6 +147,7 @@ export function ResultsMap({
   onSelect,
   stickyTop = 72,
   indexOffset = 0,
+  fillParent = false,
 }: ResultsMapProps) {
   // Fill the viewport under sticky chrome so the map runs to the bottom edge.
   const desktopHeight = `calc(100dvh - ${stickyTop}px)`
@@ -153,11 +156,21 @@ export function ResultsMap({
     <Paper
       variant="outlined"
       sx={{
-        height: { xs: 280, sm: 360, lg: desktopHeight },
-        minHeight: { xs: 280, sm: 360, lg: desktopHeight },
-        position: { xs: 'relative', lg: 'sticky' },
-        top: { lg: stickyTop },
-        alignSelf: 'start',
+        ...(fillParent
+          ? {
+              height: { xs: 280, sm: 360, lg: '100%' },
+              minHeight: { xs: 280, sm: 360, lg: 0 },
+              position: 'relative',
+              flex: 1,
+              alignSelf: 'stretch',
+            }
+          : {
+              height: { xs: 280, sm: 360, lg: desktopHeight },
+              minHeight: { xs: 280, sm: 360, lg: desktopHeight },
+              position: { xs: 'relative', lg: 'sticky' },
+              top: { lg: stickyTop },
+              alignSelf: 'start',
+            }),
         width: '100%',
         overflow: 'hidden',
         bgcolor: '#dfe8ef',

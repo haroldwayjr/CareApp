@@ -1,0 +1,17 @@
+const code=figma.root.getSharedPluginData('careapp','s04_0')+figma.root.getSharedPluginData('careapp','s04_1')+figma.root.getSharedPluginData('careapp','s04_2')+figma.root.getSharedPluginData('careapp','s04_3')+figma.root.getSharedPluginData('careapp','s04_4')+figma.root.getSharedPluginData('careapp','s04_5')+figma.root.getSharedPluginData('careapp','s04_6')+figma.root.getSharedPluginData('careapp','s04_7')+figma.root.getSharedPluginData('careapp','s04_8')+figma.root.getSharedPluginData('careapp','s04_9')+figma.root.getSharedPluginData('careapp','s04_10')+figma.root.getSharedPluginData('careapp','s04_11')+figma.root.getSharedPluginData('careapp','s04_12')+figma.root.getSharedPluginData('careapp','s04_13');
+figma.root.setSharedPluginData('careapp','s04_0','');
+figma.root.setSharedPluginData('careapp','s04_1','');
+figma.root.setSharedPluginData('careapp','s04_2','');
+figma.root.setSharedPluginData('careapp','s04_3','');
+figma.root.setSharedPluginData('careapp','s04_4','');
+figma.root.setSharedPluginData('careapp','s04_5','');
+figma.root.setSharedPluginData('careapp','s04_6','');
+figma.root.setSharedPluginData('careapp','s04_7','');
+figma.root.setSharedPluginData('careapp','s04_8','');
+figma.root.setSharedPluginData('careapp','s04_9','');
+figma.root.setSharedPluginData('careapp','s04_10','');
+figma.root.setSharedPluginData('careapp','s04_11','');
+figma.root.setSharedPluginData('careapp','s04_12','');
+figma.root.setSharedPluginData('careapp','s04_13','');
+const AsyncFunction=Object.getPrototypeOf(async function(){}).constructor;
+return await new AsyncFunction(code)();

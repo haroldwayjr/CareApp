@@ -1,0 +1,106 @@
+{
+  "totals": {
+    "ok": 395,
+    "missing": 0,
+    "failed": 0
+  },
+  "batches": [
+    {
+      "batch": "apply_00",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0,
+      "note": "via s000+s001+s002"
+    },
+    {
+      "batch": "apply_01",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_02",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_03",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_04",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_05",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_06",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_07",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_08",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_09",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_10",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_11",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_12",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_13",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_14",
+      "ok": 25,
+      "missing": 0,
+      "failed": 0
+    },
+    {
+      "batch": "apply_15",
+      "ok": 20,
+      "missing": 0,
+      "failed": 0
+    }
+  ]
+}

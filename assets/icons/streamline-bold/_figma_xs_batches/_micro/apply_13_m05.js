@@ -1,0 +1,67 @@
+
+const page = figma.root.children.find(p => /Icons/i.test(p.name));
+await figma.setCurrentPageAsync(page);
+
+const collections = await figma.variables.getLocalVariableCollectionsAsync();
+let iconDefault = null;
+for (const coll of collections) {
+  for (const id of coll.variableIds) {
+    const v = await figma.variables.getVariableByIdAsync(id);
+    if (v && v.name === 'icon/default') iconDefault = v;
+  }
+}
+
+function bindFills(root) {
+  const stack = [root];
+  while (stack.length) {
+    const n = stack.pop();
+    if ('constraints' in n) n.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    if (n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION' || n.type === 'ELLIPSE' || n.type === 'STAR' || n.type === 'POLYGON') {
+      const paint = figma.variables.setBoundVariableForPaint(
+        { type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', iconDefault);
+      n.fills = [paint];
+      n.strokes = [];
+    }
+    if ('children' in n) for (const c of n.children) stack.push(c);
+  }
+}
+
+function applyBoldXs(set, svg) {
+  const xs = set.children.find(c => c.name === 'Size=xs');
+  const md = set.children.find(c => c.name === 'Size=md');
+  if (!xs) return { ok: false, reason: 'no-xs' };
+  const was = xs.visible;
+  xs.visible = true;
+  for (const c of [...xs.children]) c.remove();
+  const node = figma.createNodeFromSvg(svg);
+  node.name = set.name.split('/').pop();
+  node.resize(16, 16);
+  node.x = 0; node.y = 0;
+  node.clipsContent = false;
+  if ('constraints' in node) node.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+  xs.appendChild(node);
+  try { xs.resizeWithoutConstraints(16, 16); } catch (_) { try { xs.resize(16, 16); } catch (__) {} }
+  bindFills(node);
+  xs.clipsContent = false;
+  xs.visible = false; // keep catalog md-only
+  if (md) md.visible = true;
+  try { set.resizeWithoutConstraints(24, 24); } catch (_) {}
+  set.clipsContent = true;
+  return { ok: true };
+}
+
+const BATCH = [{"setName": "icon/misc/snow", "name": "snow", "category": "misc", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Weather-Snow--Streamline-Ultimate\">\n  <desc>\n    Weather Snow Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <g>\n      <path d=\"M22.09 12.07a0.25 0.25 0 0 1 -0.09 -0.19 7 7 0 0 0 -13.66 -2 0.23 0.23 0 0 1 -0.22 0.17 5.5 5.5 0 0 0 -1.57 10.59 0.25 0.25 0 0 0 0.28 -0.07 0.24 0.24 0 0 0 0 -0.29A2.5 2.5 0 0 1 6.5 19a2 2 0 0 1 0 -0.43 0.25 0.25 0 0 0 -0.1 -0.24A3.5 3.5 0 0 1 8.5 12l0.5 0a1 1 0 0 0 1.11 -0.83A5 5 0 0 1 20 12l0 0.43a1 1 0 0 0 0.5 1 3 3 0 0 1 0.88 4.45 0.28 0.28 0 0 0 0 0.25 2.52 2.52 0 0 1 0 1.82 0.25 0.25 0 0 0 0.07 0.28 0.26 0.26 0 0 0 0.3 0 5 5 0 0 0 0.39 -8.14Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n      <path d=\"M8 23a1 1 0 1 0 2 0 1 1 0 1 0 -2 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n      <path d=\"M10.5 21a1 1 0 1 0 2 0 1 1 0 1 0 -2 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n      <path d=\"M13 23a1 1 0 1 0 2 0 1 1 0 1 0 -2 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n      <path d=\"M15.5 21a1 1 0 1 0 2 0 1 1 0 1 0 -2 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n      <path d=\"M18 23a1 1 0 1 0 2 0 1 1 0 1 0 -2 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n      <path d=\"M8 19a1 1 0 1 0 2 0 1 1 0 1 0 -2 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n      <path d=\"M10.5 17a1 1 0 1 0 2 0 1 1 0 1 0 -2 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n      <path d=\"M13 19a1 1 0 1 0 2 0 1 1 0 1 0 -2 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n      <path d=\"M15.5 17a1 1 0 1 0 2 0 1 1 0 1 0 -2 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n      <path d=\"M18 19a1 1 0 1 0 2 0 1 1 0 1 0 -2 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n    </g>\n    <path d=\"M8.25 3a1 1 0 0 0 1 -1V1a1 1 0 0 0 -2 0v1a1 1 0 0 0 1 1\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M2.88 4.3a1 1 0 0 0 0.71 0.29 1 1 0 0 0 0.71 -0.29 1 1 0 0 0 0 -1.42l-0.71 -0.7a1 1 0 0 0 -1.41 1.41Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M3 8.25a1 1 0 0 0 -1 -1H1a1 1 0 0 0 0 2h1a1 1 0 0 0 1 -1\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M14.08 2.42a1 1 0 0 0 -1.41 0l-0.71 0.7a1 1 0 0 0 -0.29 0.67A0.25 0.25 0 0 0 12 4a8.75 8.75 0 0 1 2.12 -0.5 0.23 0.23 0 0 0 0.22 -0.19 1 1 0 0 0 -0.26 -0.89\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M5.46 9.54a0.25 0.25 0 0 0 0.12 -0.29 2.76 2.76 0 0 1 -0.1 -0.77 3 3 0 0 1 3 -3 2.91 2.91 0 0 1 1.1 0.21 0.28 0.28 0 0 0 0.25 0 8 8 0 0 1 1.37 -0.92 0.23 0.23 0 0 0 0.13 -0.21 0.22 0.22 0 0 0 -0.11 -0.22 5 5 0 0 0 -7.74 4.14 5.13 5.13 0 0 0 0.33 1.8 0.26 0.26 0 0 0 0.18 0.16 0.23 0.23 0 0 0 0.22 -0.06 7.19 7.19 0 0 1 1.25 -0.84\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"}, {"setName": "icon/misc/coffee", "name": "coffee", "category": "misc", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Coffee-Jar--Streamline-Ultimate\">\n  <desc>\n    Coffee Jar Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M5.5 3.5h13A0.5 0.5 0 0 0 19 3V1.5A1.5 1.5 0 0 0 17.5 0h-11A1.5 1.5 0 0 0 5 1.5V3a0.5 0.5 0 0 0 0.5 0.5\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"m21 10.31 -2 -5a0.49 0.49 0 0 0 -0.5 -0.31h-13a0.49 0.49 0 0 0 -0.5 0.31l-2 5a0.43 0.43 0 0 0 0 0.19v11A2.5 2.5 0 0 0 5.5 24h13a2.5 2.5 0 0 0 2.5 -2.5v-11a0.43 0.43 0 0 0 0 -0.19M9.52 19.08a0.25 0.25 0 0 1 -0.34 0c-1.37 -1.35 -1.6 -3.94 -0.41 -6.31a5.81 5.81 0 0 1 4.79 -3.5 0.25 0.25 0 0 1 0.24 0.16 0.27 0.27 0 0 1 -0.08 0.28c-1.93 1.54 -2 3.55 -2.1 5.21 -0.17 3.58 -1.09 3.28 -2.1 4.16m6.71 -2.59A5.92 5.92 0 0 1 11.66 20a0.26 0.26 0 0 1 -0.24 -0.16 0.23 0.23 0 0 1 0.06 -0.28c1.48 -1.31 1.57 -3 1.64 -4.57 0.16 -3.57 1 -3.56 2.47 -4.72a0.25 0.25 0 0 1 0.34 0c1.27 1.4 1.45 3.91 0.3 6.22\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"}, {"setName": "icon/misc/train", "name": "train", "category": "misc", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Train-Location--Streamline-Ultimate\">\n  <desc>\n    Train Location Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"m19.41 23 -1.2 -4a1 1 0 0 0 0.65 -0.93V7.56a2.57 2.57 0 0 0 -1.71 -2.39 0.64 0.64 0 0 0 -0.24 0h-0.22a9.9 9.9 0 0 1 -0.75 1.49h0.81a1.06 1.06 0 0 1 0.61 0.94v4.6H6.67V7.56a1.08 1.08 0 0 1 1.11 -1h0.76A9.58 9.58 0 0 1 7.8 5a2.6 2.6 0 0 0 -2.63 2.56v10.49A1 1 0 0 0 6 19l-1.23 4a0.74 0.74 0 0 0 0.5 0.93 0.78 0.78 0 0 0 0.22 0 0.74 0.74 0 0 0 0.71 -0.53l0.22 -0.73h11.34l0.22 0.73a0.74 0.74 0 0 0 0.71 0.53 0.78 0.78 0 0 0 0.22 0 0.74 0.74 0 0 0 0.5 -0.93m-8.52 -8.16h2.54a0.75 0.75 0 0 1 0 1.5h-2.54a0.75 0.75 0 0 1 0 -1.5m-4 6.36 0.57 -1.9a0.82 0.82 0 0 0 0 -0.27h9.26a0.83 0.83 0 0 0 0 0.27l0.56 1.9Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M12.25 8.82s3.31 -3.31 3.31 -5.51a3.31 3.31 0 0 0 -6.56 0c0 2.2 3.25 5.51 3.25 5.51m0 -6.64a1.13 1.13 0 1 1 -1.13 1.13 1.14 1.14 0 0 1 1.13 -1.13\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"}];
+let ok = 0, missing = 0, failed = 0;
+const miss = [], fail = [];
+for (const item of BATCH) {
+  const set = page.findOne(n => n.type === 'COMPONENT_SET' && n.name === item.setName);
+  if (!set) { missing++; if (miss.length < 5) miss.push(item.setName); continue; }
+  try {
+    const r = applyBoldXs(set, item.svg);
+    if (r.ok) ok++; else { failed++; fail.push({ name: item.setName, r }); }
+  } catch (e) {
+    failed++;
+    if (fail.length < 5) fail.push({ name: item.setName, err: String(e) });
+  }
+}
+return { ok, missing, failed, miss, fail };

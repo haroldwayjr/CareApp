@@ -1,0 +1,1582 @@
+{
+  "icon/actions/add": {
+    "rel": "actions/add.svg",
+    "paths": 2
+  },
+  "icon/actions/archive": {
+    "rel": "actions/archive.svg",
+    "paths": 3
+  },
+  "icon/actions/attach": {
+    "rel": "actions/attach.svg",
+    "paths": 1
+  },
+  "icon/actions/browse": {
+    "rel": "actions/browse.svg",
+    "paths": 5
+  },
+  "icon/actions/cancel": {
+    "rel": "actions/cancel.svg",
+    "paths": 4
+  },
+  "icon/actions/check.circle": {
+    "rel": "actions/check-circle.svg",
+    "paths": 2
+  },
+  "icon/actions/check": {
+    "rel": "actions/check.svg",
+    "paths": 1
+  },
+  "icon/actions/clear": {
+    "rel": "actions/clear.svg",
+    "paths": 7
+  },
+  "icon/actions/close.alt": {
+    "rel": "actions/close-alt.svg",
+    "paths": 2
+  },
+  "icon/actions/copy": {
+    "rel": "actions/copy.svg",
+    "paths": 2
+  },
+  "icon/actions/create": {
+    "rel": "actions/create.svg",
+    "paths": 4
+  },
+  "icon/actions/cut": {
+    "rel": "actions/cut.svg",
+    "paths": 4
+  },
+  "icon/actions/delete": {
+    "rel": "actions/delete.svg",
+    "paths": 2
+  },
+  "icon/actions/discover": {
+    "rel": "actions/discover.svg",
+    "paths": 8
+  },
+  "icon/actions/download": {
+    "rel": "actions/download.svg",
+    "paths": 2
+  },
+  "icon/actions/draft": {
+    "rel": "actions/draft.svg",
+    "paths": 10
+  },
+  "icon/actions/duplicate": {
+    "rel": "actions/duplicate.svg",
+    "paths": 2
+  },
+  "icon/actions/edit.alt": {
+    "rel": "actions/edit-alt.svg",
+    "paths": 5
+  },
+  "icon/actions/edit": {
+    "rel": "actions/edit.svg",
+    "paths": 3
+  },
+  "icon/actions/empty.trash": {
+    "rel": "actions/empty-trash.svg",
+    "paths": 7
+  },
+  "icon/actions/erase": {
+    "rel": "actions/erase.svg",
+    "paths": 7
+  },
+  "icon/actions/explore": {
+    "rel": "actions/explore.svg",
+    "paths": 10
+  },
+  "icon/actions/export": {
+    "rel": "actions/export.svg",
+    "paths": 3
+  },
+  "icon/actions/find": {
+    "rel": "actions/find.svg",
+    "paths": 6
+  },
+  "icon/actions/flag.alt": {
+    "rel": "actions/flag-alt.svg",
+    "paths": 4
+  },
+  "icon/actions/forward.alt": {
+    "rel": "actions/forward-alt.svg",
+    "paths": 2
+  },
+  "icon/actions/import": {
+    "rel": "actions/import.svg",
+    "paths": 3
+  },
+  "icon/actions/link": {
+    "rel": "actions/link.svg",
+    "paths": 3
+  },
+  "icon/actions/locate": {
+    "rel": "actions/locate.svg",
+    "paths": 6
+  },
+  "icon/actions/login": {
+    "rel": "actions/login.svg",
+    "paths": 3
+  },
+  "icon/actions/logout": {
+    "rel": "actions/logout.svg",
+    "paths": 3
+  },
+  "icon/actions/move": {
+    "rel": "actions/move.svg",
+    "paths": 3
+  },
+  "icon/actions/new": {
+    "rel": "actions/new.svg",
+    "paths": 7
+  },
+  "icon/actions/open": {
+    "rel": "actions/open.svg",
+    "paths": 6
+  },
+  "icon/actions/paste": {
+    "rel": "actions/paste.svg",
+    "paths": 8
+  },
+  "icon/actions/pin": {
+    "rel": "actions/pin.svg",
+    "paths": 2
+  },
+  "icon/actions/power": {
+    "rel": "actions/power.svg",
+    "paths": 2
+  },
+  "icon/actions/print": {
+    "rel": "actions/print.svg",
+    "paths": 7
+  },
+  "icon/actions/quote.reply": {
+    "rel": "actions/quote-reply.svg",
+    "paths": 6
+  },
+  "icon/actions/redo": {
+    "rel": "actions/redo.svg",
+    "paths": 2
+  },
+  "icon/actions/refresh": {
+    "rel": "actions/refresh.svg",
+    "paths": 5
+  },
+  "icon/actions/remind": {
+    "rel": "actions/remind.svg",
+    "paths": 8
+  },
+  "icon/actions/reply.alt": {
+    "rel": "actions/reply-alt.svg",
+    "paths": 8
+  },
+  "icon/actions/restore": {
+    "rel": "actions/restore.svg",
+    "paths": 4
+  },
+  "icon/actions/save": {
+    "rel": "actions/save.svg",
+    "paths": 6
+  },
+  "icon/actions/search.alt": {
+    "rel": "actions/search-alt.svg",
+    "paths": 2
+  },
+  "icon/actions/select.all": {
+    "rel": "actions/select-all.svg",
+    "paths": 5
+  },
+  "icon/actions/select": {
+    "rel": "actions/select.svg",
+    "paths": 17
+  },
+  "icon/actions/send.alt": {
+    "rel": "actions/send-alt.svg",
+    "paths": 3
+  },
+  "icon/actions/share.alt": {
+    "rel": "actions/share-alt.svg",
+    "paths": 2
+  },
+  "icon/actions/share": {
+    "rel": "actions/share.svg",
+    "paths": 5
+  },
+  "icon/actions/snooze": {
+    "rel": "actions/snooze.svg",
+    "paths": 5
+  },
+  "icon/actions/sort.asc": {
+    "rel": "actions/sort-asc.svg",
+    "paths": 3
+  },
+  "icon/actions/sort.desc": {
+    "rel": "actions/sort-desc.svg",
+    "paths": 3
+  },
+  "icon/actions/sort": {
+    "rel": "actions/sort.svg",
+    "paths": 4
+  },
+  "icon/actions/star.add": {
+    "rel": "actions/star-add.svg",
+    "paths": 4
+  },
+  "icon/actions/swap": {
+    "rel": "actions/swap.svg",
+    "paths": 7
+  },
+  "icon/actions/sync": {
+    "rel": "actions/sync.svg",
+    "paths": 3
+  },
+  "icon/actions/trash": {
+    "rel": "actions/trash.svg",
+    "paths": 5
+  },
+  "icon/actions/undo": {
+    "rel": "actions/undo.svg",
+    "paths": 2
+  },
+  "icon/actions/upload": {
+    "rel": "actions/upload.svg",
+    "paths": 5
+  },
+  "icon/commerce/bag": {
+    "rel": "commerce/bag.svg",
+    "paths": 2
+  },
+  "icon/commerce/bank": {
+    "rel": "commerce/bank.svg",
+    "paths": 7
+  },
+  "icon/commerce/barcode": {
+    "rel": "commerce/barcode.svg",
+    "paths": 7
+  },
+  "icon/commerce/cart": {
+    "rel": "commerce/cart.svg",
+    "paths": 9
+  },
+  "icon/commerce/chart.bar": {
+    "rel": "commerce/chart-bar.svg",
+    "paths": 4
+  },
+  "icon/commerce/chart.line": {
+    "rel": "commerce/chart-line.svg",
+    "paths": 13
+  },
+  "icon/commerce/coins": {
+    "rel": "commerce/coins.svg",
+    "paths": 7
+  },
+  "icon/commerce/coupon": {
+    "rel": "commerce/coupon.svg",
+    "paths": 7
+  },
+  "icon/commerce/credit.card": {
+    "rel": "commerce/credit-card.svg",
+    "paths": 6
+  },
+  "icon/commerce/discount": {
+    "rel": "commerce/discount.svg",
+    "paths": 3
+  },
+  "icon/commerce/dollar": {
+    "rel": "commerce/dollar.svg",
+    "paths": 8
+  },
+  "icon/commerce/gift": {
+    "rel": "commerce/gift.svg",
+    "paths": 7
+  },
+  "icon/commerce/invoice": {
+    "rel": "commerce/invoice.svg",
+    "paths": 7
+  },
+  "icon/commerce/payment": {
+    "rel": "commerce/payment.svg",
+    "paths": 11
+  },
+  "icon/commerce/piggy.bank": {
+    "rel": "commerce/piggy-bank.svg",
+    "paths": 5
+  },
+  "icon/commerce/qr.code": {
+    "rel": "commerce/qr-code.svg",
+    "paths": 20
+  },
+  "icon/commerce/receipt": {
+    "rel": "commerce/receipt.svg",
+    "paths": 6
+  },
+  "icon/commerce/store": {
+    "rel": "commerce/store.svg",
+    "paths": 3
+  },
+  "icon/commerce/wallet": {
+    "rel": "commerce/wallet.svg",
+    "paths": 7
+  },
+  "icon/comms/calendar": {
+    "rel": "comms/calendar.svg",
+    "paths": 4
+  },
+  "icon/comms/chat": {
+    "rel": "comms/chat.svg",
+    "paths": 1
+  },
+  "icon/comms/clock": {
+    "rel": "comms/clock.svg",
+    "paths": 6
+  },
+  "icon/comms/comment": {
+    "rel": "comms/comment.svg",
+    "paths": 6
+  },
+  "icon/comms/contacts": {
+    "rel": "comms/contacts.svg",
+    "paths": 5
+  },
+  "icon/comms/forward.mail": {
+    "rel": "comms/forward-mail.svg",
+    "paths": 4
+  },
+  "icon/comms/group": {
+    "rel": "comms/group.svg",
+    "paths": 2
+  },
+  "icon/comms/inbox": {
+    "rel": "comms/inbox.svg",
+    "paths": 4
+  },
+  "icon/comms/mail": {
+    "rel": "comms/mail.svg",
+    "paths": 4
+  },
+  "icon/comms/meeting": {
+    "rel": "comms/meeting.svg",
+    "paths": 9
+  },
+  "icon/comms/message": {
+    "rel": "comms/message.svg",
+    "paths": 4
+  },
+  "icon/comms/phone.off": {
+    "rel": "comms/phone-off.svg",
+    "paths": 3
+  },
+  "icon/comms/phone": {
+    "rel": "comms/phone.svg",
+    "paths": 1
+  },
+  "icon/comms/presentation": {
+    "rel": "comms/presentation.svg",
+    "paths": 7
+  },
+  "icon/comms/reply.all": {
+    "rel": "comms/reply-all.svg",
+    "paths": 2
+  },
+  "icon/comms/reply": {
+    "rel": "comms/reply.svg",
+    "paths": 3
+  },
+  "icon/comms/send": {
+    "rel": "comms/send.svg",
+    "paths": 2
+  },
+  "icon/comms/team": {
+    "rel": "comms/team.svg",
+    "paths": 14
+  },
+  "icon/comms/user.add": {
+    "rel": "comms/user-add.svg",
+    "paths": 6
+  },
+  "icon/comms/user.check": {
+    "rel": "comms/user-check.svg",
+    "paths": 3
+  },
+  "icon/comms/user.remove": {
+    "rel": "comms/user-remove.svg",
+    "paths": 5
+  },
+  "icon/comms/user": {
+    "rel": "comms/user.svg",
+    "paths": 4
+  },
+  "icon/comms/users": {
+    "rel": "comms/users.svg",
+    "paths": 9
+  },
+  "icon/comms/video.call": {
+    "rel": "comms/video-call.svg",
+    "paths": 7
+  },
+  "icon/files/agreement": {
+    "rel": "files/agreement.svg",
+    "paths": 6
+  },
+  "icon/files/attachment": {
+    "rel": "files/attachment.svg",
+    "paths": 1
+  },
+  "icon/files/blog": {
+    "rel": "files/blog.svg",
+    "paths": 3
+  },
+  "icon/files/bookmark": {
+    "rel": "files/bookmark.svg",
+    "paths": 1
+  },
+  "icon/files/box.alt": {
+    "rel": "files/box-alt.svg",
+    "paths": 8
+  },
+  "icon/files/cabinet": {
+    "rel": "files/cabinet.svg",
+    "paths": 7
+  },
+  "icon/files/clipboard": {
+    "rel": "files/clipboard.svg",
+    "paths": 4
+  },
+  "icon/files/cloud.download": {
+    "rel": "files/cloud-download.svg",
+    "paths": 3
+  },
+  "icon/files/cloud.upload": {
+    "rel": "files/cloud-upload.svg",
+    "paths": 3
+  },
+  "icon/files/cloud": {
+    "rel": "files/cloud.svg",
+    "paths": 1
+  },
+  "icon/files/contract": {
+    "rel": "files/contract.svg",
+    "paths": 5
+  },
+  "icon/files/database": {
+    "rel": "files/database.svg",
+    "paths": 9
+  },
+  "icon/files/document": {
+    "rel": "files/document.svg",
+    "paths": 1
+  },
+  "icon/files/drawer": {
+    "rel": "files/drawer.svg",
+    "paths": 1
+  },
+  "icon/files/envelope": {
+    "rel": "files/envelope.svg",
+    "paths": 4
+  },
+  "icon/files/faq": {
+    "rel": "files/faq.svg",
+    "paths": 7
+  },
+  "icon/files/file.code": {
+    "rel": "files/file-code.svg",
+    "paths": 12
+  },
+  "icon/files/file.image": {
+    "rel": "files/file-image.svg",
+    "paths": 3
+  },
+  "icon/files/file.pdf": {
+    "rel": "files/file-pdf.svg",
+    "paths": 5
+  },
+  "icon/files/file.text": {
+    "rel": "files/file-text.svg",
+    "paths": 7
+  },
+  "icon/files/file.zip": {
+    "rel": "files/file-zip.svg",
+    "paths": 8
+  },
+  "icon/files/file": {
+    "rel": "files/file.svg",
+    "paths": 2
+  },
+  "icon/files/folder.add": {
+    "rel": "files/folder-add.svg",
+    "paths": 5
+  },
+  "icon/files/folder.shared": {
+    "rel": "files/folder-shared.svg",
+    "paths": 3
+  },
+  "icon/files/folder.star": {
+    "rel": "files/folder-star.svg",
+    "paths": 3
+  },
+  "icon/files/folder": {
+    "rel": "files/folder.svg",
+    "paths": 1
+  },
+  "icon/files/guide": {
+    "rel": "files/guide.svg",
+    "paths": 5
+  },
+  "icon/files/hard.drive": {
+    "rel": "files/hard-drive.svg",
+    "paths": 7
+  },
+  "icon/files/letter": {
+    "rel": "files/letter.svg",
+    "paths": 9
+  },
+  "icon/files/magazine": {
+    "rel": "files/magazine.svg",
+    "paths": 4
+  },
+  "icon/files/manual": {
+    "rel": "files/manual.svg",
+    "paths": 6
+  },
+  "icon/files/newspaper": {
+    "rel": "files/newspaper.svg",
+    "paths": 8
+  },
+  "icon/files/notes": {
+    "rel": "files/notes.svg",
+    "paths": 7
+  },
+  "icon/files/package.alt": {
+    "rel": "files/package-alt.svg",
+    "paths": 8
+  },
+  "icon/files/parcel": {
+    "rel": "files/parcel.svg",
+    "paths": 3
+  },
+  "icon/files/policy": {
+    "rel": "files/policy.svg",
+    "paths": 8
+  },
+  "icon/files/portfolio": {
+    "rel": "files/portfolio.svg",
+    "paths": 4
+  },
+  "icon/files/postcard": {
+    "rel": "files/postcard.svg",
+    "paths": 6
+  },
+  "icon/files/press": {
+    "rel": "files/press.svg",
+    "paths": 3
+  },
+  "icon/files/resume": {
+    "rel": "files/resume.svg",
+    "paths": 6
+  },
+  "icon/files/server": {
+    "rel": "files/server.svg",
+    "paths": 17
+  },
+  "icon/files/shelf": {
+    "rel": "files/shelf.svg",
+    "paths": 4
+  },
+  "icon/files/tag": {
+    "rel": "files/tag.svg",
+    "paths": 6
+  },
+  "icon/files/usb": {
+    "rel": "files/usb.svg",
+    "paths": 8
+  },
+  "icon/files/wiki": {
+    "rel": "files/wiki.svg",
+    "paths": 6
+  },
+  "icon/health/911": {
+    "rel": "health/911.svg",
+    "paths": 4
+  },
+  "icon/health/ambulance": {
+    "rel": "health/ambulance.svg",
+    "paths": 11
+  },
+  "icon/health/appointment": {
+    "rel": "health/appointment.svg",
+    "paths": 5
+  },
+  "icon/health/bandage": {
+    "rel": "health/bandage.svg",
+    "paths": 10
+  },
+  "icon/health/bed": {
+    "rel": "health/bed.svg",
+    "paths": 6
+  },
+  "icon/health/blood.pressure": {
+    "rel": "health/blood-pressure.svg",
+    "paths": 7
+  },
+  "icon/health/blood": {
+    "rel": "health/blood.svg",
+    "paths": 5
+  },
+  "icon/health/brain": {
+    "rel": "health/brain.svg",
+    "paths": 10
+  },
+  "icon/health/cancer": {
+    "rel": "health/cancer.svg",
+    "paths": 19
+  },
+  "icon/health/clipboard.health": {
+    "rel": "health/clipboard-health.svg",
+    "paths": 7
+  },
+  "icon/health/counseling": {
+    "rel": "health/counseling.svg",
+    "paths": 6
+  },
+  "icon/health/crisis": {
+    "rel": "health/crisis.svg",
+    "paths": 2
+  },
+  "icon/health/dna": {
+    "rel": "health/dna.svg",
+    "paths": 8
+  },
+  "icon/health/doctor": {
+    "rel": "health/doctor.svg",
+    "paths": 9
+  },
+  "icon/health/dosage": {
+    "rel": "health/dosage.svg",
+    "paths": 5
+  },
+  "icon/health/ear": {
+    "rel": "health/ear.svg",
+    "paths": 5
+  },
+  "icon/health/emergency": {
+    "rel": "health/emergency.svg",
+    "paths": 8
+  },
+  "icon/health/eye.health": {
+    "rel": "health/eye-health.svg",
+    "paths": 3
+  },
+  "icon/health/family.care": {
+    "rel": "health/family-care.svg",
+    "paths": 5
+  },
+  "icon/health/first.aid": {
+    "rel": "health/first-aid.svg",
+    "paths": 4
+  },
+  "icon/health/fitness": {
+    "rel": "health/fitness.svg",
+    "paths": 7
+  },
+  "icon/health/glasses": {
+    "rel": "health/glasses.svg",
+    "paths": 5
+  },
+  "icon/health/hand.wash": {
+    "rel": "health/hand-wash.svg",
+    "paths": 2
+  },
+  "icon/health/hearing.aid": {
+    "rel": "health/hearing-aid.svg",
+    "paths": 7
+  },
+  "icon/health/heart": {
+    "rel": "health/heart.svg",
+    "paths": 2
+  },
+  "icon/health/hipaa": {
+    "rel": "health/hipaa.svg",
+    "paths": 5
+  },
+  "icon/health/hospital": {
+    "rel": "health/hospital.svg",
+    "paths": 2
+  },
+  "icon/health/inhaler": {
+    "rel": "health/inhaler.svg",
+    "paths": 5
+  },
+  "icon/health/insurance": {
+    "rel": "health/insurance.svg",
+    "paths": 4
+  },
+  "icon/health/lab": {
+    "rel": "health/lab.svg",
+    "paths": 11
+  },
+  "icon/health/lungs": {
+    "rel": "health/lungs.svg",
+    "paths": 9
+  },
+  "icon/health/mask": {
+    "rel": "health/mask.svg",
+    "paths": 2
+  },
+  "icon/health/medical.cross": {
+    "rel": "health/medical-cross.svg",
+    "paths": 1
+  },
+  "icon/health/meditation": {
+    "rel": "health/meditation.svg",
+    "paths": 6
+  },
+  "icon/health/mental.health": {
+    "rel": "health/mental-health.svg",
+    "paths": 3
+  },
+  "icon/health/mental.wellness": {
+    "rel": "health/mental-wellness.svg",
+    "paths": 7
+  },
+  "icon/health/microscope": {
+    "rel": "health/microscope.svg",
+    "paths": 7
+  },
+  "icon/health/mri": {
+    "rel": "health/mri.svg",
+    "paths": 9
+  },
+  "icon/health/neurology": {
+    "rel": "health/neurology.svg",
+    "paths": 12
+  },
+  "icon/health/nurse": {
+    "rel": "health/nurse.svg",
+    "paths": 11
+  },
+  "icon/health/orthopedics": {
+    "rel": "health/orthopedics.svg",
+    "paths": 8
+  },
+  "icon/health/otc": {
+    "rel": "health/otc.svg",
+    "paths": 5
+  },
+  "icon/health/oxygen": {
+    "rel": "health/oxygen.svg",
+    "paths": 3
+  },
+  "icon/health/patient": {
+    "rel": "health/patient.svg",
+    "paths": 7
+  },
+  "icon/health/pediatric": {
+    "rel": "health/pediatric.svg",
+    "paths": 5
+  },
+  "icon/health/pharmacy.alt": {
+    "rel": "health/pharmacy-alt.svg",
+    "paths": 5
+  },
+  "icon/health/pharmacy": {
+    "rel": "health/pharmacy.svg",
+    "paths": 3
+  },
+  "icon/health/pill": {
+    "rel": "health/pill.svg",
+    "paths": 3
+  },
+  "icon/health/pregnancy": {
+    "rel": "health/pregnancy.svg",
+    "paths": 6
+  },
+  "icon/health/prescription": {
+    "rel": "health/prescription.svg",
+    "paths": 4
+  },
+  "icon/health/prosthetic": {
+    "rel": "health/prosthetic.svg",
+    "paths": 4
+  },
+  "icon/health/pulse": {
+    "rel": "health/pulse.svg",
+    "paths": 6
+  },
+  "icon/health/radiology": {
+    "rel": "health/radiology.svg",
+    "paths": 5
+  },
+  "icon/health/sign.language": {
+    "rel": "health/sign-language.svg",
+    "paths": 6
+  },
+  "icon/health/sleep": {
+    "rel": "health/sleep.svg",
+    "paths": 3
+  },
+  "icon/health/stethoscope": {
+    "rel": "health/stethoscope.svg",
+    "paths": 9
+  },
+  "icon/health/surgery": {
+    "rel": "health/surgery.svg",
+    "paths": 14
+  },
+  "icon/health/symptoms": {
+    "rel": "health/symptoms.svg",
+    "paths": 8
+  },
+  "icon/health/syringe": {
+    "rel": "health/syringe.svg",
+    "paths": 8
+  },
+  "icon/health/thermometer": {
+    "rel": "health/thermometer.svg",
+    "paths": 3
+  },
+  "icon/health/tooth": {
+    "rel": "health/tooth.svg",
+    "paths": 2
+  },
+  "icon/health/ultrasound": {
+    "rel": "health/ultrasound.svg",
+    "paths": 7
+  },
+  "icon/health/vaccine": {
+    "rel": "health/vaccine.svg",
+    "paths": 11
+  },
+  "icon/health/virus": {
+    "rel": "health/virus.svg",
+    "paths": 19
+  },
+  "icon/health/waiting.room": {
+    "rel": "health/waiting-room.svg",
+    "paths": 5
+  },
+  "icon/health/weight.scale": {
+    "rel": "health/weight-scale.svg",
+    "paths": 6
+  },
+  "icon/health/wheelchair": {
+    "rel": "health/wheelchair.svg",
+    "paths": 4
+  },
+  "icon/media/brightness": {
+    "rel": "media/brightness.svg",
+    "paths": 9
+  },
+  "icon/media/camera": {
+    "rel": "media/camera.svg",
+    "paths": 5
+  },
+  "icon/media/cast": {
+    "rel": "media/cast.svg",
+    "paths": 5
+  },
+  "icon/media/contrast": {
+    "rel": "media/contrast.svg",
+    "paths": 6
+  },
+  "icon/media/crop": {
+    "rel": "media/crop.svg",
+    "paths": 8
+  },
+  "icon/media/equalizer": {
+    "rel": "media/equalizer.svg",
+    "paths": 11
+  },
+  "icon/media/film": {
+    "rel": "media/film.svg",
+    "paths": 3
+  },
+  "icon/media/flip": {
+    "rel": "media/flip.svg",
+    "paths": 12
+  },
+  "icon/media/gallery": {
+    "rel": "media/gallery.svg",
+    "paths": 5
+  },
+  "icon/media/headphones": {
+    "rel": "media/headphones.svg",
+    "paths": 3
+  },
+  "icon/media/image": {
+    "rel": "media/image.svg",
+    "paths": 8
+  },
+  "icon/media/mic.off": {
+    "rel": "media/mic-off.svg",
+    "paths": 6
+  },
+  "icon/media/mic": {
+    "rel": "media/mic.svg",
+    "paths": 3
+  },
+  "icon/media/music": {
+    "rel": "media/music.svg",
+    "paths": 3
+  },
+  "icon/media/pause": {
+    "rel": "media/pause.svg",
+    "paths": 3
+  },
+  "icon/media/play": {
+    "rel": "media/play.svg",
+    "paths": 2
+  },
+  "icon/media/playlist": {
+    "rel": "media/playlist.svg",
+    "paths": 6
+  },
+  "icon/media/record": {
+    "rel": "media/record.svg",
+    "paths": 4
+  },
+  "icon/media/rotate": {
+    "rel": "media/rotate.svg",
+    "paths": 4
+  },
+  "icon/media/skip.back": {
+    "rel": "media/skip-back.svg",
+    "paths": 3
+  },
+  "icon/media/skip.forward": {
+    "rel": "media/skip-forward.svg",
+    "paths": 3
+  },
+  "icon/media/stop": {
+    "rel": "media/stop.svg",
+    "paths": 2
+  },
+  "icon/media/video": {
+    "rel": "media/video.svg",
+    "paths": 2
+  },
+  "icon/media/volume.off": {
+    "rel": "media/volume-off.svg",
+    "paths": 3
+  },
+  "icon/media/volume": {
+    "rel": "media/volume.svg",
+    "paths": 8
+  },
+  "icon/misc/accessibility": {
+    "rel": "misc/accessibility.svg",
+    "paths": 3
+  },
+  "icon/misc/airplane": {
+    "rel": "misc/airplane.svg",
+    "paths": 3
+  },
+  "icon/misc/alarm": {
+    "rel": "misc/alarm.svg",
+    "paths": 7
+  },
+  "icon/misc/atom": {
+    "rel": "misc/atom.svg",
+    "paths": 3
+  },
+  "icon/misc/award": {
+    "rel": "misc/award.svg",
+    "paths": 2
+  },
+  "icon/misc/balloon": {
+    "rel": "misc/balloon.svg",
+    "paths": 6
+  },
+  "icon/misc/barcode.scan": {
+    "rel": "misc/barcode-scan.svg",
+    "paths": 10
+  },
+  "icon/misc/battery.charging": {
+    "rel": "misc/battery-charging.svg",
+    "paths": 9
+  },
+  "icon/misc/battery.full": {
+    "rel": "misc/battery-full.svg",
+    "paths": 4
+  },
+  "icon/misc/battery.low": {
+    "rel": "misc/battery-low.svg",
+    "paths": 2
+  },
+  "icon/misc/battery": {
+    "rel": "misc/battery.svg",
+    "paths": 1
+  },
+  "icon/misc/bike": {
+    "rel": "misc/bike.svg",
+    "paths": 5
+  },
+  "icon/misc/bluetooth": {
+    "rel": "misc/bluetooth.svg",
+    "paths": 5
+  },
+  "icon/misc/book": {
+    "rel": "misc/book.svg",
+    "paths": 5
+  },
+  "icon/misc/briefcase": {
+    "rel": "misc/briefcase.svg",
+    "paths": 6
+  },
+  "icon/misc/bug": {
+    "rel": "misc/bug.svg",
+    "paths": 3
+  },
+  "icon/misc/building": {
+    "rel": "misc/building.svg",
+    "paths": 11
+  },
+  "icon/misc/bus": {
+    "rel": "misc/bus.svg",
+    "paths": 9
+  },
+  "icon/misc/cake": {
+    "rel": "misc/cake.svg",
+    "paths": 4
+  },
+  "icon/misc/camera.off": {
+    "rel": "misc/camera-off.svg",
+    "paths": 4
+  },
+  "icon/misc/car": {
+    "rel": "misc/car.svg",
+    "paths": 8
+  },
+  "icon/misc/cloud.sun": {
+    "rel": "misc/cloud-sun.svg",
+    "paths": 10
+  },
+  "icon/misc/code": {
+    "rel": "misc/code.svg",
+    "paths": 3
+  },
+  "icon/misc/coffee": {
+    "rel": "misc/coffee.svg",
+    "paths": 4
+  },
+  "icon/misc/desktop": {
+    "rel": "misc/desktop.svg",
+    "paths": 6
+  },
+  "icon/misc/droplet": {
+    "rel": "misc/droplet.svg",
+    "paths": 1
+  },
+  "icon/misc/ecology": {
+    "rel": "misc/ecology.svg",
+    "paths": 2
+  },
+  "icon/misc/face.id": {
+    "rel": "misc/face-id.svg",
+    "paths": 8
+  },
+  "icon/misc/factory": {
+    "rel": "misc/factory.svg",
+    "paths": 10
+  },
+  "icon/misc/fingerprint": {
+    "rel": "misc/fingerprint.svg",
+    "paths": 11
+  },
+  "icon/misc/fire": {
+    "rel": "misc/fire.svg",
+    "paths": 2
+  },
+  "icon/misc/flash.off": {
+    "rel": "misc/flash-off.svg",
+    "paths": 3
+  },
+  "icon/misc/flash": {
+    "rel": "misc/flash.svg",
+    "paths": 1
+  },
+  "icon/misc/food": {
+    "rel": "misc/food.svg",
+    "paths": 5
+  },
+  "icon/misc/gas": {
+    "rel": "misc/gas.svg",
+    "paths": 5
+  },
+  "icon/misc/globe": {
+    "rel": "misc/globe.svg",
+    "paths": 3
+  },
+  "icon/misc/graduation": {
+    "rel": "misc/graduation.svg",
+    "paths": 4
+  },
+  "icon/misc/grid": {
+    "rel": "misc/grid.svg",
+    "paths": 3
+  },
+  "icon/misc/hammer": {
+    "rel": "misc/hammer.svg",
+    "paths": 2
+  },
+  "icon/misc/history": {
+    "rel": "misc/history.svg",
+    "paths": 7
+  },
+  "icon/misc/id.card": {
+    "rel": "misc/id-card.svg",
+    "paths": 5
+  },
+  "icon/misc/key": {
+    "rel": "misc/key.svg",
+    "paths": 6
+  },
+  "icon/misc/keyboard": {
+    "rel": "misc/keyboard.svg",
+    "paths": 10
+  },
+  "icon/misc/language": {
+    "rel": "misc/language.svg",
+    "paths": 11
+  },
+  "icon/misc/laptop": {
+    "rel": "misc/laptop.svg",
+    "paths": 3
+  },
+  "icon/misc/layout": {
+    "rel": "misc/layout.svg",
+    "paths": 4
+  },
+  "icon/misc/leaf": {
+    "rel": "misc/leaf.svg",
+    "paths": 9
+  },
+  "icon/misc/light.mode": {
+    "rel": "misc/light-mode.svg",
+    "paths": 5
+  },
+  "icon/misc/list": {
+    "rel": "misc/list.svg",
+    "paths": 12
+  },
+  "icon/misc/map.pin": {
+    "rel": "misc/map-pin.svg",
+    "paths": 2
+  },
+  "icon/misc/medal": {
+    "rel": "misc/medal.svg",
+    "paths": 6
+  },
+  "icon/misc/moon": {
+    "rel": "misc/moon.svg",
+    "paths": 1
+  },
+  "icon/misc/mouse": {
+    "rel": "misc/mouse.svg",
+    "paths": 3
+  },
+  "icon/misc/office": {
+    "rel": "misc/office.svg",
+    "paths": 8
+  },
+  "icon/misc/parking": {
+    "rel": "misc/parking.svg",
+    "paths": 8
+  },
+  "icon/misc/passport": {
+    "rel": "misc/passport.svg",
+    "paths": 6
+  },
+  "icon/misc/planet": {
+    "rel": "misc/planet.svg",
+    "paths": 28
+  },
+  "icon/misc/printer.alt": {
+    "rel": "misc/printer-alt.svg",
+    "paths": 6
+  },
+  "icon/misc/projector": {
+    "rel": "misc/projector.svg",
+    "paths": 18
+  },
+  "icon/misc/qr.scan": {
+    "rel": "misc/qr-scan.svg",
+    "paths": 6
+  },
+  "icon/misc/rain": {
+    "rel": "misc/rain.svg",
+    "paths": 3
+  },
+  "icon/misc/recycle": {
+    "rel": "misc/recycle.svg",
+    "paths": 9
+  },
+  "icon/misc/robot": {
+    "rel": "misc/robot.svg",
+    "paths": 7
+  },
+  "icon/misc/rocket": {
+    "rel": "misc/rocket.svg",
+    "paths": 5
+  },
+  "icon/misc/satellite": {
+    "rel": "misc/satellite.svg",
+    "paths": 4
+  },
+  "icon/misc/scanner": {
+    "rel": "misc/scanner.svg",
+    "paths": 4
+  },
+  "icon/misc/schedule": {
+    "rel": "misc/schedule.svg",
+    "paths": 5
+  },
+  "icon/misc/school": {
+    "rel": "misc/school.svg",
+    "paths": 6
+  },
+  "icon/misc/signal": {
+    "rel": "misc/signal.svg",
+    "paths": 4
+  },
+  "icon/misc/smartphone": {
+    "rel": "misc/smartphone.svg",
+    "paths": 6
+  },
+  "icon/misc/snow": {
+    "rel": "misc/snow.svg",
+    "paths": 15
+  },
+  "icon/misc/stopwatch": {
+    "rel": "misc/stopwatch.svg",
+    "paths": 6
+  },
+  "icon/misc/sun": {
+    "rel": "misc/sun.svg",
+    "paths": 9
+  },
+  "icon/misc/tablet": {
+    "rel": "misc/tablet.svg",
+    "paths": 5
+  },
+  "icon/misc/temperature": {
+    "rel": "misc/temperature.svg",
+    "paths": 7
+  },
+  "icon/misc/terminal": {
+    "rel": "misc/terminal.svg",
+    "paths": 3
+  },
+  "icon/misc/ticket": {
+    "rel": "misc/ticket.svg",
+    "paths": 9
+  },
+  "icon/misc/timer": {
+    "rel": "misc/timer.svg",
+    "paths": 4
+  },
+  "icon/misc/tool": {
+    "rel": "misc/tool.svg",
+    "paths": 7
+  },
+  "icon/misc/train": {
+    "rel": "misc/train.svg",
+    "paths": 9
+  },
+  "icon/misc/translate": {
+    "rel": "misc/translate.svg",
+    "paths": 12
+  },
+  "icon/misc/trophy": {
+    "rel": "misc/trophy.svg",
+    "paths": 11
+  },
+  "icon/misc/umbrella": {
+    "rel": "misc/umbrella.svg",
+    "paths": 4
+  },
+  "icon/misc/watch": {
+    "rel": "misc/watch.svg",
+    "paths": 4
+  },
+  "icon/misc/water": {
+    "rel": "misc/water.svg",
+    "paths": 3
+  },
+  "icon/misc/weather": {
+    "rel": "misc/weather.svg",
+    "paths": 17
+  },
+  "icon/misc/wifi.off": {
+    "rel": "misc/wifi-off.svg",
+    "paths": 7
+  },
+  "icon/misc/wifi": {
+    "rel": "misc/wifi.svg",
+    "paths": 4
+  },
+  "icon/misc/wind": {
+    "rel": "misc/wind.svg",
+    "paths": 4
+  },
+  "icon/misc/wrench": {
+    "rel": "misc/wrench.svg",
+    "paths": 1
+  },
+  "icon/misc/zoom.in": {
+    "rel": "misc/zoom-in.svg",
+    "paths": 4
+  },
+  "icon/misc/zoom.out": {
+    "rel": "misc/zoom-out.svg",
+    "paths": 3
+  },
+  "icon/navigation/arrow.down": {
+    "rel": "navigation/arrow-down.svg",
+    "paths": 2
+  },
+  "icon/navigation/arrow.left": {
+    "rel": "navigation/arrow-left.svg",
+    "paths": 2
+  },
+  "icon/navigation/arrow.right": {
+    "rel": "navigation/arrow-right.svg",
+    "paths": 2
+  },
+  "icon/navigation/arrow.up": {
+    "rel": "navigation/arrow-up.svg",
+    "paths": 2
+  },
+  "icon/navigation/back": {
+    "rel": "navigation/back.svg",
+    "paths": 2
+  },
+  "icon/navigation/breadcrumb": {
+    "rel": "navigation/breadcrumb.svg",
+    "paths": 6
+  },
+  "icon/navigation/chevron.down": {
+    "rel": "navigation/chevron-down.svg",
+    "paths": 1
+  },
+  "icon/navigation/chevron.left": {
+    "rel": "navigation/chevron-left.svg",
+    "paths": 1
+  },
+  "icon/navigation/chevron.right": {
+    "rel": "navigation/chevron-right.svg",
+    "paths": 1
+  },
+  "icon/navigation/chevron.up": {
+    "rel": "navigation/chevron-up.svg",
+    "paths": 1
+  },
+  "icon/navigation/close": {
+    "rel": "navigation/close.svg",
+    "paths": 2
+  },
+  "icon/navigation/compass": {
+    "rel": "navigation/compass.svg",
+    "paths": 4
+  },
+  "icon/navigation/drag": {
+    "rel": "navigation/drag.svg",
+    "paths": 3
+  },
+  "icon/navigation/exit.fullscreen": {
+    "rel": "navigation/exit-fullscreen.svg",
+    "paths": 9
+  },
+  "icon/navigation/external.link": {
+    "rel": "navigation/external-link.svg",
+    "paths": 5
+  },
+  "icon/navigation/filter": {
+    "rel": "navigation/filter.svg",
+    "paths": 2
+  },
+  "icon/navigation/forward": {
+    "rel": "navigation/forward.svg",
+    "paths": 2
+  },
+  "icon/navigation/fullscreen": {
+    "rel": "navigation/fullscreen.svg",
+    "paths": 5
+  },
+  "icon/navigation/home.alt": {
+    "rel": "navigation/home-alt.svg",
+    "paths": 1
+  },
+  "icon/navigation/home": {
+    "rel": "navigation/home.svg",
+    "paths": 2
+  },
+  "icon/navigation/layers": {
+    "rel": "navigation/layers.svg",
+    "paths": 3
+  },
+  "icon/navigation/map": {
+    "rel": "navigation/map.svg",
+    "paths": 7
+  },
+  "icon/navigation/menu": {
+    "rel": "navigation/menu.svg",
+    "paths": 3
+  },
+  "icon/navigation/merge": {
+    "rel": "navigation/merge.svg",
+    "paths": 1
+  },
+  "icon/navigation/more.horizontal": {
+    "rel": "navigation/more-horizontal.svg",
+    "paths": 3
+  },
+  "icon/navigation/more.vertical": {
+    "rel": "navigation/more-vertical.svg",
+    "paths": 3
+  },
+  "icon/navigation/navigation.pointer": {
+    "rel": "navigation/navigation-pointer.svg",
+    "paths": 4
+  },
+  "icon/navigation/panel.bottom": {
+    "rel": "navigation/panel-bottom.svg",
+    "paths": 3
+  },
+  "icon/navigation/panel.left": {
+    "rel": "navigation/panel-left.svg",
+    "paths": 3
+  },
+  "icon/navigation/panel.right": {
+    "rel": "navigation/panel-right.svg",
+    "paths": 3
+  },
+  "icon/navigation/panel.top": {
+    "rel": "navigation/panel-top.svg",
+    "paths": 4
+  },
+  "icon/navigation/resize": {
+    "rel": "navigation/resize.svg",
+    "paths": 4
+  },
+  "icon/navigation/route": {
+    "rel": "navigation/route.svg",
+    "paths": 6
+  },
+  "icon/navigation/scroll": {
+    "rel": "navigation/scroll.svg",
+    "paths": 3
+  },
+  "icon/navigation/search": {
+    "rel": "navigation/search.svg",
+    "paths": 2
+  },
+  "icon/navigation/settings": {
+    "rel": "navigation/settings.svg",
+    "paths": 2
+  },
+  "icon/navigation/sidebar": {
+    "rel": "navigation/sidebar.svg",
+    "paths": 4
+  },
+  "icon/navigation/split": {
+    "rel": "navigation/split.svg",
+    "paths": 15
+  },
+  "icon/status/badge": {
+    "rel": "status/badge.svg",
+    "paths": 2
+  },
+  "icon/status/bell.off": {
+    "rel": "status/bell-off.svg",
+    "paths": 5
+  },
+  "icon/status/bell": {
+    "rel": "status/bell.svg",
+    "paths": 2
+  },
+  "icon/status/blocked": {
+    "rel": "status/blocked.svg",
+    "paths": 5
+  },
+  "icon/status/critical": {
+    "rel": "status/critical.svg",
+    "paths": 1
+  },
+  "icon/status/error": {
+    "rel": "status/error.svg",
+    "paths": 3
+  },
+  "icon/status/eye.off": {
+    "rel": "status/eye-off.svg",
+    "paths": 5
+  },
+  "icon/status/eye": {
+    "rel": "status/eye.svg",
+    "paths": 2
+  },
+  "icon/status/flag": {
+    "rel": "status/flag.svg",
+    "paths": 2
+  },
+  "icon/status/help": {
+    "rel": "status/help.svg",
+    "paths": 4
+  },
+  "icon/status/info": {
+    "rel": "status/info.svg",
+    "paths": 5
+  },
+  "icon/status/loading": {
+    "rel": "status/loading.svg",
+    "paths": 8
+  },
+  "icon/status/lock": {
+    "rel": "status/lock.svg",
+    "paths": 8
+  },
+  "icon/status/notification": {
+    "rel": "status/notification.svg",
+    "paths": 6
+  },
+  "icon/status/online": {
+    "rel": "status/online.svg",
+    "paths": 5
+  },
+  "icon/status/pending": {
+    "rel": "status/pending.svg",
+    "paths": 4
+  },
+  "icon/status/shield.check": {
+    "rel": "status/shield-check.svg",
+    "paths": 3
+  },
+  "icon/status/shield.off": {
+    "rel": "status/shield-off.svg",
+    "paths": 3
+  },
+  "icon/status/shield": {
+    "rel": "status/shield.svg",
+    "paths": 5
+  },
+  "icon/status/star.filled": {
+    "rel": "status/star-filled.svg",
+    "paths": 1
+  },
+  "icon/status/star": {
+    "rel": "status/star.svg",
+    "paths": 7
+  },
+  "icon/status/success": {
+    "rel": "status/success.svg",
+    "paths": 2
+  },
+  "icon/status/unlock": {
+    "rel": "status/unlock.svg",
+    "paths": 3
+  },
+  "icon/status/warning": {
+    "rel": "status/warning.svg",
+    "paths": 4
+  }
+}

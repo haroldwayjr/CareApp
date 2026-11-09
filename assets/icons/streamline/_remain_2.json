@@ -1,0 +1,327 @@
+[
+  {
+    "name": "share-alt",
+    "category": "actions",
+    "query": "Share"
+  },
+  {
+    "name": "confirm",
+    "category": "actions",
+    "query": "Confirm"
+  },
+  {
+    "name": "clear",
+    "category": "actions",
+    "query": "Clear"
+  },
+  {
+    "name": "search-alt",
+    "category": "actions",
+    "query": "Search"
+  },
+  {
+    "name": "explore",
+    "category": "actions",
+    "query": "Explore"
+  },
+  {
+    "name": "unpublish",
+    "category": "actions",
+    "query": "Unpublish"
+  },
+  {
+    "name": "snooze",
+    "category": "actions",
+    "query": "Snooze"
+  },
+  {
+    "name": "success",
+    "category": "status",
+    "query": "Check Circle"
+  },
+  {
+    "name": "lock",
+    "category": "status",
+    "query": "Lock"
+  },
+  {
+    "name": "star",
+    "category": "status",
+    "query": "Star"
+  },
+  {
+    "name": "shield-check",
+    "category": "status",
+    "query": "Shield Check"
+  },
+  {
+    "name": "loading",
+    "category": "status",
+    "query": "Loading"
+  },
+  {
+    "name": "unavailable",
+    "category": "status",
+    "query": "Unavailable"
+  },
+  {
+    "name": "critical",
+    "category": "status",
+    "query": "Flash"
+  },
+  {
+    "name": "skip-forward",
+    "category": "media",
+    "query": "Button Next"
+  },
+  {
+    "name": "image",
+    "category": "media",
+    "query": "Image"
+  },
+  {
+    "name": "mic-off",
+    "category": "media",
+    "query": "Microphone Off"
+  },
+  {
+    "name": "send",
+    "category": "comms",
+    "query": "Send Email"
+  },
+  {
+    "name": "folder-open",
+    "category": "files",
+    "query": "Folder Open"
+  },
+  {
+    "name": "attachment",
+    "category": "files",
+    "query": "Attachment"
+  },
+  {
+    "name": "file-zip",
+    "category": "files",
+    "query": "Zip"
+  },
+  {
+    "name": "notes",
+    "category": "files",
+    "query": "Notes"
+  },
+  {
+    "name": "cloud",
+    "category": "files",
+    "query": "Cloud"
+  },
+  {
+    "name": "server",
+    "category": "files",
+    "query": "Server"
+  },
+  {
+    "name": "agreement",
+    "category": "files",
+    "query": "Agreement"
+  },
+  {
+    "name": "manual",
+    "category": "files",
+    "query": "Manual"
+  },
+  {
+    "name": "wiki",
+    "category": "files",
+    "query": "Wiki"
+  },
+  {
+    "name": "magazine",
+    "category": "files",
+    "query": "Magazine"
+  },
+  {
+    "name": "portfolio",
+    "category": "files",
+    "query": "Portfolio"
+  },
+  {
+    "name": "letter",
+    "category": "files",
+    "query": "Letter"
+  },
+  {
+    "name": "parcel",
+    "category": "files",
+    "query": "Parcel"
+  },
+  {
+    "name": "shelf",
+    "category": "files",
+    "query": "Shelf"
+  },
+  {
+    "name": "folder-star",
+    "category": "files",
+    "query": "Folder Star"
+  },
+  {
+    "name": "gift",
+    "category": "commerce",
+    "query": "Gift"
+  },
+  {
+    "name": "barcode",
+    "category": "commerce",
+    "query": "Barcode"
+  },
+  {
+    "name": "price-tag",
+    "category": "commerce",
+    "query": "Price Tag"
+  },
+  {
+    "name": "mri",
+    "category": "health",
+    "query": "MRI"
+  },
+  {
+    "name": "prosthetic",
+    "category": "health",
+    "query": "Prosthetic"
+  },
+  {
+    "name": "geriatric",
+    "category": "health",
+    "query": "Elderly"
+  },
+  {
+    "name": "counseling",
+    "category": "health",
+    "query": "Counseling"
+  },
+  {
+    "name": "911",
+    "category": "health",
+    "query": "Emergency Call"
+  },
+  {
+    "name": "glucose",
+    "category": "health",
+    "query": "Glucose"
+  },
+  {
+    "name": "cancer",
+    "category": "health",
+    "query": "Cancer"
+  },
+  {
+    "name": "neurology",
+    "category": "health",
+    "query": "Neurology"
+  },
+  {
+    "name": "anesthesia",
+    "category": "health",
+    "query": "Anesthesia"
+  },
+  {
+    "name": "dark-mode",
+    "category": "misc",
+    "query": "Dark Mode"
+  },
+  {
+    "name": "language",
+    "category": "misc",
+    "query": "Language"
+  },
+  {
+    "name": "laptop",
+    "category": "misc",
+    "query": "Laptop"
+  },
+  {
+    "name": "printer-alt",
+    "category": "misc",
+    "query": "Printer"
+  },
+  {
+    "name": "terminal",
+    "category": "misc",
+    "query": "Terminal"
+  },
+  {
+    "name": "tool",
+    "category": "misc",
+    "query": "Tools"
+  },
+  {
+    "name": "qr-scan",
+    "category": "misc",
+    "query": "Scan"
+  },
+  {
+    "name": "flash-off",
+    "category": "misc",
+    "query": "Flash Off"
+  },
+  {
+    "name": "history",
+    "category": "misc",
+    "query": "History"
+  },
+  {
+    "name": "weather",
+    "category": "misc",
+    "query": "Weather"
+  },
+  {
+    "name": "wind",
+    "category": "misc",
+    "query": "Wind"
+  },
+  {
+    "name": "food",
+    "category": "misc",
+    "query": "Food"
+  },
+  {
+    "name": "bike",
+    "category": "misc",
+    "query": "Bicycle"
+  },
+  {
+    "name": "office",
+    "category": "misc",
+    "query": "Office"
+  },
+  {
+    "name": "graduation",
+    "category": "misc",
+    "query": "Graduation"
+  },
+  {
+    "name": "ticket",
+    "category": "misc",
+    "query": "Ticket"
+  },
+  {
+    "name": "gift-alt",
+    "category": "misc",
+    "query": "Present"
+  },
+  {
+    "name": "leaf",
+    "category": "misc",
+    "query": "Leaf"
+  },
+  {
+    "name": "droplet",
+    "category": "misc",
+    "query": "Drop"
+  },
+  {
+    "name": "satellite",
+    "category": "misc",
+    "query": "Satellite"
+  }
+]

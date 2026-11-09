@@ -1,0 +1,246 @@
+{
+  "ico_mRu4pQJ4vtWC2aEbmojHWNei": [
+    "navigation/home-alt.svg",
+    "navigation/home-alt.svg"
+  ],
+  "ico_eA8GWYvR5WBSJkJY": [
+    "navigation/chevron-left.svg",
+    "navigation/chevron-left.svg"
+  ],
+  "ico_O4DC394JKvQGULe7": [
+    "navigation/chevron-right.svg",
+    "navigation/chevron-right.svg"
+  ],
+  "ico_R4kAJl7jA3nhceik": [
+    "navigation/chevron-up.svg",
+    "navigation/chevron-up.svg"
+  ],
+  "ico_k1M6ElXlvuBOQzAP": [
+    "navigation/arrow-up.svg",
+    "navigation/arrow-up.svg"
+  ],
+  "ico_MDzhrttDMTSnz1xM": [
+    "navigation/arrow-down.svg",
+    "navigation/arrow-down.svg"
+  ],
+  "ico_mRu4pQJ4vkgn2aEbmoJ4v232": [
+    "navigation/more-horizontal.svg",
+    "navigation/more-horizontal.svg"
+  ],
+  "ico_mRu4pQJ4vNFt2aEbmoJ4vSdl": [
+    "navigation/more-vertical.svg",
+    "navigation/more-vertical.svg"
+  ],
+  "ico_GS3koyDjktm4fZZn": [
+    "navigation/back.svg",
+    "navigation/back.svg"
+  ],
+  "ico_s9oTaLJ4PbfI42fg": [
+    "navigation/forward.svg",
+    "navigation/forward.svg"
+  ],
+  "ico_mRu4pQJ4vTcM2aEWGywvSy2a": [
+    "navigation/external-link.svg",
+    "navigation/external-link.svg"
+  ],
+  "ico_mRu4pQJ4vQnU2aEbmodzpQ4o": [
+    "navigation/sidebar.svg",
+    "navigation/sidebar.svg"
+  ],
+  "ico_mRu4pQJ4vHA72aEWGy4pQf6y": [
+    "navigation/breadcrumb.svg",
+    "navigation/breadcrumb.svg"
+  ],
+  "ico_mRu4pQJ4vz1j2aEWGy2aE66M": [
+    "navigation/scroll.svg",
+    "navigation/scroll.svg"
+  ],
+  "ico_mRu4pQJ4vthE2aEWGyQzIz3X": [
+    "navigation/drag.svg",
+    "navigation/drag.svg"
+  ],
+  "ico_mRu4pQJ4vRI12aEWGyBPuxJe": [
+    "navigation/fullscreen.svg",
+    "navigation/fullscreen.svg"
+  ],
+  "ico_mRu4pQJ4vax82aEWGyBPuJsN": [
+    "navigation/exit-fullscreen.svg",
+    "navigation/exit-fullscreen.svg"
+  ],
+  "ico_mRu4pQJ4vUFW2aE7yV7QUVsB": [
+    "navigation/compass.svg",
+    "navigation/compass.svg"
+  ],
+  "ico_zkkZNSrjXSdetKZk": [
+    "navigation/map.svg",
+    "navigation/map.svg"
+  ],
+  "ico_mRu4pQJ4vDlx2aEP2WwvSZm6": [
+    "navigation/layers.svg",
+    "navigation/layers.svg"
+  ],
+  "ico_8NndYOSkO1dwRZor": [
+    "navigation/merge.svg",
+    "navigation/merge.svg"
+  ],
+  "ico_mRu4pQJ4vdYE2aEWGyBPufxr": [
+    "navigation/resize.svg",
+    "navigation/resize.svg"
+  ],
+  "ico_mRu4pQJ4vwOo2aE2aE2aEW93": [
+    "actions/save.svg",
+    "actions/save.svg"
+  ],
+  "ico_mRu4pQJ4vORO2aEbmohNEAtl": [
+    "actions/share.svg",
+    "actions/share.svg"
+  ],
+  "ico_mRu4pQJ4vCML2aEbmofvjvZ5": [
+    "actions/share-alt.svg",
+    "actions/share-alt.svg"
+  ],
+  "ico_mRu4pQJ4vafx2aEbmoDeGdIV": [
+    "actions/undo.svg",
+    "actions/undo.svg"
+  ],
+  "ico_mRu4pQJ4vWKm2aEbmoDeGegE": [
+    "actions/redo.svg",
+    "actions/redo.svg"
+  ],
+  "ico_mRu4pQJ4v48F2aE2aE7QURc2": [
+    "actions/print.svg",
+    "actions/print.svg"
+  ],
+  "ico_mRu4pQJ4vtOW2aEbmofSZM8j": [
+    "actions/link.svg",
+    "actions/link.svg"
+  ],
+  "ico_mRu4pQJ4v9Vx2aEbmofvjjUZ": [
+    "actions/cut.svg",
+    "actions/cut.svg"
+  ],
+  "ico_7oaSxYVUINxu7by9": [
+    "actions/duplicate.svg",
+    "actions/duplicate.svg"
+  ],
+  "ico_mRu4pQJ4vWfW2aEP2WT2Fiz8": [
+    "actions/archive.svg",
+    "actions/archive.svg"
+  ],
+  "ico_YpcRMXrqpyGYIUsy": [
+    "actions/restore.svg",
+    "actions/restore.svg"
+  ],
+  "ico_mRu4pQJ4vYle2aEbmognsMRy": [
+    "actions/trash.svg",
+    "actions/trash.svg"
+  ],
+  "ico_mRu4pQJ4vcoD2aEbmognspCK": [
+    "actions/empty-trash.svg",
+    "actions/empty-trash.svg"
+  ],
+  "ico_mRu4pQJ4vIOs2aEbmoJ4vq06": [
+    "actions/login.svg",
+    "actions/login.svg"
+  ],
+  "ico_mRu4pQJ4vunX2aEbmoZOs3ip": [
+    "actions/logout.svg",
+    "actions/logout.svg"
+  ],
+  "ico_mRu4pQJ4veIe2aEbmofSZOFk": [
+    "actions/attach.svg",
+    "actions/attach.svg"
+  ],
+  "ico_mRu4pQJ4vq0J2aEbmoPop19B": [
+    "actions/pin.svg",
+    "actions/pin.svg"
+  ],
+  "ico_mRu4pQJ4v1Os2aEWGy6nllo1": [
+    "navigation/navigation-pointer.svg",
+    "navigation/navigation-pointer.svg"
+  ],
+  "ico_XL5D49HNXzl1JJtL": [
+    "navigation/panel-left.svg",
+    "navigation/panel-left.svg"
+  ],
+  "ico_mRu4pQJ4vOnx2aEbmosjsGBB": [
+    "actions/close-alt.svg",
+    "actions/close-alt.svg"
+  ],
+  "ico_mRu4pQJ4vA8J2aEbmodzpFt8": [
+    "navigation/panel-top.svg",
+    "navigation/panel-top.svg"
+  ],
+  "ico_6kTJV0iy9Rrmw6Vu": [
+    "navigation/panel-bottom.svg",
+    "navigation/panel-bottom.svg"
+  ],
+  "ico_CESF4t6WmE0QN31y": [
+    "navigation/panel-right.svg",
+    "navigation/panel-right.svg"
+  ],
+  "ico_xaO55AgbevHzyuYP": [
+    "actions/upload.svg",
+    "actions/upload.svg"
+  ],
+  "ico_mRu4pQJ4vWt92aEbmoitsccE": [
+    "actions/erase.svg",
+    "actions/erase.svg"
+  ],
+  "ico_mRu4pQJ4vMrx2aEwvSSFbUgm": [
+    "actions/flag-alt.svg",
+    "actions/flag-alt.svg"
+  ],
+  "ico_mRu4pQJ4vF0l2aEWGyPvJFs8": [
+    "actions/power.svg",
+    "actions/power.svg"
+  ],
+  "ico_mRu4pQJ4vzgK2aEWGySFbYYL": [
+    "actions/move.svg",
+    "actions/move.svg"
+  ],
+  "ico_mRu4pQJ4vypL2aEbmo3zi7yx": [
+    "actions/search-alt.svg",
+    "actions/search-alt.svg"
+  ],
+  "ico_ozYOD6ipuZkmWZH1": [
+    "actions/quote-reply.svg",
+    "actions/quote-reply.svg"
+  ],
+  "ico_DKJsoKUjK26fSYre": [
+    "actions/select-all.svg",
+    "actions/select-all.svg"
+  ],
+  "ico_RY4lldvooU0Tgc5m": [
+    "actions/import.svg",
+    "actions/import.svg"
+  ],
+  "ico_c7xHQ1hFcqINmSu4": [
+    "actions/export.svg",
+    "actions/export.svg"
+  ],
+  "ico_mRu4pQJ4vdHY2aEWGyqmIZmj": [
+    "actions/sync.svg",
+    "actions/sync.svg"
+  ],
+  "ico_b2RWsfdA1itUmLFj": [
+    "actions/sort-asc.svg",
+    "actions/sort-asc.svg"
+  ],
+  "ico_MtRhAIGxjumgrI84": [
+    "actions/sort-desc.svg",
+    "actions/sort-desc.svg"
+  ],
+  "ico_wVDZznuczwXS9k5v": [
+    "actions/open.svg",
+    "actions/open.svg"
+  ],
+  "ico_gYyJDjLMAu7UV4oa": [
+    "actions/sort.svg",
+    "actions/sort.svg"
+  ],
+  "ico_Pv87nRusdAFKGNJp": [
+    "actions/snooze.svg",
+    "actions/snooze.svg"
+  ]
+}

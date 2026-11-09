@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" class="is-page-boot">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Care App — Conversations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=empty-art-size" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header page-rise" style="--rise: 0">
+        <div class="header-left">
+          <a class="wordmark" href="#conversations" aria-label="Care App home">
+            <svg class="wordmark-mark" viewBox="0 0 22 24" width="18" height="20" aria-hidden="true">
+              <path d="M18.6667 24C20.5075 24 21.9999 22.4737 21.9999 20.5909C21.9999 18.7081 20.5075 17.1818 18.6667 17.1818C16.8258 17.1818 15.3335 18.7081 15.3335 20.5909C15.3335 22.4737 16.8258 24 18.6667 24Z"/>
+              <path d="M3.33383 6.8182C5.1747 6.8182 6.66702 5.2919 6.66702 3.4091C6.66702 1.52631 5.1747 0 3.33383 0C1.49296 0 0.00063671 1.52631 0.00063671 3.4091C0.00063671 5.2919 1.49296 6.8182 3.33383 6.8182Z"/>
+              <path d="M18.6667 6.8182C20.5075 6.8182 21.9999 5.2919 21.9999 3.4091C21.9999 1.52631 20.5075 0 18.6667 0C16.8258 0 15.3335 1.52631 15.3335 3.4091C15.3335 5.2919 16.8258 6.8182 18.6667 6.8182Z"/>
+              <path d="M3.33392 24C5.17479 24 6.66711 22.4737 6.66711 20.5909C6.66711 18.7081 5.17479 17.1818 3.33392 17.1818C1.49305 17.1818 0.000724532 18.7081 0.000724532 20.5909C0.000724532 22.4737 1.49305 24 3.33392 24Z"/>
+              <path d="M3.33393 15.4091C3.79414 15.4472 6.37323 14.9544 8.41468 14.543C10.1225 14.1988 11.8781 14.1988 13.5859 14.543C15.6274 14.9544 18.2065 15.4472 18.6667 15.4091C20.5076 15.4091 21.9999 13.8828 21.9999 12C21.9999 10.1172 20.5076 8.59091 18.6667 8.59091C17.9639 8.59091 15.5391 9.05288 13.6024 9.4461C11.8837 9.79504 10.1169 9.79504 8.39825 9.4461C6.46152 9.05288 4.03667 8.59091 3.33393 8.59091C1.49303 8.59091 0.000708191 10.1172 0.000708191 12C0.000708191 13.8828 1.49303 15.4091 3.33393 15.4091Z"/>
+            </svg>
+            <span>Care App</span>
+          </a>
+          <nav class="global-nav" aria-label="Primary">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#my-work">My Work</a>
+            <a href="#conversations" aria-current="page">Conversations</a>
+            <a href="#schedule">Schedule</a>
+          </nav>
+        </div>
+        <div class="header-actions">
+          <button class="icon-button" id="header-search" type="button" aria-label="Search threads">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.25"/><path d="M16 16.5 20 20.5"/></svg>
+          </button>
+          <div class="menu-root" data-menu-root="alerts">
+            <button class="icon-button" id="alerts-button" type="button" aria-label="Notifications" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-alerts">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5a6 6 0 0 1 12 0c0 4.2 1.2 5.8 1.8 6.5H4.2C4.8 15.3 6 13.7 6 9.5Z"/><path d="M10 18.5a2 2 0 0 0 4 0"/></svg>
+            </button>
+            <div class="menu menu-compact" id="menu-alerts" role="menu" hidden>
+              <p class="menu-title">Notifications</p>
+              <p class="menu-empty">You’re caught up.</p>
+            </div>
+          </div>
+          <span class="avatar-letter" aria-hidden="true">A</span>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="page-head page-rise" style="--rise: 1">
+          <h1>Conversations</h1>
+          <div class="page-head-row">
+            <div class="scope" role="radiogroup" aria-label="Inbox">
+              <span class="scope-thumb" aria-hidden="true"></span>
+              <button type="button" role="radio" aria-checked="true" data-scope="assigned">Assigned <span class="count">12</span></button>
+              <button type="button" role="radio" aria-checked="false" data-scope="watching">Watching <span class="count">4</span></button>
+              <button type="button" role="radio" aria-checked="false" data-scope="all">All <span class="count">48</span></button>
+            </div>
+            <button class="button button-primary" id="new-conversation" type="button">New conversation</button>
+          </div>
+        </div>
+
+        <div class="workspace" id="workspace">
+          <section class="card threads page-rise" style="--rise: 2" aria-label="Threads">
+            <div class="threads-head">
+              <div class="threads-title">
+                <h2>Threads</h2>
+                <button class="icon-button" id="threads-search-toggle" type="button" aria-label="Search threads" aria-expanded="false" aria-controls="thread-search-field">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.25"/><path d="M16 16.5 20 20.5"/></svg>
+                </button>
+              </div>
+              <div class="search-slot" id="thread-search-field" inert>
+                <div class="search-clip">
+                  <label class="search">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.25"/><path d="M16 16.5 20 20.5"/></svg>
+                    <input id="thread-search" type="search" placeholder="Search threads" autocomplete="off" />
+                    <button class="search-clear" id="thread-search-clear" type="button" aria-label="Clear search" hidden>
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg>
+                    </button>
+                  </label>
+                </div>
+              </div>
+              <div class="filters">
+                <div class="menu-root" data-menu-root="team">
+                  <button class="filter-chip" id="chip-team" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="menu-team">
+                    <span class="chip-label" data-chip="team">All teams</span>
+                    <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                  </button>
+                  <div class="menu" id="menu-team" role="listbox" aria-label="Team" hidden></div>
+                </div>
+                <div class="menu-root" data-menu-root="status">
+                  <button class="filter-chip" id="chip-status" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="menu-status">
+                    <span class="chip-label" data-chip="status">Any status</span>
+                    <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                  </button>
+                  <div class="menu" id="menu-status" role="listbox" aria-label="Status" hidden></div>
+                </div>
+                <div class="menu-root" data-menu-root="sort">
+                  <button class="filter-chip" id="chip-sort" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="menu-sort">
+                    <span class="chip-label" data-chip="sort">Newest</span>
+                    <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                  </button>
+                  <div class="menu" id="menu-sort" role="listbox" aria-label="Sort by" hidden></div>
+                </div>
+              </div>
+            </div>
+            <div class="thread-scroll" id="thread-list" tabindex="-1"></div>
+          </section>
+
+          <button class="resizer resizer-threads" type="button" data-resize="threads" aria-label="Resize thread list" aria-orientation="vertical" role="separator"></button>
+
+          <section class="card stage page-rise" id="stage" style="--rise: 3" aria-live="polite"></section>
+
+          <button class="resizer resizer-panel" type="button" data-resize="panel" aria-label="Resize side panel" aria-orientation="vertical" role="separator" aria-controls="panel"></button>
+
+          <nav class="tool-rail" id="tool-rail" aria-label="Context" hidden>
+            <button class="rail-button" type="button" data-rail="details" aria-pressed="false" aria-label="Details">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.25"/><path d="M12 11v5"/><circle cx="12" cy="8" r="0.8" fill="currentColor" stroke="none"/></svg>
+              <span class="rail-tip">Details</span>
+            </button>
+            <button class="rail-button" type="button" data-rail="team" aria-pressed="false" aria-label="Team chat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 18.5 5.5 21v-3.2A7.2 7.2 0 1 1 12.2 19H8Z"/></svg>
+              <span class="rail-tip">Team chat</span>
+            </button>
+            <button class="rail-button" type="button" data-rail="chart" aria-pressed="false" aria-label="Activity">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19V11M12 19V6M18 19v-6"/></svg>
+              <span class="rail-tip">Activity</span>
+            </button>
+          </nav>
+          <aside class="panel" id="panel" aria-hidden="true"></aside>
+        </div>
+      </main>
+    </div>
+    <div class="sr-only" id="live" aria-live="polite"></div>
+    <script src="app.js?v=privacy-eye"></script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+[
+  {
+    "name": "gallery",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vhMb2aEbmofvjSJ4",
+    "streamlineName": "Print Picture",
+    "path": "media/gallery.svg",
+    "score": 302.35
+  },
+  {
+    "name": "crop",
+    "category": "media",
+    "hash": "ico_r5dR9LLVueUupNf2",
+    "streamlineName": "Crop Rotate",
+    "path": "media/crop.svg",
+    "score": 252.45
+  },
+  {
+    "name": "rotate",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4v0im2aEP2WPvJkWX",
+    "streamlineName": "Rotate",
+    "path": "media/rotate.svg",
+    "score": 239.7
+  },
+  {
+    "name": "flip",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vD202aEWGySFbgLv",
+    "streamlineName": "Flip Vertical Up",
+    "path": "media/flip.svg",
+    "score": 315.2
+  },
+  {
+    "name": "brightness",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vzPc2aEbmo6nlXG3",
+    "streamlineName": "Brightness",
+    "path": "media/brightness.svg",
+    "score": 289.5
+  },
+  {
+    "name": "contrast",
+    "category": "media",
+    "hash": "ico_DZ7j78pecQ3QTKBT",
+    "streamlineName": "Contrast Horizontal Slider Adjustment",
+    "path": "media/contrast.svg",
+    "score": 277.15
+  },
+  {
+    "name": "record",
+    "category": "media",
+    "hash": "ico_qFHnZGT234Gokah6",
+    "streamlineName": "Phone Record",
+    "path": "media/record.svg",
+    "score": 302.4
+  },
+  {
+    "name": "cast",
+    "category": "media",
+    "hash": "ico_FeaxRxlnptrsKw08",
+    "streamlineName": "Phone Cast",
+    "path": "media/cast.svg",
+    "score": 302.5
+  },
+  {
+    "name": "equalizer",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vj8r2aE6nlqmIxih",
+    "streamlineName": "Equalizer 1",
+    "path": "media/equalizer.svg",
+    "score": 117.45
+  },
+  {
+    "name": "playlist",
+    "category": "media",
+    "hash": "ico_mRu4pQJ4vKrV2aE6nlgWa693",
+    "streamlineName": "Playlist",
+    "path": "media/playlist.svg",
+    "score": 239.6
+  }
+]

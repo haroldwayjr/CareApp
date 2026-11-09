@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Stopwatch--Streamline-Streamline-3.0">
+  <desc>
+    Stopwatch Streamline Icon: https://streamlinehq.com
+  </desc>
+  <defs></defs>
+  <title>stopwatch</title>
+  <path d="M3 14.25a9 9 0 1 0 18 0 9 9 0 1 0 -18 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m18 7.5 1.875 -1.875" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m19.5 5.25 0.75 0.75" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m12 5.25 0 -4.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m14.25 0.75 -4.5 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m12 15 -3.75 -4.151" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>

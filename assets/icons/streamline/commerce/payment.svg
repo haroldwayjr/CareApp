@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Self-Payment--Streamline-Streamline-3.0">
+  <desc>
+    Self Payment Streamline Icon: https://streamlinehq.com
+  </desc>
+  <g>
+    <path d="M20.88 19.26a0.45 0.45 0 0 1 0.12 0.31v3.2a0.51 0.51 0 0 1 -0.52 0.48H3.53a0.51 0.51 0 0 1 -0.53 -0.48v-3.2a0.45 0.45 0 0 1 0.12 -0.31l2.35 -2.59a0.54 0.54 0 0 1 0.4 -0.17h12.26a0.54 0.54 0 0 1 0.4 0.17Z" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="m20.99 19.5 -17.98 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="m12 13.5 0 3" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <g>
+      <path d="M14.83 9.34a2.22 2.22 0 0 0 1.86 0.88c1.14 0 2.06 -0.69 2.06 -1.55s-0.92 -1.54 -2.06 -1.54 -2.06 -0.7 -2.06 -1.55S15.55 4 16.69 4a2.22 2.22 0 0 1 1.86 0.88" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+      <path d="m16.69 10.22 0 1.03" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+      <path d="m16.69 3 0 1.03" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    </g>
+    <path d="M6 0.75 6 13.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="m10.5 13.5 0 -12.75" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="m1.5 5.25 9 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="m1.5 9.75 9 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path d="M2.5 0.75h19s1 0 1 1V12.5s0 1 -1 1h-19s-1 0 -1 -1V1.75s0 -1 1 -1" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  </g>
+</svg>

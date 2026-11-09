@@ -1,0 +1,733 @@
+{
+  "resolved": {
+    "bank": {
+      "name": "bank",
+      "category": "commerce",
+      "hash": "ico_nNGIq23YeZAqbko8",
+      "streamlineName": "Blood Bank",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Bank"
+    },
+    "piggy-bank": {
+      "name": "piggy-bank",
+      "category": "commerce",
+      "hash": "ico_mRu4pQJ4vadP2aEaf7DeGcsM",
+      "streamlineName": "Saving Piggy Bank",
+      "setSlug": "streamline-regular",
+      "score": 80.15,
+      "query": "Piggy Bank"
+    },
+    "coins": {
+      "name": "coins",
+      "category": "commerce",
+      "hash": "ico_mRu4pQJ4vTim2aEaf7sjsi0E",
+      "streamlineName": "Accounting Coins",
+      "setSlug": "streamline-regular",
+      "score": 67.2,
+      "query": "Coins"
+    },
+    "chart-line": {
+      "name": "chart-line",
+      "category": "commerce",
+      "hash": "ico_mRu4pQJ4vtl62aEaf7P2Wegi",
+      "streamlineName": "Analytics Graph",
+      "setSlug": "streamline-regular",
+      "score": 252.25,
+      "query": "Analytics Graph"
+    },
+    "chart-bar": {
+      "name": "chart-bar",
+      "category": "commerce",
+      "hash": "ico_mRu4pQJ4vgn42aEaf7P2Wfxr",
+      "streamlineName": "Analytics Bars",
+      "setSlug": "streamline-regular",
+      "score": 252.3,
+      "query": "Analytics Bars"
+    },
+    "heart": {
+      "name": "heart",
+      "category": "health",
+      "hash": "ico_ilCnVNxwaWZFmSvC",
+      "streamlineName": "Heart Approve 1",
+      "setSlug": "streamline-regular",
+      "score": 155.25,
+      "query": "Heart"
+    },
+    "stethoscope": {
+      "name": "stethoscope",
+      "category": "health",
+      "hash": "ico_Dotp53IiT3eL16kJ",
+      "streamlineName": "Stethoscope Website",
+      "setSlug": "streamline-regular",
+      "score": 167.05,
+      "query": "Stethoscope"
+    },
+    "pill": {
+      "name": "pill",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4voiHeLj9ULJ4vYOv",
+      "streamlineName": "Pill",
+      "setSlug": "streamline-regular",
+      "score": 289.8,
+      "query": "Pill"
+    },
+    "first-aid": {
+      "name": "first-aid",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vtTZeLj9UL9ULDXx",
+      "streamlineName": "Hospital First Aid",
+      "setSlug": "streamline-regular",
+      "score": 130.1,
+      "query": "First Aid"
+    },
+    "thermometer": {
+      "name": "thermometer",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vbOVeLj9ULM5pK3B",
+      "streamlineName": "Temperature Thermometer",
+      "setSlug": "streamline-regular",
+      "score": 66.85,
+      "query": "Thermometer"
+    },
+    "syringe": {
+      "name": "syringe",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vIVZeLj9ULqmI693",
+      "streamlineName": "Medical Instrument Syringe",
+      "setSlug": "streamline-regular",
+      "score": 104.7,
+      "query": "Syringe"
+    },
+    "hospital": {
+      "name": "hospital",
+      "category": "health",
+      "hash": "ico_PXYO4geLZDkyVYlL",
+      "streamlineName": "Hospital Pin",
+      "setSlug": "streamline-regular",
+      "score": 167.4,
+      "query": "Hospital"
+    },
+    "ambulance": {
+      "name": "ambulance",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vSJmeLj9ULjHWFkx",
+      "streamlineName": "Ambulance Car",
+      "setSlug": "streamline-regular",
+      "score": 167.35,
+      "query": "Ambulance"
+    },
+    "medical-cross": {
+      "name": "medical-cross",
+      "category": "health",
+      "hash": "ico_C6IZeMMmCuwvbKdg",
+      "streamlineName": "Medical Cross",
+      "setSlug": "streamline-regular",
+      "score": 302.35,
+      "query": "Medical Cross"
+    },
+    "bandage": {
+      "name": "bandage",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vp1NeLj9ULZOsgUa",
+      "streamlineName": "Bandage",
+      "setSlug": "streamline-regular",
+      "score": 289.65,
+      "query": "Bandage"
+    },
+    "dna": {
+      "name": "dna",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vOPc2aEJttgnszON",
+      "streamlineName": "Dna",
+      "setSlug": "streamline-regular",
+      "score": 239.85,
+      "query": "DNA"
+    },
+    "blood": {
+      "name": "blood",
+      "category": "health",
+      "hash": "ico_S3jT7mUfQ8Uw6WFl",
+      "streamlineName": "Blood Types 1",
+      "setSlug": "streamline-regular",
+      "score": 155.35,
+      "query": "Blood"
+    },
+    "pulse": {
+      "name": "pulse",
+      "category": "health",
+      "hash": "ico_op4bmU5bdxN1cWIm",
+      "streamlineName": "Hypertension Pulse",
+      "setSlug": "streamline-regular",
+      "score": 117.1,
+      "query": "Pulse"
+    },
+    "lungs": {
+      "name": "lungs",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vCvVeLj9UL2aEHTr",
+      "streamlineName": "Medical Nanobot Lungs",
+      "setSlug": "streamline-regular",
+      "score": 104.95,
+      "query": "Lungs"
+    },
+    "brain": {
+      "name": "brain",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vVkd2aEJttHO2SMw",
+      "streamlineName": "Brain",
+      "setSlug": "streamline-regular",
+      "score": 239.75,
+      "query": "Brain"
+    },
+    "tooth": {
+      "name": "tooth",
+      "category": "health",
+      "hash": "ico_GIETvIEceTjoKeSK",
+      "streamlineName": "Tooth 2",
+      "setSlug": "streamline-regular",
+      "score": 167.65,
+      "query": "Tooth"
+    },
+    "eye-health": {
+      "name": "eye-health",
+      "category": "health",
+      "hash": "ico_F3HVew6sGIX2K0Z0",
+      "streamlineName": "Eye Drop",
+      "setSlug": "streamline-regular",
+      "score": 167.6,
+      "query": "Eye"
+    },
+    "ear": {
+      "name": "ear",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vwY12aENc3eixkaU",
+      "streamlineName": "Earpods Ear",
+      "setSlug": "streamline-regular",
+      "score": 117.45,
+      "query": "Ear"
+    },
+    "wheelchair": {
+      "name": "wheelchair",
+      "category": "health",
+      "hash": "ico_qe7hWppZxcT83DOk",
+      "streamlineName": "Wheelchair Way",
+      "setSlug": "streamline-regular",
+      "score": 117.3,
+      "query": "Wheelchair"
+    },
+    "prescription": {
+      "name": "prescription",
+      "category": "health",
+      "hash": "ico_2jv3n4GBRXNo3sU6",
+      "streamlineName": "Prescription Px",
+      "setSlug": "streamline-regular",
+      "score": 167.25,
+      "query": "Prescription"
+    },
+    "pharmacy": {
+      "name": "pharmacy",
+      "category": "health",
+      "hash": "ico_38A0znaEtlOEb1G1",
+      "streamlineName": "Pharmacy",
+      "setSlug": "streamline-regular",
+      "score": 289.6,
+      "query": "Pharmacy"
+    },
+    "vaccine": {
+      "name": "vaccine",
+      "category": "health",
+      "hash": "ico_xMaQnfPuf146eaLn",
+      "streamlineName": "Vaccine Bottle 1",
+      "setSlug": "streamline-regular",
+      "score": 155.2,
+      "query": "Vaccine"
+    },
+    "virus": {
+      "name": "virus",
+      "category": "health",
+      "hash": "ico_eBmC7TPXUduSY60T",
+      "streamlineName": "Medical Specialty Virus",
+      "setSlug": "streamline-regular",
+      "score": 104.85,
+      "query": "Virus"
+    },
+    "mask": {
+      "name": "mask",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vlqw2aENc3xihKKy",
+      "streamlineName": "Mask Circle",
+      "setSlug": "streamline-regular",
+      "score": 117.45,
+      "query": "Mask"
+    },
+    "hand-wash": {
+      "name": "hand-wash",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vpSXeLjK1ihNENqv",
+      "streamlineName": "Laundry Hand Wash",
+      "setSlug": "streamline-regular",
+      "score": 80.15,
+      "query": "Hand Wash"
+    },
+    "clipboard-health": {
+      "name": "clipboard-health",
+      "category": "health",
+      "hash": "ico_tbn9TadvUSVVtBr4",
+      "streamlineName": "Medical Data Clipboard Cross",
+      "setSlug": "streamline-regular",
+      "score": 77.6,
+      "query": "Medical Clipboard"
+    },
+    "patient": {
+      "name": "patient",
+      "category": "health",
+      "hash": "ico_MQc0d5srN6UeLvY4",
+      "streamlineName": "Patient Care",
+      "setSlug": "streamline-regular",
+      "score": 167.4,
+      "query": "Patient"
+    },
+    "nurse": {
+      "name": "nurse",
+      "category": "health",
+      "hash": "ico_k7PZTuSgxOE2oPVd",
+      "streamlineName": "Nurse With Cap Cloth",
+      "setSlug": "streamline-regular",
+      "score": 143.0,
+      "query": "Nurse"
+    },
+    "doctor": {
+      "name": "doctor",
+      "category": "health",
+      "hash": "ico_3DYwYTKuiMB4lpYU",
+      "streamlineName": "Doctor Desktop",
+      "setSlug": "streamline-regular",
+      "score": 167.3,
+      "query": "Doctor"
+    },
+    "appointment": {
+      "name": "appointment",
+      "category": "health",
+      "hash": "ico_Bh8taG6jDBEObxap",
+      "streamlineName": "Waiting Room Appointment Medical Appointment 2",
+      "setSlug": "streamline-regular",
+      "score": 92.7,
+      "query": "Medical Appointment"
+    },
+    "lab": {
+      "name": "lab",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vCmmeLj9UL2aEJau",
+      "streamlineName": "Laboratory Sample",
+      "setSlug": "streamline-regular",
+      "score": 167.15,
+      "query": "Laboratory"
+    },
+    "microscope": {
+      "name": "microscope",
+      "category": "health",
+      "hash": "ico_kj5vVDnhwFwZghV1",
+      "streamlineName": "Microscope 1",
+      "setSlug": "streamline-regular",
+      "score": 167.4,
+      "query": "Microscope"
+    },
+    "ultrasound": {
+      "name": "ultrasound",
+      "category": "health",
+      "hash": "ico_NMR0QkLU6CgXb7Bo",
+      "streamlineName": "Ultrasound Scan",
+      "setSlug": "streamline-regular",
+      "score": 167.25,
+      "query": "Ultrasound"
+    },
+    "blood-pressure": {
+      "name": "blood-pressure",
+      "category": "health",
+      "hash": "ico_BzwbPtaHTl8zuqy6",
+      "streamlineName": "Blood Pressure Cuff",
+      "setSlug": "streamline-regular",
+      "score": 180.05,
+      "query": "Blood Pressure"
+    },
+    "weight-scale": {
+      "name": "weight-scale",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vPCdeLj9ULgWaJPp",
+      "streamlineName": "Diet Scale",
+      "setSlug": "streamline-regular",
+      "score": 117.5,
+      "query": "Scale"
+    },
+    "fitness": {
+      "name": "fitness",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vci4eLjjHWWGyMqG",
+      "streamlineName": "Fitness Weights",
+      "setSlug": "streamline-regular",
+      "score": 117.25,
+      "query": "Fitness"
+    },
+    "mental-health": {
+      "name": "mental-health",
+      "category": "health",
+      "hash": "ico_k1j7kFw7VMV2KYUo",
+      "streamlineName": "Mental Health 2",
+      "setSlug": "streamline-regular",
+      "score": 180.25,
+      "query": "Mental Health"
+    },
+    "symptoms": {
+      "name": "symptoms",
+      "category": "health",
+      "hash": "ico_gwF62KUq1ZqPoPWn",
+      "streamlineName": "Symptoms Fever",
+      "setSlug": "streamline-regular",
+      "score": 117.3,
+      "query": "Symptoms"
+    },
+    "insurance": {
+      "name": "insurance",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vw4YeLj9UL08UEi8",
+      "streamlineName": "Insurance Hand",
+      "setSlug": "streamline-regular",
+      "score": 167.3,
+      "query": "Insurance"
+    },
+    "sleep": {
+      "name": "sleep",
+      "category": "health",
+      "hash": "ico_U1rFtPBuC3RqLI2Q",
+      "streamlineName": "Sleep Zzz",
+      "setSlug": "streamline-regular",
+      "score": 167.55,
+      "query": "Sleep"
+    },
+    "dosage": {
+      "name": "dosage",
+      "category": "health",
+      "hash": "ico_R93j4Pb7nRYEe294",
+      "streamlineName": "Medicine Dosage",
+      "setSlug": "streamline-regular",
+      "score": 117.25,
+      "query": "Dosage"
+    },
+    "pharmacy-alt": {
+      "name": "pharmacy-alt",
+      "category": "health",
+      "hash": "ico_lMXt6pw7yMsQ58El",
+      "streamlineName": "Pharmacy Shop",
+      "setSlug": "streamline-regular",
+      "score": 167.35,
+      "query": "Pharmacy"
+    },
+    "otc": {
+      "name": "otc",
+      "category": "health",
+      "hash": "ico_xCX1X3vvKENfh1GY",
+      "streamlineName": "Medicine Liquid Cup",
+      "setSlug": "streamline-regular",
+      "score": 155.05,
+      "query": "Medicine"
+    },
+    "mri": {
+      "name": "mri",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vWzweLj9ULWipucM",
+      "streamlineName": "Radiology Scan Mri",
+      "setSlug": "streamline-regular",
+      "score": 105.1,
+      "query": "MRI"
+    },
+    "hearing-aid": {
+      "name": "hearing-aid",
+      "category": "health",
+      "hash": "ico_MNRVhaBUvXNjjYiO",
+      "streamlineName": "Hearing Aid",
+      "setSlug": "streamline-regular",
+      "score": 302.45,
+      "query": "Hearing Aid"
+    },
+    "glasses": {
+      "name": "glasses",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4veB9eLjQ3yfSZzb7",
+      "streamlineName": "Glasses",
+      "setSlug": "streamline-regular",
+      "score": 239.65,
+      "query": "Glasses"
+    },
+    "prosthetic": {
+      "name": "prosthetic",
+      "category": "health",
+      "hash": "ico_kkS2SfMf2hjF3ihL",
+      "streamlineName": "Prosthetic Leg 1",
+      "setSlug": "streamline-regular",
+      "score": 105.2,
+      "query": "Prosthetic"
+    },
+    "family-care": {
+      "name": "family-care",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vQj9eLjjHWQ3ykjQ",
+      "streamlineName": "Family Home",
+      "setSlug": "streamline-regular",
+      "score": 117.45,
+      "query": "Family"
+    },
+    "pediatric": {
+      "name": "pediatric",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4v9DxeLjjHWQ3yaRX",
+      "streamlineName": "Baby",
+      "setSlug": "streamline-regular",
+      "score": 239.8,
+      "query": "Baby"
+    },
+    "pregnancy": {
+      "name": "pregnancy",
+      "category": "health",
+      "hash": "ico_QOkATVyVQh9R3E6S",
+      "streamlineName": "Pregnancy Pregnant",
+      "setSlug": "streamline-regular",
+      "score": 167.1,
+      "query": "Pregnancy"
+    },
+    "mental-wellness": {
+      "name": "mental-wellness",
+      "category": "health",
+      "hash": "ico_Xr8NAnzItZrflBD3",
+      "streamlineName": "Mindfulness 2",
+      "setSlug": "streamline-regular",
+      "score": 167.35,
+      "query": "Mindfulness"
+    },
+    "meditation": {
+      "name": "meditation",
+      "category": "health",
+      "hash": "ico_ueMoGXutKoYpyRov",
+      "streamlineName": "Yoga Meditation Pose2",
+      "setSlug": "streamline-regular",
+      "score": 54.95,
+      "query": "Meditation"
+    },
+    "counseling": {
+      "name": "counseling",
+      "category": "health",
+      "hash": "ico_QQybWYQmmj4flAqi",
+      "streamlineName": "Counseling 3",
+      "setSlug": "streamline-regular",
+      "score": 167.4,
+      "query": "Counseling"
+    },
+    "crisis": {
+      "name": "crisis",
+      "category": "health",
+      "hash": "ico_sedTvcgIqSBl6URn",
+      "streamlineName": "Emergency Call",
+      "setSlug": "streamline-regular",
+      "score": 167.3,
+      "query": "Emergency"
+    },
+    "emergency": {
+      "name": "emergency",
+      "category": "health",
+      "hash": "ico_hwwOg4hqUBFd0FZa",
+      "streamlineName": "Sos Emergency Bubble",
+      "setSlug": "streamline-regular",
+      "score": 105.0,
+      "query": "Emergency"
+    },
+    "oxygen": {
+      "name": "oxygen",
+      "category": "health",
+      "hash": "ico_V5c8Qr9mNpVFK7zi",
+      "streamlineName": "Oxygen",
+      "setSlug": "streamline-regular",
+      "score": 239.7,
+      "query": "Oxygen"
+    },
+    "inhaler": {
+      "name": "inhaler",
+      "category": "health",
+      "hash": "ico_eiFC8qbbkmdZnBCZ",
+      "streamlineName": "Inhaler",
+      "setSlug": "streamline-regular",
+      "score": 289.65,
+      "query": "Inhaler"
+    },
+    "cancer": {
+      "name": "cancer",
+      "category": "health",
+      "hash": "ico_rhiZRPqbgiUYgBbY",
+      "streamlineName": "Cancer Cell 2",
+      "setSlug": "streamline-regular",
+      "score": 155.35,
+      "query": "Cancer"
+    },
+    "orthopedics": {
+      "name": "orthopedics",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4v6q2eLj9ULT2FzNT",
+      "streamlineName": "Medical Specialty Broken Bone",
+      "setSlug": "streamline-regular",
+      "score": 92.55,
+      "query": "Bone"
+    },
+    "neurology": {
+      "name": "neurology",
+      "category": "health",
+      "hash": "ico_zUTdHlqvofyjcdK0",
+      "streamlineName": "Brain Neurology",
+      "setSlug": "streamline-regular",
+      "score": 117.25,
+      "query": "Neurology"
+    },
+    "radiology": {
+      "name": "radiology",
+      "category": "health",
+      "hash": "ico_mRu4pQJ4vbIoeLj9ULWipaGi",
+      "streamlineName": "Radiology Scan",
+      "setSlug": "streamline-regular",
+      "score": 167.3,
+      "query": "Radiology"
+    },
+    "surgery": {
+      "name": "surgery",
+      "category": "health",
+      "hash": "ico_YRozLJ3RT1jf4E02",
+      "streamlineName": "Surgery Liposuction",
+      "setSlug": "streamline-regular",
+      "score": 167.05,
+      "query": "Surgery"
+    },
+    "chart-pie": {
+      "name": "chart-pie",
+      "category": "commerce",
+      "hash": "ico_mRu4pQJ4vNDo2aEaf7jUAiXY",
+      "streamlineName": "Presentation Projector Screen Pie Chart",
+      "setSlug": "streamline-regular",
+      "score": 55.05,
+      "query": "Pie Chart"
+    }
+  },
+  "notFound": [
+    "911",
+    "activity",
+    "allergy",
+    "anesthesia",
+    "asthma",
+    "billing",
+    "cardiology",
+    "care-gap",
+    "care-plan",
+    "care-team",
+    "caregiver",
+    "claims",
+    "clinical-notes",
+    "crutches",
+    "ct-scan",
+    "defibrillator",
+    "dermatology",
+    "diabetes",
+    "diagnosis",
+    "ecg",
+    "eligibility",
+    "geriatric",
+    "glucose",
+    "immunization",
+    "insulin",
+    "iv",
+    "lab-result",
+    "medication",
+    "nutrition",
+    "oncology",
+    "prior-auth",
+    "referral",
+    "refill",
+    "risk",
+    "rx",
+    "steps",
+    "support-group",
+    "telehealth",
+    "therapy",
+    "trending-down",
+    "trending-up",
+    "virtual-visit",
+    "vitals",
+    "wellness",
+    "xray"
+  ],
+  "usedHashes": {
+    "ico_nNGIq23YeZAqbko8": "bank",
+    "ico_mRu4pQJ4vadP2aEaf7DeGcsM": "piggy-bank",
+    "ico_mRu4pQJ4vTim2aEaf7sjsi0E": "coins",
+    "ico_mRu4pQJ4vtl62aEaf7P2Wegi": "chart-line",
+    "ico_mRu4pQJ4vgn42aEaf7P2Wfxr": "chart-bar",
+    "ico_ilCnVNxwaWZFmSvC": "heart",
+    "ico_Dotp53IiT3eL16kJ": "stethoscope",
+    "ico_mRu4pQJ4voiHeLj9ULJ4vYOv": "pill",
+    "ico_mRu4pQJ4vtTZeLj9UL9ULDXx": "first-aid",
+    "ico_mRu4pQJ4vbOVeLj9ULM5pK3B": "thermometer",
+    "ico_mRu4pQJ4vIVZeLj9ULqmI693": "syringe",
+    "ico_PXYO4geLZDkyVYlL": "hospital",
+    "ico_mRu4pQJ4vSJmeLj9ULjHWFkx": "ambulance",
+    "ico_C6IZeMMmCuwvbKdg": "medical-cross",
+    "ico_mRu4pQJ4vp1NeLj9ULZOsgUa": "bandage",
+    "ico_mRu4pQJ4vOPc2aEJttgnszON": "dna",
+    "ico_S3jT7mUfQ8Uw6WFl": "blood",
+    "ico_op4bmU5bdxN1cWIm": "pulse",
+    "ico_mRu4pQJ4vCvVeLj9UL2aEHTr": "lungs",
+    "ico_mRu4pQJ4vVkd2aEJttHO2SMw": "brain",
+    "ico_GIETvIEceTjoKeSK": "tooth",
+    "ico_F3HVew6sGIX2K0Z0": "eye-health",
+    "ico_mRu4pQJ4vwY12aENc3eixkaU": "ear",
+    "ico_qe7hWppZxcT83DOk": "wheelchair",
+    "ico_2jv3n4GBRXNo3sU6": "prescription",
+    "ico_38A0znaEtlOEb1G1": "pharmacy",
+    "ico_xMaQnfPuf146eaLn": "vaccine",
+    "ico_eBmC7TPXUduSY60T": "virus",
+    "ico_mRu4pQJ4vlqw2aENc3xihKKy": "mask",
+    "ico_mRu4pQJ4vpSXeLjK1ihNENqv": "hand-wash",
+    "ico_tbn9TadvUSVVtBr4": "clipboard-health",
+    "ico_MQc0d5srN6UeLvY4": "patient",
+    "ico_k7PZTuSgxOE2oPVd": "nurse",
+    "ico_3DYwYTKuiMB4lpYU": "doctor",
+    "ico_Bh8taG6jDBEObxap": "appointment",
+    "ico_mRu4pQJ4vCmmeLj9UL2aEJau": "lab",
+    "ico_kj5vVDnhwFwZghV1": "microscope",
+    "ico_NMR0QkLU6CgXb7Bo": "ultrasound",
+    "ico_BzwbPtaHTl8zuqy6": "blood-pressure",
+    "ico_mRu4pQJ4vPCdeLj9ULgWaJPp": "weight-scale",
+    "ico_mRu4pQJ4vci4eLjjHWWGyMqG": "fitness",
+    "ico_k1j7kFw7VMV2KYUo": "mental-health",
+    "ico_gwF62KUq1ZqPoPWn": "symptoms",
+    "ico_mRu4pQJ4vw4YeLj9UL08UEi8": "insurance",
+    "ico_U1rFtPBuC3RqLI2Q": "sleep",
+    "ico_R93j4Pb7nRYEe294": "dosage",
+    "ico_lMXt6pw7yMsQ58El": "pharmacy-alt",
+    "ico_xCX1X3vvKENfh1GY": "otc",
+    "ico_mRu4pQJ4vWzweLj9ULWipucM": "mri",
+    "ico_MNRVhaBUvXNjjYiO": "hearing-aid",
+    "ico_mRu4pQJ4veB9eLjQ3yfSZzb7": "glasses",
+    "ico_kkS2SfMf2hjF3ihL": "prosthetic",
+    "ico_mRu4pQJ4vQj9eLjjHWQ3ykjQ": "family-care",
+    "ico_mRu4pQJ4v9DxeLjjHWQ3yaRX": "pediatric",
+    "ico_QOkATVyVQh9R3E6S": "pregnancy",
+    "ico_Xr8NAnzItZrflBD3": "mental-wellness",
+    "ico_ueMoGXutKoYpyRov": "meditation",
+    "ico_QQybWYQmmj4flAqi": "counseling",
+    "ico_sedTvcgIqSBl6URn": "crisis",
+    "ico_hwwOg4hqUBFd0FZa": "emergency",
+    "ico_V5c8Qr9mNpVFK7zi": "oxygen",
+    "ico_eiFC8qbbkmdZnBCZ": "inhaler",
+    "ico_rhiZRPqbgiUYgBbY": "cancer",
+    "ico_mRu4pQJ4v6q2eLj9ULT2FzNT": "orthopedics",
+    "ico_zUTdHlqvofyjcdK0": "neurology",
+    "ico_mRu4pQJ4vbIoeLj9ULWipaGi": "radiology",
+    "ico_YRozLJ3RT1jf4E02": "surgery",
+    "ico_mRu4pQJ4vNDo2aEaf7jUAiXY": "chart-pie"
+  }
+}

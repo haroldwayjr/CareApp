@@ -1,0 +1,107 @@
+[
+  {
+    "name": "accessibility",
+    "hash": "ico_4U2pbPZmtc2tz5Ty",
+    "streamlineName": "Tools Reality Accessibility",
+    "path": "misc/accessibility.svg",
+    "score": 264.65
+  },
+  {
+    "name": "mouse",
+    "hash": "ico_mRu4pQJ4vznM2aE2aEgWat2C",
+    "streamlineName": "Mouse",
+    "path": "misc/mouse.svg",
+    "score": 289.75
+  },
+  {
+    "name": "projector",
+    "hash": "ico_mRu4pQJ4vP8T2aEWGyhNEbzb",
+    "streamlineName": "Video Projector",
+    "path": "misc/projector.svg",
+    "score": 252.25
+  },
+  {
+    "name": "wrench",
+    "hash": "ico_mRu4pQJ4vbeD2aEbmo6nlJ8a",
+    "streamlineName": "Wrench",
+    "path": "misc/wrench.svg",
+    "score": 289.7
+  },
+  {
+    "name": "fingerprint",
+    "hash": "ico_IY7CXyxwvti0u1D8",
+    "streamlineName": "Fingerprint Add",
+    "path": "misc/fingerprint.svg",
+    "score": 302.25
+  },
+  {
+    "name": "airplane",
+    "hash": "ico_mRu4pQJ4vH8A2aEeLjJ4vvhi",
+    "streamlineName": "Airplane Mode",
+    "path": "misc/airplane.svg",
+    "score": 252.35
+  },
+  {
+    "name": "translate",
+    "hash": "ico_mRu4pQJ4vH9z2aEbmoDeGfbn",
+    "streamlineName": "Translate",
+    "path": "misc/translate.svg",
+    "score": 289.55
+  },
+  {
+    "name": "desktop",
+    "hash": "ico_mRu4pQJ4vHtF2aE2aEJ4vC6A",
+    "streamlineName": "Desktop Computer",
+    "path": "misc/desktop.svg",
+    "score": 302.2
+  },
+  {
+    "name": "watch",
+    "hash": "ico_mRu4pQJ4vjGW2aEbmoSFbnyT",
+    "streamlineName": "Watch Time",
+    "path": "misc/watch.svg",
+    "score": 302.5
+  },
+  {
+    "name": "code",
+    "hash": "ico_mRu4pQJ4vSeI2aE6nlhtdqV5",
+    "streamlineName": "Folder Code",
+    "path": "misc/code.svg",
+    "score": 302.45
+  },
+  {
+    "name": "hammer",
+    "hash": "ico_mRu4pQJ4vfpP2aEbmoP2WnIy",
+    "streamlineName": "Hammer",
+    "path": "misc/hammer.svg",
+    "score": 289.7
+  },
+  {
+    "name": "face-id",
+    "hash": "ico_mRu4pQJ4vOM02aEbmoT2F9UL",
+    "streamlineName": "Face Id",
+    "path": "misc/face-id.svg",
+    "score": 302.65
+  },
+  {
+    "name": "flash",
+    "hash": "ico_mRu4pQJ4vOkJ2aEWGyxihA15",
+    "streamlineName": "Flash",
+    "path": "misc/flash.svg",
+    "score": 289.75
+  },
+  {
+    "name": "signal",
+    "hash": "ico_WVJj48wVj01Ljb7L",
+    "streamlineName": "Signal Wave",
+    "path": "misc/signal.svg",
+    "score": 302.45
+  },
+  {
+    "name": "smartphone",
+    "hash": "ico_wcruqWKeiqlhlRWs",
+    "streamlineName": "Smartphone Pay Dollar 2",
+    "path": "misc/smartphone.svg",
+    "score": 277.85
+  }
+]

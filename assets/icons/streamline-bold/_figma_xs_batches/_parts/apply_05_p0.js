@@ -1,0 +1,67 @@
+
+const page = figma.root.children.find(p => /Icons/i.test(p.name));
+await figma.setCurrentPageAsync(page);
+
+const collections = await figma.variables.getLocalVariableCollectionsAsync();
+let iconDefault = null;
+for (const coll of collections) {
+  for (const id of coll.variableIds) {
+    const v = await figma.variables.getVariableByIdAsync(id);
+    if (v && v.name === 'icon/default') iconDefault = v;
+  }
+}
+
+function bindFills(root) {
+  const stack = [root];
+  while (stack.length) {
+    const n = stack.pop();
+    if ('constraints' in n) n.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+    if (n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION' || n.type === 'ELLIPSE' || n.type === 'STAR' || n.type === 'POLYGON') {
+      const paint = figma.variables.setBoundVariableForPaint(
+        { type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', iconDefault);
+      n.fills = [paint];
+      n.strokes = [];
+    }
+    if ('children' in n) for (const c of n.children) stack.push(c);
+  }
+}
+
+function applyBoldXs(set, svg) {
+  const xs = set.children.find(c => c.name === 'Size=xs');
+  const md = set.children.find(c => c.name === 'Size=md');
+  if (!xs) return { ok: false, reason: 'no-xs' };
+  const was = xs.visible;
+  xs.visible = true;
+  for (const c of [...xs.children]) c.remove();
+  const node = figma.createNodeFromSvg(svg);
+  node.name = set.name.split('/').pop();
+  node.resize(16, 16);
+  node.x = 0; node.y = 0;
+  node.clipsContent = false;
+  if ('constraints' in node) node.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+  xs.appendChild(node);
+  try { xs.resizeWithoutConstraints(16, 16); } catch (_) { try { xs.resize(16, 16); } catch (__) {} }
+  bindFills(node);
+  xs.clipsContent = false;
+  xs.visible = false; // keep catalog md-only
+  if (md) md.visible = true;
+  try { set.resizeWithoutConstraints(24, 24); } catch (_) {}
+  set.clipsContent = true;
+  return { ok: true };
+}
+
+const BATCH = [{"setName":"icon/health/hospital","name":"hospital","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Hospital-Pin--Streamline-Ultimate\">\n  <desc>\n    Hospital Pin Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path fill=\"#000000\" fill-rule=\"evenodd\" d=\"M6.03 2.611a8.443 8.443 0 0 1 14.413 5.97c0 1.233 -0.519 2.797 -1.219 4.37 -0.712 1.602 -1.658 3.315 -2.608 4.88a65.79 65.79 0 0 1 -2.66 4.045c-0.372 0.522 -0.697 0.952 -0.944 1.257 -0.121 0.15 -0.232 0.281 -0.326 0.38 -0.045 0.046 -0.1 0.101 -0.16 0.15a0.98 0.98 0 0 1 -0.135 0.093 0.793 0.793 0 0 1 -0.39 0.105 0.793 0.793 0 0 1 -0.392 -0.105 0.98 0.98 0 0 1 -0.135 -0.093 1.821 1.821 0 0 1 -0.16 -0.15 6.471 6.471 0 0 1 -0.326 -0.38 28.417 28.417 0 0 1 -0.945 -1.257 65.775 65.775 0 0 1 -2.66 -4.045c-0.949 -1.565 -1.895 -3.278 -2.607 -4.88 -0.7 -1.573 -1.218 -3.137 -1.218 -4.37a8.45 8.45 0 0 1 2.472 -5.97m4.65 3.151a1 1 0 1 0 -2 0v6.962a1 1 0 1 0 2 0v-2.77h2.64v2.77a1 1 0 1 0 2 0V5.762a1 1 0 1 0 -2 0v2.191h-2.64v-2.19Z\" clip-rule=\"evenodd\" stroke-width=\"1\"></path>\n</svg>"},{"setName":"icon/health/ambulance","name":"ambulance","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Ambulance-Car--Streamline-Ultimate\">\n  <desc>\n    Ambulance Car Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M9.5 4.75h4a0.5 0.5 0 0 0 0.5 -0.5v-0.5a2.5 2.5 0 0 0 -5 0v0.5a0.5 0.5 0 0 0 0.5 0.5\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M3 20.75a2 2 0 1 0 4 0 2 2 0 1 0 -4 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M23 6.25H9.5a0.5 0.5 0 0 0 -0.5 0.5v0.5a0.5 0.5 0 0 1 -0.5 0.5H5.59A2 2 0 0 0 3.8 8.86l-2.22 5 0 0.15 -0.82 0.82A2.48 2.48 0 0 0 0 16.59v3.66a1 1 0 0 0 1 1 0.47 0.47 0 0 0 0.35 -0.15 0.47 0.47 0 0 0 0.15 -0.35 3.5 3.5 0 0 1 7 0 0.51 0.51 0 0 0 0.15 0.36 0.5 0.5 0 0 0 0.35 0.14h6a0.5 0.5 0 0 0 0.5 -0.5 3.5 3.5 0 0 1 7 0 0.51 0.51 0 0 0 0.5 0.5 1 1 0 0 0 1 -1v-13a1 1 0 0 0 -1 -1M9 12.77a0.5 0.5 0 0 1 -0.5 0.5H4.8a0.52 0.52 0 0 1 -0.42 -0.27 0.51 0.51 0 0 1 0 -0.48l1.11 -2.51a0.5 0.5 0 0 1 0.45 -0.3H8.5a0.5 0.5 0 0 1 0.5 0.5Zm10.5 0.48a0.5 0.5 0 0 1 -0.5 0.5h-1a0.5 0.5 0 0 0 -0.5 0.5v1a0.5 0.5 0 0 1 -0.5 0.5h-1a0.5 0.5 0 0 1 -0.5 -0.5v-1a0.5 0.5 0 0 0 -0.5 -0.5h-1a0.5 0.5 0 0 1 -0.5 -0.5v-1a0.5 0.5 0 0 1 0.5 -0.5h1a0.5 0.5 0 0 0 0.5 -0.5v-1a0.5 0.5 0 0 1 0.5 -0.5h1a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 0 0.5 0.5h1a0.5 0.5 0 0 1 0.5 0.5Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M17 20.75a2 2 0 1 0 4 0 2 2 0 1 0 -4 0\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/health/medical.cross","name":"medical-cross","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Medical-Cross--Streamline-Ultimate\">\n  <desc>\n    Medical Cross Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path fill=\"#000000\" fill-rule=\"evenodd\" d=\"M15.4469 0H8.55341c-0.55229 0 -1 0.447715 -1 1l0 6.55321H1c-0.552285 0 -1 0.44771 -1 1v6.89349c0 0.5523 0.447715 1 1 1h6.55341l0 6.5533c0 0.5523 0.44771 1 1 1h6.89349c0.5523 0 1 -0.4477 1 -1v-6.5533H23c0.5523 0 1 -0.4477 1 -1V8.55321c0 -0.55229 -0.4477 -1 -1 -1h-6.5531V1c0 -0.552285 -0.4477 -1 -1 -1\" clip-rule=\"evenodd\" stroke-width=\"1\"></path>\n</svg>"},{"setName":"icon/health/bandage","name":"bandage","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Bandage--Streamline-Ultimate\">\n  <desc>\n    Bandage Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M13.11 5.33a0.51 0.51 0 0 0 0 -0.71l-2.87 -2.86a6 6 0 0 0 -8.48 0 6 6 0 0 0 0 8.48l2.86 2.87a0.51 0.51 0 0 0 0.71 0Zm-5.49 -2.7a1 1 0 0 1 0 2 1 1 0 0 1 0 -2m-0.21 3.78a1 1 0 1 1 -1 1 1 1 0 0 1 1 -1M3.75 2.75a1 1 0 1 1 -1 1 1 1 0 0 1 1 -1m-0.13 5.88a1 1 0 0 1 0 -2 1 1 0 0 1 0 2\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"m22.24 13.76 -2.86 -2.87a0.52 0.52 0 0 0 -0.36 -0.14 0.5 0.5 0 0 0 -0.35 0.14l-7.78 7.78a0.51 0.51 0 0 0 0 0.71l2.87 2.86a6 6 0 0 0 8.48 0 6 6 0 0 0 0 -8.48m-5.76 7.72a1 1 0 1 1 1 -1 1 1 0 0 1 -1 1m0.13 -3.87a1 1 0 1 1 1 -1 1 1 0 0 1 -1 1m3.66 3.66a1 1 0 1 1 1 -1 1 1 0 0 1 -1 1m0.21 -3.79a1 1 0 1 1 1 -1 1 1 0 0 1 -1 1\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M14.88 6.39a0.53 0.53 0 0 0 -0.36 -0.15 0.51 0.51 0 0 0 -0.35 0.15l-7.78 7.78a0.51 0.51 0 0 0 0 0.71l2.73 2.73a0.55 0.55 0 0 0 0.36 0.15 0.51 0.51 0 0 0 0.35 -0.15l7.78 -7.78a0.51 0.51 0 0 0 0 -0.71Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/health/dna","name":"dna","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" id=\"Dna--Streamline-Ultimate\">\n  <desc>\n    Dna Streamline Icon: https://streamlinehq.com\n  </desc>\n  <g>\n    <path d=\"M3.34 7.13a0.25 0.25 0 0 0 0.21 0.12H7a0.25 0.25 0 0 0 0.21 -0.12l1.79 -3a0.24 0.24 0 0 0 0 -0.26l-1.84 -3A0.25 0.25 0 0 0 7 0.75H3.55a0.25 0.25 0 0 0 -0.21 0.12l-1.87 3a0.24 0.24 0 0 0 0 0.26Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M8.47 7.87a0.24 0.24 0 0 0 0 0.26l1.87 3a0.25 0.25 0 0 0 0.21 0.12h2.9a0.25 0.25 0 0 0 0.21 -0.12l1.87 -3a0.24 0.24 0 0 0 0 -0.26l-1.87 -3a0.25 0.25 0 0 0 -0.21 -0.12h-2.9a0.25 0.25 0 0 0 -0.21 0.12Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M3.34 15.13a0.25 0.25 0 0 0 0.21 0.12H7a0.25 0.25 0 0 0 0.21 -0.12l1.87 -3a0.24 0.24 0 0 0 0 -0.26l-1.87 -3A0.25 0.25 0 0 0 7 8.75H3.55a0.25 0.25 0 0 0 -0.21 0.12l-1.87 3a0.24 0.24 0 0 0 0 0.26Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"m9 19.87 -1.87 -3a0.25 0.25 0 0 0 -0.13 -0.12H3.55a0.25 0.25 0 0 0 -0.21 0.12l-1.87 3a0.24 0.24 0 0 0 0 0.26l1.87 3a0.25 0.25 0 0 0 0.21 0.12H7a0.25 0.25 0 0 0 0.21 -0.12l1.87 -3a0.24 0.24 0 0 0 -0.08 -0.26\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M15.53 16.13a0.24 0.24 0 0 0 0 -0.26l-1.87 -3a0.25 0.25 0 0 0 -0.21 -0.12h-2.9a0.25 0.25 0 0 0 -0.21 0.12l-1.87 3a0.24 0.24 0 0 0 0 0.26l1.87 3a0.25 0.25 0 0 0 0.21 0.12h2.9a0.25 0.25 0 0 0 0.21 -0.12Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"m15 4.13 1.87 3a0.25 0.25 0 0 0 0.21 0.12h3.4a0.25 0.25 0 0 0 0.21 -0.12l1.87 -3a0.24 0.24 0 0 0 0 -0.26l-1.87 -3a0.25 0.25 0 0 0 -0.21 -0.12h-3.4a0.25 0.25 0 0 0 -0.21 0.12l-1.87 3a0.24 0.24 0 0 0 0 0.26\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"m22.53 11.87 -1.87 -3a0.25 0.25 0 0 0 -0.21 -0.12h-3.4a0.25 0.25 0 0 0 -0.21 0.12l-1.87 3a0.24 0.24 0 0 0 0 0.26l1.87 3a0.25 0.25 0 0 0 0.21 0.12h3.4a0.25 0.25 0 0 0 0.21 -0.12l1.87 -3a0.24 0.24 0 0 0 0 -0.26\" fill=\"#000000\" stroke-width=\"1\"></path>\n    <path d=\"M20.66 16.87a0.25 0.25 0 0 0 -0.21 -0.12h-3.4a0.25 0.25 0 0 0 -0.21 0.12l-1.87 3a0.24 0.24 0 0 0 0 0.26l1.87 3a0.25 0.25 0 0 0 0.21 0.12h3.4a0.25 0.25 0 0 0 0.21 -0.12l1.87 -3a0.24 0.24 0 0 0 0 -0.26Z\" fill=\"#000000\" stroke-width=\"1\"></path>\n  </g>\n</svg>"},{"setName":"icon/health/blood","name":"blood","category":"health","svg":"<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" id=\"Blood-Types-1--Streamline-Ultimate\">\n  <desc>\n    Blood Types 1 Streamline Icon: https://streamlinehq.com\n  </desc>\n  <path fill=\"#000000\" fill-rule=\"evenodd\" d=\"M22.3098 13.7802c1.0822 -1.0107 1.6903 -2.3815 1.6903 -3.81089C24.0001 5.38947 19.0571 0 18.229 0c-0.6851 0 -4.1866 3.68882 -5.3755 7.55619 1.4135 2.04135 2.8356 4.71231 3.2841 7.43621 0.6606 0.2399 1.369 0.3664 2.0914 0.3664 1.5306 0 2.9985 -0.5678 4.0808 -1.5786m-6.6274 -5.03899c0 -0.41421 0.3358 -0.75 0.75 -0.75h3.4699c0.4142 0 0.75 0.33579 0.75 0.75s-0.3358 0.75 -0.75 0.75h-3.4699c-0.4142 0 -0.75 -0.33579 -0.75 -0.75m-0.9 7.95649c0 1.7826 -0.7583 3.4923 -2.1081 4.7528 -1.3498 1.2606 -3.18049 1.9687 -5.08938 1.9687s-3.73959 -0.7081 -5.08938 -1.9687C1.14575 20.19 0.387451 18.4803 0.387451 16.6977c0 -5.7118 6.164649 -12.43342 7.197469 -12.43342S14.7824 10.9859 14.7824 16.6977M8.33496 13.024c0 -0.4142 -0.33579 -0.75 -0.75 -0.75s-0.75 0.3358 -0.75 0.75v2.1062H4.72827c-0.41421 0 -0.75 0.3358 -0.75 0.75 0 0.4143 0.33579 0.75 0.75 0.75h2.10669v2.1072c0 0.4142 0.33579 0.75 0.75 0.75s0.75 -0.3358 0.75 -0.75v-2.1072h2.10664c0.4142 0 0.75 -0.3357 0.75 -0.75 0 -0.4142 -0.3358 -0.75 -0.75 -0.75H8.33496z\" clip-rule=\"evenodd\" stroke-width=\"1\"></path>\n</svg>"}];
+let ok = 0, missing = 0, failed = 0;
+const miss = [], fail = [];
+for (const item of BATCH) {
+  const set = page.findOne(n => n.type === 'COMPONENT_SET' && n.name === item.setName);
+  if (!set) { missing++; if (miss.length < 5) miss.push(item.setName); continue; }
+  try {
+    const r = applyBoldXs(set, item.svg);
+    if (r.ok) ok++; else { failed++; fail.push({ name: item.setName, r }); }
+  } catch (e) {
+    failed++;
+    if (fail.length < 5) fail.push({ name: item.setName, err: String(e) });
+  }
+}
+return { ok, missing, failed, miss, fail, batch: 'apply_05_p0' };

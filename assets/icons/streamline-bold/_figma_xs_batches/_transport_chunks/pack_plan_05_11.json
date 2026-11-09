@@ -1,0 +1,152 @@
+[
+  {
+    "batch": 5,
+    "orig": 27383,
+    "nchunks": 5,
+    "packs": [
+      {
+        "file": "pack_store_05_0.js",
+        "size": 37101,
+        "chunks": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "check": "check_05.js",
+    "exec": "exec_05.js"
+  },
+  {
+    "batch": 6,
+    "orig": 31452,
+    "nchunks": 6,
+    "packs": [
+      {
+        "file": "pack_store_06_0.js",
+        "size": 42637,
+        "chunks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "check": "check_06.js",
+    "exec": "exec_06.js"
+  },
+  {
+    "batch": 7,
+    "orig": 35011,
+    "nchunks": 6,
+    "packs": [
+      {
+        "file": "pack_store_07_0.js",
+        "size": 47385,
+        "chunks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "check": "check_07.js",
+    "exec": "exec_07.js"
+  },
+  {
+    "batch": 8,
+    "orig": 26734,
+    "nchunks": 5,
+    "packs": [
+      {
+        "file": "pack_store_08_0.js",
+        "size": 36237,
+        "chunks": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "check": "check_08.js",
+    "exec": "exec_08.js"
+  },
+  {
+    "batch": 9,
+    "orig": 26116,
+    "nchunks": 5,
+    "packs": [
+      {
+        "file": "pack_store_09_0.js",
+        "size": 35413,
+        "chunks": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "check": "check_09.js",
+    "exec": "exec_09.js"
+  },
+  {
+    "batch": 10,
+    "orig": 29248,
+    "nchunks": 5,
+    "packs": [
+      {
+        "file": "pack_store_10_0.js",
+        "size": 39589,
+        "chunks": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "check": "check_10.js",
+    "exec": "exec_10.js"
+  },
+  {
+    "batch": 11,
+    "orig": 40573,
+    "nchunks": 7,
+    "packs": [
+      {
+        "file": "pack_store_11_0.js",
+        "size": 40589,
+        "chunks": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "file": "pack_store_11_1.js",
+        "size": 14353,
+        "chunks": [
+          5,
+          6
+        ]
+      }
+    ],
+    "check": "check_11.js",
+    "exec": "exec_11.js"
+  }
+]

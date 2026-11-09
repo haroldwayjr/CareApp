@@ -1,0 +1,3 @@
+event: message
+data: {"result":{"content":[{"type":"text","text":"MCP error -32602: Input validation error: Invalid arguments for tool download_multiple_assets: [\n  {\n    \"code\": \"too_small\",\n    \"minimum\": 1,\n    \"type\": \"array\",\n    \"inclusive\": true,\n    \"exact\": false,\n    \"message\": \"iconHashes must include at least one icon hash.\",\n    \"path\": [\n      \"iconHashes\"\n    ]\n  }\n]"}],"isError":true},"jsonrpc":"2.0","id":1}
+

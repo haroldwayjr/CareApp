@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Camera--Streamline-Streamline-3.0">
+  <desc>
+    Camera Streamline Icon: https://streamlinehq.com
+  </desc>
+  <defs></defs>
+  <title>camera</title>
+  <path d="M9 12.75h7.5s1.5 0 1.5 1.5v4.5s0 1.5 -1.5 1.5H9s-1.5 0 -1.5 -1.5v-4.5s0 -1.5 1.5 -1.5" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m18 15 3 -1.5 0 6 -3 -1.5 0 -3z" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="m9.75 23.25 3 -3 3 3" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M3 5.25a4.5 4.5 0 1 0 9 0 4.5 4.5 0 1 0 -9 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  <path d="M15 6.75a3 3 0 1 0 6 0 3 3 0 1 0 -6 0" fill="none" stroke="#0F1828" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>

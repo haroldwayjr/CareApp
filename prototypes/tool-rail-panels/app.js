@@ -1879,7 +1879,7 @@
           event.stopPropagation();
           if (workMulti) {
             toggleWorkMultiOption(wrap, option);
-            if (wrap.closest("[data-dashboard-filters]")) syncDashboardSaveButton();
+            applyLiveWorkFilters(wrap);
             return;
           }
           const value = option.dataset.value ?? "";
@@ -9615,9 +9615,6 @@ Timestamp: 8/21/18 KS`;
     a.addEventListener("click", closeNavDrawer);
   });
 
-  const CHAT_PAGE_SIZE = 5;
-  const chatPager = document.querySelector("#chat-pager");
-  const chatPages = document.querySelector("#chat-pages");
   const pageChevron = (direction) =>
     `<svg class="work-chevron is-${direction}" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a.749.749 0 0 1-1.06 0L.75 7.311" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
@@ -9717,6 +9714,22 @@ Timestamp: 8/21/18 KS`;
   function resetChatFilters(root) {
     root.querySelectorAll(".inline-select").forEach((wrap) => resetWorkMultiSelect(wrap));
     closeInlineSelects();
+  }
+
+  function applyLiveWorkFilters(wrap) {
+    syncWorkMultiSelect(wrap, { commit: true });
+    const dashboard = wrap.closest("[data-dashboard-filters]");
+    if (dashboard) {
+      syncDashboardSaveButton();
+      paintDashboard(1);
+      return;
+    }
+    if (wrap.closest("[data-task-filters]")) {
+      paintTasks();
+      return;
+    }
+    const chat = wrap.closest("[data-chat-filters]");
+    if (chat) paintChatQueue(chat.dataset.chatFilters || "incoming");
   }
 
   const tableSort = {
@@ -9821,6 +9834,11 @@ Timestamp: 8/21/18 KS`;
     else row.setAttribute("aria-hidden", "true");
   }
 
+  function syncWorkEmpty(table, count) {
+    const empty = table?.closest(".work-table-wrap")?.querySelector("[data-work-empty]");
+    if (empty) empty.hidden = count !== 0;
+  }
+
   function paintTasks() {
     const rows = [...document.querySelectorAll('[aria-labelledby="tasks-title"] tbody tr')];
     const member = taskFilterValue("member");
@@ -9850,9 +9868,12 @@ Timestamp: 8/21/18 KS`;
       const count = matched.length === ordered.length ? 65 : matched.length;
       results.textContent = `${count} result${count === 1 ? "" : "s"}`;
     }
+    syncWorkEmpty(document.querySelector('[aria-labelledby="tasks-title"] table'), matched.length);
+    const taskPager = document.querySelector("#task-pager");
+    if (taskPager) taskPager.hidden = matched.length === 0;
   }
 
-  function paintChatQueue(queue, page = 1) {
+  function paintChatQueue(queue) {
     document.querySelectorAll("[data-chat-rows]").forEach((table) => {
       table.hidden = table.dataset.chatRows !== queue;
     });
@@ -9863,48 +9884,17 @@ Timestamp: 8/21/18 KS`;
     const rows = sortTableRows([...document.querySelectorAll(`[data-chat-rows="${queue}"] tbody tr`)], tableSort.chat);
     syncSortHeaders(rows[0]?.closest("table"), tableSort.chat);
     const matched = rows.filter((row) => rowMatchesChatFilters(row, root));
-    const count = matched.length;
-    const pageCount = Math.max(1, Math.ceil(count / CHAT_PAGE_SIZE));
-    const current = Math.min(Math.max(page, 1), pageCount);
-    const start = (current - 1) * CHAT_PAGE_SIZE;
-    const paged = count > CHAT_PAGE_SIZE;
-    const visible = new Set(paged ? matched.slice(start, start + CHAT_PAGE_SIZE) : matched);
     rows.forEach((row) => {
-      const shown = visible.has(row);
+      const shown = matched.includes(row);
       setWorkRowShown(row, shown);
-      row.classList.toggle("is-page-first", shown && row === matched[start]);
+      row.classList.toggle("is-page-first", shown && row === matched[0]);
     });
     const results = document.querySelector("#chat-results");
-    if (results) results.textContent = `${count} result${count === 1 ? "" : "s"}`;
-    if (!chatPager || !chatPages) return;
-    chatPager.hidden = !paged;
-    if (!paged) return;
-    const numbers = Array.from({ length: pageCount }, (_, index) => index + 1)
-      .map((number) => {
-        const currentPage = number === current;
-        return `<button class="work-page-btn${currentPage ? " is-current" : ""}" type="button"${currentPage ? ' aria-current="page"' : ""} data-chat-page="${number}">${number}</button>`;
-      })
-      .join("");
-    chatPages.innerHTML = `
-      <button class="work-page-nav" type="button" aria-label="Previous page" data-chat-page="prev"${current === 1 ? " disabled" : ""}>${pageChevron("left")}</button>
-      ${numbers}
-      <button class="work-page-nav" type="button" aria-label="Next page" data-chat-page="next"${current === pageCount ? " disabled" : ""}>${pageChevron("right")}</button>
-    `;
-    chatPager.dataset.page = String(current);
-    chatPager.dataset.pages = String(pageCount);
+    if (results) results.textContent = `${matched.length} result${matched.length === 1 ? "" : "s"}`;
+    syncWorkEmpty(document.querySelector(`[data-chat-rows="${queue}"]`), matched.length);
   }
 
-  chatPages?.addEventListener("click", (event) => {
-    const btn = event.target.closest("[data-chat-page]");
-    if (!btn || btn.disabled) return;
-    const current = Number(chatPager?.dataset.page || 1);
-    const pageCount = Number(chatPager?.dataset.pages || 1);
-    const which = btn.dataset.chatPage;
-    const next = which === "prev" ? current - 1 : which === "next" ? current + 1 : Number(which);
-    if (next < 1 || next > pageCount || next === current) return;
-    paintChatQueue("incoming", next);
-  });
-  paintChatQueue("incoming", 1);
+  paintChatQueue("incoming");
   bindTableSort(document.querySelector('[data-chat-rows="incoming"]'), "chat", () => paintChatQueue("incoming", 1));
   bindTableSort(document.querySelector('[aria-labelledby="tasks-title"] table'), "tasks", () => paintTasks());
 
@@ -9944,7 +9934,9 @@ Timestamp: 8/21/18 KS`;
     if (total) total.textContent = String(rows.length);
     const pages = document.querySelector("#dashboard-pages");
     const pager = document.querySelector("#dashboard-pager");
+    syncWorkEmpty(table, count);
     if (!pages || !pager) return;
+    pager.hidden = count === 0;
     pager.dataset.page = String(current);
     pager.dataset.pages = String(pageCount);
     const numbers = dashboardPageWindow(current, pageCount)
@@ -10054,10 +10046,6 @@ Timestamp: 8/21/18 KS`;
     paintDashboard(1);
     syncDashboardSaveButton();
   });
-  document.querySelector("[data-dashboard-apply]")?.addEventListener("click", () => {
-    commitWorkFilters(document.querySelector("[data-dashboard-filters]"));
-    paintDashboard(1);
-  });
   document.querySelector(".dashboard-save")?.addEventListener("click", () => {
     commitWorkFilters(document.querySelector("[data-dashboard-filters]"));
     dashboardSavedDefault = dashboardSelection();
@@ -10076,17 +10064,6 @@ Timestamp: 8/21/18 KS`;
   bindTableSort(document.querySelector(".dashboard-table"), "dashboard", () => paintDashboard(1));
 
   bindInlineSelects();
-  document.querySelectorAll("[data-chat-filters]").forEach((root) => {
-    root.addEventListener("click", (event) => {
-      if (event.target.closest("[data-chat-clear]")) {
-        resetChatFilters(root);
-        paintChatQueue(root.dataset.chatFilters, 1);
-      } else if (event.target.closest("[data-chat-apply]")) {
-        commitWorkFilters(root);
-        paintChatQueue(root.dataset.chatFilters, 1);
-      }
-    });
-  });
   document.querySelector("#work-filters-clear")?.addEventListener("click", () => {
     document.querySelector("#work-filters-clear").closest(".work-filters")?.querySelectorAll(".inline-select").forEach((wrap) => {
       resetWorkMultiSelect(wrap);
@@ -10095,9 +10072,28 @@ Timestamp: 8/21/18 KS`;
     paintTasks();
   });
   document.querySelector("#task-past-due")?.addEventListener("change", () => paintTasks());
-  document.querySelector("[data-task-apply]")?.addEventListener("click", () => {
-    commitWorkFilters(document.querySelector("[data-task-filters]"));
-    paintTasks();
+  document.querySelectorAll("[data-work-empty-clear]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const kind = button.dataset.workEmptyClear;
+      if (kind === "tasks") {
+        document.querySelector("[data-task-filters]")?.querySelectorAll(".inline-select").forEach((wrap) => {
+          resetWorkMultiSelect(wrap);
+        });
+        const past = document.querySelector("#task-past-due");
+        if (past) past.checked = false;
+        closeInlineSelects();
+        paintTasks();
+      } else if (kind === "dashboard") {
+        document.querySelector("[data-dashboard-filters]")?.querySelectorAll(".inline-select").forEach((wrap) => {
+          resetWorkMultiSelect(wrap);
+        });
+        const past = document.querySelector("#dashboard-past-due");
+        if (past) past.checked = false;
+        closeInlineSelects();
+        paintDashboard(1);
+        syncDashboardSaveButton();
+      }
+    });
   });
   paintTasks();
 

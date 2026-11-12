@@ -892,6 +892,13 @@ html[data-color-mode="dark"] .notif-alert {
   color: var(--text-tertiary); font-size: 13px; line-height: 18px;
 }
 .breadcrumb strong { color: var(--text-secondary); font-weight: 500; }
+.breadcrumb a {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+.breadcrumb a[aria-current="page"] { color: var(--text-secondary); font-weight: 500; }
+.breadcrumb a:hover { text-decoration: underline; }
 .page-heading h1 {
   /* Soma text style h1 — Figtree SemiBold 24 / 32 */
   margin: 0;
@@ -1410,6 +1417,13 @@ html[data-color-mode="dark"] .badge-tip {
   background: var(--icon-tertiary);
 }
 .path-timeline-event:first-child .path-timeline-dot { background: var(--brand); }
+.path-timeline-event.path-timeline-event--executed .path-timeline-dot,
+.path-timeline-event.path-timeline-event--sent .path-timeline-dot { background: var(--brand); }
+.path-timeline-event.path-timeline-event--declined .path-timeline-dot,
+.path-timeline-event.path-timeline-event--removed .path-timeline-dot,
+.path-timeline-event.path-timeline-event--created .path-timeline-dot { background: var(--icon-tertiary); }
+.path-timeline-event.path-timeline-event--member .path-timeline-dot { background: var(--danger-fg); }
+.path-timeline-event.path-timeline-event--done .path-timeline-dot { background: var(--success); }
 .path-timeline-line { width: 1px; flex: 1 0 0; min-height: 1px; background: var(--border-subtle); }
 .path-timeline-copy {
   display: flex; flex: 1 1 auto; flex-direction: column; gap: 2px;
@@ -1417,9 +1431,34 @@ html[data-color-mode="dark"] .badge-tip {
 }
 .path-timeline-event:last-child .path-timeline-copy { padding-bottom: 0; }
 .path-timeline-title,
-.path-timeline-meta { margin: 0; }
+.path-timeline-meta,
+.path-timeline-kicker,
+.path-timeline-actor { margin: 0; }
+.path-timeline-kicker {
+  display: flex; align-items: baseline; gap: 8px;
+  color: var(--text-tertiary); font: 400 12px / 16px "Figtree", system-ui, sans-serif;
+}
+.path-timeline-status { font-weight: 600; }
+.path-timeline-event--executed .path-timeline-status,
+.path-timeline-event--sent .path-timeline-status { color: var(--brand); }
+.path-timeline-event--declined .path-timeline-status,
+.path-timeline-event--removed .path-timeline-status,
+.path-timeline-event--created .path-timeline-status { color: var(--text-secondary); }
+.path-timeline-event--member .path-timeline-status { color: var(--danger-fg); }
+.path-timeline-event--done .path-timeline-status { color: var(--success); }
 .path-timeline-title { color: var(--text-primary); font: 400 12px / 18px "Figtree", system-ui, sans-serif; }
+.path-timeline-kicker + .path-timeline-title { font-weight: 600; }
 .path-timeline-meta { color: var(--text-secondary); font: 400 12px / 16px "Figtree", system-ui, sans-serif; }
+.path-timeline-actor { color: var(--text-tertiary); font: 400 12px / 16px "Figtree", system-ui, sans-serif; }
+.path-timeline:not(.is-expanded) .path-timeline-event.is-later { display: none; }
+.path-timeline-more { display: flex; align-items: center; margin: 0; padding: 0; }
+.path-timeline-more-button {
+  display: flex; align-items: center; gap: 12px; margin: 0; padding: 2px 0 0;
+  border: 0; background: transparent; color: var(--text-secondary);
+  font: 600 12px / 16px "Figtree", system-ui, sans-serif; cursor: pointer;
+}
+.path-timeline-more-button .path-timeline-dot { background: var(--icon-tertiary); }
+.path-timeline-more-button:hover { color: var(--text-primary); }
 .chat-card::before,
 .chat-card::after { content: none !important; display: none !important; }
 .chat-header {

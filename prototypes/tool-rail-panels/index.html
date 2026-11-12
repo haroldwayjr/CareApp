@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=elena-plan-21" />
+    <link rel="stylesheet" href="styles.css?v=elena-plan-26" />
   </head>
   <body>
     <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
@@ -484,9 +484,14 @@
     </main>
 
     <main class="page" id="member-chat-page">
-      <section class="page-heading page-rise" style="--rise: 1" aria-labelledby="member-page-title">
+      <section class="page-heading page-rise" id="elena-solis" style="--rise: 1" aria-labelledby="member-page-title">
         <div class="page-heading-copy">
           <div class="page-heading-lines">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="#my-members" data-nav="members">My Members</a>
+              <span aria-hidden="true">/</span>
+              <a href="#elena-solis" aria-current="page">Elena Solis</a>
+            </nav>
             <h1 id="member-page-title">Elena Solis</h1>
           </div>
           <div class="member-meta-row">
@@ -583,7 +588,7 @@
                                 <span class="path-need-heading">
                                   <span class="soft-badge soft-success">Clinical</span>
                                   <strong>Manage ongoing knee pain</strong>
-                                  <span class="path-need-meta">3 actions · Updated 11/11/26</span>
+                                  <span class="path-need-meta">2 actions · Updated 11/11/26</span>
                                 </span>
                                 <span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span>
                               </button>
@@ -595,16 +600,6 @@
                                   <div class="path-block">
                                     <p class="path-block-label">Recommended Actions</p>
                                     <div class="path-action-list" data-path-action-list="open">
-                                    <article class="path-action" data-path-action="hinge">
-                                      <div>
-                                        <h3 class="path-title">Hinge Health</h3>
-                                        <p class="path-why">Hinge Health provides MSK support through the employer.</p>
-                                      </div>
-                                      <div class="path-action-tools">
-                                        <button class="button button-secondary button-small" type="button">Execute</button>
-                                        <button class="icon-button icon-button--more" type="button" aria-label="More actions for Hinge Health" aria-haspopup="menu" aria-expanded="false" data-path-menu="action" data-path-action="hinge"><svg class="icon-more-vertical" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></button>
-                                      </div>
-                                    </article>
                                     <article class="path-action" data-path-action="provider-match">
                                       <div>
                                         <h3 class="path-title">Provider Match</h3>
@@ -626,26 +621,74 @@
                                       </div>
                                     </article>
                                     </div>
-                                    <div class="path-action-list" data-path-action-list="archived" hidden></div>
+                                    <div class="path-action-list" data-path-action-list="archived" hidden>
+                                      <article class="path-action" data-path-action="hinge">
+                                        <div>
+                                          <h3 class="path-title">Hinge Health</h3>
+                                          <p class="path-why">Hinge Health provides MSK support through the employer.</p>
+                                          <p class="path-archived-reason">Member declined · wants to finish in-person PT first</p>
+                                        </div>
+                                      </article>
+                                    </div>
                                   </div>
                                   <div class="path-block">
                                     <p class="path-block-label">Timeline</p>
                                     <ol class="path-timeline">
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--sent">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Need updated</p><p class="path-timeline-meta"><time datetime="2026-11-11">11/11/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Sent by Dot</span><time datetime="2026-09-20">9/20/26</time></p>
+                                          <p class="path-timeline-title">Hinge Health invite sent</p>
+                                          <p class="path-timeline-actor">Dot</p>
+                                        </div>
                                       </li>
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--member">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Shown in the member app</p><p class="path-timeline-meta"><time datetime="2026-11-11">11/11/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Declined by member</span><time datetime="2026-09-22">9/22/26</time></p>
+                                          <p class="path-timeline-title">Hinge Health — wants to finish in-person PT first</p>
+                                          <p class="path-timeline-actor">Jordan</p>
+                                        </div>
                                       </li>
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--done">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Benefits confirmed</p><p class="path-timeline-meta"><time datetime="2026-11-11">11/11/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Done</span><time datetime="2026-09-02">9/2/26</time></p>
+                                          <p class="path-timeline-title">Third physical therapy visit completed</p>
+                                          <p class="path-timeline-actor">In-network PT</p>
+                                        </div>
                                       </li>
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--created">
+                                        <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Action created</span><time datetime="2026-08-28">8/28/26</time></p>
+                                          <p class="path-timeline-title">Expert Medical Opinion added</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
+                                      </li>
+                                      <li class="path-timeline-event path-timeline-event--created">
+                                        <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Action created</span><time datetime="2026-08-20">8/20/26</time></p>
+                                          <p class="path-timeline-title">Provider Match added</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
+                                      </li>
+                                      <li class="path-timeline-event path-timeline-event--created">
+                                        <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Action created</span><time datetime="2026-08-14">8/14/26</time></p>
+                                          <p class="path-timeline-title">Hinge Health added</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
+                                      </li>
+                                      <li class="path-timeline-event path-timeline-event--created">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Need created</p><p class="path-timeline-meta"><time datetime="2026-11-11">11/11/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Need created</span><time datetime="2026-08-12">8/12/26</time></p>
+                                          <p class="path-timeline-title">Manage ongoing knee pain</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
                                       </li>
                                     </ol>
                                   </div>
@@ -714,21 +757,45 @@
                                   <div class="path-block">
                                     <p class="path-block-label">Timeline</p>
                                     <ol class="path-timeline">
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--executed">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Need updated</p><p class="path-timeline-meta"><time datetime="2026-09-22">9/22/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Executed</span><time datetime="2026-09-22">9/22/26</time></p>
+                                          <p class="path-timeline-title">Therapy referral sent</p>
+                                          <p class="path-timeline-actor">You</p>
+                                        </div>
                                       </li>
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--sent">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Goal started</p><p class="path-timeline-meta"><time datetime="2026-09-13">9/13/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Sent by Dot</span><time datetime="2026-09-13">9/13/26</time></p>
+                                          <p class="path-timeline-title">Mental health goal started in the member app</p>
+                                          <p class="path-timeline-actor">Dot</p>
+                                        </div>
                                       </li>
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--created">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Shown in the member app</p><p class="path-timeline-meta"><time datetime="2026-09-12">9/12/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Action created</span><time datetime="2026-09-12">9/12/26</time></p>
+                                          <p class="path-timeline-title">Referral to a virtual therapist added</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
                                       </li>
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--done">
+                                        <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Done</span><time datetime="2026-09-12">9/12/26</time></p>
+                                          <p class="path-timeline-title">Depression screening recorded at the last visit</p>
+                                          <p class="path-timeline-actor">Last visit</p>
+                                        </div>
+                                      </li>
+                                      <li class="path-timeline-event path-timeline-event--created">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Need created</p><p class="path-timeline-meta"><time datetime="2026-09-12">9/12/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Need created</span><time datetime="2026-09-10">9/10/26</time></p>
+                                          <p class="path-timeline-title">Getting mental health back on track</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
                                       </li>
                                     </ol>
                                   </div>
@@ -797,21 +864,45 @@
                                   <div class="path-block">
                                     <p class="path-block-label">Timeline</p>
                                     <ol class="path-timeline">
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--executed">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Need updated</p><p class="path-timeline-meta"><time datetime="2026-09-21">9/21/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Executed</span><time datetime="2026-09-21">9/21/26</time></p>
+                                          <p class="path-timeline-title">Wellness visit outreach sent</p>
+                                          <p class="path-timeline-actor">You</p>
+                                        </div>
                                       </li>
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--created">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Last member activity</p><p class="path-timeline-meta"><time datetime="2026-09-21">9/21/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Action created</span><time datetime="2026-09-16">9/16/26</time></p>
+                                          <p class="path-timeline-title">Book a wellness visit added</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
                                       </li>
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--sent">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Shown in the member app</p><p class="path-timeline-meta"><time datetime="2026-09-19">9/19/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Sent by Dot</span><time datetime="2026-09-15">9/15/26</time></p>
+                                          <p class="path-timeline-title">Preventive care reminder sent</p>
+                                          <p class="path-timeline-actor">Dot</p>
+                                        </div>
                                       </li>
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--done">
+                                        <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Done</span><time datetime="2026-09-15">9/15/26</time></p>
+                                          <p class="path-timeline-title">Claims reviewed for a wellness visit in the last 12 months</p>
+                                          <p class="path-timeline-actor">You</p>
+                                        </div>
+                                      </li>
+                                      <li class="path-timeline-event path-timeline-event--created">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Need created</p><p class="path-timeline-meta"><time datetime="2026-09-15">9/15/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Need created</span><time datetime="2026-09-12">9/12/26</time></p>
+                                          <p class="path-timeline-title">Stay current on preventive care</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
                                       </li>
                                     </ol>
                                   </div>
@@ -873,21 +964,45 @@
                                   <div class="path-block">
                                     <p class="path-block-label">Timeline</p>
                                     <ol class="path-timeline">
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--done">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Need updated</p><p class="path-timeline-meta"><time datetime="2026-09-18">9/18/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Done</span><time datetime="2026-09-18">9/18/26</time></p>
+                                          <p class="path-timeline-title">Spending guidance shared with the member</p>
+                                          <p class="path-timeline-actor">You</p>
+                                        </div>
                                       </li>
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--sent">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Guidance completed</p><p class="path-timeline-meta"><time datetime="2026-09-18">9/18/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Sent by Dot</span><time datetime="2026-09-14">9/14/26</time></p>
+                                          <p class="path-timeline-title">Coverage summary sent</p>
+                                          <p class="path-timeline-actor">Dot</p>
+                                        </div>
                                       </li>
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--executed">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Shown in the member app</p><p class="path-timeline-meta"><time datetime="2026-09-16">9/16/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Executed</span><time datetime="2026-09-14">9/14/26</time></p>
+                                          <p class="path-timeline-title">MRI denial reviewed for missing CPT codes</p>
+                                          <p class="path-timeline-actor">You</p>
+                                        </div>
                                       </li>
-                                      <li class="path-timeline-event">
+                                      <li class="path-timeline-event path-timeline-event--created">
+                                        <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Action created</span><time datetime="2026-09-13">9/13/26</time></p>
+                                          <p class="path-timeline-title">Provide guidance on healthcare spending added</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
+                                      </li>
+                                      <li class="path-timeline-event path-timeline-event--created">
                                         <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span></span>
-                                        <div class="path-timeline-copy"><p class="path-timeline-title">Need created</p><p class="path-timeline-meta"><time datetime="2026-09-14">9/14/26</time></p></div>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Need created</span><time datetime="2026-09-12">9/12/26</time></p>
+                                          <p class="path-timeline-title">Understand healthcare spending</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
                                       </li>
                                     </ol>
                                   </div>
@@ -913,6 +1028,141 @@
                                         <div class="path-evidence-actions">
                                           <a href="#coverage-summary">View summary</a>
                                           <button class="icon-button icon-button--more" type="button" aria-label="More actions for coverage summary" aria-haspopup="menu" aria-expanded="false" data-path-menu="evidence" data-path-evidence="coverage-summary" data-path-need="spending"><svg class="icon-more-vertical" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </section>
+
+                          <section class="accordion path-need" data-path-need="stay-healthy">
+                            <div class="accordion-header-row">
+                              <button class="accordion-toggle" type="button" aria-expanded="false">
+                                <span class="path-need-heading">
+                                  <span class="soft-badge soft-success">Clinical</span>
+                                  <strong>Stay healthy</strong>
+                                  <span class="path-need-meta">3 actions · Updated 11/11/26</span>
+                                </span>
+                                <span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span>
+                              </button>
+                              <button class="icon-button icon-button--more" type="button" aria-label="More actions for Stay healthy" aria-haspopup="menu" aria-expanded="false" data-path-menu="need" data-path-need="stay-healthy"><svg class="icon-more-vertical" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></button>
+                            </div>
+                            <div class="accordion-body">
+                              <div class="accordion-body-inner">
+                                <div class="accordion-body-pad path-need-body">
+                                  <div class="path-block">
+                                    <p class="path-block-label">Recommended Actions</p>
+                                    <div class="path-action-list" data-path-action-list="open">
+                                    <article class="path-action" data-path-action="hinge-plan">
+                                      <div>
+                                        <h3 class="path-title">Hinge Health</h3>
+                                        <p class="path-why">Hinge Health provides musculoskeletal support through the CalPERS PPO plan.</p>
+                                      </div>
+                                      <div class="path-action-tools">
+                                        <button class="button button-secondary button-small" type="button">Execute</button>
+                                        <button class="icon-button icon-button--more" type="button" aria-label="More actions for Hinge Health" aria-haspopup="menu" aria-expanded="false" data-path-menu="action" data-path-action="hinge-plan"><svg class="icon-more-vertical" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></button>
+                                      </div>
+                                    </article>
+                                    <article class="path-action" data-path-action="lyra">
+                                      <div>
+                                        <h3 class="path-title">Lyra Health</h3>
+                                        <p class="path-why">Lyra Health provides therapy and mental health coaching through the plan.</p>
+                                      </div>
+                                      <div class="path-action-tools">
+                                        <button class="button button-secondary button-small" type="button">Execute</button>
+                                        <button class="icon-button icon-button--more" type="button" aria-label="More actions for Lyra Health" aria-haspopup="menu" aria-expanded="false" data-path-menu="action" data-path-action="lyra"><svg class="icon-more-vertical" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></button>
+                                      </div>
+                                    </article>
+                                    <article class="path-action" data-path-action="virtual-visit">
+                                      <div>
+                                        <h3 class="path-title">Virtual visit</h3>
+                                        <p class="path-why">A virtual visit with a clinician is included on the plan and does not need a referral.</p>
+                                      </div>
+                                      <div class="path-action-tools">
+                                        <button class="button button-secondary button-small" type="button">Execute</button>
+                                        <button class="icon-button icon-button--more" type="button" aria-label="More actions for Virtual visit" aria-haspopup="menu" aria-expanded="false" data-path-menu="action" data-path-action="virtual-visit"><svg class="icon-more-vertical" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></button>
+                                      </div>
+                                    </article>
+                                    </div>
+                                    <div class="path-action-list" data-path-action-list="archived" hidden></div>
+                                  </div>
+                                  <div class="path-block">
+                                    <p class="path-block-label">Timeline</p>
+                                    <ol class="path-timeline">
+                                      <li class="path-timeline-event path-timeline-event--sent">
+                                        <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Sent by Dot</span><time datetime="2026-11-11">11/11/26</time></p>
+                                          <p class="path-timeline-title">Benefit options shared with the member</p>
+                                          <p class="path-timeline-actor">Dot</p>
+                                        </div>
+                                      </li>
+                                      <li class="path-timeline-event path-timeline-event--created">
+                                        <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Action created</span><time datetime="2026-11-11">11/11/26</time></p>
+                                          <p class="path-timeline-title">Virtual visit added</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
+                                      </li>
+                                      <li class="path-timeline-event path-timeline-event--created">
+                                        <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Action created</span><time datetime="2026-11-11">11/11/26</time></p>
+                                          <p class="path-timeline-title">Lyra Health added</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
+                                      </li>
+                                      <li class="path-timeline-event path-timeline-event--created">
+                                        <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Action created</span><time datetime="2026-11-11">11/11/26</time></p>
+                                          <p class="path-timeline-title">Hinge Health added</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
+                                      </li>
+                                      <li class="path-timeline-event path-timeline-event--done">
+                                        <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span><span class="path-timeline-line"></span></span>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Done</span><time datetime="2026-11-11">11/11/26</time></p>
+                                          <p class="path-timeline-title">CalPERS PPO benefits confirmed</p>
+                                          <p class="path-timeline-actor">You</p>
+                                        </div>
+                                      </li>
+                                      <li class="path-timeline-event path-timeline-event--created">
+                                        <span class="path-timeline-rail" aria-hidden="true"><span class="path-timeline-dot"></span></span>
+                                        <div class="path-timeline-copy">
+                                          <p class="path-timeline-kicker"><span class="path-timeline-status">Need created</span><time datetime="2026-11-10">11/10/26</time></p>
+                                          <p class="path-timeline-title">Stay healthy</p>
+                                          <p class="path-timeline-actor">IH</p>
+                                        </div>
+                                      </li>
+                                    </ol>
+                                  </div>
+                                  <div class="path-block">
+                                    <p class="path-block-label">Evidence</p>
+                                    <div class="path-evidence-list">
+                                      <div class="path-evidence" data-path-evidence="stay-hinge">
+                                        <p class="path-evidence-descriptor">Hinge Health is included for musculoskeletal support.</p>
+                                        <div class="path-evidence-actions">
+                                          <a href="#stay-hinge">View benefit</a>
+                                          <button class="icon-button icon-button--more" type="button" aria-label="More actions for Hinge Health benefit" aria-haspopup="menu" aria-expanded="false" data-path-menu="evidence" data-path-evidence="stay-hinge" data-path-need="stay-healthy"><svg class="icon-more-vertical" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></button>
+                                        </div>
+                                      </div>
+                                      <div class="path-evidence" data-path-evidence="stay-lyra">
+                                        <p class="path-evidence-descriptor">Lyra Health covers therapy and coaching on this plan.</p>
+                                        <div class="path-evidence-actions">
+                                          <a href="#stay-lyra">View benefit</a>
+                                          <button class="icon-button icon-button--more" type="button" aria-label="More actions for Lyra Health benefit" aria-haspopup="menu" aria-expanded="false" data-path-menu="evidence" data-path-evidence="stay-lyra" data-path-need="stay-healthy"><svg class="icon-more-vertical" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></button>
+                                        </div>
+                                      </div>
+                                      <div class="path-evidence" data-path-evidence="stay-virtual">
+                                        <p class="path-evidence-descriptor">Virtual visits are available with no referral.</p>
+                                        <div class="path-evidence-actions">
+                                          <a href="#stay-virtual">View coverage</a>
+                                          <button class="icon-button icon-button--more" type="button" aria-label="More actions for virtual visit coverage" aria-haspopup="menu" aria-expanded="false" data-path-menu="evidence" data-path-evidence="stay-virtual" data-path-need="stay-healthy"><svg class="icon-more-vertical" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></button>
                                         </div>
                                       </div>
                                     </div>
@@ -4121,6 +4371,6 @@
     </div>
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
     <script src="chat-engine.js?v=mode-trigger-1"></script>
-    <script src="app.js?v=elena-members-11"></script>
+    <script src="app.js?v=elena-members-15"></script>
   </body>
 </html>

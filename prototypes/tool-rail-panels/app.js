@@ -4073,6 +4073,7 @@
 
   function setActiveNav(name) {
     document.querySelectorAll("[data-nav]").forEach((link) => {
+      if (link.closest(".breadcrumb")) return;
       const on = link.dataset.nav === name;
       link.classList.toggle("is-active", on);
       if (on) link.setAttribute("aria-current", "page");
@@ -11048,11 +11049,12 @@ Timestamp: 8/21/18 KS`;
       openButton = null;
     };
 
-    const appendTimeline = (need, title, stamp, reason) => {
+    const appendTimeline = (need, title, stamp, reason, status) => {
       const list = need?.querySelector(".path-timeline");
       if (!list) return;
       const item = document.createElement("li");
       item.className = "path-timeline-event";
+      if (status?.kind) item.classList.add(`path-timeline-event--${status.kind}`);
       const rail = document.createElement("span");
       rail.className = "path-timeline-rail";
       rail.setAttribute("aria-hidden", "true");
@@ -11066,16 +11068,34 @@ Timestamp: 8/21/18 KS`;
       }
       const copy = document.createElement("div");
       copy.className = "path-timeline-copy";
-      const heading = document.createElement("p");
-      heading.className = "path-timeline-title";
-      heading.textContent = title;
-      const meta = document.createElement("p");
-      meta.className = "path-timeline-meta";
       const time = document.createElement("time");
       time.dateTime = new Date().toISOString();
       time.textContent = stamp;
-      meta.appendChild(time);
-      copy.append(heading, meta);
+      if (status?.label) {
+        const kicker = document.createElement("p");
+        kicker.className = "path-timeline-kicker";
+        const label = document.createElement("span");
+        label.className = "path-timeline-status";
+        label.textContent = status.label;
+        kicker.append(label, time);
+        copy.appendChild(kicker);
+      }
+      const heading = document.createElement("p");
+      heading.className = "path-timeline-title";
+      heading.textContent = title;
+      copy.appendChild(heading);
+      if (status?.actor) {
+        const actor = document.createElement("p");
+        actor.className = "path-timeline-actor";
+        actor.textContent = status.actor;
+        copy.appendChild(actor);
+      }
+      if (!status?.label) {
+        const meta = document.createElement("p");
+        meta.className = "path-timeline-meta";
+        meta.appendChild(time);
+        copy.appendChild(meta);
+      }
       if (reason) {
         const reasonLine = document.createElement("p");
         reasonLine.className = "path-timeline-meta";
@@ -11084,6 +11104,35 @@ Timestamp: 8/21/18 KS`;
       }
       item.append(rail, copy);
       list.prepend(item);
+      fitTimeline(list);
+    };
+
+    const fitTimeline = (list) => {
+      if (!list) return;
+      const events = [...list.querySelectorAll(":scope > .path-timeline-event")];
+      const more = list.querySelector(":scope > .path-timeline-more");
+      if (list.classList.contains("is-expanded") || events.length <= 4) {
+        events.forEach((event) => event.classList.remove("is-later"));
+        more?.remove();
+        return;
+      }
+      events.forEach((event, index) => event.classList.toggle("is-later", index >= 4));
+      let control = more;
+      if (!control) {
+        control = document.createElement("li");
+        control.className = "path-timeline-more";
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "path-timeline-more-button";
+        const dot = document.createElement("span");
+        dot.className = "path-timeline-dot";
+        dot.setAttribute("aria-hidden", "true");
+        const label = document.createElement("span");
+        label.textContent = "View all";
+        button.append(dot, label);
+        control.appendChild(button);
+      }
+      events[3].after(control);
     };
 
     const syncNba = () => {
@@ -11147,11 +11196,23 @@ Timestamp: 8/21/18 KS`;
       archived?.appendChild(action);
       const empty = archived?.querySelector(".path-archived-empty");
       if (empty) empty.hidden = true;
+      const name = action.querySelector(".path-title").textContent.trim();
+      const memberDeclined = label.startsWith("Action removed · ");
       const count = need.querySelectorAll('[data-path-action-list="open"] .path-action').length;
       const meta = need.querySelector(".path-need-meta");
       const updated = meta.textContent.includes("·") ? meta.textContent.slice(meta.textContent.indexOf("·") + 1) : "";
       meta.textContent = `${count} ${count === 1 ? "action" : "actions"} ·${updated}`;
-      appendTimeline(need, label, pathStamp(), reason);
+      appendTimeline(
+        need,
+        memberDeclined ? `${name} — ${reason}` : `${name} removed as an action`,
+        pathStamp(),
+        memberDeclined ? "" : reason,
+        {
+          kind: memberDeclined ? "member" : "removed",
+          label: memberDeclined ? "Declined by member" : "Removed",
+          actor: "You",
+        },
+      );
       syncNba();
       applyPathActions();
       showToast("Action is archived and reason is recorded.");
@@ -11173,7 +11234,12 @@ Timestamp: 8/21/18 KS`;
       need.querySelectorAll("[data-path-menu='action'], [data-path-menu='need']").forEach((button) => {
         button.hidden = true;
       });
-      appendTimeline(need, "Need marked inaccurate", pathStamp(), reason);
+      const needName = strong.textContent.trim();
+      appendTimeline(need, `${needName} removed`, pathStamp(), reason, {
+        kind: "removed",
+        label: "Removed",
+        actor: "You",
+      });
       syncNba();
       applyPathActions();
       showToast("Need is archived and reason is recorded.");
@@ -11329,7 +11395,18 @@ Timestamp: 8/21/18 KS`;
       handleChoice(data, choice.dataset.pathChoice);
     });
 
+    pane.querySelectorAll(".path-timeline").forEach(fitTimeline);
+
     page.addEventListener("click", (event) => {
+      const viewAll = event.target.closest(".path-timeline-more-button");
+      if (viewAll && pane.contains(viewAll)) {
+        event.preventDefault();
+        event.stopPropagation();
+        const list = viewAll.closest(".path-timeline");
+        list.classList.add("is-expanded");
+        fitTimeline(list);
+        return;
+      }
       const choice = event.target.closest(".path-action-switch button");
       if (choice && page.contains(choice)) {
         event.stopPropagation();

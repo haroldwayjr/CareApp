@@ -1382,6 +1382,7 @@ html[data-color-mode="dark"] .badge-tip {
 .path-action-tools,
 .path-nba-actions { display: flex; align-items: center; gap: 2px; }
 .path-need.is-inaccurate .path-need-heading strong { color: var(--text-secondary); }
+.path-need > .accordion-header-row > .soft-badge { align-self: center; flex: 0 0 auto; }
 .path-menu {
   position: fixed; z-index: 40; min-width: 200px; padding: 6px;
   border: 1px solid var(--border-subtle); border-radius: var(--radius-md);

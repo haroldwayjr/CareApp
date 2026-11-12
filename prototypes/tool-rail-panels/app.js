@@ -3,7 +3,7 @@
 
   const panel = document.querySelector("#context-panel");
   const stage = document.querySelector("#panel-stage");
-  const railButtons = [...document.querySelectorAll(".rail-button[data-panel]")];
+  const railButtons = [...document.querySelectorAll("#chat-page .rail-button[data-panel]")];
   const modal = document.querySelector("#modal-layer");
   const modalTitle = document.querySelector("#modal-title");
   const modalBody = document.querySelector("#modal-body");
@@ -4109,6 +4109,7 @@
 
   function showWorkPage() {
     document.querySelector("#chat-page")?.setAttribute("hidden", "");
+    hidePage(document.querySelector("#member-chat-page"));
     hidePage(document.querySelector("#dashboard-page"));
     const work = document.querySelector("#work-page");
     if (!work) return;
@@ -4144,12 +4145,32 @@
   function showChatPage() {
     hidePage(document.querySelector("#work-page"));
     hidePage(document.querySelector("#dashboard-page"));
+    hidePage(document.querySelector("#member-chat-page"));
     document.querySelector("#chat-page")?.removeAttribute("hidden");
     document.title = "Care App — Chat with Riley Smith";
   }
 
+  function showMemberChatPage() {
+    document.querySelector("#chat-page")?.setAttribute("hidden", "");
+    hidePage(document.querySelector("#work-page"));
+    hidePage(document.querySelector("#dashboard-page"));
+    const member = document.querySelector("#member-chat-page");
+    if (!member) return;
+    member.removeAttribute("hidden");
+    const heading = member.querySelector("h1")?.textContent?.trim();
+    document.title = heading ? `Care App — ${heading}` : "Care App — Chat";
+    setActiveNav("members");
+    setMemberCopyPanelWidth("assist");
+    requestAnimationFrame(() => {
+      const assistTabs = member.querySelector(".assist-tabs");
+      if (assistTabs) layoutTabsIndicator(assistTabs, { animate: false });
+      syncMemberCopyRail({ animate: false });
+    });
+  }
+
   function showDashboardPage() {
     document.querySelector("#chat-page")?.setAttribute("hidden", "");
+    hidePage(document.querySelector("#member-chat-page"));
     hidePage(document.querySelector("#work-page"));
     const dashboard = document.querySelector("#dashboard-page");
     if (!dashboard) return;
@@ -4171,6 +4192,10 @@
 
   document.querySelectorAll("[data-open-chat]").forEach((button) => {
     button.addEventListener("click", openQueuedChat);
+  });
+
+  document.querySelectorAll("[data-open-member-chat]").forEach((button) => {
+    button.addEventListener("click", showMemberChatPage);
   });
 
   function finishChatSession() {
@@ -9982,6 +10007,12 @@ Timestamp: 8/21/18 KS`;
       showDashboardPage();
     });
   });
+  document.querySelectorAll('[data-nav="members"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      showMemberChatPage();
+    });
+  });
   const DASHBOARD_DEFAULT_KEY = "careapp.dashboard.defaultFilter";
   let dashboardSavedDefault = null;
   try {
@@ -10344,7 +10375,7 @@ Timestamp: 8/21/18 KS`;
     root?.classList.toggle("is-closed", closed);
     root?.setAttribute("data-reply-mode", closed ? "closed" : "active");
     const labels = closed ? replyTimerLabels.closed : replyTimerLabels.active;
-    document.querySelectorAll(".reply-timer[data-reply-side]").forEach((el) => {
+    document.querySelectorAll("#chat-page .reply-timer[data-reply-side]").forEach((el) => {
       const side = el.getAttribute("data-reply-side");
       const on = side === replyTimerState.active;
       el.classList.toggle("is-active", !closed && on);
@@ -10778,6 +10809,555 @@ Timestamp: 8/21/18 KS`;
     });
   }
 
-  showWorkPage();
+  bindMemberCopyPanels();
+  bindMemberHub();
+  bindPathDecisions();
+  showMemberChatPage();
   runPageEntrance();
+
+  function memberCopyRoot() {
+    return document.querySelector("#member-chat-page");
+  }
+
+  function syncMemberCopyRail({ animate = true } = {}) {
+    const root = memberCopyRoot();
+    const rail = root?.querySelector(".tool-rail");
+    const indicator = rail?.querySelector(".rail-indicator");
+    const panel = root?.querySelector("#member-context-panel");
+    const active = rail?.querySelector(".rail-button.is-active");
+    if (!rail || !indicator) return;
+    if (!active || panel?.classList.contains("is-collapsed")) {
+      indicator.classList.remove("is-visible");
+      return;
+    }
+    if (!animate) indicator.classList.add("is-instant");
+    const railRect = rail.getBoundingClientRect();
+    const activeRect = active.getBoundingClientRect();
+    const y = activeRect.top + activeRect.height / 2 - railRect.top - 10;
+    indicator.style.transform = `translateY(${Math.round(y)}px)`;
+    indicator.classList.add("is-visible");
+    if (!animate) {
+      void indicator.offsetWidth;
+      indicator.classList.remove("is-instant");
+    }
+  }
+
+  function setMemberCopyPanelWidth(name) {
+    const page = memberCopyRoot();
+    const max = Math.max(320, Math.floor((page?.clientWidth || window.innerWidth) / 2));
+    const preferred = name === "insurance" ? 440 : name === "provider-search" || name === "assist" ? 480 : 400;
+    const width = Math.min(max, Math.max(320, preferred));
+    document.documentElement.style.setProperty("--panel-width", `${width}px`);
+    document.documentElement.classList.toggle("is-panel-fields-wide", width >= 480);
+  }
+
+  function showMemberCopyPanel(name) {
+    const root = memberCopyRoot();
+    const stage = root?.querySelector("#member-panel-stage");
+    const panel = root?.querySelector("#member-context-panel");
+    if (!stage || !panel) return;
+    const articles = [...stage.querySelectorAll(":scope > .panel-content")];
+    const match = articles.find((article) => article.dataset.content === name);
+    if (!match) return;
+    articles.forEach((article) => article.classList.toggle("is-current", article === match));
+    root.querySelectorAll(".rail-button[data-panel]").forEach((button) => {
+      const selected = button.dataset.panel === name;
+      button.classList.toggle("is-active", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+    panel.classList.remove("is-collapsed");
+    panel.removeAttribute("inert");
+    panel.setAttribute("aria-hidden", "false");
+    const label = match.querySelector("h2")?.textContent?.trim();
+    if (label) panel.setAttribute("aria-label", `${label} panel`);
+    setMemberCopyPanelWidth(name);
+    syncMemberCopyRail({ animate: true });
+    requestAnimationFrame(() => {
+      match.querySelectorAll(".tabs").forEach((tabs) => layoutTabsIndicator(tabs, { animate: false }));
+    });
+  }
+
+  function collapseMemberCopyPanel() {
+    const root = memberCopyRoot();
+    const panel = root?.querySelector("#member-context-panel");
+    if (!root || !panel) return;
+    panel.classList.add("is-collapsed");
+    panel.setAttribute("aria-hidden", "true");
+    panel.inert = true;
+    root.querySelectorAll(".rail-button[data-panel]").forEach((button) => {
+      button.classList.remove("is-active");
+      button.setAttribute("aria-pressed", "false");
+    });
+    syncMemberCopyRail();
+  }
+
+  function bindMemberCopyPanels() {
+    const root = memberCopyRoot();
+    const stage = root?.querySelector("#member-panel-stage");
+    if (!root || !stage) return;
+    root.querySelectorAll(".rail-button[data-panel]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const panel = root.querySelector("#member-context-panel");
+        const open = panel && !panel.classList.contains("is-collapsed");
+        const current = stage.querySelector(":scope > .panel-content.is-current")?.dataset.content;
+        if (open && current === button.dataset.panel) collapseMemberCopyPanel();
+        else showMemberCopyPanel(button.dataset.panel);
+      });
+    });
+    stage.addEventListener("click", (event) => {
+      const tab = event.target.closest(".tab[data-tab]");
+      if (tab && stage.contains(tab)) {
+        const tabs = tab.closest(".tabs");
+        const name = tab.dataset.tab;
+        tabs?.querySelectorAll(".tab[data-tab]").forEach((item) => {
+          const selected = item.dataset.tab === name;
+          item.classList.toggle("is-active", selected);
+          item.setAttribute("aria-selected", String(selected));
+        });
+        tab.closest(".panel-content")?.querySelectorAll(".tab-pane").forEach((pane) => {
+          pane.hidden = pane.dataset.pane !== name;
+        });
+        layoutTabsIndicator(tabs, { animate: true });
+        return;
+      }
+      const insTab = event.target.closest("[data-ins-tab]");
+      if (insTab && stage.contains(insTab)) {
+        const tabs = insTab.closest(".tabs");
+        const name = insTab.dataset.insTab;
+        tabs?.querySelectorAll("[data-ins-tab]").forEach((item) => {
+          const selected = item.dataset.insTab === name;
+          item.classList.toggle("is-active", selected);
+          item.setAttribute("aria-selected", String(selected));
+        });
+        insTab.closest(".panel-content")?.querySelectorAll("[data-ins-pane]").forEach((pane) => {
+          pane.hidden = pane.dataset.insPane !== name;
+        });
+        layoutTabsIndicator(tabs, { animate: true });
+        return;
+      }
+      const toggle = event.target.closest(".accordion-toggle");
+      if (toggle && stage.contains(toggle) && toggle.dataset.editing !== "true") {
+        const section = toggle.closest(".accordion");
+        if (!section) return;
+        syncAccordionBodyDuration(section);
+        const open = section.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(open));
+        return;
+      }
+      const taskToggle = event.target.closest(".task-list-toggle");
+      if (taskToggle && stage.contains(taskToggle)) {
+        const list = taskToggle.closest(".task-list-accordion");
+        const open = Boolean(list?.classList.toggle("is-open"));
+        taskToggle.setAttribute("aria-expanded", String(open));
+        return;
+      }
+      if (event.target.closest(".panel-close")) collapseMemberCopyPanel();
+    });
+  }
+
+  function bindMemberHub() {
+    const hub = document.querySelector("#member-chat-page .hub-card");
+    if (!hub) return;
+    const topTabs = [...hub.querySelectorAll(":scope > .hub-tabs:not(.hub-tabs--sub) .hub-tab")];
+    const sub = hub.querySelector("[data-hub-sub]");
+    const subTabs = [...hub.querySelectorAll(":scope > .hub-tabs--sub .hub-tab")];
+    const topPanes = [...hub.querySelectorAll(":scope > .hub-panes > .hub-pane")];
+
+    const topList = hub.querySelector(":scope > .hub-tabs:not(.hub-tabs--sub)");
+    const indicator = topList?.querySelector(".hub-tabs-indicator");
+    const placeIndicator = () => {
+      if (!topList || !indicator) return;
+      const active = topList.querySelector(".hub-tab.is-active");
+      if (!active) return;
+      const rootRect = topList.getBoundingClientRect();
+      const activeRect = active.getBoundingClientRect();
+      const left = activeRect.left - rootRect.left + topList.scrollLeft;
+      indicator.style.width = `${Math.round(activeRect.width)}px`;
+      indicator.style.transform = `translateX(${Math.round(left)}px)`;
+    };
+
+    const selectTop = (name) => {
+      topTabs.forEach((tab) => {
+        const selected = tab.dataset.hub === name;
+        tab.classList.toggle("is-active", selected);
+        tab.setAttribute("aria-selected", String(selected));
+      });
+      topPanes.forEach((pane) => {
+        pane.hidden = pane.dataset.hubPane !== name;
+      });
+      if (sub) sub.hidden = name !== "context";
+      placeIndicator();
+    };
+
+    const selectSub = (name) => {
+      subTabs.forEach((tab) => {
+        const selected = tab.dataset.hubPane === name;
+        tab.classList.toggle("is-active", selected);
+        tab.setAttribute("aria-selected", String(selected));
+      });
+      hub.querySelector("#hub-pane-context")?.querySelectorAll(":scope > .hub-pane").forEach((pane) => {
+        pane.hidden = pane.dataset.hubPane !== name;
+      });
+    };
+
+    topTabs.forEach((tab) => {
+      tab.addEventListener("click", () => selectTop(tab.dataset.hub));
+    });
+    subTabs.forEach((tab) => {
+      tab.addEventListener("click", () => selectSub(tab.dataset.hubPane));
+    });
+    hub.addEventListener("click", (event) => {
+      const evidence = event.target.closest(".path-evidence a");
+      if (evidence && hub.contains(evidence)) event.preventDefault();
+      const toggle = event.target.closest(".accordion-toggle");
+      if (!toggle || !hub.contains(toggle) || toggle.dataset.editing === "true") return;
+      const section = toggle.closest(".accordion");
+      if (!section) return;
+      syncAccordionBodyDuration(section);
+      const open = section.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+    requestAnimationFrame(placeIndicator);
+  }
+
+  function bindPathDecisions() {
+    const page = document.querySelector("#member-chat-page");
+    const pane = page?.querySelector(".path-pane");
+    const menu = document.querySelector("#path-menu");
+    if (!page || !pane || !menu) return;
+    let openButton = null;
+    const doneIcon = `<svg class="path-status-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="m5.2 8.1 1.8 1.8 3.8-3.9"/></svg>`;
+
+    const pathStamp = (date = new Date()) => {
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      const year = String(date.getFullYear()).slice(-2);
+      let hours = date.getHours();
+      const minutes = String(date.getMinutes()).padStart(2, "0");
+      const suffix = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12 || 12;
+      return `${month}/${day}/${year}, ${hours}:${minutes} ${suffix}`;
+    };
+
+    const actionById = (id) => pane.querySelector(`.path-action[data-path-action="${CSS.escape(id)}"]`);
+
+    const closePathMenu = () => {
+      menu.hidden = true;
+      menu.innerHTML = "";
+      if (openButton) openButton.setAttribute("aria-expanded", "false");
+      openButton = null;
+    };
+
+    const appendTimeline = (need, title, stamp, reason) => {
+      const list = need?.querySelector(".path-timeline");
+      if (!list) return;
+      const item = document.createElement("li");
+      item.className = "path-timeline-event";
+      const rail = document.createElement("span");
+      rail.className = "path-timeline-rail";
+      rail.setAttribute("aria-hidden", "true");
+      const dot = document.createElement("span");
+      dot.className = "path-timeline-dot";
+      rail.appendChild(dot);
+      if (list.firstElementChild) {
+        const line = document.createElement("span");
+        line.className = "path-timeline-line";
+        rail.appendChild(line);
+      }
+      const copy = document.createElement("div");
+      copy.className = "path-timeline-copy";
+      const heading = document.createElement("p");
+      heading.className = "path-timeline-title";
+      heading.textContent = title;
+      const meta = document.createElement("p");
+      meta.className = "path-timeline-meta";
+      const time = document.createElement("time");
+      time.dateTime = new Date().toISOString();
+      time.textContent = stamp;
+      meta.appendChild(time);
+      copy.append(heading, meta);
+      if (reason) {
+        const reasonLine = document.createElement("p");
+        reasonLine.className = "path-timeline-meta";
+        reasonLine.textContent = reason;
+        copy.appendChild(reasonLine);
+      }
+      item.append(rail, copy);
+      list.prepend(item);
+    };
+
+    const syncNba = () => {
+      const nba = pane.querySelector(".path-nba");
+      if (!nba) return;
+      const next = [...pane.querySelectorAll('[data-path-action-list="open"] .path-action')].find((action) => {
+        const need = action.closest(".path-need");
+        return !action.classList.contains("is-complete") && !need?.classList.contains("is-inaccurate");
+      });
+      if (!next) {
+        nba.hidden = true;
+        return;
+      }
+      const name = next.querySelector(".path-title").textContent.trim();
+      const needName = next.closest(".path-need").querySelector(".path-need-heading strong").textContent.trim();
+      nba.hidden = false;
+      nba.dataset.pathAction = next.dataset.pathAction;
+      nba.querySelector(".path-title").textContent = name;
+      nba.querySelector(".path-why").innerHTML = next.querySelector(".path-why").innerHTML;
+      const status = nba.querySelector(".path-status");
+      const source = next.querySelector(".path-status");
+      if (status && source) {
+        status.className = source.className;
+        status.innerHTML = source.innerHTML;
+      }
+      nba.querySelector(".path-need-ref").textContent = `Need: ${needName}`;
+      nba.querySelector(".button").textContent = next.querySelector(".button").textContent.trim();
+      const more = nba.querySelector("[data-path-menu]");
+      more.dataset.pathAction = next.dataset.pathAction;
+      more.setAttribute("aria-label", `More actions for ${name}`);
+    };
+
+    const completeAction = (id) => {
+      const action = actionById(id);
+      const need = action?.closest(".path-need");
+      if (!action || !need || action.classList.contains("is-complete") || need.classList.contains("is-inaccurate")) return;
+      const name = action.querySelector(".path-title").textContent.trim();
+      const status = action.querySelector(".path-status");
+      if (status) {
+        const source = status.textContent.split("·")[0].trim();
+        status.className = "path-status path-status--done";
+        status.innerHTML = `${doneIcon}${source} · Completed`;
+      }
+      action.classList.add("is-complete");
+      appendTimeline(need, `${name} completed · Member accepted`, pathStamp());
+      syncNba();
+    };
+
+    const removeAction = (id, label, reason) => {
+      const action = actionById(id);
+      const need = action?.closest(".path-need");
+      if (!action || !need || need.classList.contains("is-inaccurate")) return;
+      if (action.closest('[data-path-action-list="archived"]')) return;
+      const archived = need.querySelector('[data-path-action-list="archived"]');
+      action.querySelector(".path-action-tools")?.remove();
+      const reasonLine = document.createElement("p");
+      reasonLine.className = "path-archived-reason";
+      const status = label.startsWith("Action removed · ") ? label.slice("Action removed · ".length) : "Removed";
+      reasonLine.textContent = reason ? `${status} · ${reason}` : status;
+      action.querySelector("div")?.appendChild(reasonLine);
+      archived?.appendChild(action);
+      const empty = archived?.querySelector(".path-archived-empty");
+      if (empty) empty.hidden = true;
+      const count = need.querySelectorAll('[data-path-action-list="open"] .path-action').length;
+      const meta = need.querySelector(".path-need-meta");
+      const updated = meta.textContent.includes("·") ? meta.textContent.slice(meta.textContent.indexOf("·") + 1) : "";
+      meta.textContent = `${count} ${count === 1 ? "action" : "actions"} ·${updated}`;
+      appendTimeline(need, label, pathStamp(), reason);
+      syncNba();
+      applyPathActions();
+      showToast("Action is archived and reason is recorded.");
+    };
+
+    const markNeedInaccurate = (id, reason) => {
+      const need = pane.querySelector(`.path-need[data-path-need="${CSS.escape(id)}"]`);
+      if (!need || need.classList.contains("is-inaccurate")) return;
+      need.classList.add("is-inaccurate");
+      const strong = need.querySelector(".path-need-heading strong");
+      const row = document.createElement("span");
+      row.className = "path-need-title-row";
+      strong.replaceWith(row);
+      row.appendChild(strong);
+      const badge = document.createElement("span");
+      badge.className = "soft-badge soft-warning";
+      badge.textContent = "Inaccurate";
+      row.appendChild(badge);
+      need.querySelectorAll("[data-path-menu='action'], [data-path-menu='need']").forEach((button) => {
+        button.hidden = true;
+      });
+      appendTimeline(need, "Need marked inaccurate", pathStamp(), reason);
+      syncNba();
+      applyPathActions();
+      showToast("Need is archived and reason is recorded.");
+    };
+
+    const markEvidenceInaccurate = (id, note) => {
+      const row = pane.querySelector(`.path-evidence[data-path-evidence="${CSS.escape(id)}"]`);
+      if (!row || row.classList.contains("is-inaccurate")) return;
+      row.classList.add("is-inaccurate");
+      const more = row.querySelector("[data-path-menu]");
+      if (more) more.hidden = true;
+      if (!row.querySelector(".path-evidence-note")) {
+        const nightly = document.createElement("p");
+        nightly.className = "path-evidence-note";
+        nightly.textContent = "Updates in the next nightly run.";
+        row.appendChild(nightly);
+      }
+      appendTimeline(row.closest(".path-need"), "Evidence marked inaccurate", pathStamp(), note);
+    };
+
+    const askReason = (title, confirmLabel, onConfirm, fieldLabel = "Reason") => {
+      openModal({
+        title,
+        body: `<label class="path-reason-label" for="path-reason">${fieldLabel}</label><textarea id="path-reason" class="path-reason" rows="3"></textarea>`,
+        footer: `<button class="button button-secondary" type="button" data-close-modal>Cancel</button><button class="button button-primary" type="button" id="path-reason-confirm" disabled>${confirmLabel}</button>`,
+        variant: "confirm",
+      });
+      const field = document.querySelector("#path-reason");
+      const confirm = document.querySelector("#path-reason-confirm");
+      field.addEventListener("input", () => {
+        confirm.disabled = field.value.trim().length === 0;
+      });
+      confirm.addEventListener("click", () => {
+        const reason = field.value.trim();
+        if (!reason) return;
+        closeModal();
+        onConfirm(reason);
+      });
+      requestAnimationFrame(() => field.focus());
+    };
+
+    const handleChoice = (data, choice) => {
+      if (data.pathMenu === "action" && choice === "agree") {
+        completeAction(data.pathAction);
+        return;
+      }
+      if (data.pathMenu === "action" && choice === "decline") {
+        askReason("Member declined", "Remove action", (reason) => {
+          removeAction(data.pathAction, "Action removed · Member declined", reason);
+        });
+        return;
+      }
+      if (data.pathMenu === "action" && choice === "remove") {
+        askReason("Remove action", "Remove", (reason) => {
+          removeAction(data.pathAction, "Action removed", reason);
+        });
+        return;
+      }
+      if (data.pathMenu === "need" && choice === "inaccurate") {
+        askReason("Mark need inaccurate", "Mark inaccurate", (reason) => {
+          markNeedInaccurate(data.pathNeed, reason);
+        });
+        return;
+      }
+      if (data.pathMenu === "evidence" && choice === "inaccurate") {
+        askReason("Mark evidence inaccurate", "Mark inaccurate", (note) => {
+          markEvidenceInaccurate(data.pathEvidence, note);
+        }, "Note");
+      }
+    };
+
+    const menuItems = (button) => {
+      if (button.dataset.pathMenu === "evidence") return [{ id: "inaccurate", label: "Inaccurate" }];
+      if (button.dataset.pathMenu !== "action") return [{ id: "inaccurate", label: "Mark inaccurate" }];
+      const action = actionById(button.dataset.pathAction);
+      const items = [];
+      if (action && !action.classList.contains("is-complete")) items.push({ id: "agree", label: "Member accepted" });
+      items.push({ id: "decline", label: "Member declined" }, { id: "remove", label: "Remove" });
+      return items;
+    };
+
+    const openPathMenu = (button) => {
+      closePathMenu();
+      menu.innerHTML = menuItems(button).map((item) => `<button type="button" role="menuitem" data-path-choice="${item.id}">${item.label}</button>`).join("");
+      menu.hidden = false;
+      if (menu.parentElement !== document.body) document.body.appendChild(menu);
+      const rect = button.getBoundingClientRect();
+      const menuRect = menu.getBoundingClientRect();
+      let top = rect.bottom + 4;
+      let left = Math.max(8, rect.right - menuRect.width);
+      if (top + menuRect.height > window.innerHeight - 8) top = Math.max(8, rect.top - menuRect.height - 4);
+      menu.style.top = `${Math.round(top)}px`;
+      menu.style.left = `${Math.round(left)}px`;
+      button.setAttribute("aria-expanded", "true");
+      openButton = button;
+    };
+
+    const layoutSwitch = (root, animate = true) => {
+      const thumb = root?.querySelector(".ins-segmented-thumb");
+      const active = root?.querySelector("button.is-active");
+      if (!thumb || !active) return;
+      if (!animate) thumb.classList.add("is-instant");
+      const rootRect = root.getBoundingClientRect();
+      const activeRect = active.getBoundingClientRect();
+      if (activeRect.width === 0) return;
+      thumb.style.width = `${activeRect.width}px`;
+      thumb.style.transform = `translateX(${activeRect.left - rootRect.left}px)`;
+      if (!animate) {
+        void thumb.offsetWidth;
+        thumb.classList.remove("is-instant");
+      }
+    };
+
+    let pathActionsMode = "open";
+
+    const applyPathActions = (mode = pathActionsMode, animate = true) => {
+      pathActionsMode = mode;
+      const root = pane.querySelector(".path-action-switch");
+      root?.querySelectorAll("button").forEach((button) => {
+        const selected = button.dataset.pathActions === mode;
+        button.classList.toggle("is-active", selected);
+        button.setAttribute("aria-pressed", String(selected));
+      });
+      const archivedMode = mode === "archived";
+      let visible = 0;
+      pane.querySelectorAll(".path-need").forEach((need) => {
+        const inaccurate = need.classList.contains("is-inaccurate");
+        const hasArchived = !!need.querySelector('[data-path-action-list="archived"] .path-action');
+        const show = archivedMode ? inaccurate || hasArchived : !inaccurate;
+        need.hidden = !show;
+        if (show) visible += 1;
+        const openList = need.querySelector('[data-path-action-list="open"]');
+        const archivedList = need.querySelector('[data-path-action-list="archived"]');
+        if (openList) openList.hidden = archivedMode && !inaccurate;
+        if (archivedList) archivedList.hidden = !archivedMode;
+      });
+      const empty = pane.querySelector(".path-needs-empty");
+      if (empty) empty.hidden = !(archivedMode && visible === 0);
+      if (root) layoutSwitch(root, animate);
+    };
+
+    menu.addEventListener("click", (event) => {
+      const choice = event.target.closest("[data-path-choice]");
+      if (!choice || !menu.contains(choice)) return;
+      event.stopPropagation();
+      const data = {
+        pathMenu: openButton?.dataset.pathMenu || "",
+        pathAction: openButton?.dataset.pathAction || "",
+        pathNeed: openButton?.dataset.pathNeed || "",
+        pathEvidence: openButton?.dataset.pathEvidence || "",
+      };
+      closePathMenu();
+      handleChoice(data, choice.dataset.pathChoice);
+    });
+
+    page.addEventListener("click", (event) => {
+      const choice = event.target.closest(".path-action-switch button");
+      if (choice && page.contains(choice)) {
+        event.stopPropagation();
+        applyPathActions(choice.dataset.pathActions);
+        return;
+      }
+      const more = event.target.closest("[data-path-menu]");
+      if (!more || !page.contains(more) || more.hidden) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if (openButton === more) closePathMenu();
+      else openPathMenu(more);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!openButton) return;
+      if (event.target.closest("#path-menu") || event.target.closest("[data-path-menu]")) return;
+      closePathMenu();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && openButton) closePathMenu();
+    });
+    pane.addEventListener("scroll", () => {
+      if (openButton) closePathMenu();
+    }, { passive: true });
+    requestAnimationFrame(() => applyPathActions("open", false));
+    window.addEventListener("resize", () => {
+      pane.querySelectorAll(".path-action-switch").forEach((root) => layoutSwitch(root, false));
+    });
+  }
 })();

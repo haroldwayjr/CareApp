@@ -10959,53 +10959,80 @@ Timestamp: 8/21/18 KS`;
   function bindMemberHub() {
     const hub = document.querySelector("#member-chat-page .hub-card");
     if (!hub) return;
-    const topTabs = [...hub.querySelectorAll(":scope > .hub-tabs:not(.hub-tabs--sub) .hub-tab")];
-    const sub = hub.querySelector("[data-hub-sub]");
-    const subTabs = [...hub.querySelectorAll(":scope > .hub-tabs--sub .hub-tab")];
-    const topPanes = [...hub.querySelectorAll(":scope > .hub-panes > .hub-pane")];
-
-    const topList = hub.querySelector(":scope > .hub-tabs:not(.hub-tabs--sub)");
-    const indicator = topList?.querySelector(".hub-tabs-indicator");
+    const tabList = hub.querySelector(":scope > .hub-tabs");
+    const tabs = [...hub.querySelectorAll(":scope > .hub-tabs .hub-tab")];
+    const panes = [...hub.querySelectorAll(":scope > .hub-panes > .hub-pane")];
+    const indicator = tabList?.querySelector(".hub-tabs-indicator");
     const placeIndicator = () => {
-      if (!topList || !indicator) return;
-      const active = topList.querySelector(".hub-tab.is-active");
+      if (!tabList || !indicator) return;
+      const active = tabList.querySelector(".hub-tab.is-active");
       if (!active) return;
-      const rootRect = topList.getBoundingClientRect();
+      const rootRect = tabList.getBoundingClientRect();
       const activeRect = active.getBoundingClientRect();
-      const left = activeRect.left - rootRect.left + topList.scrollLeft;
+      const left = activeRect.left - rootRect.left + tabList.scrollLeft;
       indicator.style.width = `${Math.round(activeRect.width)}px`;
       indicator.style.transform = `translateX(${Math.round(left)}px)`;
     };
 
-    const selectTop = (name) => {
-      topTabs.forEach((tab) => {
-        const selected = tab.dataset.hub === name;
-        tab.classList.toggle("is-active", selected);
-        tab.setAttribute("aria-selected", String(selected));
-      });
-      topPanes.forEach((pane) => {
-        pane.hidden = pane.dataset.hubPane !== name;
-      });
-      if (sub) sub.hidden = name !== "context";
-      placeIndicator();
-    };
-
-    const selectSub = (name) => {
-      subTabs.forEach((tab) => {
+    const selectPane = (name) => {
+      tabs.forEach((tab) => {
         const selected = tab.dataset.hubPane === name;
         tab.classList.toggle("is-active", selected);
         tab.setAttribute("aria-selected", String(selected));
       });
-      hub.querySelector("#hub-pane-context")?.querySelectorAll(":scope > .hub-pane").forEach((pane) => {
+      panes.forEach((pane) => {
         pane.hidden = pane.dataset.hubPane !== name;
       });
+      placeIndicator();
     };
 
-    topTabs.forEach((tab) => {
-      tab.addEventListener("click", () => selectTop(tab.dataset.hub));
-    });
-    subTabs.forEach((tab) => {
-      tab.addEventListener("click", () => selectSub(tab.dataset.hubPane));
+    const memberName = document.querySelector("#member-page-title")?.textContent.trim() || "";
+    const firstName = memberName.split(/\s+/)[0];
+    const pathTab = hub.querySelector("#hub-tab-stacys-path");
+    if (pathTab && firstName) pathTab.textContent = `${firstName}'s Path`;
+    if (firstName) {
+      hub.querySelectorAll(".path-why").forEach((line) => {
+        if (line.textContent.includes("Stacy")) line.textContent = line.textContent.replaceAll("Stacy", firstName);
+      });
+    }
+
+    const casesPane = hub.querySelector(".cases-pane");
+    if (casesPane) {
+      const filter = casesPane.querySelector("[data-cases-filter]");
+      const filterValue = filter?.querySelector("input[data-field]");
+      const syncCases = () => {
+        const state = (filterValue?.value || "").startsWith("Closed") ? "closed" : "open";
+        casesPane.querySelectorAll("tr[data-case]").forEach((row) => {
+          const show = row.dataset.caseState === state;
+          row.hidden = !show;
+          const id = row.dataset.case;
+          const expanded = row.classList.contains("is-open");
+          casesPane.querySelectorAll(`tr[data-case-tasks="${CSS.escape(id)}"]`).forEach((task) => {
+            task.hidden = !show || !expanded;
+          });
+        });
+      };
+      filter?.querySelectorAll("[data-value]").forEach((option) => {
+        option.addEventListener("click", syncCases);
+      });
+      casesPane.addEventListener("click", (event) => {
+        const link = event.target.closest(".cases-task-link");
+        if (link && casesPane.contains(link)) event.preventDefault();
+        const button = event.target.closest("[data-case-toggle]");
+        if (!button || !casesPane.contains(button)) return;
+        const row = button.closest("tr[data-case]");
+        if (!row) return;
+        const open = row.classList.toggle("is-open");
+        button.setAttribute("aria-expanded", String(open));
+        const id = row.dataset.case;
+        casesPane.querySelectorAll(`tr[data-case-tasks="${CSS.escape(id)}"]`).forEach((task) => {
+          task.hidden = !open;
+        });
+      });
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => selectPane(tab.dataset.hubPane));
     });
     hub.addEventListener("click", (event) => {
       const evidence = event.target.closest(".path-evidence a");
@@ -11039,6 +11066,13 @@ Timestamp: 8/21/18 KS`;
       hours = hours % 12 || 12;
       return `${month}/${day}/${year}, ${hours}:${minutes} ${suffix}`;
     };
+
+    const generated = pane.querySelector(".path-generated");
+    if (generated) {
+      const morning = new Date();
+      morning.setHours(9, 14, 0, 0);
+      generated.textContent = `Plan generated ${pathStamp(morning)}`;
+    }
 
     const actionById = (id) => pane.querySelector(`.path-action[data-path-action="${CSS.escape(id)}"]`);
 

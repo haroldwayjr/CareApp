@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=elena-plan-27" />
+    <link rel="stylesheet" href="styles.css?v=elena-plan-39" />
   </head>
   <body>
     <header class="app-header page-rise" style="--rise: 0" aria-label="Care App">
@@ -532,30 +532,14 @@
 
       <div class="workspace">
         <section class="card hub-card page-rise" style="--rise: 2" aria-label="Member context">
-          <div class="hub-tabs" role="tablist" aria-label="Member sections">
+          <div class="hub-tabs" role="tablist" aria-label="Member work">
             <span class="hub-tabs-indicator" aria-hidden="true"></span>
-            <button class="hub-tab" type="button" role="tab" id="hub-tab-activity" aria-controls="hub-pane-activity" aria-selected="false" data-hub="activity">Activity</button>
-            <button class="hub-tab" type="button" role="tab" id="hub-tab-coverage" aria-controls="hub-pane-coverage" aria-selected="false" data-hub="coverage">Coverage</button>
-            <button class="hub-tab" type="button" role="tab" id="hub-tab-insurance" aria-controls="hub-pane-insurance" aria-selected="false" data-hub="insurance">Insurance</button>
-            <button class="hub-tab" type="button" role="tab" id="hub-tab-billing" aria-controls="hub-pane-billing" aria-selected="false" data-hub="billing">Billing</button>
-            <button class="hub-tab" type="button" role="tab" id="hub-tab-account" aria-controls="hub-pane-account" aria-selected="false" data-hub="account">Account</button>
-            <button class="hub-tab" type="button" role="tab" id="hub-tab-communication" aria-controls="hub-pane-communication" aria-selected="false" data-hub="communication">Communication</button>
-            <button class="hub-tab is-active" type="button" role="tab" id="hub-tab-context" aria-controls="hub-pane-context" aria-selected="true" data-hub="context">Context</button>
-          </div>
-          <div class="hub-tabs hub-tabs--sub" role="tablist" aria-label="Context" data-hub-sub>
             <button class="hub-tab is-active" type="button" role="tab" id="hub-tab-stacys-path" aria-controls="hub-pane-stacys-path" aria-selected="true" data-hub-pane="stacys-path">Stacy's Path</button>
+            <button class="hub-tab" type="button" role="tab" id="hub-tab-cases" aria-controls="hub-pane-cases" aria-selected="false" data-hub-pane="cases">Cases (12)</button>
             <button class="hub-tab" type="button" role="tab" id="hub-tab-open-tasks" aria-controls="hub-pane-open-tasks" aria-selected="false" data-hub-pane="open-tasks">Open Tasks (12)</button>
-            <button class="hub-tab" type="button" role="tab" id="hub-tab-cases" aria-controls="hub-pane-cases" aria-selected="false" data-hub-pane="cases">Cases (5)</button>
           </div>
           <div class="hub-panes">
-            <div class="hub-pane" id="hub-pane-activity" role="tabpanel" aria-labelledby="hub-tab-activity" data-hub-pane="activity" hidden></div>
-            <div class="hub-pane" id="hub-pane-coverage" role="tabpanel" aria-labelledby="hub-tab-coverage" data-hub-pane="coverage" hidden></div>
-            <div class="hub-pane" id="hub-pane-insurance" role="tabpanel" aria-labelledby="hub-tab-insurance" data-hub-pane="insurance" hidden></div>
-            <div class="hub-pane" id="hub-pane-billing" role="tabpanel" aria-labelledby="hub-tab-billing" data-hub-pane="billing" hidden></div>
-            <div class="hub-pane" id="hub-pane-account" role="tabpanel" aria-labelledby="hub-tab-account" data-hub-pane="account" hidden></div>
-            <div class="hub-pane" id="hub-pane-communication" role="tabpanel" aria-labelledby="hub-tab-communication" data-hub-pane="communication" hidden></div>
-            <div class="hub-pane" id="hub-pane-context" role="tabpanel" aria-labelledby="hub-tab-context" data-hub-pane="context">
-              <div class="hub-pane" id="hub-pane-stacys-path" role="tabpanel" aria-labelledby="hub-tab-stacys-path" data-hub-pane="stacys-path">
+            <div class="hub-pane" id="hub-pane-stacys-path" role="tabpanel" aria-labelledby="hub-tab-stacys-path" data-hub-pane="stacys-path">
                 <div class="path-pane">
                           <div class="path-section-head">
                             <h2 class="path-section-title">Next Best Action</h2>
@@ -1180,8 +1164,115 @@
                 </div>
               </div>
               <div class="hub-pane" id="hub-pane-open-tasks" role="tabpanel" aria-labelledby="hub-tab-open-tasks" data-hub-pane="open-tasks" hidden></div>
-              <div class="hub-pane" id="hub-pane-cases" role="tabpanel" aria-labelledby="hub-tab-cases" data-hub-pane="cases" hidden></div>
-            </div>
+              <div class="hub-pane" id="hub-pane-cases" role="tabpanel" aria-labelledby="hub-tab-cases" data-hub-pane="cases" hidden>
+                <div class="cases-pane">
+                  <div class="select-wrap inline-select cases-filter" data-cases-filter>
+                    <input type="hidden" data-field="casesFilter" value="Open Cases (12)">
+                    <button class="inline-field-control select-trigger" type="button" aria-expanded="false" aria-haspopup="listbox" aria-controls="elena-cases-filter-menu" id="elena-cases-filter">
+                      <span class="select-trigger-label">Open Cases (12)</span>
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"></path></svg>
+                    </button>
+                    <div class="select-menu" id="elena-cases-filter-menu" role="listbox" hidden>
+                      <button type="button" role="option" class="is-selected" data-value="Open Cases (12)" aria-selected="true"><span>Open Cases (12)</span><svg class="icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.37 0.29a1.49 1.49 0 0 0 -2.09 0.34L7.25 20.2l-4.69 -4.69a1.5 1.5 0 0 0 -2.12 2.12l5.93 5.94a1.53 1.53 0 0 0 2.28 -0.19l15.07 -21a1.49 1.49 0 0 0 -0.35 -2.09Z" fill="currentColor"></path></svg></button>
+                      <button type="button" role="option" data-value="Closed Cases (2)" aria-selected="false"><span>Closed Cases (2)</span></button>
+                    </div>
+                  </div>
+                  <table class="ins-table cases-table">
+                            <thead>
+                              <tr>
+                                <th>Case and Case Type</th>
+                                <th>Assignee</th>
+                                <th>System of Record</th>
+                                <th>Date Initiated</th>
+                                <th>Days Open</th>
+                                <th>Open Tasks</th>
+                                <th>Status</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr data-case="1" data-case-state="open">
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Case Manager Intake Visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>7/17/26</td><td>118 days</td><td>3</td>
+                                <td><span class="soft-badge soft-danger"><span class="soft-badge-label">2 Overdue tasks</span></span></td>
+                              </tr>
+                              <tr class="cases-task" data-case-tasks="1" hidden><td><a class="cases-task-link" href="#epds-1">Complete EPDS Assessment</a></td><td class="cases-assignee">Jennie Washington</td><td colspan="4"></td><td><span class="soft-badge soft-danger"><span class="soft-badge-label">Overdue</span></span></td></tr>
+                              <tr class="cases-task" data-case-tasks="1" hidden><td><a class="cases-task-link" href="#ccm-1">Complete CCM Enrollment</a></td><td class="cases-assignee">Lila George</td><td colspan="4"></td><td><span class="soft-badge soft-danger"><span class="soft-badge-label">Overdue</span></span></td></tr>
+                              <tr class="cases-task" data-case-tasks="1" hidden><td><a class="cases-task-link" href="#member-1">Update Member information</a></td><td class="cases-assignee">-</td><td colspan="4"></td><td></td></tr>
+                              <tr class="is-open" data-case="2" data-case-state="open">
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="true"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Case Manager Intake Visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>7/17/26</td><td>118 days</td><td>3</td><td></td>
+                              </tr>
+                              <tr class="cases-task" data-case-tasks="2"><td><a class="cases-task-link" href="#epds">Complete EPDS Assessment</a></td><td class="cases-assignee">Jennie Washington</td><td colspan="4"></td><td><span class="soft-badge soft-danger"><span class="soft-badge-label">Overdue</span></span></td></tr>
+                              <tr class="cases-task" data-case-tasks="2"><td><a class="cases-task-link" href="#ccm">Complete CCM Enrollment</a></td><td class="cases-assignee">Lila George</td><td colspan="4"></td><td><span class="soft-badge soft-danger"><span class="soft-badge-label">Overdue</span></span></td></tr>
+                              <tr class="cases-task" data-case-tasks="2"><td><a class="cases-task-link" href="#member-info">Update Member information</a></td><td class="cases-assignee">-</td><td colspan="4"></td><td></td></tr>
+                              <tr data-case="3" data-case-state="open">
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Case Manager Intake Visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>7/17/26</td><td>118 days</td><td>3</td><td></td>
+                              </tr>
+                              <tr class="cases-task" data-case-tasks="3" hidden><td><a class="cases-task-link" href="#member-3">Update Member information</a></td><td class="cases-assignee">-</td><td colspan="4"></td><td></td></tr>
+                              <tr data-case="4" data-case-state="open">
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Case Manager Intake Visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>7/17/26</td><td>118 days</td><td>3</td><td></td>
+                              </tr>
+                              <tr data-case="5" data-case-state="open">
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Case Manager Intake Visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>7/17/26</td><td>118 days</td><td>3</td>
+                                <td><span class="soft-badge soft-danger"><span class="soft-badge-label">1 Overdue task</span></span></td>
+                              </tr>
+                              <tr class="cases-task" data-case-tasks="5" hidden><td><a class="cases-task-link" href="#overdue-5">Complete EPDS Assessment</a></td><td class="cases-assignee">Jennie Washington</td><td colspan="4"></td><td><span class="soft-badge soft-danger"><span class="soft-badge-label">Overdue</span></span></td></tr>
+                              <tr data-case="6" data-case-state="open">
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Case Manager Intake Visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>7/17/26</td><td>118 days</td><td>3</td>
+                                <td><span class="soft-badge soft-danger"><span class="soft-badge-label">1 Overdue task</span></span></td>
+                              </tr>
+                              <tr class="cases-task" data-case-tasks="6" hidden><td><a class="cases-task-link" href="#overdue-6">Complete CCM Enrollment</a></td><td class="cases-assignee">Lila George</td><td colspan="4"></td><td><span class="soft-badge soft-danger"><span class="soft-badge-label">Overdue</span></span></td></tr>
+                              <tr data-case="7" data-case-state="open">
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Case Manager Intake Visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>7/17/26</td><td>118 days</td><td>3</td><td></td>
+                              </tr>
+                              <tr class="cases-task" data-case-tasks="7" hidden><td><a class="cases-task-link" href="#member-7">Update Member information</a></td><td class="cases-assignee">-</td><td colspan="4"></td><td></td></tr>
+                              <tr data-case="8" data-case-state="open">
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Case Manager Intake Visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>7/17/26</td><td>118 days</td><td>3</td><td></td>
+                              </tr>
+                              <tr class="cases-task" data-case-tasks="8" hidden><td><a class="cases-task-link" href="#member-8">Update Member information</a></td><td class="cases-assignee">-</td><td colspan="4"></td><td></td></tr>
+                              <tr data-case="9" data-case-state="open">
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Case Manager Intake Visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>7/17/26</td><td>118 days</td><td>3</td>
+                                <td><span class="soft-badge soft-danger"><span class="soft-badge-label">2 Overdue tasks</span></span></td>
+                              </tr>
+                              <tr class="cases-task" data-case-tasks="9" hidden><td><a class="cases-task-link" href="#epds-9">Complete EPDS Assessment</a></td><td class="cases-assignee">Jennie Washington</td><td colspan="4"></td><td><span class="soft-badge soft-danger"><span class="soft-badge-label">Overdue</span></span></td></tr>
+                              <tr class="cases-task" data-case-tasks="9" hidden><td><a class="cases-task-link" href="#ccm-9">Complete CCM Enrollment</a></td><td class="cases-assignee">Lila George</td><td colspan="4"></td><td><span class="soft-badge soft-danger"><span class="soft-badge-label">Overdue</span></span></td></tr>
+                              <tr data-case="10" data-case-state="open">
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Case Manager Intake Visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>7/17/26</td><td>118 days</td><td>3</td><td></td>
+                              </tr>
+                              <tr class="cases-task" data-case-tasks="10" hidden><td><a class="cases-task-link" href="#member-10">Update Member information</a></td><td class="cases-assignee">-</td><td colspan="4"></td><td></td></tr>
+                              <tr data-case="11" data-case-state="open">
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Case Manager Intake Visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>7/17/26</td><td>118 days</td><td>3</td>
+                                <td><span class="soft-badge soft-danger"><span class="soft-badge-label">1 Overdue task</span></span></td>
+                              </tr>
+                              <tr class="cases-task" data-case-tasks="11" hidden><td><a class="cases-task-link" href="#epds-11">Complete EPDS Assessment</a></td><td class="cases-assignee">Jennie Washington</td><td colspan="4"></td><td><span class="soft-badge soft-danger"><span class="soft-badge-label">Overdue</span></span></td></tr>
+                              <tr data-case="12" data-case-state="open">
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Case Manager Intake Visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>7/17/26</td><td>118 days</td><td>3</td><td></td>
+                              </tr>
+                              <tr class="cases-task" data-case-tasks="12" hidden><td><a class="cases-task-link" href="#member-12">Update Member information</a></td><td class="cases-assignee">-</td><td colspan="4"></td><td></td></tr>
+                              <tr data-case="c1" data-case-state="closed" hidden>
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Clinical</span><span class="cases-type">Annual wellness visit</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>3/2/26</td><td>40 days</td><td>0</td>
+                                <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                              </tr>
+                              <tr data-case="c2" data-case-state="closed" hidden>
+                                <td><button class="cases-expand" type="button" data-case-toggle aria-expanded="false"><span class="accordion-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.25 7.311 12.53 18.03a0.749 0.749 0 0 1 -1.06 0L0.75 7.311"/></svg></span><span class="cases-name"><span class="cases-kind">Other</span><span class="cases-type">Benefits question</span></span></button></td>
+                                <td class="cases-assignee">-</td><td>Careflow</td><td>1/14/26</td><td>21 days</td><td>0</td>
+                                <td><span class="soft-badge soft-neutral"><span class="soft-badge-label">Closed</span></span></td>
+                              </tr>
+                            </tbody>
+                  </table>
+                </div>
+              </div>
           </div>
         </section>
 
@@ -1588,10 +1679,10 @@
         </button>
       </footer>
     </article>
-<article class="panel-content" data-content="eligibility">
+<article class="panel-content" data-content="coverage">
       <header class="panel-header">
-        <h2>Eligibility</h2>
-        <button class="icon-button panel-close" type="button" aria-label="Close Eligibility"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>
+        <h2>Coverage</h2>
+        <button class="icon-button panel-close" type="button" aria-label="Close Coverage"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>
       </header>
       <div class="panel-scroll elig-overview">
         <div class="elig-overview-top">
@@ -3540,6 +3631,57 @@
         </button>
       </footer>
     </article>
+<article class="panel-content" data-content="billing">
+      <header class="panel-header">
+        <h2>Billing</h2>
+        <button class="icon-button panel-close" type="button" aria-label="Close Billing"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>
+      </header>
+      <div class="panel-scroll">
+        <section class="ins-meter-card">
+          <header>Deductible (In-network)</header>
+          <div class="ins-meter">
+            <div class="ins-meter-top"><strong>Individual</strong><span>$1,575.00 remaining</span></div>
+            <div class="ins-progress"><span style="--progress:10%"></span></div>
+            <div class="ins-meter-meta"><span>$175.00 spent</span><span>$1,750.00 total</span></div>
+          </div>
+          <div class="ins-meter">
+            <div class="ins-meter-top"><strong>Family</strong><span>$1,575.00 remaining</span></div>
+            <div class="ins-progress"><span style="--progress:10%"></span></div>
+            <div class="ins-meter-meta"><span>$175.00 spent</span><span>$1,750.00 total</span></div>
+          </div>
+        </section>
+        <section class="ins-meter-card">
+          <header>Out-of-pocket maximum (In-network)</header>
+          <div class="ins-meter">
+            <div class="ins-meter-top"><strong>Individual</strong><span>$12,579.50 remaining</span></div>
+            <div class="ins-progress"><span style="--progress:47%"></span></div>
+            <div class="ins-meter-meta"><span>$11,225.00 spent</span><span>$23,804.50 total</span></div>
+          </div>
+          <div class="ins-meter">
+            <div class="ins-meter-top"><strong>Family</strong><span>$12,579.50 remaining</span></div>
+            <div class="ins-progress"><span style="--progress:47%"></span></div>
+            <div class="ins-meter-meta"><span>$11,225.00 spent</span><span>$23,804.50 total</span></div>
+          </div>
+        </section>
+        <dl class="accordion-fields">
+          <div class="list-item"><dt>MRI claim</dt><dd>Denied for missing CPT codes</dd></div>
+          <div class="list-item"><dt>Specialist claim</dt><dd>Pending review</dd></div>
+        </dl>
+      </div>
+    </article>
+<article class="panel-content" data-content="account">
+      <header class="panel-header">
+        <h2>Account</h2>
+        <button class="icon-button panel-close" type="button" aria-label="Close Account"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>
+      </header>
+      <div class="panel-scroll">
+        <dl class="accordion-fields">
+          <div class="list-item"><dt>Member ID</dt><dd>ES-1986-0512</dd></div>
+          <div class="list-item"><dt>Plan</dt><dd>CalPERS PPO Basic Plan</dd></div>
+          <div class="list-item"><dt>Relationship</dt><dd>Primary</dd></div>
+        </dl>
+      </div>
+    </article>
 <article class="panel-content" data-content="provider-search">
       <header class="panel-header">
         <h2>Provider Lookup</h2>
@@ -3642,14 +3784,15 @@
 
         <nav class="card tool-rail page-rise" style="--rise: 4" aria-label="Member tools">
           <span class="rail-indicator" aria-hidden="true"></span>
-          <button class="rail-button is-active" type="button" data-panel="assist" aria-label="Chat Assist" aria-pressed="true" aria-controls="member-context-panel"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg><span class="tooltip">Chat Assist</span></button>
+          <button class="rail-button is-active" type="button" data-panel="assist" aria-label="Dedicated member thread" aria-pressed="true" aria-controls="member-context-panel"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg><span class="tooltip">Dedicated member thread</span></button>
           <button class="rail-button" type="button" data-panel="member" aria-label="Member Information" aria-pressed="false" aria-controls="member-context-panel"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="tooltip">Member Information</span></button>
+          <button class="rail-button" type="button" data-panel="activity" aria-label="Activity" aria-pressed="false" aria-controls="member-context-panel"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="tooltip">Activity</span></button>
+          <button class="rail-button" type="button" data-panel="coverage" aria-label="Coverage" aria-pressed="false" aria-controls="member-context-panel"><svg viewBox="0 0 24 24"><path d="M9 5H6a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3"/><rect x="9" y="2" width="6" height="5" rx="1"/><path d="m9 15 2 2 4-5"/></svg><span class="tooltip">Coverage</span></button>
           <button class="rail-button" type="button" data-panel="insurance" aria-label="Insurance" aria-pressed="false" aria-controls="member-context-panel"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M12 8v8M8 12h8"/></svg><span class="tooltip">Insurance</span></button>
-          <button class="rail-button" type="button" data-panel="eligibility" aria-label="Eligibility" aria-pressed="false" aria-controls="member-context-panel"><svg viewBox="0 0 24 24"><path d="M9 5H6a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3"/><rect x="9" y="2" width="6" height="5" rx="1"/><path d="m9 15 2 2 4-5"/></svg><span class="tooltip">Eligibility</span></button>
-          <button class="rail-button" type="button" data-panel="notes" aria-label="Notes" aria-pressed="false" aria-controls="member-context-panel"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><span class="tooltip">Notes</span></button>
+          <button class="rail-button" type="button" data-panel="billing" aria-label="Billing" aria-pressed="false" aria-controls="member-context-panel"><svg viewBox="0 0 24 24"><path d="M6 3.5h12v17l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4L6 20.5Z"/><path d="M9 8h6M9 12h6"/></svg><span class="tooltip">Billing</span></button>
+          <button class="rail-button" type="button" data-panel="account" aria-label="Account" aria-pressed="false" aria-controls="member-context-panel"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2"/><path d="M14 10h5M14 14h4"/></svg><span class="tooltip">Account</span></button>
           <button class="rail-button" type="button" data-panel="communication" aria-label="Communication" aria-pressed="false" aria-controls="member-context-panel"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span class="tooltip">Communication</span></button>
-          <button class="rail-button" type="button" data-panel="activity" aria-controls="member-context-panel" aria-pressed="false" aria-label="Member Activity"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="tooltip">Member Activity</span></button>
-          <button class="rail-button" type="button" data-panel="provider-search" aria-label="Provider Search" aria-pressed="false" aria-controls="member-context-panel"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="tooltip">Provider Search</span></button>
+          <button class="rail-button" type="button" data-panel="notes" aria-label="Notes" aria-pressed="false" aria-controls="member-context-panel" hidden><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><span class="tooltip">Notes</span></button>
         </nav>
       </div>
     </main>
@@ -4374,6 +4517,6 @@
     </div>
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
     <script src="chat-engine.js?v=mode-trigger-1"></script>
-    <script src="app.js?v=elena-members-16"></script>
+    <script src="app.js?v=elena-members-19"></script>
   </body>
 </html>
